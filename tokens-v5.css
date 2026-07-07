@@ -1,0 +1,75 @@
+/* ============================================================
+   Echo 1 Labs — Brand Kit v5 tokens (site: e1-orbit-site)
+   Canonical source: Brand Kit v5.md (locked 2026-07-02). Supersedes ALL prior kits.
+   Reconciled 2026-07-05 to match the canonical kit:
+     - Light neutral is pure white #FFFFFF (Orbit White). Cream #F5F5F1 RETIRED.
+     - Type is Space Grotesk 700 (display) + Space Grotesk (interim body).
+       Garet + Fraunces RETIRED.
+     - Presentation is flat + shadowless. No box-shadow on light surfaces;
+       hairline border only where separation is functionally required.
+   Rules: two reds kept separate (brand vs error); Sage is MARK-ONLY, never UI;
+   every pairing WCAG 2.2 AA (verify, don't assume).
+   ============================================================ */
+
+:root{
+  /* ── Raw palette — eight swatches (use semantic tokens below in components) ── */
+  --e1-void:   #0A0A0E;   /* dark bg, dark text on light */
+  --e1-white:  #FFFFFF;   /* Orbit White — light bg, light text on dark */
+  --e1-yellow: #FFFAA0;   /* right teardrop stroke, warm accent */
+  --e1-solar:  #FF7515;   /* left teardrop stroke, primary brand accent, key actions */
+  --e1-blue:   #274578;   /* left echo arm, links, info */
+  --e1-purple: #655596;   /* right echo arm, secondary accent */
+  --e1-red:    #D1312D;   /* accent + error, NOT a mark stroke */
+  --e1-sage:   #72A574;   /* MARK ONLY — never general UI */
+  --e1-depth:  #10101C;   /* elevated surface tone on dark (not a swatch) */
+
+  /* ── Type — Space Grotesk everywhere (interim). Garet/Fraunces retired. ── */
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --tracking-display: -0.03em;   /* wordmark + display, per kit */
+
+  /* ── Radii ── */
+  --radius-sm:6px; --radius-md:10px; --radius-lg:14px;
+
+  /* ── Shadowless rule: no elevation shadows anywhere. Keep for opt-in focus only. ── */
+  --shadow-none: none;
+}
+
+/* ── Dark (default) ── */
+:root, [data-theme="dark"]{
+  --bg:         var(--e1-void);
+  --surface:    var(--e1-depth);   /* #10101C */
+  --text:       var(--e1-white);
+  --text-muted: #A0A0AA;
+  --border:     #26262E;
+  --accent:     var(--e1-solar);
+  --brand-red:  var(--e1-red);
+  --sem-error:  var(--e1-red);     /* separate token from brand-red */
+  --link:       #7FA0D6;           /* lightened blue for dark AA */
+  --focus-ring: var(--e1-solar);
+}
+
+/* ── Light — pure white, flat, shadowless ── */
+[data-theme="light"]{
+  --bg:         var(--e1-white);   /* #FFFFFF */
+  --surface:    var(--e1-white);   /* flat; separate by hairline border, not shadow */
+  --text:       var(--e1-void);
+  --text-muted: #55555F;
+  --border:     #ECECEC;           /* hairline, only where separation is functional */
+  --accent:     var(--e1-solar);
+  --brand-red:  var(--e1-red);
+  --sem-error:  var(--e1-red);
+  --link:       var(--e1-blue);    /* #274578 */
+  --focus-ring: var(--e1-blue);
+}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{ animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
+}
+
+/* Contrast notes (verify with a checker before promotion):
+   dark:  white on void ~19:1; solar on void ~7.6:1; link #7FA0D6 on void ~7:1.
+   light: void on white ~19:1; solar #FF7515 on white ~2.9:1 (AA large/UI ONLY — never body text);
+          link #274578 on white ~9:1.
+   Rule: Solar Orange as body text fails AA on white. Use it for large text, UI accents,
+   and price display only; keep small text in --text / --link. */

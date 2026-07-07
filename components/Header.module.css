@@ -1,0 +1,66 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.inner {
+  width: 100%;
+  max-width: 1120px;
+  margin-inline: auto;
+  padding: 0.85rem clamp(1.25rem, 4vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.wordmark {
+  display: inline-flex;
+  flex-direction: column;
+  line-height: 0.92;
+  color: var(--text);
+  text-decoration: none;
+}
+.wordmark:hover {
+  text-decoration: none;
+}
+.echo {
+  font-family: var(--font-space-grotesk, var(--font-display));
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-size: 1.2rem;
+}
+.labs {
+  font-family: var(--font-space-grotesk, var(--font-display));
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  font-size: 0.72rem;
+  color: var(--accent);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+.nav a {
+  color: var(--text);
+  font-size: 0.95rem;
+}
+.nav a:hover {
+  color: var(--accent);
+  text-decoration: none;
+}
+.nav a.btn.btn-primary {
+  color: #0a0a0e;
+}
+
+@media (max-width: 620px) {
+  .nav a:not(.btn) {
+    display: none;
+  }
+}
