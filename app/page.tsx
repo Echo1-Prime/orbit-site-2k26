@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { OrbitFlame } from "@/components/OrbitFlame";
 import styles from "./home.module.css";
 
 // Home. Concierge-forward hero + server-rendered GTM content beneath (crawlable —
@@ -39,9 +40,7 @@ export default function HomePage() {
       {/* Concierge hero */}
       <section className={styles.hero}>
         <div className="container">
-          <div className={styles.orb} aria-hidden="true">
-            <span className={styles.orbCore} />
-          </div>
+          <OrbitFlame />
           <p className="eyebrow">Business Lifecycle Management</p>
           <h1 className={styles.heroTitle}>Break free from business gravity.</h1>
           <p className={styles.heroSub}>Built by Operators · Run by Agents · Supervised by Humans</p>

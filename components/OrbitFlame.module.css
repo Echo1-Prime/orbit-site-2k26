@@ -1,0 +1,31 @@
+.flame {
+  width: clamp(300px, 55vw, 520px);
+  aspect-ratio: 16 / 9;
+  margin: 0 auto 1.5rem;
+  animation: slowRise 9s ease-in-out infinite alternate;
+  transform-origin: center bottom;
+  will-change: transform;
+  mix-blend-mode: lighten;
+  opacity: 0.95;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(ellipse 60% 80% at center 55%, #000 40%, transparent 82%);
+  mask-image: radial-gradient(ellipse 60% 80% at center 55%, #000 40%, transparent 82%);
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+@keyframes slowRise {
+  0%   { transform: translateY(6px); }
+  100% { transform: translateY(-6px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flame {
+    animation: none;
+    transform: none;
+  }
+}
