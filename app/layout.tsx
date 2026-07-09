@@ -1,15 +1,23 @@
 import type { Metadata } from "next";
-import { Space_Grotesk } from "next/font/google";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "../tokens-v5.css";
 import "./globals.css";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
 // Self-hosted at build time by next/font — no runtime CDN call.
+// Space Grotesk = display / wordmark (700, -0.03em). DM Sans = body / UI.
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   variable: "--font-space-grotesk",
+  display: "swap",
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-dm-sans",
   display: "swap",
 });
 
@@ -38,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="dark" className={spaceGrotesk.variable}>
+    <html lang="en" data-theme="dark" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>

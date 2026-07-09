@@ -42,8 +42,9 @@ export default function HomePage() {
           <div className={styles.orb} aria-hidden="true">
             <span className={styles.orbCore} />
           </div>
-          <h1 className={styles.heroTitle}>Business Lifecycle Management.</h1>
-          <p className={styles.heroSub}>Built by Operators·Run by Agents·Supervised by Humans·Secured by AWS</p>
+          <p className="eyebrow">Business Lifecycle Management</p>
+          <h1 className={styles.heroTitle}>Break free from business gravity.</h1>
+          <p className={styles.heroSub}>Built by Operators · Run by Agents · Supervised by Humans</p>
           <div className={styles.heroCtas}>
             <Link href="/contact" className="btn btn-primary">
               Apply for founding access

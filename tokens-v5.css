@@ -1,31 +1,37 @@
 /* ============================================================
-   Echo 1 Labs — Brand Kit v5 tokens (site: e1-orbit-site)
-   Canonical source: Brand Kit v5.md (locked 2026-07-02). Supersedes ALL prior kits.
-   Reconciled 2026-07-05 to match the canonical kit:
+   Echo 1 Labs — Design Kit 2k26 tokens (site: e1-orbit-site)
+   Canonical source: e1_orbit_design_kit_v4.md / e1_orbit_design_kit_v4.css (locked 2026-07-08).
+   Supersedes Brand Kit v5.md.
+   Reconciled 2026-07-09 to match the canonical kit:
      - Light neutral is pure white #FFFFFF (Orbit White). Cream #F5F5F1 RETIRED.
-     - Type is Space Grotesk 700 (display) + Space Grotesk (interim body).
-       Garet + Fraunces RETIRED.
+     - Type is Space Grotesk 700 (display) + DM Sans (body/UI). Garet/Fraunces RETIRED.
+     - Secondary accent is Violet #8B5CF6. Purple #655596 is MARK ONLY — never UI.
+     - Green #22c55e allowed broadly in UI chrome + data-viz.
+     - Warning amber #E9A84C canonical for alert/warning states.
      - Presentation is flat + shadowless. No box-shadow on light surfaces;
        hairline border only where separation is functionally required.
-   Rules: two reds kept separate (brand vs error); Sage is MARK-ONLY, never UI;
-   every pairing WCAG 2.2 AA (verify, don't assume).
+   Rules: two reds kept separate (brand vs error); Sage + Purple are MARK-ONLY, never UI;
+   every pairing WCAG 2.2 AA (verify, don't assume); no #00B4E6 cyan.
    ============================================================ */
 
 :root{
-  /* ── Raw palette — eight swatches (use semantic tokens below in components) ── */
-  --e1-void:   #0A0A0E;   /* dark bg, dark text on light */
-  --e1-white:  #FFFFFF;   /* Orbit White — light bg, light text on dark */
-  --e1-yellow: #FFFAA0;   /* right teardrop stroke, warm accent */
-  --e1-solar:  #FF7515;   /* left teardrop stroke, primary brand accent, key actions */
-  --e1-blue:   #274578;   /* left echo arm, links, info */
-  --e1-purple: #655596;   /* right echo arm, secondary accent */
-  --e1-red:    #D1312D;   /* accent + error, NOT a mark stroke */
-  --e1-sage:   #72A574;   /* MARK ONLY — never general UI */
-  --e1-depth:  #10101C;   /* elevated surface tone on dark (not a swatch) */
+  /* ── Raw palette — twelve swatches (use semantic tokens below in components) ── */
+  --e1-void:    #0A0A0E;   /* dark bg, dark text on light */
+  --e1-white:   #FFFFFF;   /* Orbit White — light bg, light text on dark */
+  --e1-yellow:  #FFFAA0;   /* limited warm accent */
+  --e1-solar:   #FF7515;   /* primary brand accent, key actions */
+  --e1-blue:    #274578;   /* links, info states, navigational */
+  --e1-violet:  #8B5CF6;   /* secondary accent, badges, decorative */
+  --e1-purple:  #655596;   /* MARK ONLY — compass mark arm; never UI */
+  --e1-red:     #D1312D;   /* accent + error; two reds kept separate */
+  --e1-sage:    #72A574;   /* MARK ONLY — compass mark; never UI */
+  --e1-green:   #22c55e;   /* UI chrome + data-viz (allowed broadly per 2k26 kit) */
+  --e1-warning: #E9A84C;   /* warning / alert borders and states */
+  --e1-depth:   #10101C;   /* elevated surface tone on dark (not a swatch) */
 
-  /* ── Type — Space Grotesk everywhere (interim). Garet/Fraunces retired. ── */
+  /* ── Type — Space Grotesk 700 (display) + DM Sans (body/UI). Garet/Fraunces retired. ── */
   --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
-  --font-sans:    'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    'DM Sans', ui-sans-serif, system-ui, sans-serif;
   --tracking-display: -0.03em;   /* wordmark + display, per kit */
 
   /* ── Radii ── */
