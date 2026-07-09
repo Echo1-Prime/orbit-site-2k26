@@ -42,7 +42,7 @@ export default function HomePage() {
           <div className={styles.orb} aria-hidden="true">
             <span className={styles.orbCore} />
           </div>
-          <h1 className={styles.heroTitle}>AGI Business Lifecycle Management.</h1>
+          <h1 className={styles.heroTitle}>Business Lifecycle Management.</h1>
           <p className={styles.heroSub}>Built by Operators·Run by Agents·Supervised by Humans·Secured by AWS</p>
           <div className={styles.heroCtas}>
             <Link href="/contact" className="btn btn-primary">
