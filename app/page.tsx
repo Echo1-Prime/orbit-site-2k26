@@ -42,15 +42,11 @@ export default function HomePage() {
           <div className={styles.orb} aria-hidden="true">
             <span className={styles.orbCore} />
           </div>
-          <h1 className={styles.heroTitle}>Break free from business gravity.</h1>
-          <p className={styles.heroSub}>
-            Business Lifecycle Management for founder-led companies —
-            AI-enhanced systems with management support, across go-to-market,
-            sales, marketing, finance, delivery, and governance.
-          </p>
+          <h1 className={styles.heroTitle}>AGI Business Lifecycle Management.</h1>
+          <p className={styles.heroSub}>Built by Operators·Run by Agents·Supervised by Humans·Secured by AWS</p>
           <div className={styles.heroCtas}>
             <Link href="/contact" className="btn btn-primary">
-              Start a conversation
+              Apply for founding access
             </Link>
             <Link href="/pricing" className="btn btn-ghost">
               See pricing
@@ -118,7 +114,7 @@ export default function HomePage() {
           </p>
           <div className={styles.heroCtas}>
             <Link href="/contact" className="btn btn-primary">
-              Apply for a founding seat
+              Apply for founding access
             </Link>
             <Link href="/pricing" className="btn btn-ghost">
               See what a month covers
