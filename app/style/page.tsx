@@ -72,6 +72,65 @@ export default function StylePage() {
             <p className={styles.caption}>Compass Mark 2K26 v1 — copy SVG verbatim, never reconstruct.</p>
           </div>
         </div>
+
+        {/* Canonical sizes: 128 app-icon, 64 toolbar, 32 favicon, 16 minimum */}
+        <h3 className={styles.subhead}>Compass mark — canonical sizes</h3>
+        <div className={styles.sizesRow}>
+          {[128, 64, 32, 16].map((size) => (
+            <div key={size} className={styles.sizeItem}>
+              <div className={styles.sizeStage} style={{ minHeight: 148 }}>
+                <img src="/orbit-mark-dark.svg" alt={`Compass mark ${size}px`} width={size} height={size} />
+              </div>
+              <span className={styles.sizeLabel}>{size}px</span>
+              <span className={styles.sizeUse}>
+                {size === 128 ? "app icon" : size === 64 ? "toolbar" : size === 32 ? "favicon" : "minimum"}
+              </span>
+            </div>
+          ))}
+        </div>
+
+        <h3 className={styles.subhead}>Dark + light variants (same polygons)</h3>
+        <div className={styles.variantsRow}>
+          <div className={styles.variantDark}>
+            <img src="/orbit-mark-dark.svg" alt="Orbit Compass Mark — dark theme fills" width={128} height={128} />
+            <span className={styles.caption}>Dark theme (Void bg)</span>
+          </div>
+          <div className={styles.variantLight}>
+            <img src="/orbit-mark-light.svg" alt="Orbit Compass Mark — light theme fills" width={128} height={128} />
+            <span className={styles.caption}>Light theme (Orbit White bg)</span>
+          </div>
+        </div>
+
+        <h3 className={styles.subhead}>Wordmark rule</h3>
+        <div className={styles.wordmarkRule}>
+          <div className={styles.wordmarkRuleDark}>
+            <span className={styles.wruleEcho}>ECHO-1</span>{" "}
+            <span className={styles.wruleLabs}>LABS</span>
+            <p className={styles.caption}>On dark: ECHO-1 in Orbit White · LABS in Solar Orange.</p>
+          </div>
+          <div className={styles.wordmarkRuleLight}>
+            <span className={styles.wruleEchoLight}>ECHO-1</span>{" "}
+            <span className={styles.wruleLabs}>LABS</span>
+            <p className={styles.captionOnLight}>On light: ECHO-1 in Void Black · LABS in Solar Orange.</p>
+          </div>
+        </div>
+
+        <h3 className={styles.subhead}>Size + placement reference frames</h3>
+        <p className={styles.helper}>
+          Canonical size/spacing/area reference — the compass at multiple placements on one canvas. Copy verbatim from these when applying the mark in new contexts.
+        </p>
+        <div className={styles.referenceFrames}>
+          {[1, 2, 3].map((n) => (
+            <figure key={n} className={styles.referenceFrame}>
+              <img
+                src={`/compass-reference/${n}.svg`}
+                alt={`Compass size reference sheet ${n}`}
+                loading="lazy"
+              />
+              <figcaption className={styles.caption}>Reference frame {n}</figcaption>
+            </figure>
+          ))}
+        </div>
       </section>
 
       {/* 2. Color System */}

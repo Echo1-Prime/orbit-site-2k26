@@ -85,6 +85,167 @@
 }
 .markPanel img { width: 128px; height: 128px; }
 
+/* Subheads inside a section */
+.subhead {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.05rem;
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-text-primary);
+}
+.helper {
+  color: var(--color-text-secondary);
+  max-width: 70ch;
+  margin: 0 0 1rem;
+}
+
+/* Canonical sizes row */
+.sizesRow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-md);
+  margin-bottom: 0.75rem;
+}
+@media (max-width: 720px) { .sizesRow { grid-template-columns: repeat(2, 1fr); } }
+.sizeItem {
+  background: var(--color-card-bg);
+  color: var(--color-on-dark-1);
+  border: 1px solid var(--color-on-dark-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+.sizeStage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 148px;
+}
+.sizeLabel {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: 1rem;
+  color: var(--color-on-dark-1);
+}
+.sizeUse {
+  font-size: 0.75rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+  color: var(--color-on-dark-3);
+}
+
+/* Dark + light variants */
+.variantsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-md);
+}
+@media (max-width: 720px) { .variantsRow { grid-template-columns: 1fr; } }
+.variantDark {
+  background: var(--color-void);
+  color: var(--color-on-dark-2);
+  border-radius: var(--radius-xl);
+  padding: var(--pad-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  --color-text-muted: var(--color-on-dark-3);
+}
+.variantDark img { width: 128px; height: 128px; }
+.variantLight {
+  background: var(--color-white);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--pad-card);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+.variantLight img { width: 128px; height: 128px; }
+
+/* Wordmark rule */
+.wordmarkRule {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-md);
+}
+@media (max-width: 720px) { .wordmarkRule { grid-template-columns: 1fr; } }
+.wordmarkRuleDark {
+  background: var(--color-void);
+  padding: var(--pad-card) var(--space-16);
+  border-radius: var(--radius-xl);
+  --color-text-muted: var(--color-on-dark-3);
+}
+.wordmarkRuleLight {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  padding: var(--pad-card) var(--space-16);
+  border-radius: var(--radius-xl);
+}
+.wruleEcho {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: 2.2rem;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-on-dark-1);
+}
+.wruleEchoLight {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: 2.2rem;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-void);
+}
+.wruleLabs {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: 2.2rem;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-solar);
+}
+.captionOnLight {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+}
+
+/* Reference frames */
+.referenceFrames {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--gap-lg);
+}
+.referenceFrame {
+  margin: 0;
+  background: var(--color-void);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  --color-text-muted: var(--color-on-dark-3);
+}
+.referenceFrame img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.referenceFrame figcaption {
+  padding: 0.75rem var(--pad-card);
+  color: var(--color-on-dark-3);
+}
+
 /* 2. Colors */
 .swatchGroup { margin-top: 1.5rem; }
 .groupHead {

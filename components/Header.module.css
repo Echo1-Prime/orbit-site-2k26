@@ -24,6 +24,21 @@
   gap: 1rem;
 }
 
+/* Identity lockup: compass mark + wordmark. Clear space equal to E-height. */
+.lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  color: var(--color-on-dark-1);
+}
+.lockup:hover { text-decoration: none; }
+
+.mark {
+  display: block;
+  flex-shrink: 0;
+}
+
 /* Wordmark: ECHO-1 on nav (dark) = white; LABS = Solar Orange. Canonical rule. */
 .wordmark {
   display: inline-flex;

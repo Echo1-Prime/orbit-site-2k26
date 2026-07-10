@@ -7,8 +7,19 @@ export function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.brand}>
-          <span className={styles.echo}>ECHO-1</span>
-          <span className={styles.labs}>LABS</span>
+          <div className={styles.lockup}>
+            <img
+              src="/orbit-mark-dark.svg"
+              alt=""
+              width={40}
+              height={40}
+              className={styles.mark}
+            />
+            <div className={styles.wordmark}>
+              <span className={styles.echo}>ECHO-1</span>
+              <span className={styles.labs}>LABS</span>
+            </div>
+          </div>
           <p className={styles.tag}>
             Process-engineered systems for startups, SMBs, and portfolios.
           </p>

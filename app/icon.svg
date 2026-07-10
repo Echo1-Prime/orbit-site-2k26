@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="mark" viewBox="0 0 460 460" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Orbit compass mark">
+    <defs>
+      <radialGradient id="gGlow" cx="50%" cy="44%" r="50%">
+        <stop offset="0%" stop-color="var(--solar)" stop-opacity="0.30"/>
+        <stop offset="55%" stop-color="var(--solar)" stop-opacity="0.05"/>
+        <stop offset="100%" stop-color="var(--solar)" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    
+
+    <!-- tight rings hugging the star's outer edge -->
+    <g fill="none">
+      <circle class="ring-solar" cx="230" cy="200" r="150" stroke-opacity="0.26" stroke-width="1.2" stroke="rgb(232, 93, 4)"/>
+      <circle class="ring-purple" cx="230" cy="200" r="166" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="3 7" stroke="rgb(110, 94, 166)"/>
+      <g class="orbit-dot"><circle cx="380" cy="200" r="3.5" fill="rgb(232, 93, 4)"/></g>
+    </g>
+
+    <!-- star layers, outer->inner: WHITE, BLACK (two large outer, counter-rotating), ORANGE, PURPLE -->
+    <g id="lyrWhite"><polygon points="230,66 251,178.56 209,178.56" fill="rgb(255, 255, 255)"/><polygon points="296.4680374315355,133.53196256846454 251.94859448803044,200.6788225099391 229.3211774900609,178.05140551196956" fill="rgb(255, 255, 255)"/><polygon points="364,200 251.44,221 251.44,179" fill="rgb(255, 255, 255)"/><polygon points="296.4680374315355,266.46803743153544 229.3211774900609,221.94859448803044 251.94859448803044,199.3211774900609" fill="rgb(255, 255, 255)"/><polygon points="230,334 209,221.44 251,221.44" fill="rgb(255, 255, 255)"/><polygon points="163.53196256846454,266.4680374315355 208.05140551196956,199.3211774900609 230.6788225099391,221.94859448803044" fill="rgb(255, 255, 255)"/><polygon points="96,200.00000000000003 208.56,179 208.56,221" fill="rgb(255, 255, 255)"/><polygon points="163.5319625684645,133.53196256846454 230.6788225099391,178.05140551196956 208.05140551196956,200.6788225099391" fill="rgb(255, 255, 255)"/></g>
+    <g id="lyrBlack" opacity="0.9"><polygon points="230,80 252,180.8 208,180.8" fill="rgb(242, 242, 236)"/><polygon points="289.39696961967,140.60303038033 250.81722363813196,201.81019335983757 228.18980664016243,179.18277636186804" fill="rgb(242, 242, 236)"/><polygon points="350,200 249.2,222 249.2,178" fill="rgb(242, 242, 236)"/><polygon points="289.39696961967,259.39696961967 228.18980664016243,220.81722363813196 250.81722363813196,198.18980664016243" fill="rgb(242, 242, 236)"/><polygon points="230,320 208,219.2 252,219.2" fill="rgb(242, 242, 236)"/><polygon points="170.60303038033,259.39696961967 209.18277636186804,198.18980664016243 231.81019335983757,220.81722363813196" fill="rgb(242, 242, 236)"/><polygon points="110,200.00000000000003 210.8,178 210.8,222" fill="rgb(242, 242, 236)"/><polygon points="170.60303038032998,140.60303038033 231.81019335983757,179.18277636186804 209.18277636186804,201.81019335983757" fill="rgb(242, 242, 236)"/></g>
+    <g id="lyrOrange"><polygon points="230,96 247,183.36 213,183.36" fill="rgb(232, 93, 4)"/><polygon points="280.91168824543144,149.08831175456856 246.63115149350762,200.33941125496955 229.66058874503045,183.36884850649238" fill="rgb(232, 93, 4)"/><polygon points="334,200 246.64,217 246.64,183" fill="rgb(232, 93, 4)"/><polygon points="280.91168824543144,250.91168824543144 229.66058874503045,216.63115149350762 246.63115149350762,199.66058874503045" fill="rgb(232, 93, 4)"/><polygon points="230,304 213,216.64 247,216.64" fill="rgb(232, 93, 4)"/><polygon points="179.08831175456856,250.91168824543144 213.36884850649238,199.66058874503045 230.33941125496955,216.63115149350762" fill="rgb(232, 93, 4)"/><polygon points="126,200 213.36,183 213.36,217" fill="rgb(232, 93, 4)"/><polygon points="179.08831175456856,149.08831175456856 230.33941125496955,183.36884850649238 213.36884850649238,200.33941125496955" fill="rgb(232, 93, 4)"/></g>
+    <g id="lyrPurple"><polygon points="230,118 243,186.88 217,186.88" fill="rgb(110, 94, 166)"/><polygon points="269.59797974644664,160.40202025355336 243.40674457129694,200.735391052434 229.264608947566,186.59325542870306" fill="rgb(110, 94, 166)"/><polygon points="312,200 243.12,213 243.12,187" fill="rgb(110, 94, 166)"/><polygon points="269.59797974644664,239.59797974644664 229.264608947566,213.40674457129694 243.40674457129694,199.264608947566" fill="rgb(110, 94, 166)"/><polygon points="230,282 217,213.12 243,213.12" fill="rgb(110, 94, 166)"/><polygon points="190.40202025355336,239.59797974644667 216.59325542870306,199.264608947566 230.735391052434,213.40674457129694" fill="rgb(110, 94, 166)"/><polygon points="148,200 216.88,187 216.88,213" fill="rgb(110, 94, 166)"/><polygon points="190.40202025355333,160.40202025355336 230.735391052434,186.59325542870306 216.59325542870306,200.735391052434" fill="rgb(110, 94, 166)"/></g>
+    <!-- v1 2k26: red tips on their OWN top-level rotating group so all 4 stay visible on both themes -->
+    <g id="lyrTips"><polygon points="230,66 237,108 223,108" fill="rgb(209, 49, 45)" opacity="0.85"/><polygon points="364,200 322,207 322,193" fill="rgb(209, 49, 45)" opacity="0.85"/><polygon points="230,334 223,292 237,292" fill="rgb(209, 49, 45)" opacity="0.85"/><polygon points="96,200 138,193 138,207" fill="rgb(209, 49, 45)" opacity="0.85"/></g>
+
+    <!-- core squares: outer WHITE, middle BLACK, inner ORANGE -->
+    <g id="core">
+      <rect class="sq-white" x="196" y="166" width="68" height="68" transform="rotate(45 230 200)" rx="6" fill="rgb(21, 21, 27)"/>
+      <rect class="sq-black" x="207" y="177" width="46" height="46" transform="rotate(45 230 200)" rx="4" fill="rgb(242, 242, 236)"/>
+      <rect class="sq-orange" x="217" y="187" width="26" height="26" transform="rotate(45 230 200)" rx="3" fill="rgb(232, 93, 4)"/>
+    </g>
+  </svg>

@@ -2,16 +2,25 @@ import Link from "next/link";
 import { ThemeToggle } from "./ThemeToggle";
 import styles from "./Header.module.css";
 
-// Wordmark is rendered as Space Grotesk type per Brand Kit v5 (the v5 wordmark IS
-// type: "ECHO-1" primary, "LABS" beneath in Solar Orange, -0.03em). The braided-
-// teardrop graphical MARK is a separate asset not yet in the repo — see build flags.
+// Identity lockup: Compass Mark 2K26 v1 (identity mark, from canonical SVG,
+// never reconstructed per §17) paired with Space Grotesk type wordmark.
+// Nav bg is Void black in both themes → orbit-mark-dark.svg works everywhere.
 export function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
-        <Link href="/" className={styles.wordmark} aria-label="Echo 1 Labs home">
-          <span className={styles.echo}>ECHO-1</span>
-          <span className={styles.labs}>LABS</span>
+        <Link href="/" className={styles.lockup} aria-label="Echo 1 Labs home">
+          <img
+            src="/orbit-mark-dark.svg"
+            alt=""
+            width={44}
+            height={44}
+            className={styles.mark}
+          />
+          <span className={styles.wordmark}>
+            <span className={styles.echo}>ECHO-1</span>
+            <span className={styles.labs}>LABS</span>
+          </span>
         </Link>
 
         <nav className={styles.nav} aria-label="Primary">
