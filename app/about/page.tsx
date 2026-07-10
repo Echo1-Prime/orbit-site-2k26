@@ -25,7 +25,7 @@ export default function AboutPage() {
           Management. It&apos;s the thrust that gets a company to escape
           velocity — out of the vortex and into orbit.
         </p>
-        <p style={{ color: "var(--text-muted)" }}>
+        <p style={{ color: "var(--color-text-muted)" }}>
           Full principles and origin content is in progress.
         </p>
       </div>

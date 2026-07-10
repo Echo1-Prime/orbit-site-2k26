@@ -2,9 +2,8 @@ import Link from "next/link";
 import { OrbitFlame } from "@/components/OrbitFlame";
 import styles from "./home.module.css";
 
-// Home. Concierge-forward hero + server-rendered GTM content beneath (crawlable —
-// the SEO caveat in the brief). The live concierge backend (/api/orbit-ask) is
-// currently blocked (AWS-cred hazard), so the prompt routes to the gate for now.
+// Home. Concierge-forward hero (dark card on Orbit White page — signature move),
+// followed by SSR GTM sections. Crawlable content sits alongside the concierge.
 
 const products = [
   { name: "Engine", cat: "Go-to-Market", stage: "Enable" },
@@ -37,25 +36,29 @@ const steps = [
 export default function HomePage() {
   return (
     <>
-      {/* Concierge hero */}
+      {/* Hero — dark card on Orbit White page (signature move) */}
       <section className={styles.hero}>
         <div className="container">
-          <OrbitFlame />
-          <p className="eyebrow">Business Lifecycle Management</p>
-          <h1 className={styles.heroTitle}>Break free from business gravity.</h1>
-          <p className={styles.heroSub}>Built by Operators · Run by Agents · Supervised by Humans</p>
-          <div className={styles.heroCtas}>
-            <Link href="/contact" className="btn btn-primary">
-              Apply for founding access
-            </Link>
-            <Link href="/pricing" className="btn btn-ghost">
-              See pricing
-            </Link>
+          <div className={styles.heroCard}>
+            <OrbitFlame />
+            <p className={`eyebrow ${styles.heroEyebrow}`}>Business Lifecycle Management</p>
+            <h1 className={styles.heroTitle}>Break free from business gravity.</h1>
+            <p className={styles.heroSub}>
+              Built by Operators · Run by Agents · Supervised by Humans
+            </p>
+            <div className={styles.heroCtas}>
+              <Link href="/contact" className="btn btn-primary">
+                Apply for founding access
+              </Link>
+              <Link href="/pricing" className="btn btn-outline">
+                See pricing
+              </Link>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Offer */}
+      {/* Offer — on light page (rhythm: no card here) */}
       <section className="section">
         <div className="container">
           <p className="eyebrow">What we do</p>
@@ -68,10 +71,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* How it works */}
+      {/* How it works — 3 dark cards */}
       <section className="section">
         <div className="container">
           <p className="eyebrow">How it works</p>
+          <h2>Three steps, one operating rhythm.</h2>
           <div className={styles.steps}>
             {steps.map((s) => (
               <div key={s.n} className={styles.step}>
@@ -84,7 +88,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* The 7 products */}
+      {/* The 7 products — dark cards with status badges */}
       <section className="section">
         <div className="container">
           <p className="eyebrow">Seven products, one lifecycle</p>
@@ -104,21 +108,23 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Closing */}
-      <section className={`section ${styles.closing}`}>
+      {/* Closing — dark card CTA */}
+      <section className="section">
         <div className="container">
-          <h2>Built by operators, for operators.</h2>
-          <p className="lede">
-            Founding seats are open at $997 a month against a $2,997 regular
-            rate.
-          </p>
-          <div className={styles.heroCtas}>
-            <Link href="/contact" className="btn btn-primary">
-              Apply for founding access
-            </Link>
-            <Link href="/pricing" className="btn btn-ghost">
-              See what a month covers
-            </Link>
+          <div className={styles.closing}>
+            <h2>Built by operators, for operators.</h2>
+            <p className="lede">
+              Founding seats are open at $997 a month against a $2,997 regular
+              rate.
+            </p>
+            <div className={styles.heroCtas}>
+              <Link href="/contact" className="btn btn-primary">
+                Apply for founding access
+              </Link>
+              <Link href="/pricing" className="btn btn-outline">
+                See what a month covers
+              </Link>
+            </div>
           </div>
         </div>
       </section>

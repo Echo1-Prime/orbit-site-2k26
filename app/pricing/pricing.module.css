@@ -1,3 +1,6 @@
+/* Pricing page — signature: dark cards on Orbit White page.
+   Cards scope text tokens so children inherit on-dark palette. */
+
 .hero {
   padding-bottom: clamp(1.5rem, 4vw, 2.5rem);
 }
@@ -8,36 +11,42 @@
   margin-top: 1.75rem;
 }
 
-/* Plan card — flat, shadowless, hairline border */
+/* Founding plan card — dark card, flat, hairline border */
 .planCard {
   max-width: 560px;
   margin-inline: auto;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  background: var(--color-card-bg);
+  color: var(--color-on-dark-1);
+  border: 1px solid var(--color-on-dark-border);
+  border-radius: var(--radius-2xl);
   padding: clamp(1.75rem, 4vw, 2.5rem);
+  --color-text-primary: var(--color-on-dark-1);
+  --color-text-secondary: var(--color-on-dark-2);
+  --color-text-muted: var(--color-on-dark-3);
+  --color-border: var(--color-on-dark-border);
 }
 .planHead {
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--color-on-dark-border);
   padding-bottom: 1.25rem;
   margin-bottom: 1.25rem;
 }
 .badge {
   display: inline-block;
   font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-wider);
   text-transform: uppercase;
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 999px;
+  color: var(--color-solar);
+  border: 1px solid var(--color-solar);
+  border-radius: var(--radius-full);
   padding: 0.25rem 0.7rem;
   margin-bottom: 1rem;
 }
 .planLabel {
-  font-family: var(--font-space-grotesk, var(--font-display));
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
   font-size: 1.1rem;
+  letter-spacing: var(--tracking-snug);
   margin: 0 0 0.5rem;
 }
 .price {
@@ -48,24 +57,25 @@
   margin: 0;
 }
 .priceNow {
-  font-family: var(--font-space-grotesk, var(--font-display));
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
   font-size: clamp(2.6rem, 7vw, 3.4rem);
-  letter-spacing: -0.03em;
-  color: var(--accent); /* large display — passes AA large/UI */
-  line-height: 1;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-solar);
+  line-height: var(--line-height-none);
 }
 .priceUnit {
-  color: var(--text-muted);
+  color: var(--color-on-dark-2);
   font-size: 1.05rem;
 }
 .anchor {
-  color: var(--text-muted);
+  color: var(--color-on-dark-3);
   font-size: 1rem;
   margin-left: 0.25rem;
 }
 .covers {
   font-size: 1.1rem;
+  color: var(--color-on-dark-1);
   margin: 0 0 1.25rem;
 }
 .includes {
@@ -78,7 +88,7 @@
 .includes li {
   position: relative;
   padding-left: 1.6rem;
-  color: var(--text);
+  color: var(--color-on-dark-1);
 }
 .includes li::before {
   content: "";
@@ -87,11 +97,11 @@
   top: 0.55em;
   width: 0.5rem;
   height: 0.5rem;
-  border-radius: 999px;
-  background: var(--accent);
+  border-radius: var(--radius-full);
+  background: var(--color-solar);
 }
 .includes em {
-  color: var(--text-muted);
+  color: var(--color-on-dark-3);
   font-style: normal;
 }
 .planCta {
@@ -100,36 +110,44 @@
 
 .explainer {
   max-width: 70ch;
+  color: var(--color-text-primary);
 }
 .finePrint {
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   font-size: 0.9rem;
   margin-top: 1rem;
 }
 
-/* Packs */
+/* Packs — dark cards */
 .packs {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1rem;
+  gap: var(--gap-md);
   margin: 1.75rem 0 0;
 }
 .pack {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: 1.5rem;
+  background: var(--color-card-bg);
+  color: var(--color-on-dark-1);
+  border: 1px solid var(--color-on-dark-border);
+  border-radius: var(--radius-xl);
+  padding: var(--pad-card);
+  --color-text-primary: var(--color-on-dark-1);
+  --color-text-secondary: var(--color-on-dark-2);
+  --color-text-muted: var(--color-on-dark-3);
 }
 .packName {
-  font-family: var(--font-space-grotesk, var(--font-display));
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
   font-size: 1.15rem;
+  letter-spacing: var(--tracking-snug);
   margin: 0 0 0.35rem;
+  color: var(--color-on-dark-1);
 }
 .packPrice {
   font-size: 1.9rem;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-display);
+  color: var(--color-on-dark-1);
   margin: 0 0 0.35rem;
 }
 .packCredits {
@@ -137,24 +155,25 @@
   align-items: center;
   flex-wrap: wrap;
   gap: 0.6rem;
-  color: var(--text-muted);
+  color: var(--color-on-dark-2);
   font-size: 0.95rem;
   margin: 0 0 0.75rem;
 }
 .packSave {
-  color: var(--accent);
-  border: 1px solid var(--accent);
-  border-radius: 999px;
+  color: var(--color-solar);
+  border: 1px solid var(--color-solar);
+  border-radius: var(--radius-full);
   padding: 0.1rem 0.55rem;
   font-size: 0.78rem;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
 }
 .packCoverage {
   margin: 0;
   font-size: 0.95rem;
+  color: var(--color-on-dark-2);
 }
 
-/* FAQ */
+/* FAQ — sits on Orbit White page (not in a card) */
 .faq {
   margin: 1.75rem 0 0;
   display: grid;
@@ -162,18 +181,20 @@
   max-width: 75ch;
 }
 .faqItem dt {
-  font-family: var(--font-space-grotesk, var(--font-display));
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
   font-size: 1.05rem;
+  letter-spacing: var(--tracking-snug);
   margin-bottom: 0.35rem;
+  color: var(--color-text-primary);
 }
 .faqItem dd {
   margin: 0;
-  color: var(--text-muted);
+  color: var(--color-text-secondary);
 }
 
 .closing {
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-border);
   text-align: center;
 }
 .closing .btn {

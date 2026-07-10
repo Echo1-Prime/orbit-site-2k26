@@ -1,15 +1,15 @@
+/* OrbitFlame sits inside a dark card (--color-card-bg #111118). The PNG's
+   baked-in dark ambient gradient matches the card, so no blend/mask is needed —
+   the flame reads as light-on-dark naturally. Motion: slow rise, never pulse. */
+
 .flame {
-  width: clamp(300px, 55vw, 520px);
+  width: clamp(280px, 46vw, 460px);
   aspect-ratio: 16 / 9;
-  margin: 0 auto 1.5rem;
+  margin: 0 auto var(--space-9);
   animation: slowRise 9s ease-in-out infinite alternate;
   transform-origin: center bottom;
   will-change: transform;
-  mix-blend-mode: lighten;
-  opacity: 0.95;
   pointer-events: none;
-  -webkit-mask-image: radial-gradient(ellipse 60% 80% at center 55%, #000 40%, transparent 82%);
-  mask-image: radial-gradient(ellipse 60% 80% at center 55%, #000 40%, transparent 82%);
 }
 
 .img {

@@ -1,0 +1,332 @@
+/* Style guide — lives on Orbit White page with dark cards and sample content. */
+
+.wrap {
+  max-width: 1120px;
+  margin-inline: auto;
+  padding: clamp(2rem, 6vw, 4rem) clamp(1.25rem, 4vw, 2.5rem);
+}
+
+.section {
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+  padding-bottom: clamp(2rem, 5vw, 3rem);
+  border-bottom: 1px solid var(--color-border);
+}
+.section:last-of-type { border-bottom: 0; }
+
+.caption {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+.captionOnDark {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-on-dark-2);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+/* 1. Identity */
+.identityRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-lg);
+  margin-top: 1.5rem;
+}
+@media (max-width: 720px) { .identityRow { grid-template-columns: 1fr; } }
+
+.wordmarkPanel {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-2xl);
+  padding: var(--pad-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.15rem;
+  min-height: 220px;
+}
+.wordmarkEcho {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: 3rem;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-on-dark-1);
+  line-height: var(--line-height-none);
+}
+.wordmarkLabs {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: 1rem;
+  letter-spacing: 0.06em;
+  color: var(--color-solar);
+}
+
+.markPanel {
+  background: var(--color-card-bg);
+  border-radius: var(--radius-2xl);
+  padding: var(--pad-card);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  min-height: 220px;
+  color: var(--color-on-dark-2);
+  --color-text-muted: var(--color-on-dark-3);
+}
+.markPanel img { width: 128px; height: 128px; }
+
+/* 2. Colors */
+.swatchGroup { margin-top: 1.5rem; }
+.groupHead {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: 0.95rem;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  margin: 0 0 0.75rem;
+}
+.swatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+.swatch {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  grid-template-rows: auto auto auto;
+  gap: 0 0.75rem;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 0.75rem;
+}
+.chip {
+  grid-row: 1 / 4;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+}
+.swatchName { font-weight: var(--font-weight-medium); font-size: 0.9rem; }
+.swatchToken { font-size: 0.75rem; color: var(--color-text-muted); }
+.swatchHex { font-size: 0.75rem; color: var(--color-text-muted); font-family: ui-monospace, monospace; }
+
+/* 3. Card Modes */
+.cardModeRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-lg);
+  margin-top: 1.5rem;
+}
+@media (max-width: 720px) { .cardModeRow { grid-template-columns: 1fr; } }
+
+.darkOnLight {
+  background: var(--color-white);
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+}
+.lightOnDark {
+  background: var(--color-void);
+  padding: 1.25rem;
+  border-radius: var(--radius-2xl);
+}
+
+.demoDarkCard {
+  background: var(--color-card-bg);
+  color: var(--color-on-dark-1);
+  border: 1px solid var(--color-on-dark-border);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  --color-text-primary: var(--color-on-dark-1);
+  --color-text-secondary: var(--color-on-dark-2);
+}
+.demoDarkCard h4 { margin: 0 0 0.5rem; font-family: var(--font-display); color: var(--color-on-dark-1); }
+.demoDarkCard p  { margin: 0 0 1rem; color: var(--color-on-dark-2); }
+
+.demoLightCard {
+  background: var(--color-white);
+  color: var(--color-void);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+}
+.demoLightCard h4 { margin: 0 0 0.5rem; font-family: var(--font-display); }
+.demoLightCard p  { margin: 0 0 1rem; color: var(--color-text-secondary); }
+
+/* 4. Themes */
+.themeSwatches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--gap-md);
+  margin-top: 1.5rem;
+}
+.themeSwatch {
+  height: 140px;
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.1rem;
+}
+
+/* 5. Typography */
+.typeSample {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 1.5rem;
+  margin-top: 1rem;
+}
+.typeScale {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+}
+.typeScaleRow {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: baseline;
+  gap: 1rem;
+}
+.typeScaleRow code {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-family: ui-monospace, monospace;
+}
+
+/* 6. Spacing */
+.spaceScale { display: grid; gap: 0.4rem; margin-top: 1rem; }
+.spaceRow {
+  display: grid;
+  grid-template-columns: 120px 240px 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+.spaceRow code {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-family: ui-monospace, monospace;
+}
+.spaceRow span:last-child {
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+.spaceBar {
+  display: inline-block;
+  height: 12px;
+  background: var(--color-solar);
+  border-radius: var(--radius-sm);
+}
+
+/* 7. Radius */
+.radiiRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: var(--gap-md);
+  margin-top: 1rem;
+}
+.radiusItem { text-align: center; }
+.radiusBox {
+  width: 80px;
+  height: 80px;
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-on-dark-border);
+  margin: 0 auto 0.6rem;
+}
+.radiusItem code {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  font-family: ui-monospace, monospace;
+}
+.radiusItem span {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+}
+
+/* 8. Components */
+.componentsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-lg);
+  margin-top: 1.5rem;
+}
+@media (max-width: 720px) { .componentsRow { grid-template-columns: 1fr; } }
+.componentGroup {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+}
+.btnRow { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.badgeRow { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.7rem;
+  border-radius: var(--radius-full);
+  font-size: 0.78rem;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: 0.05em;
+}
+.badgeInReview {
+  background: color-mix(in srgb, var(--color-warning) 15%, transparent);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning);
+}
+.badgeApproved {
+  background: color-mix(in srgb, var(--color-success) 15%, transparent);
+  color: var(--color-success);
+  border: 1px solid var(--color-success);
+}
+.badgePending {
+  background: color-mix(in srgb, var(--color-violet) 15%, transparent);
+  color: var(--color-violet);
+  border: 1px solid var(--color-violet);
+}
+
+.kpiRow {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--gap-md);
+  margin-top: 1.25rem;
+}
+.kpi {
+  background: var(--color-card-bg);
+  color: var(--color-on-dark-1);
+  border: 1px solid var(--color-on-dark-border);
+  border-radius: var(--radius-xl);
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.kpiLabel {
+  color: var(--color-on-dark-2);
+  font-size: 0.8rem;
+  letter-spacing: var(--tracking-wider);
+  text-transform: uppercase;
+}
+.kpiValue {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: 2.4rem;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-on-dark-1);
+  line-height: var(--line-height-none);
+}
+.kpiDelta { color: var(--color-success); font-size: 0.85rem; }
+.kpiDeltaWarn { color: var(--color-warning); font-size: 0.85rem; }

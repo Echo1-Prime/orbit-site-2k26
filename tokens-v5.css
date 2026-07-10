@@ -1,81 +1,188 @@
-/* ============================================================
-   Echo 1 Labs — Design Kit 2k26 tokens (site: e1-orbit-site)
-   Canonical source: e1_orbit_design_kit_v4.md / e1_orbit_design_kit_v4.css (locked 2026-07-08).
-   Supersedes Brand Kit v5.md.
-   Reconciled 2026-07-09 to match the canonical kit:
-     - Light neutral is pure white #FFFFFF (Orbit White). Cream #F5F5F1 RETIRED.
-     - Type is Space Grotesk 700 (display) + DM Sans (body/UI). Garet/Fraunces RETIRED.
-     - Secondary accent is Violet #8B5CF6. Purple #655596 is MARK ONLY — never UI.
-     - Green #22c55e allowed broadly in UI chrome + data-viz.
-     - Warning amber #E9A84C canonical for alert/warning states.
-     - Presentation is flat + shadowless. No box-shadow on light surfaces;
-       hairline border only where separation is functionally required.
-   Rules: two reds kept separate (brand vs error); Sage + Purple are MARK-ONLY, never UI;
-   every pairing WCAG 2.2 AA (verify, don't assume); no #00B4E6 cyan.
-   ============================================================ */
+/* ============================================================================
+   ECHO-1 LABS / ORBIT — BRAND KIT v5 — DESIGN TOKENS
+   Canonical source: /Users/joshmeunier/VAULTS/Orbit/brand_kits/e1-v3-final-brand-kit/e1_orbit_design_kit_v4.css
+   (Copied verbatim 2026-07-09; supersedes the prior --e1-* shim.)
 
-:root{
-  /* ── Raw palette — twelve swatches (use semantic tokens below in components) ── */
-  --e1-void:    #0A0A0E;   /* dark bg, dark text on light */
-  --e1-white:   #FFFFFF;   /* Orbit White — light bg, light text on dark */
-  --e1-yellow:  #FFFAA0;   /* limited warm accent */
-  --e1-solar:   #FF7515;   /* primary brand accent, key actions */
-  --e1-blue:    #274578;   /* links, info states, navigational */
-  --e1-violet:  #8B5CF6;   /* secondary accent, badges, decorative */
-  --e1-purple:  #655596;   /* MARK ONLY — compass mark arm; never UI */
-  --e1-red:     #D1312D;   /* accent + error; two reds kept separate */
-  --e1-sage:    #72A574;   /* MARK ONLY — compass mark; never UI */
-  --e1-green:   #22c55e;   /* UI chrome + data-viz (allowed broadly per 2k26 kit) */
-  --e1-warning: #E9A84C;   /* warning / alert borders and states */
-  --e1-depth:   #10101C;   /* elevated surface tone on dark (not a swatch) */
+   Four layers: (1) Color  (2) Typography  (3) Spacing  (4) Radius.
+   Plus Layer 5: Compass Mark tokens (canonical SVG fills).
+   Project additions at the tail: [data-theme="dark"] semantic overrides,
+   reduced-motion global.
+   ============================================================================ */
 
-  /* ── Type — Space Grotesk 700 (display) + DM Sans (body/UI). Garet/Fraunces retired. ── */
+:root {
+  /* ---------- LAYER 1 — COLOR ---------------------------------------------- */
+
+  /* Neutrals */
+  --color-void:        #0A0A0E;   /* dark background, dark text on light */
+  --color-void-card:   #111118;   /* dark card surface */
+  --color-white:       #FFFFFF;   /* Orbit White — pure white */
+  --color-surface:     #FFFFFF;   /* light page bg — Orbit White */
+  --color-surface-2:   #F8F8FA;   /* light elevated surface */
+
+  /* Brand primaries */
+  --color-solar:       #FF7515;   /* primary brand accent, key actions */
+  --color-yellow:      #FFFAA0;   /* warm accent — use sparingly */
+  --color-blue:        #274578;   /* links + info states */
+  --color-violet:      #8B5CF6;   /* secondary accent — badges, decorative */
+  --color-purple:      #655596;   /* MARK ONLY — compass mark arm (never UI) */
+  --color-red:         #D1312D;   /* accent + error */
+  --color-sage:        #72A574;   /* MARK ONLY — never UI */
+
+  /* Semantic */
+  --color-accent:      var(--color-solar);
+  --color-accent-alt:  var(--color-violet);
+  --color-danger:      #D1312D;
+  --color-info:        #274578;   /* Blue — links/info */
+  --color-success:     #22c55e;   /* green — UI chrome + data-viz */
+  --color-warning:     #E9A84C;   /* warning / alert states */
+
+  /* Text + borders — LIGHT (default) */
+  --color-text-primary:   #0A0A0E;
+  --color-text-secondary: #55555F;
+  --color-text-muted:     #A0A0AA;
+  --color-border:         #E8E8EE;   /* hairline only, no shadow */
+  --color-page-bg:        var(--color-surface);
+  --color-card-bg:        var(--color-void-card);  /* dark cards on light page — signature move */
+  --color-nav-bg:         var(--color-void);
+
+  /* Text + borders — ON DARK */
+  --color-on-dark-1:      rgba(255,255,255,1);
+  --color-on-dark-2:      rgba(255,255,255,0.65);
+  --color-on-dark-3:      rgba(255,255,255,0.38);
+  --color-on-dark-border: rgba(255,255,255,0.07);
+
+  /* Focus */
+  --color-focus-ring: var(--color-solar);
+
+  /* ---------- LAYER 2 — TYPOGRAPHY ---------------------------------------- */
   --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
-  --font-sans:    'DM Sans', ui-sans-serif, system-ui, sans-serif;
-  --tracking-display: -0.03em;   /* wordmark + display, per kit */
+  --font-body:    'DM Sans', ui-sans-serif, system-ui, sans-serif;
 
-  /* ── Radii ── */
-  --radius-sm:6px; --radius-md:10px; --radius-lg:14px;
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
 
-  /* ── Shadowless rule: no elevation shadows anywhere. Keep for opt-in focus only. ── */
-  --shadow-none: none;
+  --font-size-2xs: 8.5px;
+  --font-size-xs:  9.5px;
+  --font-size-sm:  10.5px;
+  --font-size-base:12px;
+  --font-size-md:  13px;
+  --font-size-lg:  13.5px;
+  --font-size-xl:  14px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 22px;
+  --font-size-4xl: 28px;
+  --font-size-5xl: 36px;
+  --font-size-6xl: 48px;
+
+  --line-height-none:    1;
+  --line-height-tight:   1.1;
+  --line-height-snug:    1.3;
+  --line-height-normal:  1.5;
+  --line-height-relaxed: 1.7;
+
+  --tracking-tight:  -0.04em;
+  --tracking-snug:   -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:   0.06em;
+  --tracking-wider:  0.1em;
+  --tracking-widest: 0.18em;   /* eyebrow / all-caps labels */
+  --tracking-display: -0.03em; /* project token — wordmark + display headings per canonical kit */
+
+  /* ---------- LAYER 3 — SPACING (4px base) -------------------------------- */
+  --space-1: 4px;   --space-2: 6px;   --space-3: 8px;   --space-4: 10px;
+  --space-5: 12px;  --space-6: 14px;  --space-7: 16px;  --space-8: 18px;
+  --space-9: 20px;  --space-10: 22px; --space-12: 24px; --space-14: 28px;
+  --space-16: 32px; --space-20: 40px; --space-24: 48px;
+
+  --gap-xs: var(--space-1);  --gap-sm: var(--space-3);  --gap-md: var(--space-5);
+  --gap-lg: var(--space-9);  --gap-xl: var(--space-12);
+
+  --pad-card: var(--space-9);
+  --pad-nav:  var(--space-8);
+  --pad-page: var(--space-10);
+  --nav-width: 210px;
+
+  /* ---------- LAYER 4 — RADIUS -------------------------------------------- */
+  --radius-xs:  3px;
+  --radius-sm:  4px;
+  --radius-md:  7px;
+  --radius-lg:  8px;
+  --radius-xl:  10px;
+  --radius-2xl: 12px;
+  --radius-full: 999px;
+
+  /* ---------- LAYER 5 — COMPASS MARK (2K26 v1, locked 2026-07-08) ---------- */
+  /* Exact RGB values from canonical SVG files. NEVER reconstruct — copy verbatim. */
+  /* Canonical SVGs: orbit-mark.svg (dark) · orbit-mark (1).svg (light)          */
+
+  /* Dark theme */
+  --mark-bg-dark:           rgb(10, 10, 14);
+  --mark-orange-dark:       rgb(255, 117, 21);
+  --mark-purple-dark:       rgb(155, 135, 214);
+  --mark-tips:              rgb(209, 49, 45);
+  --mark-core-white:        rgb(255, 255, 255);
+  --mark-core-void:         rgb(10, 10, 14);
+  --mark-core-solar-dark:   rgb(255, 117, 21);
+
+  /* Light theme */
+  --mark-white-light:       rgb(255, 255, 255);
+  --mark-cream-light:       rgb(242, 242, 236);
+  --mark-orange-light:      rgb(232, 93, 4);
+  --mark-purple-light:      rgb(110, 94, 166);
+  --mark-core-dark-l:       rgb(21, 21, 27);
+  --mark-core-cream-l:      rgb(242, 242, 236);
+  --mark-core-solar-light:  rgb(232, 93, 4);
+
+  /* Orbit rings */
+  --mark-ring-solar-dark:   rgba(255, 117, 21, 0.26);
+  --mark-ring-purple-dark:  rgba(155, 135, 214, 0.30);
+  --mark-ring-solar-light:  rgba(232, 93, 4, 0.26);
+  --mark-ring-purple-light: rgba(110, 94, 166, 0.30);
 }
 
-/* ── Dark (default) ── */
-:root, [data-theme="dark"]{
-  --bg:         var(--e1-void);
-  --surface:    var(--e1-depth);   /* #10101C */
-  --text:       var(--e1-white);
-  --text-muted: #A0A0AA;
-  --border:     #26262E;
-  --accent:     var(--e1-solar);
-  --brand-red:  var(--e1-red);
-  --sem-error:  var(--e1-red);     /* separate token from brand-red */
-  --link:       #7FA0D6;           /* lightened blue for dark AA */
-  --focus-ring: var(--e1-solar);
+/* ============================================================================
+   PROJECT ADDITIONS
+   ============================================================================ */
+
+/* ── Dark theme override — invert semantic aliases, keep primitives ── */
+/* Signature move retained but inverted: LIGHT cards on DARK page (per Part A: */
+/* "dark cards on light page AND light cards on dark page" — both canonical). */
+[data-theme="dark"] {
+  --color-page-bg:        var(--color-void);
+  --color-card-bg:        var(--color-surface);
+  --color-nav-bg:         var(--color-void);
+  --color-text-primary:   var(--color-on-dark-1);
+  --color-text-secondary: var(--color-on-dark-2);
+  --color-text-muted:     var(--color-on-dark-3);
+  --color-border:         var(--color-on-dark-border);
+  --color-focus-ring:     var(--color-solar);
 }
 
-/* ── Light — pure white, flat, shadowless ── */
-[data-theme="light"]{
-  --bg:         var(--e1-white);   /* #FFFFFF */
-  --surface:    var(--e1-white);   /* flat; separate by hairline border, not shadow */
-  --text:       var(--e1-void);
-  --text-muted: #55555F;
-  --border:     #ECECEC;           /* hairline, only where separation is functional */
-  --accent:     var(--e1-solar);
-  --brand-red:  var(--e1-red);
-  --sem-error:  var(--e1-red);
-  --link:       var(--e1-blue);    /* #274578 */
-  --focus-ring: var(--e1-blue);
+/* ── Reduced motion global — applies across all animations/transitions ── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-@media (prefers-reduced-motion: reduce){
-  *,*::before,*::after{ animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
-}
-
-/* Contrast notes (verify with a checker before promotion):
-   dark:  white on void ~19:1; solar on void ~7.6:1; link #7FA0D6 on void ~7:1.
-   light: void on white ~19:1; solar #FF7515 on white ~2.9:1 (AA large/UI ONLY — never body text);
-          link #274578 on white ~9:1.
-   Rule: Solar Orange as body text fails AA on white. Use it for large text, UI accents,
-   and price display only; keep small text in --text / --link. */
+/* ============================================================================
+   HARD RULES (2K26 — enforce in every generated screen)
+   - Flat / shadowless: NO box-shadow on light surfaces. Separation = hairline
+     border only, and only where functionally required.
+   - Sage #72A574 = MARK ONLY. Never a UI color.
+   - Purple #655596 = MARK ONLY (compass mark arm). Never a UI color.
+   - No #00B4E6 cyan anywhere.
+   - Green #22c55e = UI chrome and data-viz. Allowed broadly.
+   - Blue #274578 = links/info. Not purple, not violet.
+   - Violet #8B5CF6 = secondary accent. Badges, decorative, secondary actions.
+   - Warning #E9A84C = warning/alert states only.
+   - Compass mark SVG: copy coordinates verbatim from canonical files; never reconstruct.
+   - "ECHO-1" wordmark in Void Black on light / white on dark; "LABS" in Solar Orange.
+   - Voice banned words: stunning, beautiful, gorgeous, breathtaking, delightful,
+     magical, seamless. No emoji. Never call Echo 1 Labs an agency/tool/platform.
+   ============================================================================ */

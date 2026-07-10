@@ -10,14 +10,14 @@ import { Footer } from "@/components/Footer";
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
-  variable: "--font-space-grotesk",
+  variable: "--font-display",
   display: "swap",
 });
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
-  variable: "--font-dm-sans",
+  variable: "--font-body",
   display: "swap",
 });
 
@@ -37,8 +37,9 @@ export const metadata: Metadata = {
   },
 };
 
-// Applies stored theme before paint to avoid a flash. Default: dark (brand default).
-const themeInit = `(function(){try{var t=localStorage.getItem('e1-theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`;
+// Applies stored theme before paint to avoid a flash.
+// Default: LIGHT (Orbit White) — canonical marketing-site surface per Brief v2 + 2k26 kit v4.
+const themeInit = `(function(){try{var t=localStorage.getItem('e1-theme');document.documentElement.setAttribute('data-theme',t==='dark'?'dark':'light');}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
 
 export default function RootLayout({
   children,
@@ -46,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" data-theme="dark" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
+    <html lang="en" data-theme="light" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInit }} />
       </head>

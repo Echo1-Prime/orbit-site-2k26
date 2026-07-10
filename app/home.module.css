@@ -1,25 +1,152 @@
-.hero{text-align:center;padding-block:clamp(3.5rem,10vw,7rem);border-bottom:1px solid var(--border);}
-.heroTitle{font-size:clamp(2rem,5.5vw,3.6rem);max-width:22ch;margin-inline:auto;letter-spacing:-0.03em;}
-.heroSub{color:var(--text-muted);font-size:clamp(0.95rem,1.8vw,1.15rem);max-width:58ch;margin:1.25rem auto 0;letter-spacing:0.02em;}
-.heroCtas{display:flex;flex-wrap:wrap;gap:0.85rem;justify-content:center;margin-top:2rem;}
-.mark{width:clamp(120px,22vw,180px);height:clamp(120px,22vw,180px);margin:0 auto 2rem;position:relative;animation:breathe 3.8s ease-in-out infinite;}
-.markSvg{width:100%;height:100%;overflow:visible;}
-.orbitDot{transform-origin:230px 200px;animation:orbitRev 9s linear infinite;}
-.layerOrange{transform-origin:230px 200px;animation:rotateCW 72s linear infinite;}
-.layerPurple{transform-origin:230px 200px;animation:rotateCCW 52s linear infinite;}
-@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.04)}}
-@keyframes rotateCW{to{transform:rotate(360deg)}}
-@keyframes rotateCCW{to{transform:rotate(-360deg)}}
-@keyframes orbitRev{to{transform:rotate(360deg)}}
-@media(prefers-reduced-motion:reduce){.mark,.orbitDot,.layerOrange,.layerPurple{animation:none}}
-.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:1.5rem;}
-.step{border-top:2px solid var(--accent);padding-top:1rem;}
-.stepN{font-family:var(--font-space-grotesk,var(--font-display));font-weight:700;color:var(--text-muted);font-size:0.9rem;}
-.step h3{margin:0.5rem 0 0.35rem;}.step p{color:var(--text-muted);margin:0;}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:1.5rem;}
-.product{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;display:flex;flex-direction:column;gap:0.3rem;}
-.productTop{display:flex;align-items:center;justify-content:space-between;gap:0.5rem;}
-.productName{font-family:var(--font-space-grotesk,var(--font-display));font-weight:700;font-size:1.2rem;}
-.soon{font-size:0.7rem;color:var(--text-muted);border:1px solid var(--border);border-radius:999px;padding:0.1rem 0.5rem;}
-.productCat{color:var(--text);font-size:0.95rem;}.productStage{color:var(--text-muted);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;}
-.closing{text-align:center;border-top:1px solid var(--border);}
+/* Home page composition — hero-on-card + card sections below.
+   Uses global .card class from globals.css for scoping. */
+
+.hero {
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+
+/* The hero itself is a card — dark card on Orbit White page (signature move). */
+.heroCard {
+  max-width: 960px;
+  margin-inline: auto;
+  background: var(--color-card-bg);
+  color: var(--color-on-dark-1);
+  border: 1px solid var(--color-on-dark-border);
+  border-radius: var(--radius-2xl);
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.5rem, 4vw, 2.75rem);
+  text-align: center;
+  /* Scope text tokens so children inherit on-dark palette */
+  --color-text-primary: var(--color-on-dark-1);
+  --color-text-secondary: var(--color-on-dark-2);
+  --color-text-muted: var(--color-on-dark-3);
+  --color-border: var(--color-on-dark-border);
+}
+
+/* Hero copy */
+.heroEyebrow {
+  color: var(--color-on-dark-3);
+}
+.heroTitle {
+  font-size: clamp(2rem, 5.5vw, 3.6rem);
+  max-width: 22ch;
+  margin-inline: auto;
+  letter-spacing: var(--tracking-display);
+  color: var(--color-on-dark-1);
+}
+.heroSub {
+  color: var(--color-on-dark-2);
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+  max-width: 58ch;
+  margin: 1.25rem auto 0;
+  letter-spacing: 0.02em;
+}
+.heroCtas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  justify-content: center;
+  margin-top: var(--space-16);
+}
+
+/* How-it-works — 3 cards in a row */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--gap-lg);
+  margin-top: var(--space-16);
+}
+.step {
+  background: var(--color-card-bg);
+  color: var(--color-on-dark-1);
+  border: 1px solid var(--color-on-dark-border);
+  border-radius: var(--radius-xl);
+  padding: var(--pad-card);
+  --color-text-primary: var(--color-on-dark-1);
+  --color-text-secondary: var(--color-on-dark-2);
+  --color-text-muted: var(--color-on-dark-3);
+}
+.stepN {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-solar);
+  font-size: var(--font-size-lg);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.step h3 {
+  margin: 0.25rem 0 0.5rem;
+  color: var(--color-on-dark-1);
+}
+.step p {
+  color: var(--color-on-dark-2);
+  margin: 0;
+}
+
+/* Product grid — 7 cards with status badges */
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--gap-md);
+  margin-top: var(--space-16);
+}
+.product {
+  background: var(--color-card-bg);
+  color: var(--color-on-dark-1);
+  border: 1px solid var(--color-on-dark-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-12);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.productTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+.productName {
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  font-size: 1.2rem;
+  letter-spacing: var(--tracking-snug);
+  color: var(--color-on-dark-1);
+}
+.soon {
+  font-size: 0.7rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-warning);
+  border: 1px solid var(--color-warning);
+  border-radius: var(--radius-full);
+  padding: 0.1rem 0.55rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.productCat {
+  color: var(--color-on-dark-2);
+  font-size: 0.95rem;
+}
+.productStage {
+  color: var(--color-on-dark-3);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+}
+
+/* Closing CTA card */
+.closing {
+  background: var(--color-card-bg);
+  color: var(--color-on-dark-1);
+  border: 1px solid var(--color-on-dark-border);
+  border-radius: var(--radius-2xl);
+  padding: clamp(2rem, 5vw, 3rem);
+  text-align: center;
+  max-width: 780px;
+  margin-inline: auto;
+  --color-text-primary: var(--color-on-dark-1);
+  --color-text-secondary: var(--color-on-dark-2);
+}
+.closing h2 { color: var(--color-on-dark-1); }
+.closing p  { color: var(--color-on-dark-2); }

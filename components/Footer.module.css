@@ -1,6 +1,13 @@
+/* Footer — Void-black band beneath the page. On-dark text scope inside. */
+
 .footer {
-  border-top: 1px solid var(--border);
-  background: var(--surface);
+  background: var(--color-nav-bg);
+  color: var(--color-on-dark-1);
+  border-top: 1px solid var(--color-on-dark-border);
+  --color-text-primary: var(--color-on-dark-1);
+  --color-text-secondary: var(--color-on-dark-2);
+  --color-text-muted: var(--color-on-dark-3);
+  --color-border: var(--color-on-dark-border);
 }
 
 .inner {
@@ -21,21 +28,22 @@
   max-width: 34ch;
 }
 .echo {
-  font-family: var(--font-space-grotesk, var(--font-display));
-  font-weight: 700;
-  letter-spacing: -0.03em;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--tracking-display);
   font-size: 1.15rem;
+  color: var(--color-on-dark-1);
 }
 .labs {
-  font-family: var(--font-space-grotesk, var(--font-display));
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-weight: var(--font-weight-bold);
   font-size: 0.7rem;
-  color: var(--accent);
+  color: var(--color-solar);
   letter-spacing: 0.02em;
   margin-top: -0.4rem;
 }
 .tag {
-  color: var(--text-muted);
+  color: var(--color-on-dark-2);
   font-size: 0.9rem;
   margin: 0.4rem 0 0;
 }
@@ -46,11 +54,11 @@
   gap: 0.6rem;
 }
 .links a {
-  color: var(--text);
+  color: var(--color-on-dark-1);
   font-size: 0.95rem;
 }
 .links a:hover {
-  color: var(--accent);
+  color: var(--color-solar);
   text-decoration: none;
 }
 
@@ -59,11 +67,11 @@
   max-width: 1120px;
   margin-inline: auto;
   padding: 1.25rem clamp(1.25rem, 4vw, 2.5rem);
-  border-top: 1px solid var(--border);
+  border-top: 1px solid var(--color-on-dark-border);
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: space-between;
-  color: var(--text-muted);
+  color: var(--color-on-dark-2);
   font-size: 0.85rem;
 }

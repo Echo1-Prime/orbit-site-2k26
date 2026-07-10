@@ -1,5 +1,6 @@
-/* Base + shared styles. Brand Kit v5: flat, shadowless, Space Grotesk.
-   Tokens come from ../tokens-v5.css (imported in layout before this file). */
+/* Base + shared styles.
+   Tokens: canonical v4 kit imported in layout via ../tokens-v5.css.
+   Rules: flat + shadowless (hairline border only where separation is functional). */
 
 *,
 *::before,
@@ -14,10 +15,10 @@ html {
 
 body {
   margin: 0;
-  font-family: var(--font-dm-sans, var(--font-sans));
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.6;
+  font-family: var(--font-body);
+  background: var(--color-page-bg);
+  color: var(--color-text-primary);
+  line-height: var(--line-height-relaxed);
   font-size: 17px;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -27,29 +28,21 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--font-space-grotesk, var(--font-display));
+  font-family: var(--font-display);
   letter-spacing: var(--tracking-display);
-  line-height: 1.08;
+  line-height: var(--line-height-tight);
   margin: 0 0 0.4em;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
 }
 
-h1 {
-  font-size: clamp(2.2rem, 5vw, 3.6rem);
-}
-h2 {
-  font-size: clamp(1.7rem, 3.4vw, 2.5rem);
-}
-h3 {
-  font-size: clamp(1.15rem, 2vw, 1.4rem);
-}
+h1 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+h2 { font-size: clamp(1.7rem, 3.4vw, 2.5rem); }
+h3 { font-size: clamp(1.15rem, 2vw, 1.4rem); }
 
-p {
-  margin: 0 0 1rem;
-}
+p { margin: 0 0 1rem; }
 
 a {
-  color: var(--link);
+  color: var(--color-info);
   text-decoration: none;
 }
 a:hover {
@@ -58,7 +51,7 @@ a:hover {
 
 /* Focus visibility — WCAG 2.2 AA */
 :focus-visible {
-  outline: 2px solid var(--focus-ring);
+  outline: 2px solid var(--color-focus-ring);
   outline-offset: 2px;
   border-radius: 2px;
 }
@@ -67,10 +60,10 @@ a:hover {
   position: absolute;
   left: -9999px;
   top: 0;
-  background: var(--surface);
-  color: var(--text);
+  background: var(--color-card-bg);
+  color: var(--color-on-dark-1);
   padding: 0.6rem 1rem;
-  border: 1px solid var(--border);
+  border: 1px solid var(--color-on-dark-border);
   z-index: 100;
 }
 .skip-link:focus {
@@ -92,20 +85,20 @@ a:hover {
 
 .eyebrow {
   font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.14em;
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--tracking-widest);
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--color-text-muted);
   margin: 0 0 0.75rem;
 }
 
 .lede {
   font-size: clamp(1.05rem, 1.8vw, 1.25rem);
-  color: var(--text-muted);
+  color: var(--color-text-secondary);
   max-width: 60ch;
 }
 
-/* Buttons — flat, shadowless */
+/* Buttons — flat, shadowless. Three variants: primary Solar, outline, ghost. */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -113,38 +106,65 @@ a:hover {
   gap: 0.5rem;
   font-family: inherit;
   font-size: 1rem;
-  font-weight: 500;
-  line-height: 1;
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-none);
   padding: 0.85rem 1.4rem;
   border-radius: var(--radius-md);
   border: 1px solid transparent;
   cursor: pointer;
-  transition: background-color 0.15s ease, border-color 0.15s ease,
-    color 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 .btn-primary {
-  background: var(--accent);
-  color: #0a0a0e; /* dark text on solar — AA */
-  font-weight: 700;
+  background: var(--color-accent);
+  color: var(--color-void);
+  font-weight: var(--font-weight-bold);
 }
 .btn-primary:hover {
   background: #ff8534;
   text-decoration: none;
 }
+.btn-outline {
+  background: transparent;
+  color: currentColor;
+  border-color: var(--color-border);
+}
+.btn-outline:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+  text-decoration: none;
+}
 .btn-ghost {
   background: transparent;
-  color: var(--text);
-  border-color: var(--border);
+  color: currentColor;
+  border-color: transparent;
 }
 .btn-ghost:hover {
-  border-color: var(--text-muted);
+  color: var(--color-accent);
   text-decoration: none;
 }
 
-/* Cards — flat, hairline border only, no shadow */
+/* Cards — signature move. Dark card on light page (or light on dark in dark theme).
+   Scope text tokens so children automatically use on-dark palette inside. */
 .card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
-  padding: clamp(1.5rem, 3vw, 2rem);
+  background: var(--color-card-bg);
+  color: var(--color-on-dark-1);
+  border: 1px solid var(--color-on-dark-border);
+  border-radius: var(--radius-2xl);
+  padding: var(--pad-card);
+  /* scope: child components can keep using --color-text-* without knowing bg */
+  --color-text-primary: var(--color-on-dark-1);
+  --color-text-secondary: var(--color-on-dark-2);
+  --color-text-muted: var(--color-on-dark-3);
+  --color-border: var(--color-on-dark-border);
+}
+
+/* When dark theme is active, cards INVERT to light-on-dark per Part A. */
+[data-theme="dark"] .card {
+  background: var(--color-surface);
+  color: var(--color-void);
+  border-color: var(--color-border);
+  --color-text-primary: var(--color-void);
+  --color-text-secondary: #55555F;
+  --color-text-muted: #A0A0AA;
+  --color-border: #E8E8EE;
 }
