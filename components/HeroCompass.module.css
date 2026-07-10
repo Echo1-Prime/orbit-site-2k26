@@ -1,0 +1,30 @@
+/* HeroCompass — centered presence mark above the hero copy.
+   Sits inside the dark hero card (--color-card-bg #111118).
+   orbit-mark-dark.svg has a transparent background — reads as
+   light-on-dark naturally. Animation: slow float, never pulse or spin. */
+
+.mark {
+  width: clamp(96px, 18vw, 180px);
+  height: clamp(96px, 18vw, 180px);
+  margin: 0 auto var(--space-9);
+  animation: compassFloat 8s ease-in-out infinite alternate;
+  will-change: transform;
+  pointer-events: none;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@keyframes compassFloat {
+  0%   { transform: translateY(4px); }
+  100% { transform: translateY(-4px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mark {
+    animation: none;
+  }
+}

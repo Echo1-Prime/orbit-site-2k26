@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { OrbitFlame } from "@/components/OrbitFlame";
+import { HeroCompass } from "@/components/HeroCompass";
 import styles from "./home.module.css";
 
 // Home. Concierge-forward hero (dark card on Orbit White page — signature move),
@@ -40,7 +40,7 @@ export default function HomePage() {
       <section className={styles.hero}>
         <div className="container">
           <div className={styles.heroCard}>
-            <OrbitFlame />
+            <HeroCompass />
             <p className={`eyebrow ${styles.heroEyebrow}`}>Business Lifecycle Management</p>
             <h1 className={styles.heroTitle}>Break free from business gravity.</h1>
             <p className={styles.heroSub}>
