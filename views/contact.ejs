@@ -1,0 +1,64 @@
+<%- include('partials/header', { title: 'Contact', description: 'Schedule your AI Readiness assessment or connect with the Echo-1 Labs team.' }) %>
+
+<section class="section" style="padding-top:calc(var(--nav-h) + 4rem);">
+  <div class="container">
+    <div class="grid-2" style="gap:5rem;align-items:start;">
+
+      <!-- Left: copy -->
+      <div>
+        <p class="label" style="margin-bottom:0.75rem;">Get in touch</p>
+        <h1 class="display-lg" style="margin-bottom:1.25rem;">Let's talk about<br/>your AI lifecycle.</h1>
+        <p class="body-lg" style="margin-bottom:2.5rem;">Whether you're starting with AI Readiness or building a fully agentic operation, we'll meet you where you are and map where you need to go.</p>
+
+        <div style="display:flex;flex-direction:column;gap:1.25rem;">
+          <div>
+            <div class="label" style="margin-bottom:0.25rem;">AI Readiness Assessment</div>
+            <p class="body-md">Audit your current AI footprint and receive a 90-day institutional AI roadmap.</p>
+          </div>
+          <div>
+            <div class="label" style="margin-bottom:0.25rem;">Custom Workflow Design</div>
+            <p class="body-md">Bespoke automations and agentic apps for your specific stack and team.</p>
+          </div>
+          <div>
+            <div class="label" style="margin-bottom:0.25rem;">PRIME Platform</div>
+            <p class="body-md">Deploy out-of-the-box agentic operations for your organization.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: form -->
+      <div>
+        <% if (typeof success !== 'undefined' && success) { %>
+          <div class="form__success">
+            Message received. We'll be in touch within one business day.
+          </div>
+        <% } else { %>
+          <form class="form" method="POST" action="/contact">
+            <div class="grid-2" style="gap:1rem;">
+              <div class="form__field">
+                <label class="form__label" for="name">Name</label>
+                <input class="form__input" type="text" id="name" name="name" required placeholder="Your name" />
+              </div>
+              <div class="form__field">
+                <label class="form__label" for="email">Email</label>
+                <input class="form__input" type="email" id="email" name="email" required placeholder="you@company.com" />
+              </div>
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="company">Company</label>
+              <input class="form__input" type="text" id="company" name="company" placeholder="Company name" />
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="message">What are you working on?</label>
+              <textarea class="form__textarea" id="message" name="message" placeholder="Tell us where you are in your AI lifecycle and what you're trying to solve..."></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary" style="align-self:flex-start;">Send message</button>
+          </form>
+        <% } %>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<%- include('partials/footer') %>

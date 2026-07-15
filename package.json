@@ -1,0 +1,21 @@
+{
+  "name": "orbit-site-2k26",
+  "version": "1.0.0",
+  "description": "Echo-1 Labs marketing site — Business Lifecycle Management",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
