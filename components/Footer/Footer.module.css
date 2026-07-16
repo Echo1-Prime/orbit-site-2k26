@@ -1,0 +1,29 @@
+.footer {
+  border-top: 1px solid var(--border);
+  padding-block: 2.5rem;
+  background: var(--bg);
+}
+.inner {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.brand { display: flex; align-items: center; gap: 0.5rem; line-height: 0; }
+.mark { height: 22px; width: 22px; display: block; }
+.wordmark { display: flex; flex-direction: column; align-items: flex-start; gap: 1px; line-height: 1; }
+.echo1 { font-family: var(--font-display); font-weight: 700; font-size: 0.85rem; letter-spacing: 0.02em; color: var(--text); }
+.labs { font-family: var(--font-display); font-weight: 600; font-size: 0.5rem; letter-spacing: 0.28em; color: var(--solar-deep); }
+.copy { font-size: 0.8rem; color: var(--text-3); }
+.links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.links a { font-size: 0.8rem; color: var(--text-2); transition: color 0.18s ease; }
+.links a:hover { color: var(--text); }
+
+@media (max-width: 640px) {
+  .inner { flex-direction: column; align-items: flex-start; }
+}

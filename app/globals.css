@@ -1,0 +1,375 @@
+/* ============================================================================
+   ECHO 1 LABS — Orbit 2K26 design system (LIGHT marketing site + dark hero)
+   Tokens are the canonical values from e1_orbit_design_kit_2k26.css.
+   Hard rules: flat / shadowless (hairline borders only), Solar is the single
+   accent, no cyan, green = finance data-viz only, dark cards on a light page.
+   ============================================================================ */
+
+:root {
+  /* ---- Brand primaries (canonical v4) ---- */
+  --void: #0A0A0E;
+  --void-card: #111118;
+  --white: #FFFFFF;
+  --solar: #FF7515;
+  --solar-deep: #E85D04;   /* solar on light surfaces (AA on white) */
+  --yellow: #FFFAA0;
+  --blue: #274578;         /* links / info */
+  --violet: #8B5CF6;       /* secondary accent — badges, decorative, secondary actions */
+  --violet-deep: #7C3AED;  /* violet when it carries small text on white (AA) */
+  --purple: #655596;       /* MARK ONLY — never UI chrome */
+  --red: #D1312D;          /* accent + error */
+  --success: #22C55E;      /* green — UI chrome + data-viz, allowed broadly */
+  --warning: #E9A84C;      /* warning / alert states */
+
+  /* ---- Light semantic (page + text) ---- */
+  --bg: #FFFFFF;
+  --bg-muted: #F8F8FA;
+  --text: #0A0A0E;
+  --text-2: #55555F;
+  --text-3: #7A7A85;
+  --border: #E8E8EE;
+  --accent: var(--solar-deep);   /* accents on light surfaces */
+  --accent-alt: var(--violet);   /* secondary accent */
+  --link: var(--blue);
+  --info: var(--blue);
+
+  /* ---- Dark card / dark band (on light page) ---- */
+  --card-bg: #111118;
+  --card-border: rgba(255,255,255,0.08);
+  --on-dark-1: rgba(255,255,255,1);
+  --on-dark-2: rgba(255,255,255,0.66);
+  --on-dark-3: rgba(255,255,255,0.40);
+
+  /* ---- Type ---- */
+  --font-display: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+  --font-body: var(--font-dm-sans), 'DM Sans', sans-serif;
+  --tracking-display: -0.03em;
+  --tracking-widest: 0.18em;   /* eyebrows / all-caps labels (v4) */
+
+  /* ---- Shape (marketing-tuned ladder; the product dashboard uses v4's tighter scale.
+     Marketing keeps a 16px body + softer radii on purpose — a deliberate two-tier system.) ---- */
+  --radius-xs: 4px;
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 24px;
+  --radius-2xl: 28px;
+  --radius-full: 999px;
+  --radius-pill: var(--radius-full);
+
+  /* ---- Layout ---- */
+  --max-w: 1160px;
+  --nav-h: 64px;
+
+  color-scheme: light;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--solar); outline-offset: 3px; border-radius: 3px; }
+
+/* Clear the fixed header. The home hero pulls itself back up under the
+   frosted header with a negative margin (see Hero.module.css). */
+main { padding-top: var(--nav-h); }
+
+/* ---- Typography ---- */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.75rem);
+  font-weight: 700;
+  letter-spacing: var(--tracking-display);
+  line-height: 1.04;
+}
+.display-lg {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.4vw, 3.25rem);
+  font-weight: 700;
+  letter-spacing: var(--tracking-display);
+  line-height: 1.08;
+}
+.display-md {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  letter-spacing: var(--tracking-display);
+  line-height: 1.15;
+}
+.display-sm {
+  font-family: var(--font-display);
+  font-size: clamp(1.15rem, 2vw, 1.4rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+}
+.label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.body-lg { font-size: 1.125rem; line-height: 1.7; color: var(--text-2); }
+.body-md { font-size: 1rem; line-height: 1.65; color: var(--text-2); }
+.muted { color: var(--text-3); }
+
+/* ---- Layout ---- */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2.5rem);
+}
+.section { padding-block: clamp(3.5rem, 9vw, 7rem); }
+.section--sm { padding-block: clamp(2.5rem, 6vw, 4rem); }
+.section-header { margin-bottom: clamp(2rem, 5vw, 3rem); }
+.section-header .label { margin-bottom: 0.75rem; }
+.grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+.stack { display: flex; flex-direction: column; gap: 1rem; }
+.center { text-align: center; }
+.mx-auto { margin-inline: auto; }
+
+/* ---- Dark band (used by the hero + accent sections on the light page) ---- */
+.band--dark {
+  background: var(--void);
+  color: var(--on-dark-1);
+}
+.band--dark .label { color: var(--solar); }
+.band--dark .body-lg,
+.band--dark .body-md { color: var(--on-dark-2); }
+.band--muted { background: var(--bg-muted); }
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.6rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  transition: opacity 0.18s ease, transform 0.15s ease, background 0.18s ease, border-color 0.18s ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn--primary { background: var(--solar); color: var(--void); }
+.btn--primary:hover { opacity: 0.9; }
+.btn--ghost { border: 1px solid var(--border); color: var(--text); }
+.btn--ghost:hover { border-color: var(--text-3); }
+/* Ghost button on a dark band */
+.band--dark .btn--ghost,
+.hero .btn--ghost { border-color: rgba(255,255,255,0.22); color: var(--on-dark-1); }
+.band--dark .btn--ghost:hover,
+.hero .btn--ghost:hover { border-color: rgba(255,255,255,0.5); }
+.btn--sm { padding: 0.5rem 1.1rem; font-size: 0.85rem; }
+
+/* ---- Stage badge ---- */
+.stage-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.28rem 0.8rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255,117,21,0.35);
+  background: rgba(255,117,21,0.07);
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.band--dark .stage-badge,
+.hero .stage-badge { color: var(--solar); }
+
+/* ---- Cards (dark cards on the light page = signature move) ---- */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
+  color: var(--on-dark-1);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.card:hover { border-color: rgba(255,117,21,0.35); }
+.card__title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--on-dark-1);
+}
+.card__desc { font-size: 0.9rem; color: var(--on-dark-2); line-height: 1.6; }
+
+/* ---- Lifecycle grid (dark cells, hairline separators) ---- */
+.lifecycle-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--card-border);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.lifecycle-cell {
+  background: var(--card-bg);
+  padding: 1.5rem 1.25rem;
+  transition: background 0.2s ease;
+  display: block;
+  color: var(--on-dark-1);
+}
+.lifecycle-cell:hover { background: #15151d; }
+.lifecycle-cell__stage {
+  font-family: var(--font-display);
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--solar);
+  margin-bottom: 0.4rem;
+}
+.lifecycle-cell__name {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+.lifecycle-cell__product { font-size: 0.75rem; color: var(--on-dark-2); }
+.lifecycle-cell--advisory { position: relative; }
+.lifecycle-cell--advisory::after {
+  content: 'Advisory';
+  position: absolute;
+  top: 1rem; right: 1rem;
+  font-size: 0.55rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--on-dark-3);
+}
+
+/* ---- Metrics ---- */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--card-border);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.metric { background: var(--card-bg); padding: 1.9rem 1.4rem; text-align: center; color: var(--on-dark-1); }
+.metric__value {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--solar);
+  letter-spacing: var(--tracking-display);
+  margin-bottom: 0.3rem;
+}
+.metric__label { font-size: 0.8rem; color: var(--on-dark-2); }
+
+/* ---- Capability grid ---- */
+.capability-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+
+/* ---- Product stack rows (products overview) ---- */
+.stack-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  background: var(--card-border);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.stack-row {
+  background: var(--card-bg);
+  color: var(--on-dark-1);
+  display: grid;
+  grid-template-columns: 150px 1fr auto;
+  gap: 1.75rem;
+  align-items: center;
+  padding: 1.5rem 1.6rem;
+  transition: background 0.2s ease;
+}
+.stack-row:hover { background: #15151d; }
+.stack-row__desc { font-size: 0.9rem; color: var(--on-dark-2); line-height: 1.55; }
+
+/* ---- Divider ---- */
+.divider { height: 1px; background: var(--border); border: 0; }
+
+/* ---- Forms ---- */
+.form { display: flex; flex-direction: column; gap: 1rem; }
+.form__field { display: flex; flex-direction: column; gap: 0.35rem; }
+.form__label { font-size: 0.8rem; font-weight: 500; color: var(--text-2); }
+.form__input,
+.form__textarea {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  padding: 0.75rem 1rem;
+  transition: border-color 0.2s ease;
+  outline: none;
+  width: 100%;
+}
+.form__input:focus,
+.form__textarea:focus { border-color: var(--solar); }
+.form__textarea { min-height: 150px; resize: vertical; }
+.form__success {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255,117,21,0.08);
+  border: 1px solid rgba(255,117,21,0.3);
+  color: var(--accent);
+}
+.form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* ---- Skip link (a11y) ---- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 1000;
+  background: var(--void);
+  color: var(--white);
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-sm);
+}
+.skip-link:focus { left: 1rem; top: 1rem; }
+
+/* ---- Responsive ---- */
+@media (max-width: 900px) {
+  .grid-4, .lifecycle-grid, .metrics { grid-template-columns: repeat(2, 1fr); }
+  .grid-3, .capability-grid { grid-template-columns: 1fr; }
+  .grid-2 { grid-template-columns: 1fr; }
+  .stack-row { grid-template-columns: 1fr; gap: 0.75rem; }
+}
+@media (max-width: 640px) {
+  .grid-4, .lifecycle-grid, .metrics { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+}

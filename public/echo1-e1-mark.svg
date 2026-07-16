@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="e1g" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#FFB347"/>
+      <stop offset="50%"  stop-color="#FF7A00"/>
+      <stop offset="100%" stop-color="#FF5500"/>
+    </linearGradient>
+  </defs>
+
+  <!-- No background rect — transparent for header use -->
+
+  <!-- Ring: 3 arcs with gaps at top (12 o'clock), lower-right (~5 o'clock), lower-left (~8 o'clock) -->
+  <circle
+    cx="256" cy="256" r="195"
+    fill="none"
+    stroke="url(#e1g)"
+    stroke-width="28"
+    stroke-linecap="butt"
+    stroke-dasharray="510.5 40.8 136.1 129.3 289.3 119.1"
+    stroke-dashoffset="20.4"
+    transform="rotate(-90 256 256)"
+  />
+
+  <!-- E¹ mark — Solar Orange gradient, centered in the ring -->
+  <text
+    x="184" y="332"
+    fill="url(#e1g)"
+    font-family="'Arial Black','Helvetica Neue',Arial,sans-serif"
+    font-weight="900"
+    font-size="148"
+    letter-spacing="-2"
+  >E</text>
+  <text
+    x="284" y="244"
+    fill="url(#e1g)"
+    font-family="'Arial Black','Helvetica Neue',Arial,sans-serif"
+    font-weight="700"
+    font-size="76"
+  >1</text>
+</svg>

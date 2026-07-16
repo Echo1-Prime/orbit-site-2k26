@@ -1,0 +1,22 @@
+.wrap { position: relative; display: inline-block; }
+.canvas { position: relative; z-index: 1; width: 100%; height: 100%; display: block; }
+
+/* Fallback shown only when WebGL is unavailable (no broken canvas box). */
+.fallback { display: none; }
+.wrap[data-fallback] .canvas { display: none; }
+.wrap[data-fallback] .fallback {
+  display: block;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 34% 30% at 50% 70%, rgba(255,235,200,0.95), transparent 60%),
+    radial-gradient(ellipse 46% 62% at 50% 64%, rgba(255,117,21,0.6), rgba(209,49,45,0.3) 45%, transparent 72%);
+  filter: blur(4px);
+  animation: fsFlare 3.2s ease-in-out infinite;
+}
+@keyframes fsFlare {
+  0%, 100% { transform: scaleY(1) translateY(0); opacity: 0.85; }
+  50% { transform: scaleY(1.07) translateY(-3%); opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) { .wrap[data-fallback] .fallback { animation: none; } }
