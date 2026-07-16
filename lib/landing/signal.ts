@@ -2,9 +2,9 @@ import type { LandingCopy } from './types';
 
 export const signalCopy: LandingCopy = {
   slug: 'signal',
-  seoTitle: 'Signal — AI Deal Screening and IC Memo Generation for Investors',
+  seoTitle: 'Signal — Deal Screening and IC Memo Generation for PE, VC, and Family Offices',
   seoDesc:
-    'Screen deals in under 30 minutes. Investor committee memos in one click. Echo 1 Labs Signal is purpose-built for PE, VC, and family office deal flow — at the pace the market moves.',
+    'Screen deals in under 30 minutes. IC memos in one click. Echo 1 Labs Signal is built for PE, VC, and family office deal flow, at the pace the market actually moves.',
 
   presuasionFrame: 'scarcity',
 
@@ -17,16 +17,16 @@ export const signalCopy: LandingCopy = {
 
   storyHeadline: 'Every deal you pass on slowly is a deal you\'re really passing on.',
   storyBody: [
-    'PE and VC deal teams face a version of the same problem every quarter: the pipeline is full, the IC schedule is packed, and the associate team is three memos behind. The deals that should get a fast no are sitting in a queue. The deals that deserve a deep look aren\'t getting one.',
-    'Speed in deal screening isn\'t about moving fast for its own sake. It\'s about freeing up the time to do the hard analytical work on the opportunities that actually warrant it.',
-    'Signal was built by operators who\'ve sat in the IC chair. It doesn\'t replace your judgment — it eliminates the 80% of screening work that shouldn\'t require it.',
+    'PE and VC deal teams run into the same crunch every quarter: pipeline is full, the IC schedule is packed, and the associate team is three memos behind. The deals that should get a fast no are sitting in a queue. The ones that deserve a serious look aren\'t getting enough time.',
+    'Moving faster on initial screens isn\'t about rushing. It\'s about clearing the obvious passes quickly so your best people can spend real time on the handful of deals that actually warrant it.',
+    'Signal was built by operators who\'ve sat in the IC chair. It handles the first 80% of every screen so your team can own the last 20%: judgment, relationships, and the calls that only experience gets right.',
   ],
 
   offerHeadline: 'What Signal delivers on every deal.',
-  dreamOutcome: 'Every inbound deal gets a structured screen within the hour. IC-ready memos generated without an associate bottleneck.',
-  perceivedLikelihood: 'Integrated with your deal intake process in 2 weeks. Works with your existing data room and CRM.',
+  dreamOutcome: 'Every inbound deal gets a structured screen within the hour. IC-ready memos without waiting on an associate to finish.',
+  perceivedLikelihood: 'Integrated with your deal intake in 2 weeks. Connects to your existing Affinity, Salesforce, or Datasite setup.',
   timeDelay: 'First deal screened in Signal within 48 hours of deployment.',
-  effortReduction: 'Signal handles the data gathering, comp analysis, and memo drafting. Your team handles the judgment calls.',
+  effortReduction: 'Signal handles data gathering, comp pulls, and memo drafting. Your team makes the calls.',
 
   metrics: [
     { value: '<30 min', label: 'per deal screen', note: 'Post-setup target' },
@@ -40,67 +40,67 @@ export const signalCopy: LandingCopy = {
     {
       icon: '🔍',
       title: 'Structured deal intake',
-      desc: 'Every inbound opportunity captured in a consistent format — no more PDF decks floating in email.',
+      desc: 'Every inbound opportunity goes into a consistent format. No PDF decks lost in email, no intake fields your associate has to fill in manually after the fact.',
     },
     {
       icon: '📊',
-      title: 'Automated comp analysis',
-      desc: 'Public and proprietary comparable transactions pulled, formatted, and ranked by relevance to the deal.',
+      title: 'Comp analysis',
+      desc: 'Public and proprietary comparable transactions pulled from CapIQ and your firm\'s deal history, formatted, and ranked by relevance. Takes minutes, not half a day.',
     },
     {
       icon: '🧠',
       title: 'IC memo generation',
-      desc: 'Thesis, market, management, financials, risks — structured memo in your firm\'s format, one click.',
+      desc: 'Thesis, market sizing, management assessment, financials, key risks: structured in your firm\'s IC format, ready for the meeting. One click from a completed screen.',
     },
     {
       icon: '⚠️',
       title: 'Red flag surfacing',
-      desc: 'Anomalies in financials, management tenure gaps, market size mismatches — flagged before the IC meeting.',
+      desc: 'Financial anomalies, management tenure gaps, market size mismatches: flagged and documented before anyone walks into the IC meeting.',
     },
     {
       icon: '📁',
-      title: 'Data room organization',
-      desc: 'Auto-indexes and surfaces the documents that matter for each stage of diligence.',
+      title: 'Data room indexing',
+      desc: 'Indexes the documents in your Datasite or Intralinks room and surfaces what matters at each diligence stage, instead of leaving your team to hunt.',
     },
     {
       icon: '📋',
       title: 'Portfolio monitoring',
-      desc: 'Post-close KPI tracking and board-prep briefs generated on the cadence you set.',
+      desc: 'Post-close KPI tracking and board-prep briefs on the cadence you set. Not a spreadsheet update every quarter. A structured brief your GP can read in 15 minutes.',
     },
   ],
 
   comparisonHeadline: 'What Signal replaces.',
   comparisonEnemy: 'The associate bottleneck',
   comparisonRows: [
-    { feature: 'Deal intake', them: 'Email + PDF deck in a shared drive', us: 'Structured intake form → Signal pipeline' },
-    { feature: 'Initial screen', them: '2–3 hours per analyst', us: '<30 minutes, structured output' },
-    { feature: 'Comp analysis', them: 'Manual pull from CapIQ + Excel', us: 'Auto-pulled, formatted, ranked' },
-    { feature: 'IC memo', them: '1–2 days associate time', us: '1 click from completed screen' },
-    { feature: 'Red flag review', them: 'Experience-dependent, inconsistent', us: 'Systematic across every deal' },
-    { feature: 'Portfolio monitoring', them: 'Quarterly spreadsheet + calls', us: 'Automated KPI tracking + board briefs' },
+    { feature: 'Deal intake', them: 'Email + PDF deck shared in Drive, manually filed', us: 'Structured intake form feeds directly into Signal' },
+    { feature: 'Initial screen', them: '2–3 hours per analyst, inconsistent depth', us: '<30 minutes, same structure every deal' },
+    { feature: 'Comp analysis', them: 'Manual CapIQ pull + Excel build', us: 'Pulled, formatted, and ranked by Signal' },
+    { feature: 'IC memo', them: '1–2 days of associate time per deal', us: '1 click from a completed screen' },
+    { feature: 'Red flag review', them: 'Whatever the analyst caught, on that day', us: 'Systematic check on every deal, every time' },
+    { feature: 'Portfolio monitoring', them: 'Quarterly spreadsheet update and calls', us: 'Structured KPI tracking and board briefs on your cadence' },
   ],
 
   objectionsHeadline: 'Common questions.',
   objections: [
     {
       q: 'We have an associate team. Is this replacing them?',
-      a: 'No — Signal multiplies your associates. It eliminates the low-judgment screening work so your team can focus on the deals and diligence work that actually requires their expertise.',
+      a: 'No. Signal handles the structured, repeatable work that doesn\'t require judgment. Your associates focus on the analysis that actually does. Most teams find it multiplies what they can cover, not what they need to staff.',
     },
     {
       q: 'Our deals are complex. Can Signal handle bespoke situations?',
-      a: 'Signal handles the structured, repeatable 80% of every deal screen — intake, comps, initial thesis, red flags. Complex bespoke analysis is still done by your team, now with a cleaner foundation.',
+      a: 'Signal handles the structured 80% of every screen: intake, comps, initial thesis, flag review. The bespoke analysis stays with your team. They just start from a cleaner, faster foundation.',
     },
     {
       q: 'How does Signal connect to our existing deal flow tools?',
-      a: 'Signal integrates with Salesforce, HubSpot, Affinity, and most CRM tools via API. Data room integrations include Datasite, Intralinks, and Google Drive. We handle the integration during deployment.',
+      a: 'Integrates with Salesforce, HubSpot, and Affinity via API. Data room integrations include Datasite, Intralinks, and Google Drive. We handle the integration during the 2-week deployment.',
     },
     {
       q: 'What\'s the data security posture?',
-      a: 'Deal data stays in your environment. Signal does not train on your deal data. We support SSO and can deploy to your own infrastructure on request.',
+      a: 'Deal data stays in your environment. Signal does not train on your firm\'s deal data. We support SSO and can deploy to your own infrastructure if required.',
     },
     {
-      q: 'Does this work for family offices and independent sponsors, or just institutionalized funds?',
-      a: 'Signal was designed specifically for teams of 2–15 investment professionals. It scales down to a one-person shop and up to a multi-strategy fund. The IC memo format is fully customizable.',
+      q: 'Does this work for family offices and independent sponsors, or just institutional funds?',
+      a: 'Signal works well for teams of 2–15 investment professionals. It scales from a solo GP to a multi-strategy fund. The IC memo format is customizable to match your firm\'s existing template.',
     },
   ],
 

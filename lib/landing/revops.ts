@@ -4,7 +4,7 @@ export const revopsCopy: LandingCopy = {
   slug: 'revops',
   seoTitle: 'RevOps — Agentic Revenue Engine for SMB Sales Teams',
   seoDesc:
-    'Replace your disconnected CRM, sequencer, and analytics stack with one AI-native revenue engine. Echo 1 Labs RevOps drives pipeline, automates follow-up, and surfaces signal — managed by operators.',
+    'Replace your disconnected CRM, sequencer, and analytics stack with one agent-run revenue engine. Echo 1 Labs RevOps drives pipeline, automates follow-up, and surfaces signal — operators stay in the loop.',
 
   presuasionFrame: 'authority',
 
@@ -17,16 +17,16 @@ export const revopsCopy: LandingCopy = {
 
   storyHeadline: 'Built by operators who ran broken stacks.',
   storyBody: [
-    'Every founder who builds a sales team learns the same expensive lesson: the tools that worked at 10 reps don\'t scale to 30. Your CRM doesn\'t talk to your sequencer. Your analytics lag by a week. Your best reps are spending 40% of their time on data hygiene.',
-    'We\'ve run those stacks. We\'ve hired the consultants and bought the "GTM software platform." None of it solved the fundamental problem: you need a system that thinks about revenue, not just records it.',
-    'RevOps is what we built for ourselves and now run for clients. It doesn\'t just automate tasks — it runs the revenue motion end to end, with a human in the loop at every decision point that matters.',
+    'Every founder who builds a sales team learns the same expensive lesson: the tools that worked at 10 reps don\'t scale to 30. Your CRM doesn\'t talk to your sequencer. Analytics lag by a week. Your best reps are spending 40% of their time on data hygiene instead of selling.',
+    'We\'ve run those stacks. We hired the consultants and bought the "GTM software platform." None of it fixed the core problem: you need a system that thinks about revenue, not just logs it.',
+    'RevOps is what we built for ourselves and now run for clients. The agents run the motion. Your ops lead reviews the playbook. Every decision point that matters stays in human hands.',
   ],
 
   offerHeadline: 'What you\'re actually buying.',
   dreamOutcome: 'A revenue engine that runs the top-of-funnel motion while your team focuses on qualified conversations.',
-  perceivedLikelihood: 'Deployed in 30 days. Fully integrated with your existing CRM and communication stack.',
+  perceivedLikelihood: 'Deployed in 30 days. Connects to your existing Salesforce or HubSpot instance. Nothing gets ripped out.',
   timeDelay: 'First qualified sequences live within 2 weeks of kickoff.',
-  effortReduction: 'We run the build, integration, and ongoing optimization. Your team approves the playbook — we execute it.',
+  effortReduction: 'We run the build, integration, and ongoing optimization. Your team approves the playbook and reviews the weekly numbers.',
 
   metrics: [
     { value: '6–8×', label: 'outbound volume vs manual', note: 'Illustrative / client target' },
@@ -40,67 +40,67 @@ export const revopsCopy: LandingCopy = {
     {
       icon: '🎯',
       title: 'ICP-tuned outbound sequences',
-      desc: 'AI-written, voice-matched sequences for each ICP segment. Reviewed once, run continuously.',
+      desc: 'The system builds sequences matched to each buyer segment, runs them on schedule, and flags which ones to adjust. Your ops lead reviews, not writes.',
     },
     {
       icon: '🔄',
       title: 'Multi-channel orchestration',
-      desc: 'Email, LinkedIn, and call cadences coordinated in one playbook — no manual switching.',
+      desc: 'Email, LinkedIn, and call cadences run from one playbook. No switching tools per channel, no task lists to manually check.',
     },
     {
       icon: '📊',
       title: 'Pipeline signal surfacing',
-      desc: 'Flags deals going dark, stale contacts, and high-intent signals before your reps have to chase.',
+      desc: 'Deals going dark, stale contacts, accounts showing buying activity: surfaced to your reps before the window closes.',
     },
     {
       icon: '🤖',
       title: 'Agentic follow-up',
-      desc: 'Automated replies, booking confirms, and nurture steps — all human-supervised, none manually typed.',
+      desc: 'Booking confirms, reply handling, and nurture steps fire automatically. Your reps pick up the thread when it\'s a real conversation.',
     },
     {
       icon: '📋',
-      title: 'CRM hygiene automation',
-      desc: 'Contact enrichment, stage updates, and data quality checks running in the background, always.',
+      title: 'CRM hygiene',
+      desc: 'Contact enrichment, stage updates, and data quality checks run continuously. Your Salesforce stays accurate without someone babysitting it.',
     },
     {
       icon: '📈',
-      title: 'Weekly revenue reporting',
-      desc: 'A plain-English summary of pipeline health, conversion rates, and recommended adjustments.',
+      title: 'Weekly revenue brief',
+      desc: 'Every Monday morning: pipeline health, response rates, booked calls, what to fix. Ten minutes to read.',
     },
   ],
 
   comparisonHeadline: 'What RevOps replaces.',
   comparisonEnemy: 'The 6-tool stack',
   comparisonRows: [
-    { feature: 'Outbound sequencing', them: 'Outreach / Apollo — manual build', us: 'AI-written, voice-matched, runs itself' },
-    { feature: 'CRM data hygiene', them: 'SDR time — 40% of their week', us: 'Automated enrichment + stage logic' },
-    { feature: 'Follow-up cadence', them: 'Manual tasks + reminders', us: 'Agentic — fires without human input' },
-    { feature: 'Pipeline visibility', them: 'Lag-reports from Salesforce', us: 'Real-time signal surfacing' },
-    { feature: 'Multi-channel coord.', them: 'Separate tools per channel', us: 'Single orchestrated playbook' },
-    { feature: 'Reporting', them: 'Revenue ops analyst or delay', us: 'Auto-generated weekly brief' },
+    { feature: 'Outbound sequencing', them: 'Outreach / Apollo — manual build by your SDR', us: 'System-built sequences, runs and adjusts itself' },
+    { feature: 'CRM data hygiene', them: 'SDR time — 40% of their week gone', us: 'Automated enrichment + stage logic, always on' },
+    { feature: 'Follow-up cadence', them: 'Manual tasks and missed reminders', us: 'Fires automatically, no human trigger needed' },
+    { feature: 'Pipeline visibility', them: 'Lag-reports from Salesforce, days old', us: 'Real-time signal surfacing to your reps' },
+    { feature: 'Multi-channel coord.', them: 'Separate tools per channel, no sync', us: 'Single playbook across all channels' },
+    { feature: 'Reporting', them: 'Someone builds it or it doesn\'t happen', us: 'Auto-generated every Monday, one page' },
   ],
 
   objectionsHeadline: 'Common questions.',
   objections: [
     {
       q: 'We already have Salesforce / HubSpot. Does RevOps replace it?',
-      a: 'No — RevOps integrates with your existing CRM. It runs the revenue motion on top of your data, not instead of it. You keep your CRM as the system of record.',
+      a: 'No. RevOps runs on top of your existing CRM. It doesn\'t touch the system of record. Your Salesforce stays your Salesforce. RevOps runs the motion on top of it.',
     },
     {
       q: 'How is this different from hiring a RevOps consultant?',
-      a: 'A consultant designs the process and leaves. RevOps is an ongoing managed service — the agents run the motion, a human operator reviews performance weekly, and the system improves continuously.',
+      a: 'A consultant designs the process and leaves. This is an ongoing managed service. The agents run the motion, your ops lead reviews the weekly numbers, and the system gets tighter over time.',
     },
     {
       q: 'What does my team actually have to do?',
-      a: 'Approve the ICP and messaging playbook during onboarding. Review the weekly report. Handle the qualified conversations that come out the other side. We do everything else.',
+      a: 'Approve the ICP and messaging playbook during onboarding. Review the weekly report. Take the qualified calls that come out the other side. That\'s it.',
     },
     {
       q: 'How long until we see results?',
-      a: 'Sequences typically go live within 2 weeks. Meaningful pipeline data — response rates, booked calls — usually appears within the first 30 days. Optimizations compound from there.',
+      a: 'Sequences go live within 2 weeks. You\'ll have real response rates and booked calls to look at within 30 days. The numbers compound from there as the system learns what works.',
     },
     {
       q: 'Is this only for outbound?',
-      a: 'Primarily, yes — RevOps is purpose-built for top-of-funnel revenue motion. It pairs with Signal for deal management and Engine for go-to-market strategy.',
+      a: 'Primarily yes. RevOps is built for top-of-funnel revenue motion. For deal management it pairs with Signal, and for go-to-market strategy it sits downstream of Engine.',
     },
   ],
 
