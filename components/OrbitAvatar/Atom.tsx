@@ -3,8 +3,6 @@ import type { AvatarProps } from './types';
 import { AVATAR_SIZE_PX } from './types';
 import styles from './Atom.module.css';
 
-const BAR_ANGLES = [0, 45, 90, 135, 180, 225, 270, 315];
-
 export default function Atom({
   state = 'idle',
   size = 'md',
@@ -28,105 +26,78 @@ export default function Atom({
         .filter(Boolean).join(' ')}
       style={{ '--level': level } as React.CSSProperties}
     >
-      {/* ── ambient outer halo ─────────────────────────── */}
-      <circle cx="50" cy="50" r="47" fill="none"
-        stroke="rgba(201,168,76,0.07)" strokeWidth="14" />
+      {/* ── ambient outer blue halo ──────────────────────── */}
+      <circle cx="50" cy="50" r="48" fill="none"
+        stroke="rgba(74,120,200,0.07)" strokeWidth="22" />
 
-      {/* ── OUTER RING + CARDINAL ARMS — slowest CW ────── */}
-      <g className={styles.ringOuter}>
-        {/* Glow halo behind segments */}
-        <circle cx="50" cy="50" r="44" stroke="rgba(255,196,60,0.16)"
-          strokeWidth="9" fill="none" />
-        {/* Segmented gold ring — ~17 segments */}
-        <circle cx="50" cy="50" r="44" stroke="#C9A84C"
-          strokeWidth="6" fill="none"
-          strokeDasharray="11.8 5.1" strokeLinecap="butt" />
-        {/* Fine outer and inner border lines */}
-        <circle cx="50" cy="50" r="47.3" stroke="#4A3008"
-          strokeWidth="0.5" fill="none" />
-        <circle cx="50" cy="50" r="40.7" stroke="#7A5510"
-          strokeWidth="0.5" fill="none" />
-        {/* Cardinal connector arms: top / bottom / left / right */}
-        <rect x="48.5" y="14" width="3" height="14" fill="#C9A84C" rx="0.5" />
-        <rect x="48.5" y="72" width="3" height="14" fill="#C9A84C" rx="0.5" />
-        <rect x="14"  y="48.5" width="14" height="3" fill="#C9A84C" rx="0.5" />
-        <rect x="72"  y="48.5" width="14" height="3" fill="#C9A84C" rx="0.5" />
+      {/* ── static inner concentric depth rings ─────────── */}
+      <circle cx="50" cy="50" r="17" fill="none"
+        stroke="rgba(100,160,230,0.11)" strokeWidth="0.7" />
+      <circle cx="50" cy="50" r="11" fill="none"
+        stroke="rgba(100,160,230,0.09)" strokeWidth="0.6" />
+
+      {/* ── RING 1 — medium blue, plane 0° ───────────────── */}
+      <g className={styles.ring1}>
+        <ellipse cx="50" cy="50" rx="43" ry="8"
+          stroke="#5A88C8" strokeWidth="1.0" fill="none" strokeOpacity="0.88" />
+        <circle cx="93" cy="50" r="2.2" fill="white" className={styles.eBlu} />
       </g>
 
-      {/* ── FIRST MID RING — medium CW ─────────────────── */}
-      <g className={styles.ringMid1}>
-        <circle cx="50" cy="50" r="37" stroke="#9A7020"
-          strokeWidth="1.5" fill="none"
-          strokeDasharray="5 2.6" />
+      {/* ── RING 2 — deeper blue, plane 36° ─────────────── */}
+      <g className={styles.ring2}>
+        <ellipse cx="50" cy="50" rx="43" ry="11"
+          stroke="#4A72B0" strokeWidth="0.9" fill="none" strokeOpacity="0.80" />
+        <circle cx="93" cy="50" r="2.1" fill="white" className={styles.eBlu} />
       </g>
 
-      {/* ── SECOND MID RING — slightly faster CCW ──────── */}
-      <g className={styles.ringMid2}>
-        <circle cx="50" cy="50" r="32" stroke="#6A4A10"
-          strokeWidth="1" fill="none"
-          strokeDasharray="3.5 2" />
+      {/* ── RING 3 — Solar ORANGE, plane 72° ────────────── */}
+      <g className={styles.ring3}>
+        <ellipse cx="50" cy="50" rx="43" ry="9"
+          stroke="#FF7515" strokeWidth="1.2" fill="none" strokeOpacity="0.82" />
+        <circle cx="93" cy="50" r="2.5" fill="#FFD090" className={styles.eOrg} />
       </g>
 
-      {/* ── INNER CHAMBER — static dark fill + gold rim ── */}
-      <circle cx="50" cy="50" r="27" fill="#05080F" />
-      <circle cx="50" cy="50" r="27" stroke="#C9A84C" strokeWidth="2" fill="none" />
-      <circle cx="50" cy="50" r="24.2" stroke="#1A2848" strokeWidth="0.6" fill="none" />
-
-      {/* ── INNER BARS — same speed as mid1, offset phase ─ */}
-      <g className={styles.ringInner}>
-        {BAR_ANGLES.map((deg) => (
-          <rect
-            key={deg}
-            x="49.1" y="19.5"
-            width="1.8" height="5.8"
-            fill="#1B3870"
-            rx="0.4"
-            transform={`rotate(${deg}, 50, 50)`}
-          />
-        ))}
-        {/* Inner detail ring */}
-        <circle cx="50" cy="50" r="19" stroke="#253E7A"
-          strokeWidth="1" fill="none"
-          strokeDasharray="2.6 1.4" />
+      {/* ── RING 4 — Patronus blue, plane 108° ──────────── */}
+      <g className={styles.ring4}>
+        <ellipse cx="50" cy="50" rx="43" ry="13"
+          stroke="#7BAFD4" strokeWidth="0.9" fill="none" strokeOpacity="0.75" />
+        <circle cx="93" cy="50" r="1.9" fill="white" className={styles.eBlu} />
       </g>
 
-      {/* ── CORE MICRO RING — fastest, CCW ─────────────── */}
-      <g className={styles.ringCore}>
-        <circle cx="50" cy="50" r="13.5" stroke="#142040"
-          strokeWidth="0.8" fill="none"
-          strokeDasharray="2 1.3" />
+      {/* ── RING 5 — navy blue, plane 144° ──────────────── */}
+      <g className={styles.ring5}>
+        <ellipse cx="50" cy="50" rx="43" ry="7"
+          stroke="#3A60A0" strokeWidth="0.9" fill="none" strokeOpacity="0.78" />
+        <circle cx="93" cy="50" r="1.9" fill="white" className={styles.eBlu} />
       </g>
 
-      {/* ── INVERTED TRIANGLE — pulsing neon blue ───────── */}
-      {/* centroid at (50,50): top-edge y=45.4, bottom-point y=59.2, x=42–58 */}
+      {/* ── CENTER GLOW — white/blue radial bloom ────────── */}
+      <circle cx="50" cy="50" r="14" fill="rgba(140,195,255,0.09)" />
+      <circle cx="50" cy="50" r="9.5" fill="rgba(170,215,255,0.15)" />
+      <circle cx="50" cy="50" r="6"   fill="rgba(210,232,255,0.28)" />
+      <circle cx="50" cy="50" r="3.5" fill="rgba(238,248,255,0.62)" />
+      <circle cx="50" cy="50" r="1.8" fill="rgba(255,255,255,0.95)" />
+
+      {/* ── dark veil behind triangle for contrast ────────── */}
+      <circle cx="50" cy="52" r="9.5" fill="rgba(8,14,38,0.38)" />
+
+      {/* ── INVERTED TRIANGLE ▽ — Patronus blue neon ──────── */}
       <g className={styles.triangle}>
-        {/* outer glow stroke */}
-        <polygon
-          points="41,44.5 59,44.5 50,60"
+        {/* outer soft glow */}
+        <polygon points="41,44.5 59,44.5 50,60"
           fill="none"
           stroke="rgba(123,175,212,0.22)"
-          strokeWidth="3.5"
-          strokeLinejoin="round"
-        />
+          strokeWidth="4"
+          strokeLinejoin="round" />
         {/* main neon edge */}
-        <polygon
-          points="42,45.4 58,45.4 50,59.2"
-          fill="rgba(74,140,220,0.13)"
-          stroke="#7BAFD4"
-          strokeWidth="1.6"
-          strokeLinejoin="round"
-        />
-        {/* inner subtle fill highlight */}
-        <polygon
-          points="43.5,46.4 56.5,46.4 50,57.8"
-          fill="rgba(100,170,240,0.07)"
-          stroke="rgba(190,225,255,0.28)"
-          strokeWidth="0.5"
-          strokeLinejoin="round"
-        />
-        {/* horizontal top-edge highlight */}
-        <line x1="43" y1="46.2" x2="57" y2="46.2"
-          stroke="rgba(190,230,255,0.35)" strokeWidth="0.7" />
+        <polygon points="42,45.4 58,45.4 50,59.2"
+          fill="rgba(60,130,210,0.20)"
+          stroke="#9DCCE8"
+          strokeWidth="1.7"
+          strokeLinejoin="round" />
+        {/* top-edge highlight */}
+        <line x1="43.5" y1="46.2" x2="56.5" y2="46.2"
+          stroke="rgba(210,240,255,0.50)" strokeWidth="0.8" />
       </g>
     </svg>
   );

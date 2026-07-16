@@ -1,119 +1,93 @@
 .atom {
   display: block;
   overflow: visible;
-  --spd-outer: 28s;
-  --spd-mid1:  17s;
-  --spd-mid2:  13s;
-  --spd-inner: 10s;
-  --spd-core:   7s;
+  --spd1: 9s;
+  --spd2: 7s;
+  --spd3: 8.5s;
+  --spd4: 6s;
+  --spd5: 5.5s;
 }
 
-/* ── outer ring + cardinal arms — clockwise mechanical ──── */
-.ringOuter {
+/* ── orbital ring animations ─────────────────────────────── */
+
+.ring1 {
   transform-origin: 50px 50px;
-  filter: drop-shadow(0 0 3px rgba(201,168,76,0.55));
-  animation: cw-escapement var(--spd-outer) linear infinite;
+  filter: drop-shadow(0 0 1.5px rgba(90,136,200,0.55));
+  animation: ring1-spin var(--spd1) linear infinite;
 }
-
-/* ── first mid ring — clockwise smooth ─────────────────── */
-.ringMid1 {
+.ring2 {
   transform-origin: 50px 50px;
-  animation: cw-smooth var(--spd-mid1) ease-in-out infinite;
+  filter: drop-shadow(0 0 1.5px rgba(74,114,176,0.50));
+  animation: ring2-spin var(--spd2) linear infinite;
 }
-
-/* ── second mid ring — counter-clockwise (contrast) ────── */
-.ringMid2 {
+.ring3 {
   transform-origin: 50px 50px;
-  animation: ccw-smooth var(--spd-mid2) ease-in-out infinite;
+  filter: drop-shadow(0 0 2px rgba(255,117,21,0.60));
+  animation: ring3-spin var(--spd3) linear infinite;
 }
-
-/* ── inner bars + detail ring — clockwise ───────────────── */
-.ringInner {
+.ring4 {
   transform-origin: 50px 50px;
-  animation: cw-smooth var(--spd-inner) linear infinite;
+  filter: drop-shadow(0 0 1.5px rgba(123,175,212,0.50));
+  animation: ring4-spin var(--spd4) linear infinite;
 }
-
-/* ── core micro ring — counter-clockwise ────────────────── */
-.ringCore {
+.ring5 {
   transform-origin: 50px 50px;
-  animation: ccw-smooth var(--spd-core) linear infinite;
+  filter: drop-shadow(0 0 1.5px rgba(58,96,160,0.50));
+  animation: ring5-spin var(--spd5) linear infinite;
 }
 
-/* ── inverted triangle — neon blue pulse ────────────────── */
+/* initial tilt baked into each keyframe from-value */
+@keyframes ring1-spin { from { transform: rotate(0deg);   } to { transform: rotate(360deg); } }
+@keyframes ring2-spin { from { transform: rotate(36deg);  } to { transform: rotate(396deg); } }
+@keyframes ring3-spin { from { transform: rotate(72deg);  } to { transform: rotate(432deg); } }
+@keyframes ring4-spin { from { transform: rotate(108deg); } to { transform: rotate(468deg); } }
+@keyframes ring5-spin { from { transform: rotate(144deg); } to { transform: rotate(504deg); } }
+
+/* ── electron glows ──────────────────────────────────────── */
+
+.eBlu {
+  filter: drop-shadow(0 0 2px white) drop-shadow(0 0 5px rgba(150,200,255,0.95));
+}
+.eOrg {
+  filter: drop-shadow(0 0 2px #FFD090) drop-shadow(0 0 6px rgba(255,150,40,0.85));
+}
+
+/* ── triangle glow pulse ─────────────────────────────────── */
+
 .triangle {
   transform-origin: 50px 50px;
-  animation: tri-pulse 3.8s ease-in-out infinite;
-}
-
-/* ── keyframes ──────────────────────────────────────────── */
-
-/* clockwise with tiny mechanical back-steps twice per revolution */
-@keyframes cw-escapement {
-  0%   { transform: rotate(0deg); }
-  33%  { transform: rotate(120deg); }
-  35%  { transform: rotate(118deg); }
-  66%  { transform: rotate(240deg); }
-  68%  { transform: rotate(238deg); }
-  100% { transform: rotate(360deg); }
-}
-
-@keyframes cw-smooth {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-@keyframes ccw-smooth {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(-360deg); }
+  animation: tri-pulse 3.5s ease-in-out infinite;
 }
 
 @keyframes tri-pulse {
-  0%, 100% { filter: drop-shadow(0 0 2px #7BAFD4) drop-shadow(0 0 5px rgba(123,175,212,0.38)); }
-  50%       { filter: drop-shadow(0 0 5px #7BAFD4) drop-shadow(0 0 12px rgba(123,175,212,0.65)); }
+  0%, 100% { filter: drop-shadow(0 0 2px #7BAFD4) drop-shadow(0 0 6px rgba(123,175,212,0.40)); }
+  50%       { filter: drop-shadow(0 0 5px #9DCCE8) drop-shadow(0 0 14px rgba(123,175,212,0.75)); }
 }
 
-/* ── state-based speeds ─────────────────────────────────── */
+/* ── state-based speeds ──────────────────────────────────── */
+
 .atom[data-state='listening'] {
-  --spd-outer: 18s;
-  --spd-mid1:  11s;
-  --spd-mid2:   8s;
-  --spd-inner:  6s;
-  --spd-core:   4.5s;
+  --spd1: 5.5s; --spd2: 4.5s; --spd3: 5s; --spd4: 4s; --spd5: 3.5s;
 }
 .atom[data-state='thinking'] {
-  --spd-outer: 10s;
-  --spd-mid1:   6s;
-  --spd-mid2:   4.5s;
-  --spd-inner:  3.5s;
-  --spd-core:   2.5s;
+  --spd1: 3s; --spd2: 2.5s; --spd3: 2.8s; --spd4: 2s; --spd5: 1.8s;
 }
 .atom[data-state='speaking'] {
-  --spd-outer: 14s;
-  --spd-mid1:   9s;
-  --spd-mid2:   6.5s;
-  --spd-inner:  5s;
-  --spd-core:   3.5s;
+  --spd1: 4.5s; --spd2: 3.5s; --spd3: 4s; --spd4: 3s; --spd5: 2.5s;
 }
 .atom[data-state='reveal'] {
-  --spd-outer: 4s;
-  --spd-mid1:  2.5s;
-  --spd-mid2:  2s;
-  --spd-inner: 1.5s;
-  --spd-core:  1s;
+  --spd1: 0.7s; --spd2: 0.6s; --spd3: 0.65s; --spd4: 0.5s; --spd5: 0.45s;
 }
 
-/* ── reduced motion ─────────────────────────────────────── */
-.reduced .ringOuter,
-.reduced .ringMid1,
-.reduced .ringMid2,
-.reduced .ringInner,
-.reduced .ringCore,
-.reduced .triangle {
+/* ── reduced motion ──────────────────────────────────────── */
+
+.reduced .ring1, .reduced .ring2, .reduced .ring3,
+.reduced .ring4, .reduced .ring5, .reduced .triangle {
   animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ringOuter, .ringMid1, .ringMid2, .ringInner, .ringCore, .triangle {
+  .ring1, .ring2, .ring3, .ring4, .ring5, .triangle {
     animation: none;
   }
 }
