@@ -345,7 +345,34 @@ main { padding-top: var(--nav-h); }
 }
 .form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-/* ---- Skip link (a11y) ---- */
+/* ── FAQ list (product pages + FAQ schema) ──────────────── */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-top: 1px solid var(--border);
+}
+.faq-item {
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 0;
+}
+.faq-q {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--on-dark-1);
+  margin: 0 0 0.65rem;
+  line-height: 1.45;
+}
+.faq-a {
+  font-size: 0.9375rem;
+  color: var(--on-dark-2);
+  line-height: 1.7;
+  margin: 0;
+  max-width: 68ch;
+}
+
+/* ── Skip link (a11y) ──────────────────────────────────── */
 .skip-link {
   position: absolute;
   left: -9999px;

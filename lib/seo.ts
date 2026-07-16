@@ -9,6 +9,7 @@ import {
   SOCIAL_LINKS,
 } from './site';
 import type { Product } from './products';
+import type { ProductSEO } from './product-seo';
 
 /** Build per-page Metadata with a canonical URL and consistent OG/Twitter.
     OG images come from the file-based app/opengraph-image convention. */
@@ -62,18 +63,71 @@ export function websiteSchema() {
   };
 }
 
-export function serviceSchema(product: Product) {
+export function serviceSchema(product: Product, seo?: ProductSEO) {
+  const url = new URL(
+    product.isAdvisory ? '/ai-readiness' : `/products/${product.slug}`,
+    SITE_URL,
+  ).toString();
+
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
     name: `${SITE_NAME} ${product.name}`,
+    alternateName: product.tagline,
     serviceType: product.category,
     description: product.problem,
-    url: new URL(product.isAdvisory ? '/ai-readiness' : `/products/${product.slug}`, SITE_URL).toString(),
+    url,
+    areaServed: { '@type': 'Country', name: 'United States' },
+    audience: {
+      '@type': 'Audience',
+      audienceType: product.deployedIn.join(', '),
+    },
+    ...(seo?.keywords?.length
+      ? { keywords: seo.keywords.join(', ') }
+      : {}),
+    potentialAction: {
+      '@type': 'ReserveAction',
+      target: new URL('/contact', SITE_URL).toString(),
+      name: 'Schedule a call',
+    },
     provider: {
       '@type': 'Organization',
       name: SITE_NAME,
       url: SITE_URL,
+      contactPoint: {
+        '@type': 'ContactPoint',
+        email: CONTACT_EMAIL,
+        contactType: 'sales',
+      },
+    },
+    isPartOf: {
+      '@type': 'Service',
+      name: `${SITE_NAME} Business Lifecycle Management`,
+      url: SITE_URL,
+    },
+  };
+}
+
+/** Keyword-optimized metadata for product detail pages. Falls back to
+ *  generic pageMetadata when ProductSEO data is unavailable. */
+export function productPageMetadata(product: Product, seo: ProductSEO): Metadata {
+  const url = new URL(`/products/${product.slug}`, SITE_URL).toString();
+  return {
+    title: seo.seoTitle,
+    description: seo.seoDesc,
+    keywords: [seo.primaryKeyword, ...seo.keywords].join(', '),
+    alternates: { canonical: `/products/${product.slug}` },
+    openGraph: {
+      title: seo.seoTitle,
+      description: seo.seoDesc,
+      url,
+      siteName: SITE_NAME,
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: seo.seoTitle,
+      description: seo.seoDesc,
     },
   };
 }
