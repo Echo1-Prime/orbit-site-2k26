@@ -1,6 +1,7 @@
 import Hero from '@/components/Hero/Hero';
 import LifecycleGrid from '@/components/LifecycleGrid/LifecycleGrid';
 import CTA from '@/components/CTA/CTA';
+import InViewStagger from '@/components/Reveal/InViewStagger';
 
 export const dynamic = 'force-static';
 
@@ -27,7 +28,7 @@ export default function HomePage() {
             <p className="label">Our Approach</p>
             <h2 className="display-md">Not a tool. A system.</h2>
           </div>
-          <div className="grid-3">
+          <InViewStagger className="grid-3">
             <div className="card">
               <div className="card__title">Personal AI to Institutional AI</div>
               <p className="card__desc">
@@ -50,7 +51,7 @@ export default function HomePage() {
                 production-ready platform; custom workflows are built for your exact stack.
               </p>
             </div>
-          </div>
+          </InViewStagger>
         </div>
       </section>
 

@@ -396,6 +396,33 @@ main { padding-top: var(--nav-h); }
   .grid-4, .lifecycle-grid, .metrics { grid-template-columns: 1fr; }
 }
 
+/* ---- Keyframes ---- */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes scaleUp {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Stagger for capability-grid and metrics — applies when .animate-stagger is present */
+.animate-stagger .card,
+.animate-stagger .metric {
+  opacity: 0;
+  animation: fadeUp 540ms cubic-bezier(0.22,1,0.36,1) both;
+}
+.animate-stagger .card:nth-child(1),  .animate-stagger .metric:nth-child(1)  { animation-delay:  60ms; }
+.animate-stagger .card:nth-child(2),  .animate-stagger .metric:nth-child(2)  { animation-delay: 130ms; }
+.animate-stagger .card:nth-child(3),  .animate-stagger .metric:nth-child(3)  { animation-delay: 200ms; }
+.animate-stagger .card:nth-child(4),  .animate-stagger .metric:nth-child(4)  { animation-delay: 270ms; }
+.animate-stagger .card:nth-child(5),  .animate-stagger .metric:nth-child(5)  { animation-delay: 340ms; }
+.animate-stagger .card:nth-child(6),  .animate-stagger .metric:nth-child(6)  { animation-delay: 410ms; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }

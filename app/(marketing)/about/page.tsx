@@ -68,6 +68,77 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Brand identity showcase */}
+      <section className="section" style={{ background: 'var(--void-card)', borderTop: '1px solid var(--border)' }}>
+        <div className="container">
+          <p className="label" style={{ marginBottom: '2.5rem', textAlign: 'center' }}>Brand identity</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center' }}>
+            {/* Primary lockup — white on void */}
+            <div
+              style={{
+                background: '#0A0A0E',
+                borderRadius: 'var(--radius-xl)',
+                padding: '3rem 4rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: '100%',
+                maxWidth: '640px',
+                border: '1px solid var(--border)',
+              }}
+            >
+              <img
+                src="/brand/e1-logo-orbitwhite.png"
+                alt="Echo 1 Labs — white wordmark on void"
+                style={{ width: '280px', height: 'auto' }}
+              />
+            </div>
+            {/* Two-up: deep blue + void black */}
+            <div className="grid-2" style={{ width: '100%', maxWidth: '640px', gap: '1rem' }}>
+              <div
+                style={{
+                  background: '#274578',
+                  borderRadius: 'var(--radius-lg)',
+                  padding: '2rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                }}
+              >
+                <img
+                  src="/brand/e1-logo-deepblue.png"
+                  alt="Echo 1 Labs — deep blue lockup"
+                  style={{ width: '160px', height: 'auto' }}
+                />
+              </div>
+              <div
+                style={{
+                  background: '#111118',
+                  borderRadius: 'var(--radius-lg)',
+                  padding: '2rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  border: '1px solid var(--border)',
+                }}
+              >
+                <img
+                  src="/brand/e1-logo-voidblack.png"
+                  alt="Echo 1 Labs — void black lockup"
+                  style={{ width: '160px', height: 'auto' }}
+                />
+              </div>
+            </div>
+            {/* E¹ icon reference */}
+            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+              <img src="/echo1-favicon.svg" alt="E¹ favicon mark" style={{ width: '40px', height: '40px' }} />
+              <img src="/echo1-e1-mark.svg" alt="E¹ mark" style={{ width: '40px', height: '40px' }} />
+            </div>
+          </div>
+        </div>
+      </section>
+
       <CTA
         eyebrow="Break free from business gravity."
         headline="Ready to build your lifecycle?"

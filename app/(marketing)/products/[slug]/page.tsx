@@ -6,6 +6,7 @@ import { getProductSEO } from '@/lib/product-seo';
 import { productPageMetadata, pageMetadata, serviceSchema, breadcrumbSchema, faqSchema } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import CTA from '@/components/CTA/CTA';
+import InViewStagger from '@/components/Reveal/InViewStagger';
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
@@ -111,14 +112,14 @@ export default async function ProductPage({
       {/* ── §2 METRICS BAND ──────────────────────────────── */}
       <section className="section--sm">
         <div className="container">
-          <div className="metrics">
+          <InViewStagger className="metrics">
             {product.metrics.map((m) => (
               <div className="metric" key={m.label}>
                 <div className="metric__value">{m.value}</div>
                 <div className="metric__label">{m.label}</div>
               </div>
             ))}
-          </div>
+          </InViewStagger>
         </div>
       </section>
 
@@ -163,14 +164,14 @@ export default async function ProductPage({
               Built into {product.name}.
             </h2>
           </div>
-          <div className="capability-grid">
+          <InViewStagger className="capability-grid">
             {product.capabilities.map((c) => (
               <div className="card" key={c.name}>
                 <div className="card__title">{c.name}</div>
                 <p className="card__desc">{c.desc}</p>
               </div>
             ))}
-          </div>
+          </InViewStagger>
         </div>
       </section>
 
