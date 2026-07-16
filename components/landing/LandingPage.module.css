@@ -1,0 +1,295 @@
+/* ── LP page-level container ─────────────────────────────── */
+.lp {
+  min-height: 100vh;
+}
+
+/* ── Hero ────────────────────────────────────────────────── */
+.hero {
+  padding-block: clamp(4rem, 10vw, 7rem);
+}
+
+.heroInner {
+  max-width: 760px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.heroH1 {
+  color: var(--on-dark-1);
+}
+
+.heroSub {
+  max-width: 62ch;
+}
+
+.heroCtas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+}
+
+/* ── Metrics band ────────────────────────────────────────── */
+.metricsBand {
+  background: var(--void-card);
+}
+
+.metricsInner {
+  max-width: 880px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+  padding-block: 0;
+}
+
+/* ── Story ───────────────────────────────────────────────── */
+.storySection { }
+
+.storyInner {
+  max-width: 760px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+}
+
+.storyH2 {
+  margin-bottom: 1.75rem;
+}
+
+.storyBody {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* ── Offer stack ─────────────────────────────────────────── */
+.offerSection { }
+
+.offerInner {
+  max-width: 880px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+}
+
+.offerH2 {
+  margin-bottom: 2rem;
+}
+
+.offerGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.offerCard {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  padding: 1.6rem;
+}
+
+.offerIcon {
+  font-size: 1.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.offerLabel {
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--solar);
+  margin-bottom: 0.6rem;
+}
+
+.offerDesc {
+  font-size: 0.9375rem;
+  color: var(--on-dark-2);
+  line-height: 1.65;
+}
+
+/* ── Capabilities ────────────────────────────────────────── */
+.capSection { }
+
+.capInner {
+  max-width: 880px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+}
+
+.capH2 {
+  max-width: 52ch;
+  margin-inline: auto;
+}
+
+.capIcon {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ── Comparison ──────────────────────────────────────────── */
+.compSection { }
+
+.compInner {
+  max-width: 880px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+}
+
+.compH2 {
+  max-width: 44ch;
+}
+
+.compTable {
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.compRow {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.5fr;
+  gap: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.compRow:last-child {
+  border-bottom: none;
+}
+
+.compHeader {
+  background: var(--void);
+}
+
+.compHeader > div {
+  padding: 0.75rem 1.25rem;
+  font-family: var(--font-display);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--on-dark-2);
+}
+
+.compFeature {
+  padding: 1rem 1.25rem;
+  background: #0d0d14;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--on-dark-1);
+  display: flex;
+  align-items: center;
+}
+
+.compThem {
+  padding: 1rem 1.25rem;
+  background: #0a0a0f;
+  font-size: 0.875rem;
+  color: var(--on-dark-3);
+  display: flex;
+  align-items: center;
+  border-left: 1px solid rgba(255,255,255,0.04);
+}
+
+.compUs {
+  padding: 1rem 1.25rem;
+  background: rgba(255,117,21,0.04);
+  font-size: 0.875rem;
+  color: var(--on-dark-2);
+  display: flex;
+  align-items: center;
+  border-left: 1px solid rgba(255,117,21,0.15);
+}
+
+/* ── FAQ ─────────────────────────────────────────────────── */
+.faqSection { }
+
+.faqInner {
+  max-width: 760px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+}
+
+.faqH2 {
+  max-width: 44ch;
+}
+
+/* ── CTA band ────────────────────────────────────────────── */
+.ctaBand {
+  text-align: center;
+}
+
+.ctaBandInner {
+  max-width: 680px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.ctaBandH2 {
+  color: var(--on-dark-1);
+  max-width: 44ch;
+}
+
+.ctaBandSub {
+  max-width: 52ch;
+}
+
+.ctaBandActions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .offerGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .compRow {
+    grid-template-columns: 1fr;
+  }
+
+  .compHeader {
+    display: none;
+  }
+
+  .compFeature {
+    font-size: 0.8rem;
+    padding: 0.75rem 1rem;
+    background: var(--void);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .compThem,
+  .compUs {
+    padding: 0.6rem 1rem;
+    border-left: none;
+    font-size: 0.8rem;
+  }
+
+  .compThem::before {
+    content: 'The old way: ';
+    color: var(--on-dark-3);
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-right: 0.4rem;
+  }
+
+  .compUs::before {
+    content: 'Echo 1 Labs: ';
+    color: var(--solar);
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-right: 0.4rem;
+  }
+}

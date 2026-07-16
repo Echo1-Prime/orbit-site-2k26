@@ -1,0 +1,77 @@
+/* ── LP slim chrome ───────────────────────────────────────── */
+
+.lpMain {
+  padding-top: 0 !important;
+}
+
+.lpHeader {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #0A0A0E;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+
+.lpHeaderInner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 880px;
+  margin-inline: auto;
+  padding: 0.875rem clamp(1.25rem, 4vw, 2rem);
+}
+
+.lpLogo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.lpLogoText {
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--on-dark-1);
+  letter-spacing: -0.01em;
+}
+
+.lpHeaderCta {
+  white-space: nowrap;
+}
+
+.lpFooter {
+  background: var(--void);
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 1.5rem 0;
+}
+
+.lpFooterInner {
+  max-width: 880px;
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 4vw, 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.lpFooterLegal {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+}
+
+.lpFooterLinks {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.lpFooterLinks a {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+  transition: color 0.18s;
+}
+
+.lpFooterLinks a:hover {
+  color: rgba(255,255,255,0.75);
+}

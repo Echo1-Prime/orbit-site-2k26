@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, DM_Sans } from 'next/font/google';
 import './globals.css';
-import Header from '@/components/Header/Header';
-import Footer from '@/components/Footer/Footer';
 import ConciergeMount from '@/components/Concierge/ConciergeMount';
 import JsonLd from '@/components/JsonLd';
 import { organizationSchema, websiteSchema } from '@/lib/seo';
@@ -55,10 +53,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
       <body>
-        <a href="#main" className="skip-link">Skip to content</a>
-        <Header />
-        <main id="main">{children}</main>
-        <Footer />
+        {children}
         <ConciergeMount />
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
