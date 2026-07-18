@@ -1,51 +1,32 @@
-/* Orbit Agent core — canonical animation (orbit-design-system/animations.css).
-   transform-box:fill-box + transform-origin:center; oa-spin / oa-spin-reverse /
-   oa-pulse. Ring periods state-driven (design-system.md §5–6.1). */
+/* Animation for the canonical echo1-mark.svg geometry.
+   Rings rotate around the mark center (transform-box:fill-box + transform-origin:center);
+   inner ember triangle pulses. State scales the ring period. */
 .atom {
   display: block;
   overflow: visible;
-  --r1: 14s;  /* ion cyan, clockwise */
-  --r2: 22s;  /* ember, reversed */
-  --r3: 30s;  /* pale dashed, clockwise */
+  --r1: 14s;
+  --r2: 22s;
+  --r3: 30s;
 }
 
-@keyframes atom-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-@keyframes atom-spin-rev {
-  from { transform: rotate(360deg); }
-  to   { transform: rotate(0deg); }
-}
-@keyframes atom-pulse {
-  0%, 100% { opacity: 0.55; transform: scale(0.96); }
-  50%       { opacity: 1.00; transform: scale(1.06); }
-}
+@keyframes atom-spin      { from { transform: rotate(0deg); }   to { transform: rotate(360deg); } }
+@keyframes atom-spin-rev  { from { transform: rotate(360deg); } to { transform: rotate(0deg); } }
+@keyframes atom-pulse     { 0%, 100% { opacity: 0.55; transform: scale(0.96); } 50% { opacity: 1; transform: scale(1.06); } }
 
-.ring1, .ring2, .ring3 { transform-box: fill-box; transform-origin: center center; }
-.ring1 { animation: atom-spin var(--r1) linear infinite; }
-.ring2 { animation: atom-spin-rev var(--r2) linear infinite; }
-.ring3 { animation: atom-spin var(--r3) linear infinite; }
+.oaR1, .oaR2, .oaR3 { transform-box: fill-box; transform-origin: center; }
+.oaR1 { animation: atom-spin var(--r1) linear infinite; }
+.oaR2 { animation: atom-spin-rev var(--r2) linear infinite; }
+.oaR3 { animation: atom-spin var(--r3) linear infinite; }
+.oaCorePulse { transform-box: fill-box; transform-origin: center; animation: atom-pulse 4.5s ease-in-out infinite; }
 
-.corePulse {
-  transform-box: fill-box;
-  transform-origin: center center;
-  animation: atom-pulse 4.5s ease-in-out infinite;
-}
-
-.glowIce   { filter: drop-shadow(0 0 3px rgba(143, 208, 242, 0.9)); }
-.glowEmber { filter: drop-shadow(0 0 3px rgba(224, 123, 39, 0.85)); }
-
-/* state → ring period (idle base 14/22/30; faster as the agent engages) */
 .atom[data-state='listening'] { --r1: 8s; --r2: 13s; --r3: 18s; }
 .atom[data-state='thinking']  { --r1: 5s; --r2: 8s;  --r3: 11s; }
 .atom[data-state='speaking']  { --r1: 6s; --r2: 10s; --r3: 14s; }
 .atom[data-state='reveal']    { --r1: 2s; --r2: 3s;  --r3: 4s; }
 
-/* reduced motion — freeze at static tilts; core pulse holds at 60% */
-.reduced .ring1, .reduced .ring2, .reduced .ring3, .reduced .corePulse { animation: none; }
-.reduced .corePulse { opacity: 0.6; }
+.reduced .oaR1, .reduced .oaR2, .reduced .oaR3, .reduced .oaCorePulse { animation: none; }
+.reduced .oaCorePulse { opacity: 0.6; }
 @media (prefers-reduced-motion: reduce) {
-  .ring1, .ring2, .ring3, .corePulse { animation: none; }
-  .corePulse { opacity: 0.6; }
+  .oaR1, .oaR2, .oaR3, .oaCorePulse { animation: none; }
+  .oaCorePulse { opacity: 0.6; }
 }

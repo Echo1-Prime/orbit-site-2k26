@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/agent-orbit-favicon.svg', type: 'image/svg+xml' },
-      { url: '/agent-orbit-favicon.ico', sizes: '16x16 32x32 48x48' },
+      { url: '/agent-orbit-favicon.png', type: 'image/png', sizes: '64x64' },
     ],
-    shortcut: '/agent-orbit-favicon.ico',
+    shortcut: '/agent-orbit-favicon.png',
     apple: '/agent-orbit-apple-touch-icon.png',
   },
   openGraph: {

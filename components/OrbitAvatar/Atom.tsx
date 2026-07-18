@@ -4,11 +4,10 @@ import { AVATAR_SIZE_PX } from './types';
 import styles from './Atom.module.css';
 
 /**
- * Orbit Agent core — built to the design system spec (orbit-design-system,
- * design-system.md §5–6.1 + animations.css). Reverse-triangle core (3 nested
- * downward polygons: outer cyan glow, mid ring, inner ember pulse) inside THREE
- * counter-rotating rings — ion-cyan 14s CW, ember 22s CCW (reversed), pale steel
- * dashed 30s CW — each carrying an electron dot. State drives the rotation period.
+ * The canonical Echo 1 / Orbit Agent mark, animated — verbatim geometry from the
+ * official vector echo1-mark.svg (handoff 2026-07-17). Sphere glow + three rings
+ * (cyan horizontal, ember 52°, dashed cyan 108°) + reverse-triangle core (3 nested
+ * downward polygons). Rings animate; inner ember triangle pulses; state scales period.
  */
 export default function Atom({
   state = 'idle',
@@ -19,12 +18,11 @@ export default function Atom({
   'aria-label': ariaLabel = 'Orbit',
 }: AvatarProps) {
   const px = AVATAR_SIZE_PX[size];
-
   return (
     <svg
       width={px}
       height={px}
-      viewBox="0 0 100 100"
+      viewBox="2 30 456 370"
       xmlns="http://www.w3.org/2000/svg"
       aria-label={ariaLabel}
       role="img"
@@ -32,42 +30,52 @@ export default function Atom({
       className={[styles.atom, reduced ? styles.reduced : '', className].filter(Boolean).join(' ')}
       style={{ '--level': level } as React.CSSProperties}
     >
-      {/* faint luminous center bloom */}
-      <circle cx="50" cy="50" r="12" fill="rgba(143,208,242,0.08)" />
-      <circle cx="50" cy="50" r="6.5" fill="rgba(201,234,251,0.18)" />
+      <defs>
+        <radialGradient id="oaSph" cx="50%" cy="46%" r="50%">
+          <stop offset="0%" stopColor="#1E4060" stopOpacity="0.92" />
+          <stop offset="60%" stopColor="#0D1E32" stopOpacity="0.70" />
+          <stop offset="100%" stopColor="#0B1120" stopOpacity="0" />
+        </radialGradient>
+        <radialGradient id="oaGlw" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#8FD0F2" stopOpacity="0.22" />
+          <stop offset="100%" stopColor="#0B1120" stopOpacity="0" />
+        </radialGradient>
+        <filter id="oaTglow" x="-30%" y="-30%" width="160%" height="160%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="7" result="blur" />
+          <feFlood floodColor="#8FD0F2" floodOpacity="0.95" result="col" />
+          <feComposite in="col" in2="blur" operator="in" result="shadow" />
+          <feMerge>
+            <feMergeNode in="shadow" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+      </defs>
 
-      {/* ── Ring 1 — ion cyan, 14s clockwise ─────────────────── */}
-      <g className={styles.ring1}>
-        <circle cx="50" cy="50" r="42" fill="none" />
-        <g transform="rotate(20 50 50)">
-          <ellipse cx="50" cy="50" rx="40" ry="13" fill="none" stroke="#8FD0F2" strokeWidth="1.1" strokeOpacity="0.9" />
-          <circle cx="90" cy="50" r="2.4" fill="#C9EAFB" className={styles.glowIce} />
+      <circle cx="230" cy="200" r="148" fill="url(#oaSph)" />
+      <circle cx="230" cy="200" r="110" fill="url(#oaGlw)" />
+      <circle cx="230" cy="200" r="192" fill="none" stroke="rgba(143,208,242,0.08)" strokeWidth="1" strokeDasharray="2 6" />
+
+      <g className={styles.oaR1}>
+        <ellipse cx="230" cy="200" rx="228" ry="66" fill="none" stroke="#8FD0F2" strokeWidth="2.2" />
+        <circle cx="458" cy="200" r="6.5" fill="#C9EAFB" style={{ filter: 'drop-shadow(0 0 10px #8FD0F2)' }} />
+        <circle cx="2" cy="200" r="4.5" fill="#C9EAFB" opacity="0.75" />
+      </g>
+      <g className={styles.oaR2}>
+        <g transform="rotate(52 230 200)">
+          <ellipse cx="230" cy="200" rx="228" ry="66" fill="none" stroke="#E07B27" strokeWidth="2.2" />
+          <circle cx="458" cy="200" r="7" fill="#F2A23F" style={{ filter: 'drop-shadow(0 0 12px #E07B27)' }} />
+          <circle cx="2" cy="200" r="5" fill="#F2A23F" opacity="0.85" />
+        </g>
+      </g>
+      <g className={styles.oaR3}>
+        <g transform="rotate(108 230 200)">
+          <ellipse cx="230" cy="200" rx="228" ry="66" fill="none" stroke="rgba(143,208,242,0.3)" strokeWidth="1.4" strokeDasharray="6 9" />
         </g>
       </g>
 
-      {/* ── Ring 2 — ember, 22s counter-rotating ─────────────── */}
-      <g className={styles.ring2}>
-        <circle cx="50" cy="50" r="42" fill="none" />
-        <g transform="rotate(-46 50 50)">
-          <ellipse cx="50" cy="50" rx="40" ry="13" fill="none" stroke="#E07B27" strokeWidth="1.1" strokeOpacity="0.85" />
-          <circle cx="90" cy="50" r="2.6" fill="#F2A23F" className={styles.glowEmber} />
-        </g>
-      </g>
-
-      {/* ── Ring 3 — pale steel dashed, 30s clockwise ────────── */}
-      <g className={styles.ring3}>
-        <circle cx="50" cy="50" r="42" fill="none" />
-        <g transform="rotate(76 50 50)">
-          <ellipse cx="50" cy="50" rx="40" ry="13" fill="none" stroke="#6C87A6" strokeWidth="0.9" strokeOpacity="0.6" strokeDasharray="3 4" />
-          <circle cx="90" cy="50" r="2" fill="#8FD0F2" className={styles.glowIce} />
-        </g>
-      </g>
-
-      {/* ── Reverse-triangle core — 3 nested downward polygons ── */}
-      <polygon points="39,42.5 61,42.5 50,62" fill="none" stroke="rgba(143,208,242,0.35)" strokeWidth="3.2" strokeLinejoin="round" />
-      <polygon points="41,44 59,44 50,60" fill="rgba(10,17,30,0.55)" stroke="#EAF6FF" strokeWidth="1.4" strokeLinejoin="round" />
-      <polygon points="43.5,45.4 56.5,45.4 50,57.6" fill="none" stroke="#8FD0F2" strokeWidth="1" strokeLinejoin="round" />
-      <polygon className={styles.corePulse} points="46,47.2 54,47.2 50,55" fill="#E07B27" stroke="#F2A23F" strokeWidth="0.4" strokeLinejoin="round" />
+      <polygon points="150,175 310,175 230,290" fill="#0B1120" stroke="#8FD0F2" strokeWidth="3" filter="url(#oaTglow)" />
+      <polygon points="170,189 290,189 230,272" fill="#0B1120" stroke="rgba(143,208,242,0.7)" strokeWidth="2" />
+      <polygon className={styles.oaCorePulse} points="190,203 270,203 230,254" fill="rgba(224,123,39,0.45)" stroke="#E07B27" strokeWidth="2" />
     </svg>
   );
 }
