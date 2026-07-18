@@ -9,9 +9,10 @@ export default function Footer() {
       <div className={styles.inner}>
         <div className={styles.brand}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/echo1-e1-mark.svg" className={styles.mark} alt="" width={22} height={22} aria-hidden="true" />
+          <img src="/agent-orbit-mark.svg" className={styles.mark} alt="" width={24} height={24} aria-hidden="true" />
           <span className={styles.wordmark}>
-            <span className={styles.echo1}>ECHO-1</span>
+            <span className={styles.echo}>ECHO</span>
+            <span className={styles.one}>1</span>
             <span className={styles.labs}>LABS</span>
           </span>
         </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, DM_Sans } from 'next/font/google';
+import { Space_Grotesk, DM_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import ConciergeMount from '@/components/Concierge/ConciergeMount';
 import JsonLd from '@/components/JsonLd';
@@ -15,8 +15,15 @@ const spaceGrotesk = Space_Grotesk({
 
 const dmSans = DM_Sans({
   subsets: ['latin'],
-  weight: ['400', '500', '600'],
+  weight: ['400', '500', '600', '700'],
   variable: '--font-dm-sans',
+  display: 'swap',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-jetbrains-mono',
   display: 'swap',
 });
 
@@ -30,9 +37,12 @@ export const metadata: Metadata = {
   applicationName: SITE_NAME,
   alternates: { canonical: '/' },
   icons: {
-    icon: '/echo1-favicon.svg',
-    shortcut: '/echo1-favicon.svg',
-    apple: '/echo1-favicon.svg',
+    icon: [
+      { url: '/agent-orbit-favicon.svg', type: 'image/svg+xml' },
+      { url: '/agent-orbit-favicon.ico', sizes: '16x16 32x32 48x48' },
+    ],
+    shortcut: '/agent-orbit-favicon.ico',
+    apple: '/agent-orbit-apple-touch-icon.png',
   },
   openGraph: {
     type: 'website',
@@ -51,7 +61,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
       <body>
         {children}
         <ConciergeMount />

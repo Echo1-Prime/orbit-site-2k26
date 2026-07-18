@@ -26,78 +26,83 @@ export default function Atom({
         .filter(Boolean).join(' ')}
       style={{ '--level': level } as React.CSSProperties}
     >
-      {/* ── ambient outer blue halo ──────────────────────── */}
+      {/* ── ambient outer cyan halo ──────────────────────── */}
       <circle cx="50" cy="50" r="48" fill="none"
-        stroke="rgba(74,120,200,0.07)" strokeWidth="22" />
+        stroke="rgba(143,208,242,0.06)" strokeWidth="22" />
 
       {/* ── static inner concentric depth rings ─────────── */}
       <circle cx="50" cy="50" r="17" fill="none"
-        stroke="rgba(100,160,230,0.11)" strokeWidth="0.7" />
+        stroke="rgba(143,208,242,0.11)" strokeWidth="0.7" />
       <circle cx="50" cy="50" r="11" fill="none"
-        stroke="rgba(100,160,230,0.09)" strokeWidth="0.6" />
+        stroke="rgba(143,208,242,0.09)" strokeWidth="0.6" />
 
-      {/* ── RING 1 — medium blue, plane 0° ───────────────── */}
+      {/* ── RING 1 — ion cyan, plane 0° ───────────────── */}
       <g className={styles.ring1}>
         <ellipse cx="50" cy="50" rx="43" ry="8"
-          stroke="#5A88C8" strokeWidth="1.0" fill="none" strokeOpacity="0.88" />
+          stroke="#8FD0F2" strokeWidth="1.0" fill="none" strokeOpacity="0.90" />
         <circle cx="93" cy="50" r="2.2" fill="white" className={styles.eBlu} />
       </g>
 
-      {/* ── RING 2 — deeper blue, plane 36° ─────────────── */}
+      {/* ── RING 2 — slate, plane 36° ─────────────── */}
       <g className={styles.ring2}>
         <ellipse cx="50" cy="50" rx="43" ry="11"
-          stroke="#4A72B0" strokeWidth="0.9" fill="none" strokeOpacity="0.80" />
-        <circle cx="93" cy="50" r="2.1" fill="white" className={styles.eBlu} />
+          stroke="#6C87A6" strokeWidth="0.9" fill="none" strokeOpacity="0.80" />
+        <circle cx="93" cy="50" r="2.1" fill="#C9EAFB" className={styles.eBlu} />
       </g>
 
-      {/* ── RING 3 — Solar ORANGE, plane 72° ────────────── */}
+      {/* ── RING 3 — ember orange, plane 72° ────────────── */}
       <g className={styles.ring3}>
         <ellipse cx="50" cy="50" rx="43" ry="9"
-          stroke="#FF7515" strokeWidth="1.2" fill="none" strokeOpacity="0.82" />
-        <circle cx="93" cy="50" r="2.5" fill="#FFD090" className={styles.eOrg} />
+          stroke="#E07B27" strokeWidth="1.2" fill="none" strokeOpacity="0.85" />
+        <circle cx="93" cy="50" r="2.5" fill="#F2A23F" className={styles.eOrg} />
       </g>
 
-      {/* ── RING 4 — Patronus blue, plane 108° ──────────── */}
+      {/* ── RING 4 — ice glow, plane 108° ──────────── */}
       <g className={styles.ring4}>
         <ellipse cx="50" cy="50" rx="43" ry="13"
-          stroke="#7BAFD4" strokeWidth="0.9" fill="none" strokeOpacity="0.75" />
+          stroke="#C9EAFB" strokeWidth="0.9" fill="none" strokeOpacity="0.75" />
         <circle cx="93" cy="50" r="1.9" fill="white" className={styles.eBlu} />
       </g>
 
-      {/* ── RING 5 — navy blue, plane 144° ──────────────── */}
+      {/* ── RING 5 — steel blue, plane 144° ──────────────── */}
       <g className={styles.ring5}>
         <ellipse cx="50" cy="50" rx="43" ry="7"
-          stroke="#3A60A0" strokeWidth="0.9" fill="none" strokeOpacity="0.78" />
+          stroke="#2E4E74" strokeWidth="0.9" fill="none" strokeOpacity="0.80" />
         <circle cx="93" cy="50" r="1.9" fill="white" className={styles.eBlu} />
       </g>
 
-      {/* ── CENTER GLOW — white/blue radial bloom ────────── */}
-      <circle cx="50" cy="50" r="14" fill="rgba(140,195,255,0.09)" />
-      <circle cx="50" cy="50" r="9.5" fill="rgba(170,215,255,0.15)" />
-      <circle cx="50" cy="50" r="6"   fill="rgba(210,232,255,0.28)" />
-      <circle cx="50" cy="50" r="3.5" fill="rgba(238,248,255,0.62)" />
+      {/* ── CENTER GLOW — ice/cyan radial bloom ────────── */}
+      <circle cx="50" cy="50" r="14" fill="rgba(143,208,242,0.09)" />
+      <circle cx="50" cy="50" r="9.5" fill="rgba(201,234,251,0.15)" />
+      <circle cx="50" cy="50" r="6"   fill="rgba(234,246,255,0.28)" />
+      <circle cx="50" cy="50" r="3.5" fill="rgba(240,250,255,0.62)" />
       <circle cx="50" cy="50" r="1.8" fill="rgba(255,255,255,0.95)" />
 
       {/* ── dark veil behind triangle for contrast ────────── */}
-      <circle cx="50" cy="52" r="9.5" fill="rgba(8,14,38,0.38)" />
+      <circle cx="50" cy="52" r="9.5" fill="rgba(10,17,30,0.42)" />
 
-      {/* ── INVERTED TRIANGLE ▽ — Patronus blue neon ──────── */}
+      {/* ── INVERTED TRIANGLE ▽ — ion-cyan neon + ember core ── */}
       <g className={styles.triangle}>
         {/* outer soft glow */}
         <polygon points="41,44.5 59,44.5 50,60"
           fill="none"
-          stroke="rgba(123,175,212,0.22)"
+          stroke="rgba(143,208,242,0.22)"
           strokeWidth="4"
           strokeLinejoin="round" />
         {/* main neon edge */}
         <polygon points="42,45.4 58,45.4 50,59.2"
-          fill="rgba(60,130,210,0.20)"
-          stroke="#9DCCE8"
+          fill="rgba(143,208,242,0.12)"
+          stroke="#8FD0F2"
           strokeWidth="1.7"
+          strokeLinejoin="round" />
+        {/* ember inner triangle — logo signature */}
+        <polygon points="45.8,47.9 54.2,47.9 50,55.4"
+          fill="#E07B27" fillOpacity="0.92"
+          stroke="#F2A23F" strokeWidth="0.5"
           strokeLinejoin="round" />
         {/* top-edge highlight */}
         <line x1="43.5" y1="46.2" x2="56.5" y2="46.2"
-          stroke="rgba(210,240,255,0.50)" strokeWidth="0.8" />
+          stroke="rgba(201,234,251,0.55)" strokeWidth="0.8" />
       </g>
     </svg>
   );
