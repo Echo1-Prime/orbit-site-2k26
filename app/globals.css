@@ -1,73 +1,67 @@
 /* ============================================================================
-   ECHO 1 LABS — AGENT ORBIT design system (dark cyan/navy — public site)
-   CANONICAL 2026-07-18 — Decision recdncQ7Nc8psCIId; Josh authorized public cyan.
-   Supersedes the 2K26 kit (Void Black / Solar Orange, LIGHT default) AND the old
-   "no cyan" rule. The 10 Agent Orbit hues are the only UI palette; named
-   exceptions (finance green, error red, mark-only purple/sage) live below.
-   Aesthetic: panel-navy cards on a void-navy page, ion-cyan hairlines + interactive,
-   ember-orange energy accents (eyebrows/badges/metrics). Flat + hairline borders.
+   ECHO 1 LABS — public site global layer.
+   The canonical Orbit Agent Design System is vendored in ./orbit-ds/
+   (tokens → animations → components). This file bridges the DS tokens onto the
+   site's semantic aliases (--bg/--text/--accent…) and hosts layout utilities.
+   Single source of truth for palette / motion / components = orbit-ds/.  2026-07-18
    ============================================================================ */
+@import './orbit-ds/tokens.css';
+@import './orbit-ds/animations.css';
+@import './orbit-ds/components.css';
 
 :root {
-  /* ---- Agent Orbit palette (the only 10 UI hues) ---- */
-  --oa-void-navy: #0A111E;     /* page canvas */
-  --oa-panel-navy: #101B2E;    /* cards, surfaces, bands */
-  --oa-raised-steel: #1A2C44;  /* hover / elevated */
-  --oa-steel-blue: #2E4E74;    /* borders/decorative ONLY (never text) */
-  --oa-slate: #6C87A6;         /* secondary text */
-  --oa-ion-cyan: #8FD0F2;      /* primary interactive, links, ring strokes */
-  --oa-ice-glow: #C9EAFB;      /* highlights, hover text */
-  --oa-core-white: #EAF6FF;    /* primary text */
-  --oa-ember-orange: #E07B27;  /* energy accent — eyebrows, badges, metrics */
-  --oa-amber: #F2A23F;         /* warning */
+  /* Fonts via next/font vars — override the DS literals so .oa-* classes self-host */
+  --oa-font-display: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+  --oa-font-body:    var(--font-dm-sans), 'DM Sans', sans-serif;
+  --oa-font-mono:    var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, monospace;
 
-  /* ---- Named exceptions (outside the 10) ---- */
-  --red: #D1312D;          /* error */
-  --success: #2FA36B;      /* finance / data-viz gain (green kept as exception) */
-  --purple: #655596;       /* MARK ONLY — never UI chrome */
-  --sage: #72A574;         /* MARK ONLY — never UI chrome */
+  /* Mark-only exceptions (outside the DS 10) */
+  --purple: #655596;   /* MARK ONLY — never UI chrome */
+  --sage:   #72A574;   /* MARK ONLY — never UI chrome */
 
-  /* ---- Legacy aliases repointed to Agent Orbit (residual refs stay on-brand) ---- */
-  --void: var(--oa-void-navy);
-  --void-card: var(--oa-panel-navy);
-  --white: #FFFFFF;
-  --solar: var(--oa-ember-orange);   /* Solar retired → ember */
-  --solar-deep: var(--oa-ember-orange);
-  --yellow: #FFFAA0;
-  --blue: var(--oa-ion-cyan);        /* links → ion cyan (was #274578) */
-  --violet: var(--oa-ion-cyan);      /* violet retired → cyan */
-  --violet-deep: var(--oa-ion-cyan);
-  --warning: var(--oa-amber);
-  --raised: var(--oa-raised-steel);
+  /* ---- Site semantic aliases → Orbit Agent Design System tokens ---- */
+  --bg:         var(--oa-void);
+  --bg-muted:   var(--oa-panel);
+  --text:       var(--oa-white);
+  --text-2:     var(--oa-slate);
+  --text-3:     var(--oa-text-muted);       /* #4A6280 */
+  --border:     var(--oa-border-subtle);    /* rgba(ion,0.12) */
+  --accent:     var(--oa-ember);            /* energy accent — eyebrows/badges */
+  --accent-alt: var(--oa-ion);
+  --link:       var(--oa-ion);
+  --info:       var(--oa-ion);
+  --focus:      var(--oa-ion);
+  --raised:     var(--oa-raised);
+  --red:        var(--oa-state-error);      /* #D1312D */
+  --success:    var(--oa-state-success);    /* #2FA36B */
+  --warning:    var(--oa-amber);
 
-  /* ---- Semantic (single DARK Agent Orbit theme) ---- */
-  --bg: var(--oa-void-navy);
-  --bg-muted: var(--oa-panel-navy);
-  --text: var(--oa-core-white);
-  --text-2: var(--oa-slate);
-  --text-3: #52708F;                  /* dimmer slate — tertiary/decorative */
-  --border: rgba(143,208,242,0.14);   /* ion-cyan hairline */
-  --accent: var(--oa-ember-orange);   /* eyebrows / labels / badges / energy */
-  --accent-alt: var(--oa-ion-cyan);   /* secondary accent */
-  --link: var(--oa-ion-cyan);         /* interactive */
-  --info: var(--oa-ion-cyan);
-  --focus: var(--oa-ion-cyan);
+  /* cards / panels */
+  --card-bg:     var(--oa-panel);
+  --card-border: var(--oa-border-subtle);
+  --on-dark-1:   var(--oa-white);
+  --on-dark-2:   rgba(234, 246, 255, 0.70);
+  --on-dark-3:   rgba(234, 246, 255, 0.42);
 
-  /* ---- Cards / panels (panel-navy on void-navy + cyan hairline = HUD) ---- */
-  --card-bg: var(--oa-panel-navy);
-  --card-border: rgba(143,208,242,0.14);
-  --on-dark-1: var(--oa-core-white);
-  --on-dark-2: rgba(234,246,255,0.70);
-  --on-dark-3: rgba(234,246,255,0.42);
+  /* legacy aliases (residual consumers) → DS */
+  --void:        var(--oa-void);
+  --void-card:   var(--oa-panel);
+  --white:       #FFFFFF;
+  --solar:       var(--oa-ember);
+  --solar-deep:  var(--oa-ember);
+  --blue:        var(--oa-ion);
+  --violet:      var(--oa-ion);
+  --violet-deep: var(--oa-ion);
+  --yellow:      #FFFAA0;
 
   /* ---- Type ---- */
   --font-display: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
-  --font-body: var(--font-dm-sans), 'DM Sans', sans-serif;
-  --font-mono: var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, monospace;
+  --font-body:    var(--font-dm-sans), 'DM Sans', sans-serif;
+  --font-mono:    var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, monospace;
   --tracking-display: -0.03em;
-  --tracking-widest: 0.18em;   /* eyebrows / all-caps labels */
+  --tracking-widest: 0.18em;
 
-  /* ---- Shape ---- */
+  /* ---- Shape (site scale) ---- */
   --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 12px;

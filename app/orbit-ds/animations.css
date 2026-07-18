@@ -1,0 +1,139 @@
+/* ============================================================================
+   ORBIT AGENT DESIGN SYSTEM — ANIMATIONS
+   Echo 1 Labs · v1.0 · 2026-07-17
+   All animations: CSS transform-only (rotate / scale / opacity).
+   GPU-composited — no layout thrash. Every animation has a
+   prefers-reduced-motion static fallback via tokens.css.
+   ============================================================================ */
+
+/* ── Core keyframes ──────────────────────────────────────────────────────── */
+
+@keyframes oa-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes oa-spin-reverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
+}
+
+@keyframes oa-pulse {
+  0%, 100% { opacity: 0.55; transform: scale(0.96); }
+  50%       { opacity: 1.00; transform: scale(1.06); }
+}
+
+@keyframes oa-breathe {
+  0%, 100% { opacity: 0.05; }
+  50%       { opacity: 0.11; }
+}
+
+@keyframes oa-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.2; }
+}
+
+@keyframes oa-dash {
+  to { stroke-dashoffset: -120; }
+}
+
+@keyframes oa-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes oa-glow-pulse {
+  0%, 100% { box-shadow: 0 0 8px var(--oa-glow-ion); }
+  50%       { box-shadow: 0 0 22px var(--oa-glow-ion), 0 0 40px var(--oa-glow-ion); }
+}
+
+@keyframes oa-streaming-bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
+}
+
+/* ── Utility classes ─────────────────────────────────────────────────────── */
+
+/* Ambient background ring — 9% opacity, 120s rotation */
+.oa-bg-ring {
+  animation:
+    oa-spin     var(--oa-ring-idle) linear infinite,
+    oa-breathe  9s ease-in-out infinite;
+  opacity: 0.09;
+  transform-box: fill-box;
+  transform-origin: center center;
+}
+
+/* Active ring (listening state) */
+.oa-ring-listening {
+  animation: oa-spin var(--oa-ring-listening) linear infinite;
+  transform-box: fill-box;
+  transform-origin: center center;
+}
+
+/* Reverse ring */
+.oa-ring-reverse {
+  animation: oa-spin-reverse var(--oa-ring-listening) linear infinite;
+  transform-box: fill-box;
+  transform-origin: center center;
+}
+
+/* Thinking state ring — faster */
+.oa-ring-thinking {
+  animation: oa-spin var(--oa-ring-thinking) linear infinite;
+  transform-box: fill-box;
+  transform-origin: center center;
+}
+
+/* Streaming — fastest */
+.oa-ring-streaming {
+  animation: oa-spin var(--oa-ring-streaming) linear infinite;
+  transform-box: fill-box;
+  transform-origin: center center;
+}
+
+/* Core glow pulse */
+.oa-core-pulse {
+  animation: oa-pulse 4.5s ease-in-out infinite;
+  transform-box: fill-box;
+  transform-origin: center center;
+}
+
+/* Listening blink */
+.oa-blink {
+  animation: oa-blink 2s ease-in-out infinite;
+}
+
+/* Fade in on mount */
+.oa-fade-in {
+  animation: oa-fade-in var(--oa-dur-slow) var(--oa-ease-out) both;
+}
+
+/* Streaming dots */
+.oa-dot-stream { animation: oa-streaming-bounce 0.8s ease-in-out infinite; }
+.oa-dot-stream:nth-child(2) { animation-delay: 150ms; }
+.oa-dot-stream:nth-child(3) { animation-delay: 300ms; }
+
+/* Glow pulse on interactive elements */
+.oa-glow-pulse {
+  animation: oa-glow-pulse 3s ease-in-out infinite;
+}
+
+/* ── Reduced motion overrides ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .oa-bg-ring,
+  .oa-ring-listening,
+  .oa-ring-reverse,
+  .oa-ring-thinking,
+  .oa-ring-streaming,
+  .oa-core-pulse,
+  .oa-blink,
+  .oa-dot-stream,
+  .oa-glow-pulse {
+    animation: none;
+  }
+  .oa-bg-ring   { opacity: 0.08; }
+  .oa-blink     { opacity: 1; }
+  .oa-core-pulse { opacity: 0.6; }
+  .oa-fade-in   { animation: none; opacity: 1; transform: none; }
+}

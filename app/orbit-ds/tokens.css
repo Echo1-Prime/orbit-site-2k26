@@ -1,0 +1,139 @@
+/* ============================================================================
+   ORBIT AGENT DESIGN SYSTEM — TOKENS
+   Echo 1 Labs · prime.echo1labs.com · v1.0 · 2026-07-17
+   Palette extracted from the Orbit Agent source image.
+   No new hues introduced. All values locked.
+   ============================================================================ */
+
+:root {
+
+  /* ── Color — Raw Palette ─────────────────────────────────────────────────── */
+  --oa-void:   #0A111E;   /* page canvas, input wells */
+  --oa-panel:  #101B2E;   /* cards, surfaces, nav */
+  --oa-raised: #1A2C44;   /* hover states, elevated layers */
+  --oa-steel:  #2E4E74;   /* borders, grid lines, secondary rings */
+  --oa-slate:  #6C87A6;   /* secondary text, idle dots */
+  --oa-ion:    #8FD0F2;   /* primary interactive, ring strokes, focus */
+  --oa-ice:    #C9EAFB;   /* highlights, electron dots, hover text */
+  --oa-white:  #EAF6FF;   /* primary text, triangle outer stroke */
+  --oa-ember:  #E07B27;   /* energy accent, override actions, alerts */
+  --oa-amber:  #F2A23F;   /* deltas, warnings, thinking state */
+
+  /* ── Color — Semantic ────────────────────────────────────────────────────── */
+  --oa-bg:            var(--oa-void);
+  --oa-surface:       var(--oa-panel);
+  --oa-surface-2:     var(--oa-raised);
+  --oa-border:        var(--oa-steel);
+  --oa-border-subtle: rgba(143, 208, 242, 0.12);
+  --oa-border-focus:  var(--oa-ion);
+
+  --oa-text-primary:   var(--oa-white);
+  --oa-text-secondary: var(--oa-slate);
+  --oa-text-muted:     #4A6280;
+
+  --oa-accent:         var(--oa-ion);
+  --oa-accent-energy:  var(--oa-ember);
+  --oa-accent-warn:    var(--oa-amber);
+
+  /* State semantic */
+  --oa-state-idle:      var(--oa-slate);
+  --oa-state-listening: var(--oa-ion);
+  --oa-state-thinking:  var(--oa-amber);
+  --oa-state-streaming: var(--oa-ember);
+  --oa-state-success:   #2FA36B;
+  --oa-state-error:     #D1312D;
+
+  /* Glow layers */
+  --oa-glow-ion:   rgba(143, 208, 242, 0.25);
+  --oa-glow-ember: rgba(224, 123, 39, 0.25);
+  --oa-glow-amber: rgba(242, 162, 63, 0.20);
+
+  /* ── Typography ──────────────────────────────────────────────────────────── */
+  --oa-font-display:  'Space Grotesk', sans-serif;
+  --oa-font-body:     'DM Sans', sans-serif;
+  --oa-font-mono:     'JetBrains Mono', monospace;
+
+  --oa-fw-regular:  400;
+  --oa-fw-medium:   500;
+  --oa-fw-semibold: 600;
+  --oa-fw-bold:     700;
+
+  --oa-fs-2xs:  9px;
+  --oa-fs-xs:   10px;
+  --oa-fs-sm:   11px;
+  --oa-fs-base: 13px;
+  --oa-fs-md:   14px;
+  --oa-fs-lg:   16px;
+  --oa-fs-xl:   20px;
+  --oa-fs-2xl:  24px;
+  --oa-fs-3xl:  30px;
+  --oa-fs-4xl:  38px;
+  --oa-fs-5xl:  48px;
+
+  --oa-lh-tight:   1.05;
+  --oa-lh-snug:    1.25;
+  --oa-lh-normal:  1.5;
+  --oa-lh-relaxed: 1.65;
+
+  --oa-tracking-tight:   -0.03em;
+  --oa-tracking-snug:    -0.01em;
+  --oa-tracking-normal:   0;
+  --oa-tracking-wide:     0.08em;
+  --oa-tracking-wider:    0.18em;
+  --oa-tracking-widest:   0.32em;  /* eyebrow / mono labels */
+
+  /* ── Spacing (4px base) ──────────────────────────────────────────────────── */
+  --oa-sp-1:   4px;
+  --oa-sp-2:   8px;
+  --oa-sp-3:  12px;
+  --oa-sp-4:  16px;
+  --oa-sp-5:  20px;
+  --oa-sp-6:  24px;
+  --oa-sp-8:  32px;
+  --oa-sp-10: 40px;
+  --oa-sp-12: 48px;
+  --oa-sp-16: 64px;
+
+  /* ── Radius ──────────────────────────────────────────────────────────────── */
+  --oa-r-sm:   4px;
+  --oa-r-md:   6px;
+  --oa-r-lg:   8px;
+  --oa-r-xl:  12px;
+  --oa-r-2xl: 16px;
+  --oa-r-pill: 999px;
+
+  /* ── Motion ──────────────────────────────────────────────────────────────── */
+  --oa-ease-standard: cubic-bezier(0.2, 0.0, 0.0, 1);
+  --oa-ease-spring:   cubic-bezier(0.34, 1.4, 0.5, 1);
+  --oa-ease-out:      cubic-bezier(0.0, 0.0, 0.2, 1);
+
+  --oa-dur-fast:  140ms;
+  --oa-dur-med:   280ms;
+  --oa-dur-slow:  480ms;
+
+  /* Ring rotation periods — state-driven in JS */
+  --oa-ring-idle:      120s;
+  --oa-ring-listening:  14s;
+  --oa-ring-thinking:    8s;
+  --oa-ring-streaming:   5s;
+
+  /* ── Z-index scale ───────────────────────────────────────────────────────── */
+  --oa-z-bg:      -1;
+  --oa-z-base:     0;
+  --oa-z-raised:  10;
+  --oa-z-overlay: 40;
+  --oa-z-modal:   80;
+  --oa-z-toast:  100;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --oa-dur-fast: 0ms;
+    --oa-dur-med:  0ms;
+    --oa-dur-slow: 0ms;
+    --oa-ring-idle:      0s;
+    --oa-ring-listening: 0s;
+    --oa-ring-thinking:  0s;
+    --oa-ring-streaming: 0s;
+  }
+}
