@@ -7,21 +7,28 @@ export const SITE_DESCRIPTION =
   'Echo 1 Labs is the Business Lifecycle Management company. We get startups and SMBs to escape velocity with process-engineered, agent-based systems and human supervision.';
 
 // Contact — values carried from the existing production Organization schema.
-export const CONTACT_EMAIL = 'josh@mingma.io';
+export const CONTACT_EMAIL = 'hello@echo1labs.com';
 export const CONTACT_PHONE = '+1-610-956-4116';
 export const CONTACT_PHONE_DISPLAY = '(610) 956-4116';
 
 export const NAV_LINKS = [
-  { href: '/ai-readiness', label: 'AI Readiness' },
+  { href: '/how-it-works', label: 'How It Works' },
   { href: '/products', label: 'Products' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/blog', label: 'Blog' },
   { href: '/about', label: 'About' },
 ] as const;
 
 export const FOOTER_LINKS = [
+  { href: '/how-it-works', label: 'How It Works' },
   { href: '/products', label: 'Products' },
-  { href: '/ai-readiness', label: 'AI Readiness' },
+  { href: '/pricing', label: 'Pricing' },
+  { href: '/outcomes', label: 'Outcomes' },
+  { href: '/for-business', label: 'For Business' },
+  { href: '/glossary', label: 'Glossary' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/founding-cohort', label: 'Founding Cohort' },
   { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
   { href: '/privacy', label: 'Privacy' },
 ] as const;
 
