@@ -97,7 +97,7 @@ export default function AboutPage() {
             <div className="grid-2" style={{ width: '100%', maxWidth: '640px', gap: '1rem' }}>
               <div
                 style={{
-                  background: '#274578',
+                  background: '#0A0A0E',
                   borderRadius: 'var(--radius-lg)',
                   padding: '2rem',
                   display: 'flex',

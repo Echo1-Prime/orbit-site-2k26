@@ -9,10 +9,10 @@ export const metadata: Metadata = {
 };
 
 const COLORS = [
-  ['--oa-void', '#0A111E', 'Page canvas, input wells'],
-  ['--oa-panel', '#101B2E', 'Cards, surfaces, nav'],
-  ['--oa-raised', '#1A2C44', 'Hover / elevated layers'],
-  ['--oa-steel', '#2E4E74', 'Borders, grid lines, 2nd rings'],
+  ['--oa-void', '#0A0A0E', 'Page canvas, input wells'],
+  ['--oa-panel', '#111118', 'Cards, surfaces, nav'],
+  ['--oa-raised', '#1a1a24', 'Hover / elevated layers'],
+  ['--oa-steel', '#2a2a38', 'Borders, grid lines, 2nd rings'],
   ['--oa-slate', '#6C87A6', 'Secondary text, idle dots'],
   ['--oa-ion', '#8FD0F2', 'Interactive, links, focus, rings'],
   ['--oa-ice', '#C9EAFB', 'Highlights, electron dots'],

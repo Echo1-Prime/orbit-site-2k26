@@ -8,10 +8,10 @@
 :root {
 
   /* ── Color — Raw Palette ─────────────────────────────────────────────────── */
-  --oa-void:   #0A111E;   /* page canvas, input wells */
-  --oa-panel:  #101B2E;   /* cards, surfaces, nav */
-  --oa-raised: #1A2C44;   /* hover states, elevated layers */
-  --oa-steel:  #2E4E74;   /* borders, grid lines, secondary rings */
+  --oa-void:   #0A0A0E;   /* page canvas, input wells */
+  --oa-panel:  #111118;   /* cards, surfaces, nav */
+  --oa-raised: #1a1a24;   /* hover states, elevated layers */
+  --oa-steel:  #2a2a38;   /* borders, grid lines, secondary rings */
   --oa-slate:  #6C87A6;   /* secondary text, idle dots */
   --oa-ion:    #8FD0F2;   /* primary interactive, ring strokes, focus */
   --oa-ice:    #C9EAFB;   /* highlights, electron dots, hover text */
