@@ -14,6 +14,7 @@ export const CONTACT_PHONE_DISPLAY = '(610) 956-4116';
 export const NAV_LINKS = [
   { href: '/how-it-works', label: 'How It Works' },
   { href: '/products', label: 'Products' },
+  { href: '/agents', label: 'Agents' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/blog', label: 'Blog' },
   { href: '/about', label: 'About' },
@@ -22,6 +23,7 @@ export const NAV_LINKS = [
 export const FOOTER_LINKS = [
   { href: '/how-it-works', label: 'How It Works' },
   { href: '/products', label: 'Products' },
+  { href: '/agents', label: 'Agents' },
   { href: '/pricing', label: 'Pricing' },
   { href: '/outcomes', label: 'Outcomes' },
   { href: '/for-business', label: 'For Business' },
