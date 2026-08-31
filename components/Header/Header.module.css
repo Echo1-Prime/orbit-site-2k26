@@ -26,25 +26,33 @@
   flex-shrink: 0;
   line-height: 0;
 }
-.mark { height: 32px; width: 32px; display: block; }
-.wordmark {
+.mark {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: #FF7515;
   display: flex;
-  align-items: baseline;
-  gap: 0.3rem;
-  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 }
-.echo,
-.one,
-.labs {
+.mark svg {
+  width: 13px;
+  height: 13px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.wordmark {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 1.05rem;
+  font-size: 14px;
   letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
   line-height: 1;
 }
-.echo,
-.labs { color: var(--text); }
-.one { color: var(--accent); }
 .nav {
   display: flex;
   align-items: center;

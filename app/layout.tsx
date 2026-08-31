@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Space_Grotesk, DM_Sans, JetBrains_Mono } from 'next/font/google';
+import { Space_Grotesk, DM_Sans, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import ConciergeMount from '@/components/Concierge/ConciergeMount';
 import JsonLd from '@/components/JsonLd';
@@ -27,6 +27,13 @@ const jetbrainsMono = JetBrains_Mono({
   display: 'swap',
 });
 
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600'],
+  variable: '--font-plus-jakarta',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
@@ -38,10 +45,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   icons: {
     icon: [
-      { url: '/agent-orbit-favicon.svg', type: 'image/svg+xml' },
+      { url: '/echo1-mark-crosshair.svg', type: 'image/svg+xml' },
       { url: '/agent-orbit-favicon.png', type: 'image/png', sizes: '64x64' },
     ],
-    shortcut: '/agent-orbit-favicon.png',
+    shortcut: '/echo1-mark-crosshair.svg',
     apple: '/agent-orbit-apple-touch-icon.png',
   },
   openGraph: {
@@ -61,7 +68,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable} ${plusJakarta.variable}`}>
       <body>
         {children}
         <ConciergeMount />
