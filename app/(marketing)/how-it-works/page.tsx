@@ -2,14 +2,14 @@ import type { Metadata } from 'next';
 import { pageMetadata, breadcrumbSchema } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import CTA from '@/components/CTA/CTA';
-import { Eyebrow, ButtonLink, Badge } from '@/components/ds';
+import { Eyebrow, Badge } from '@/components/ds';
 
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = pageMetadata({
   title: 'How It Works',
   description:
-    'The four-step BLM OS setup: activate, connect, run, supervise. How the Fusion Grid, agent layer, and Prime governance work together.',
+    'Seven apps, one Fusion Grid, agents that act on unified signals across every domain. Activate, Connect, Run, and Supervise — how the BLM OS works.',
   path: '/how-it-works',
 });
 
@@ -17,62 +17,76 @@ const STEPS = [
   {
     num: '01',
     title: 'Activate',
-    body: 'Select the layers that match your current operational needs. Every tier includes Prime — the governance layer — so you have visibility from day one. You can add layers as your operations scale.',
+    body: 'Select the apps that match your current operational gaps. Most operators start with Prime + one domain app (Engine, Broadcast, or RevOps).',
   },
   {
     num: '02',
     title: 'Connect',
-    body: 'The Fusion Grid connects to your existing tools — CRM, QuickBooks, project management, email — and normalizes their data into a consistent schema. No custom integrations. No migration required.',
+    body: 'Link your existing tools — QuickBooks, Apollo, HubSpot, Airtable — to the Fusion Grid. Data flows in, agents get context, signals start forming.',
   },
   {
     num: '03',
     title: 'Run',
-    body: 'Agents begin executing against the configured parameters. Engine starts prospecting. RevOps starts qualifying. Broadcast starts generating briefs. Prime starts compiling your daily briefing. Execution runs on schedule, not on bandwidth.',
+    body: 'Agents begin executing across every connected domain. Prospecting runs. Content schedules. Reconciliation closes. Briefings compile. Your first signal arrives within 72 hours.',
   },
   {
     num: '04',
-    title: 'Own the decisions',
-    body: 'You read the daily briefing, act on exception items, and approve gates that require your judgment. The agents handle volume. You handle decisions that require context and authority that only you have.',
+    title: 'Supervise',
+    body: 'Prime surfaces every signal into one dashboard. You see what agents did, what thresholds were crossed, and where a decision is needed. You supervise. You don\'t manage.',
   },
 ];
 
 const INTEGRATIONS = [
-  'QuickBooks', 'HubSpot', 'Salesforce', 'Apollo', 'Airtable',
-  'Slack', 'Google Workspace', 'Microsoft 365', 'AWS Bedrock',
+  'QuickBooks', 'Apollo', 'HubSpot', 'Airtable', 'AWS Bedrock', 'Slack',
 ];
 
 const FAQS = [
   {
-    q: 'How long does setup take?',
-    a: 'The Fusion Grid connection and initial agent configuration typically takes three to five business days. The first full briefing runs in the first week.',
+    q: 'What is the Fusion Grid?',
+    a: 'The Fusion Grid is the integration layer that connects all seven Echo 1 Labs apps to each other and to external systems — QuickBooks, Apollo, Airtable, HubSpot, AWS Bedrock, and Slack. Data flows in real time so agents can act on unified signals across every domain without manual handoffs.',
   },
   {
-    q: 'What does the operator need to do each day?',
-    a: 'Read the Prime briefing (under ten minutes), act on exception items that require judgment, and approve any gates that fired overnight. Most days this is a short morning review.',
+    q: 'What is the supervision layer?',
+    a: 'The supervision layer is the human-in-the-loop interface where operators see all agent activity, validate threshold alerts, and redirect work. Supervision replaces management — not judgment. Operators stay in control of decisions while agents handle execution.',
   },
   {
-    q: 'What tools does the BLM OS connect to?',
-    a: 'The Fusion Grid connects to CRM, accounting, project management, communication platforms, and document storage. If your tool has an API, it can connect.',
+    q: 'How long does activation take?',
+    a: 'Most operators receive their first signal within 72 hours of activation. The onboarding process covers app selection, data source connections, and supervision threshold configuration before agents begin executing.',
   },
   {
-    q: 'What happens when an agent is uncertain?',
-    a: 'It escalates to the Prime exception queue with the relevant context and a confidence score. The operator makes the call. The agent records the decision and applies it to future similar situations.',
+    q: 'Which integrations does the OS support?',
+    a: 'The OS connects to QuickBooks (financial sync), Apollo (prospecting and enrichment), Airtable (data coordination), HubSpot (CRM), AWS Bedrock (agent infrastructure), and Slack (alerting and briefings). Additional integrations are available via the Fusion Grid.',
   },
   {
-    q: 'Does this replace my existing team?',
-    a: 'No — and that is the point. The BLM OS returns the time currently consumed by routine execution to your existing team. Every decision that requires human judgment stays with the people who have the authority to make it. Agents handle volume. Your team handles everything else.',
+    q: 'What is an agent execution?',
+    a: 'An agent execution is a single completed business outcome performed by an autonomous agent — one lead enriched, one financial sync run, one piece of content delivered, one signal surfaced. The Growth tier includes 3,000 agent executions per month.',
   },
 ];
 
 export default function HowItWorksPage() {
   const faqJsonLd = {
     '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: FAQS.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
+    '@graph': [
+      {
+        '@type': 'FAQPage',
+        mainEntity: FAQS.map((f) => ({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a },
+        })),
+      },
+      {
+        '@type': 'HowTo',
+        name: 'How to activate the Echo 1 Labs BLM OS',
+        description: 'Four steps to run your business on agents: Activate, Connect, Run, and Supervise.',
+        step: STEPS.map((s, i) => ({
+          '@type': 'HowToStep',
+          position: i + 1,
+          name: s.title,
+          text: s.body,
+        })),
+      },
+    ],
   };
 
   return (
@@ -91,11 +105,11 @@ export default function HowItWorksPage() {
           <div className="section-header">
             <Eyebrow>How It Works</Eyebrow>
             <h1 className="display-md" style={{ marginTop: '0.75rem' }}>
-              From execution bottleneck to supervision architecture.
+              Seven apps. One Fusion Grid. Agents that act on unified signals across every domain.
             </h1>
             <p className="body-lg" style={{ maxWidth: '540px', marginTop: '1rem' }}>
-              The BLM OS connects to your existing tools, normalizes your data, and starts running
-              agents in week one. The operator shifts from execution to the supervision role.
+              Activate the apps you need. Connect your existing tools. Run agents across every domain.
+              Supervise from one dashboard.
             </p>
           </div>
 
@@ -152,15 +166,15 @@ export default function HowItWorksPage() {
             {[
               {
                 title: 'Fusion Grid',
-                body: 'Connects to your existing tools and normalizes data into a consistent schema. The foundation that all seven agent layers operate against.',
+                body: 'Connects all seven apps to each other and to external systems. Data flows in real time so agents can act on unified signals across every domain without manual handoffs.',
               },
               {
                 title: 'Agent Layer',
-                body: 'Seven operational layers — Engine, RevOps, Broadcast, Ledger, Titan, Signal, Prime — each running specialist agents against the Fusion Grid data.',
+                body: 'Seven operational apps — Engine, RevOps, Broadcast, Ledger, Titan, Signal, Prime — each running specialist agents against the Fusion Grid data.',
               },
               {
                 title: 'Supervision Layer',
-                body: 'Prime surfaces the daily briefing, exception queue, and approval gates. The operator makes decisions. The system records and applies them.',
+                body: 'Prime surfaces every signal into one dashboard. Operators see what agents did, where thresholds were crossed, and where a decision is needed. Supervision replaces management.',
               },
             ].map((item) => (
               <div key={item.title} className="card">
@@ -191,7 +205,7 @@ export default function HowItWorksPage() {
             <Eyebrow>Integrations</Eyebrow>
             <h2 className="display-sm" style={{ marginTop: '0.75rem' }}>Connects to your stack.</h2>
             <p className="body-md" style={{ maxWidth: '480px', marginTop: '0.75rem' }}>
-              The Fusion Grid normalizes data from the tools you already use. No migration.
+              The Fusion Grid connects to the tools you already use. No migration required.
             </p>
           </div>
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>

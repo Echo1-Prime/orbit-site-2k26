@@ -10,7 +10,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = pageMetadata({
   title: 'Blog',
   description:
-    'Thinking on Business Lifecycle Management, the BLM OS, and what it takes to run an owner-led business on an agent architecture.',
+    'Thinking on Business Lifecycle Management, agent operations, and building owner-led businesses at scale. From the Echo 1 Labs team.',
   path: '/blog',
 });
 
@@ -29,11 +29,11 @@ export default function BlogIndexPage() {
           <div className="section-header">
             <Eyebrow>Blog</Eyebrow>
             <h1 className="display-md" style={{ marginTop: '0.75rem' }}>
-              Thinking on the BLM OS.
+              Thinking on building businesses that run themselves.
             </h1>
             <p className="body-lg" style={{ maxWidth: '560px', marginTop: '1rem' }}>
-              What it means to run a business on an agent architecture — and what the operator&apos;s
-              role becomes when agents handle execution.
+              The BLM OS category, agent operations, and what it actually takes to remove the
+              operator from the execution layer.
             </p>
           </div>
 

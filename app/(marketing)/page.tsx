@@ -8,22 +8,22 @@ export const dynamic = 'force-static';
 
 const APPROACH = [
   {
-    tag: 'Operational Architecture',
-    title: 'From execution mode to supervision mode',
+    tag: 'Operational OS',
+    title: 'Seven layers. One operating system.',
     body:
-      "We build your organization's second brain — connecting individual AI productivity to enterprise-grade governance, security, and scalable agentic infrastructure.",
+      'Every function of your business or ministry runs through one connected system — plus an agent marketplace to extend it. No disconnected tools. No data gaps.',
   },
   {
-    tag: 'Process engineering',
-    title: 'Process engineering first',
+    tag: 'Agent teams · Day one',
+    title: '16 agents. Ready the moment you activate.',
     body:
-      'Automations, agentic workflows, and lifecycle management are not features — they are the operating model. We engineer your business to run like software.',
+      'Four pre-built agent teams cover the core functions of every operator-led business. No configuration required. They run from day one and improve with every cycle.',
   },
   {
     tag: 'Human-supervised',
-    title: 'Agent-based, human-supervised',
+    title: 'Supervision scales. Execution does not.',
     body:
-      'Every system is agent-based and supervised by people. Prime gives you a production-ready platform; custom workflows are built for your exact stack.',
+      'Agents run execution. Humans supervise it. The OS is designed to expand what one person can supervise — not to replace judgment. Every action is logged and escalatable.',
   },
 ];
 
@@ -36,7 +36,7 @@ export default function HomePage() {
       <section className="section--sm">
         <div className="container">
           <div className="section-header">
-            <Eyebrow>The 8-Stage Lifecycle</Eyebrow>
+            <Eyebrow>Business Lifecycle Management</Eyebrow>
             <h2 className="display-md" style={{ marginTop: '0.75rem' }}>Every stage. One system.</h2>
           </div>
           <LifecycleGrid />
@@ -47,8 +47,8 @@ export default function HomePage() {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <Eyebrow>Our Approach</Eyebrow>
-            <h2 className="display-md" style={{ marginTop: '0.75rem' }}>Not a tool. A system.</h2>
+            <Eyebrow>How It Works</Eyebrow>
+            <h2 className="display-md" style={{ marginTop: '0.75rem' }}>Built to run your operations.</h2>
           </div>
           <InViewStagger className="grid-3">
             {APPROACH.map((a) => (
@@ -59,7 +59,7 @@ export default function HomePage() {
                 <h3 style={{ fontFamily: 'var(--oa-font-display)', fontWeight: 600, fontSize: '1.05rem', marginBottom: 8, color: 'var(--oa-white)' }}>
                   {a.title}
                 </h3>
-                <p style={{ fontSize: '0.9rem', color: 'var(--oa-text-secondary)', lineHeight: 1.6 }}>{a.body}</p>
+                <p style={{ fontSize: '0.9rem', color: 'var(--oa-slate)', lineHeight: 1.6 }}>{a.body}</p>
               </Card>
             ))}
           </InViewStagger>
@@ -67,10 +67,10 @@ export default function HomePage() {
       </section>
 
       <CTA
-        eyebrow="Ready to start?"
-        headline="Begin with AI Readiness."
-        sub="Most companies are still in the experiment phase. We get you to institutional — in 6 to 8 weeks."
-        buttonLabel="Schedule your assessment"
+        eyebrow="Founding Cohort · Season One"
+        headline="Lock in the Founding rate."
+        sub="The first operators to activate the BLM OS get $997/mo locked forever — all seven apps, 3,000 agent executions per month, and a 90-day satisfaction guarantee."
+        buttonLabel="Join Founding Cohort"
         buttonHref="/contact"
         dark
       />

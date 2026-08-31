@@ -2,75 +2,175 @@ import type { Metadata } from 'next';
 import { pageMetadata, breadcrumbSchema } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import CTA from '@/components/CTA/CTA';
-import { Eyebrow, ButtonLink, Badge } from '@/components/ds';
+import { Eyebrow, ButtonLink } from '@/components/ds';
 
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = pageMetadata({
   title: 'Pricing',
   description:
-    'BLM OS pricing — modular layers, Founding Cohort locked rates, and Signal by application only. No per-seat pricing. No implementation fees.',
+    'Echo 1 Labs orbit tiers — Explorer free, Starter $497/mo, Growth $997/mo (Founding Cohort rate, was $2,497), Scale custom. All plans include the full BLM OS and 500+ agent marketplace.',
   path: '/pricing',
 });
 
 const TIERS = [
   {
-    name: 'Starter',
-    label: 'Engine + RevOps',
-    price: '$2,500',
+    name: 'Explorer',
+    pitch: 'Evaluate the OS with no commitment',
+    price: '$0',
     period: '/mo',
-    description: 'Go-to-market and revenue operations. ICP prospecting, outreach sequencing, lead qualification, pipeline forecasting, and CRM hygiene.',
-    layers: ['Engine', 'RevOps'],
-    cta: 'Apply for Founding Cohort',
-    href: '/founding-cohort',
+    credits: '250 Echo Credits · ~250 executions/mo',
     featured: false,
+    foundingBadge: false,
+    features: [
+      'Prime dashboard access',
+      '1 connected integration',
+      'Basic signal monitoring',
+      'Community access',
+      'Up to 250 agent executions',
+    ],
+    cta: 'Start Free',
+    href: '/founding-cohort',
+    ctaVariant: 'secondary' as const,
+  },
+  {
+    name: 'Starter',
+    pitch: 'First orbit — one domain running on agents',
+    price: '$497',
+    period: '/mo',
+    credits: '750 Echo Credits · ~750 executions/mo',
+    featured: false,
+    foundingBadge: false,
+    features: [
+      '2 active BLM apps',
+      '3 connected integrations',
+      'Weekly signal reports',
+      'Email support',
+      'Up to 750 agent executions',
+    ],
+    cta: 'Get Started',
+    href: '/founding-cohort',
+    ctaVariant: 'secondary' as const,
   },
   {
     name: 'Growth',
-    label: 'Starter + Broadcast + Titan',
-    price: '$4,500',
-    period: '/mo',
-    description: 'Everything in Starter, plus automated content production and document intelligence. Your marketing and document workflows run on schedule — without a dedicated ops team.',
-    layers: ['Engine', 'RevOps', 'Broadcast', 'Titan'],
-    cta: 'Apply for Founding Cohort',
-    href: '/founding-cohort',
+    pitch: 'Full OS activation — the ICP sweet spot',
+    price: '$997',
+    priceWas: '$2,497/mo',
+    offerLabel: 'Limited Time · Season One',
+    period: '/mo · locked',
+    credits: null,
+    executions: { count: '3,000', label: 'Agent Executions / Mo', cpe: '~$0.33', note: 'Each execution is a completed business outcome — a lead enriched, a sync run, a content piece delivered, a signal surfaced.' },
     featured: true,
+    foundingBadge: true,
+    features: [
+      'All 7 apps (incl. Titan & Signal)',
+      '16 out-of-the-box agent teams',
+      'Unlimited integrations',
+      'Daily signal intelligence',
+      'Dedicated success agent',
+      '90-day satisfaction guarantee ($2,991 refund)',
+      'Founding rate lock — lifetime',
+      'Direct product team access',
+    ],
+    cta: "You're Invited — Founding Cohort",
+    href: '/founding-cohort',
+    ctaVariant: 'ember' as const,
   },
   {
-    name: 'OS',
-    label: 'All layers including Ledger',
-    price: '$7,500',
-    period: '/mo',
-    description: 'Your full operating system. All seven layers run operations on schedule across GTM, revenue, marketing, and document processing — and Ledger ships to OS customers at no additional cost.',
-    layers: ['Engine', 'RevOps', 'Broadcast', 'Titan', 'Ledger (on ship)', 'Prime'],
-    cta: 'Apply for Founding Cohort',
-    href: '/founding-cohort',
+    name: 'Scale',
+    pitch: 'High-volume operations and custom deployments',
+    price: 'Contact Sales',
+    period: '',
+    credits: 'Unlimited Credits · Custom Terms',
     featured: false,
+    foundingBadge: false,
+    features: [
+      'Everything in Growth',
+      'Titan custom development',
+      'Multi-entity support',
+      'Dedicated agent engineering',
+      'SLA and priority routing',
+      'PE/VC portfolio management',
+    ],
+    cta: 'Contact Sales',
+    href: '/contact',
+    ctaVariant: 'secondary' as const,
   },
+] as const;
+
+const GUARANTEES = [
+  { icon: '↩', title: '90-Day Guarantee', body: '$2,991 back if it isn\'t working' },
+  { icon: '🔒', title: 'Lifetime Rate Lock', body: 'Founding rate never changes' },
+  { icon: '⚡', title: 'Day-One Activation', body: '16 agents run the moment you activate' },
+  { icon: '∞', title: '500+ Agents', body: 'Full marketplace included in all active plans' },
 ];
+
+const COMPARE_ROWS = [
+  { group: 'PRICING' },
+  { feature: 'Monthly rate',       explorer: '$0',          starter: '$497/mo',   growth: '$997/mo (was $2,497)', scale: 'Custom' },
+  { feature: 'Agent executions',   explorer: '250/mo',      starter: '750/mo',    growth: '3,000/mo',             scale: 'Unlimited' },
+  { feature: 'Cost per execution', explorer: '—',           starter: '~$0.66',    growth: '~$0.33',               scale: 'Custom' },
+  { group: 'APPS & INTEGRATIONS' },
+  { feature: 'Active BLM apps',    explorer: 'Prime only',  starter: '2 apps',    growth: 'All 7',                scale: 'All 7 + custom' },
+  { feature: 'Titan (Bid + Fulfillment)',         explorer: false, starter: false, growth: true,  scale: true },
+  { feature: 'Signal (Capital Intelligence)',     explorer: false, starter: false, growth: true,  scale: true },
+  { feature: 'Ledger (AI CFO — coming soon)',     explorer: false, starter: false, growth: true,  scale: true },
+  { feature: 'Connected integrations', explorer: '1', starter: '3', growth: 'Unlimited', scale: 'Unlimited' },
+  { group: 'AGENT ACCESS' },
+  { feature: 'Agent marketplace (500+ agents)',  explorer: false, starter: 'Core agents', growth: '✓ Full access', scale: '✓ Full access' },
+  { feature: '16 out-of-the-box agent teams',    explorer: false, starter: 'Partial',     growth: '✓ All 16',     scale: '✓ All 16' },
+  { feature: 'Custom agent development (Titan)', explorer: false, starter: false,          growth: true,           scale: '✓ + engineering' },
+  { group: 'INTELLIGENCE & REPORTING' },
+  { feature: 'Signal cadence',          explorer: 'Manual only', starter: 'Weekly', growth: 'Daily',      scale: 'Real-time' },
+  { feature: 'Dashboard & supervision', explorer: 'Read-only',   starter: 'Basic',  growth: '✓ Full',     scale: '✓ Full' },
+  { group: 'SUPPORT & GUARANTEES' },
+  { feature: 'Support channel',               explorer: 'Community', starter: 'Email', growth: 'Dedicated success agent', scale: 'Dedicated + SLA' },
+  { feature: '90-day satisfaction guarantee', explorer: false, starter: false, growth: '$2,991 refund', scale: 'Negotiated' },
+  { feature: 'Founding rate lock (lifetime)', explorer: false, starter: false, growth: '✓ Season One only', scale: false },
+  { feature: 'Multi-entity / PE portfolio',  explorer: false, starter: false, growth: false,               scale: true },
+] as const;
 
 const FAQS = [
   {
-    q: 'What is the Founding Cohort pricing?',
-    a: 'Founding Cohort members lock in pricing at the rates listed above for the life of their subscription. Rates for new customers after the cohort closes will be higher. Cohort access is application-based.',
+    q: 'What is an Echo Credit?',
+    a: 'An Echo Credit funds one agent execution — a single completed business outcome like a lead enriched, a financial sync, a content piece delivered, or a workflow run. The Growth tier includes 3,000 per month at approximately $0.33 each. Credits do not roll over.',
   },
   {
-    q: 'Are there implementation fees?',
-    a: 'No implementation fees. Onboarding is included in the first month for all tiers.',
+    q: 'Is the Founding Cohort rate really locked forever?',
+    a: 'Yes. Season One members lock the Growth tier at $997/mo permanently — this does not change when we add new apps, new verticals, or raise standard pricing. The rate holds as long as the subscription stays active. This is a founding commitment, not a promotional discount.',
   },
   {
-    q: 'What is Signal pricing?',
-    a: 'Signal pricing is not listed publicly. It is available by application and priced based on the specific use case. Apply through the Signal page.',
+    q: 'How does the 90-day guarantee work?',
+    a: 'Founding Cohort members receive three months\' fees back ($2,991) within 90 days if the OS isn\'t delivering value to your operations. There\'s no performance benchmark to hit — if it isn\'t working, we return the money. Request it directly with the product team.',
   },
   {
-    q: 'What happens when Ledger ships?',
-    a: 'OS-tier customers receive Ledger at no additional cost when it ships. Starter and Growth customers can add Ledger for an additional monthly fee.',
+    q: 'What does "all 7 apps" include?',
+    a: 'Growth and Scale include all seven Echo 1 Labs apps: Prime (Command Center), Engine (Revenue Generation), Broadcast (Brand in Market), RevOps (Revenue Intelligence), Ledger (AI CFO / FP&A — coming soon), Titan (Bid + Fulfillment + custom development), and Signal (Capital Intelligence — private access). Titan and Signal are included at no additional charge.',
   },
   {
-    q: 'Is there a contract term?',
-    a: 'Founding Cohort memberships are month-to-month with the locked rate. No annual commitment required.',
+    q: 'Can I upgrade from Explorer or Starter later?',
+    a: 'Yes — you can upgrade at any time. The Founding Cohort Growth rate ($997/mo locked for life) is only available during Season One. Once the cohort closes, Growth returns to $2,497/mo. If you\'re evaluating now, securing the Founding rate costs you the 90-day guarantee if it doesn\'t work out.',
+  },
+  {
+    q: 'What happens when I run out of executions?',
+    a: 'Agents pause at the monthly limit. You can purchase additional execution blocks mid-cycle or upgrade to the next tier. Scale tier includes unlimited executions with custom volume terms. Prime surfaces a warning before you reach the threshold so you\'re never caught off guard.',
+  },
+  {
+    q: 'Does Signal require a separate purchase?',
+    a: 'Signal is available under a private access model. Growth and Scale members can apply for Signal access at no additional charge. Signal is not a product you self-activate — it is an intelligence layer deployed with you based on your use case (exit preparation, capital raise positioning, or strategic acquisition readiness).',
+  },
+  {
+    q: 'Who is Echo 1 Labs built for?',
+    a: 'The BLM OS is built for operator-led businesses — $5M to $100M in revenue, 50 to 300 employees, where the founder or executive director is the primary decision-maker. Also built for PE and VC portfolio teams managing multiple operating entities. Not built for pre-traction startups or Fortune 500 procurement cycles.',
   },
 ];
+
+function CellValue({ val }: { val: string | boolean | undefined }) {
+  if (val === true) return <span style={{ color: 'var(--oa-state-success)' }}>✓</span>;
+  if (val === false) return <span style={{ color: 'var(--oa-text-muted)' }}>—</span>;
+  return <>{val}</>;
+}
 
 export default function PricingPage() {
   const faqJsonLd = {
@@ -97,19 +197,83 @@ export default function PricingPage() {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <Eyebrow>Pricing</Eyebrow>
+            <Eyebrow>Orbit Tiers · Pricing</Eyebrow>
             <h1 className="display-md" style={{ marginTop: '0.75rem' }}>
-              Founding rates. Locked for the life of your subscription.
+              Choose your <em style={{ fontStyle: 'normal', color: 'var(--oa-ember)' }}>orbit</em>
             </h1>
-            <p className="body-lg" style={{ maxWidth: '540px', marginTop: '1rem' }}>
-              No setup fees. No annual commitment. Pick the layers your business needs now and add
-              more as operations scale. Founding Cohort members lock in current rates permanently
-              — rates for new customers after the cohort closes will be higher.
+            <p className="body-lg" style={{ maxWidth: '560px', marginTop: '1rem' }}>
+              All plans include the full BLM OS plus access to the 500+ agent marketplace. Echo Credits
+              power your agents — more credits, more autonomous operation.
+            </p>
+            <p
+              style={{
+                fontFamily: 'var(--oa-font-mono)',
+                fontSize: '0.7rem',
+                letterSpacing: '0.06em',
+                color: 'var(--oa-text-muted)',
+                marginTop: '0.75rem',
+              }}
+            >
+              Founding Cohort Season One is open.{' '}
+              <strong style={{ color: 'var(--oa-ember)', fontWeight: 500 }}>
+                Growth locks at $997/mo — forever.
+              </strong>
             </p>
           </div>
 
-          {/* Pricing cards */}
-          <div className="grid-3" style={{ marginTop: '0' }}>
+          {/* Founding Cohort banner */}
+          <div
+            style={{
+              background: 'linear-gradient(135deg, rgba(224,123,39,0.10) 0%, rgba(143,208,242,0.06) 100%)',
+              border: '1px solid rgba(224,123,39,0.25)',
+              borderRadius: '12px',
+              padding: '1.25rem 1.75rem',
+              marginTop: '2rem',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '1.25rem',
+              flexWrap: 'wrap',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'var(--oa-font-mono)',
+                fontSize: '0.55rem',
+                fontWeight: 500,
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                background: 'var(--oa-ember)',
+                color: '#fff',
+                padding: '4px 10px',
+                borderRadius: '3px',
+                whiteSpace: 'nowrap',
+                flexShrink: 0,
+              }}
+            >
+              Season One · Open
+            </span>
+            <div style={{ flex: 1, minWidth: '220px' }}>
+              <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--oa-white)', margin: 0 }}>
+                Founding Cohort Growth rate: $997/mo locked for life.
+              </p>
+              <p style={{ fontSize: '0.8rem', color: 'var(--oa-text-secondary)', marginTop: '2px', marginBottom: 0 }}>
+                Once Season One closes, Growth returns to $2,497/mo. Join now to lock the rate permanently — plus a 90-day $2,991 satisfaction guarantee.
+              </p>
+            </div>
+            <ButtonLink href="/founding-cohort" variant="ember">
+              Claim Your Spot
+            </ButtonLink>
+          </div>
+
+          {/* Tier cards */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
+              gap: '1rem',
+              marginTop: '1.5rem',
+            }}
+          >
             {TIERS.map((tier) => (
               <div
                 key={tier.name}
@@ -117,11 +281,12 @@ export default function PricingPage() {
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
-                  borderColor: tier.featured ? 'rgba(224,123,39,0.4)' : undefined,
                   position: 'relative',
+                  borderColor: tier.featured ? 'rgba(224,123,39,0.35)' : undefined,
+                  background: tier.featured ? 'var(--oa-raised)' : undefined,
                 }}
               >
-                {tier.featured && (
+                {tier.foundingBadge && (
                   <div
                     style={{
                       position: 'absolute',
@@ -132,154 +297,422 @@ export default function PricingPage() {
                       color: '#fff',
                       fontFamily: 'var(--oa-font-mono)',
                       fontSize: '0.55rem',
-                      letterSpacing: '0.14em',
+                      letterSpacing: '0.12em',
                       textTransform: 'uppercase',
                       padding: '3px 12px',
                       borderRadius: '0 0 6px 6px',
+                      whiteSpace: 'nowrap',
                     }}
                   >
-                    Most popular
+                    Founding Cohort Rate
                   </div>
                 )}
-                <div style={{ marginBottom: '1rem' }}>
+
+                <div style={{ marginTop: tier.foundingBadge ? '1rem' : 0, marginBottom: '0.5rem' }}>
                   <p
                     style={{
-                      fontFamily: 'var(--oa-font-mono)',
-                      fontSize: '0.6rem',
-                      letterSpacing: '0.14em',
-                      textTransform: 'uppercase',
-                      color: 'var(--oa-ember)',
-                      marginBottom: '0.35rem',
+                      fontFamily: 'var(--oa-font-display)',
+                      fontWeight: 700,
+                      fontSize: '1.2rem',
+                      color: 'var(--oa-white)',
+                      margin: 0,
                     }}
                   >
                     {tier.name}
                   </p>
-                  <p
-                    style={{
-                      fontSize: '0.8rem',
-                      color: 'var(--oa-text-secondary)',
-                    }}
-                  >
-                    {tier.label}
+                  <p style={{ fontSize: '0.78rem', color: 'var(--oa-text-secondary)', marginTop: '3px', marginBottom: 0 }}>
+                    {tier.pitch}
                   </p>
                 </div>
-                <div style={{ marginBottom: '1.25rem' }}>
+
+                {'priceWas' in tier && tier.priceWas && (
+                  <>
+                    <p
+                      style={{
+                        fontFamily: 'var(--oa-font-body)',
+                        fontSize: '0.8rem',
+                        color: 'var(--oa-text-secondary)',
+                        textDecoration: 'line-through',
+                        textDecorationColor: 'var(--oa-state-error)',
+                        margin: '0.75rem 0 0',
+                      }}
+                    >
+                      {tier.priceWas}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: 'var(--oa-font-mono)',
+                        fontSize: '0.6rem',
+                        letterSpacing: '0.12em',
+                        textTransform: 'uppercase',
+                        color: 'var(--oa-ember)',
+                        margin: '2px 0 0',
+                      }}
+                    >
+                      {tier.offerLabel}
+                    </p>
+                  </>
+                )}
+
+                <div style={{ marginTop: '0.5rem', marginBottom: '0.75rem' }}>
                   <span
                     style={{
                       fontFamily: 'var(--oa-font-display)',
-                      fontWeight: 700,
-                      fontSize: '2.25rem',
+                      fontWeight: 800,
+                      fontSize: tier.price === 'Contact Sales' ? '1.4rem' : '2rem',
                       letterSpacing: '-0.03em',
                       color: 'var(--oa-white)',
                     }}
                   >
                     {tier.price}
                   </span>
-                  <span
+                  {tier.period && (
+                    <span style={{ fontSize: '0.8rem', color: 'var(--oa-text-secondary)' }}>
+                      {' '}
+                      {tier.period}
+                    </span>
+                  )}
+                </div>
+
+                {'executions' in tier && tier.executions ? (
+                  <div
                     style={{
-                      fontSize: '0.8rem',
-                      color: 'var(--oa-text-secondary)',
+                      background: 'rgba(224,123,39,0.08)',
+                      border: '1px solid rgba(224,123,39,0.2)',
+                      borderRadius: '8px',
+                      padding: '0.75rem 1rem',
+                      marginBottom: '1rem',
                     }}
                   >
-                    {tier.period}
-                  </span>
-                </div>
-                <p
+                    <p
+                      style={{
+                        fontFamily: 'var(--oa-font-display)',
+                        fontWeight: 800,
+                        fontSize: '2rem',
+                        color: 'var(--oa-white)',
+                        margin: 0,
+                        lineHeight: 1,
+                        fontVariantNumeric: 'tabular-nums',
+                      }}
+                    >
+                      {tier.executions.count}
+                    </p>
+                    <p
+                      style={{
+                        fontFamily: 'var(--oa-font-mono)',
+                        fontSize: '0.55rem',
+                        letterSpacing: '0.14em',
+                        textTransform: 'uppercase',
+                        color: 'var(--oa-ember)',
+                        margin: '2px 0 6px',
+                      }}
+                    >
+                      {tier.executions.label}
+                    </p>
+                    <p style={{ fontSize: '0.75rem', color: 'var(--oa-text-secondary)', margin: 0, lineHeight: 1.5 }}>
+                      {tier.executions.note}
+                    </p>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem' }}>
+                      <span
+                        style={{
+                          fontFamily: 'var(--oa-font-mono)',
+                          fontSize: '0.6rem',
+                          letterSpacing: '0.1em',
+                          textTransform: 'uppercase',
+                          color: 'var(--oa-text-muted)',
+                        }}
+                      >
+                        Cost per execution
+                      </span>
+                      <span
+                        style={{
+                          fontFamily: 'var(--oa-font-display)',
+                          fontWeight: 700,
+                          fontSize: '0.875rem',
+                          color: 'var(--oa-ember)',
+                          fontVariantNumeric: 'tabular-nums',
+                        }}
+                      >
+                        {tier.executions.cpe}
+                      </span>
+                    </div>
+                  </div>
+                ) : (
+                  tier.credits && (
+                    <p
+                      style={{
+                        fontFamily: 'var(--oa-font-mono)',
+                        fontSize: '0.68rem',
+                        color: 'var(--oa-text-secondary)',
+                        marginBottom: '0.75rem',
+                        letterSpacing: '0.04em',
+                      }}
+                    >
+                      {tier.credits}
+                    </p>
+                  )
+                )}
+
+                <div style={{ height: '1px', background: 'var(--oa-border)', margin: '0 0 1rem' }} />
+
+                <ul
                   style={{
-                    fontSize: '0.875rem',
-                    color: 'var(--oa-text-secondary)',
-                    lineHeight: 1.65,
-                    marginBottom: '1.25rem',
+                    listStyle: 'none',
+                    padding: 0,
+                    margin: '0 0 1.5rem',
                     flex: 1,
                   }}
                 >
-                  {tier.description}
-                </p>
-                <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
-                  {tier.layers.map((l) => (
-                    <Badge key={l} tone={l.includes('Ledger') ? 'muted' : 'ion'}>
-                      {l}
-                    </Badge>
+                  {tier.features.map((f) => (
+                    <li
+                      key={f}
+                      style={{
+                        fontSize: '0.8rem',
+                        color: 'var(--oa-text-secondary)',
+                        padding: '5px 0',
+                        borderBottom: '1px solid var(--oa-border)',
+                        display: 'flex',
+                        gap: '8px',
+                        alignItems: 'flex-start',
+                      }}
+                    >
+                      <span
+                        style={{
+                          color: tier.featured ? 'var(--oa-ember)' : 'var(--oa-text-muted)',
+                          fontSize: '0.7rem',
+                          marginTop: '2px',
+                          flexShrink: 0,
+                        }}
+                      >
+                        →
+                      </span>
+                      {f}
+                    </li>
                   ))}
-                </div>
-                <ButtonLink href={tier.href} variant={tier.featured ? 'ember' : 'secondary'}>
+                </ul>
+
+                <ButtonLink href={tier.href} variant={tier.ctaVariant}>
                   {tier.cta}
                 </ButtonLink>
               </div>
             ))}
           </div>
 
-          {/* Signal callout */}
+          {/* Guarantee strip */}
           <div
-            className="card"
             style={{
-              marginTop: '1.5rem',
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-between',
+              justifyContent: 'center',
+              gap: '2rem',
               flexWrap: 'wrap',
-              gap: '1.5rem',
-              borderColor: 'rgba(143,208,242,0.2)',
+              background: 'var(--oa-surface)',
+              border: '1px solid var(--oa-border)',
+              borderRadius: '12px',
+              padding: '1.25rem 2rem',
+              marginTop: '1.5rem',
             }}
           >
-            <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.5rem' }}>
-                <p
-                  style={{
-                    fontFamily: 'var(--oa-font-display)',
-                    fontWeight: 700,
-                    fontSize: '1rem',
-                    color: 'var(--oa-white)',
-                    margin: 0,
-                  }}
-                >
-                  Signal
-                </p>
-                <Badge tone="ion">Private Access</Badge>
+            {GUARANTEES.map((g) => (
+              <div key={g.title} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
+                <span style={{ fontSize: '1.125rem' }}>{g.icon}</span>
+                <div>
+                  <p style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--oa-white)', margin: 0 }}>
+                    {g.title}
+                  </p>
+                  <p style={{ fontSize: '0.78rem', color: 'var(--oa-text-secondary)', margin: 0 }}>
+                    {g.body}
+                  </p>
+                </div>
               </div>
-              <p style={{ fontSize: '0.875rem', color: 'var(--oa-text-secondary)', margin: 0, maxWidth: '480px' }}>
-                Deal intelligence for PE-backed businesses and capital allocators. Pricing by application
-                only — not listed publicly. No self-serve access.
-              </p>
-            </div>
-            <ButtonLink href="/products/signal" variant="secondary">
-              Apply for Access
-            </ButtonLink>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Comparison table */}
+      <section
+        className="section"
+        style={{ background: 'var(--oa-panel)', borderTop: '1px solid var(--oa-border)' }}
+        id="compare"
+      >
+        <div className="container">
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.625rem',
+              marginBottom: '1.5rem',
+            }}
+          >
+            <span
+              style={{
+                fontFamily: 'var(--oa-font-mono)',
+                fontSize: '0.6rem',
+                letterSpacing: '0.14em',
+                textTransform: 'uppercase',
+                color: 'var(--oa-text-muted)',
+              }}
+            >
+              Full Comparison
+            </span>
+            <span style={{ flex: 1, height: '1px', background: 'var(--oa-border)' }} />
+          </div>
+
+          <div style={{ overflowX: 'auto' }}>
+            <table
+              style={{
+                width: '100%',
+                borderCollapse: 'collapse',
+                minWidth: '640px',
+                fontSize: '0.8rem',
+              }}
+            >
+              <thead>
+                <tr>
+                  {['Feature', 'Explorer', 'Starter', 'Growth ★', 'Scale'].map((h, i) => (
+                    <th
+                      key={h}
+                      style={{
+                        padding: '0.75rem 1rem',
+                        textAlign: 'left',
+                        borderBottom: i === 3 ? '2px solid rgba(224,123,39,0.35)' : '1px solid var(--oa-border)',
+                        background: 'var(--oa-raised)',
+                        fontFamily: 'var(--oa-font-display)',
+                        fontSize: '0.875rem',
+                        fontWeight: 700,
+                        color: i === 3 ? 'var(--oa-ember)' : 'var(--oa-white)',
+                        minWidth: i === 0 ? '200px' : undefined,
+                        position: 'sticky',
+                        top: 0,
+                      }}
+                    >
+                      {h}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {COMPARE_ROWS.map((row, idx) => {
+                  if ('group' in row) {
+                    return (
+                      <tr key={idx}>
+                        <td
+                          colSpan={5}
+                          style={{
+                            fontFamily: 'var(--oa-font-mono)',
+                            fontSize: '0.55rem',
+                            letterSpacing: '0.12em',
+                            textTransform: 'uppercase',
+                            color: 'var(--oa-text-muted)',
+                            background: 'var(--oa-void)',
+                            borderBottom: '1px solid var(--oa-border)',
+                            padding: '0.5rem 1rem',
+                            fontWeight: 500,
+                          }}
+                        >
+                          {row.group}
+                        </td>
+                      </tr>
+                    );
+                  }
+                  return (
+                    <tr key={idx}>
+                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--oa-border)', color: 'var(--oa-text-secondary)' }}>
+                        {row.feature}
+                      </td>
+                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--oa-border)', color: 'var(--oa-text-secondary)' }}>
+                        <CellValue val={row.explorer} />
+                      </td>
+                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--oa-border)', color: 'var(--oa-text-secondary)' }}>
+                        <CellValue val={row.starter} />
+                      </td>
+                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--oa-border)', color: 'var(--oa-ember)', background: 'rgba(224,123,39,0.03)', fontWeight: typeof row.growth === 'string' && !row.growth.startsWith('✓') ? 600 : undefined }}>
+                        <CellValue val={row.growth} />
+                      </td>
+                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--oa-border)', color: 'var(--oa-text-secondary)' }}>
+                        <CellValue val={row.scale} />
+                      </td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="section" style={{ background: 'var(--oa-panel)', borderTop: '1px solid var(--oa-border-subtle)' }}>
+      <section
+        className="section"
+        style={{ background: 'var(--oa-void)', borderTop: '1px solid var(--oa-border)' }}
+        id="faq"
+      >
         <div className="container">
           <div className="section-header">
-            <Eyebrow>FAQ</Eyebrow>
-            <h2 className="display-sm" style={{ marginTop: '0.75rem' }}>Common questions.</h2>
+            <Eyebrow>Frequently Asked</Eyebrow>
+            <h2 className="display-sm" style={{ marginTop: '0.75rem' }}>
+              Common questions.
+            </h2>
           </div>
-          <div className="stack" style={{ gap: '0', maxWidth: '720px' }}>
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: 0,
+              maxWidth: '960px',
+              border: '1px solid var(--oa-border)',
+              borderRadius: '12px',
+              overflow: 'hidden',
+            }}
+          >
             {FAQS.map((faq, i) => (
-              <div
+              <details
                 key={i}
                 style={{
-                  padding: '1.25rem 0',
-                  borderBottom: '1px solid var(--oa-border-subtle)',
+                  borderBottom: i < FAQS.length - 2 ? '1px solid var(--oa-border)' : undefined,
+                  borderRight: i % 2 === 0 ? '1px solid var(--oa-border)' : undefined,
                 }}
               >
-                <p
+                <summary
                   style={{
+                    padding: '1.25rem 1.5rem',
                     fontFamily: 'var(--oa-font-display)',
+                    fontSize: '0.9rem',
                     fontWeight: 600,
-                    fontSize: '0.95rem',
                     color: 'var(--oa-white)',
-                    marginBottom: '0.5rem',
+                    cursor: 'pointer',
+                    listStyle: 'none',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'flex-start',
+                    gap: '0.75rem',
                   }}
                 >
                   {faq.q}
-                </p>
-                <p style={{ fontSize: '0.875rem', color: 'var(--oa-text-secondary)', lineHeight: 1.7, margin: 0 }}>
+                  <span
+                    style={{
+                      color: 'var(--oa-text-muted)',
+                      fontSize: '1rem',
+                      flexShrink: 0,
+                      lineHeight: 1,
+                    }}
+                  >
+                    +
+                  </span>
+                </summary>
+                <p
+                  style={{
+                    padding: '0 1.5rem 1.25rem',
+                    fontSize: '0.8rem',
+                    color: 'var(--oa-text-secondary)',
+                    lineHeight: 1.7,
+                    margin: 0,
+                  }}
+                >
                   {faq.a}
                 </p>
-              </div>
+              </details>
             ))}
           </div>
         </div>
@@ -287,9 +720,9 @@ export default function PricingPage() {
 
       <CTA
         eyebrow="Founding Cohort"
-        headline="Lock in your rate before the cohort closes."
-        sub="Cohort seats are limited. Founding rates are not available after the cohort closes — and new-customer rates will be higher. Apply now to hold your rate."
-        buttonLabel="Apply Now"
+        headline="The OS runs while you supervise."
+        sub="Join the Founding Cohort and lock in $997/mo for life. 90-day satisfaction guarantee — no risk."
+        buttonLabel="You're Invited — Founding Cohort"
         buttonHref="/founding-cohort"
         dark
       />
