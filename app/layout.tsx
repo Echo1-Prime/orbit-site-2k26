@@ -46,10 +46,10 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/echo1-e1-favicon.svg', type: 'image/svg+xml' },
-      { url: '/agent-orbit-favicon.png', type: 'image/png', sizes: '64x64' },
+      { url: '/echo1-e1-favicon.png', type: 'image/png', sizes: '64x64' },
     ],
     shortcut: '/echo1-e1-favicon.svg',
-    apple: '/agent-orbit-apple-touch-icon.png',
+    apple: '/echo1-e1-apple-touch.png',
   },
   openGraph: {
     type: 'website',
