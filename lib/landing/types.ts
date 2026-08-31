@@ -5,7 +5,7 @@ export interface MetricItem {
 }
 
 export interface CapabilityItem {
-  icon: string;
+  icon?: string;
   title: string;
   desc: string;
 }

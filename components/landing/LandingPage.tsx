@@ -86,7 +86,6 @@ export default function LandingPage({ copy, contactUrl = '/contact' }: Props) {
           <div className="capability-grid">
             {copy.capabilities.map((c) => (
               <div key={c.title} className="card">
-                <div className={styles.capIcon}>{c.icon}</div>
                 <div className="card__title">{c.title}</div>
                 <p className="card__desc">{c.desc}</p>
               </div>
