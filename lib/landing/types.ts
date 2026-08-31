@@ -37,11 +37,11 @@ export interface LandingCopy {
   ctaPrimary: string;
   ctaSecondary: string;
 
-  /* Story — operator narrative */
+  /* Story - operator narrative */
   storyHeadline: string;
   storyBody: string[];
 
-  /* Offer — Value Equation stack */
+  /* Offer - Value Equation stack */
   offerHeadline: string;
   dreamOutcome: string;
   perceivedLikelihood: string;

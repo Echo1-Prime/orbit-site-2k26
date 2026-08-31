@@ -4,9 +4,9 @@ export const SITE_NAME = 'Echo 1 Labs';
 export const LEGAL_ENTITY = 'Mingma Inc';
 export const SITE_TAGLINE = 'Break free from business gravity.';
 export const SITE_DESCRIPTION =
-  'Echo 1 Labs is the Business Lifecycle Management company. We get startups and SMBs to escape velocity with process-engineered, agent-based systems and human supervision.';
+  'Echo 1 Labs is the Business Lifecycle Management company. We get businesses and SMBs to escape velocity with process-engineered, agent-based systems and human supervision.';
 
-// Contact — values carried from the existing production Organization schema.
+// Contact: values carried from the existing production Organization schema.
 export const CONTACT_EMAIL = 'hello@echo1labs.com';
 export const CONTACT_PHONE = '+1-610-956-4116';
 export const CONTACT_PHONE_DISPLAY = '(610) 956-4116';

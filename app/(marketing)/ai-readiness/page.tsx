@@ -7,16 +7,16 @@ import CTA from '@/components/CTA/CTA';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'AI Readiness — From Individual AI to Institutional AI',
+  title: 'AI Readiness: From Individual AI to Institutional AI',
   description:
-    'AI Readiness is the ENABLE-stage advisory engagement from Echo 1 Labs — secure setup, 101/201 training, org and personal skills, agentic workflow engineering, and governance. Not a product SKU.',
+    'AI Readiness is the ENABLE-stage advisory engagement from Echo 1 Labs: secure setup, 101/201 training, org and personal skills, agentic workflow engineering, and governance. Not a product SKU.',
   path: '/ai-readiness',
 });
 
 const FAQS = [
   {
     q: 'Is AI Readiness a product or a service?',
-    a: 'It is an advisory engagement — the ENABLE stage of the Business Lifecycle. It is scoped monthly advisory ($2-10K/mo) plus discrete project work, not a per-seat software SKU.',
+    a: 'It is an advisory engagement, the ENABLE stage of the Business Lifecycle. It is scoped monthly advisory ($2-10K/mo) plus discrete project work, not a per-seat software SKU.',
   },
   {
     q: 'How long does deployment take?',
@@ -49,7 +49,7 @@ export default function AiReadinessPage() {
             From personal AI to institutional AI.
           </h1>
           <p className="body-lg" style={{ maxWidth: '640px' }}>
-            Your team is already using AI. The question is whether your organization owns it — or it
+            Your team is already using AI. The question is whether your organization owns it, or it
             owns you. We build the second brain that bridges individual productivity to
             enterprise-grade agentic infrastructure.
           </p>
@@ -81,7 +81,7 @@ export default function AiReadinessPage() {
               </h2>
               <p className="body-lg" style={{ marginBottom: '1rem' }}>
                 Shadow AI is already running through your organization. Employees are using ChatGPT,
-                Claude, and Gemini on their own — without governance, without logging, without any
+                Claude, and Gemini on their own, without governance, without logging, without any
                 institutional memory.
               </p>
               <p className="body-md">
@@ -134,9 +134,9 @@ export default function AiReadinessPage() {
           </div>
           <div className="grid-2">
             <div className="card">
-              <div className="card__title" style={{ color: 'var(--solar)', fontSize: '1.15rem' }}>PRIME — Out of the box</div>
+              <div className="card__title" style={{ color: 'var(--solar)', fontSize: '1.15rem' }}>PRIME: Out of the box</div>
               <p className="card__desc" style={{ marginBottom: '1rem' }}>
-                A production-ready agentic platform for organizations that want institutional AI
+                A production-ready agentic system for organizations that want institutional AI
                 running in weeks, not quarters. Pre-built agents, governance controls, and lifecycle
                 dashboards.
               </p>
@@ -146,7 +146,7 @@ export default function AiReadinessPage() {
               <div className="card__title" style={{ fontSize: '1.15rem' }}>Custom workflows &amp; apps</div>
               <p className="card__desc" style={{ marginBottom: '1rem' }}>
                 Bespoke automations, agentic web and in-app experiences, and full-stack application
-                development for consulting firms, marketing agencies, financial services, and sales
+                development for consulting firms, marketing firms, financial services, and sales
                 organizations.
               </p>
               <span className="stage-badge">Best for: specific stack + client base</span>

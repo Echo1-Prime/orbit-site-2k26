@@ -1,6 +1,6 @@
 'use client';
 
-// In-page demo panel surfaced by the showDashboard tool — the "immediate product
+// In-page demo panel surfaced by the showDashboard tool - the "immediate product
 // demo" of agent capability. Built from the product catalog; clearly labelled as
 // illustrative so it never reads as live client data.
 

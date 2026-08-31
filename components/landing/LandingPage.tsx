@@ -118,7 +118,7 @@ export default function LandingPage({ copy, contactUrl = '/contact' }: Props) {
         </div>
       </section>
 
-      {/* ── PROOF STRIP (empty — ethics gate) ─────────────────── */}
+      {/* ── PROOF STRIP (empty - ethics gate) ─────────────────── */}
       {/* ProofStrip intentionally omitted until real client proof is available */}
 
       {/* ── OBJECTIONS / FAQ ───────────────────────────────────── */}

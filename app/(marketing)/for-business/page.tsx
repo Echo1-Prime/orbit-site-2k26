@@ -28,7 +28,7 @@ const USE_CASES = [
   },
   {
     title: 'Your pipeline dries up the week your top rep is traveling.',
-    body: 'Prospecting happens when someone has time. Cadences break when someone is traveling. Qualification is inconsistent between reps. Engine and RevOps run outreach on schedule, score every lead on entry, and surface pipeline exceptions when they happen — not when someone checks.',
+    body: 'Prospecting happens when someone has time. Cadences break when someone is traveling. Qualification is inconsistent between reps. Engine and RevOps run outreach on schedule, score every lead on entry, and surface pipeline exceptions when they happen, not when someone checks.',
     layers: ['Engine', 'RevOps'],
   },
   {
@@ -38,7 +38,7 @@ const USE_CASES = [
   },
   {
     title: "Invoices sit in someone's inbox until the vendor calls.",
-    body: 'Incoming contracts sit until someone reads them. Invoices are matched manually. Titan classifies and routes documents on arrival, extracts structured data, and flags exceptions — contracts with unusual terms, invoices without matching POs — for review.',
+    body: 'Incoming contracts sit until someone reads them. Invoices are matched manually. Titan classifies and routes documents on arrival, extracts structured data, and flags exceptions (contracts with unusual terms, invoices without matching POs) for review.',
     layers: ['Titan'],
   },
   {
@@ -48,7 +48,7 @@ const USE_CASES = [
   },
   {
     title: 'Every decision lives in email threads no one can find.',
-    body: 'Every major decision lives in email or the owner\'s head. Prime maintains a structured record of agent activity and operator decisions, compiles the daily briefing, and surfaces exceptions as they arise — so the operator has a running account of what is running and what needs attention.',
+    body: 'Every major decision lives in email or the owner\'s head. Prime maintains a structured record of agent activity and operator decisions, compiles the daily briefing, and surfaces exceptions as they arise, so the operator has a running account of what is running and what needs attention.',
     layers: ['Prime'],
   },
 ];
@@ -57,9 +57,9 @@ const LAYERS = [
   { name: 'Engine', num: '01', desc: 'Go-to-market: ICP prospecting, outreach sequencing, pipeline velocity' },
   { name: 'RevOps', num: '02', desc: 'Revenue operations: lead scoring, forecast, CRM hygiene' },
   { name: 'Broadcast', num: '03', desc: 'Marketing: content briefs, drafting, scheduling, performance' },
-  { name: 'Ledger', num: '04', desc: 'Finance ops: reconciliation, AP routing, cash flow — coming soon', comingSoon: true },
+  { name: 'Ledger', num: '04', desc: 'Finance ops: reconciliation, AP routing, cash flow (coming soon)', comingSoon: true },
   { name: 'Titan', num: '05', desc: 'Document intelligence: classification, extraction, invoice matching' },
-  { name: 'Signal', num: '06', desc: 'Market intelligence: PE-backed businesses, capital allocators — private access', private: true },
+  { name: 'Signal', num: '06', desc: 'Market intelligence: PE-backed businesses, capital allocators (private access)', private: true },
   { name: 'Prime', num: '07', desc: 'Governance: daily briefing, exception queue, approval gates' },
 ];
 
@@ -84,7 +84,7 @@ export default function ForBusinessPage() {
               </h1>
               <p className="body-lg" style={{ marginBottom: '1.5rem' }}>
                 The BLM OS is built for businesses where the owner still runs operations. Not because
-                they want to — because the systems that would let them step back do not exist yet.
+                they want to, but because the systems that would let them step back do not exist yet.
               </p>
               <p className="body-md" style={{ marginBottom: '2rem' }}>
                 The operator does not disappear. They shift from running execution to supervising it.

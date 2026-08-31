@@ -1,4 +1,4 @@
-// Thin client for forwarding lead/contact payloads to n8n. Server-only —
+// Thin client for forwarding lead/contact payloads to n8n. Server-only:
 // the webhook URL never reaches the client bundle (no NEXT_PUBLIC_ prefix).
 
 export interface ContactPayload {
@@ -17,7 +17,7 @@ export interface ContactPayload {
 export async function forwardContact(payload: ContactPayload): Promise<{ ok: boolean }> {
   const url = process.env.N8N_CONTACT_WEBHOOK;
   if (!url) {
-    console.warn('N8N_CONTACT_WEBHOOK not set — contact submission not forwarded');
+    console.warn('N8N_CONTACT_WEBHOOK not set, contact submission not forwarded');
     return { ok: true };
   }
   try {

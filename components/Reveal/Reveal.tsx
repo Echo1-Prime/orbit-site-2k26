@@ -63,7 +63,7 @@ export default function Reveal({
       };
 
   return (
-    // @ts-expect-error — dynamic tag, types are fine at runtime
+    // @ts-expect-error - dynamic tag, types are fine at runtime
     <Tag ref={ref} className={className} style={{ ...motionStyle, ...style }}>
       {children}
     </Tag>

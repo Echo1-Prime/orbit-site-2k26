@@ -9,7 +9,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = pageMetadata({
   title: 'Products',
   description:
-    'The 8-stage Business Lifecycle Management system: AI Readiness (ENABLE) plus seven products — Engine, RevOps, Broadcast, Signal, Ledger, Titan, and Prime.',
+    'The 8-stage Business Lifecycle Management system: AI Readiness (ENABLE) plus seven products: Engine, RevOps, Broadcast, Signal, Ledger, Titan, and Prime.',
   path: '/products',
 });
 
@@ -30,7 +30,7 @@ export default function ProductsPage() {
             <p className="body-lg" style={{ maxWidth: '560px' }}>
               Every stage of your business lifecycle maps to a product. Start where the pain is.
               Build toward a fully agentic operation. AI Readiness is the enablement engagement that
-              gets you there — it is advisory, not a product SKU.
+              gets you there. It is advisory, not a product SKU.
             </p>
           </div>
 

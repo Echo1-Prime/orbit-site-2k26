@@ -4,7 +4,7 @@ import { AVATAR_SIZE_PX } from './types';
 import styles from './Atom.module.css';
 
 /**
- * The canonical Echo 1 / Orbit Agent mark, animated — verbatim geometry from the
+ * The canonical Echo 1 / Orbit Agent mark, animated - verbatim geometry from the
  * official vector echo1-mark.svg (handoff 2026-07-17). Sphere glow + three rings
  * (cyan horizontal, ember 52°, dashed cyan 108°) + reverse-triangle core (3 nested
  * downward polygons). Rings animate; inner ember triangle pulses; state scales period.

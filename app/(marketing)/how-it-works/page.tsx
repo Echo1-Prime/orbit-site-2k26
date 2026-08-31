@@ -9,7 +9,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = pageMetadata({
   title: 'How It Works',
   description:
-    'Seven apps, one Fusion Grid, agents that act on unified signals across every domain. Activate, Connect, Run, and Supervise — how the BLM OS works.',
+    'Seven apps, one Fusion Grid, agents that act on unified signals across every domain. Activate, Connect, Run, and Supervise: how the BLM OS works.',
   path: '/how-it-works',
 });
 
@@ -22,7 +22,7 @@ const STEPS = [
   {
     num: '02',
     title: 'Connect',
-    body: 'Link your existing tools — QuickBooks, Apollo, HubSpot, Airtable — to the Fusion Grid. Data flows in, agents get context, signals start forming.',
+    body: 'Link your existing tools (QuickBooks, Apollo, HubSpot, Airtable) to the Fusion Grid. Data flows in, agents get context, signals start forming.',
   },
   {
     num: '03',
@@ -43,11 +43,11 @@ const INTEGRATIONS = [
 const FAQS = [
   {
     q: 'What is the Fusion Grid?',
-    a: 'The Fusion Grid is the integration layer that connects all seven Echo 1 Labs apps to each other and to external systems — QuickBooks, Apollo, Airtable, HubSpot, AWS Bedrock, and Slack. Data flows in real time so agents can act on unified signals across every domain without manual handoffs.',
+    a: 'The Fusion Grid is the integration layer that connects all seven Echo 1 Labs apps to each other and to external systems: QuickBooks, Apollo, Airtable, HubSpot, AWS Bedrock, and Slack. Data flows in real time so agents can act on unified signals across every domain without manual handoffs.',
   },
   {
     q: 'What is the supervision layer?',
-    a: 'The supervision layer is the human-in-the-loop interface where operators see all agent activity, validate threshold alerts, and redirect work. Supervision replaces management — not judgment. Operators stay in control of decisions while agents handle execution.',
+    a: 'The supervision layer is the human-in-the-loop interface where operators see all agent activity, validate threshold alerts, and redirect work. Supervision replaces management, not judgment. Operators stay in control of decisions while agents handle execution.',
   },
   {
     q: 'How long does activation take?',
@@ -59,7 +59,7 @@ const FAQS = [
   },
   {
     q: 'What is an agent execution?',
-    a: 'An agent execution is a single completed business outcome performed by an autonomous agent — one lead enriched, one financial sync run, one piece of content delivered, one signal surfaced. The Growth tier includes 3,000 agent executions per month.',
+    a: 'An agent execution is a single completed business outcome performed by an autonomous agent: one lead enriched, one financial sync run, one piece of content delivered, one signal surfaced. The Growth tier includes 3,000 agent executions per month.',
   },
 ];
 
@@ -170,7 +170,7 @@ export default function HowItWorksPage() {
               },
               {
                 title: 'Agent Layer',
-                body: 'Seven operational apps — Engine, RevOps, Broadcast, Ledger, Titan, Signal, Prime — each running specialist agents against the Fusion Grid data.',
+                body: 'Seven operational apps (Engine, RevOps, Broadcast, Ledger, Titan, Signal, Prime), each running specialist agents against the Fusion Grid data.',
               },
               {
                 title: 'Supervision Layer',
@@ -258,7 +258,7 @@ export default function HowItWorksPage() {
       <CTA
         eyebrow="Ready to start?"
         headline="Join the Founding Cohort."
-        sub="Application-based access. Rate locked for the life of your subscription — rates for new customers after the cohort closes will be higher."
+        sub="Application-based access. Rate locked for the life of your subscription. Rates for new customers after the cohort closes will be higher."
         buttonLabel="Apply Now"
         buttonHref="/founding-cohort"
         dark
