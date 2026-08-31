@@ -9,13 +9,13 @@ export default function Header() {
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo} aria-label="Echo 1 Labs home">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/agent-orbit-mark.svg" className={styles.mark} alt="" width={32} height={32} aria-hidden="true" />
-          <span className={styles.wordmark}>
-            <span className={styles.echo}>ECHO</span>
-            <span className={styles.one}>1</span>
-            <span className={styles.labs}>LABS</span>
+          <span className={styles.mark} aria-hidden="true">
+            <svg viewBox="0 0 13 13">
+              <circle cx="6.5" cy="6.5" r="3" />
+              <path d="M6.5 1v2M6.5 10v2M1 6.5h2M10 6.5h2" />
+            </svg>
           </span>
+          <span className={styles.wordmark}>Echo 1 Labs</span>
         </Link>
 
         <nav className={styles.nav} aria-label="Main navigation">
