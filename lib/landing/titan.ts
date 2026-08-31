@@ -38,32 +38,26 @@ export const titanCopy: LandingCopy = {
   capabilitiesHeadline: 'What Titan runs inside every project.',
   capabilities: [
     {
-      icon: '⚙️',
       title: 'Configuration to scoped brief',
       desc: 'Client selections flow directly into a scoped project brief. No re-entry. No "what exactly did we sell them" conversations at kickoff.',
     },
     {
-      icon: '📦',
       title: 'Procurement and resource allocation',
       desc: 'Materials, vendors, and internal assignments get triggered at the right workflow stage. Not after someone remembers to ask.',
     },
     {
-      icon: '🔔',
       title: 'Stakeholder updates',
       desc: 'Clients and internal teams get the relevant update at the right moment. The workflow fires them. Nobody sits down to draft a status email.',
     },
     {
-      icon: '📝',
       title: 'Change order tracking',
       desc: 'Every scope change gets captured, approved, and documented in the workflow before it turns into a margin leak at the end of the job.',
     },
     {
-      icon: '✅',
       title: 'Delivery and sign-off',
       desc: 'QA checklist and client sign-off are built into the final workflow stages. Completion is structured, not a string of "did we get that approved?" messages.',
     },
     {
-      icon: '📊',
       title: 'Job-level margin reporting',
       desc: 'Estimated vs. actual margin per job, per project type, available in real time. Not 60 days later when accounting runs the numbers.',
     },

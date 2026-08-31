@@ -57,22 +57,18 @@ export default function LandingPage({ copy, contactUrl = '/contact' }: Props) {
           <h2 className={`display-md ${styles.offerH2}`}>{copy.offerHeadline}</h2>
           <div className={styles.offerGrid}>
             <div className={styles.offerCard}>
-              <div className={styles.offerIcon}>🏆</div>
               <div className={styles.offerLabel}>Dream outcome</div>
               <p className={styles.offerDesc}>{copy.dreamOutcome}</p>
             </div>
             <div className={styles.offerCard}>
-              <div className={styles.offerIcon}>✅</div>
               <div className={styles.offerLabel}>Why it works</div>
               <p className={styles.offerDesc}>{copy.perceivedLikelihood}</p>
             </div>
             <div className={styles.offerCard}>
-              <div className={styles.offerIcon}>⚡</div>
               <div className={styles.offerLabel}>Time to value</div>
               <p className={styles.offerDesc}>{copy.timeDelay}</p>
             </div>
             <div className={styles.offerCard}>
-              <div className={styles.offerIcon}>🎯</div>
               <div className={styles.offerLabel}>Your lift</div>
               <p className={styles.offerDesc}>{copy.effortReduction}</p>
             </div>

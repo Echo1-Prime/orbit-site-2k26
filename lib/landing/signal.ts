@@ -38,32 +38,26 @@ export const signalCopy: LandingCopy = {
   capabilitiesHeadline: 'What Signal does across your deal lifecycle.',
   capabilities: [
     {
-      icon: '🔍',
       title: 'Structured deal intake',
       desc: 'Every inbound opportunity goes into a consistent format. No PDF decks lost in email, no intake fields your associate has to fill in manually after the fact.',
     },
     {
-      icon: '📊',
       title: 'Comp analysis',
       desc: 'Public and proprietary comparable transactions pulled from CapIQ and your firm\'s deal history, formatted, and ranked by relevance. Takes minutes, not half a day.',
     },
     {
-      icon: '🧠',
       title: 'IC memo generation',
       desc: 'Thesis, market sizing, management assessment, financials, key risks: structured in your firm\'s IC format, ready for the meeting. One click from a completed screen.',
     },
     {
-      icon: '⚠️',
       title: 'Red flag surfacing',
       desc: 'Financial anomalies, management tenure gaps, market size mismatches: flagged and documented before anyone walks into the IC meeting.',
     },
     {
-      icon: '📁',
       title: 'Data room indexing',
       desc: 'Indexes the documents in your Datasite or Intralinks room and surfaces what matters at each diligence stage, instead of leaving your team to hunt.',
     },
     {
-      icon: '📋',
       title: 'Portfolio monitoring',
       desc: 'Post-close KPI tracking and board-prep briefs on the cadence you set. Not a spreadsheet update every quarter. A structured brief your GP can read in 15 minutes.',
     },

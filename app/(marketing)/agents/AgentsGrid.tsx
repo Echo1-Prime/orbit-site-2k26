@@ -45,9 +45,6 @@ export default function AgentsGrid() {
         {shown.map((agent) => (
           <div key={agent.id} className="card agent-card">
             <div className="agent-card__header">
-              <span className="agent-card__icon" aria-hidden="true">
-                {agent.icon}
-              </span>
               <span className="agent-card__product">{agent.product}</span>
             </div>
             <h3 className="agent-card__name">{agent.name}</h3>

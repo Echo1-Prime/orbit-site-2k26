@@ -38,32 +38,26 @@ export const revopsCopy: LandingCopy = {
   capabilitiesHeadline: 'What RevOps does for your revenue motion.',
   capabilities: [
     {
-      icon: '🎯',
       title: 'ICP-tuned outbound sequences',
       desc: 'The system builds sequences matched to each buyer segment, runs them on schedule, and flags which ones to adjust. Your ops lead reviews, not writes.',
     },
     {
-      icon: '🔄',
       title: 'Multi-channel orchestration',
       desc: 'Email, LinkedIn, and call cadences run from one playbook. No switching tools per channel, no task lists to manually check.',
     },
     {
-      icon: '📊',
       title: 'Pipeline signal surfacing',
       desc: 'Deals going dark, stale contacts, accounts showing buying activity: surfaced to your reps before the window closes.',
     },
     {
-      icon: '🤖',
       title: 'Agentic follow-up',
       desc: 'Booking confirms, reply handling, and nurture steps fire automatically. Your reps pick up the thread when it\'s a real conversation.',
     },
     {
-      icon: '📋',
       title: 'CRM hygiene',
       desc: 'Contact enrichment, stage updates, and data quality checks run continuously. Your Salesforce stays accurate without someone babysitting it.',
     },
     {
-      icon: '📈',
       title: 'Weekly revenue brief',
       desc: 'Every Monday morning: pipeline health, response rates, booked calls, what to fix. Ten minutes to read.',
     },
