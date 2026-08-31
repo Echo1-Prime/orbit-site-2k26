@@ -21,6 +21,8 @@
 .echo, .labs { color: var(--text); }
 .one { color: var(--accent); }
 .copy { font-size: 0.8rem; color: var(--text-3); }
+.email { color: var(--text-3); text-decoration: none; }
+.email:hover { color: var(--text); }
 .links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
 .links a { font-size: 0.8rem; color: var(--text-2); transition: color 0.18s ease; }
 .links a:hover { color: var(--text); }
