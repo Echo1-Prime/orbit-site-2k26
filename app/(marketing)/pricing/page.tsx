@@ -30,7 +30,7 @@ const TIERS = [
     label: 'Starter + Broadcast + Titan',
     price: '$4,500',
     period: '/mo',
-    description: 'Full go-to-market stack plus marketing and document intelligence. Adds content brief generation, drafting, scheduling, and document processing.',
+    description: 'Everything in Starter, plus automated content production and document intelligence. Your marketing and document workflows run on schedule — without a dedicated ops team.',
     layers: ['Engine', 'RevOps', 'Broadcast', 'Titan'],
     cta: 'Apply for Founding Cohort',
     href: '/founding-cohort',
@@ -41,7 +41,7 @@ const TIERS = [
     label: 'All layers including Ledger',
     price: '$7,500',
     period: '/mo',
-    description: 'The complete BLM OS. All active layers plus Ledger when it ships — included at no additional cost for OS-tier customers.',
+    description: 'Your full operating system. All seven layers run operations on schedule across GTM, revenue, marketing, and document processing — and Ledger ships to OS customers at no additional cost.',
     layers: ['Engine', 'RevOps', 'Broadcast', 'Titan', 'Ledger (on ship)', 'Prime'],
     cta: 'Apply for Founding Cohort',
     href: '/founding-cohort',
@@ -99,11 +99,12 @@ export default function PricingPage() {
           <div className="section-header">
             <Eyebrow>Pricing</Eyebrow>
             <h1 className="display-md" style={{ marginTop: '0.75rem' }}>
-              Modular. Transparent. Founding rates.
+              Founding rates. Locked for the life of your subscription.
             </h1>
             <p className="body-lg" style={{ maxWidth: '540px', marginTop: '1rem' }}>
-              Pick the layers your business needs now. Add more as you grow. Founding Cohort members
-              lock in current rates permanently.
+              No setup fees. No annual commitment. Pick the layers your business needs now and add
+              more as operations scale. Founding Cohort members lock in current rates permanently
+              — rates for new customers after the cohort closes will be higher.
             </p>
           </div>
 
@@ -287,7 +288,7 @@ export default function PricingPage() {
       <CTA
         eyebrow="Founding Cohort"
         headline="Lock in your rate before the cohort closes."
-        sub="Application-based access. Locked pricing. Priority access to new layers as they ship."
+        sub="Cohort seats are limited. Founding rates are not available after the cohort closes — and new-customer rates will be higher. Apply now to hold your rate."
         buttonLabel="Apply Now"
         buttonHref="/founding-cohort"
         dark

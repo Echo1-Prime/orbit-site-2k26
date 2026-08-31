@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { pageMetadata, breadcrumbSchema } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import AgentsGrid from './AgentsGrid';
+import CTA from '@/components/CTA/CTA';
 
 export const dynamic = 'force-static';
 
@@ -26,17 +27,26 @@ export default function AgentsPage() {
           <div className="section-header">
             <p className="label">28 Specialist Agents</p>
             <h1 className="display-lg" style={{ marginBottom: '1rem' }}>
-              The agent roster.
+              Your operating team. On schedule, not on bandwidth.
             </h1>
             <p className="body-lg" style={{ maxWidth: '560px' }}>
-              Every agent is engineered for one job. Filter by domain to see which agents map to
-              your lifecycle stage — from first GTM intake to board-level governance.
+              28 specialist agents. Each engineered for a single job in the Business Lifecycle
+              Management system. They run on schedule — not on bandwidth, not on headcount.
             </p>
           </div>
 
           <AgentsGrid />
         </div>
       </section>
+
+      <CTA
+        eyebrow="Founding Cohort"
+        headline="Activate your first agents."
+        sub="Application-based access. Locked pricing. Most operators are live in six to eight weeks."
+        buttonLabel="Apply Now"
+        buttonHref="/founding-cohort"
+        dark
+      />
 
       <style>{`
         .agents-filter {

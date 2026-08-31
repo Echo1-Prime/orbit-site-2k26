@@ -8,8 +8,8 @@ export const dynamic = 'force-static';
 
 const APPROACH = [
   {
-    tag: 'Institutional AI',
-    title: 'Personal AI to Institutional AI',
+    tag: 'Operational Architecture',
+    title: 'From execution mode to supervision mode',
     body:
       "We build your organization's second brain — connecting individual AI productivity to enterprise-grade governance, security, and scalable agentic infrastructure.",
   },

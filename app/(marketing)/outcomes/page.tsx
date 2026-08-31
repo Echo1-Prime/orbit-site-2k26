@@ -106,8 +106,8 @@ export default function OutcomesPage() {
               What changes when agents run operations.
             </h1>
             <p className="body-lg" style={{ maxWidth: '560px', marginTop: '1rem' }}>
-              The BLM OS does not promise outcomes. It changes the operational model. Here is what
-              that change looks like across the layers that run.
+              When agents run operations, the model changes — predictably. Here is what that looks
+              like across the layers that run.
             </p>
           </div>
 
@@ -199,7 +199,7 @@ export default function OutcomesPage() {
                         marginBottom: '0.75rem',
                       }}
                     >
-                      Before
+                      How it runs today
                     </p>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                       {d.before.map((item, i) => (
@@ -233,7 +233,7 @@ export default function OutcomesPage() {
                         marginBottom: '0.75rem',
                       }}
                     >
-                      After
+                      How it runs on the BLM OS
                     </p>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                       {d.after.map((item, i) => (
