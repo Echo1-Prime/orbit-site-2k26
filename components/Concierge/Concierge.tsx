@@ -212,7 +212,7 @@ export default function Concierge() {
                     aria-pressed={voice.state === 'listening'}
                     onClick={toggleMic}
                   >
-                    {voice.state === 'listening' ? '◉' : '🎙'}
+                    {voice.state === 'listening' ? '◉' : '●'}
                   </button>
                 )}
                 <input
