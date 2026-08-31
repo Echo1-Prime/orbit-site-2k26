@@ -95,7 +95,7 @@ export const AGENTS: Agent[] = [
     product: 'RevOps',
     tagline: '24/7 inbound and outbound calling agent.',
     description:
-      'Vapi + Twilio-powered voice agent that qualifies leads, handles objections, books demos, and escalates edge cases to humans — $0.08 per interaction.',
+      'Vapi + Twilio-powered voice agent that qualifies leads, handles objections, books demos, and escalates edge cases to humans. Runs the inbound queue 24/7 so your sales team only picks up conversations that are already warm — at $0.08 per interaction.',
   },
   {
     id: 'linkedin-scout',

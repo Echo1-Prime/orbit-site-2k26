@@ -27,7 +27,7 @@ const USE_CASES = [
     layers: ['Engine', 'RevOps', 'Prime'],
   },
   {
-    title: 'Outreach is inconsistent.',
+    title: 'Your pipeline dries up the week your top rep is traveling.',
     body: 'Prospecting happens when someone has time. Cadences break when someone is traveling. Qualification is inconsistent between reps. Engine and RevOps run outreach on schedule, score every lead on entry, and surface pipeline exceptions when they happen — not when someone checks.',
     layers: ['Engine', 'RevOps'],
   },
@@ -37,7 +37,7 @@ const USE_CASES = [
     layers: ['Broadcast'],
   },
   {
-    title: 'Document processing is a manual queue.',
+    title: "Invoices sit in someone's inbox until the vendor calls.",
     body: 'Incoming contracts sit until someone reads them. Invoices are matched manually. Titan classifies and routes documents on arrival, extracts structured data, and flags exceptions — contracts with unusual terms, invoices without matching POs — for review.',
     layers: ['Titan'],
   },
@@ -47,7 +47,7 @@ const USE_CASES = [
     layers: ['Ledger · Coming Soon'],
   },
   {
-    title: 'The operator has no system of record for decisions.',
+    title: 'Every decision lives in email threads no one can find.',
     body: 'Every major decision lives in email or the owner\'s head. Prime maintains a structured record of agent activity and operator decisions, compiles the daily briefing, and surfaces exceptions as they arise — so the operator has a running account of what is running and what needs attention.',
     layers: ['Prime'],
   },
@@ -142,50 +142,11 @@ export default function ForBusinessPage() {
         </div>
       </section>
 
-      {/* Use cases */}
+      {/* All seven layers */}
       <section
         className="section"
         style={{ background: 'var(--oa-panel)', borderTop: '1px solid var(--oa-border-subtle)' }}
       >
-        <div className="container">
-          <div className="section-header">
-            <Eyebrow>Where It Applies</Eyebrow>
-            <h2 className="display-sm" style={{ marginTop: '0.75rem' }}>
-              Six situations the BLM OS addresses.
-            </h2>
-          </div>
-          <div className="grid-2" style={{ gap: '1rem' }}>
-            {USE_CASES.map((uc) => (
-              <div key={uc.title} className="card" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-                <p
-                  style={{
-                    fontFamily: 'var(--oa-font-display)',
-                    fontWeight: 700,
-                    fontSize: '1rem',
-                    color: 'var(--oa-white)',
-                    lineHeight: 1.4,
-                  }}
-                >
-                  {uc.title}
-                </p>
-                <p style={{ fontSize: '0.875rem', color: 'var(--oa-text-secondary)', lineHeight: 1.7, flex: 1 }}>
-                  {uc.body}
-                </p>
-                <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
-                  {uc.layers.map((l) => (
-                    <Badge key={l} tone={l.includes('Coming Soon') ? 'muted' : 'ion'}>
-                      {l}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* All seven layers */}
-      <section className="section">
         <div className="container">
           <div className="section-header">
             <Eyebrow>The Seven Layers</Eyebrow>
@@ -240,6 +201,45 @@ export default function ForBusinessPage() {
                   <p style={{ fontSize: '0.825rem', color: 'var(--oa-text-secondary)', margin: 0, lineHeight: 1.5 }}>
                     {layer.desc}
                   </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Use cases */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <Eyebrow>Where It Applies</Eyebrow>
+            <h2 className="display-sm" style={{ marginTop: '0.75rem' }}>
+              Six situations the BLM OS addresses.
+            </h2>
+          </div>
+          <div className="grid-2" style={{ gap: '1rem' }}>
+            {USE_CASES.map((uc) => (
+              <div key={uc.title} className="card" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                <p
+                  style={{
+                    fontFamily: 'var(--oa-font-display)',
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    color: 'var(--oa-white)',
+                    lineHeight: 1.4,
+                  }}
+                >
+                  {uc.title}
+                </p>
+                <p style={{ fontSize: '0.875rem', color: 'var(--oa-text-secondary)', lineHeight: 1.7, flex: 1 }}>
+                  {uc.body}
+                </p>
+                <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>
+                  {uc.layers.map((l) => (
+                    <Badge key={l} tone={l.includes('Coming Soon') ? 'muted' : 'ion'}>
+                      {l}
+                    </Badge>
+                  ))}
                 </div>
               </div>
             ))}

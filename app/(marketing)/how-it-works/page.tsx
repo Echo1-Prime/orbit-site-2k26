@@ -31,7 +31,7 @@ const STEPS = [
   },
   {
     num: '04',
-    title: 'Supervise',
+    title: 'Own the decisions',
     body: 'You read the daily briefing, act on exception items, and approve gates that require your judgment. The agents handle volume. You handle decisions that require context and authority that only you have.',
   },
 ];
@@ -60,7 +60,7 @@ const FAQS = [
   },
   {
     q: 'Does this replace my existing team?',
-    a: 'No. The BLM OS gives your existing team and operator back the time currently spent on routine execution. The decisions that require human judgment are still theirs.',
+    a: 'No — and that is the point. The BLM OS returns the time currently consumed by routine execution to your existing team. Every decision that requires human judgment stays with the people who have the authority to make it. Agents handle volume. Your team handles everything else.',
   },
 ];
 
@@ -91,11 +91,11 @@ export default function HowItWorksPage() {
           <div className="section-header">
             <Eyebrow>How It Works</Eyebrow>
             <h1 className="display-md" style={{ marginTop: '0.75rem' }}>
-              Four steps. One operating system.
+              From execution bottleneck to supervision architecture.
             </h1>
             <p className="body-lg" style={{ maxWidth: '540px', marginTop: '1rem' }}>
-              The BLM OS connects to your existing tools, normalizes your data, runs agents against
-              configured parameters, and puts the operator in the supervision role.
+              The BLM OS connects to your existing tools, normalizes your data, and starts running
+              agents in week one. The operator shifts from execution to the supervision role.
             </p>
           </div>
 
@@ -244,7 +244,7 @@ export default function HowItWorksPage() {
       <CTA
         eyebrow="Ready to start?"
         headline="Join the Founding Cohort."
-        sub="Application-based access. Locked pricing. Direct input into the product."
+        sub="Application-based access. Rate locked for the life of your subscription — rates for new customers after the cohort closes will be higher."
         buttonLabel="Apply Now"
         buttonHref="/founding-cohort"
         dark

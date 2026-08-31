@@ -20,17 +20,14 @@ export default function Hero() {
         <p className="label">Business Lifecycle Management</p>
         <h1 className={`display-xl ${styles.headline}`}>Break free from business gravity.</h1>
         <p className={`body-lg ${styles.sub}`}>
-          Echo 1 Labs is the Business Lifecycle Management company. We get startups and SMBs to
-          escape velocity with process-engineered, agent-based systems — supervised by people.
-          Meet Orbit, our concierge. Ask it anything.
+          Built for owner-led businesses between $5M and $100M. We replace execution bottlenecks
+          with agent-run operations — supervised by you. Most operators are running their first
+          agents in six to eight weeks.
         </p>
 
         <div className={styles.actions} role="group" aria-label="Choose how to explore">
           <button type="button" className="btn btn--primary" onClick={() => choose('voice')}>
             Talk to Orbit
-          </button>
-          <button type="button" className="btn btn--ghost" onClick={() => choose('text')}>
-            Type instead
           </button>
           <button type="button" className={styles.browse} onClick={() => choose('browse')}>
             Browse on my own

@@ -44,11 +44,11 @@ export default function FoundingCohortPage() {
             <div>
               <Eyebrow>Founding Cohort</Eyebrow>
               <h1 className="display-lg" style={{ marginTop: '0.75rem', marginBottom: '1.5rem' }}>
-                The first businesses on the BLM OS.
+                Lock your rate. Shape the product.
               </h1>
               <p className="body-lg" style={{ marginBottom: '1.25rem' }}>
-                The Founding Cohort is a small group of owner-led businesses onboarded to the BLM OS
-                at locked-in rates, with direct input into the product as new layers ship.
+                A small group of owner-led businesses. Locked pricing — forever. Direct input into
+                what gets built next. Cohort seats are limited and will not reopen at these rates.
               </p>
               <p className="body-md" style={{ marginBottom: '2rem' }}>
                 Cohort membership is application-based. We review every application individually and
@@ -148,16 +148,20 @@ export default function FoundingCohortPage() {
             <h2 className="display-sm" style={{ marginTop: '0.75rem', marginBottom: '1rem' }}>
               Tell us about your business.
             </h2>
-            <p className="body-md" style={{ marginBottom: '2rem' }}>
-              Send a brief note to{' '}
+            <p className="body-md" style={{ marginBottom: '1.25rem' }}>
+              Email{' '}
               <a
                 href="mailto:hello@echo1labs.com"
                 style={{ color: 'var(--oa-ember)', textDecoration: 'none' }}
               >
                 hello@echo1labs.com
               </a>{' '}
-              with your current revenue range, team size, and the operational areas where you feel
-              the most friction. We review every application and respond within two business days.
+              with three things: your revenue range, team size, and where operations feel hardest.
+              That is all we need to start.
+            </p>
+            <p className="body-md" style={{ marginBottom: '2rem', color: 'var(--oa-text-secondary)' }}>
+              What to expect: We review your application → Schedule a 30-minute call → You get a
+              go/no-go within the week.
             </p>
             <ButtonLink href="mailto:hello@echo1labs.com" variant="ember">
               hello@echo1labs.com
