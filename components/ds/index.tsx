@@ -1,5 +1,5 @@
 /**
- * Orbit Agent Design System — React primitives.
+ * Orbit Agent Design System - React primitives.
  * Thin wrappers over the canonical `.oa-*` classes (app/orbit-ds/components.css).
  * Build every page from these so the site can't drift from the design system.
  * Server components (no client state) unless a consumer needs interactivity.

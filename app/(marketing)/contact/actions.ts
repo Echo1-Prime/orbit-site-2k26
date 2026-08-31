@@ -8,7 +8,7 @@ export interface ContactState {
 }
 
 export async function submitContact(_prev: ContactState, formData: FormData): Promise<ContactState> {
-  // Honeypot — bots fill hidden fields; humans do not.
+  // Honeypot: bots fill hidden fields; humans do not.
   if ((formData.get('company_website') as string)?.trim()) {
     return { status: 'success' };
   }

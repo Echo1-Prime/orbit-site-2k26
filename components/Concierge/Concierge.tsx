@@ -1,6 +1,6 @@
 'use client';
 
-// Orbit concierge — browse / text / voice with an A2P consent gate, streaming
+// Orbit concierge - browse / text / voice with an A2P consent gate, streaming
 // answers (AI SDK + gateway Claude), ElevenLabs voice-out, Web Speech voice-in,
 // client tools (showDashboard, navigateTo), and a Compass Mark state machine.
 
@@ -159,7 +159,7 @@ export default function Concierge() {
               <p className={styles.greeting}>Talk to Orbit</p>
               <p className={styles.note}>
                 Orbit is an AI concierge. To talk, it needs your microphone. Your speech is converted
-                to text so Orbit can respond — audio is not stored. See our <a href="/privacy">privacy policy</a>.
+                to text so Orbit can respond. Audio is not stored. See our <a href="/privacy">privacy policy</a>.
               </p>
               <div className={styles.consentActions}>
                 <button type="button" className="btn btn--primary btn--sm" onClick={grantMic}>Allow microphone</button>

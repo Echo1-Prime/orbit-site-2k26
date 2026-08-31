@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import styles from './Hero.module.css';
 
-// Official Echo 1 Labs homepage hero — artifact 03649351 (Josh 2026-08-31).
+// Official Echo 1 Labs homepage hero - artifact 03649351 (Josh 2026-08-31).
 // Solar Orange #FF7515 orbital field on void black; no ember, no ion-cyan.
 export default function Hero() {
   const reduced = useReducedMotion();
@@ -101,7 +101,7 @@ export default function Hero() {
           <em>business gravity.</em>
         </h1>
         <p className={styles.sub}>
-          Seven integrated apps. One operating system — for businesses and ministries alike. Built by
+          Seven integrated apps. One operating system, for businesses and ministries alike. Built by
           operators. Run by agents. Supervised by humans at scale.
         </p>
         <div className={styles.actions}>

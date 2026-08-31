@@ -1,5 +1,5 @@
 // Allowlisted destinations for the navigateTo tool. The agent can never route
-// to an arbitrary URL — only these known site paths (prompt-injection guard).
+// to an arbitrary URL, only these known site paths (prompt-injection guard).
 import { PRODUCT_SLUGS } from '@/lib/products';
 
 export const NAV_ROUTES = [
