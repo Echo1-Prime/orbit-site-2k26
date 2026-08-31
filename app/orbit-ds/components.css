@@ -152,7 +152,7 @@
 
 /* HUD card — corner tick brackets */
 .oa-card-hud {
-  background: rgba(10, 17, 30, 0.70);
+  background: rgba(10, 10, 14, 0.70);
   border: 1px solid rgba(143, 208, 242, 0.25);
   border-radius: var(--oa-r-sm);
   padding: 18px;
@@ -208,7 +208,7 @@
 
 /* Glass panel (Fusion dashboard) */
 .oa-glass {
-  background: rgba(16, 27, 46, 0.75);
+  background: rgba(17, 17, 24, 0.75);
   border: 1px solid rgba(143, 208, 242, 0.14);
   border-radius: var(--oa-r-lg);
   backdrop-filter: blur(8px);
@@ -266,7 +266,7 @@
   height: 22px;
   border-radius: var(--oa-r-pill);
   border: 1px solid var(--oa-steel);
-  background: rgba(46, 78, 116, 0.30);
+  background: rgba(42, 42, 56, 0.30);
   position: relative;
   cursor: pointer;
   transition: background var(--oa-dur-fast) var(--oa-ease-standard), border-color var(--oa-dur-fast);
@@ -345,7 +345,7 @@
   padding: var(--oa-sp-2);
   border-radius: var(--oa-r-pill);
   border: 1px solid rgba(143, 208, 242, 0.25);
-  background: rgba(16, 27, 46, 0.85);
+  background: rgba(17, 17, 24, 0.85);
   backdrop-filter: blur(12px);
 }
 
