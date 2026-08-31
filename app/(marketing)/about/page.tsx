@@ -2,16 +2,50 @@ import type { Metadata } from 'next';
 import { pageMetadata, breadcrumbSchema } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 import CTA from '@/components/CTA/CTA';
-import { LEGAL_ENTITY } from '@/lib/site';
+import InViewStagger from '@/components/Reveal/InViewStagger';
+import { Eyebrow, Card, Badge } from '@/components/ds';
 
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = pageMetadata({
   title: 'About',
   description:
-    'Echo 1 Labs is the Business Lifecycle Management company — a boutique built by operators for operators. Agent-based, human-supervised, a brand of Mingma Inc.',
+    'Echo 1 Labs builds the Business Lifecycle Management OS — an integrated agent system that runs operations for owner-led businesses and lets humans supervise at scale.',
   path: '/about',
 });
+
+const PRINCIPLES = [
+  {
+    num: '01',
+    title: 'No black boxes',
+    body: 'Every agent action is logged. The owner can always see what ran, what it produced, and what it escalated. Supervision requires visibility.',
+  },
+  {
+    num: '02',
+    title: 'Exceptions, not approvals',
+    body: "The operator's time goes to decisions that require judgment. Everything else runs. The exception queue is how you know what needs you.",
+  },
+  {
+    num: '03',
+    title: 'One architecture',
+    body: 'Seven layers, one data model, one governance interface. The BLM OS is not a bundle of tools. It is a coordinated system with a single point of control.',
+  },
+  {
+    num: '04',
+    title: 'Real operations, not demos',
+    body: 'The BLM OS runs production workloads — outreach, content, reconciliation, documents. It is not an experiment. It is how business gets done.',
+  },
+];
+
+const APPS = [
+  { num: '01', name: 'Engine', cat: 'Go-to-Market' },
+  { num: '02', name: 'RevOps', cat: 'Revenue Operations' },
+  { num: '03', name: 'Broadcast', cat: 'Marketing' },
+  { num: '04', name: 'Ledger', cat: 'Finance · Coming Soon' },
+  { num: '05', name: 'Titan', cat: 'Document Intelligence' },
+  { num: '06', name: 'Signal', cat: 'Deal Intelligence · Private' },
+  { num: '07', name: 'Prime', cat: 'Governance' },
+];
 
 export default function AboutPage() {
   return (
@@ -22,127 +56,264 @@ export default function AboutPage() {
           { name: 'About', path: '/about' },
         ])}
       />
+
+      {/* Hero */}
       <section className="section">
         <div className="container">
-          <div className="grid-2" style={{ gap: '5rem', alignItems: 'start' }}>
-            <div>
-              <p className="label" style={{ marginBottom: '0.75rem' }}>About Echo 1 Labs</p>
-              <h1 className="display-lg" style={{ marginBottom: '1.5rem' }}>Built by operators. For operators.</h1>
-              <p className="body-lg" style={{ marginBottom: '1.25rem' }}>
-                Most AI consulting firms are staffed by researchers. We are not. Echo 1 Labs was
-                founded by recovering operators — a CEO, COO, and CFO who spent years inside
-                founder-led companies watching the same five problems pull good teams under, and
-                decided to process-engineer the way out.
-              </p>
-              <p className="body-md" style={{ marginBottom: '1.25rem' }}>
-                We built Echo 1 Labs to solve the problem we lived: how do you take a company that
-                has outgrown its systems and staff, and compress the next decade of growth into the
-                next two years?
-              </p>
-              <p className="body-md">
-                The answer is Business Lifecycle Management — a structured way to deploy agent-based
-                systems, automations, and human supervision across every stage of a company&apos;s
-                growth. Not a tool. Not a chatbot. A system that compounds — the thrust that gets you
-                to escape velocity.
-              </p>
-            </div>
-            <div className="stack" style={{ gap: '1.25rem' }}>
-              <div className="card">
-                <div className="card__title">{LEGAL_ENTITY}</div>
-                <p className="card__desc">Echo 1 Labs is a brand of {LEGAL_ENTITY} — the legal entity behind the full suite of Business Lifecycle Management products and client engagements.</p>
-              </div>
-              <div className="card">
-                <div className="card__title">Anthropic Claude partners</div>
-                <p className="card__desc">We specialize in Anthropic Claude deployment — from individual productivity to multi-agent Bedrock orchestration. Every system we build is designed to get smarter over time.</p>
-              </div>
-              <div className="card">
-                <div className="card__title">Consulting firm partners</div>
-                <p className="card__desc">We work alongside marketing agencies, sales consultancies, branding firms, and financial advisors — giving their clients the AI infrastructure layer their firm cannot build alone.</p>
-              </div>
-              <div className="card">
-                <div className="card__title">Startup &amp; SMB focus</div>
-                <p className="card__desc">We are built for startups and SMBs that have outgrown their systems and staff. Past the experiment phase and need institutional AI — that is us.</p>
-              </div>
-            </div>
+          <Eyebrow>About Echo 1 Labs</Eyebrow>
+          <h1 className="display-lg" style={{ marginTop: '0.75rem', marginBottom: '1.25rem' }}>
+            Built by operators.<br />Run by agents.
+          </h1>
+          <p className="body-lg" style={{ maxWidth: '640px', color: 'var(--oa-slate)' }}>
+            Echo 1 Labs was started because the problems of an owner-led business do not get smaller
+            as the business grows. They get louder. The answer is not more headcount. It is better
+            infrastructure.
+          </p>
+        </div>
+      </section>
+
+      {/* Why we exist */}
+      <section className="section" style={{ borderTop: '1px solid var(--oa-border)' }}>
+        <div className="container">
+          <Eyebrow tone="muted">Why we exist</Eyebrow>
+          <h2 className="display-md" style={{ marginTop: '0.75rem', marginBottom: '1.5rem' }}>
+            The owner-led business has no OS.
+          </h2>
+          <div style={{ maxWidth: '720px' }}>
+            <p className="body-md" style={{ color: 'var(--oa-slate)', marginBottom: '1.25rem' }}>
+              Owner-led businesses between $5M and $100M carry an unusual burden: the operational
+              surface area of a mid-market company with the staffing model of a startup. Revenue
+              operations, marketing, finance, documents, deal flow — every function lands on the
+              same small group of people, and the owner sits at the center of it.
+            </p>
+            <p className="body-md" style={{ color: 'var(--oa-slate)', marginBottom: '1.25rem' }}>
+              The result is a class of businesses that are perpetually capable of more than they
+              produce. Not because the people are wrong. Because the infrastructure is missing.
+              Point solutions exist for every problem, but they do not add up to an operating
+              system. Each one creates its own queue. None of them talk to each other. And none of
+              them reduce the number of decisions the owner needs to make each day.
+            </p>
+            <p className="body-md" style={{ color: 'var(--oa-slate)' }}>
+              That is the problem Echo 1 Labs was built to solve.
+            </p>
           </div>
         </div>
       </section>
 
-      {/* Brand identity showcase */}
-      <section className="section" style={{ background: 'var(--void-card)', borderTop: '1px solid var(--border)' }}>
+      {/* What we believe */}
+      <section className="section" style={{ borderTop: '1px solid var(--oa-border)' }}>
         <div className="container">
-          <p className="label" style={{ marginBottom: '2.5rem', textAlign: 'center' }}>Brand identity</p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', alignItems: 'center' }}>
-            {/* Primary lockup — white on void */}
-            <div
+          <Eyebrow tone="muted">What we believe</Eyebrow>
+          <h2 className="display-md" style={{ marginTop: '0.75rem', marginBottom: '1.5rem' }}>
+            Supervision scales. Execution does not.
+          </h2>
+          <div
+            style={{
+              background: 'var(--oa-panel)',
+              border: '1px solid var(--oa-border-accent)',
+              borderRadius: 'var(--oa-radius)',
+              padding: '2.5rem 2.75rem',
+              marginBottom: '2rem',
+            }}
+          >
+            <p
               style={{
-                background: '#0A0A0E',
-                borderRadius: 'var(--radius-xl)',
-                padding: '3rem 4rem',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: '100%',
-                maxWidth: '640px',
-                border: '1px solid var(--border)',
+                fontFamily: 'var(--oa-font-display)',
+                fontSize: 'clamp(1rem, 2.4vw, 1.375rem)',
+                fontWeight: 800,
+                lineHeight: 1.4,
+                color: 'var(--oa-white)',
               }}
             >
-              <img
-                src="/brand/e1-logo-orbitwhite.png"
-                alt="Echo 1 Labs — white wordmark on void"
-                style={{ width: '280px', height: 'auto' }}
-              />
-            </div>
-            {/* Two-up: deep blue + void black */}
-            <div className="grid-2" style={{ width: '100%', maxWidth: '640px', gap: '1rem' }}>
-              <div
-                style={{
-                  background: '#0A0A0E',
-                  borderRadius: 'var(--radius-lg)',
-                  padding: '2rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid rgba(255,255,255,0.08)',
-                }}
-              >
-                <img
-                  src="/brand/e1-logo-deepblue.png"
-                  alt="Echo 1 Labs — deep blue lockup"
-                  style={{ width: '160px', height: 'auto' }}
-                />
-              </div>
-              <div
-                style={{
-                  background: '#111118',
-                  borderRadius: 'var(--radius-lg)',
-                  padding: '2rem',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  border: '1px solid var(--border)',
-                }}
-              >
-                <img
-                  src="/brand/e1-logo-voidblack.png"
-                  alt="Echo 1 Labs — void black lockup"
-                  style={{ width: '160px', height: 'auto' }}
-                />
-              </div>
-            </div>
-            {/* E¹ icon reference */}
-            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-              <img src="/echo1-favicon.svg" alt="E¹ favicon mark" style={{ width: '40px', height: '40px' }} />
-              <img src="/echo1-e1-mark.svg" alt="E¹ mark" style={{ width: '40px', height: '40px' }} />
-            </div>
+              &ldquo;<span style={{ color: 'var(--oa-ember)' }}>Built by operators.</span> Run by
+              agents.{' '}
+              <span style={{ color: 'var(--oa-ember)' }}>Supervised by humans</span> at scale.&rdquo;
+            </p>
           </div>
+          <div style={{ maxWidth: '720px', marginBottom: '2.5rem' }}>
+            <p className="body-md" style={{ color: 'var(--oa-slate)', marginBottom: '1.25rem' }}>
+              The BLM OS is built on a specific premise: agents should run execution, and humans
+              should supervise it. Not because humans are slow, but because that is the correct
+              division of labor. Routine decisions should not require the owner&rsquo;s attention.
+              Consequential decisions always will.
+            </p>
+            <p className="body-md" style={{ color: 'var(--oa-slate)' }}>
+              Supervision at scale is different from execution at scale. You can supervise many
+              things at once. You cannot execute many things at once. The BLM OS is designed to
+              expand what one person can supervise, not to replace judgment.
+            </p>
+          </div>
+          <InViewStagger className="grid-2">
+            {PRINCIPLES.map((p) => (
+              <Card key={p.num}>
+                <div style={{ marginBottom: 10 }}>
+                  <Badge tone="muted">{p.num}</Badge>
+                </div>
+                <h3
+                  style={{
+                    fontFamily: 'var(--oa-font-display)',
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    marginBottom: 8,
+                    color: 'var(--oa-white)',
+                  }}
+                >
+                  {p.title}
+                </h3>
+                <p style={{ fontSize: '0.875rem', color: 'var(--oa-slate)', lineHeight: 1.7 }}>
+                  {p.body}
+                </p>
+              </Card>
+            ))}
+          </InViewStagger>
+        </div>
+      </section>
+
+      {/* The product */}
+      <section className="section" style={{ borderTop: '1px solid var(--oa-border)' }}>
+        <div className="container">
+          <Eyebrow tone="muted">The product</Eyebrow>
+          <h2 className="display-md" style={{ marginTop: '0.75rem', marginBottom: '1rem' }}>
+            Seven layers. One operating system.
+          </h2>
+          <p className="body-md" style={{ color: 'var(--oa-slate)', maxWidth: '640px', marginBottom: '2rem' }}>
+            The BLM OS covers the full operational lifecycle of an owner-led business. Every layer
+            connects to the same Fusion Grid data architecture and reports to Prime, the governance
+            layer.
+          </p>
+          <div className="grid-2">
+            {APPS.map((app) => (
+              <div
+                key={app.num}
+                style={{
+                  background: 'var(--oa-surface)',
+                  border: '1px solid var(--oa-border)',
+                  borderRadius: 'var(--oa-radius-sm)',
+                  padding: '0.875rem 1.125rem',
+                  display: 'flex',
+                  alignItems: 'baseline',
+                  gap: '0.75rem',
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: 'var(--oa-font-mono)',
+                    fontSize: '0.6rem',
+                    letterSpacing: '0.12em',
+                    color: 'var(--oa-slate)',
+                    flexShrink: 0,
+                  }}
+                >
+                  {app.num}
+                </span>
+                <div>
+                  <div
+                    style={{
+                      fontFamily: 'var(--oa-font-display)',
+                      fontWeight: 800,
+                      fontSize: '0.875rem',
+                      color: 'var(--oa-white)',
+                    }}
+                  >
+                    {app.name}
+                  </div>
+                  <div style={{ fontSize: '0.75rem', color: 'var(--oa-slate)' }}>{app.cat}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Who we build for */}
+      <section className="section" style={{ borderTop: '1px solid var(--oa-border)' }}>
+        <div className="container">
+          <Eyebrow tone="muted">Who we build for</Eyebrow>
+          <h2 className="display-md" style={{ marginTop: '0.75rem', marginBottom: '1.5rem' }}>
+            Owner-led businesses between $5M and $100M.
+          </h2>
+          <div style={{ maxWidth: '720px' }}>
+            <p className="body-md" style={{ color: 'var(--oa-slate)', marginBottom: '1.25rem' }}>
+              The BLM OS is built for businesses with 50 to 200 employees where the owner retains
+              active operational authority. Businesses that are large enough to have real operational
+              surface area but structured in a way that makes adding headcount to cover it the wrong
+              answer.
+            </p>
+            <p className="body-md" style={{ color: 'var(--oa-slate)' }}>
+              This is not a category that has historically had good infrastructure options. Enterprise
+              software is built for large teams and long procurement cycles. Point solutions are built
+              for individual use cases. The BLM OS is built for the in-between — businesses that are
+              serious, complex, and owner-operated.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Contact */}
+      <section className="section" style={{ borderTop: '1px solid var(--oa-border)' }}>
+        <div className="container">
+          <Eyebrow tone="muted">Contact</Eyebrow>
+          <h2 className="display-md" style={{ marginTop: '0.75rem', marginBottom: '1rem' }}>
+            Get in touch.
+          </h2>
+          <p className="body-md" style={{ color: 'var(--oa-slate)', marginBottom: '2rem' }}>
+            For Founding Cohort inquiries, partnerships, press, or general questions about the BLM OS.
+          </p>
+          <Card>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '1.25rem',
+                flexWrap: 'wrap',
+              }}
+            >
+              <div>
+                <h3
+                  style={{
+                    fontFamily: 'var(--oa-font-display)',
+                    fontWeight: 800,
+                    fontSize: '1.125rem',
+                    color: 'var(--oa-white)',
+                    marginBottom: '0.375rem',
+                  }}
+                >
+                  Direct line
+                </h3>
+                <p style={{ fontSize: '0.875rem', color: 'var(--oa-slate)' }}>
+                  For Founding Cohort applicants, operators interested in the BLM OS, and any
+                  questions about the platform.
+                </p>
+              </div>
+              <a
+                href="mailto:hello@echo1labs.com"
+                style={{
+                  fontFamily: 'var(--oa-font-mono)',
+                  fontSize: '0.65rem',
+                  letterSpacing: '0.12em',
+                  textTransform: 'uppercase',
+                  background: 'var(--oa-ember)',
+                  color: 'var(--oa-white)',
+                  padding: '0.5rem 1rem',
+                  borderRadius: 'var(--oa-radius-sm)',
+                  whiteSpace: 'nowrap',
+                  display: 'inline-block',
+                  textDecoration: 'none',
+                }}
+              >
+                hello@echo1labs.com
+              </a>
+            </div>
+          </Card>
         </div>
       </section>
 
       <CTA
         eyebrow="Break free from business gravity."
-        headline="Ready to build your lifecycle?"
-        buttonLabel="Schedule a call"
+        headline="Ready to see the OS?"
+        sub="Join the Founding Cohort to get access, locked-in pricing, and direct input into the product as we ship the remaining layers."
+        buttonLabel="Join Founding Cohort"
         buttonHref="/contact"
         dark
       />
