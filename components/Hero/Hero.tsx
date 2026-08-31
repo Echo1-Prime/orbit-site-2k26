@@ -11,18 +11,6 @@ export default function Hero() {
 
   return (
     <section className={`band--dark ${styles.hero}`}>
-      {!reduced && (
-        <video
-          className={styles.videoBg}
-          src="/videos/earth-from-space.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-          aria-hidden="true"
-        />
-      )}
-      <div className={styles.overlay} aria-hidden="true" />
       <div className={styles.glow} aria-hidden="true" />
       <div className={`container ${styles.inner}`}>
         <div className={styles.mark}>
