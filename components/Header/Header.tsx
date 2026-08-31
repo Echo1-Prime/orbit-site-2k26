@@ -2,20 +2,20 @@ import Link from 'next/link';
 import { NAV_LINKS } from '@/lib/site';
 import styles from './Header.module.css';
 
-// Definitive Agent Orbit logo (Josh 2026-07-18): the atom mark is rendered from the
-// official asset; the wordmark is typeset "ECHO 1 LABS" — ECHO/LABS core-white, "1" ember.
+// Official Echo 1 Labs lockup (design system "Echo 1 Labs mark" — orange box retired):
+// E1 mark on a theme-adaptive tile (E + tile follow currentColor / --text, so they flip
+// with light/dark; the "1" stays Solar Orange) + "Echo 1 Labs" wordmark with orange 1.
 export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo} aria-label="Echo 1 Labs home">
           <span className={styles.mark} aria-hidden="true">
-            <svg viewBox="0 0 13 13">
-              <circle cx="6.5" cy="6.5" r="3" />
-              <path d="M6.5 1v2M6.5 10v2M1 6.5h2M10 6.5h2" />
-            </svg>
+            E<span className={styles.markSup}>1</span>
           </span>
-          <span className={styles.wordmark}>Echo 1 Labs</span>
+          <span className={styles.wordmark}>
+            Echo <span className={styles.one}>1</span> Labs
+          </span>
         </Link>
 
         <nav className={styles.nav} aria-label="Main navigation">

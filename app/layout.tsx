@@ -45,10 +45,10 @@ export const metadata: Metadata = {
   alternates: { canonical: '/' },
   icons: {
     icon: [
-      { url: '/echo1-mark-crosshair.svg', type: 'image/svg+xml' },
+      { url: '/echo1-e1-favicon.svg', type: 'image/svg+xml' },
       { url: '/agent-orbit-favicon.png', type: 'image/png', sizes: '64x64' },
     ],
-    shortcut: '/echo1-mark-crosshair.svg',
+    shortcut: '/echo1-e1-favicon.svg',
     apple: '/agent-orbit-apple-touch-icon.png',
   },
   openGraph: {
