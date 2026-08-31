@@ -1,287 +1,273 @@
-// Echo 1 Labs — 28 specialist agents across 5 lifecycle domains.
-// Domain filter values must stay in sync with AgentsGrid.tsx DOMAINS constant.
+// Echo 1 Labs — 28 specialist agents across 7 product domains.
+// Organized by product (Prime, Engine, Broadcast, RevOps, Ledger, Titan, Signal).
 
-export type AgentDomain = 'Go-to-Market' | 'Revenue' | 'Finance' | 'Operations' | 'Governance';
+export type AgentDomain =
+  | 'Prime'
+  | 'Engine'
+  | 'Broadcast'
+  | 'RevOps'
+  | 'Ledger'
+  | 'Titan'
+  | 'Signal';
+
+export type AgentTrigger = 'Scheduled' | 'Event' | 'On-Demand';
 
 export interface Agent {
   id: string;
   name: string;
   domain: AgentDomain;
-  product: string;
-  tagline: string;
+  trigger: AgentTrigger;
   description: string;
 }
 
 export const AGENTS: Agent[] = [
-  // ── Go-to-Market (Engine) ───────────────────────────────────────────────
+  // ── Prime ───────────────────────────────────────────────────────────────
   {
-    id: 'gtm-strategist',
-    name: 'GTM Strategist',
-    domain: 'Go-to-Market',
-    product: 'Engine',
-    tagline: 'Adaptive intake → complete go-to-market strategy.',
+    id: 'prime-observer',
+    name: 'Prime Observer',
+    domain: 'Prime',
+    trigger: 'Scheduled',
     description:
-      'Runs the 26/55-question adaptive intake, ingests existing content, and produces a 30–40 page GTM playbook with ICPs, positioning, KPIs, budget, and 90-day roadmap.',
+      'Monitors KPIs across all active domains. Surfaces threshold breaches before they become decisions you missed.',
   },
   {
-    id: 'icp-builder',
-    name: 'ICP Builder',
-    domain: 'Go-to-Market',
-    product: 'Engine',
-    tagline: 'Defines and refines your ideal customer profile.',
+    id: 'threshold-guardian',
+    name: 'Threshold Guardian',
+    domain: 'Prime',
+    trigger: 'Event',
     description:
-      'Extracts firmographic and psychographic signals from intake responses and existing deal data to generate scored ICP profiles that feed RevOps prospecting filters.',
+      'Routes threshold alerts to the right operator layer. Prioritizes by severity. Nothing crosses without being seen.',
   },
   {
-    id: 'brand-voice',
-    name: 'Brand Voice',
-    domain: 'Go-to-Market',
-    product: 'Engine',
-    tagline: 'Locks your tone and messaging across every channel.',
+    id: 'briefing-compiler',
+    name: 'Briefing Compiler',
+    domain: 'Prime',
+    trigger: 'Scheduled',
     description:
-      'Reads website copy, sales decks, podcasts, and past campaigns to extract your authentic voice, then enforces it across all Engine, RevOps, and Broadcast outputs.',
+      'Assembles a daily digest of agent activity, open thresholds, and decisions awaiting operator input.',
   },
   {
-    id: 'content-repurposer',
-    name: 'Content Repurposer',
-    domain: 'Go-to-Market',
-    product: 'Broadcast',
-    tagline: 'Turns one asset into ten distribution-ready formats.',
+    id: 'workflow-router',
+    name: 'Workflow Router',
+    domain: 'Prime',
+    trigger: 'Event',
     description:
-      'Ingests a blog post, podcast, webinar, or sales deck and generates LinkedIn posts, email sequences, short-form clips, infographics, and ad copy — each optimized for the channel.',
-  },
-  {
-    id: 'landing-page-builder',
-    name: 'Landing Page Builder',
-    domain: 'Go-to-Market',
-    product: 'Engine',
-    tagline: 'Conversion-engineered pages from GTM strategy inputs.',
-    description:
-      'Generates branded landing pages — hero, ICP-matched value props, social proof blocks, and CTA — directly from Engine playbook outputs, ready to deploy in hours.',
-  },
-  {
-    id: 'seo-auditor',
-    name: 'SEO Auditor',
-    domain: 'Go-to-Market',
-    product: 'Broadcast',
-    tagline: '148-rule technical audit + keyword gap map.',
-    description:
-      'Runs a full technical SEO scan (148 rules), cross-references GSC performance data, identifies keyword gaps, and delivers a prioritized fix list with projected traffic impact.',
+      "Handles cross-app handoffs when one agent's output triggers another domain's workflow.",
   },
 
-  // ── Revenue (RevOps) ────────────────────────────────────────────────────
+  // ── Engine ──────────────────────────────────────────────────────────────
   {
-    id: 'prospect-researcher',
-    name: 'Prospect Researcher',
-    domain: 'Revenue',
-    product: 'RevOps',
-    tagline: 'Deep profile on every prospect — in minutes.',
+    id: 'icp-prospector',
+    name: 'ICP Prospector',
+    domain: 'Engine',
+    trigger: 'Scheduled',
     description:
-      'Multi-pass web research builds complete prospect profiles with ICP scoring, firmographics, tech stack, hiring signals, and buying triggers — 6–8× faster than manual.',
+      'Builds targeted prospect lists from your ICP definition. Pulls from Apollo, scores by fit, queues to outreach.',
   },
   {
-    id: 'outreach-writer',
-    name: 'Outreach Writer',
-    domain: 'Revenue',
-    product: 'RevOps',
-    tagline: 'Hyper-personalized sequences at scale.',
+    id: 'outreach-sequencer',
+    name: 'Outreach Sequencer',
+    domain: 'Engine',
+    trigger: 'Scheduled',
     description:
-      'Generates multi-touch email, LinkedIn, and SMS sequences from prospect profiles and ICP data — A/B variants included, synced to Apollo sequences via CRM automation.',
+      'Executes multi-touch outreach sequences on declared cadence. Adapts messaging by stage and persona.',
   },
   {
-    id: 'voice-qualifier',
-    name: 'Voice Qualifier',
-    domain: 'Revenue',
-    product: 'RevOps',
-    tagline: '24/7 inbound and outbound calling agent.',
+    id: 'meeting-scheduler',
+    name: 'Meeting Scheduler',
+    domain: 'Engine',
+    trigger: 'On-Demand',
     description:
-      'Vapi + Twilio-powered voice agent that qualifies leads, handles objections, books demos, and escalates edge cases to humans. Runs the inbound queue 24/7 so your sales team only picks up conversations that are already warm — at $0.08 per interaction.',
+      'Coordinates calendar availability and confirms meetings with prospects. Runs inside outreach or standalone.',
   },
   {
-    id: 'linkedin-scout',
-    name: 'LinkedIn Scout',
-    domain: 'Revenue',
-    product: 'RevOps',
-    tagline: 'Warm lists from competitor audiences.',
+    id: 'pipeline-velocity-monitor',
+    name: 'Pipeline Velocity Monitor',
+    domain: 'Engine',
+    trigger: 'Event',
     description:
-      'Scrapes post engagers from competitor LinkedIn accounts, enriches profiles against Apollo, and builds warm outreach lists segmented by ICP fit score.',
-  },
-  {
-    id: 'pipeline-analyst',
-    name: 'Pipeline Analyst',
-    domain: 'Revenue',
-    product: 'RevOps',
-    tagline: 'Deal velocity, coverage gaps, forecast risk.',
-    description:
-      'Analyzes CRM pipeline health — stage velocity, coverage ratio, deal age, and churn risk — and surfaces weekly recommendations to the sales team before the forecast call.',
-  },
-  {
-    id: 'text-chat-agent',
-    name: 'Text & Chat Agent',
-    domain: 'Revenue',
-    product: 'RevOps',
-    tagline: 'SMS + web chat with confidence-based escalation.',
-    description:
-      'Runs SMS automation, web chatbots, and Slack bots for lead qualification, appointment reminders, and first-response support — with automatic human escalation when confidence drops.',
+      "Tracks deal movement across stages. Fires a stall alert to Prime when a deal hasn't progressed past threshold.",
   },
 
-  // ── Finance (Signal + Ledger) ───────────────────────────────────────────
+  // ── Broadcast ───────────────────────────────────────────────────────────
   {
-    id: 'deal-screener',
-    name: 'Deal Screener',
-    domain: 'Finance',
-    product: 'Signal',
-    tagline: 'Four hard-filter gates in under 30 minutes.',
+    id: 'content-generator',
+    name: 'Content Generator',
+    domain: 'Broadcast',
+    trigger: 'Scheduled',
     description:
-      'Applies Revenue Floor, EBITDA Margin, Entry Multiple, and Data Quality gates to every incoming deal — instant pass/fail with flagged exceptions, cutting screening from 2–4 hours to 30 minutes.',
+      'Produces multi-channel copy on cadence — social, email, long-form — aligned to your brand guidelines.',
   },
   {
-    id: 'ic-memo-generator',
-    name: 'IC Memo Generator',
-    domain: 'Finance',
-    product: 'Signal',
-    tagline: 'Investment committee memo in one click.',
+    id: 'social-scheduler',
+    name: 'Social Scheduler',
+    domain: 'Broadcast',
+    trigger: 'Scheduled',
     description:
-      'Generates board-ready IC memos with financials, risk assessment, industry benchmarks, and recommendation — PDF export, branded template, ready for partner review.',
+      'Queues and publishes content across connected social channels. Maintains cadence. Reports confirmations to Prime.',
   },
   {
-    id: 'benchmark-analyst',
-    name: 'Benchmark Analyst',
-    domain: 'Finance',
-    product: 'Signal',
-    tagline: '61 BizMiner ratios across 5,000+ NAICS codes.',
+    id: 'brand-monitor',
+    name: 'Brand Monitor',
+    domain: 'Broadcast',
+    trigger: 'Scheduled',
     description:
-      'Auto-matches a company to its NAICS code and revenue band, overlays 61 financial ratios at P25/Median/P75, and flags material deviations that need diligence attention.',
+      'Tracks brand mentions and sentiment across channels. Surfaces anomalies and engagement spikes as signals.',
   },
   {
-    id: 'cash-flow-forecaster',
-    name: 'Cash Flow Forecaster',
-    domain: 'Finance',
-    product: 'Ledger',
-    tagline: '30/60/90-day rolling horizon — three scenarios.',
+    id: 'campaign-reporter',
+    name: 'Campaign Reporter',
+    domain: 'Broadcast',
+    trigger: 'Scheduled',
     description:
-      'Builds Base, Conservative, and Aggressive cash flow models from live QuickBooks data with revenue-lag modeling — surfaces shortfall alerts 60 days before they hit.',
-  },
-  {
-    id: 'budget-monitor',
-    name: 'Budget Monitor',
-    domain: 'Finance',
-    product: 'Ledger',
-    tagline: 'Budget vs. actual — per department, per campaign.',
-    description:
-      'Tracks spend against plan across every initiative with real-time QuickBooks feeds, sends variance alerts when any line exceeds threshold, and explains the delta in plain language.',
-  },
-  {
-    id: 'unit-economics',
-    name: 'Unit Economics',
-    domain: 'Finance',
-    product: 'Ledger',
-    tagline: 'LTV:CAC and campaign ROI from live data.',
-    description:
-      'Auto-calculates LTV:CAC, payback period, and gross margin from RevOps pipeline and Broadcast ad spend — closes the loop between marketing investment and revenue booked.',
+      'Compiles campaign performance data across channels. Builds a summary for operator review on cadence.',
   },
 
-  // ── Operations (Titan) ──────────────────────────────────────────────────
+  // ── RevOps ──────────────────────────────────────────────────────────────
   {
-    id: 'plan-extractor',
-    name: 'Plan Extractor',
-    domain: 'Operations',
-    product: 'Titan',
-    tagline: '85%+ extraction accuracy across 7 disciplines.',
+    id: 'lead-qualifier',
+    name: 'Lead Qualifier',
+    domain: 'RevOps',
+    trigger: 'Event',
     description:
-      'Uploads PDFs and extracts measurements across structural, mechanical, electrical, plumbing, civil, architectural, and fire disciplines — dual-AI QA with confidence scoring.',
+      'Scores inbound leads against ICP definition and stage-gate logic. Routes qualified leads to pipeline automatically.',
   },
   {
-    id: 'estimator',
-    name: 'Estimator',
-    domain: 'Operations',
-    product: 'Titan',
-    tagline: '393+ line-item estimate — real-time transparent pricing.',
+    id: 'deal-analyzer',
+    name: 'Deal Analyzer',
+    domain: 'RevOps',
+    trigger: 'On-Demand',
     description:
-      'Generates 393+ line item estimates with 16-category markup, 10 labor trades, and GC fee structure — from plan extraction data, configuration-hash cached for instant repricing.',
+      'Runs comparable deal analysis and win/loss pattern recognition on active opportunities.',
   },
   {
-    id: 'contract-generator',
-    name: 'Contract Generator',
-    domain: 'Operations',
-    product: 'Titan',
-    tagline: '10-step digital signing — UETA/E-SIGN compliant.',
+    id: 'forecast-builder',
+    name: 'Forecast Builder',
+    domain: 'RevOps',
+    trigger: 'Scheduled',
     description:
-      'Produces UETA/E-SIGN compliant contracts from estimate data, guides both parties through a 10-step signing workflow with arbitration clauses, RCLA, and dual-capture.',
+      'Builds a rolling pipeline forecast from stage positions and historical conversion rates. Published weekly.',
   },
   {
-    id: 'po-manager',
-    name: 'PO Manager',
-    domain: 'Operations',
-    product: 'Titan',
-    tagline: 'Auto-generated POs from BOMs — payment tracked.',
+    id: 'revenue-reconciler',
+    name: 'Revenue Reconciler',
+    domain: 'RevOps',
+    trigger: 'Scheduled',
     description:
-      'Converts bill-of-materials outputs to purchase orders, routes to distributors, runs automated follow-up sequences, and tracks payment milestones — cross-industry applicable.',
-  },
-  {
-    id: 'vendor-tracker',
-    name: 'Vendor Tracker',
-    domain: 'Operations',
-    product: 'Titan',
-    tagline: 'Supplier performance and risk in one dashboard.',
-    description:
-      'Monitors vendor delivery timelines, surfaces at-risk POs, flags pricing deviations, and maintains a scored supplier registry — alerts before delays become project failures.',
-  },
-  {
-    id: 'document-extractor',
-    name: 'Document Extractor',
-    domain: 'Operations',
-    product: 'Titan',
-    tagline: 'Multi-discipline classification for any document type.',
-    description:
-      'Classifies and extracts structured data from contracts, invoices, POs, and permits at scale — large PDF splitting, audit trail, and signed URL storage across any industry.',
+      'Reconciles bookings vs. billings on a defined cadence. Surfaces discrepancies as threshold alerts.',
   },
 
-  // ── Governance (Prime) ──────────────────────────────────────────────────
+  // ── Ledger ──────────────────────────────────────────────────────────────
   {
-    id: 'risk-monitor',
-    name: 'Risk Monitor',
-    domain: 'Governance',
-    product: 'Prime',
-    tagline: 'Operational and financial risk — surfaced 24/7.',
+    id: 'gl-reconciler',
+    name: 'GL Reconciler',
+    domain: 'Ledger',
+    trigger: 'Scheduled',
     description:
-      'Monitors stuck deals, failed automations, overdue approvals, and financial anomalies across every connected system — surfaces risk signals to the operator before they escalate.',
+      'Runs a daily general ledger close against QuickBooks. Flags variances before they compound.',
   },
   {
-    id: 'compliance-tracker',
-    name: 'Compliance Tracker',
-    domain: 'Governance',
-    product: 'Prime',
-    tagline: 'Regulatory, contractual, and policy obligations in one view.',
+    id: 'invoice-processor',
+    name: 'Invoice Processor',
+    domain: 'Ledger',
+    trigger: 'Event',
     description:
-      'Tracks compliance obligations across workflows, vendors, and client engagements — flags upcoming deadlines, missing evidence, and policy violations before they become findings.',
+      'Automates AP invoice intake — extracts, categorizes, routes for approval. Triggers on invoice receipt.',
   },
   {
-    id: 'audit-logger',
-    name: 'Audit Logger',
-    domain: 'Governance',
-    product: 'Prime',
-    tagline: 'Full traceability — SOC-2, UETA, E-SIGN ready.',
+    id: 'cash-flow-monitor',
+    name: 'Cash Flow Monitor',
+    domain: 'Ledger',
+    trigger: 'Scheduled',
     description:
-      'Maintains immutable audit trails of automated decisions, human approvals, and system changes — structured for SOC-2 evidence, legal discovery, and quarterly review cycles.',
+      'Tracks runway and working capital on a rolling basis. Fires to Prime when cash position crosses threshold.',
   },
   {
-    id: 'executive-reporter',
-    name: 'Executive Reporter',
-    domain: 'Governance',
-    product: 'Prime',
-    tagline: 'Board-ready reports generated on demand.',
+    id: 'expense-categorizer',
+    name: 'Expense Categorizer',
+    domain: 'Ledger',
+    trigger: 'Event',
     description:
-      'Aggregates KPIs from all Echo 1 Labs applications and generates board-ready reports with financial, operational, and strategic rollups — formatted, branded, and PDF-exported.',
+      'Applies GL coding to uncategorized transactions. Maps to chart of accounts. Exceptions only to operator.',
+  },
+
+  // ── Titan ───────────────────────────────────────────────────────────────
+  {
+    id: 'document-classifier',
+    name: 'Document Classifier',
+    domain: 'Titan',
+    trigger: 'Event',
+    description:
+      'Identifies and categorizes incoming documents by type before routing to the appropriate pipeline.',
+  },
+  {
+    id: 'data-extractor',
+    name: 'Data Extractor',
+    domain: 'Titan',
+    trigger: 'Event',
+    description:
+      'Pulls structured fields from unstructured documents and outputs clean JSON. Eliminates manual data entry.',
+  },
+  {
+    id: 'contract-parser',
+    name: 'Contract Parser',
+    domain: 'Titan',
+    trigger: 'On-Demand',
+    description:
+      'Extracts key clauses, obligations, and dates from contracts. Surfaces renewal windows to Prime.',
+  },
+  {
+    id: 'po-processor',
+    name: 'PO Processor',
+    domain: 'Titan',
+    trigger: 'Event',
+    description:
+      'Handles PO intake and three-way match against receipt and invoice. Flags discrepancies for review only.',
+  },
+
+  // ── Signal ──────────────────────────────────────────────────────────────
+  {
+    id: 'valuation-benchmarker',
+    name: 'Valuation Benchmarker',
+    domain: 'Signal',
+    trigger: 'On-Demand',
+    description:
+      'Retrieves like-for-like comparable transactions. Builds an enterprise value range against real acquisition data.',
+  },
+  {
+    id: 'exit-timeline-modeler',
+    name: 'Exit Timeline Modeler',
+    domain: 'Signal',
+    trigger: 'On-Demand',
+    description:
+      'Maps current readiness against comparable exit timelines. Identifies gaps between now and acquirer expectations.',
+  },
+  {
+    id: 'capital-structure-analyzer',
+    name: 'Capital Structure Analyzer',
+    domain: 'Signal',
+    trigger: 'On-Demand',
+    description:
+      'Analyzes your structure against comparable raises at your stage. Positions the narrative for growth capital conversations.',
+  },
+  {
+    id: 'transaction-monitor',
+    name: 'Transaction Monitor',
+    domain: 'Signal',
+    trigger: 'Scheduled',
+    description:
+      'Tracks deal activity in your sector on a rolling basis. Surfaces comparable transactions when market conditions shift.',
   },
 ];
 
 export const AGENT_DOMAINS: AgentDomain[] = [
-  'Go-to-Market',
-  'Revenue',
-  'Finance',
-  'Operations',
-  'Governance',
+  'Prime',
+  'Engine',
+  'Broadcast',
+  'RevOps',
+  'Ledger',
+  'Titan',
+  'Signal',
 ];
 
 export const getAgentsByDomain = (domain: AgentDomain): Agent[] =>

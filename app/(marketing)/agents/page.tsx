@@ -9,7 +9,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = pageMetadata({
   title: 'Agent Marketplace',
   description:
-    '28 specialist AI agents across Go-to-Market, Revenue, Finance, Operations, and Governance — each engineered for a specific job in the Business Lifecycle Management system.',
+    '500+ specialized agents across every business domain. 28 out-of-box agents ship with all active plans — no marketplace credit required. Filter by app domain.',
   path: '/agents',
 });
 
@@ -25,13 +25,17 @@ export default function AgentsPage() {
       <section className="section">
         <div className="container">
           <div className="section-header">
-            <p className="label">28 Specialist Agents</p>
+            <p className="label">Agent Marketplace</p>
             <h1 className="display-lg" style={{ marginBottom: '1rem' }}>
-              Your operating team. On schedule, not on bandwidth.
+              500+ agents. Each one a specialist.
             </h1>
             <p className="body-lg" style={{ maxWidth: '560px' }}>
-              28 specialist agents. Each engineered for a single job in the Business Lifecycle
-              Management system. They run on schedule — not on bandwidth, not on headcount.
+              Every function of the BLM OS has a team of agents built for it. Browse by domain,
+              deploy from Prime, supervise from one layer.
+            </p>
+            <p className="agents-hero-count">
+              <strong>28</strong> agents shown below &nbsp;&middot;&nbsp; <strong>500+</strong> in
+              the full marketplace
             </p>
           </div>
 
@@ -83,6 +87,25 @@ export default function AgentsPage() {
           opacity: 0.6;
         }
 
+        .agents-hero-count {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          font-family: var(--oa-font-mono);
+          font-size: 0.75rem;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          color: var(--oa-text-secondary);
+          margin-top: 1.25rem;
+        }
+        .agents-hero-count strong {
+          color: var(--oa-ember);
+          font-family: var(--oa-font-display);
+          font-size: 1.25rem;
+          font-weight: 700;
+          letter-spacing: -0.02em;
+        }
+
         .agents-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -101,48 +124,41 @@ export default function AgentsPage() {
           justify-content: space-between;
           margin-bottom: 0.25rem;
         }
-        .agent-card__icon {
-          font-size: 1.5rem;
-          line-height: 1;
-        }
         .agent-card__product {
-          font-size: 0.72rem;
-          font-family: var(--font-mono, monospace);
+          font-size: 0.65rem;
+          font-family: var(--oa-font-mono);
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: var(--oa-ion);
+          background: rgba(143, 208, 242, 0.08);
+          padding: 0.2rem 0.6rem;
+          border-radius: 100px;
+        }
+        .agent-card__trigger {
+          font-size: 0.6rem;
+          font-family: var(--oa-font-mono);
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: var(--on-dark-2);
+          color: var(--oa-text-muted);
+          background: var(--oa-surface-raised);
+          padding: 0.2rem 0.6rem;
+          border-radius: 100px;
+          flex-shrink: 0;
         }
         .agent-card__name {
-          font-size: 1rem;
-          font-weight: 600;
-          color: var(--on-dark-1);
+          font-size: 0.9375rem;
+          font-weight: 700;
+          color: var(--oa-white);
           margin: 0;
-        }
-        .agent-card__tagline {
-          font-size: 0.82rem;
-          font-weight: 500;
-          color: var(--link);
-          margin: 0;
-          line-height: 1.4;
+          letter-spacing: -0.01em;
+          line-height: 1.2;
         }
         .agent-card__desc {
-          font-size: 0.875rem;
-          color: var(--on-dark-2);
-          line-height: 1.6;
+          font-size: 0.8125rem;
+          color: var(--oa-text-secondary);
+          line-height: 1.55;
           margin: 0;
           flex: 1;
-        }
-        .agent-card__domain {
-          display: inline-block;
-          margin-top: 0.75rem;
-          font-size: 0.7rem;
-          font-family: var(--font-mono, monospace);
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: var(--on-dark-2);
-          padding: 0.2rem 0.5rem;
-          border: 1px solid var(--card-border);
-          border-radius: 4px;
         }
 
         @media (max-width: 640px) {
