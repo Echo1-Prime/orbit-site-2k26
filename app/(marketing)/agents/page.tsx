@@ -9,7 +9,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = pageMetadata({
   title: 'Agent Marketplace',
   description:
-    '500+ specialized agents across every business domain. 28 out-of-box agents ship with all active plans — no marketplace credit required. Filter by app domain.',
+    '500+ specialized agents across every business domain. 28 out-of-box agents ship with all active plans. No marketplace credit required. Filter by app domain.',
   path: '/agents',
 });
 

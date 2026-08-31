@@ -2,14 +2,14 @@ import type { LandingCopy } from './types';
 
 export const titanCopy: LandingCopy = {
   slug: 'titan',
-  seoTitle: 'Titan — Bid and Project Fulfillment Workflow for SMBs',
+  seoTitle: 'Titan: Bid and Project Fulfillment Workflow for SMBs',
   seoDesc:
     'From customer configuration to project completion in one 23-step workflow. Echo 1 Labs Titan eliminates the gap between sales and delivery that bleeds margin on every job.',
 
   presuasionFrame: 'contrast',
 
   eyebrow: 'Echo 1 Labs · Titan',
-  headline: 'From customer configuration to project completion — in one 23-step workflow.',
+  headline: 'From customer configuration to project completion, in one 23-step workflow.',
   subhead:
     'Most SMBs run delivery on spreadsheets, tribal knowledge, and hope. Every handoff between sales and ops costs you margin and client trust. Titan closes that gap.',
   ctaPrimary: 'See how Titan works',
@@ -23,7 +23,7 @@ export const titanCopy: LandingCopy = {
   ],
 
   offerHeadline: 'The system under every job you deliver.',
-  dreamOutcome: 'Every project starts on time, scoped correctly, with the right resources and the right margin — and nobody had to manually coordinate it.',
+  dreamOutcome: 'Every project starts on time, scoped correctly, with the right resources and the right margin, and nobody had to manually coordinate it.',
   perceivedLikelihood: 'Standard 30-day deployment on your existing project management stack. Nothing gets ripped out.',
   timeDelay: 'First workflow live within 3 weeks. Full 23-step build in 30 days.',
   effortReduction: 'Titan runs the coordination logic. Your team handles the skilled work. We run the system that keeps it moving.',

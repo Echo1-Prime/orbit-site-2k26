@@ -11,7 +11,7 @@ const APPROACH = [
     tag: 'Operational OS',
     title: 'Seven layers. One operating system.',
     body:
-      'Every function of your business or ministry runs through one connected system — plus an agent marketplace to extend it. No disconnected tools. No data gaps.',
+      'Every function of your business or ministry runs through one connected system, plus an agent marketplace to extend it. No disconnected tools. No data gaps.',
   },
   {
     tag: 'Agent teams · Day one',
@@ -23,7 +23,7 @@ const APPROACH = [
     tag: 'Human-supervised',
     title: 'Supervision scales. Execution does not.',
     body:
-      'Agents run execution. Humans supervise it. The OS is designed to expand what one person can supervise — not to replace judgment. Every action is logged and escalatable.',
+      'Agents run execution. Humans supervise it. The OS is designed to expand what one person can supervise, not to replace judgment. Every action is logged and escalatable.',
   },
 ];
 
@@ -69,7 +69,7 @@ export default function HomePage() {
       <CTA
         eyebrow="Founding Cohort · Season One"
         headline="Lock in the Founding rate."
-        sub="The first operators to activate the BLM OS get $997/mo locked forever — all seven apps, 3,000 agent executions per month, and a 90-day satisfaction guarantee."
+        sub="The first operators to activate the BLM OS get $997/mo locked forever: all seven apps, 3,000 agent executions per month, and a 90-day satisfaction guarantee."
         buttonLabel="Join Founding Cohort"
         buttonHref="/contact"
         dark

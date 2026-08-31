@@ -26,7 +26,7 @@ export async function generateMetadata({
   const seo = getProductSEO(slug);
   if (seo) return productPageMetadata(product, seo);
   return pageMetadata({
-    title: `${product.name} — ${product.tagline}`,
+    title: `${product.name}: ${product.tagline}`,
     description: product.problem,
     path: `/products/${product.slug}`,
   });
@@ -59,7 +59,7 @@ export default async function ProductPage({
       />
       {seo && <JsonLd data={faqSchema(seo.faq)} />}
 
-      {/* ── §1 HERO — keyword-optimized H1 + primary CTA ── */}
+      {/* ── §1 HERO - keyword-optimized H1 + primary CTA ── */}
       <section className="section band--dark">
         <div className="container">
           <span className="stage-badge">
@@ -94,7 +94,7 @@ export default async function ProductPage({
             </button>
           </div>
 
-          {/* Primary keyword as visible sub-label — aids on-page relevance */}
+          {/* Primary keyword as visible sub-label - aids on-page relevance */}
           {seo && (
             <p
               className="body-md muted"
@@ -123,7 +123,7 @@ export default async function ProductPage({
         </div>
       </section>
 
-      {/* ── §3 WHO IT'S FOR — ICP targeting (SBO/PMax) ───── */}
+      {/* ── §3 WHO IT'S FOR - ICP targeting (SBO/PMax) ───── */}
       {seo && (
         <section className="section--sm band--muted">
           <div className="container">
@@ -144,7 +144,7 @@ export default async function ProductPage({
         </section>
       )}
 
-      {/* ── §4 WHAT IT DOES — long-form for GEO/AI citation ─ */}
+      {/* ── §4 WHAT IT DOES - long-form for GEO/AI citation ─ */}
       <section className="section">
         <div className="container" style={{ maxWidth: '780px' }}>
           <div className="section-header">
@@ -175,7 +175,7 @@ export default async function ProductPage({
         </div>
       </section>
 
-      {/* ── §6 WHAT IT REPLACES — SBO comparison signal ─── */}
+      {/* ── §6 WHAT IT REPLACES - SBO comparison signal ─── */}
       {seo && (
         <section className="section">
           <div className="container" style={{ maxWidth: '780px' }}>
@@ -188,19 +188,19 @@ export default async function ProductPage({
             <p className="body-lg">
               Most companies at this stage are stitching together{' '}
               {seo.comparesTo}. Each tool
-              solves part of the problem — none of them share data, and you
+              solves part of the problem. None of them share data, and you
               manage the gaps manually.
             </p>
             <p className="body-lg" style={{ marginTop: '1rem' }}>
               {product.name} is built to replace that stack. One system,
-              one data model, one bill — with agent-based automation running
+              one data model, one bill, with agent-based automation running
               the workflow end-to-end and a human operator staying in control.
             </p>
           </div>
         </section>
       )}
 
-      {/* ── §7 FAQ — FAQPage schema + GEO/AI search anchor ─ */}
+      {/* ── §7 FAQ - FAQPage schema + GEO/AI search anchor ─ */}
       {seo && seo.faq.length > 0 && (
         <section className="section band--muted">
           <div className="container" style={{ maxWidth: '780px' }}>
@@ -222,7 +222,7 @@ export default async function ProductPage({
         </section>
       )}
 
-      {/* ── §8 RELATED STAGES — internal linking for SEO ── */}
+      {/* ── §8 RELATED STAGES - internal linking for SEO ── */}
       {relatedProducts.length > 0 && (
         <section className="section--sm">
           <div className="container">
@@ -237,7 +237,7 @@ export default async function ProductPage({
                     href={`/products/${rp.slug}`}
                     className="btn btn--ghost btn--sm"
                   >
-                    {rp.name} — {rp.gridLine}
+                    {rp.name}: {rp.gridLine}
                   </Link>
                 ) : null,
               )}

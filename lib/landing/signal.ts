@@ -2,7 +2,7 @@ import type { LandingCopy } from './types';
 
 export const signalCopy: LandingCopy = {
   slug: 'signal',
-  seoTitle: 'Signal — Deal Screening and IC Memo Generation for PE, VC, and Family Offices',
+  seoTitle: 'Signal: Deal Screening and IC Memo Generation for PE, VC, and Family Offices',
   seoDesc:
     'Screen deals in under 30 minutes. IC memos in one click. Echo 1 Labs Signal is built for PE, VC, and family office deal flow, at the pace the market actually moves.',
 
@@ -11,7 +11,7 @@ export const signalCopy: LandingCopy = {
   eyebrow: 'Echo 1 Labs · Signal',
   headline: 'Screen deals in under 30 minutes. IC memos in one click.',
   subhead:
-    'Your deal flow is moving faster than your team can screen. Signal gives you the analytical depth of a full associate on every opportunity — in the time it takes to drink your coffee.',
+    'Your deal flow is moving faster than your team can screen. Signal gives you the analytical depth of a full associate on every opportunity, in the time it takes to drink your coffee.',
   ctaPrimary: 'See Signal in action',
   ctaSecondary: 'Talk to an operator',
 

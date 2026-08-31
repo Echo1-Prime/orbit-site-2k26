@@ -26,7 +26,7 @@ export const KNOWLEDGE_BASE: KbEntry[] = [
   {
     topic: 'company',
     q: 'What does Echo 1 Labs do?',
-    a: 'Echo 1 Labs is the Business Lifecycle Management company. We get startups and SMBs to escape velocity with process-engineered, agent-based systems that people supervise. We are a boutique built by operators for operators, not a consultancy, agency, or software tool.',
+    a: 'Echo 1 Labs is the Business Lifecycle Management company. We get businesses and SMBs to escape velocity with process-engineered, agent-based systems that people supervise. We are a boutique built by operators for operators, not a consultancy, agency, or software tool.',
   },
   {
     topic: 'company',
@@ -87,7 +87,7 @@ export function productCatalogLines(): string {
   ).join('\n');
 }
 
-/** Lightweight topic/keyword search — the corpus is tiny, so no vector DB. */
+/** Lightweight topic/keyword search: the corpus is tiny, so no vector DB. */
 export function searchKnowledge(query: string, topic?: KbTopic): KbEntry[] {
   const q = query.toLowerCase();
   const scored = KNOWLEDGE_BASE.map((e) => {

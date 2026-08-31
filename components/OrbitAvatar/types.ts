@@ -6,7 +6,7 @@ export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | 'hero';
 export interface AvatarProps {
   state?: AvatarState;
   size?: AvatarSize;
-  /** 0..1 live TTS amplitude — drives glow/flare intensity. */
+  /** 0..1 live TTS amplitude - drives glow/flare intensity. */
   level?: number;
   reduced?: boolean;
   className?: string;

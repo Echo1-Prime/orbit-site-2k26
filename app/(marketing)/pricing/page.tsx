@@ -9,7 +9,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = pageMetadata({
   title: 'Pricing',
   description:
-    'Echo 1 Labs orbit tiers — Explorer free, Starter $497/mo, Growth $997/mo (Founding Cohort rate, was $2,497), Scale custom. All plans include the full BLM OS and 500+ agent marketplace.',
+    'Echo 1 Labs orbit tiers: Explorer free, Starter $497/mo, Growth $997/mo (Founding Cohort rate), Scale custom. All plans include the full BLM OS and 500+ agent marketplace.',
   path: '/pricing',
 });
 
@@ -35,7 +35,7 @@ const TIERS = [
   },
   {
     name: 'Starter',
-    pitch: 'First orbit — one domain running on agents',
+    pitch: 'First orbit: one domain running on agents',
     price: '$497',
     period: '/mo',
     credits: '750 Echo Credits · ~750 executions/mo',
@@ -54,13 +54,11 @@ const TIERS = [
   },
   {
     name: 'Growth',
-    pitch: 'Full OS activation — the ICP sweet spot',
+    pitch: 'Full OS activation, the ICP sweet spot',
     price: '$997',
-    priceWas: '$2,497/mo',
-    offerLabel: 'Limited Time · Season One',
     period: '/mo · locked',
     credits: null,
-    executions: { count: '3,000', label: 'Agent Executions / Mo', cpe: '~$0.33', note: 'Each execution is a completed business outcome — a lead enriched, a sync run, a content piece delivered, a signal surfaced.' },
+    executions: { count: '3,000', label: 'Agent Executions / Mo', cpe: '~$0.33', note: 'Each execution is a completed business outcome: a lead enriched, a sync run, a content piece delivered, a signal surfaced.' },
     featured: true,
     foundingBadge: true,
     features: [
@@ -70,10 +68,10 @@ const TIERS = [
       'Daily signal intelligence',
       'Dedicated success agent',
       '90-day satisfaction guarantee ($2,991 refund)',
-      'Founding rate lock — lifetime',
+      'Founding rate lock, lifetime',
       'Direct product team access',
     ],
-    cta: "You're Invited — Founding Cohort",
+    cta: "You're Invited · Founding Cohort",
     href: '/founding-cohort',
     ctaVariant: 'ember' as const,
   },
@@ -100,22 +98,22 @@ const TIERS = [
 ] as const;
 
 const GUARANTEES = [
-  { icon: '↩', title: '90-Day Guarantee', body: '$2,991 back if it isn\'t working' },
-  { icon: '🔒', title: 'Lifetime Rate Lock', body: 'Founding rate never changes' },
-  { icon: '⚡', title: 'Day-One Activation', body: '16 agents run the moment you activate' },
-  { icon: '∞', title: '500+ Agents', body: 'Full marketplace included in all active plans' },
+  { title: '90-Day Guarantee', body: '$2,991 back if it isn\'t working' },
+  { title: 'Lifetime Rate Lock', body: 'Founding rate never changes' },
+  { title: 'Day-One Activation', body: '16 agents run the moment you activate' },
+  { title: '500+ Agents', body: 'Full marketplace included in all active plans' },
 ];
 
 const COMPARE_ROWS = [
   { group: 'PRICING' },
-  { feature: 'Monthly rate',       explorer: '$0',          starter: '$497/mo',   growth: '$997/mo (was $2,497)', scale: 'Custom' },
+  { feature: 'Monthly rate',       explorer: '$0',          starter: '$497/mo',   growth: '$997/mo',              scale: 'Custom' },
   { feature: 'Agent executions',   explorer: '250/mo',      starter: '750/mo',    growth: '3,000/mo',             scale: 'Unlimited' },
-  { feature: 'Cost per execution', explorer: '—',           starter: '~$0.66',    growth: '~$0.33',               scale: 'Custom' },
+  { feature: 'Cost per execution', explorer: '–',           starter: '~$0.66',    growth: '~$0.33',               scale: 'Custom' },
   { group: 'APPS & INTEGRATIONS' },
   { feature: 'Active BLM apps',    explorer: 'Prime only',  starter: '2 apps',    growth: 'All 7',                scale: 'All 7 + custom' },
   { feature: 'Titan (Bid + Fulfillment)',         explorer: false, starter: false, growth: true,  scale: true },
   { feature: 'Signal (Capital Intelligence)',     explorer: false, starter: false, growth: true,  scale: true },
-  { feature: 'Ledger (AI CFO — coming soon)',     explorer: false, starter: false, growth: true,  scale: true },
+  { feature: 'Ledger (AI CFO, coming soon)',      explorer: false, starter: false, growth: true,  scale: true },
   { feature: 'Connected integrations', explorer: '1', starter: '3', growth: 'Unlimited', scale: 'Unlimited' },
   { group: 'AGENT ACCESS' },
   { feature: 'Agent marketplace (500+ agents)',  explorer: false, starter: 'Core agents', growth: '✓ Full access', scale: '✓ Full access' },
@@ -134,23 +132,23 @@ const COMPARE_ROWS = [
 const FAQS = [
   {
     q: 'What is an Echo Credit?',
-    a: 'An Echo Credit funds one agent execution — a single completed business outcome like a lead enriched, a financial sync, a content piece delivered, or a workflow run. The Growth tier includes 3,000 per month at approximately $0.33 each. Credits do not roll over.',
+    a: 'An Echo Credit funds one agent execution: a single completed business outcome like a lead enriched, a financial sync, a content piece delivered, or a workflow run. The Growth tier includes 3,000 per month at approximately $0.33 each. Credits do not roll over.',
   },
   {
     q: 'Is the Founding Cohort rate really locked forever?',
-    a: 'Yes. Season One members lock the Growth tier at $997/mo permanently — this does not change when we add new apps, new verticals, or raise standard pricing. The rate holds as long as the subscription stays active. This is a founding commitment, not a promotional discount.',
+    a: 'Yes. Season One members lock the Growth tier at $997/mo permanently. This rate does not change when we add new apps, new verticals, or raise standard pricing, and it holds as long as the subscription stays active. It is a founding commitment to our earliest operators.',
   },
   {
     q: 'How does the 90-day guarantee work?',
-    a: 'Founding Cohort members receive three months\' fees back ($2,991) within 90 days if the OS isn\'t delivering value to your operations. There\'s no performance benchmark to hit — if it isn\'t working, we return the money. Request it directly with the product team.',
+    a: 'Founding Cohort members receive three months\' fees back ($2,991) within 90 days if the OS isn\'t delivering value to your operations. There\'s no performance benchmark to hit. If it isn\'t working, we return the money. Request it directly with the product team.',
   },
   {
     q: 'What does "all 7 apps" include?',
-    a: 'Growth and Scale include all seven Echo 1 Labs apps: Prime (Command Center), Engine (Revenue Generation), Broadcast (Brand in Market), RevOps (Revenue Intelligence), Ledger (AI CFO / FP&A — coming soon), Titan (Bid + Fulfillment + custom development), and Signal (Capital Intelligence — private access). Titan and Signal are included at no additional charge.',
+    a: 'Growth and Scale include all seven Echo 1 Labs apps: Prime (Command Center), Engine (Revenue Generation), Broadcast (Brand in Market), RevOps (Revenue Intelligence), Ledger (AI CFO / FP&A, coming soon), Titan (Bid + Fulfillment + custom development), and Signal (Capital Intelligence, private access). Titan and Signal are included at no additional charge.',
   },
   {
     q: 'Can I upgrade from Explorer or Starter later?',
-    a: 'Yes — you can upgrade at any time. The Founding Cohort Growth rate ($997/mo locked for life) is only available during Season One. Once the cohort closes, Growth returns to $2,497/mo. If you\'re evaluating now, securing the Founding rate costs you the 90-day guarantee if it doesn\'t work out.',
+    a: 'Yes, you can upgrade at any time. The Founding Cohort Growth rate ($997/mo, locked for life) is available to Season One members. Securing it now also includes the 90-day satisfaction guarantee, so you can evaluate the full OS with your rate already locked.',
   },
   {
     q: 'What happens when I run out of executions?',
@@ -158,17 +156,17 @@ const FAQS = [
   },
   {
     q: 'Does Signal require a separate purchase?',
-    a: 'Signal is available under a private access model. Growth and Scale members can apply for Signal access at no additional charge. Signal is not a product you self-activate — it is an intelligence layer deployed with you based on your use case (exit preparation, capital raise positioning, or strategic acquisition readiness).',
+    a: 'Signal is available under a private access model. Growth and Scale members can apply for Signal access at no additional charge. Signal is not a product you self-activate; it is an intelligence layer deployed with you based on your use case (exit preparation, capital raise positioning, or strategic acquisition readiness).',
   },
   {
     q: 'Who is Echo 1 Labs built for?',
-    a: 'The BLM OS is built for operator-led businesses — $5M to $100M in revenue, 50 to 300 employees, where the founder or executive director is the primary decision-maker. Also built for PE and VC portfolio teams managing multiple operating entities. Not built for pre-traction startups or Fortune 500 procurement cycles.',
+    a: 'The BLM OS is built for operator-led businesses: $5M to $100M in revenue, 50 to 200 employees, where the owner or executive director is the primary decision-maker. Also built for PE and VC portfolio teams managing multiple operating entities. Not built for pre-traction companies or Fortune 500 procurement cycles.',
   },
 ];
 
 function CellValue({ val }: { val: string | boolean | undefined }) {
   if (val === true) return <span style={{ color: 'var(--oa-state-success)' }}>✓</span>;
-  if (val === false) return <span style={{ color: 'var(--oa-text-muted)' }}>—</span>;
+  if (val === false) return <span style={{ color: 'var(--oa-text-muted)' }}>–</span>;
   return <>{val}</>;
 }
 
@@ -203,7 +201,7 @@ export default function PricingPage() {
             </h1>
             <p className="body-lg" style={{ maxWidth: '560px', marginTop: '1rem' }}>
               All plans include the full BLM OS plus access to the 500+ agent marketplace. Echo Credits
-              power your agents — more credits, more autonomous operation.
+              power your agents: more credits, more autonomous operation.
             </p>
             <p
               style={{
@@ -216,7 +214,7 @@ export default function PricingPage() {
             >
               Founding Cohort Season One is open.{' '}
               <strong style={{ color: 'var(--oa-ember)', fontWeight: 500 }}>
-                Growth locks at $997/mo — forever.
+                Growth locks at $997/mo, forever.
               </strong>
             </p>
           </div>
@@ -257,7 +255,7 @@ export default function PricingPage() {
                 Founding Cohort Growth rate: $997/mo locked for life.
               </p>
               <p style={{ fontSize: '0.8rem', color: 'var(--oa-text-secondary)', marginTop: '2px', marginBottom: 0 }}>
-                Once Season One closes, Growth returns to $2,497/mo. Join now to lock the rate permanently — plus a 90-day $2,991 satisfaction guarantee.
+                Lock the founding rate permanently as a Season One member, with a 90-day $2,991 satisfaction guarantee.
               </p>
             </div>
             <ButtonLink href="/founding-cohort" variant="ember">
@@ -324,35 +322,6 @@ export default function PricingPage() {
                     {tier.pitch}
                   </p>
                 </div>
-
-                {'priceWas' in tier && tier.priceWas && (
-                  <>
-                    <p
-                      style={{
-                        fontFamily: 'var(--oa-font-body)',
-                        fontSize: '0.8rem',
-                        color: 'var(--oa-text-secondary)',
-                        textDecoration: 'line-through',
-                        textDecorationColor: 'var(--oa-state-error)',
-                        margin: '0.75rem 0 0',
-                      }}
-                    >
-                      {tier.priceWas}
-                    </p>
-                    <p
-                      style={{
-                        fontFamily: 'var(--oa-font-mono)',
-                        fontSize: '0.6rem',
-                        letterSpacing: '0.12em',
-                        textTransform: 'uppercase',
-                        color: 'var(--oa-ember)',
-                        margin: '2px 0 0',
-                      }}
-                    >
-                      {tier.offerLabel}
-                    </p>
-                  </>
-                )}
 
                 <div style={{ marginTop: '0.5rem', marginBottom: '0.75rem' }}>
                   <span
@@ -515,7 +484,6 @@ export default function PricingPage() {
           >
             {GUARANTEES.map((g) => (
               <div key={g.title} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
-                <span style={{ fontSize: '1.125rem' }}>{g.icon}</span>
                 <div>
                   <p style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--oa-white)', margin: 0 }}>
                     {g.title}
@@ -570,7 +538,7 @@ export default function PricingPage() {
             >
               <thead>
                 <tr>
-                  {['Feature', 'Explorer', 'Starter', 'Growth ★', 'Scale'].map((h, i) => (
+                  {['Feature', 'Explorer', 'Starter', 'Growth', 'Scale'].map((h, i) => (
                     <th
                       key={h}
                       style={{
@@ -721,8 +689,8 @@ export default function PricingPage() {
       <CTA
         eyebrow="Founding Cohort"
         headline="The OS runs while you supervise."
-        sub="Join the Founding Cohort and lock in $997/mo for life. 90-day satisfaction guarantee — no risk."
-        buttonLabel="You're Invited — Founding Cohort"
+        sub="Join the Founding Cohort and lock in $997/mo for life, backed by a 90-day satisfaction guarantee."
+        buttonLabel="You're Invited · Founding Cohort"
         buttonHref="/founding-cohort"
         dark
       />

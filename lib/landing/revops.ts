@@ -2,9 +2,9 @@ import type { LandingCopy } from './types';
 
 export const revopsCopy: LandingCopy = {
   slug: 'revops',
-  seoTitle: 'RevOps — Agentic Revenue Engine for SMB Sales Teams',
+  seoTitle: 'RevOps: Agentic Revenue Engine for SMB Sales Teams',
   seoDesc:
-    'Replace your disconnected CRM, sequencer, and analytics stack with one agent-run revenue engine. Echo 1 Labs RevOps drives pipeline, automates follow-up, and surfaces signal — operators stay in the loop.',
+    'Replace your disconnected CRM, sequencer, and analytics stack with one agent-run revenue engine. Echo 1 Labs RevOps drives pipeline, automates follow-up, and surfaces signal. Operators stay in the loop.',
 
   presuasionFrame: 'authority',
 
@@ -17,8 +17,8 @@ export const revopsCopy: LandingCopy = {
 
   storyHeadline: 'Built by operators who ran broken stacks.',
   storyBody: [
-    'Every founder who builds a sales team learns the same expensive lesson: the tools that worked at 10 reps don\'t scale to 30. Your CRM doesn\'t talk to your sequencer. Analytics lag by a week. Your best reps are spending 40% of their time on data hygiene instead of selling.',
-    'We\'ve run those stacks. We hired the consultants and bought the "GTM software platform." None of it fixed the core problem: you need a system that thinks about revenue, not just logs it.',
+    'Every owner who builds a sales team learns the same expensive lesson: the tools that worked at 10 reps don\'t scale to 30. Your CRM doesn\'t talk to your sequencer. Analytics lag by a week. Your best reps are spending 40% of their time on data hygiene instead of selling.',
+    'We\'ve run those stacks. We hired the consultants and bought the "GTM software." None of it fixed the core problem: you need a system that thinks about revenue, not just logs it.',
     'RevOps is what we built for ourselves and now run for clients. The agents run the motion. Your ops lead reviews the playbook. Every decision point that matters stays in human hands.',
   ],
 
@@ -66,8 +66,8 @@ export const revopsCopy: LandingCopy = {
   comparisonHeadline: 'What RevOps replaces.',
   comparisonEnemy: 'The 6-tool stack',
   comparisonRows: [
-    { feature: 'Outbound sequencing', them: 'Outreach / Apollo — manual build by your SDR', us: 'System-built sequences, runs and adjusts itself' },
-    { feature: 'CRM data hygiene', them: 'SDR time — 40% of their week gone', us: 'Automated enrichment + stage logic, always on' },
+    { feature: 'Outbound sequencing', them: 'Outreach / Apollo: manual build by your SDR', us: 'System-built sequences, runs and adjusts itself' },
+    { feature: 'CRM data hygiene', them: 'SDR time: 40% of their week gone', us: 'Automated enrichment + stage logic, always on' },
     { feature: 'Follow-up cadence', them: 'Manual tasks and missed reminders', us: 'Fires automatically, no human trigger needed' },
     { feature: 'Pipeline visibility', them: 'Lag-reports from Salesforce, days old', us: 'Real-time signal surfacing to your reps' },
     { feature: 'Multi-channel coord.', them: 'Separate tools per channel, no sync', us: 'Single playbook across all channels' },

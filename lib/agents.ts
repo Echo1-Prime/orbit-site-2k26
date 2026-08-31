@@ -1,4 +1,4 @@
-// Echo 1 Labs — 28 specialist agents across 7 product domains.
+// Echo 1 Labs: 28 specialist agents across 7 product domains.
 // Organized by product (Prime, Engine, Broadcast, RevOps, Ledger, Titan, Signal).
 
 export type AgentDomain =
@@ -96,7 +96,7 @@ export const AGENTS: Agent[] = [
     domain: 'Broadcast',
     trigger: 'Scheduled',
     description:
-      'Produces multi-channel copy on cadence — social, email, long-form — aligned to your brand guidelines.',
+      'Produces multi-channel copy on cadence (social, email, long-form), aligned to your brand guidelines.',
   },
   {
     id: 'social-scheduler',
@@ -172,7 +172,7 @@ export const AGENTS: Agent[] = [
     domain: 'Ledger',
     trigger: 'Event',
     description:
-      'Automates AP invoice intake — extracts, categorizes, routes for approval. Triggers on invoice receipt.',
+      'Automates AP invoice intake: extracts, categorizes, routes for approval. Triggers on invoice receipt.',
   },
   {
     id: 'cash-flow-monitor',

@@ -13,7 +13,7 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const INCLUSIONS = [
-  { label: 'Locked pricing', desc: 'Current rates held permanently — no increases as the product scales.' },
+  { label: 'Locked pricing', desc: 'Current rates held permanently: no increases as the product scales.' },
   { label: 'Priority layer access', desc: 'First access to Ledger and future layers when they ship, before general availability.' },
   { label: 'Direct product input', desc: 'Monthly sessions with the team. Your operations shape what gets built next.' },
   { label: 'Dedicated onboarding', desc: 'Hands-on setup of the Fusion Grid, agent configuration, and Prime governance.' },
@@ -47,7 +47,7 @@ export default function FoundingCohortPage() {
                 Lock your rate. Shape the product.
               </h1>
               <p className="body-lg" style={{ marginBottom: '1.25rem' }}>
-                A small group of owner-led businesses. Locked pricing — forever. Direct input into
+                A small group of owner-led businesses. Locked pricing, forever. Direct input into
                 what gets built next. Cohort seats are limited and will not reopen at these rates.
               </p>
               <p className="body-md" style={{ marginBottom: '2rem' }}>

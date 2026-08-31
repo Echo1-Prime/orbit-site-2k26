@@ -10,7 +10,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = pageMetadata({
   title: 'About',
   description:
-    'Echo 1 Labs builds the Business Lifecycle Management OS — an integrated agent system that runs operations for owner-led businesses and lets humans supervise at scale.',
+    'Echo 1 Labs builds the Business Lifecycle Management OS, an integrated agent system that runs operations for owner-led businesses and lets humans supervise at scale.',
   path: '/about',
 });
 
@@ -28,12 +28,12 @@ const PRINCIPLES = [
   {
     num: '03',
     title: 'One architecture',
-    body: 'Seven layers, one data model, one governance interface. The BLM OS is not a bundle of tools. It is a coordinated system with a single point of control.',
+    body: 'Seven layers, one data model, one governance interface. The BLM OS is not a bundle of point solutions. It is a coordinated system with a single point of control.',
   },
   {
     num: '04',
     title: 'Real operations, not demos',
-    body: 'The BLM OS runs production workloads — outreach, content, reconciliation, documents. It is not an experiment. It is how business gets done.',
+    body: 'The BLM OS runs production workloads: outreach, content, reconciliation, documents. It is not an experiment. It is how business gets done.',
   },
 ];
 
@@ -82,9 +82,9 @@ export default function AboutPage() {
           <div style={{ maxWidth: '720px' }}>
             <p className="body-md" style={{ color: 'var(--oa-slate)', marginBottom: '1.25rem' }}>
               Owner-led businesses between $5M and $100M carry an unusual burden: the operational
-              surface area of a mid-market company with the staffing model of a startup. Revenue
-              operations, marketing, finance, documents, deal flow — every function lands on the
-              same small group of people, and the owner sits at the center of it.
+              surface area of a mid-market company with the staffing model of a much smaller one.
+              Revenue operations, marketing, finance, documents, deal flow. Every function lands on
+              the same small group of people, and the owner sits at the center of it.
             </p>
             <p className="body-md" style={{ color: 'var(--oa-slate)', marginBottom: '1.25rem' }}>
               The result is a class of businesses that are perpetually capable of more than they
@@ -242,7 +242,7 @@ export default function AboutPage() {
             <p className="body-md" style={{ color: 'var(--oa-slate)' }}>
               This is not a category that has historically had good infrastructure options. Enterprise
               software is built for large teams and long procurement cycles. Point solutions are built
-              for individual use cases. The BLM OS is built for the in-between — businesses that are
+              for individual use cases. The BLM OS is built for the in-between: businesses that are
               serious, complex, and owner-operated.
             </p>
           </div>
@@ -283,7 +283,7 @@ export default function AboutPage() {
                 </h3>
                 <p style={{ fontSize: '0.875rem', color: 'var(--oa-slate)' }}>
                   For Founding Cohort applicants, operators interested in the BLM OS, and any
-                  questions about the platform.
+                  questions about the system.
                 </p>
               </div>
               <a
