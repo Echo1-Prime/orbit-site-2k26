@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <style>
+    .tile { fill: #14141F; }
+    .e { fill: #EAF6FF; }
+    @media (prefers-color-scheme: light) {
+      .tile { fill: #EBEBF0; }
+      .e { fill: #0A0A0E; }
+    }
+  </style>
+  <rect class="tile" width="32" height="32" rx="7"/>
+  <text class="e" x="8" y="23" font-family="'Space Grotesk','Arial Black',system-ui,sans-serif" font-weight="800" font-size="19" letter-spacing="-1">E<tspan dy="-6" font-size="12" fill="#FF7515">1</tspan></text>
+</svg>
