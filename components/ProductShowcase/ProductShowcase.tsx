@@ -8,35 +8,45 @@ const PRODUCTS = [
   {
     key: 'engine',
     label: 'Engine',
-    job: 'Your go-to-market machine. Turns strategy into pipeline.',
+    eyebrow: 'Engine · Go-to-Market',
+    headline: 'Go-to-market that runs itself.',
+    sub: 'Engine builds the list, runs the outreach, and books the meetings. You show up to the conversations that matter.',
     video: '/videos/engine.mp4',
     href: '/products/engine',
   },
   {
     key: 'revops',
     label: 'RevOps',
-    job: 'Closes the gap between pipeline and revenue.',
+    eyebrow: 'RevOps · Sales Operations',
+    headline: 'Revenue operations without the ops.',
+    sub: 'One agentic engine runs qualification, forecasting, and reconciliation while your team stays on the conversations that close.',
     video: '/videos/lead-gen-network.mp4',
     href: '/products/revops',
   },
   {
     key: 'broadcast',
     label: 'Broadcast',
-    job: 'Content at scale. Brand-consistent, always on.',
+    eyebrow: 'Broadcast · Marketing',
+    headline: 'Content that ships on schedule.',
+    sub: 'SEO, content, social, and paid across every channel, on brand, without a marketing team.',
     video: '/videos/broadcast.mp4',
     href: '/products/broadcast',
   },
   {
     key: 'titan',
     label: 'Titan',
-    job: 'Bid, fulfill, and deliver — without the bottlenecks.',
+    eyebrow: 'Titan · Document Intelligence',
+    headline: 'Documents that process themselves.',
+    sub: 'Classify, extract, and route every document. You review outcomes, not paperwork.',
     video: '/videos/titan.mp4',
     href: '/products/titan',
   },
   {
     key: 'prime',
     label: 'Prime',
-    job: 'Agent governance and oversight for every layer.',
+    eyebrow: 'Prime · Governance',
+    headline: 'Your business. One layer. Full view.',
+    sub: 'Every agent reports to Prime. Every decision that needs you surfaces here, and only here.',
     video: '/videos/prime.mp4',
     href: '/products/prime',
   },
@@ -112,13 +122,16 @@ export default function ProductShowcase() {
             >
               <source src={product.video} type="video/mp4" />
             </video>
-          </div>
-          <div className={styles.meta}>
-            <h3 className={styles.productName}>{product.label}</h3>
-            <p className={styles.productJob}>{product.job}</p>
-            <Link href={product.href} className={`btn btn--ghost btn--sm ${styles.cta}`}>
-              Learn more
-            </Link>
+            <div className={styles.overlay}>
+              <div className={styles.overlayInner}>
+                <p className={styles.overlayEyebrow}>{product.eyebrow}</p>
+                <h3 className={styles.overlayHeadline}>{product.headline}</h3>
+                <p className={styles.overlaySub}>{product.sub}</p>
+                <Link href={product.href} className={`btn btn--ghost btn--sm ${styles.cta}`}>
+                  Learn more
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
 
