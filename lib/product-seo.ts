@@ -205,7 +205,7 @@ export const PRODUCT_SEO_MAP: Record<string, ProductSEO> = {
     slug: 'ledger',
     seoTitle: 'Ledger: The AI CFO System for Owner-Led Companies',
     seoDesc:
-      'Live QuickBooks integration, cash flow forecasts, and automatic LTV:CAC. Echo 1 Labs Ledger is the fractional CFO function for owner-led companies. Coming soon.',
+      'Live QuickBooks integration, cash flow forecasts, and automatic LTV:CAC. Echo 1 Labs Ledger is the fractional CFO function for owner-led companies.',
     primaryKeyword: 'AI CFO software for small business',
     keywords: [
       'fractional CFO system',
@@ -237,8 +237,8 @@ export const PRODUCT_SEO_MAP: Record<string, ProductSEO> = {
         a: 'Ledger integrates with QuickBooks Online via the QBO API to pull live P&L, balance sheet, accounts receivable, accounts payable, and payroll data. It reconciles this against RevOps pipeline data and Broadcast campaign spend to give a complete view of revenue, cost, and return, not just accounting records.',
       },
       {
-        q: 'When will Ledger be available?',
-        a: 'Ledger is currently in development. Contact Echo 1 Labs to be notified when Ledger launches or to discuss early access.',
+        q: 'Is Ledger available now?',
+        a: 'Yes. Ledger is live in the BLM OS. Contact Echo 1 Labs to get started or to see it run against your QuickBooks data.',
       },
     ],
   },

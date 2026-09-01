@@ -132,7 +132,7 @@ const FAQS = [
   },
   {
     q: 'What does a Founding Cohort membership include?',
-    a: 'Founding Cohort members join at a founding rate of $997/month for the Growth tier. This includes all seven apps, 16 OOB agents, Prime governance, and direct access to the Echo 1 Labs team during the build period. Ledger is included when it ships. No additional charge for the length of Founding Cohort membership.',
+    a: 'Founding Cohort members join at a founding rate of $997/month for the Growth tier. This includes all seven apps, 16 OOB agents, Prime governance, and direct access to the Echo 1 Labs team during the build period. Ledger is included. No additional charge for the length of Founding Cohort membership.',
   },
 ];
 
