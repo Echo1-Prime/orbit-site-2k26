@@ -41,7 +41,7 @@ const APPS = [
   { num: '01', name: 'Engine', cat: 'Go-to-Market' },
   { num: '02', name: 'RevOps', cat: 'Revenue Operations' },
   { num: '03', name: 'Broadcast', cat: 'Marketing' },
-  { num: '04', name: 'Ledger', cat: 'Finance · Coming Soon' },
+  { num: '04', name: 'Ledger', cat: 'Finance' },
   { num: '05', name: 'Titan', cat: 'Document Intelligence' },
   { num: '06', name: 'Signal', cat: 'Deal Intelligence · Private' },
   { num: '07', name: 'Prime', cat: 'Governance' },

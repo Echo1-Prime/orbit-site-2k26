@@ -31,7 +31,7 @@ export interface Product {
   capabilities: ProductCapability[];
   /** AI Readiness only: advisory engagement, excluded from product routes. */
   isAdvisory?: boolean;
-  /** Ledger: the only product currently pre-release. */
+  /** Flags a product as pre-release; drives "Coming soon" labels and hides pricing CTAs. */
   comingSoon?: boolean;
 }
 
@@ -183,7 +183,6 @@ export const PRODUCTS: Product[] = [
     stage: 'MANAGE',
     category: 'Finance / Ops',
     gridLine: 'Financial operations',
-    comingSoon: true,
     tagline: 'The Agentic CFO for Owner-Led Companies',
     problem:
       'Built for owner-led companies past the bookkeeper stage but not ready for a full-time CFO: live cash flow, ROI, and unit economics on a single dashboard you can actually trust.',

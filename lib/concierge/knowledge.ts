@@ -36,7 +36,7 @@ export const KNOWLEDGE_BASE: KbEntry[] = [
   {
     topic: 'products',
     q: 'What products are there?',
-    a: 'Seven products across eight lifecycle stages: Engine (go-to-market), RevOps (sales), Broadcast (marketing), Signal (deal flow), Ledger (finance ops, coming soon), Titan (bid and fulfillment), and Prime (governance). AI Readiness is the ENABLE-stage advisory engagement that gets you there.',
+    a: 'Seven products across eight lifecycle stages: Engine (go-to-market), RevOps (sales), Broadcast (marketing), Signal (deal flow), Ledger (finance ops), Titan (bid and fulfillment), and Prime (governance). AI Readiness is the ENABLE-stage advisory engagement that gets you there.',
   },
   {
     topic: 'products',
