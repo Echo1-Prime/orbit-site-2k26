@@ -43,8 +43,8 @@
 }
 
 @keyframes oa-glow-pulse {
-  0%, 100% { box-shadow: 0 0 8px var(--oa-glow-ion); }
-  50%       { box-shadow: 0 0 22px var(--oa-glow-ion), 0 0 40px var(--oa-glow-ion); }
+  0%, 100% { box-shadow: 0 0 8px var(--e1-glow-ion); }
+  50%       { box-shadow: 0 0 22px var(--e1-glow-ion), 0 0 40px var(--e1-glow-ion); }
 }
 
 @keyframes oa-streaming-bounce {
@@ -57,7 +57,7 @@
 /* Ambient background ring — 9% opacity, 120s rotation */
 .oa-bg-ring {
   animation:
-    oa-spin     var(--oa-ring-idle) linear infinite,
+    oa-spin     var(--e1-ring-idle) linear infinite,
     oa-breathe  9s ease-in-out infinite;
   opacity: 0.09;
   transform-box: fill-box;
@@ -66,28 +66,28 @@
 
 /* Active ring (listening state) */
 .oa-ring-listening {
-  animation: oa-spin var(--oa-ring-listening) linear infinite;
+  animation: oa-spin var(--e1-ring-listening) linear infinite;
   transform-box: fill-box;
   transform-origin: center center;
 }
 
 /* Reverse ring */
 .oa-ring-reverse {
-  animation: oa-spin-reverse var(--oa-ring-listening) linear infinite;
+  animation: oa-spin-reverse var(--e1-ring-listening) linear infinite;
   transform-box: fill-box;
   transform-origin: center center;
 }
 
 /* Thinking state ring — faster */
 .oa-ring-thinking {
-  animation: oa-spin var(--oa-ring-thinking) linear infinite;
+  animation: oa-spin var(--e1-ring-thinking) linear infinite;
   transform-box: fill-box;
   transform-origin: center center;
 }
 
 /* Streaming — fastest */
 .oa-ring-streaming {
-  animation: oa-spin var(--oa-ring-streaming) linear infinite;
+  animation: oa-spin var(--e1-ring-streaming) linear infinite;
   transform-box: fill-box;
   transform-origin: center center;
 }
@@ -106,7 +106,7 @@
 
 /* Fade in on mount */
 .oa-fade-in {
-  animation: oa-fade-in var(--oa-dur-slow) var(--oa-ease-out) both;
+  animation: oa-fade-in var(--e1-dur-slow) var(--e1-ease-out) both;
 }
 
 /* Streaming dots */

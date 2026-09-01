@@ -110,12 +110,12 @@ export default function GlossaryPage() {
                 key={l}
                 href={`#letter-${l}`}
                 style={{
-                  fontFamily: 'var(--oa-font-mono)',
+                  fontFamily: 'var(--e1-font-mono)',
                   fontSize: '0.6rem',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: 'var(--oa-text-secondary)',
-                  border: '1px solid var(--oa-border-subtle)',
+                  color: 'var(--e1-text-secondary)',
+                  border: '1px solid var(--e1-border-subtle)',
                   padding: '4px 9px',
                   borderRadius: '4px',
                   textDecoration: 'none',
@@ -137,11 +137,11 @@ export default function GlossaryPage() {
               <div key={letter} id={`letter-${letter}`} style={{ marginBottom: '3rem', scrollMarginTop: '80px' }}>
                 <p
                   style={{
-                    fontFamily: 'var(--oa-font-display)',
+                    fontFamily: 'var(--e1-font-display)',
                     fontWeight: 700,
                     fontSize: 'clamp(2.5rem, 5vw, 4rem)',
                     letterSpacing: '-0.03em',
-                    color: 'var(--oa-ember)',
+                    color: 'var(--e1-ember)',
                     opacity: 0.18,
                     lineHeight: 1,
                     marginBottom: '1rem',
@@ -159,16 +159,16 @@ export default function GlossaryPage() {
                       )}
                       <p
                         style={{
-                          fontFamily: 'var(--oa-font-display)',
+                          fontFamily: 'var(--e1-font-display)',
                           fontWeight: 700,
                           fontSize: '0.95rem',
-                          color: 'var(--oa-white)',
+                          color: 'var(--e1-white)',
                           marginBottom: '0.5rem',
                         }}
                       >
                         {term.name}
                       </p>
-                      <p style={{ fontSize: '0.875rem', color: 'var(--oa-text-secondary)', lineHeight: 1.75, margin: 0 }}>
+                      <p style={{ fontSize: '0.875rem', color: 'var(--e1-text-secondary)', lineHeight: 1.75, margin: 0 }}>
                         {term.def}
                       </p>
                     </div>

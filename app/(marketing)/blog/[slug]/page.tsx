@@ -36,11 +36,11 @@ function renderSection(section: BlogSection, index: number) {
         <h2
           key={index}
           style={{
-            fontFamily: 'var(--oa-font-display)',
+            fontFamily: 'var(--e1-font-display)',
             fontSize: 'clamp(1.1rem, 2vw, 1.4rem)',
             fontWeight: 700,
             letterSpacing: '-0.01em',
-            color: 'var(--oa-white)',
+            color: 'var(--e1-white)',
             margin: '2.5rem 0 0.9rem',
           }}
         >
@@ -52,7 +52,7 @@ function renderSection(section: BlogSection, index: number) {
         <blockquote
           key={index}
           style={{
-            borderLeft: '3px solid var(--oa-ember)',
+            borderLeft: '3px solid var(--e1-ember)',
             padding: '1rem 1.5rem',
             margin: '1.75rem 0',
             background: 'rgba(224,123,39,0.07)',
@@ -61,10 +61,10 @@ function renderSection(section: BlogSection, index: number) {
         >
           <p
             style={{
-              fontFamily: 'var(--oa-font-display)',
+              fontFamily: 'var(--e1-font-display)',
               fontSize: '1.05rem',
               fontWeight: 600,
-              color: 'var(--oa-white)',
+              color: 'var(--e1-white)',
               lineHeight: 1.5,
               margin: 0,
             }}
@@ -80,7 +80,7 @@ function renderSection(section: BlogSection, index: number) {
           key={index}
           style={{
             fontSize: '1rem',
-            color: 'var(--oa-text-secondary)',
+            color: 'var(--e1-text-secondary)',
             lineHeight: 1.85,
             marginBottom: '1.25rem',
           }}
@@ -128,7 +128,7 @@ export default async function BlogPostPage({
         style={{
           paddingTop: '6rem',
           paddingBottom: '2.5rem',
-          borderBottom: '1px solid var(--oa-border-subtle)',
+          borderBottom: '1px solid var(--e1-border-subtle)',
         }}
       >
         <div className="container">
@@ -139,11 +139,11 @@ export default async function BlogPostPage({
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '6px',
-                fontFamily: 'var(--oa-font-mono)',
+                fontFamily: 'var(--e1-font-mono)',
                 fontSize: '0.6rem',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                color: 'var(--oa-ember)',
+                color: 'var(--e1-ember)',
                 marginBottom: '1.25rem',
                 textDecoration: 'none',
               }}
@@ -163,11 +163,11 @@ export default async function BlogPostPage({
               style={{
                 display: 'flex',
                 gap: '1.25rem',
-                fontFamily: 'var(--oa-font-mono)',
+                fontFamily: 'var(--e1-font-mono)',
                 fontSize: '0.6rem',
                 letterSpacing: '0.1em',
                 textTransform: 'uppercase',
-                color: 'var(--oa-text-muted)',
+                color: 'var(--e1-text-muted)',
               }}
             >
               <span>{formatDate(post.datePublished)}</span>
@@ -199,16 +199,16 @@ export default async function BlogPostPage({
               <div>
                 <p
                   style={{
-                    fontFamily: 'var(--oa-font-display)',
+                    fontFamily: 'var(--e1-font-display)',
                     fontWeight: 700,
                     fontSize: '1rem',
-                    color: 'var(--oa-white)',
+                    color: 'var(--e1-white)',
                     marginBottom: '0.35rem',
                   }}
                 >
                   See the BLM OS in action.
                 </p>
-                <p style={{ fontSize: '0.85rem', color: 'var(--oa-text-secondary)', margin: 0 }}>
+                <p style={{ fontSize: '0.85rem', color: 'var(--e1-text-secondary)', margin: 0 }}>
                   Join the Founding Cohort for early access and founding-cohort pricing.
                 </p>
               </div>
@@ -223,8 +223,8 @@ export default async function BlogPostPage({
       {/* Post footer */}
       <div
         style={{
-          background: 'var(--oa-panel)',
-          borderTop: '1px solid var(--oa-border-subtle)',
+          background: 'var(--e1-panel)',
+          borderTop: '1px solid var(--e1-border-subtle)',
           padding: '1.75rem 0',
         }}
       >
@@ -242,11 +242,11 @@ export default async function BlogPostPage({
             <Link
               href="/blog"
               style={{
-                fontFamily: 'var(--oa-font-mono)',
+                fontFamily: 'var(--e1-font-mono)',
                 fontSize: '0.6rem',
                 letterSpacing: '0.12em',
                 textTransform: 'uppercase',
-                color: 'var(--oa-text-secondary)',
+                color: 'var(--e1-text-secondary)',
                 textDecoration: 'none',
               }}
             >

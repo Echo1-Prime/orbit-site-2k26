@@ -1,9 +1,9 @@
 /* ============================================================================
    ECHO 1 LABS — public site global layer.
-   The canonical Orbit Agent Design System is vendored in ./orbit-ds/
+   Canonical Echo 1 Labs design tokens (--e1-*) are vendored in ./orbit-ds/
    (tokens → animations → components). This file bridges the DS tokens onto the
    site's semantic aliases (--bg/--text/--accent…) and hosts layout utilities.
-   Single source of truth for palette / motion / components = orbit-ds/.  2026-07-18
+   Single source of truth for palette / motion / components = orbit-ds/.  2026-09-01
    ============================================================================ */
 @import './orbit-ds/tokens.css';
 @import './orbit-ds/animations.css';
@@ -11,47 +11,47 @@
 
 :root {
   /* Fonts via next/font vars — override the DS literals so .oa-* classes self-host */
-  --oa-font-display: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
-  --oa-font-body:    var(--font-dm-sans), 'DM Sans', sans-serif;
-  --oa-font-mono:    var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, monospace;
+  --e1-font-display: var(--font-space-grotesk), 'Space Grotesk', sans-serif;
+  --e1-font-body:    var(--font-dm-sans), 'DM Sans', sans-serif;
+  --e1-font-mono:    var(--font-jetbrains-mono), 'JetBrains Mono', ui-monospace, monospace;
 
   /* Mark-only exceptions (outside the DS 10) */
   --purple: #655596;   /* MARK ONLY — never UI chrome */
   --sage:   #72A574;   /* MARK ONLY — never UI chrome */
 
-  /* ---- Site semantic aliases → Orbit Agent Design System tokens ---- */
-  --bg:         var(--oa-void);
-  --bg-muted:   var(--oa-panel);
-  --text:       var(--oa-white);
-  --text-2:     var(--oa-slate);
-  --text-3:     var(--oa-text-muted);       /* #4A6280 */
-  --border:     var(--oa-border-subtle);    /* rgba(ion,0.12) */
-  --accent:     var(--oa-ember);            /* energy accent — eyebrows/badges */
-  --accent-alt: var(--oa-ion);
-  --link:       var(--oa-ion);
-  --info:       var(--oa-ion);
-  --focus:      var(--oa-ion);
-  --raised:     var(--oa-raised);
-  --red:        var(--oa-state-error);      /* #D1312D */
-  --success:    var(--oa-state-success);    /* #2FA36B */
-  --warning:    var(--oa-amber);
+  /* ---- Site semantic aliases → Echo 1 Labs canonical tokens ---- */
+  --bg:         var(--e1-void);
+  --bg-muted:   var(--e1-panel);
+  --text:       var(--e1-white);
+  --text-2:     var(--e1-slate);
+  --text-3:     var(--e1-text-muted);       /* #86868E */
+  --border:     var(--e1-border-subtle);    /* rgba(white,0.09) */
+  --accent:     var(--e1-ember);            /* energy accent — eyebrows/badges */
+  --accent-alt: var(--e1-ion);
+  --link:       var(--e1-ion);
+  --info:       var(--e1-ion);
+  --focus:      var(--e1-ion);
+  --raised:     var(--e1-raised);
+  --red:        var(--e1-state-error);      /* #D1312D */
+  --success:    var(--e1-state-success);    /* #2FA36B */
+  --warning:    var(--e1-amber);
 
   /* cards / panels */
-  --card-bg:     var(--oa-panel);
-  --card-border: var(--oa-border-subtle);
-  --on-dark-1:   var(--oa-white);
-  --on-dark-2:   rgba(234, 246, 255, 0.70);
-  --on-dark-3:   rgba(234, 246, 255, 0.42);
+  --card-bg:     var(--e1-panel);
+  --card-border: var(--e1-border-subtle);
+  --on-dark-1:   var(--e1-white);
+  --on-dark-2:   rgba(248, 248, 250, 0.70);
+  --on-dark-3:   rgba(248, 248, 250, 0.42);
 
   /* legacy aliases (residual consumers) → DS */
-  --void:        var(--oa-void);
-  --void-card:   var(--oa-panel);
+  --void:        var(--e1-void);
+  --void-card:   var(--e1-panel);
   --white:       #FFFFFF;
-  --solar:       var(--oa-ember);
-  --solar-deep:  var(--oa-ember);
-  --blue:        var(--oa-ion);
-  --violet:      var(--oa-ion);
-  --violet-deep: var(--oa-ion);
+  --solar:       var(--e1-ember);
+  --solar-deep:  var(--e1-ember);
+  --blue:        var(--e1-ion);
+  --violet:      var(--e1-ion);
+  --violet-deep: var(--e1-ion);
   --yellow:      #FFFAA0;
 
   /* ---- Type ---- */
