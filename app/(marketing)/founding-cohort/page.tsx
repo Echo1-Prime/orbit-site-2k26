@@ -8,16 +8,16 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = pageMetadata({
   title: 'Founding Cohort',
   description:
-    'The first group of businesses onboarded to the BLM OS. Locked-in pricing, priority layer access, and direct input into the product. Application-based.',
+    'The first group of businesses onboarded to the BLM OS. Founding-cohort pricing, priority layer access, and direct input into the product. Application-based.',
   path: '/founding-cohort',
 });
 
 const INCLUSIONS = [
-  { label: 'Locked pricing', desc: 'Current rates held permanently: no increases as the product scales.' },
+  { label: 'Founding rate', desc: 'Held for the length of your subscription: no increases as the product scales while you are a member.' },
   { label: 'Priority layer access', desc: 'First access to Ledger and future layers when they ship, before general availability.' },
   { label: 'Direct product input', desc: 'Monthly sessions with the team. Your operations shape what gets built next.' },
   { label: 'Dedicated onboarding', desc: 'Hands-on setup of the Fusion Grid, agent configuration, and Prime governance.' },
-  { label: 'Month-to-month', desc: 'No annual commitment. The locked rate stays whether you stay a month or a decade.' },
+  { label: 'Month-to-month', desc: 'No annual commitment. Your founding rate holds for as long as you stay a member.' },
 ];
 
 export default function FoundingCohortPage() {
@@ -47,7 +47,7 @@ export default function FoundingCohortPage() {
                 Lock your rate. Shape the product.
               </h1>
               <p className="body-lg" style={{ marginBottom: '1.25rem' }}>
-                A small group of owner-led businesses. Locked pricing, forever. Direct input into
+                A small group of owner-led businesses. A founding rate held for the length of your subscription. Direct input into
                 what gets built next. Cohort seats are limited and will not reopen at these rates.
               </p>
               <p className="body-md" style={{ marginBottom: '2rem' }}>

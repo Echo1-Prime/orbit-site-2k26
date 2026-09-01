@@ -69,7 +69,7 @@ export default function HomePage() {
       <CTA
         eyebrow="Founding Cohort · Season One"
         headline="Lock in the Founding rate."
-        sub="The first operators to activate the BLM OS get $997/mo locked forever: all seven apps, 3,000 agent executions per month, and a 90-day satisfaction guarantee."
+        sub="The first operators to activate the BLM OS join at $997/mo: all seven apps, 3,000 agent executions per month, and a 90-day satisfaction guarantee."
         buttonLabel="Join Founding Cohort"
         buttonHref="/contact"
         dark
