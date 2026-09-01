@@ -113,7 +113,7 @@ const COMPARE_ROWS = [
   { feature: 'Active BLM apps',    explorer: 'Prime only',  starter: '2 apps',    growth: 'All 7',                scale: 'All 7 + custom' },
   { feature: 'Titan (Bid + Fulfillment)',         explorer: false, starter: false, growth: true,  scale: true },
   { feature: 'Signal (Capital Intelligence)',     explorer: false, starter: false, growth: true,  scale: true },
-  { feature: 'Ledger (AI CFO, coming soon)',      explorer: false, starter: false, growth: true,  scale: true },
+  { feature: 'Ledger (AI CFO)',      explorer: false, starter: false, growth: true,  scale: true },
   { feature: 'Connected integrations', explorer: '1', starter: '3', growth: 'Unlimited', scale: 'Unlimited' },
   { group: 'AGENT ACCESS' },
   { feature: 'Agent marketplace (500+ agents)',  explorer: false, starter: 'Core agents', growth: '✓ Full access', scale: '✓ Full access' },
@@ -144,7 +144,7 @@ const FAQS = [
   },
   {
     q: 'What does "all 7 apps" include?',
-    a: 'Growth and Scale include all seven Echo 1 Labs apps: Prime (Command Center), Engine (Revenue Generation), Broadcast (Brand in Market), RevOps (Revenue Intelligence), Ledger (AI CFO / FP&A, coming soon), Titan (Bid + Fulfillment + custom development), and Signal (Capital Intelligence, private access). Titan and Signal are included at no additional charge.',
+    a: 'Growth and Scale include all seven Echo 1 Labs apps: Prime (Command Center), Engine (Revenue Generation), Broadcast (Brand in Market), RevOps (Revenue Intelligence), Ledger (AI CFO / FP&A), Titan (Bid + Fulfillment + custom development), and Signal (Capital Intelligence, private access). Titan and Signal are included at no additional charge.',
   },
   {
     q: 'Can I upgrade from Explorer or Starter later?',

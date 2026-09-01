@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import OrbitMark from '@/components/OrbitMark/OrbitMark';
 import { CONTACT_EMAIL, FOOTER_LINKS, LEGAL_ENTITY, SITE_NAME } from '@/lib/site';
 import styles from './Footer.module.css';
 
@@ -8,8 +9,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div className={styles.brand}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/agent-orbit-mark.svg" className={styles.mark} alt="" width={24} height={24} aria-hidden="true" />
+          <OrbitMark size={24} className={styles.mark} aria-label="Echo 1 Labs" />
           <span className={styles.wordmark}>
             <span className={styles.echo}>ECHO</span>
             <span className={styles.one}>1</span>

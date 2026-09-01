@@ -43,8 +43,8 @@ const USE_CASES = [
   },
   {
     title: 'Finance visibility is a month-end event.',
-    body: 'Cash flow and reconciliation are things you find out about at the end of the month. Ledger runs daily reconciliation against QuickBooks, monitors cash position, routes AP approvals, and surfaces anomalies before they compound. Coming soon.',
-    layers: ['Ledger · Coming Soon'],
+    body: 'Cash flow and reconciliation are things you find out about at the end of the month. Ledger runs daily reconciliation against QuickBooks, monitors cash position, routes AP approvals, and surfaces anomalies before they compound.',
+    layers: ['Ledger'],
   },
   {
     title: 'Every decision lives in email threads no one can find.',
@@ -57,7 +57,7 @@ const LAYERS = [
   { name: 'Engine', num: '01', desc: 'Go-to-market: ICP prospecting, outreach sequencing, pipeline velocity' },
   { name: 'RevOps', num: '02', desc: 'Revenue operations: lead scoring, forecast, CRM hygiene' },
   { name: 'Broadcast', num: '03', desc: 'Marketing: content briefs, drafting, scheduling, performance' },
-  { name: 'Ledger', num: '04', desc: 'Finance ops: reconciliation, AP routing, cash flow (coming soon)', comingSoon: true },
+  { name: 'Ledger', num: '04', desc: 'Finance ops: reconciliation, AP routing, cash flow', comingSoon: false },
   { name: 'Titan', num: '05', desc: 'Document intelligence: classification, extraction, invoice matching' },
   { name: 'Signal', num: '06', desc: 'Market intelligence: PE-backed businesses, capital allocators (private access)', private: true },
   { name: 'Prime', num: '07', desc: 'Governance: daily briefing, exception queue, approval gates' },

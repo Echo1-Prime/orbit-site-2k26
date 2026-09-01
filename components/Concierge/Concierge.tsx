@@ -8,7 +8,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport, lastAssistantMessageIsCompleteWithToolCalls } from 'ai';
-import OrbitAvatar, { type AvatarState } from '@/components/OrbitAvatar/OrbitAvatar';
+import OrbitMark from '@/components/OrbitMark/OrbitMark';
+import type { AvatarState } from '@/components/OrbitAvatar/OrbitAvatar';
 import DashboardPanel from './DashboardPanel';
 import MagicalText from './MagicalText';
 import { useVoiceCapture } from '@/hooks/useVoiceCapture';
@@ -137,7 +138,7 @@ export default function Concierge() {
         aria-expanded={view !== 'closed'}
         onClick={() => (view === 'closed' ? open('text') : setView('closed'))}
       >
-        <OrbitAvatar size="md" state={view === 'closed' ? 'idle' : markState} level={tts.level} reduced={reduced} aria-label="Orbit" />
+        <OrbitMark size={64} state={view === 'closed' ? 'idle' : markState} reduced={reduced} aria-label="Orbit" />
         <span className={styles.launcherLabel}>Ask Orbit</span>
       </button>
 
@@ -145,7 +146,7 @@ export default function Concierge() {
         <div className={styles.panel} role="dialog" aria-label="Orbit concierge">
           <header className={styles.head}>
             <div className={styles.headTitle}>
-              <OrbitAvatar size="sm" state={markState} level={tts.level} reduced={reduced} aria-label="Orbit" />
+              <OrbitMark size={44} state={markState} reduced={reduced} aria-label="Orbit" />
               <div>
                 <div className={styles.headName}>Orbit</div>
                 <div className={styles.headSub}>Echo 1 Labs AI concierge</div>
