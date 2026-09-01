@@ -165,8 +165,8 @@ const FAQS = [
 ];
 
 function CellValue({ val }: { val: string | boolean | undefined }) {
-  if (val === true) return <span style={{ color: 'var(--oa-state-success)' }}>✓</span>;
-  if (val === false) return <span style={{ color: 'var(--oa-text-muted)' }}>–</span>;
+  if (val === true) return <span style={{ color: 'var(--e1-state-success)' }}>✓</span>;
+  if (val === false) return <span style={{ color: 'var(--e1-text-muted)' }}>–</span>;
   return <>{val}</>;
 }
 
@@ -197,7 +197,7 @@ export default function PricingPage() {
           <div className="section-header">
             <Eyebrow>Orbit Tiers · Pricing</Eyebrow>
             <h1 className="display-md" style={{ marginTop: '0.75rem' }}>
-              Choose your <em style={{ fontStyle: 'normal', color: 'var(--oa-ember)' }}>orbit</em>
+              Choose your <em style={{ fontStyle: 'normal', color: 'var(--e1-ember)' }}>orbit</em>
             </h1>
             <p className="body-lg" style={{ maxWidth: '560px', marginTop: '1rem' }}>
               All plans include the full BLM OS plus access to the 500+ agent marketplace. Echo Credits
@@ -205,15 +205,15 @@ export default function PricingPage() {
             </p>
             <p
               style={{
-                fontFamily: 'var(--oa-font-mono)',
+                fontFamily: 'var(--e1-font-mono)',
                 fontSize: '0.7rem',
                 letterSpacing: '0.06em',
-                color: 'var(--oa-text-muted)',
+                color: 'var(--e1-text-muted)',
                 marginTop: '0.75rem',
               }}
             >
               Founding Cohort Season One is open.{' '}
-              <strong style={{ color: 'var(--oa-ember)', fontWeight: 500 }}>
+              <strong style={{ color: 'var(--e1-ember)', fontWeight: 500 }}>
                 Growth is $997/mo for the Founding Cohort.
               </strong>
             </p>
@@ -235,12 +235,12 @@ export default function PricingPage() {
           >
             <span
               style={{
-                fontFamily: 'var(--oa-font-mono)',
+                fontFamily: 'var(--e1-font-mono)',
                 fontSize: '0.55rem',
                 fontWeight: 500,
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                background: 'var(--oa-ember)',
+                background: 'var(--e1-ember)',
                 color: '#fff',
                 padding: '4px 10px',
                 borderRadius: '3px',
@@ -251,10 +251,10 @@ export default function PricingPage() {
               Season One · Open
             </span>
             <div style={{ flex: 1, minWidth: '220px' }}>
-              <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--oa-white)', margin: 0 }}>
+              <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--e1-white)', margin: 0 }}>
                 Founding Cohort Growth rate: $997/mo.
               </p>
-              <p style={{ fontSize: '0.8rem', color: 'var(--oa-text-secondary)', marginTop: '2px', marginBottom: 0 }}>
+              <p style={{ fontSize: '0.8rem', color: 'var(--e1-text-secondary)', marginTop: '2px', marginBottom: 0 }}>
                 Join as a Season One member and hold the founding rate for the length of your subscription, with a 90-day $2,991 satisfaction guarantee.
               </p>
             </div>
@@ -281,7 +281,7 @@ export default function PricingPage() {
                   flexDirection: 'column',
                   position: 'relative',
                   borderColor: tier.featured ? 'rgba(224,123,39,0.35)' : undefined,
-                  background: tier.featured ? 'var(--oa-raised)' : undefined,
+                  background: tier.featured ? 'var(--e1-raised)' : undefined,
                 }}
               >
                 {tier.foundingBadge && (
@@ -291,9 +291,9 @@ export default function PricingPage() {
                       top: '-1px',
                       left: '50%',
                       transform: 'translateX(-50%)',
-                      background: 'var(--oa-ember)',
+                      background: 'var(--e1-ember)',
                       color: '#fff',
-                      fontFamily: 'var(--oa-font-mono)',
+                      fontFamily: 'var(--e1-font-mono)',
                       fontSize: '0.55rem',
                       letterSpacing: '0.12em',
                       textTransform: 'uppercase',
@@ -309,16 +309,16 @@ export default function PricingPage() {
                 <div style={{ marginTop: tier.foundingBadge ? '1rem' : 0, marginBottom: '0.5rem' }}>
                   <p
                     style={{
-                      fontFamily: 'var(--oa-font-display)',
+                      fontFamily: 'var(--e1-font-display)',
                       fontWeight: 700,
                       fontSize: '1.2rem',
-                      color: 'var(--oa-white)',
+                      color: 'var(--e1-white)',
                       margin: 0,
                     }}
                   >
                     {tier.name}
                   </p>
-                  <p style={{ fontSize: '0.78rem', color: 'var(--oa-text-secondary)', marginTop: '3px', marginBottom: 0 }}>
+                  <p style={{ fontSize: '0.78rem', color: 'var(--e1-text-secondary)', marginTop: '3px', marginBottom: 0 }}>
                     {tier.pitch}
                   </p>
                 </div>
@@ -326,17 +326,17 @@ export default function PricingPage() {
                 <div style={{ marginTop: '0.5rem', marginBottom: '0.75rem' }}>
                   <span
                     style={{
-                      fontFamily: 'var(--oa-font-display)',
+                      fontFamily: 'var(--e1-font-display)',
                       fontWeight: 800,
                       fontSize: tier.price === 'Contact Sales' ? '1.4rem' : '2rem',
                       letterSpacing: '-0.03em',
-                      color: 'var(--oa-white)',
+                      color: 'var(--e1-white)',
                     }}
                   >
                     {tier.price}
                   </span>
                   {tier.period && (
-                    <span style={{ fontSize: '0.8rem', color: 'var(--oa-text-secondary)' }}>
+                    <span style={{ fontSize: '0.8rem', color: 'var(--e1-text-secondary)' }}>
                       {' '}
                       {tier.period}
                     </span>
@@ -355,10 +355,10 @@ export default function PricingPage() {
                   >
                     <p
                       style={{
-                        fontFamily: 'var(--oa-font-display)',
+                        fontFamily: 'var(--e1-font-display)',
                         fontWeight: 800,
                         fontSize: '2rem',
-                        color: 'var(--oa-white)',
+                        color: 'var(--e1-white)',
                         margin: 0,
                         lineHeight: 1,
                         fontVariantNumeric: 'tabular-nums',
@@ -368,37 +368,37 @@ export default function PricingPage() {
                     </p>
                     <p
                       style={{
-                        fontFamily: 'var(--oa-font-mono)',
+                        fontFamily: 'var(--e1-font-mono)',
                         fontSize: '0.55rem',
                         letterSpacing: '0.14em',
                         textTransform: 'uppercase',
-                        color: 'var(--oa-ember)',
+                        color: 'var(--e1-ember)',
                         margin: '2px 0 6px',
                       }}
                     >
                       {tier.executions.label}
                     </p>
-                    <p style={{ fontSize: '0.75rem', color: 'var(--oa-text-secondary)', margin: 0, lineHeight: 1.5 }}>
+                    <p style={{ fontSize: '0.75rem', color: 'var(--e1-text-secondary)', margin: 0, lineHeight: 1.5 }}>
                       {tier.executions.note}
                     </p>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: '0.5rem' }}>
                       <span
                         style={{
-                          fontFamily: 'var(--oa-font-mono)',
+                          fontFamily: 'var(--e1-font-mono)',
                           fontSize: '0.6rem',
                           letterSpacing: '0.1em',
                           textTransform: 'uppercase',
-                          color: 'var(--oa-text-muted)',
+                          color: 'var(--e1-text-muted)',
                         }}
                       >
                         Cost per execution
                       </span>
                       <span
                         style={{
-                          fontFamily: 'var(--oa-font-display)',
+                          fontFamily: 'var(--e1-font-display)',
                           fontWeight: 700,
                           fontSize: '0.875rem',
-                          color: 'var(--oa-ember)',
+                          color: 'var(--e1-ember)',
                           fontVariantNumeric: 'tabular-nums',
                         }}
                       >
@@ -410,9 +410,9 @@ export default function PricingPage() {
                   tier.credits && (
                     <p
                       style={{
-                        fontFamily: 'var(--oa-font-mono)',
+                        fontFamily: 'var(--e1-font-mono)',
                         fontSize: '0.68rem',
-                        color: 'var(--oa-text-secondary)',
+                        color: 'var(--e1-text-secondary)',
                         marginBottom: '0.75rem',
                         letterSpacing: '0.04em',
                       }}
@@ -422,7 +422,7 @@ export default function PricingPage() {
                   )
                 )}
 
-                <div style={{ height: '1px', background: 'var(--oa-border)', margin: '0 0 1rem' }} />
+                <div style={{ height: '1px', background: 'var(--e1-border)', margin: '0 0 1rem' }} />
 
                 <ul
                   style={{
@@ -437,9 +437,9 @@ export default function PricingPage() {
                       key={f}
                       style={{
                         fontSize: '0.8rem',
-                        color: 'var(--oa-text-secondary)',
+                        color: 'var(--e1-text-secondary)',
                         padding: '5px 0',
-                        borderBottom: '1px solid var(--oa-border)',
+                        borderBottom: '1px solid var(--e1-border)',
                         display: 'flex',
                         gap: '8px',
                         alignItems: 'flex-start',
@@ -447,7 +447,7 @@ export default function PricingPage() {
                     >
                       <span
                         style={{
-                          color: tier.featured ? 'var(--oa-ember)' : 'var(--oa-text-muted)',
+                          color: tier.featured ? 'var(--e1-ember)' : 'var(--e1-text-muted)',
                           fontSize: '0.7rem',
                           marginTop: '2px',
                           flexShrink: 0,
@@ -475,8 +475,8 @@ export default function PricingPage() {
               justifyContent: 'center',
               gap: '2rem',
               flexWrap: 'wrap',
-              background: 'var(--oa-surface)',
-              border: '1px solid var(--oa-border)',
+              background: 'var(--e1-surface)',
+              border: '1px solid var(--e1-border)',
               borderRadius: '12px',
               padding: '1.25rem 2rem',
               marginTop: '1.5rem',
@@ -485,10 +485,10 @@ export default function PricingPage() {
             {GUARANTEES.map((g) => (
               <div key={g.title} style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
                 <div>
-                  <p style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--oa-white)', margin: 0 }}>
+                  <p style={{ fontWeight: 600, fontSize: '0.875rem', color: 'var(--e1-white)', margin: 0 }}>
                     {g.title}
                   </p>
-                  <p style={{ fontSize: '0.78rem', color: 'var(--oa-text-secondary)', margin: 0 }}>
+                  <p style={{ fontSize: '0.78rem', color: 'var(--e1-text-secondary)', margin: 0 }}>
                     {g.body}
                   </p>
                 </div>
@@ -501,7 +501,7 @@ export default function PricingPage() {
       {/* Comparison table */}
       <section
         className="section"
-        style={{ background: 'var(--oa-panel)', borderTop: '1px solid var(--oa-border)' }}
+        style={{ background: 'var(--e1-panel)', borderTop: '1px solid var(--e1-border)' }}
         id="compare"
       >
         <div className="container">
@@ -515,16 +515,16 @@ export default function PricingPage() {
           >
             <span
               style={{
-                fontFamily: 'var(--oa-font-mono)',
+                fontFamily: 'var(--e1-font-mono)',
                 fontSize: '0.6rem',
                 letterSpacing: '0.14em',
                 textTransform: 'uppercase',
-                color: 'var(--oa-text-muted)',
+                color: 'var(--e1-text-muted)',
               }}
             >
               Full Comparison
             </span>
-            <span style={{ flex: 1, height: '1px', background: 'var(--oa-border)' }} />
+            <span style={{ flex: 1, height: '1px', background: 'var(--e1-border)' }} />
           </div>
 
           <div style={{ overflowX: 'auto' }}>
@@ -544,12 +544,12 @@ export default function PricingPage() {
                       style={{
                         padding: '0.75rem 1rem',
                         textAlign: 'left',
-                        borderBottom: i === 3 ? '2px solid rgba(224,123,39,0.35)' : '1px solid var(--oa-border)',
-                        background: 'var(--oa-raised)',
-                        fontFamily: 'var(--oa-font-display)',
+                        borderBottom: i === 3 ? '2px solid rgba(224,123,39,0.35)' : '1px solid var(--e1-border)',
+                        background: 'var(--e1-raised)',
+                        fontFamily: 'var(--e1-font-display)',
                         fontSize: '0.875rem',
                         fontWeight: 700,
-                        color: i === 3 ? 'var(--oa-ember)' : 'var(--oa-white)',
+                        color: i === 3 ? 'var(--e1-ember)' : 'var(--e1-white)',
                         minWidth: i === 0 ? '200px' : undefined,
                         position: 'sticky',
                         top: 0,
@@ -568,13 +568,13 @@ export default function PricingPage() {
                         <td
                           colSpan={5}
                           style={{
-                            fontFamily: 'var(--oa-font-mono)',
+                            fontFamily: 'var(--e1-font-mono)',
                             fontSize: '0.55rem',
                             letterSpacing: '0.12em',
                             textTransform: 'uppercase',
-                            color: 'var(--oa-text-muted)',
-                            background: 'var(--oa-void)',
-                            borderBottom: '1px solid var(--oa-border)',
+                            color: 'var(--e1-text-muted)',
+                            background: 'var(--e1-void)',
+                            borderBottom: '1px solid var(--e1-border)',
                             padding: '0.5rem 1rem',
                             fontWeight: 500,
                           }}
@@ -586,19 +586,19 @@ export default function PricingPage() {
                   }
                   return (
                     <tr key={idx}>
-                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--oa-border)', color: 'var(--oa-text-secondary)' }}>
+                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--e1-border)', color: 'var(--e1-text-secondary)' }}>
                         {row.feature}
                       </td>
-                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--oa-border)', color: 'var(--oa-text-secondary)' }}>
+                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--e1-border)', color: 'var(--e1-text-secondary)' }}>
                         <CellValue val={row.explorer} />
                       </td>
-                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--oa-border)', color: 'var(--oa-text-secondary)' }}>
+                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--e1-border)', color: 'var(--e1-text-secondary)' }}>
                         <CellValue val={row.starter} />
                       </td>
-                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--oa-border)', color: 'var(--oa-ember)', background: 'rgba(224,123,39,0.03)', fontWeight: typeof row.growth === 'string' && !row.growth.startsWith('✓') ? 600 : undefined }}>
+                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--e1-border)', color: 'var(--e1-ember)', background: 'rgba(224,123,39,0.03)', fontWeight: typeof row.growth === 'string' && !row.growth.startsWith('✓') ? 600 : undefined }}>
                         <CellValue val={row.growth} />
                       </td>
-                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--oa-border)', color: 'var(--oa-text-secondary)' }}>
+                      <td style={{ padding: '0.75rem 1rem', borderBottom: '1px solid var(--e1-border)', color: 'var(--e1-text-secondary)' }}>
                         <CellValue val={row.scale} />
                       </td>
                     </tr>
@@ -613,7 +613,7 @@ export default function PricingPage() {
       {/* FAQ */}
       <section
         className="section"
-        style={{ background: 'var(--oa-void)', borderTop: '1px solid var(--oa-border)' }}
+        style={{ background: 'var(--e1-void)', borderTop: '1px solid var(--e1-border)' }}
         id="faq"
       >
         <div className="container">
@@ -629,7 +629,7 @@ export default function PricingPage() {
               gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
               gap: 0,
               maxWidth: '960px',
-              border: '1px solid var(--oa-border)',
+              border: '1px solid var(--e1-border)',
               borderRadius: '12px',
               overflow: 'hidden',
             }}
@@ -638,17 +638,17 @@ export default function PricingPage() {
               <details
                 key={i}
                 style={{
-                  borderBottom: i < FAQS.length - 2 ? '1px solid var(--oa-border)' : undefined,
-                  borderRight: i % 2 === 0 ? '1px solid var(--oa-border)' : undefined,
+                  borderBottom: i < FAQS.length - 2 ? '1px solid var(--e1-border)' : undefined,
+                  borderRight: i % 2 === 0 ? '1px solid var(--e1-border)' : undefined,
                 }}
               >
                 <summary
                   style={{
                     padding: '1.25rem 1.5rem',
-                    fontFamily: 'var(--oa-font-display)',
+                    fontFamily: 'var(--e1-font-display)',
                     fontSize: '0.9rem',
                     fontWeight: 600,
-                    color: 'var(--oa-white)',
+                    color: 'var(--e1-white)',
                     cursor: 'pointer',
                     listStyle: 'none',
                     display: 'flex',
@@ -660,7 +660,7 @@ export default function PricingPage() {
                   {faq.q}
                   <span
                     style={{
-                      color: 'var(--oa-text-muted)',
+                      color: 'var(--e1-text-muted)',
                       fontSize: '1rem',
                       flexShrink: 0,
                       lineHeight: 1,
@@ -673,7 +673,7 @@ export default function PricingPage() {
                   style={{
                     padding: '0 1.5rem 1.25rem',
                     fontSize: '0.8rem',
-                    color: 'var(--oa-text-secondary)',
+                    color: 'var(--e1-text-secondary)',
                     lineHeight: 1.7,
                     margin: 0,
                   }}

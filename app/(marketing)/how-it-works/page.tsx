@@ -123,27 +123,27 @@ export default function HowItWorksPage() {
               >
                 <p
                   style={{
-                    fontFamily: 'var(--oa-font-mono)',
+                    fontFamily: 'var(--e1-font-mono)',
                     fontSize: '0.6rem',
                     letterSpacing: '0.14em',
                     textTransform: 'uppercase',
-                    color: 'var(--oa-ember)',
+                    color: 'var(--e1-ember)',
                   }}
                 >
                   {step.num}
                 </p>
                 <h2
                   style={{
-                    fontFamily: 'var(--oa-font-display)',
+                    fontFamily: 'var(--e1-font-display)',
                     fontWeight: 700,
                     fontSize: '1.35rem',
                     letterSpacing: '-0.02em',
-                    color: 'var(--oa-white)',
+                    color: 'var(--e1-white)',
                   }}
                 >
                   {step.title}
                 </h2>
-                <p style={{ fontSize: '0.9rem', color: 'var(--oa-text-secondary)', lineHeight: 1.7, margin: 0 }}>
+                <p style={{ fontSize: '0.9rem', color: 'var(--e1-text-secondary)', lineHeight: 1.7, margin: 0 }}>
                   {step.body}
                 </p>
               </div>
@@ -155,7 +155,7 @@ export default function HowItWorksPage() {
       {/* Architecture */}
       <section
         className="section"
-        style={{ background: 'var(--oa-panel)', borderTop: '1px solid var(--oa-border-subtle)' }}
+        style={{ background: 'var(--e1-panel)', borderTop: '1px solid var(--e1-border-subtle)' }}
       >
         <div className="container">
           <div className="section-header">
@@ -180,16 +180,16 @@ export default function HowItWorksPage() {
               <div key={item.title} className="card">
                 <p
                   style={{
-                    fontFamily: 'var(--oa-font-display)',
+                    fontFamily: 'var(--e1-font-display)',
                     fontWeight: 700,
                     fontSize: '1rem',
-                    color: 'var(--oa-white)',
+                    color: 'var(--e1-white)',
                     marginBottom: '0.65rem',
                   }}
                 >
                   {item.title}
                 </p>
-                <p style={{ fontSize: '0.875rem', color: 'var(--oa-text-secondary)', lineHeight: 1.7, margin: 0 }}>
+                <p style={{ fontSize: '0.875rem', color: 'var(--e1-text-secondary)', lineHeight: 1.7, margin: 0 }}>
                   {item.body}
                 </p>
               </div>
@@ -219,7 +219,7 @@ export default function HowItWorksPage() {
       {/* FAQ */}
       <section
         className="section"
-        style={{ background: 'var(--oa-panel)', borderTop: '1px solid var(--oa-border-subtle)' }}
+        style={{ background: 'var(--e1-panel)', borderTop: '1px solid var(--e1-border-subtle)' }}
       >
         <div className="container">
           <div className="section-header">
@@ -232,21 +232,21 @@ export default function HowItWorksPage() {
                 key={i}
                 style={{
                   padding: '1.25rem 0',
-                  borderBottom: '1px solid var(--oa-border-subtle)',
+                  borderBottom: '1px solid var(--e1-border-subtle)',
                 }}
               >
                 <p
                   style={{
-                    fontFamily: 'var(--oa-font-display)',
+                    fontFamily: 'var(--e1-font-display)',
                     fontWeight: 600,
                     fontSize: '0.95rem',
-                    color: 'var(--oa-white)',
+                    color: 'var(--e1-white)',
                     marginBottom: '0.5rem',
                   }}
                 >
                   {faq.q}
                 </p>
-                <p style={{ fontSize: '0.875rem', color: 'var(--oa-text-secondary)', lineHeight: 1.7, margin: 0 }}>
+                <p style={{ fontSize: '0.875rem', color: 'var(--e1-text-secondary)', lineHeight: 1.7, margin: 0 }}>
                   {faq.a}
                 </p>
               </div>
