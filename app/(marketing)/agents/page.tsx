@@ -46,7 +46,7 @@ export default function AgentsPage() {
       <CTA
         eyebrow="Founding Cohort"
         headline="Activate your first agents."
-        sub="Application-based access. Locked pricing. Most operators are live in six to eight weeks."
+        sub="Application-based access. Founding-cohort pricing. Most operators are live in six to eight weeks."
         buttonLabel="Apply Now"
         buttonHref="/founding-cohort"
         dark

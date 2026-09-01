@@ -209,7 +209,7 @@ export default async function BlogPostPage({
                   See the BLM OS in action.
                 </p>
                 <p style={{ fontSize: '0.85rem', color: 'var(--oa-text-secondary)', margin: 0 }}>
-                  Join the Founding Cohort for early access and locked-in pricing.
+                  Join the Founding Cohort for early access and founding-cohort pricing.
                 </p>
               </div>
               <ButtonLink href="/founding-cohort" variant="ember">
