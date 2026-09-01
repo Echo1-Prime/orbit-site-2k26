@@ -7,9 +7,21 @@ import { productPageMetadata, pageMetadata, serviceSchema, breadcrumbSchema, faq
 import JsonLd from '@/components/JsonLd';
 import CTA from '@/components/CTA/CTA';
 import InViewStagger from '@/components/Reveal/InViewStagger';
+import ProductHeroMedia from '@/components/ProductHeroMedia/ProductHeroMedia';
 
 export const dynamic = 'force-static';
 export const dynamicParams = false;
+
+// Per-product hero demo video (local /public/videos). Products without a demo
+// video (signal, ai-readiness) render no hero media.
+const HERO_VIDEO: Record<string, string> = {
+  engine: '/videos/engine.mp4',
+  revops: '/videos/lead-gen-network.mp4',
+  broadcast: '/videos/broadcast.mp4',
+  titan: '/videos/titan.mp4',
+  ledger: '/videos/ledger.mp4',
+  prime: '/videos/prime.mp4',
+};
 
 export function generateStaticParams() {
   return PRODUCT_SLUGS.map((slug) => ({ slug }));
@@ -93,6 +105,14 @@ export default async function ProductPage({
               Talk to Orbit
             </button>
           </div>
+
+          {HERO_VIDEO[product.slug] && (
+            <ProductHeroMedia
+              video={HERO_VIDEO[product.slug]}
+              poster={product.poster}
+              alt={`${product.name} product demo`}
+            />
+          )}
 
           {/* Primary keyword as visible sub-label - aids on-page relevance */}
           {seo && (

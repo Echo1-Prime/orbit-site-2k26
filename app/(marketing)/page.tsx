@@ -1,5 +1,6 @@
 import Hero from '@/components/Hero/Hero';
 import LifecycleGrid from '@/components/LifecycleGrid/LifecycleGrid';
+import ProductShowcase from '@/components/ProductShowcase/ProductShowcase';
 import CTA from '@/components/CTA/CTA';
 import InViewStagger from '@/components/Reveal/InViewStagger';
 import { Eyebrow, Card, Badge } from '@/components/ds';
@@ -42,6 +43,9 @@ export default function HomePage() {
           <LifecycleGrid />
         </div>
       </section>
+
+      {/* Product showcase — per-product demo video */}
+      <ProductShowcase />
 
       {/* Approach */}
       <section className="section">
