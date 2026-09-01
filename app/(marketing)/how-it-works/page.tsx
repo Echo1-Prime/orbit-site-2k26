@@ -258,7 +258,7 @@ export default function HowItWorksPage() {
       <CTA
         eyebrow="Ready to start?"
         headline="Join the Founding Cohort."
-        sub="Application-based access. Rate locked for the life of your subscription. Rates for new customers after the cohort closes will be higher."
+        sub="Application-based access. Your founding rate holds for the length of your subscription. Rates for new customers after the cohort closes will be higher."
         buttonLabel="Apply Now"
         buttonHref="/founding-cohort"
         dark
