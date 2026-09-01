@@ -11,6 +11,18 @@ export default function Hero() {
 
   return (
     <section className={styles.hero}>
+      {!reduced && (
+        <video
+          className={styles.videoBg}
+          src="/videos/earth-from-space.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          aria-hidden="true"
+        />
+      )}
+      <div className={styles.overlay} aria-hidden="true" />
       <svg
         className={styles.orbital}
         viewBox="0 0 700 700"
