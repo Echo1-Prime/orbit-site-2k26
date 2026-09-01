@@ -171,10 +171,10 @@ export default function OutcomesPage() {
             </p>
             <p
               style={{
-                fontFamily: 'var(--oa-font-mono)',
+                fontFamily: 'var(--e1-font-mono)',
                 fontSize: '0.65rem',
                 letterSpacing: '0.1em',
-                color: 'var(--oa-text-muted)',
+                color: 'var(--e1-text-muted)',
                 marginTop: '0.75rem',
               }}
             >
@@ -188,11 +188,11 @@ export default function OutcomesPage() {
               <div key={m.label} className="card">
                 <p
                   style={{
-                    fontFamily: 'var(--oa-font-display)',
+                    fontFamily: 'var(--e1-font-display)',
                     fontWeight: 700,
                     fontSize: 'clamp(1.75rem, 3vw, 2.75rem)',
                     letterSpacing: '-0.03em',
-                    color: 'var(--oa-ember)',
+                    color: 'var(--e1-ember)',
                     marginBottom: '0.35rem',
                   }}
                 >
@@ -200,25 +200,25 @@ export default function OutcomesPage() {
                 </p>
                 <p
                   style={{
-                    fontFamily: 'var(--oa-font-display)',
+                    fontFamily: 'var(--e1-font-display)',
                     fontWeight: 600,
                     fontSize: '0.9rem',
-                    color: 'var(--oa-white)',
+                    color: 'var(--e1-white)',
                     marginBottom: '0.4rem',
                   }}
                 >
                   {m.label}
                 </p>
-                <p style={{ fontSize: '0.78rem', color: 'var(--oa-text-muted)', margin: '0 0 0.5rem', lineHeight: 1.5 }}>
+                <p style={{ fontSize: '0.78rem', color: 'var(--e1-text-muted)', margin: '0 0 0.5rem', lineHeight: 1.5 }}>
                   {m.note}
                 </p>
                 <p
                   style={{
-                    fontFamily: 'var(--oa-font-mono)',
+                    fontFamily: 'var(--e1-font-mono)',
                     fontSize: '0.58rem',
                     letterSpacing: '0.1em',
                     textTransform: 'uppercase',
-                    color: 'var(--oa-text-muted)',
+                    color: 'var(--e1-text-muted)',
                     margin: 0,
                   }}
                 >
@@ -233,7 +233,7 @@ export default function OutcomesPage() {
       {/* Execution stories */}
       <section
         className="section"
-        style={{ background: 'var(--oa-panel)', borderTop: '1px solid var(--oa-border-subtle)' }}
+        style={{ background: 'var(--e1-panel)', borderTop: '1px solid var(--e1-border-subtle)' }}
       >
         <div className="container">
           <div className="section-header">
@@ -254,15 +254,15 @@ export default function OutcomesPage() {
                 <div
                   style={{
                     padding: '0.6rem 1rem',
-                    borderBottom: '1px solid var(--oa-border-subtle)',
+                    borderBottom: '1px solid var(--e1-border-subtle)',
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.75rem',
-                    background: 'var(--oa-panel)',
+                    background: 'var(--e1-panel)',
                   }}
                 >
                   <div style={{ display: 'flex', gap: '5px' }}>
-                    {['var(--oa-state-error)', 'var(--oa-state-warning)', 'var(--oa-state-success)'].map((c, i) => (
+                    {['var(--e1-state-error)', 'var(--e1-state-warning)', 'var(--e1-state-success)'].map((c, i) => (
                       <span
                         key={i}
                         style={{
@@ -277,11 +277,11 @@ export default function OutcomesPage() {
                   </div>
                   <span
                     style={{
-                      fontFamily: 'var(--oa-font-mono)',
+                      fontFamily: 'var(--e1-font-mono)',
                       fontSize: '0.6rem',
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
-                      color: 'var(--oa-text-muted)',
+                      color: 'var(--e1-text-muted)',
                     }}
                   >
                     {story.domain} · {story.app}
@@ -289,16 +289,16 @@ export default function OutcomesPage() {
                 </div>
 
                 {/* Log lines */}
-                <div style={{ padding: '1.25rem 1.25rem 0.75rem', fontFamily: 'var(--oa-font-mono)', fontSize: '0.72rem', lineHeight: 1.8 }}>
+                <div style={{ padding: '1.25rem 1.25rem 0.75rem', fontFamily: 'var(--e1-font-mono)', fontSize: '0.72rem', lineHeight: 1.8 }}>
                   {story.lines.map((line, i) => (
                     <div key={i} style={{ display: 'flex', gap: '1rem', marginBottom: '0.2rem' }}>
-                      <span style={{ color: 'var(--oa-text-muted)', flexShrink: 0, minWidth: '3.5rem' }}>
+                      <span style={{ color: 'var(--e1-text-muted)', flexShrink: 0, minWidth: '3.5rem' }}>
                         {line.ts}
                       </span>
-                      <span style={{ color: 'var(--oa-ember)', flexShrink: 0, minWidth: '9rem' }}>
+                      <span style={{ color: 'var(--e1-ember)', flexShrink: 0, minWidth: '9rem' }}>
                         {line.agent}
                       </span>
-                      <span style={{ color: line.ok ? 'var(--oa-state-success)' : 'var(--oa-text-secondary)' }}>
+                      <span style={{ color: line.ok ? 'var(--e1-state-success)' : 'var(--e1-text-secondary)' }}>
                         {line.ok ? '→ ' : ''}{line.msg}
                       </span>
                     </div>
@@ -309,10 +309,10 @@ export default function OutcomesPage() {
                 <div
                   style={{
                     padding: '0.75rem 1.25rem 1.25rem',
-                    borderTop: '1px solid var(--oa-border-subtle)',
+                    borderTop: '1px solid var(--e1-border-subtle)',
                     marginTop: '0.5rem',
                     fontSize: '0.8rem',
-                    color: 'var(--oa-text-secondary)',
+                    color: 'var(--e1-text-secondary)',
                     lineHeight: 1.7,
                   }}
                 >
@@ -337,21 +337,21 @@ export default function OutcomesPage() {
                 key={i}
                 style={{
                   padding: '1.25rem 0',
-                  borderBottom: '1px solid var(--oa-border-subtle)',
+                  borderBottom: '1px solid var(--e1-border-subtle)',
                 }}
               >
                 <p
                   style={{
-                    fontFamily: 'var(--oa-font-display)',
+                    fontFamily: 'var(--e1-font-display)',
                     fontWeight: 600,
                     fontSize: '0.95rem',
-                    color: 'var(--oa-white)',
+                    color: 'var(--e1-white)',
                     marginBottom: '0.5rem',
                   }}
                 >
                   {faq.q}
                 </p>
-                <p style={{ fontSize: '0.875rem', color: 'var(--oa-text-secondary)', lineHeight: 1.7, margin: 0 }}>
+                <p style={{ fontSize: '0.875rem', color: 'var(--e1-text-secondary)', lineHeight: 1.7, margin: 0 }}>
                   {faq.a}
                 </p>
               </div>

@@ -76,7 +76,7 @@ export default function FoundingCohortPage() {
                       width: '7px',
                       height: '7px',
                       borderRadius: '50%',
-                      background: 'var(--oa-ember)',
+                      background: 'var(--e1-ember)',
                       marginTop: '0.35rem',
                       flexShrink: 0,
                     }}
@@ -84,16 +84,16 @@ export default function FoundingCohortPage() {
                   <div>
                     <p
                       style={{
-                        fontFamily: 'var(--oa-font-display)',
+                        fontFamily: 'var(--e1-font-display)',
                         fontWeight: 600,
                         fontSize: '0.9rem',
-                        color: 'var(--oa-white)',
+                        color: 'var(--e1-white)',
                         marginBottom: '0.25rem',
                       }}
                     >
                       {item.label}
                     </p>
-                    <p style={{ fontSize: '0.82rem', color: 'var(--oa-text-secondary)', lineHeight: 1.65, margin: 0 }}>
+                    <p style={{ fontSize: '0.82rem', color: 'var(--e1-text-secondary)', lineHeight: 1.65, margin: 0 }}>
                       {item.desc}
                     </p>
                   </div>
@@ -107,7 +107,7 @@ export default function FoundingCohortPage() {
       {/* Who it's for */}
       <section
         className="section"
-        style={{ background: 'var(--oa-panel)', borderTop: '1px solid var(--oa-border-subtle)' }}
+        style={{ background: 'var(--e1-panel)', borderTop: '1px solid var(--e1-border-subtle)' }}
       >
         <div className="container">
           <div style={{ maxWidth: '680px' }}>
@@ -152,14 +152,14 @@ export default function FoundingCohortPage() {
               Email{' '}
               <a
                 href="mailto:hello@echo1labs.com"
-                style={{ color: 'var(--oa-ember)', textDecoration: 'none' }}
+                style={{ color: 'var(--e1-ember)', textDecoration: 'none' }}
               >
                 hello@echo1labs.com
               </a>{' '}
               with three things: your revenue range, team size, and where operations feel hardest.
               That is all we need to start.
             </p>
-            <p className="body-md" style={{ marginBottom: '2rem', color: 'var(--oa-text-secondary)' }}>
+            <p className="body-md" style={{ marginBottom: '2rem', color: 'var(--e1-text-secondary)' }}>
               What to expect: We review your application → Schedule a 30-minute call → You get a
               go/no-go within the week.
             </p>

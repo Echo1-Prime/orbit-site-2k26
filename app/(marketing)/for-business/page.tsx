@@ -98,11 +98,11 @@ export default function ForBusinessPage() {
             <div className="card" style={{ padding: '1.5rem 2rem' }}>
               <p
                 style={{
-                  fontFamily: 'var(--oa-font-mono)',
+                  fontFamily: 'var(--e1-font-mono)',
                   fontSize: '0.58rem',
                   letterSpacing: '0.12em',
                   textTransform: 'uppercase',
-                  color: 'var(--oa-ember)',
+                  color: 'var(--e1-ember)',
                   marginBottom: '1.25rem',
                 }}
               >
@@ -110,14 +110,14 @@ export default function ForBusinessPage() {
               </p>
               <div className="stack" style={{ gap: '1rem' }}>
                 {PROFILE.map((p) => (
-                  <div key={p.label} style={{ borderBottom: '1px solid var(--oa-border-subtle)', paddingBottom: '1rem' }}>
+                  <div key={p.label} style={{ borderBottom: '1px solid var(--e1-border-subtle)', paddingBottom: '1rem' }}>
                     <p
                       style={{
-                        fontFamily: 'var(--oa-font-mono)',
+                        fontFamily: 'var(--e1-font-mono)',
                         fontSize: '0.6rem',
                         letterSpacing: '0.1em',
                         textTransform: 'uppercase',
-                        color: 'var(--oa-text-muted)',
+                        color: 'var(--e1-text-muted)',
                         marginBottom: '0.35rem',
                       }}
                     >
@@ -125,10 +125,10 @@ export default function ForBusinessPage() {
                     </p>
                     <p
                       style={{
-                        fontFamily: 'var(--oa-font-display)',
+                        fontFamily: 'var(--e1-font-display)',
                         fontWeight: 600,
                         fontSize: '0.95rem',
-                        color: 'var(--oa-white)',
+                        color: 'var(--e1-white)',
                         margin: 0,
                       }}
                     >
@@ -145,7 +145,7 @@ export default function ForBusinessPage() {
       {/* All seven layers */}
       <section
         className="section"
-        style={{ background: 'var(--oa-panel)', borderTop: '1px solid var(--oa-border-subtle)' }}
+        style={{ background: 'var(--e1-panel)', borderTop: '1px solid var(--e1-border-subtle)' }}
       >
         <div className="container">
           <div className="section-header">
@@ -172,10 +172,10 @@ export default function ForBusinessPage() {
               >
                 <p
                   style={{
-                    fontFamily: 'var(--oa-font-mono)',
+                    fontFamily: 'var(--e1-font-mono)',
                     fontSize: '0.6rem',
                     letterSpacing: '0.12em',
-                    color: 'var(--oa-ember)',
+                    color: 'var(--e1-ember)',
                     flexShrink: 0,
                     width: '2rem',
                   }}
@@ -186,10 +186,10 @@ export default function ForBusinessPage() {
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.25rem' }}>
                     <p
                       style={{
-                        fontFamily: 'var(--oa-font-display)',
+                        fontFamily: 'var(--e1-font-display)',
                         fontWeight: 700,
                         fontSize: '0.95rem',
-                        color: 'var(--oa-white)',
+                        color: 'var(--e1-white)',
                         margin: 0,
                       }}
                     >
@@ -198,7 +198,7 @@ export default function ForBusinessPage() {
                     {layer.comingSoon && <Badge tone="muted">Coming Soon</Badge>}
                     {layer.private && <Badge tone="ion">Private Access</Badge>}
                   </div>
-                  <p style={{ fontSize: '0.825rem', color: 'var(--oa-text-secondary)', margin: 0, lineHeight: 1.5 }}>
+                  <p style={{ fontSize: '0.825rem', color: 'var(--e1-text-secondary)', margin: 0, lineHeight: 1.5 }}>
                     {layer.desc}
                   </p>
                 </div>
@@ -222,16 +222,16 @@ export default function ForBusinessPage() {
               <div key={uc.title} className="card" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                 <p
                   style={{
-                    fontFamily: 'var(--oa-font-display)',
+                    fontFamily: 'var(--e1-font-display)',
                     fontWeight: 700,
                     fontSize: '1rem',
-                    color: 'var(--oa-white)',
+                    color: 'var(--e1-white)',
                     lineHeight: 1.4,
                   }}
                 >
                   {uc.title}
                 </p>
-                <p style={{ fontSize: '0.875rem', color: 'var(--oa-text-secondary)', lineHeight: 1.7, flex: 1 }}>
+                <p style={{ fontSize: '0.875rem', color: 'var(--e1-text-secondary)', lineHeight: 1.7, flex: 1 }}>
                   {uc.body}
                 </p>
                 <div style={{ display: 'flex', gap: '0.4rem', flexWrap: 'wrap' }}>

@@ -43,12 +43,12 @@ export default function BlogIndexPage() {
               <span
                 key={cat}
                 style={{
-                  fontFamily: 'var(--oa-font-mono)',
+                  fontFamily: 'var(--e1-font-mono)',
                   fontSize: '0.65rem',
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: 'var(--oa-text-secondary)',
-                  border: '1px solid var(--oa-border-subtle)',
+                  color: 'var(--e1-text-secondary)',
+                  border: '1px solid var(--e1-border-subtle)',
                   padding: '4px 10px',
                   borderRadius: '4px',
                 }}
@@ -81,11 +81,11 @@ export default function BlogIndexPage() {
                   </div>
                   <h2
                     style={{
-                      fontFamily: 'var(--oa-font-display)',
+                      fontFamily: 'var(--e1-font-display)',
                       fontWeight: 700,
                       fontSize: '1rem',
                       lineHeight: 1.35,
-                      color: 'var(--oa-white)',
+                      color: 'var(--e1-white)',
                       marginBottom: '0.75rem',
                       flex: 1,
                     }}
@@ -95,7 +95,7 @@ export default function BlogIndexPage() {
                   <p
                     style={{
                       fontSize: '0.85rem',
-                      color: 'var(--oa-text-secondary)',
+                      color: 'var(--e1-text-secondary)',
                       lineHeight: 1.6,
                       marginBottom: '1rem',
                     }}
@@ -106,12 +106,12 @@ export default function BlogIndexPage() {
                     style={{
                       display: 'flex',
                       gap: '1rem',
-                      fontFamily: 'var(--oa-font-mono)',
+                      fontFamily: 'var(--e1-font-mono)',
                       fontSize: '0.6rem',
                       letterSpacing: '0.1em',
                       textTransform: 'uppercase',
-                      color: 'var(--oa-text-muted)',
-                      borderTop: '1px solid var(--oa-border-subtle)',
+                      color: 'var(--e1-text-muted)',
+                      borderTop: '1px solid var(--e1-border-subtle)',
                       paddingTop: '0.75rem',
                     }}
                   >

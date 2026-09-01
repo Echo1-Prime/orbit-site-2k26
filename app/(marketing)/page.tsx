@@ -56,10 +56,10 @@ export default function HomePage() {
                 <div style={{ marginBottom: 12 }}>
                   <Badge tone="ion">{a.tag}</Badge>
                 </div>
-                <h3 style={{ fontFamily: 'var(--oa-font-display)', fontWeight: 600, fontSize: '1.05rem', marginBottom: 8, color: 'var(--oa-white)' }}>
+                <h3 style={{ fontFamily: 'var(--e1-font-display)', fontWeight: 600, fontSize: '1.05rem', marginBottom: 8, color: 'var(--e1-white)' }}>
                   {a.title}
                 </h3>
-                <p style={{ fontSize: '0.9rem', color: 'var(--oa-slate)', lineHeight: 1.6 }}>{a.body}</p>
+                <p style={{ fontSize: '0.9rem', color: 'var(--e1-slate)', lineHeight: 1.6 }}>{a.body}</p>
               </Card>
             ))}
           </InViewStagger>

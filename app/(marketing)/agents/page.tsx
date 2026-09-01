@@ -80,7 +80,7 @@ export default function AgentsPage() {
         .agents-filter__btn--active {
           border-color: var(--link);
           color: var(--link);
-          background: rgba(143, 208, 242, 0.08);
+          background: rgba(255, 117, 21, 0.08);
         }
         .agents-filter__count {
           font-size: 0.75rem;
@@ -91,16 +91,16 @@ export default function AgentsPage() {
           display: inline-flex;
           align-items: center;
           gap: 0.5rem;
-          font-family: var(--oa-font-mono);
+          font-family: var(--e1-font-mono);
           font-size: 0.75rem;
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          color: var(--oa-text-secondary);
+          color: var(--e1-text-secondary);
           margin-top: 1.25rem;
         }
         .agents-hero-count strong {
-          color: var(--oa-ember);
-          font-family: var(--oa-font-display);
+          color: var(--e1-ember);
+          font-family: var(--e1-font-display);
           font-size: 1.25rem;
           font-weight: 700;
           letter-spacing: -0.02em;
@@ -126,21 +126,21 @@ export default function AgentsPage() {
         }
         .agent-card__product {
           font-size: 0.65rem;
-          font-family: var(--oa-font-mono);
+          font-family: var(--e1-font-mono);
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: var(--oa-ion);
-          background: rgba(143, 208, 242, 0.08);
+          color: var(--e1-ion);
+          background: rgba(255, 117, 21, 0.08);
           padding: 0.2rem 0.6rem;
           border-radius: 100px;
         }
         .agent-card__trigger {
           font-size: 0.6rem;
-          font-family: var(--oa-font-mono);
+          font-family: var(--e1-font-mono);
           letter-spacing: 0.1em;
           text-transform: uppercase;
-          color: var(--oa-text-muted);
-          background: var(--oa-surface-raised);
+          color: var(--e1-text-muted);
+          background: var(--e1-surface-raised);
           padding: 0.2rem 0.6rem;
           border-radius: 100px;
           flex-shrink: 0;
@@ -148,14 +148,14 @@ export default function AgentsPage() {
         .agent-card__name {
           font-size: 0.9375rem;
           font-weight: 700;
-          color: var(--oa-white);
+          color: var(--e1-white);
           margin: 0;
           letter-spacing: -0.01em;
           line-height: 1.2;
         }
         .agent-card__desc {
           font-size: 0.8125rem;
-          color: var(--oa-text-secondary);
+          color: var(--e1-text-secondary);
           line-height: 1.55;
           margin: 0;
           flex: 1;
