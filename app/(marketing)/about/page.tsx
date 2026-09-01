@@ -312,7 +312,7 @@ export default function AboutPage() {
       <CTA
         eyebrow="Break free from business gravity."
         headline="Ready to see the OS?"
-        sub="Join the Founding Cohort to get access, locked-in pricing, and direct input into the product as we ship the remaining layers."
+        sub="Join the Founding Cohort to get access, founding-cohort pricing, and direct input into the product as we ship the remaining layers."
         buttonLabel="Join Founding Cohort"
         buttonHref="/contact"
         dark

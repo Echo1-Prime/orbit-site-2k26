@@ -250,7 +250,7 @@ export default function ForBusinessPage() {
       <CTA
         eyebrow="Founding Cohort"
         headline="Start with the layers that fit now."
-        sub="Application-based. Locked pricing. Month-to-month."
+        sub="Application-based. Founding-cohort pricing. Month-to-month."
         buttonLabel="Apply Now"
         buttonHref="/founding-cohort"
         dark

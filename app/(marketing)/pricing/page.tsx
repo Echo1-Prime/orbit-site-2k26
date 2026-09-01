@@ -56,7 +56,7 @@ const TIERS = [
     name: 'Growth',
     pitch: 'Full OS activation, the ICP sweet spot',
     price: '$997',
-    period: '/mo · locked',
+    period: '/mo · founding',
     credits: null,
     executions: { count: '3,000', label: 'Agent Executions / Mo', cpe: '~$0.33', note: 'Each execution is a completed business outcome: a lead enriched, a sync run, a content piece delivered, a signal surfaced.' },
     featured: true,
@@ -68,7 +68,7 @@ const TIERS = [
       'Daily signal intelligence',
       'Dedicated success agent',
       '90-day satisfaction guarantee ($2,991 refund)',
-      'Founding rate lock, lifetime',
+      'Founding Cohort rate, held while you subscribe',
       'Direct product team access',
     ],
     cta: "You're Invited · Founding Cohort",
@@ -99,7 +99,7 @@ const TIERS = [
 
 const GUARANTEES = [
   { title: '90-Day Guarantee', body: '$2,991 back if it isn\'t working' },
-  { title: 'Lifetime Rate Lock', body: 'Founding rate never changes' },
+  { title: 'Founding Rate', body: 'Held for the length of your subscription' },
   { title: 'Day-One Activation', body: '16 agents run the moment you activate' },
   { title: '500+ Agents', body: 'Full marketplace included in all active plans' },
 ];
@@ -125,7 +125,7 @@ const COMPARE_ROWS = [
   { group: 'SUPPORT & GUARANTEES' },
   { feature: 'Support channel',               explorer: 'Community', starter: 'Email', growth: 'Dedicated success agent', scale: 'Dedicated + SLA' },
   { feature: '90-day satisfaction guarantee', explorer: false, starter: false, growth: '$2,991 refund', scale: 'Negotiated' },
-  { feature: 'Founding rate lock (lifetime)', explorer: false, starter: false, growth: '✓ Season One only', scale: false },
+  { feature: 'Founding Cohort rate',          explorer: false, starter: false, growth: '✓ Season One only', scale: false },
   { feature: 'Multi-entity / PE portfolio',  explorer: false, starter: false, growth: false,               scale: true },
 ] as const;
 
@@ -135,8 +135,8 @@ const FAQS = [
     a: 'An Echo Credit funds one agent execution: a single completed business outcome like a lead enriched, a financial sync, a content piece delivered, or a workflow run. The Growth tier includes 3,000 per month at approximately $0.33 each. Credits do not roll over.',
   },
   {
-    q: 'Is the Founding Cohort rate really locked forever?',
-    a: 'Yes. Season One members lock the Growth tier at $997/mo permanently. This rate does not change when we add new apps, new verticals, or raise standard pricing, and it holds as long as the subscription stays active. It is a founding commitment to our earliest operators.',
+    q: 'How long does the Founding Cohort rate hold?',
+    a: 'Season One members hold the Growth tier at $997/mo for the length of their subscription. Your rate does not increase when we add new apps or new verticals, as long as the subscription stays active. Rates for customers who join after the cohort closes will be higher.',
   },
   {
     q: 'How does the 90-day guarantee work?',
@@ -148,7 +148,7 @@ const FAQS = [
   },
   {
     q: 'Can I upgrade from Explorer or Starter later?',
-    a: 'Yes, you can upgrade at any time. The Founding Cohort Growth rate ($997/mo, locked for life) is available to Season One members. Securing it now also includes the 90-day satisfaction guarantee, so you can evaluate the full OS with your rate already locked.',
+    a: 'Yes, you can upgrade at any time. The Founding Cohort Growth rate ($997/mo) is available to Season One members. Securing it now also includes the 90-day satisfaction guarantee, so you can evaluate the full OS at the founding rate.',
   },
   {
     q: 'What happens when I run out of executions?',
@@ -214,7 +214,7 @@ export default function PricingPage() {
             >
               Founding Cohort Season One is open.{' '}
               <strong style={{ color: 'var(--oa-ember)', fontWeight: 500 }}>
-                Growth locks at $997/mo, forever.
+                Growth is $997/mo for the Founding Cohort.
               </strong>
             </p>
           </div>
@@ -252,10 +252,10 @@ export default function PricingPage() {
             </span>
             <div style={{ flex: 1, minWidth: '220px' }}>
               <p style={{ fontSize: '0.875rem', fontWeight: 600, color: 'var(--oa-white)', margin: 0 }}>
-                Founding Cohort Growth rate: $997/mo locked for life.
+                Founding Cohort Growth rate: $997/mo.
               </p>
               <p style={{ fontSize: '0.8rem', color: 'var(--oa-text-secondary)', marginTop: '2px', marginBottom: 0 }}>
-                Lock the founding rate permanently as a Season One member, with a 90-day $2,991 satisfaction guarantee.
+                Join as a Season One member and hold the founding rate for the length of your subscription, with a 90-day $2,991 satisfaction guarantee.
               </p>
             </div>
             <ButtonLink href="/founding-cohort" variant="ember">
@@ -689,7 +689,7 @@ export default function PricingPage() {
       <CTA
         eyebrow="Founding Cohort"
         headline="The OS runs while you supervise."
-        sub="Join the Founding Cohort and lock in $997/mo for life, backed by a 90-day satisfaction guarantee."
+        sub="Join the Founding Cohort at $997/mo, backed by a 90-day satisfaction guarantee."
         buttonLabel="You're Invited · Founding Cohort"
         buttonHref="/founding-cohort"
         dark
