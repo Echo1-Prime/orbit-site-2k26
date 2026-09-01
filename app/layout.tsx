@@ -37,7 +37,7 @@ const plusJakarta = Plus_Jakarta_Sans({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Echo 1 Labs — Business Lifecycle Management',
+    default: 'Echo 1 Labs · Business Lifecycle Management',
     template: '%s | Echo 1 Labs',
   },
   description: SITE_DESCRIPTION,
@@ -56,12 +56,12 @@ export const metadata: Metadata = {
     type: 'website',
     siteName: SITE_NAME,
     url: SITE_URL,
-    title: 'Echo 1 Labs — Business Lifecycle Management',
+    title: 'Echo 1 Labs · Business Lifecycle Management',
     description: SITE_DESCRIPTION,
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Echo 1 Labs — Business Lifecycle Management',
+    title: 'Echo 1 Labs · Business Lifecycle Management',
     description: SITE_DESCRIPTION,
   },
   robots: { index: true, follow: true },
