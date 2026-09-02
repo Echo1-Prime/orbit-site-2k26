@@ -20,7 +20,7 @@ export default function PrivacyPage() {
         <p className="label" style={{ marginBottom: '0.75rem' }}>Privacy</p>
         <h1 className="display-lg" style={{ marginBottom: '1.5rem' }}>Privacy summary</h1>
         <p className="body-lg" style={{ marginBottom: '2rem' }}>
-          This is a plain-language summary of how {LEGAL_ENTITY} (operating as Echo 1 Labs) handles
+          This is a plain-language summary of how {LEGAL_ENTITY} handles
           data on echo1labs.com. It is not a substitute for a full legal agreement in an engagement.
         </p>
 

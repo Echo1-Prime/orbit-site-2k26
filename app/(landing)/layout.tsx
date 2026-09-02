@@ -19,7 +19,7 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
       <main id="main" className={styles.lpMain}>{children}</main>
       <footer className={styles.lpFooter}>
         <div className={styles.lpFooterInner}>
-          <span className={styles.lpFooterLegal}>© 2026 Mingma Inc. dba Echo 1 Labs. All rights reserved.</span>
+          <span className={styles.lpFooterLegal}>© 2026 Echo 1 Labs LLC. All rights reserved.</span>
           <nav className={styles.lpFooterLinks} aria-label="Footer">
             <Link href="/privacy">Privacy</Link>
             <Link href="/contact">Contact</Link>

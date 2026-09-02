@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import OrbitMark from '@/components/OrbitMark/OrbitMark';
-import { CONTACT_EMAIL, FOOTER_LINKS, LEGAL_ENTITY, SITE_NAME } from '@/lib/site';
+import { CONTACT_EMAIL, FOOTER_LINKS, LEGAL_ENTITY } from '@/lib/site';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -18,7 +18,7 @@ export default function Footer() {
         </div>
 
         <p className={styles.copy}>
-          &copy; {year} {LEGAL_ENTITY}. {SITE_NAME} is a brand of {LEGAL_ENTITY}. All rights reserved.{' '}
+          &copy; {year} {LEGAL_ENTITY}. All rights reserved.{' '}
           &middot;{' '}
           <a href={`mailto:${CONTACT_EMAIL}`} className={styles.email}>{CONTACT_EMAIL}</a>
         </p>
