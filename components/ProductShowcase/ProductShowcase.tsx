@@ -33,6 +33,15 @@ const PRODUCTS = [
     href: '/products/broadcast',
   },
   {
+    key: 'ledger',
+    label: 'Ledger',
+    eyebrow: 'Ledger · Finance & Ops',
+    headline: 'The agentic CFO, without the hire.',
+    sub: 'Live cash flow, ROI, and unit economics on one dashboard you can trust, past the bookkeeper and before the full-time CFO.',
+    video: '/videos/ledger.mp4',
+    href: '/products/ledger',
+  },
+  {
     key: 'titan',
     label: 'Titan',
     eyebrow: 'Titan · Document Intelligence',

@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect, useRef } from 'react';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 import styles from './Hero.module.css';
 
@@ -8,11 +9,26 @@ import styles from './Hero.module.css';
 // Solar Orange #FF7515 orbital field on void black; no ember, no ion-cyan.
 export default function Hero() {
   const reduced = useReducedMotion();
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Play the earth-from-space loop at quarter speed (4x slower) for a calmer
+  // drift. playbackRate is not an HTML attribute and the SSR'd <video> can fire
+  // loadedmetadata before hydration, so set it in an effect (applies now if
+  // metadata is ready, and re-applies on each metadata load).
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    const setRate = () => { v.playbackRate = 0.25; };
+    setRate();
+    v.addEventListener('loadedmetadata', setRate);
+    return () => v.removeEventListener('loadedmetadata', setRate);
+  }, [reduced]);
 
   return (
     <section className={styles.hero}>
       {!reduced && (
         <video
+          ref={videoRef}
           className={styles.videoBg}
           src="/videos/earth-from-space.mp4"
           autoPlay

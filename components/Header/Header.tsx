@@ -1,18 +1,17 @@
 import Link from 'next/link';
+import OrbitMark from '@/components/OrbitMark/OrbitMark';
 import { NAV_LINKS } from '@/lib/site';
 import styles from './Header.module.css';
 
-// Official Echo 1 Labs lockup (design system "Echo 1 Labs mark" - orange box retired):
-// E1 mark on a theme-adaptive tile (E + tile follow currentColor / --text, so they flip
-// with light/dark; the "1" stays Solar Orange) + "Echo 1 Labs" wordmark with orange 1.
+// Official Echo 1 Labs lockup: the animated Agent Orbit mark (Solar Orange orbital,
+// reduced-motion-safe) + "Echo 1 Labs" wordmark with orange 1. The E1 monogram is
+// retained only as the favicon.
 export default function Header() {
   return (
     <header className={styles.header}>
       <div className={styles.inner}>
         <Link href="/" className={styles.logo} aria-label="Echo 1 Labs home">
-          <span className={styles.mark} aria-hidden="true">
-            E<span className={styles.markSup}>1</span>
-          </span>
+          <OrbitMark size={32} className={styles.mark} aria-label="Echo 1 Labs" />
           <span className={styles.wordmark}>
             Echo <span className={styles.one}>1</span> Labs
           </span>

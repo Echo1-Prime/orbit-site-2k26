@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import OrbitMark from '@/components/OrbitMark/OrbitMark';
 import styles from './landing.module.css';
 
 export default function LandingLayout({ children }: { children: React.ReactNode }) {
@@ -7,8 +8,7 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
       <header className={styles.lpHeader}>
         <div className={styles.lpHeaderInner}>
           <Link href="/" aria-label="Echo 1 Labs — home" className={styles.lpLogo}>
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/echo1-e1-mark.svg" alt="" width={28} height={28} aria-hidden="true" />
+            <OrbitMark size={28} aria-label="Echo 1 Labs" />
             <span className={styles.lpLogoText}>Echo 1 Labs</span>
           </Link>
           <Link href="/contact" className={`btn btn--primary btn--sm ${styles.lpHeaderCta}`}>
