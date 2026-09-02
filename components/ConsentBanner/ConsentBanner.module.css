@@ -1,0 +1,78 @@
+/* Bottom-left card so it never collides with the bottom-right Ask Orbit
+   launcher. Tokens only — no hardcoded hex, no navy. */
+.banner {
+  position: fixed;
+  left: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 1000;
+  max-width: 26rem;
+  padding: 1.1rem 1.25rem;
+  background: var(--raised);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  animation: consent-rise 0.35s ease-out both;
+}
+
+@keyframes consent-rise {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.text {
+  margin: 0;
+  font-family: var(--e1-font-body);
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--text-2);
+}
+
+.link {
+  color: var(--link);
+  text-decoration: underline;
+}
+
+.actions {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.accept,
+.decline {
+  font-family: var(--e1-font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.5rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: opacity 0.15s ease, border-color 0.15s ease;
+}
+
+.accept {
+  background: var(--accent);
+  color: var(--void);
+  border: 1px solid var(--accent);
+}
+.accept:hover { opacity: 0.9; }
+
+.decline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.decline:hover { border-color: var(--text-3); }
+
+@media (max-width: 34rem) {
+  .banner {
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .banner { animation: none; }
+}

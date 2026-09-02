@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { pageMetadata, breadcrumbSchema } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
+import LeadConversion from '@/components/Analytics/LeadConversion';
 import { Eyebrow, ButtonLink } from '@/components/ds';
 import { CONTACT_EMAIL } from '@/lib/site';
 
@@ -45,6 +46,8 @@ const READING = [
 export default function ThankYouPage() {
   return (
     <>
+      {/* Booking conversion signal (consent-gated via Consent Mode). */}
+      <LeadConversion />
       <JsonLd
         data={breadcrumbSchema([
           { name: 'Home', path: '/' },
