@@ -5,7 +5,7 @@
 // client tools (showDashboard, navigateTo), and a Compass Mark state machine.
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, usePathname } from 'next/navigation';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport, lastAssistantMessageIsCompleteWithToolCalls } from 'ai';
 import OrbitMark from '@/components/OrbitMark/OrbitMark';
@@ -23,10 +23,16 @@ import styles from './Concierge.module.css';
 type View = 'closed' | 'consent' | 'panel';
 
 const GREETING = "I'm Orbit, Echo 1 Labs' AI concierge. Where does the business feel stuck?";
+const TEASER =
+  "New here? I'm Orbit, the Echo 1 Labs concierge. Tell me where the business feels stuck and I'll point you to the right layer.";
+const TEASER_SEEN_KEY = 'orbit_teaser_seen';
+const TEASER_DELAY_MS = 5000;
 
 export default function Concierge() {
   const router = useRouter();
+  const pathname = usePathname();
   const [view, setView] = useState<View>('closed');
+  const [showTeaser, setShowTeaser] = useState(false);
   const [mode, setMode] = useState<ConciergeMode>('text');
   const [input, setInput] = useState('');
   const [dashboard, setDashboard] = useState<string | null>(null);
@@ -82,6 +88,37 @@ export default function Concierge() {
     return () => window.removeEventListener(CONCIERGE_EVENT, handler as EventListener);
   }, [open]);
 
+  // Delegated trigger: any [data-open-concierge] element opens the text panel.
+  useEffect(() => {
+    const onClick = (e: MouseEvent) => {
+      const el = (e.target as HTMLElement | null)?.closest('[data-open-concierge]');
+      if (el) { e.preventDefault(); open('text'); }
+    };
+    document.addEventListener('click', onClick);
+    return () => document.removeEventListener('click', onClick);
+  }, [open]);
+
+  const dismissTeaser = useCallback(() => {
+    setShowTeaser(false);
+    try { localStorage.setItem(TEASER_SEEN_KEY, '1'); } catch { /* storage unavailable */ }
+  }, []);
+
+  // Proactive teaser: surface once per visitor, homepage only, after a short
+  // delay. Suppressed under reduced motion (the launcher is always available).
+  useEffect(() => {
+    if (pathname !== '/' || reduced) return;
+    let seen = false;
+    try { seen = localStorage.getItem(TEASER_SEEN_KEY) === '1'; } catch { /* storage unavailable */ }
+    if (seen) return;
+    const t = setTimeout(() => setShowTeaser(true), TEASER_DELAY_MS);
+    return () => clearTimeout(t);
+  }, [pathname, reduced]);
+
+  // Opening the panel retires the teaser.
+  useEffect(() => {
+    if (view !== 'closed' && showTeaser) dismissTeaser();
+  }, [view, showTeaser, dismissTeaser]);
+
   // Esc closes; closing stops voice + speech.
   useEffect(() => {
     if (view === 'closed') { voice.stop(); tts.stop(); return; }
@@ -131,6 +168,27 @@ export default function Concierge() {
 
   return (
     <>
+      {showTeaser && view === 'closed' && (
+        <div className={styles.teaser} role="status">
+          <button
+            type="button"
+            className={styles.teaserDismiss}
+            aria-label="Dismiss"
+            onClick={dismissTeaser}
+          >
+            ×
+          </button>
+          <p className={styles.teaserText}>{TEASER}</p>
+          <button
+            type="button"
+            className={styles.teaserCta}
+            onClick={() => open('text')}
+          >
+            Ask Orbit →
+          </button>
+        </div>
+      )}
+
       <button
         type="button"
         className={styles.launcher}

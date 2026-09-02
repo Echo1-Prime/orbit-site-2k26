@@ -28,29 +28,21 @@
 
 .tab:hover {
   color: var(--e1-white);
-  border-color: rgba(143, 208, 242, 0.3);
+  border-color: rgba(255, 117, 21, 0.3);
 }
 
 .tabActive {
   color: var(--e1-ion);
-  background: rgba(143, 208, 242, 0.08);
-  border-color: rgba(143, 208, 242, 0.35);
+  background: rgba(255, 117, 21, 0.08);
+  border-color: rgba(255, 117, 21, 0.35);
 }
 
 .player {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 2rem;
-  align-items: start;
-}
-
-@media (max-width: 768px) {
-  .player {
-    grid-template-columns: 1fr;
-  }
+  display: block;
 }
 
 .videoWrap {
+  position: relative;
   aspect-ratio: 16 / 9;
   border-radius: 12px;
   overflow: hidden;
@@ -59,37 +51,83 @@
 }
 
 .video {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-.meta {
+/* Outcome-first copy laid over the video, bottom-anchored on a Void-black
+   gradient scrim (mirrors the Hero legibility pattern). */
+.overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  padding-top: 0.5rem;
+  align-items: flex-end;
+  padding: clamp(1.25rem, 3vw, 2.5rem);
+  background: linear-gradient(
+    to top,
+    rgba(10, 10, 14, 0.9) 0%,
+    rgba(10, 10, 14, 0.72) 32%,
+    rgba(10, 10, 14, 0.12) 68%,
+    rgba(10, 10, 14, 0) 100%
+  );
+  pointer-events: none;
 }
 
-.productName {
+.overlayInner {
+  max-width: 44ch;
+}
+
+.overlayEyebrow {
+  font-family: var(--e1-font-mono, 'JetBrains Mono', monospace);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--e1-ion);
+  margin: 0 0 0.5rem;
+}
+
+.overlayHeadline {
   font-family: var(--e1-font-display, 'Space Grotesk', sans-serif);
-  font-size: 1.5rem;
+  font-size: clamp(1.35rem, 3.2vw, 2.1rem);
   font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.01em;
   color: var(--e1-white);
-  margin: 0;
+  margin: 0 0 0.6rem;
+  text-wrap: balance;
 }
 
-.productJob {
-  font-size: 0.95rem;
+.overlaySub {
+  font-size: clamp(0.9rem, 1.6vw, 1.05rem);
   line-height: 1.6;
-  color: var(--e1-text-secondary, #9A9AA4);
-  margin: 0;
+  color: var(--e1-white);
+  opacity: 0.82;
+  margin: 0 0 1rem;
 }
 
 .cta {
-  align-self: flex-start;
-  margin-top: 0.5rem;
+  pointer-events: auto;
+}
+
+@media (max-width: 560px) {
+  .overlay {
+    background: linear-gradient(
+      to top,
+      rgba(10, 10, 14, 0.94) 0%,
+      rgba(10, 10, 14, 0.78) 42%,
+      rgba(10, 10, 14, 0.2) 78%,
+      rgba(10, 10, 14, 0) 100%
+    );
+  }
+  .overlayInner {
+    max-width: 100%;
+  }
 }
 
 .progress {
