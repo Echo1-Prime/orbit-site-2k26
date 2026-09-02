@@ -1,7 +1,7 @@
 // Canonical site + organization constants. Single source for SEO, JSON-LD, footer.
 export const SITE_URL = 'https://echo1labs.com';
 export const SITE_NAME = 'Echo 1 Labs';
-export const LEGAL_ENTITY = 'Mingma Inc';
+export const LEGAL_ENTITY = 'Echo 1 Labs LLC';
 export const SITE_TAGLINE = 'Break free from business gravity.';
 export const SITE_DESCRIPTION =
   'Echo 1 Labs is the Business Lifecycle Management company. We get businesses and SMBs to escape velocity with process-engineered, agent-based systems and human supervision.';

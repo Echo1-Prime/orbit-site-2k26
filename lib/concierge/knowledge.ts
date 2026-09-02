@@ -61,7 +61,7 @@ export const KNOWLEDGE_BASE: KbEntry[] = [
   {
     topic: 'team',
     q: 'Who runs Echo 1 Labs?',
-    a: 'Josh Meunier is founder and CEO. The leadership team is Katarina Meunier (Chief Experience Officer), Martin Dunn (President), and Stephen Sala (Chief Revenue Officer). Echo 1 Labs is a brand of Mingma Inc.',
+    a: 'Josh Meunier is founder and CEO. The leadership team is Katarina Meunier (Chief Experience Officer), Martin Dunn (President), and Stephen Sala (Chief Revenue Officer). Echo 1 Labs is operated by Echo 1 Labs LLC.',
   },
   {
     topic: 'security',
