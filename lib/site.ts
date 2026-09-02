@@ -6,6 +6,13 @@ export const SITE_TAGLINE = 'Break free from business gravity.';
 export const SITE_DESCRIPTION =
   'Echo 1 Labs is the Business Lifecycle Management company. We get businesses and SMBs to escape velocity with process-engineered, agent-based systems and human supervision.';
 
+// Analytics: Echo 1 Labs' dedicated Google Tag Manager container. It manages
+// GA4 + Google Ads (AW-3601628174) inside the GTM UI; the site only loads this
+// one container, and only after the visitor grants consent (see ConsentBanner /
+// ConsentMode). Meta/LinkedIn are intentionally not wired here yet — see
+// docs/analytics-tracking.md.
+export const GTM_ID = 'GTM-5BDZ45QD';
+
 // Contact: values carried from the existing production Organization schema.
 export const CONTACT_EMAIL = 'hello@echo1labs.com';
 export const CONTACT_PHONE = '+1-610-956-4116';

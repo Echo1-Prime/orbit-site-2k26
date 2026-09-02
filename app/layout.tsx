@@ -3,6 +3,8 @@ import { Space_Grotesk, DM_Sans, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/
 import './globals.css';
 import ConciergeMount from '@/components/Concierge/ConciergeMount';
 import JsonLd from '@/components/JsonLd';
+import GoogleTagManager, { GoogleTagManagerNoScript } from '@/components/Analytics/GoogleTagManager';
+import ConsentBanner from '@/components/ConsentBanner/ConsentBanner';
 import { organizationSchema, websiteSchema } from '@/lib/seo';
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from '@/lib/site';
 
@@ -70,9 +72,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable} ${plusJakarta.variable}`}>
+      <head>
+        <GoogleTagManager />
+      </head>
       <body>
+        <GoogleTagManagerNoScript />
         {children}
         <ConciergeMount />
+        <ConsentBanner />
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
       </body>

@@ -43,6 +43,18 @@ export default function PrivacyPage() {
             </p>
           </div>
           <div>
+            <h2 className="display-sm" style={{ marginBottom: '0.6rem' }}>Cookies and analytics</h2>
+            <p className="body-md">
+              We use Google Analytics and Google Ads, loaded through Google Tag Manager, to
+              understand how the site is used and to measure our advertising. These set cookies only
+              after you accept them. When you first visit, a banner lets you accept or decline; until
+              you choose, analytics and advertising storage stay off by default. You can change your
+              choice at any time by clearing this site&apos;s cookies in your browser. We do not use
+              Meta, LinkedIn, or other third-party advertising trackers on this site, and we do not
+              sell your personal information.
+            </p>
+          </div>
+          <div>
             <h2 className="display-sm" style={{ marginBottom: '0.6rem' }}>Messaging consent</h2>
             <p className="body-md">
               We only send SMS or calls where you have explicitly opted in, and standard message and
