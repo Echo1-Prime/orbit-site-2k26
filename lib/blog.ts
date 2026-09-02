@@ -43,7 +43,7 @@ export const POSTS: BlogPost[] = [
       { type: 'p', content: 'The BLM OS achieves this through three architectural layers: the Fusion Grid (data normalization), the Agent Layer (execution), and the Supervision Layer (governance). Each operational domain (Engine, RevOps, Broadcast, Ledger, Titan, Signal) runs as a layer within that architecture. Prime is the governance interface that ties them together.' },
       { type: 'pullquote', content: 'The shift is not from people to agents. It is from execution to supervision, and supervision scales in ways that execution never could.' },
       { type: 'h2', content: 'Who it is for' },
-      { type: 'p', content: 'The BLM OS is built for owner-led businesses between $5M and $100M in revenue, with 50 to 200 employees. Businesses that are large enough to have real operational surface area but structured in a way that makes adding headcount to cover it the wrong answer.' },
+      { type: 'p', content: 'The BLM OS is built for owner-led businesses between $5M and $100M in revenue, with 50 to 500 employees. Businesses that are large enough to have real operational surface area but structured in a way that makes adding headcount to cover it the wrong answer.' },
       { type: 'p', content: 'These businesses have always been underserved by infrastructure. Enterprise software is overkill. Point solutions do not add up to a system. The BLM OS fills that gap.' },
     ],
   },

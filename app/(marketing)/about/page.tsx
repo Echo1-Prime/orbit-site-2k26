@@ -234,7 +234,7 @@ export default function AboutPage() {
           </h2>
           <div style={{ maxWidth: '720px' }}>
             <p className="body-md" style={{ color: 'var(--e1-slate)', marginBottom: '1.25rem' }}>
-              The BLM OS is built for businesses with 50 to 200 employees where the owner retains
+              The BLM OS is built for businesses with 50 to 500 employees where the owner retains
               active operational authority. Businesses that are large enough to have real operational
               surface area but structured in a way that makes adding headcount to cover it the wrong
               answer.
