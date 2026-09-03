@@ -9,7 +9,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = pageMetadata({
   title: 'Pricing',
   description:
-    'Echo 1 Labs orbit tiers: Explorer free, Starter $497/mo, Growth $997/mo (Founding Cohort rate), Scale custom. All plans include the full BLM OS and 500+ agent marketplace.',
+    'Echo 1 Labs orbit tiers: Explorer free, Starter $497/mo, Growth $997/mo (Founding Cohort rate), Scale custom. All plans include the full BLM OS and 200+ agent marketplace.',
   path: '/pricing',
 });
 
@@ -101,7 +101,7 @@ const GUARANTEES = [
   { title: '90-Day Guarantee', body: '$2,991 back if it isn\'t working' },
   { title: 'Founding Rate', body: 'Held for the length of your subscription' },
   { title: 'Day-One Activation', body: '16 agents run the moment you activate' },
-  { title: '500+ Agents', body: 'Full marketplace included in all active plans' },
+  { title: '200+ Specialists', body: 'Full marketplace included in all active plans' },
 ];
 
 const COMPARE_ROWS = [
@@ -116,7 +116,7 @@ const COMPARE_ROWS = [
   { feature: 'Ledger (AI CFO)',      explorer: false, starter: false, growth: true,  scale: true },
   { feature: 'Connected integrations', explorer: '1', starter: '3', growth: 'Unlimited', scale: 'Unlimited' },
   { group: 'AGENT ACCESS' },
-  { feature: 'Agent marketplace (500+ agents)',  explorer: false, starter: 'Core agents', growth: '✓ Full access', scale: '✓ Full access' },
+  { feature: 'Agent marketplace (200+ specialists)',  explorer: false, starter: 'Core agents', growth: '✓ Full access', scale: '✓ Full access' },
   { feature: '16 out-of-the-box agent teams',    explorer: false, starter: 'Partial',     growth: '✓ All 16',     scale: '✓ All 16' },
   { feature: 'Custom agent development (Titan)', explorer: false, starter: false,          growth: true,           scale: '✓ + engineering' },
   { group: 'INTELLIGENCE & REPORTING' },
@@ -160,7 +160,7 @@ const FAQS = [
   },
   {
     q: 'Who is Echo 1 Labs built for?',
-    a: 'The BLM OS is built for operator-led businesses: $5M to $100M in revenue, 50 to 200 employees, where the owner or executive director is the primary decision-maker. Also built for PE and VC portfolio teams managing multiple operating entities. Not built for pre-traction companies or Fortune 500 procurement cycles.',
+    a: 'The BLM OS is built for operator-led businesses: $5M to $100M in revenue, 50 to 500 employees, where the owner or executive director is the primary decision-maker. Also built for PE and VC portfolio teams managing multiple operating entities. Not built for pre-traction companies or Fortune 500 procurement cycles.',
   },
 ];
 
@@ -200,7 +200,7 @@ export default function PricingPage() {
               Choose your <em style={{ fontStyle: 'normal', color: 'var(--e1-ember)' }}>orbit</em>
             </h1>
             <p className="body-lg" style={{ maxWidth: '560px', marginTop: '1rem' }}>
-              All plans include the full BLM OS plus access to the 500+ agent marketplace. Echo Credits
+              All plans include the full BLM OS plus access to the 200+ agent marketplace. Echo Credits
               power your agents: more credits, more autonomous operation.
             </p>
             <p

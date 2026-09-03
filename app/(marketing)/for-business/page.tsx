@@ -15,7 +15,7 @@ export const metadata: Metadata = pageMetadata({
 
 const PROFILE = [
   { label: 'Revenue', value: '$5M to $100M' },
-  { label: 'Headcount', value: '50 to 200 employees' },
+  { label: 'Headcount', value: '50 to 500 employees' },
   { label: 'Structure', value: 'Owner retains operational authority' },
   { label: 'Common gap', value: 'No dedicated RevOps, marketing ops, or finance ops team' },
 ];

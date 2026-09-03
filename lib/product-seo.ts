@@ -90,7 +90,7 @@ export const PRODUCT_SEO_MAP: Record<string, ProductSEO> = {
     ],
     hook: 'Replace 6 disconnected sales tools with one agentic revenue engine.',
     whoFor:
-      'Built for SMB sales teams in real estate, home services, IT services, and consulting, any company with 50–200 employees whose reps are stitching together four or more disconnected tools to find pipeline.',
+      'Built for SMB sales teams in real estate, home services, IT services, and consulting, any company with 50–500 employees whose reps are stitching together four or more disconnected tools to find pipeline.',
     comparesTo: 'Runs prospect research, AI voice and email outreach, and lead qualification in one agentic revenue engine',
     relatedSlugs: ['engine', 'broadcast', 'prime'],
     faq: [
@@ -100,7 +100,7 @@ export const PRODUCT_SEO_MAP: Record<string, ProductSEO> = {
       },
       {
         q: 'Who is RevOps built for?',
-        a: 'RevOps is built for SMB sales teams that have outgrown basic CRM-only workflows, most commonly in real estate, home services, IT services, and business consulting. Typical profile: 50–200 employees whose sales team is stitching together four or more disconnected tools to find, qualify, and contact pipeline.',
+        a: 'RevOps is built for SMB sales teams that have outgrown basic CRM-only workflows, most commonly in real estate, home services, IT services, and business consulting. Typical profile: 50–500 employees whose sales team is stitching together four or more disconnected tools to find, qualify, and contact pipeline.',
       },
       {
         q: 'How does the AI voice agent work?',

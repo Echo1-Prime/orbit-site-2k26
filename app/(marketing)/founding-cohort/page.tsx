@@ -116,7 +116,7 @@ export default function FoundingCohortPage() {
               Owner-led businesses at the right stage.
             </h2>
             <p className="body-md" style={{ marginBottom: '1rem' }}>
-              The BLM OS is built for businesses between $5M and $100M in revenue with 50 to 200
+              The BLM OS is built for businesses between $5M and $100M in revenue with 50 to 500
               employees where the owner retains active operational authority. Businesses that are
               large enough to have real operational surface area, but structured in a way that makes
               adding headcount the wrong answer.
@@ -128,7 +128,7 @@ export default function FoundingCohortPage() {
               operator&apos;s attention rather than on systems.
             </p>
             <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-              {['$5M–$100M revenue', '50–200 employees', 'Owner-led', 'Multi-layer operations'].map(
+              {['$5M–$100M revenue', '50–500 employees', 'Owner-led', 'Multi-layer operations'].map(
                 (tag) => (
                   <Badge key={tag} tone="muted">
                     {tag}
