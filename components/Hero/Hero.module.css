@@ -105,7 +105,7 @@
 }
 .btnPrimary {
   background: #FF7515;
-  color: #fff;
+  color: #0A0A0E;
   border: 1px solid transparent;
 }
 .btnPrimary:hover { opacity: 0.88; transform: translateY(-1px); }
@@ -118,7 +118,7 @@
 .btnSub {
   display: block;
   font-size: 0.75em;
-  opacity: 0.7;
+  opacity: 0.85;
   font-weight: 400;
   letter-spacing: 0;
   text-transform: none;

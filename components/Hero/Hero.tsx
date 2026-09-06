@@ -125,7 +125,7 @@ export default function Hero() {
           E1L <span className={styles.sep}>·</span> BUSINESS &amp; MINISTRY LIFECYCLE MANAGEMENT
         </div>
         <h1 className={styles.headline}>
-          Break free from<br />
+          Break free from{' '}<br />
           <em>business gravity.</em>
         </h1>
         <p className={styles.sub}>
