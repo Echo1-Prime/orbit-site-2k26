@@ -130,7 +130,7 @@ export default function Hero() {
         </h1>
         <p className={styles.sub}>
           Seven integrated apps. One operating system, for businesses and ministries alike. Built by
-          operators. Run by agents. Supervised by humans at scale.
+          operators. Run by agents. Supervised by you.
         </p>
         <div className={styles.actions}>
           <Link href="/founding-cohort" className={`${styles.btn} ${styles.btnPrimary}`}>

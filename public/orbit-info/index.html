@@ -962,9 +962,6 @@ function LifecycleSVG({
   visible
 }) {
   const stages = [{
-    stage: 'ENABLE',
-    name: 'AI Readiness'
-  }, {
     stage: 'STRATEGIZE',
     name: 'Engine'
   }, {
@@ -1110,7 +1107,7 @@ function Diagnostic() {
     className: `sec-label reveal${vis ? ' visible' : ''}`
   }, "THE DIAGNOSIS"), /*#__PURE__*/React.createElement("h2", {
     className: `sec-title reveal d1${vis ? ' visible' : ''}`
-  }, "The Flywheel of Death"), /*#__PURE__*/React.createElement("p", {
+  }, "You built a business. Now it runs you."), /*#__PURE__*/React.createElement("p", {
     className: `sec-body reveal d2${vis ? ' visible' : ''}`
   }, "Most owner-led companies do not have a marketing problem or a sales problem. They have an operating-layer problem. The owner is the operating layer. Every function routes through them because nothing else has been built to carry it."), /*#__PURE__*/React.createElement("div", {
     className: "diag-layout",
@@ -1270,7 +1267,7 @@ function TheFleet() {
     className: `big-n-label reveal d1${vis ? ' visible' : ''}`
   }, "production agents. Deployed. Verified."), /*#__PURE__*/React.createElement("p", {
     className: `n-qualifier reveal d2${vis ? ' visible' : ''}`
-  }, "Not a product roadmap. Not a beta feature. One hundred forty-one agents verified live on AWS Bedrock, status: PREPARED, across two accounts. Organized into seven purpose-built clusters that cover every function an owner-led company needs to run."), /*#__PURE__*/React.createElement("div", {
+  }, "Not a product roadmap. Not a beta feature. One hundred forty-one agents verified live on AWS Bedrock, status: PREPARED, across two accounts. Organized into seven Agent Kits that cover every function an owner-led company needs to run."), /*#__PURE__*/React.createElement("div", {
     className: "stat-row",
     style: {
       marginTop: '52px'
@@ -1286,7 +1283,7 @@ function TheFleet() {
     l: 'Voice agents'
   }, {
     n: '7',
-    l: 'Agent clusters'
+    l: 'Agent Kits'
   }].map((s, i) => /*#__PURE__*/React.createElement("div", {
     key: i,
     className: `stat-cell reveal d${i + 2}${vis ? ' visible' : ''}`
@@ -1299,17 +1296,13 @@ function TheFleet() {
 function Lifecycle() {
   const [ref, vis] = useReveal(0.1);
   const outcomes = [{
-    prod: 'AI Readiness (engagement)',
-    color: '#FF7515',
-    text: 'The business is prepared, not bolted onto. Onboarding without a consulting cycle.'
-  }, {
     prod: 'Engine',
     color: '#FFFAA0',
     text: 'An execution-ready GTM workbook, fast. A defined audience to work.'
   }, {
     prod: 'RevOps',
     color: '#D1312D',
-    text: 'The calendar fills without chasing. Saves a minimum of 1.5 hours of prep per prospect meeting.'
+    text: 'The calendar fills without chasing.'
   }, {
     prod: 'Broadcast',
     color: '#655596',
@@ -1342,7 +1335,7 @@ function Lifecycle() {
     className: `sec-label reveal${vis ? ' visible' : ''}`
   }, "THE LIFECYCLE"), /*#__PURE__*/React.createElement("h2", {
     className: `sec-title reveal d1${vis ? ' visible' : ''}`
-  }, "Eight stages. Every one covered."), /*#__PURE__*/React.createElement(LifecycleSVG, {
+  }, "Seven stages. Every one covered."), /*#__PURE__*/React.createElement(LifecycleSVG, {
     visible: vis
   }), /*#__PURE__*/React.createElement("div", {
     className: "lo-grid",
@@ -1534,7 +1527,7 @@ function AgentOrbitSection() {
   const [ref, vis] = useReveal(0.1);
   const rules = [{
     title: 'Live agent visibility',
-    body: 'See every agent, every cluster, every active operation in a single view.',
+    body: 'See every agent, every Kit, every active operation in a single view.',
     accent: 'var(--accent)'
   }, {
     title: 'Earned-autonomy controls',
@@ -1542,7 +1535,7 @@ function AgentOrbitSection() {
     accent: 'var(--cyan)'
   }, {
     title: 'One system. No tab-switching.',
-    body: 'Win the business. Buy it. Build it. Run it. Agent Orbit is where all of it connects.',
+    body: 'Win the business. Buy the business. Build the assets. Run the operation. Agent Orbit is where all of it connects.',
     accent: 'var(--yellow)'
   }];
   return /*#__PURE__*/React.createElement("section", {
@@ -1596,13 +1589,11 @@ function CTA() {
     className: "cta-headline"
   }, "This is not for everyone.", /*#__PURE__*/React.createElement("br", null), "It might be for you."), /*#__PURE__*/React.createElement("p", {
     className: "cta-body"
-  }, "Echo 1 Labs works with owner-led companies. We take on clients deliberately. The AI Readiness engagement comes first -- because a system built on a weak foundation is worse than no system at all."), /*#__PURE__*/React.createElement("p", {
+  }, "Echo 1 Labs works with owner-led companies. We take on clients deliberately."), /*#__PURE__*/React.createElement("p", {
     className: "cta-body"
   }, "If you are reading this, someone thinks you are the right fit. The next step is a single conversation to confirm that diagnosis is correct.")), /*#__PURE__*/React.createElement("div", {
     className: "cta-right"
   }, /*#__PURE__*/React.createElement("div", {
-    className: "scarcity-note"
-  }, "Limited onboarding capacity per quarter"), /*#__PURE__*/React.createElement("div", {
     className: "cta-url-label"
   }, "Start the conversation"), /*#__PURE__*/React.createElement("a", {
     className: "cta-url",
@@ -1618,7 +1609,7 @@ function Footer() {
     className: "footer-r"
   }, /*#__PURE__*/React.createElement("div", {
     className: "wings"
-  }, "The cure for founder gravity."), /*#__PURE__*/React.createElement("div", {
+  }, "Break free from business gravity."), /*#__PURE__*/React.createElement("div", {
     style: {
       marginTop: '4px'
     }

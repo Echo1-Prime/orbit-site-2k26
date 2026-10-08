@@ -1,6 +1,6 @@
 // On-brand knowledge base for Orbit's answerFromKnowledgeBase tool.
 // Grounded in Brand Kit v1.1 (BLM, 7 products, agent-based). Stale positioning
-// from the old Vapi FAQ ("AI-enhanced", "Lead Gen Omega", "Mingma Method",
+// from the old Vapi FAQ (the retired "enhanced by AI" phrasing, "Lead Gen Omega", "Mingma Method",
 // fractional-leadership framing) is intentionally excluded. Only still-true
 // operational facts (team, contact, security, scheduler, consent) are carried over.
 

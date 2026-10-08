@@ -6,6 +6,16 @@
 
 ---
 
+## Sanctioned verbatim lines (Decision `rec59FJDGYvjt51WP`, 2026-10-08)
+
+- **Tagline:** "Built by operators. Run by agents. Supervised by you." Appears verbatim, never reworded.
+- **Theme:** "Win the business. Buy the business. Build the assets. Run the operation."
+- **Wings line:** "Break free from business gravity." (unchanged)
+- Agents are organized in **Agent Kits**, never "clusters". No Kit prices or percentages.
+- Retired and linted (see `BANNED` in `scripts/voice-lint.ts`): the 2026-08-22 tagline ending in "at scale" and the three-verb "Build / Buy / Run" theme.
+
+---
+
 ## How AI Content Gets Detected
 
 Detection tools (GPTZero, Originality.ai, Turnitin, Copyleaks, Winston AI, Content at Scale)
