@@ -1,7 +1,7 @@
 // Echo 1 Labs product stack: source of truth for cards, nav, and product pages.
 // Ported from the Vite app's src/data/products.js. Two brand corrections applied:
 //   1. Off-brand per-product colorHex values dropped. Solar is the single accent.
-//   2. Banned term "AI-Enhanced" (§6) replaced with "Agentic" / "agent-based".
+//   2. Retired "enhanced by AI" phrasing (§6) replaced with "Agentic" / "agent-based".
 // The lifecycle has 8 STAGES; there are 7 PRODUCTS. AI Readiness is the ENABLE-stage
 // advisory engagement, NOT the 8th product. `isAdvisory: true` flags it.
 
