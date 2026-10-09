@@ -43,6 +43,18 @@ export default function PrivacyPage() {
             </p>
           </div>
           <div>
+            <h2 className="display-sm" style={{ marginBottom: '0.6rem' }}>Event sign-ups and business research</h2>
+            <p className="body-md">
+              If you sign up with us at an event, for example through the QR code at our booth, we
+              collect the details you give us (such as name, phone, work email, company, and LinkedIn
+              profile link). Before we follow up, we may use your work email to look up public business
+              information about you and your company, such as your LinkedIn profile, job title, and
+              company details, through third-party business data providers. We use this only to make
+              our follow-up relevant to your business, and we do not sell it. To see what we hold or
+              have it deleted, email us at the address below.
+            </p>
+          </div>
+          <div>
             <h2 className="display-sm" style={{ marginBottom: '0.6rem' }}>Cookies and analytics</h2>
             <p className="body-md">
               We use Google Analytics and Google Ads, loaded through Google Tag Manager, to
