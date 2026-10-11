@@ -3,7 +3,9 @@ import type { UseCaseCopy } from './types';
 /*
   Trucking use case. Every line about the demo is verbatim from the live
   https://e1-logistics-trucking.echo1labs.com/trucking/locations.json and the
-  live page's own links (read 2026-10-11). Lines written for this page:
+  live page's own links (read 2026-10-11). The `note` line is the demo page's
+  own on-screen disclaimer (the tk-honest line, verbatim, Decision
+  recoTk8vjIyFFnlbt option A, Josh 2026-10-11). Lines written for this page:
   seoTitle, seoDesc, eyebrow, embedTitle, embedFallback, locationsHeadline,
   todayLabel, orbitLabel. Never reword the verbatim lines; change the source.
 */
@@ -25,7 +27,7 @@ export const truckingCopy: UseCaseCopy = {
   embedUrl: 'https://e1-logistics-trucking.echo1labs.com/trucking/',
   embedTitle: 'Trucking use case demo: a broker office and carrier yard in x-ray',
   embedFallback: 'Open the demo in its own tab',
-  note: 'Illustrative office and yard, not a real company or site. Every counter is Demo data.',
+  note: 'Illustrative office and yard, not a real company or site. Motion is illustrative. Numbers are Demo data.',
 
   locationsHeadline: 'Seven locations, today and with Agent Orbit',
   todayLabel: 'Today',
