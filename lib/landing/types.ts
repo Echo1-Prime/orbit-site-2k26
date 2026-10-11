@@ -69,3 +69,42 @@ export interface LandingCopy {
   ctaBandSub: string;
   ctaBandPrimary: string;
 }
+
+/* Use-case pages: one embedded demo, its own text, two links. */
+export interface UseCaseNote {
+  title: string;
+  text: string;
+}
+
+export interface UseCaseLocation {
+  id: string;
+  title: string;
+  what: string;
+  today: string;
+  orbit: string;
+  risk: UseCaseNote;
+  covered: UseCaseNote;
+}
+
+export interface UseCaseCopy {
+  slug: string;
+  seoTitle: string;
+  seoDesc: string;
+  eyebrow: string;
+  headline: string;
+  intro: string;
+  beats: string[];
+  embedUrl: string;
+  embedTitle: string;
+  embedFallback: string;
+  note: string;
+  locationsHeadline: string;
+  todayLabel: string;
+  orbitLabel: string;
+  locations: UseCaseLocation[];
+  closing: string;
+  signupLabel: string;
+  signupUrl: string;
+  bookLabel: string;
+  bookUrl: string;
+}
