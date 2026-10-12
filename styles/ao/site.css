@@ -67,3 +67,13 @@ html {
   html { scroll-behavior: auto; }
   .ao-launcher .ao-launcher__ring { animation: none; }
 }
+
+/* The handoff's brush strokes and footer mark reference these two names. One orange only:
+   --e1-orbit-deep resolves to Solar Orange, not the 13|7 FrameWorks orange (handoff conflict C2). */
+.ao-site {
+  --e1-orbit-deep: var(--ao-orbit);
+  --e1-mark-white: #ffffff;
+}
+
+/* The original site layout pads main for its fixed 64px header; the new nav is sticky in flow. */
+.ao-site main { padding-top: 0; }

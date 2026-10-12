@@ -84,6 +84,28 @@ export default function SiteChrome() {
     router.push(DEST.start.route);
   }, [router]);
 
+  /* Page bands talk to the concierge through one window event, and read its open state from
+     <html data-concierge-open> (the hero rotator pauses while it is open). */
+  const askRef = useRef(concierge.ask);
+  askRef.current = concierge.ask;
+  useEffect(() => {
+    const root = document.documentElement;
+    if (conc) root.dataset.conciergeOpen = '1';
+    else delete root.dataset.conciergeOpen;
+    return () => {
+      delete root.dataset.conciergeOpen;
+    };
+  }, [conc]);
+  useEffect(() => {
+    const on = (e: Event) => {
+      const diag = (e as CustomEvent<{ diag?: string }>).detail?.diag;
+      openConc();
+      if (diag) setTimeout(() => askRef.current(diag, { diag: true }), 380);
+    };
+    window.addEventListener('e1:concierge', on);
+    return () => window.removeEventListener('e1:concierge', on);
+  }, [openConc]);
+
   /* Next-best drawer: after 60% scroll or 45 s, never within the first 10 s, once per session. */
   const maybeDrawer = useCallback(() => {
     if (drawerDone.current) return;
