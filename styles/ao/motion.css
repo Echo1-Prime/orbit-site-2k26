@@ -1,0 +1,35 @@
+/* AGENT ORBIT — MOTION
+   GSAP core is available in the app; DrawSVGPlugin is NOT (no Club licence).
+   Path draw-in uses pure CSS stroke-dashoffset. */
+:root {
+  --ao-ease-out:    cubic-bezier(0.16, 1, 0.3, 1); /* @kind other */
+  --ao-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1); /* @kind other */
+  --ao-ease-linear: linear; /* @kind other */
+  --ao-dur-fast:    160ms; /* @kind other */
+  --ao-dur-mid:     280ms; /* @kind other */
+  --ao-dur-slow:    520ms; /* @kind other */
+  --ao-dur-reveal:  550ms; /* @kind other */
+  --ao-dur-ink:     1800ms; /* @kind other */
+  --ao-float-dur:   3s; /* @kind other */
+}
+
+@keyframes ao-fade-in   { from { opacity: 0 } to { opacity: 1 } }
+@keyframes ao-slide-up  { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: translateY(0) } }
+@keyframes ao-reveal-x  { from { opacity: 0; transform: translateX(-6px) } to { opacity: 1; transform: translateX(0) } }
+@keyframes ao-spin      { to { transform: rotate(360deg) } }
+@keyframes ao-spin-rev  { to { transform: rotate(-360deg) } }
+@keyframes ao-pulse     { 0%, 100% { opacity: 1 } 50% { opacity: 0.3 } }
+@keyframes ao-bounce    { 0%, 100% { transform: translateY(0) } 50% { transform: translateY(6px) } }
+@keyframes ao-float     { 0%, 100% { transform: translateY(0) rotate(0deg) } 50% { transform: translateY(-4px) rotate(1.5deg) } }
+@keyframes ao-ink-line  { from { transform: scaleY(0); opacity: 0 } to { transform: scaleY(1); opacity: 1 } }
+@keyframes ao-ink-draw  { from { stroke-dashoffset: var(--ao-path-length) } to { stroke-dashoffset: 0 } }
+@keyframes ao-teleport-out { 0% { opacity: 1; transform: scale(1); filter: blur(0) } 40% { opacity: 0.6; transform: scale(1.06); filter: blur(2px) } 100% { opacity: 0; transform: scale(0.3); filter: blur(12px) } }
+@keyframes ao-teleport-in  { 0% { opacity: 0; transform: scale(0.3); filter: blur(12px) } 55% { opacity: 1; transform: scale(1.04); filter: blur(1px) } 100% { opacity: 1; transform: scale(1); filter: blur(0) } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

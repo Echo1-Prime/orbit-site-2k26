@@ -1,0 +1,17 @@
+.blsH1:focus-visible { outline:1px solid var(--ao-bd-2); outline-offset:2px }
+.blsH2:hover { color:var(--ao-orbit) }
+.blsH3:hover { transform:translateY(-2px) }
+.diagH4:hover { transform:translateY(-2px) }
+.lifeH5:hover { border-color:var(--ao-orbit) }
+.lifeH6:hover { border-color:var(--ao-orbit) }
+.lifeH7:hover { border-color:var(--ao-orbit) }
+.lifeH8:hover { border-color:var(--ao-orbit) }
+.lifeH9:hover { border-color:var(--ao-orbit) }
+.lifeH10:hover { border-color:var(--ao-orbit) }
+.lifeH11:hover { border-color:var(--ao-orbit) }
+.startH12:hover { color:var(--ao-t0) }
+.startH13:hover { color:var(--ao-t0) }
+.startH14:hover { color:var(--ao-t0) }
+.startH15:hover { color:var(--ao-t0) }
+.startH16:hover { color:var(--ao-t0) }
+.startH17:hover { color:var(--ao-t0) }

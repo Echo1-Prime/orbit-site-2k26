@@ -1,0 +1,30 @@
+/* AGENT ORBIT — BASE
+   Minimal global layer: reset, page ground, link colours, focus, scrollbar.
+   Everything else is a component class. */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+
+body {
+  background: var(--ao-bg-page);
+  color: var(--ao-text-primary);
+  font-family: var(--ao-f-body);
+  font-weight: var(--ao-w-light);
+  font-size: var(--ao-fs-body);
+  line-height: var(--ao-lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--ao-orbit); text-decoration: none; transition: color var(--ao-dur-fast) }
+a:hover { color: var(--ao-t0) }
+a:active { color: var(--ao-orbit-30) }
+
+:focus-visible { outline: 1px solid var(--ao-bd-2); outline-offset: 2px }
+
+::selection { background: var(--ao-orbit-30); color: var(--ao-t0) }
+
+h1, h2, h3, h4 { font-family: var(--ao-f-display); font-weight: var(--ao-w-light); letter-spacing: var(--ao-ls-tight) }
+
+::-webkit-scrollbar { width: 8px; height: 8px }
+::-webkit-scrollbar-track { background: transparent }
+::-webkit-scrollbar-thumb { background: var(--ao-bd-1); border-radius: var(--ao-r-pill) }
+::-webkit-scrollbar-thumb:hover { background: var(--ao-bd-2) }

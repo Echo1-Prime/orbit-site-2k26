@@ -1,0 +1,13 @@
+/* AGENT ORBIT — RADII + STROKE WIDTHS */
+:root {
+  --ao-r-sm:   4px;
+  --ao-r-md:   6px;
+  --ao-r-lg:   10px;
+  --ao-r-card: 8px;
+  --ao-r-pill: 100px;
+  --ao-r-full: 50%;
+
+  --ao-accent-w:  3px; /* role/priority side accent bar */
+  --ao-accent-w2: 2px; /* sub-level accent, metric card bottom rule */
+  --ao-hair:      1px;
+}

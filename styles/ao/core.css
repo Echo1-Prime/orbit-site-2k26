@@ -1,0 +1,16 @@
+/* CORE — brand mark, wordmark, ambient star field */
+.ao-mark { display: block; cursor: default }
+
+.ao-starfield { position: absolute; inset: 0; pointer-events: none; z-index: 0; display: block }
+.ao-starfield--fixed { position: fixed }
+
+.ao-wordmark { display: flex; flex-direction: column; align-items: center; gap: var(--ao-sp-3) }
+.ao-wordmark__type { font-family: var(--ao-f-display); font-weight: var(--ao-w-thin); color: var(--ao-t0); text-transform: uppercase; line-height: 1; white-space: nowrap }
+.ao-wordmark__type em { font-style: normal; font-weight: var(--ao-w-medium); color: var(--ao-orbit) }
+.ao-wordmark__sub { font-family: var(--ao-f-mono); font-weight: var(--ao-w-light); font-size: var(--ao-fs-mono-sm); letter-spacing: 0.3em; color: var(--ao-t2); text-transform: uppercase }
+.ao-wordmark--left { align-items: flex-start }
+.ao-wordmark--lockup { flex-direction: row; align-items: center; gap: var(--ao-sp-3) }
+.ao-wordmark--lockup .ao-wordmark__type { font-weight: var(--ao-w-regular); letter-spacing: var(--ao-ls-brand) }
+
+/* ACCENT LINES — background canvas; content above at z-index 1 */
+.ao-accentlines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0 }

@@ -1,0 +1,46 @@
+/* AGENT ORBIT — SEMANTIC ALIASES
+   Reach for these in product code; the raw --ao-* base values above are the palette. */
+:root {
+  /* ── Backgrounds ── */
+  --ao-bg-page:      var(--ao-void);
+  --ao-bg-elevated:  var(--ao-deep);
+  --ao-surface-card: var(--ao-sf-0);
+  --ao-surface-hover:var(--ao-sf-1);
+  --ao-surface-press:var(--ao-sf-2);
+  --ao-surface-glass:var(--ao-glass);
+  --ao-surface-nav:  rgba(10,10,14,0.82);
+
+  /* ── Borders ── */
+  --ao-border-rest:  var(--ao-bd-0);
+  --ao-border-hover: var(--ao-bd-1);
+  --ao-border-focus: var(--ao-bd-2);
+
+  /* ── Text ── */
+  --ao-text-primary: var(--ao-t0);
+  --ao-text-body:    var(--ao-t1);
+  --ao-text-muted:   var(--ao-t2);
+  --ao-text-label:   var(--ao-t2);
+  --ao-text-data:    var(--ao-tdata);
+  --ao-text-on-accent: var(--ao-void);
+
+  /* ── Role accents: the three seats of the product ── */
+  --ao-role-executive: var(--ao-orbit);
+  --ao-role-member:    var(--ao-agent);
+  --ao-role-operator:  var(--ao-agent); /* legacy alias of member */
+  --ao-role-admin:     var(--ao-system);
+  --ao-role-executive-fill: var(--ao-orbit-15);
+  --ao-role-member-fill:    var(--ao-agent-12);
+  --ao-role-operator-fill:  var(--ao-agent-12); /* legacy alias */
+  --ao-role-admin-fill:     var(--ao-system-12);
+
+  /* ── Status semantics ── */
+  --ao-status-action:   var(--ao-orbit);
+  --ao-status-progress: var(--ao-agent);
+  --ao-status-ok:       var(--ao-system);
+  --ao-status-info:     var(--ao-stellar);
+  --ao-status-error:    var(--ao-alert);
+
+  /* ── Interaction ── */
+  --ao-focus-ring: 0 0 0 1px var(--ao-bd-2); /* @kind shadow */
+  --ao-hover-lift: -3px; /* @kind other */
+}

@@ -1,0 +1,115 @@
+/* NAVIGATION — top bar, altitude pills, altitude rail */
+.ao-nav {
+  --ao-accent: var(--ao-orbit);
+  position: sticky; top: 0; z-index: 200;
+  height: var(--ao-nav-h);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 var(--ao-sp-6);
+  background: var(--ao-surface-nav);
+  backdrop-filter: var(--ao-blur-nav); -webkit-backdrop-filter: var(--ao-blur-nav);
+  border-bottom: var(--ao-hair) solid var(--ao-bd-0);
+}
+.ao-nav--fixed { position: fixed; top: 0; left: 0; right: 0 }
+.ao-nav__logo { display: flex; align-items: center; gap: 10px; text-decoration: none }
+.ao-nav__brand { font-family: var(--ao-f-display); font-size: var(--ao-fs-brand); font-weight: var(--ao-w-regular); letter-spacing: var(--ao-ls-brand); color: var(--ao-t0); white-space: nowrap }
+.ao-nav__center { display: flex; gap: 28px }
+.ao-nav__link {
+  font-family: var(--ao-f-mono); font-weight: var(--ao-w-light);
+  font-size: var(--ao-fs-mono-sm); letter-spacing: 0.12em;
+  color: var(--ao-t0); text-transform: uppercase; cursor: pointer;
+  background: none; border: 0; padding: 0;
+  transition: color var(--ao-dur-fast);
+}
+.ao-nav__link:hover { color: var(--ao-t0) }
+.ao-nav__link { opacity: 0.82 }
+.ao-nav__link:hover, .ao-nav__link.is-active { opacity: 1 }
+.ao-nav__link.is-active { color: var(--ao-accent) }
+.ao-nav__right { display: flex; align-items: center; gap: var(--ao-sp-4) }
+.ao-nav__status {
+  display: flex; align-items: center; gap: 6px;
+  font-family: var(--ao-f-mono); font-weight: var(--ao-w-light);
+  font-size: var(--ao-fs-mono-sm); letter-spacing: var(--ao-ls-mono);
+  color: var(--ao-system); text-transform: uppercase; white-space: nowrap;
+}
+.ao-nav__status::before { content: ''; width: 5px; height: 5px; background: currentColor; border-radius: 50%; animation: ao-pulse 2.4s ease-in-out infinite }
+.ao-nav__avatar {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: var(--ao-sf-2); border: var(--ao-hair) solid var(--ao-bd-1);
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--ao-f-mono); font-size: var(--ao-fs-mono-sm); color: var(--ao-t1);
+  cursor: pointer; transition: border-color var(--ao-dur-fast), color var(--ao-dur-fast);
+}
+.ao-nav__avatar:hover { border-color: var(--ao-accent); color: var(--ao-accent) }
+
+.ao-altpill {
+  --ao-accent: var(--ao-orbit);
+  font-family: var(--ao-f-mono); font-weight: var(--ao-w-light);
+  font-size: var(--ao-fs-mono-xs); letter-spacing: 0.09em;
+  padding: 4px 10px; border-radius: var(--ao-r-pill);
+  border: var(--ao-hair) solid var(--ao-bd-0);
+  background: transparent; color: var(--ao-t2);
+  cursor: pointer; white-space: nowrap;
+  transition: background var(--ao-dur-fast), border-color var(--ao-dur-fast), color var(--ao-dur-fast);
+}
+.ao-altpill:hover { border-color: var(--ao-bd-2); color: var(--ao-t1) }
+.ao-altpill.is-active { background: color-mix(in srgb, var(--ao-accent) 15%, transparent); border-color: color-mix(in srgb, var(--ao-accent) 28%, transparent); color: var(--ao-accent) }
+.ao-altpill.is-active:hover { color: var(--ao-accent) }
+.ao-altpills { display: flex; gap: 6px; flex-wrap: wrap }
+
+.ao-rail {
+  --ao-accent: var(--ao-orbit);
+  width: var(--ao-rail-w); flex-shrink: 0;
+  border-right: var(--ao-hair) solid var(--ao-bd-0);
+  padding: var(--ao-sp-5) 0;
+  display: flex; flex-direction: column; align-items: center; gap: 18px;
+}
+.ao-rail__dot {
+  width: 6px; height: 6px; border-radius: 50%; border: 0; padding: 0;
+  background: var(--ao-bd-2); cursor: pointer;
+  transition: background var(--ao-dur-fast), box-shadow var(--ao-dur-fast), transform var(--ao-dur-fast);
+}
+.ao-rail__dot:hover { background: var(--ao-t1) }
+.ao-rail__dot.is-active { background: var(--ao-accent); box-shadow: 0 0 8px color-mix(in srgb, var(--ao-accent) 30%, transparent) }
+.ao-rail__foot { margin-top: auto; margin-bottom: 10px }
+
+/* ORBIT LAUNCHER — floating Agent Orbit CTA. Mobile first: drag anywhere, tap to open.
+   Positioned by transform from the component; the stylesheet only draws it. */
+.ao-launcher {
+  --ao-launcher-size: 92px;
+  --ao-launcher-z: 600;
+  position: fixed; left: 0; top: 0; z-index: var(--ao-launcher-z);
+  width: var(--ao-launcher-size); height: var(--ao-launcher-size);
+  padding: 0; border: 0; border-radius: 50%;
+  background: radial-gradient(circle, var(--ao-void) 0 46%, var(--ao-surface-nav) 60%, transparent 71%); /* void-based, never the blue-leaning glass */
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; user-select: none;
+  will-change: transform;
+  transition: opacity var(--ao-dur-mid) var(--ao-ease-out), filter var(--ao-dur-mid) var(--ao-ease-out);
+}
+.ao-launcher.is-draggable { touch-action: none }
+.ao-launcher[data-settling] { transition: transform var(--ao-dur-mid) var(--ao-ease-out), opacity var(--ao-dur-mid) var(--ao-ease-out) }
+.ao-launcher[data-dragging] { cursor: grabbing; filter: drop-shadow(0 0 12px var(--ao-orbit-30)) }
+.ao-launcher:focus-visible { outline: var(--ao-hair) solid var(--ao-bd-2); outline-offset: 2px }
+.ao-launcher.is-open { opacity: 0; pointer-events: none }
+.ao-launcher__ring {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  animation: ao-launcher-spin 22s linear infinite; pointer-events: none;
+}
+.ao-launcher__ring text {
+  font-family: var(--ao-f-mono); font-weight: var(--ao-w-light);
+  font-size: 8.6px; letter-spacing: 0.12em; fill: var(--ao-orbit);
+}
+.ao-launcher__mark {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  display: block; transition: transform var(--ao-dur-mid) var(--ao-ease-out);
+}
+.ao-launcher:hover .ao-launcher__mark, .ao-launcher[data-dragging] .ao-launcher__mark { transform: translate(-50%, -50%) scale(1.06) }
+.ao-launcher__hint {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+@keyframes ao-launcher-spin { to { transform: rotate(360deg) } }
+@media (prefers-reduced-motion: reduce) {
+  .ao-launcher, .ao-launcher[data-settling], .ao-launcher__mark { transition: none }
+  .ao-launcher__ring { animation: none }
+}

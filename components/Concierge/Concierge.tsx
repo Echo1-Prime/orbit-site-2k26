@@ -9,6 +9,7 @@ import { useRouter, usePathname } from 'next/navigation';
 import { useChat } from '@ai-sdk/react';
 import { DefaultChatTransport, lastAssistantMessageIsCompleteWithToolCalls } from 'ai';
 import OrbitMark from '@/components/OrbitMark/OrbitMark';
+import { OrbitMark as AgentOrbitMark } from '@/components/ao/core/OrbitMark';
 import type { AvatarState } from '@/components/OrbitAvatar/OrbitAvatar';
 import DashboardPanel from './DashboardPanel';
 import MagicalText from './MagicalText';
@@ -196,7 +197,8 @@ export default function Concierge() {
         aria-expanded={view !== 'closed'}
         onClick={() => (view === 'closed' ? open('text') : setView('closed'))}
       >
-        <OrbitMark size={64} state={view === 'closed' ? 'idle' : markState} reduced={reduced} aria-label="Orbit" />
+        {/* The animated Agent Orbit mark (design system canvas), replacing the old dot ring. */}
+        <AgentOrbitMark size={64} animate={!reduced} scriptSrc="/assets/orbit-mark-canvas.js" aria-hidden="true" />
         <span className={styles.launcherLabel}>Ask Orbit</span>
       </button>
 
