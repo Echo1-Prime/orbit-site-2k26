@@ -212,7 +212,10 @@ bands = [
 ]
 # [STAT:*] fleet-count tokens are unverified placeholders in the handoff (README open item 6):
 # the whole line is omitted until Josh supplies verified counts.
-bands = [(n, re.sub(r'<p [^>]*>Agent Fleet ·.*?Agent Kits</p>', '', f, flags=re.S) if n == 'orbit' else f) for n, f in bands]
+# Josh, 2026-10-12: 16 agents out of the box per client, 141 to upgrade to (matches the live /orbit-info page).
+FLEET = ('<p style="margin:20px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:var(--ao-f-mono);font-weight:300;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ao-t1)">'
+         'Agent Fleet ·<span style="color:var(--ao-tdata)">16</span>agents out of the box ·<span style="color:var(--ao-tdata)">141</span>to upgrade to</p>')
+bands = [(n, re.sub(r'<p [^>]*>Agent Fleet ·.*?Agent Kits</p>', lambda m: FLEET, f, flags=re.S) if n == 'orbit' else f) for n, f in bands]
 parts = {}
 for n, frag in bands:
     parts[n] = conv(frag, n)
