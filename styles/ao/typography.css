@@ -1,0 +1,48 @@
+/* AGENT ORBIT — TYPOGRAPHY
+   Weight scale runs one stop lighter than default (v1 spec §1.2 + §4).
+   Mono at 300 on every dashboard label is where the lightness registers. */
+:root {
+  --ao-f-display: 'Space Grotesk', system-ui, sans-serif; /* @kind font */
+  --ao-f-body:    'Inter', system-ui, sans-serif; /* @kind font */
+  --ao-f-mono:    'JetBrains Mono', 'Fira Code', monospace; /* @kind font */
+
+  /* ── Weights ── */
+  --ao-w-thin:    200; /* @kind font */
+  --ao-w-light:   300; /* @kind font */
+  --ao-w-regular: 400; /* @kind font */
+  --ao-w-medium:  500; /* @kind font */
+
+  /* ── Display roles (Space Grotesk) ── */
+  --ao-fs-hero:      clamp(38px, 5.5vw, 60px); /* @kind font */
+  --ao-lh-hero:      1.08; /* @kind other */
+  --ao-ls-hero:      -0.015em; /* @kind other */
+  --ao-fs-h2:        24px; /* @kind font */
+  --ao-fs-h3:        18px; /* @kind font */
+  --ao-fs-panel:     13px; /* @kind font */
+  --ao-ls-tight:     -0.01em; /* @kind other */
+
+  /* ── Nav brand / wordmark ── */
+  --ao-fs-brand:     12px; /* @kind font */
+  --ao-ls-brand:     0.18em; /* @kind other */
+  --ao-fs-wordmark:  36px; /* @kind font */
+  --ao-ls-wordmark:  0.28em; /* @kind other */
+
+  /* ── Body prose (Inter) ── */
+  --ao-fs-body:      15px; /* @kind font */
+  --ao-lh-body:      1.7; /* @kind other */
+  --ao-fs-body-sm:   12.5px; /* @kind font */
+  --ao-lh-body-sm:   1.6; /* @kind other */
+  --ao-fs-body-xs:   11px; /* @kind font */
+  --ao-lh-body-xs:   1.45; /* @kind other */
+
+  /* ── Mono: labels + readouts (JetBrains Mono) ── */
+  --ao-fs-mono-xs:   9px; /* @kind font */
+  --ao-fs-mono-sm:   10px; /* @kind font */
+  --ao-fs-mono-md:   11px; /* @kind font */
+  --ao-fs-metric:    20px; /* @kind font */
+  --ao-fs-metric-lg: 22px; /* @kind font */
+  --ao-ls-mono-sm:   0.08em; /* @kind other */
+  --ao-ls-mono:      0.10em; /* @kind other */
+  --ao-ls-mono-wide: 0.14em; /* @kind other */
+  --ao-ls-mono-xw:   0.22em; /* @kind other */
+}

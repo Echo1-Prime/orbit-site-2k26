@@ -1,0 +1,41 @@
+/* AGENT ORBIT — PALETTE
+   Source: agent-orbit-design-system/tokens.css v1.0 (canonical --ao-* names).
+   HARD RULE: no blue backgrounds. Void black or charcoal glass only. */
+:root {
+  /* ── Space palette (backgrounds) ── */
+  --ao-void:     #0A0A0E;
+  --ao-deep:     #160D20;
+  --ao-charcoal: #1C1127;
+  --ao-glass:    rgba(28,17,39,0.75);
+  --ao-glass-hi: rgba(28,17,39,0.92);
+
+  /* ── Surfaces (glass morphism, 3 depths) ── */
+  --ao-sf-0: rgba(255,255,255,0.022);
+  --ao-sf-1: rgba(255,255,255,0.048);
+  --ao-sf-2: rgba(255,255,255,0.085);
+
+  /* ── Borders (3 depths) ── */
+  --ao-bd-0: rgba(255,255,255,0.055);
+  --ao-bd-1: rgba(255,255,255,0.10);
+  --ao-bd-2: rgba(255,255,255,0.22);
+
+  /* ── Brand accents ── */
+  --ao-orbit:      #FF7515;
+  --ao-orbit-15:   rgba(255,117,21,0.15);
+  --ao-orbit-30:   rgba(255,117,21,0.30);
+  --ao-agent:      #9B5CF6;
+  --ao-agent-12:   rgba(155,92,246,0.12);
+  --ao-agent-25:   rgba(155,92,246,0.25);
+  --ao-system:     #34D399;
+  --ao-system-12:  rgba(52,211,153,0.12);
+  --ao-stellar:    #4CC9F0;
+  --ao-stellar-12: rgba(76,201,240,0.12);
+  --ao-alert:      #F87171;
+  --ao-alert-12:   rgba(248,113,113,0.12);
+
+  /* ── Text ── */
+  --ao-t0:    #F0F0F5;
+  --ao-t1:    #8892A4;
+  --ao-t2:    rgba(240,240,245,0.32);
+  --ao-tdata: #B8CFFF;
+}

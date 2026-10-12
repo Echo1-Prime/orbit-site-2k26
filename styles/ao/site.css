@@ -1,0 +1,69 @@
+/* Echo 1 Labs site layer on top of the vendored Agent Orbit design system.
+   Source: design handoff "Echo 1 Labs Home.dc.html" helmet, with colours taken from the
+   v1.1.2 tokens rather than the older values the handoff page hardcodes. */
+
+:root {
+  --ao-launcher-size: 88px;
+}
+
+/* next/font supplies the families on the .ao-site wrapper (the variables are declared there,
+   so the DS font tokens are re-declared at the same scope); the DS names stay the interface. */
+.ao-site {
+  --ao-f-display: var(--font-ao-display, 'Space Grotesk'), system-ui, sans-serif;
+  --ao-f-body: var(--font-ao-body, 'Inter'), system-ui, sans-serif;
+  --ao-f-mono: var(--font-ao-mono, 'JetBrains Mono'), monospace;
+}
+
+/* Owner override recorded in the handoff README: Solar Orange is the same on both themes.
+   Only the orange changes; every other light value stays as the DS defines it. */
+[data-theme='light'] {
+  --ao-orbit: #ff7515;
+  --ao-orbit-15: rgba(255, 117, 21, 0.14);
+  --ao-orbit-30: rgba(255, 117, 21, 0.32);
+  --ao-glow-orbit: 0 0 0 1px rgba(255, 117, 21, 0.2), 0 10px 30px rgba(255, 117, 21, 0.2);
+  --ao-lift-orbit: 0 16px 42px rgba(255, 117, 21, 0.22);
+  --ao-halo-orbit: 0 0 8px rgba(255, 117, 21, 0.5);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes e1-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes e1-dot { 0%, 80%, 100% { opacity: 0.25; } 40% { opacity: 1; } }
+@keyframes e1-drawer-up { from { opacity: 0; transform: translate(-50%, 28px); } to { opacity: 1; transform: translate(-50%, 0); } }
+@keyframes e1-sheet-up { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: none; } }
+@keyframes e1-sheet-in { from { opacity: 0; transform: translateX(32px); } to { opacity: 1; transform: none; } }
+
+/* OrbitLauncher ships without its CSS in the DS bundle (handoff open item 8); this is the
+   helmet patch from the handoff, with the colour pairs expressed as tokens. */
+.ao-launcher {
+  position: fixed; left: 0; top: 0; z-index: 480;
+  width: var(--ao-launcher-size); height: var(--ao-launcher-size);
+  padding: 0; border-radius: 50%; border: 1px solid var(--ao-bd-1);
+  background: var(--ao-bg-page); display: grid; place-items: center; cursor: pointer;
+  touch-action: none; -webkit-tap-highlight-color: transparent; box-shadow: var(--ao-glow-orbit);
+  transition: opacity var(--ao-dur-mid) var(--ao-ease-out), border-color var(--ao-dur-mid),
+    background-color var(--ao-dur-mid) var(--ao-ease-out), box-shadow var(--ao-dur-mid);
+  will-change: transform;
+}
+.ao-launcher.is-draggable { cursor: grab; }
+.ao-launcher[data-dragging] { cursor: grabbing; }
+.ao-launcher[data-settling] {
+  transition: transform var(--ao-dur-slow) var(--ao-ease-out), opacity var(--ao-dur-mid),
+    background-color var(--ao-dur-mid), border-color var(--ao-dur-mid);
+}
+.ao-launcher:hover { border-color: var(--ao-orbit-30); }
+.ao-launcher:focus-visible { outline: 1px solid var(--ao-bd-2); outline-offset: 3px; }
+.ao-launcher.is-open, .ao-launcher.e1-tucked { opacity: 0; pointer-events: none; }
+.ao-launcher__ring { position: absolute; inset: 0; width: 100%; height: 100%; animation: ao-spin 48s linear infinite; pointer-events: none; }
+.ao-launcher__ring text { font-family: var(--ao-f-mono); font-weight: 300; font-size: 8.4px; letter-spacing: 0.06em; fill: var(--ao-orbit); }
+.ao-launcher__mark { position: relative; z-index: 2; display: block; line-height: 0; border-radius: 50%; background: var(--ao-void); box-shadow: 0 0 0 1px var(--ao-orbit-30); }
+.ao-launcher[data-theme='light'] { background: var(--ao-void); border: 2px solid var(--ao-orbit); box-shadow: 0 0 0 1px var(--ao-bd-1), var(--ao-lift-orbit); }
+.ao-launcher[data-theme='light'] .ao-launcher__ring text { fill: #ffffff; font-weight: 400; font-size: 8.6px; }
+.ao-launcher__hint { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .ao-launcher .ao-launcher__ring { animation: none; }
+}

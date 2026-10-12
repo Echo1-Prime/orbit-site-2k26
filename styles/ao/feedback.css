@@ -1,0 +1,33 @@
+/* FEEDBACK — notification items, ghost buttons */
+.ao-notif {
+  --ao-accent: var(--ao-orbit);
+  padding: 10px; border-radius: var(--ao-r-sm);
+  background: var(--ao-sf-0);
+  border: var(--ao-hair) solid var(--ao-bd-0);
+  border-left: var(--ao-accent-w) solid var(--ao-accent);
+  cursor: pointer; transition: background var(--ao-dur-fast);
+}
+.ao-notif:hover { background: var(--ao-sf-1) }
+.ao-notif__label { font-family: var(--ao-f-mono); font-weight: var(--ao-w-light); font-size: var(--ao-fs-mono-xs); letter-spacing: var(--ao-ls-mono); text-transform: uppercase; color: var(--ao-accent); margin-bottom: var(--ao-sp-1) }
+.ao-notif__text { font-size: var(--ao-fs-body-xs); line-height: var(--ao-lh-body-xs); color: var(--ao-t1); margin-bottom: var(--ao-sp-2) }
+.ao-notif__actions { display: flex; gap: 6px; flex-wrap: wrap }
+.ao-notif--impact { animation: ao-impact 400ms var(--ao-ease-out) }
+@keyframes ao-impact { 0% { transform: scale(1) } 25% { transform: scale(1.06) } 100% { transform: scale(1) } }
+
+.ao-notif-list { display: flex; flex-direction: column; gap: var(--ao-sp-2) }
+.ao-notif-list__header { font-family: var(--ao-f-mono); font-weight: var(--ao-w-light); font-size: var(--ao-fs-mono-xs); letter-spacing: var(--ao-ls-mono-wide); color: var(--ao-t2); text-transform: uppercase; margin-bottom: 6px }
+
+.ao-btn {
+  font-family: var(--ao-f-mono); font-weight: var(--ao-w-light);
+  font-size: var(--ao-fs-mono-xs); letter-spacing: 0.07em;
+  padding: 3px 8px; border-radius: 3px;
+  border: var(--ao-hair) solid var(--ao-bd-1);
+  background: transparent; color: var(--ao-t2);
+  cursor: pointer; white-space: nowrap;
+  transition: background var(--ao-dur-fast), color var(--ao-dur-fast), border-color var(--ao-dur-fast);
+}
+.ao-btn:hover { background: var(--ao-sf-2); color: var(--ao-t0); border-color: var(--ao-bd-2) }
+.ao-btn:active { background: var(--ao-sf-1) }
+.ao-btn:disabled { opacity: 0.4; cursor: not-allowed; background: transparent; color: var(--ao-t2); border-color: var(--ao-bd-0) }
+.ao-btn--accent { color: var(--ao-accent, var(--ao-orbit)); border-color: color-mix(in srgb, var(--ao-accent, var(--ao-orbit)) 30%, transparent) }
+.ao-btn--accent:hover { color: var(--ao-accent, var(--ao-orbit)); background: color-mix(in srgb, var(--ao-accent, var(--ao-orbit)) 15%, transparent); border-color: var(--ao-accent, var(--ao-orbit)) }

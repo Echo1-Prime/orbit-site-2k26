@@ -1,0 +1,111 @@
+/* AGENT ORBIT — THEMES
+   Dark is the default and is unchanged: void black #0A0A0E ground, charcoal glass (palette.css).
+   Light is opt-in: set data-theme="light" on <html> or on any wrapper.
+   One type stack across both themes — Space Grotesk / Inter / JetBrains Mono (typography.css).
+   Fonts never change with theme.
+
+   Light values come from the approved light mockup
+   (echo_orbit · agent-orbit-app/FUSION-DASHBOARD-LIGHT-MOCKUP-2026-07-30.html, theme.css):
+   pure white ground, accents deepened for AA on white, per-card colour glow.
+   They're mapped onto the canonical --ao-* names so every component flips with no code change.
+   Roles keep their meaning: orange = a human must act, violet = agent working, green = nominal.
+
+   Derived tokens (semantic.css, elevation.css) are re-declared here on purpose. A var()
+   resolves where it is declared, so an alias set on :root would not follow a scoped theme. */
+
+[data-theme="light"] {
+  color-scheme: light;
+
+  /* ── Ground ── */
+  --ao-deep:     #F5F0FA;
+  --ao-charcoal: #F5F0FA;
+  --ao-glass:    rgba(255,255,255,0.62);
+  --ao-glass-hi: rgba(255,255,255,0.92);
+
+  /* ── Surfaces (ink wash, 3 depths) ── */
+  --ao-sf-0: rgba(28,15,42,0.022);
+  --ao-sf-1: rgba(28,15,42,0.045);
+  --ao-sf-2: rgba(28,15,42,0.08);
+
+  /* ── Borders ── */
+  --ao-bd-0: rgba(28,15,42,0.07);
+  --ao-bd-1: rgba(28,15,42,0.12);
+  --ao-bd-2: rgba(28,15,42,0.24);
+
+  /* ── Accents (AA on white) ── */
+  --ao-orbit:      #C55A0E;
+  --ao-orbit-15:   rgba(197,90,14,0.12);
+  --ao-orbit-30:   rgba(197,90,14,0.28);
+  --ao-agent:      #6D34D6;
+  --ao-agent-12:   rgba(109,52,214,0.10);
+  --ao-agent-25:   rgba(109,52,214,0.22);
+  --ao-system:     #16A34A;
+  --ao-system-12:  rgba(22,163,74,0.10);
+  --ao-stellar:    #1E7FC2;
+  --ao-stellar-12: rgba(30,127,194,0.10);
+  --ao-alert:      #DC2626;
+  --ao-alert-12:   rgba(220,38,38,0.10);
+
+  /* ── Text ── */
+  --ao-t0:    #1E0F2E;
+  --ao-t1:    rgba(28,15,42,0.72);
+  --ao-t2:    #64748B;
+  --ao-tdata: #155E92;
+
+  /* ── Semantic (re-declared so they follow the scope) ── */
+  --ao-bg-page:       #FFFFFF;
+  --ao-bg-elevated:   var(--ao-deep);
+  --ao-surface-card:  var(--ao-sf-0);
+  --ao-surface-hover: var(--ao-sf-1);
+  --ao-surface-press: var(--ao-sf-2);
+  --ao-surface-glass: var(--ao-glass);
+  --ao-surface-nav:   rgba(255,255,255,0.82);
+  --ao-border-rest:   var(--ao-bd-0);
+  --ao-border-hover:  var(--ao-bd-1);
+  --ao-border-focus:  var(--ao-bd-2);
+  --ao-text-primary:  var(--ao-t0);
+  --ao-text-body:     var(--ao-t1);
+  --ao-text-muted:    var(--ao-t2);
+  --ao-text-label:    var(--ao-t2);
+  --ao-text-data:     var(--ao-tdata);
+  --ao-text-on-accent:#FFFFFF;
+  --ao-role-executive: var(--ao-orbit);
+  --ao-role-member:    var(--ao-agent);
+  --ao-role-operator:  var(--ao-agent);
+  --ao-role-admin:     var(--ao-system);
+  --ao-role-executive-fill: var(--ao-orbit-15);
+  --ao-role-member-fill:    var(--ao-agent-12);
+  --ao-role-operator-fill:  var(--ao-agent-12);
+  --ao-role-admin-fill:     var(--ao-system-12);
+  --ao-status-action:   var(--ao-orbit);
+  --ao-status-progress: var(--ao-agent);
+  --ao-status-ok:       var(--ao-system);
+  --ao-status-info:     var(--ao-stellar);
+  --ao-status-error:    var(--ao-alert);
+  --ao-focus-ring: 0 0 0 1px var(--ao-bd-2);
+
+  /* ── Elevation: still coloured light, never neutral black ── */
+  --ao-glow-orbit:   0 0 0 1px rgba(255,117,21,0.18), 0 10px 30px rgba(255,117,21,0.20);
+  --ao-glow-agent:   0 0 0 1px rgba(139,79,232,0.16), 0 10px 30px rgba(139,79,232,0.18);
+  --ao-glow-system:  0 0 0 1px rgba(22,163,74,0.16),  0 10px 30px rgba(22,163,74,0.18);
+  --ao-glow-stellar: 0 0 0 1px rgba(30,127,194,0.16), 0 10px 30px rgba(30,127,194,0.18);
+  --ao-glow-alert:   0 0 0 1px rgba(220,38,38,0.20),  0 10px 30px rgba(220,38,38,0.22);
+  --ao-lift-orbit:   0 16px 42px rgba(255,117,21,0.22);
+  --ao-lift-agent:   0 16px 42px rgba(139,79,232,0.20);
+  --ao-lift-system:  0 16px 42px rgba(22,163,74,0.20);
+  --ao-halo-orbit:   0 0 8px rgba(197,90,14,0.45);
+  --ao-halo-agent:   0 0 6px rgba(109,52,214,0.40);
+  --ao-halo-system:  0 0 5px rgba(22,163,74,0.40);
+
+  background: var(--ao-bg-page);
+  color: var(--ao-text-primary);
+}
+
+/* Component rules that still carry hardcoded white alphas (hard rule 3).
+   Replace these literals with the tokens in the component sheets; until then these keep light legible. */
+[data-theme="light"] .ao-wordmark__sub { color: var(--ao-t2) }
+[data-theme="light"] .ao-fusion__bar { background: var(--ao-sf-0) }
+[data-theme="light"] .ao-org__branch--team,
+[data-theme="light"] .ao-org__branch--individual,
+[data-theme="light"] .ao-node--team { border-color: var(--ao-bd-0) }
+[data-theme="light"] .ao-node--individual:hover { background: var(--ao-sf-0) }
