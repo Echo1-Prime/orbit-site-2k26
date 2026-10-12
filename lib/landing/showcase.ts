@@ -1,0 +1,69 @@
+import { truckingCopy } from './trucking';
+
+/*
+  Use-case showcase cards. Data only: no JSX, no hooks, no logic beyond reading fields.
+  The component is components/UseCaseShowcase/index.tsx (named export UseCaseShowcase).
+
+  Source of every line (nothing here is invented):
+  - id, kick, title and href come from truckingCopy (lib/landing/trucking.ts): slug, eyebrow, headline,
+    and the use-case route built from the slug. Change the source, never reword here.
+  - Lines WRITTEN for this file, for Josh's review: ctaLabel ("See Trucking →") and demoLabel ("Demo data").
+    The label follows the design band's pattern "See {app} →". "Demo data" is the label the demo uses
+    for its numbers; it sits in HTML on every card so the preview never reads as client proof.
+  - UNVERIFIED(stage): 'run' was inferred, no design file or Airtable row records Trucking's stage.
+    Josh or the layout session confirms it, or changes this one field.
+  - in and agent are DRAFT-FOR-JOSH (Josh's rule 2026-10-12: draft only where no existing field fits, grounded in
+    the demo's own strings, no figures, names, results or urgency). Each names its source string below.
+    you is truckingCopy.closing, verbatim. The type keeps all three optional, and the card shows a row only
+    when it has text.
+
+  Files (public/videos/showcase/): one 640 px wide 16:9 clip (h264, no audio, faststart) and two posters
+  (WebP, 960 and 640 wide). The hex in each file name is the sha-256 prefix of the built demo page the
+  frames were captured from (see the PR for the command). Names carry no client, place or person.
+*/
+
+export type ShowcaseStage = 'win' | 'buy' | 'build' | 'run';
+
+export interface ShowcaseTile {
+  id: string;
+  stage: ShowcaseStage;
+  kick: string;
+  title: string;
+  /** What comes in. Optional until Josh writes it. */
+  in?: string;
+  /** What the agent does. Optional until Josh writes it. */
+  agent?: string;
+  /** What you do. Optional until Josh writes it. */
+  you?: string;
+  ctaLabel: string;
+  href: string;
+  video: string;
+  poster: string;
+  posterSmall: string;
+  demoLabel: string;
+}
+
+const TRUCKING_ASSET = '/videos/showcase/trucking-card-fd6d2d4e';
+
+export const showcaseTiles: ShowcaseTile[] = [
+  {
+    id: truckingCopy.slug,
+    stage: 'run', // UNVERIFIED(inferred, see header)
+    kick: truckingCopy.eyebrow,
+    title: truckingCopy.headline,
+    // DRAFT-FOR-JOSH. Drawn from locations gate, dock and office `today`: "The guard writes the truck in; the ticket
+    // waits in a tray." / "A driver hands in the ticket; its fields get keyed in twice." / "Paper and phone calls pass
+    // between desks to close a packet."
+    in: 'Tickets, photos, seals and signatures, from the gate to the back office.',
+    // DRAFT-FOR-JOSH. Drawn from dock `orbit`: "The ticket is read once; photo, seal and signature file themselves."
+    // and office `orbit`: "The packet fills as documents arrive; the office shares one screen."
+    agent: 'Reads each ticket once, files the rest as it arrives, and fills the trip packet.',
+    you: truckingCopy.closing, // verbatim: "Supervised by you."
+    ctaLabel: 'See Trucking →', // written for review
+    href: `/use-cases/${truckingCopy.slug}`,
+    video: `${TRUCKING_ASSET}.mp4`,
+    poster: `${TRUCKING_ASSET}-960.webp`,
+    posterSmall: `${TRUCKING_ASSET}-640.webp`,
+    demoLabel: 'Demo data', // written for review
+  },
+];
