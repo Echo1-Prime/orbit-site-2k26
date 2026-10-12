@@ -1,0 +1,122 @@
+/* Responsive values for the home bands (from the handoff layout logic).
+   Mobile first: <760 base, 760+ tablet, 1100+ wide. */
+:root {
+  --r-heroCols: 1fr;
+  --r-artS: calc(100vw - 2 * clamp(16px, 4vw, 48px));
+  --r-artMargin: 8px auto 0;
+  --r-aoArt: 276px;
+  --r-diagCols: 1fr;
+  --r-diagStick: static;
+  --r-cmpCols: 1fr;
+  --r-cmpGap: 10px;
+  --r-flowDir: column;
+  --r-linkW: 1px;
+  --r-linkH: 24px;
+  --r-linkOrigin: center top;
+  --r-ladderCols: 1fr;
+  --r-trustCols: 1fr;
+  --r-lcCols: 1fr;
+  --r-lcGap: 30px;
+  --r-lcDir: row;
+  --r-wbCols: 1fr;
+  --r-aoCols: 1fr;
+  --r-shotCols: 1fr;
+  --r-drawerBL: 0;
+  --r-drawerBT: 1px solid var(--ao-bd-0);
+  --r-govCols: 1fr;
+  --r-blsCols: 1fr;
+  --r-blsCardCols: 1fr;
+  --r-blsLabW: 76px;
+  --r-blsNameDisp: none;
+  --r-linkHide: scaleY(0);
+  --r-lcHide: scaleY(0);
+  --r-trustMt0: 0px;
+  --r-trustMt1: 0px;
+  --r-trustMt2: 0px;
+  --r-blsNameSize: 26px;
+}
+@media (min-width: 760px) {
+  :root {
+    --r-heroCols: 1fr;
+    --r-artS: 460px;
+    --r-artMargin: 24px auto 0;
+    --r-aoArt: 368px;
+    --r-diagCols: 1fr;
+    --r-diagStick: static;
+    --r-cmpCols: minmax(110px,0.8fr) minmax(0,1.3fr) minmax(0,1.3fr) minmax(140px,1fr);
+    --r-cmpGap: 28px;
+    --r-flowDir: column;
+    --r-linkW: 1px;
+    --r-linkH: 24px;
+    --r-linkOrigin: center top;
+    --r-ladderCols: 1fr;
+    --r-trustCols: repeat(3, minmax(0,1fr));
+    --r-lcCols: 1fr;
+    --r-lcGap: 30px;
+    --r-lcDir: row;
+    --r-wbCols: repeat(2, minmax(0,1fr));
+    --r-aoCols: 1fr;
+    --r-shotCols: 1fr;
+    --r-drawerBL: 0;
+    --r-drawerBT: 1px solid var(--ao-bd-0);
+    --r-govCols: 1fr;
+    --r-blsCols: 1fr;
+    --r-blsCardCols: repeat(2, minmax(0,1fr));
+    --r-blsLabW: 110px;
+    --r-blsNameDisp: block;
+    --r-linkHide: scaleY(0);
+    --r-lcHide: scaleY(0);
+    --r-trustMt0: 56px;
+    --r-trustMt1: 28px;
+    --r-trustMt2: 0px;
+    --r-blsNameSize: clamp(30px,3vw,44px);
+  }
+}
+@media (min-width: 1100px) {
+  :root {
+    --r-heroCols: minmax(0,7fr) minmax(0,5fr);
+    --r-artS: min(540px, calc((min(100vw - 2 * clamp(16px, 4vw, 48px), 1240px) - 56px) * 5 / 12));
+    --r-artMargin: 0;
+    --r-aoArt: 460px;
+    --r-diagCols: minmax(0,5fr) minmax(0,7fr);
+    --r-diagStick: sticky;
+    --r-cmpCols: minmax(160px,1fr) minmax(0,1.5fr) minmax(0,1.5fr) minmax(190px,1.05fr);
+    --r-cmpGap: 28px;
+    --r-flowDir: row;
+    --r-linkW: 40px;
+    --r-linkH: 1px;
+    --r-linkOrigin: left center;
+    --r-ladderCols: minmax(0,4fr) minmax(0,8fr);
+    --r-trustCols: repeat(3, minmax(0,1fr));
+    --r-lcCols: repeat(7, minmax(0, 1fr));
+    --r-lcGap: 20px;
+    --r-lcDir: column;
+    --r-wbCols: minmax(0,0.85fr) repeat(3, minmax(0,1fr));
+    --r-aoCols: minmax(0,1fr) auto;
+    --r-shotCols: 48px minmax(0,1fr) 264px;
+    --r-drawerBL: 1px solid var(--ao-bd-0);
+    --r-drawerBT: 0;
+    --r-govCols: minmax(0,5fr) minmax(0,7fr);
+    --r-blsCols: minmax(0,1fr) minmax(0,1fr);
+    --r-blsCardCols: repeat(2, minmax(0,1fr));
+    --r-blsLabW: 110px;
+    --r-blsNameDisp: block;
+    --r-linkHide: scaleX(0);
+    --r-lcHide: scaleX(0);
+    --r-trustMt0: 56px;
+    --r-trustMt1: 28px;
+    --r-trustMt2: 0px;
+    --r-blsNameSize: clamp(30px,3vw,44px);
+  }
+}
+.rW { display: none; } .rN { display: contents; } .rD { display: none; }
+@media (min-width: 760px) { .rD { display: contents; } }
+@media (min-width: 1100px) { .rW { display: contents; } .rN { display: none; } }
+
+:root { --cmp-p-personal: flex; --cmp-p-institutional: flex; --cmp-i-personal: flex; --cmp-i-institutional: flex; }
+@media (max-width: 759px) { :root { --cmp-p-institutional: none; --cmp-i-personal: none; } }
+.e1-feed { display: grid; grid-template-columns: 1fr; gap: 8px; }
+@media (min-width: 760px) { .e1-feed { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1100px) { .e1-feed { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.e1-feed-item { display: flex; gap: 12px; min-width: 0; padding: 14px 16px; border-radius: 6px; background: var(--ao-sf-0); border: 1px solid var(--ao-bd-0); }
+@media (max-width: 759px) { .e1-feed-4 { display: none; } }
