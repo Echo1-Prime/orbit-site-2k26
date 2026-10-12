@@ -1,0 +1,284 @@
+/* UseCaseShowcase. Colours come only from the existing --e1-* variables in app/globals.css: no hex,
+   no new variable names. Translucent scrims are built with color-mix over those variables. */
+
+.section {
+  display: block;
+  padding-block: clamp(3rem, 7vw, 5rem);
+  color: var(--e1-white);
+}
+
+.head {
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-inline: 16px;
+  margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.heading {
+  margin: 0 0 0.6rem;
+  font-family: var(--e1-font-display);
+  font-size: clamp(1.75rem, 4.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  color: var(--e1-white);
+}
+
+.intro {
+  margin: 0;
+  max-width: 60ch;
+  font-family: var(--e1-font-body);
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--e1-slate);
+}
+
+/* Under 900 px: a snap row, the next card peeking. */
+.row {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0 16px 8px;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 16px;
+  overscroll-behavior-x: contain;
+}
+
+.card {
+  position: relative;
+  flex: 0 0 min(82%, 24rem);
+  min-width: 0;
+  scroll-snap-align: start;
+  background: var(--e1-panel);
+  border: 1px solid var(--e1-border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.18s ease;
+}
+
+.row[data-count='1'] .card {
+  flex-basis: 100%;
+}
+
+.card:hover,
+.card:focus-within {
+  border-color: var(--e1-ion);
+}
+
+.link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.link:focus-visible {
+  outline: 2px solid var(--e1-ion);
+  outline-offset: -2px;
+  border-radius: 12px;
+}
+
+/* 16:9 box reserved up front, so nothing shifts when the poster or the video arrives. */
+.media {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--e1-void);
+}
+
+.poster,
+.video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The video sits over the poster and fades in once it is really playing. */
+.video {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.video[data-ready='true'] {
+  opacity: 1;
+}
+
+.demo {
+  position: absolute;
+  left: 10px;
+  bottom: 10px;
+  padding: 4px 10px;
+  border: 1px solid var(--e1-ember);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--e1-void) 80%, transparent);
+  font-family: var(--e1-font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--e1-ember);
+}
+
+/* A sibling of the link, never inside it: pressing it cannot follow the link. 44 px target. */
+.pause {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--e1-border-subtle);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--e1-void) 78%, transparent);
+  color: var(--e1-white);
+  cursor: pointer;
+  transition: border-color 0.18s ease, background-color 0.18s ease;
+}
+
+.pause:hover {
+  border-color: var(--e1-ion);
+  background: color-mix(in srgb, var(--e1-void) 92%, transparent);
+}
+
+.pause:focus-visible {
+  outline: 2px solid var(--e1-ion);
+  outline-offset: 2px;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 16px 18px 18px;
+}
+
+.kick {
+  font-family: var(--e1-font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--e1-ember);
+}
+
+.title {
+  font-family: var(--e1-font-display);
+  font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+  color: var(--e1-white);
+}
+
+.rows {
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.rowItem {
+  display: grid;
+  grid-template-columns: 3.75rem minmax(0, 1fr);
+  gap: 0.5rem;
+  align-items: baseline;
+}
+
+.rowItem dt {
+  font-family: var(--e1-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--e1-text-muted);
+}
+
+.rowItem dd {
+  margin: 0;
+  font-family: var(--e1-font-body);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--e1-slate);
+}
+
+.cta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--e1-font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--e1-ion);
+}
+
+/* 900 px and wider: one row, cards share the width (up to five), one card is one wide card. */
+@media (min-width: 900px) {
+  .head {
+    padding-inline: 24px;
+  }
+
+  .row {
+    max-width: 1160px;
+    margin-inline: auto;
+    padding: 0 24px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0, 1fr);
+    overflow: visible;
+    scroll-snap-type: none;
+  }
+
+  .card {
+    flex: initial;
+  }
+
+  /* Three to five cards share the row, so each is narrow: the label sits above its line. */
+  .row[data-count='3'] .rowItem,
+  .row[data-count='4'] .rowItem,
+  .row[data-count='5'] .rowItem {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.1rem;
+  }
+
+  /* One card: one wide card, picture left and words right, so it is not taller than the screen. */
+  .row[data-count='1'] {
+    grid-auto-columns: minmax(0, 1160px);
+    justify-content: center;
+  }
+
+  .row[data-count='1'] .link {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  /* The picture is on the left, so the pause button goes to its top left corner. */
+  .row[data-count='1'] .pause {
+    left: 8px;
+    right: auto;
+  }
+
+  .row[data-count='1'] .title {
+    font-size: clamp(1.5rem, 2.4vw, 2rem);
+  }
+
+  .row[data-count='1'] .body {
+    padding: 22px 28px 26px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .pause,
+  .video {
+    transition: none;
+  }
+}
