@@ -56,6 +56,9 @@
   width: 100%;
   aspect-ratio: 16 / 10;
   min-height: 360px;
+  /* Never taller than the room under the fixed header, so the demo's own controls (top right) are never scrolled out of view. */
+  max-height: calc(100vh - var(--nav-h) - 32px);
+  max-height: calc(100svh - var(--nav-h) - 32px);
   background: var(--void-card);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-md);
