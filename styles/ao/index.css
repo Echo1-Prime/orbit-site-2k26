@@ -1,0 +1,16 @@
+/* Agent Orbit design system v1.1.2, vendored from Echo1-Prime/agent-orbit-design-system
+   main 7c3f510 (tokens, base, core, feedback, navigation). Do not edit the vendored files;
+   site-specific rules live in site.css. fonts.css is not vendored: fonts come from next/font. */
+@import './palette.css';
+@import './typography.css';
+@import './spacing.css';
+@import './radii.css';
+@import './elevation.css';
+@import './motion.css';
+@import './semantic.css';
+@import './theme.css';
+@import './base.css';
+@import './core.css';
+@import './feedback.css';
+@import './navigation.css';
+@import './site.css';

@@ -1,0 +1,21 @@
+/* AGENT ORBIT — SPACING + LAYOUT CONSTANTS. Base unit 4px (v1 spec §1.3). */
+:root {
+  --ao-sp-1:  4px;
+  --ao-sp-2:  8px;
+  --ao-sp-3:  12px;
+  --ao-sp-4:  16px;
+  --ao-sp-5:  20px;
+  --ao-sp-6:  24px;
+  --ao-sp-8:  32px;
+  --ao-sp-10: 40px;
+  --ao-sp-12: 48px;
+  --ao-sp-20: 80px;
+
+  /* ── Fixed chrome ── */
+  --ao-nav-h:          52px;
+  --ao-rail-w:         48px;
+  --ao-rail-w-open:    200px;
+  --ao-notif-w:        264px;
+  --ao-page-max:       1060px;
+  --ao-prose-max:      540px;
+}

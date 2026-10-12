@@ -1,0 +1,25 @@
+/* AGENT ORBIT — ELEVATION
+   There are no drop shadows in this system, only additive light.
+   Multi-pass glow = stacked box-shadow at 3 depths (4px / 12px / 28px). */
+:root {
+  --ao-glow-orbit:   0 0 4px rgba(255,117,21,0.15), 0 0 12px rgba(255,117,21,0.10), 0 0 28px rgba(255,117,21,0.06);
+  --ao-glow-agent:   0 0 3px rgba(155,92,246,0.12), 0 0 10px rgba(155,92,246,0.08), 0 0 24px rgba(155,92,246,0.05);
+  --ao-glow-system:  0 0 2px rgba(52,211,153,0.10), 0 0 8px  rgba(52,211,153,0.06), 0 0 20px rgba(52,211,153,0.04);
+  --ao-glow-stellar: 0 0 3px rgba(76,201,240,0.14), 0 0 10px rgba(76,201,240,0.09), 0 0 24px rgba(76,201,240,0.05);
+  --ao-glow-alert:   0 0 4px rgba(248,113,113,0.18), 0 0 12px rgba(248,113,113,0.12), 0 0 28px rgba(248,113,113,0.07);
+
+  /* Card hover lift — colour-tinted, never neutral black */
+  --ao-lift-orbit:  0 12px 40px rgba(255,117,21,0.07);
+  --ao-lift-agent:  0 12px 40px rgba(155,92,246,0.07);
+  --ao-lift-system: 0 12px 40px rgba(52,211,153,0.07);
+
+  /* Node halo — single-pass, for 5–8px status dots */
+  --ao-halo-orbit:  0 0 10px var(--ao-orbit);
+  --ao-halo-agent:  0 0 8px  var(--ao-agent);
+  --ao-halo-system: 0 0 6px  var(--ao-system);
+
+  /* Glass */
+  --ao-blur-panel: blur(12px); /* @kind other */
+  --ao-blur-nav:   blur(20px); /* @kind other */
+  --ao-blur-deep:  blur(24px); /* @kind other */
+}
