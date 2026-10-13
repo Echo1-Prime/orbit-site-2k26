@@ -11,7 +11,7 @@ const Concierge = dynamic(() => import('./Concierge'), { ssr: false });
 
 // The 2K26 home page brings its own chrome (components/Site/SiteChrome), including the
 // concierge, so the original concierge is skipped there. The product subpages bring the same chrome.
-const SITE_CHROME_PATHS = new Set<string>(['/', '/chrome-preview', ...Object.values(SUBPAGE_SLUG).map((s) => `/${s}`)]);
+const SITE_CHROME_PATHS = new Set<string>(['/', ...Object.values(SUBPAGE_SLUG).map((s) => `/${s}`)]);
 
 export default function ConciergeMount() {
   const pathname = usePathname();

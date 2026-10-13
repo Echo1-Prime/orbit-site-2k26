@@ -22,7 +22,9 @@ export default function SiteHeader({ theme, menuOpen, onToggleMenu, onAsk, onSta
   return (
     <header className={styles.header} data-theme={menuOpen ? 'dark' : theme}>
       <div className={styles.headerInner}>
-        <Link href="/" aria-label="Echo 1 Labs, home" className={styles.brand}>
+        {/* WCAG 2.5.3: the name starts with the text the link shows. The two SVGs read "E1" then "Echo 1 Labs";
+            the space between them (not rendered inside this flex row) keeps those two strings apart. */}
+        <Link href="/" aria-label="E1 Echo 1 Labs, home" className={styles.brand}>
           <svg viewBox="0 0 100 100" width="28" height="28" role="img" aria-label="Echo 1 Labs">
             <rect width="100" height="100" rx="22" className={styles.brandTile} />
             <text
@@ -38,6 +40,7 @@ export default function SiteHeader({ theme, menuOpen, onToggleMenu, onAsk, onSta
               E<tspan className={styles.brandOne}>1</tspan>
             </text>
           </svg>
+          {' '}
           <svg viewBox="0 0 400 72" width="98" height="18" aria-hidden="true">
             <text
               x="0"
