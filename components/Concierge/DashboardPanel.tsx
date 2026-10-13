@@ -5,6 +5,7 @@
 // illustrative so it never reads as live client data.
 
 import { getProduct } from '@/lib/products';
+import { PRODUCT_ROUTE } from '@/lib/subpage-routes';
 import styles from './Concierge.module.css';
 
 export default function DashboardPanel({ slug }: { slug: string }) {
@@ -30,7 +31,7 @@ export default function DashboardPanel({ slug }: { slug: string }) {
           <li key={c.name}><strong>{c.name}.</strong> {c.desc}</li>
         ))}
       </ul>
-      <a href={`/products/${p.slug}`} className="btn btn--primary btn--sm">Open {p.name}</a>
+      <a href={PRODUCT_ROUTE[p.slug] ?? `/products/${p.slug}`} className="btn btn--primary btn--sm">Open {p.name}</a>
     </div>
   );
 }

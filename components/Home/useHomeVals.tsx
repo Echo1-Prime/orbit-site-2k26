@@ -9,23 +9,18 @@ import { useRouter } from 'next/navigation';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { StatusBadge } from '@/components/ao/data/StatusBadge';
 import { ghostProps } from '@/components/Site/ghost';
+import { PRODUCT_NAME_ROUTE } from '@/lib/subpage-routes';
 import { BLS, CMP, FEED, LOG, NODES, SYM, TRUST } from './home-data';
 
 const HERO_CLIP = '/videos/home/hero-titan.mp4';
 const CLIPS = [HERO_CLIP, '', ''];
 const SLIDE_MS = 5000;
 
-/* The handoff's links are .dc.html files; these are the routes that exist today (UNVERIFIED
-   mapping, Josh to confirm). Front Office has no page yet, so it goes to the products index. */
+/* The handoff's links are .dc.html files; each card goes to its keyword-named subpage (lib/subpages.ts).
+   Front Office is the voice agents page (Josh, 2026-10-12). */
 const BLS_ROUTE: Record<string, string> = {
-  Engine: '/products/engine',
-  RevOps: '/products/revops',
-  Broadcast: '/products/broadcast',
-  Signal: '/products/signal',
-  Ledger: '/products/ledger',
-  Titan: '/products/titan',
-  Prime: '/products/prime',
-  'Front Office': '/products',
+  ...PRODUCT_NAME_ROUTE,
+  'Front Office': PRODUCT_NAME_ROUTE['Voice Agents'],
 };
 
 function useIsMobile() {

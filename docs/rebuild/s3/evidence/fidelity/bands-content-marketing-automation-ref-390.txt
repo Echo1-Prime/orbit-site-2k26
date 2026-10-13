@@ -1,0 +1,2 @@
+expr: [{"id":"","label":"Broadcast","h":622},{"id":"","label":"Inside Broadcast","h":692},{"id":"","label":"What Broadcast does","h":592},{"id":"","label":"How it runs","h":856},{"id":"","label":"Next","h":389}]
+dom-text chars: 1495; screenshot: /Users/joshmeunier/code/.worktrees/orbit-site-s3/docs/rebuild/s3/evidence/fidelity/ref-content-marketing-automation-390/screenshot.png

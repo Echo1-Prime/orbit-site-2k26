@@ -1,0 +1,8 @@
+w=375 800 motion=[] automated-lead-generation: expr: "[{\"src\":\"/videos/subpages/engine-hero.mp4#t=0.5\",\"auto\":false,\"preload\":\"metadata\",\"muted\":true,\"aria\":\"true\",\"paused\":true}]"
+w=375 800 motion=[] ai-voice-agents: expr: "[{\"src\":\"/videos/subpages/voice-agents-hero.mp4#t=0.5\",\"auto\":false,\"preload\":\"metadata\",\"muted\":true,\"aria\":\"true\",\"paused\":true}]"
+w=375 800 motion=[--motion] automated-lead-generation: expr: "[{\"src\":\"/videos/subpages/engine-hero.mp4#t=0.5\",\"auto\":false,\"preload\":\"metadata\",\"muted\":true,\"aria\":\"true\",\"paused\":true}]"
+w=375 800 motion=[--motion] ai-voice-agents: expr: "[{\"src\":\"/videos/subpages/voice-agents-hero.mp4#t=0.5\",\"auto\":false,\"preload\":\"metadata\",\"muted\":true,\"aria\":\"true\",\"paused\":true}]"
+w=1440 900 motion=[] automated-lead-generation: expr: "[{\"src\":\"/videos/subpages/engine-hero.mp4#t=0.5\",\"auto\":false,\"preload\":\"metadata\",\"muted\":true,\"aria\":\"true\",\"paused\":true}]"
+w=1440 900 motion=[] ai-voice-agents: expr: "[{\"src\":\"/videos/subpages/voice-agents-hero.mp4#t=0.5\",\"auto\":false,\"preload\":\"metadata\",\"muted\":true,\"aria\":\"true\",\"paused\":true}]"
+w=1440 900 motion=[--motion] automated-lead-generation: expr: "[{\"src\":\"/videos/subpages/engine-hero.mp4\",\"auto\":true,\"preload\":\"auto\",\"muted\":true,\"aria\":\"true\",\"paused\":false}]"
+w=1440 900 motion=[--motion] ai-voice-agents: expr: "[{\"src\":\"/videos/subpages/voice-agents-hero.mp4\",\"auto\":true,\"preload\":\"auto\",\"muted\":true,\"aria\":\"true\",\"paused\":false}]"

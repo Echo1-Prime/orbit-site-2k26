@@ -47,7 +47,16 @@ function OrbitGlyph() {
   );
 }
 
-export function renderOgImage() {
+export interface OgOptions {
+  eyebrow?: string;
+  line1?: string;
+  line2?: string;
+  blurb?: string;
+}
+
+/** The site share card. With no options it is the home card; a subpage passes its own text. */
+export function renderOgImage(o: OgOptions = {}) {
+  const custom = Boolean(o.line1);
   return new ImageResponse(
     (
       <div
@@ -92,20 +101,26 @@ export function renderOgImage() {
           </div>
 
           <div style={{ fontSize: 15, letterSpacing: 4, color: '#FF7515' }}>
-            BUSINESS &amp; MINISTRY LIFECYCLE MANAGEMENT
+            {(o.eyebrow ?? 'Business & Ministry Lifecycle Management').toUpperCase()}
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <div style={{ fontSize: 62, fontWeight: 800, color: '#EEEEF5', letterSpacing: -2, lineHeight: 1.04 }}>
-              Break free from
+          {custom ? (
+            <div style={{ display: 'flex', fontSize: 52, fontWeight: 800, color: '#EEEEF5', letterSpacing: -1.5, lineHeight: 1.08 }}>
+              {o.line1}
             </div>
-            <div style={{ fontSize: 62, fontWeight: 800, color: '#FF7515', letterSpacing: -2, lineHeight: 1.04 }}>
-              business gravity.
+          ) : (
+            <div style={{ display: 'flex', flexDirection: 'column' }}>
+              <div style={{ fontSize: 62, fontWeight: 800, color: '#EEEEF5', letterSpacing: -2, lineHeight: 1.04 }}>
+                Break free from
+              </div>
+              <div style={{ fontSize: 62, fontWeight: 800, color: '#FF7515', letterSpacing: -2, lineHeight: 1.04 }}>
+                business gravity.
+              </div>
             </div>
-          </div>
+          )}
 
-          <div style={{ fontSize: 23, color: 'rgba(238,238,245,0.74)', lineHeight: 1.5, maxWidth: 560 }}>
-            Seven integrated apps. One operating system, run by agents, supervised by you.
+          <div style={{ fontSize: custom ? 21 : 23, color: 'rgba(238,238,245,0.74)', lineHeight: 1.5, maxWidth: 560 }}>
+            {o.blurb ?? 'Seven integrated apps. One operating system, run by agents, supervised by you.'}
           </div>
 
           <div style={{ fontSize: 18, color: 'rgba(238,238,245,0.5)', letterSpacing: 1 }}>echo1labs.com</div>

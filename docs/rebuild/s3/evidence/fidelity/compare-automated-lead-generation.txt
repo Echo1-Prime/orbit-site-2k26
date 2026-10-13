@@ -1,0 +1,29 @@
+width 390: reference 5 bands, new 5 bands
+  PASS band 1 Engine                   ref    622 new    624 diff     +2 px   +0.3%
+  PASS band 2 Inside Engine            ref    734 new    737 diff     +3 px   +0.4%
+  PASS band 3 What Engine does         ref    616 new    616 diff     +0 px   +0.0%
+  PASS band 4 How it runs              ref    856 new    856 diff     +0 px   +0.0%
+  PASS band 5 Next                     ref    389 new    391 diff     +2 px   +0.5%
+  total ref 3217 new 3224 diff +7 px (+0.2%)
+width 760: reference 5 bands, new 5 bands
+  PASS band 1 Engine                   ref    793 new    796 diff     +3 px   +0.4%
+  PASS band 2 Inside Engine            ref    673 new    676 diff     +3 px   +0.4%
+  PASS band 3 What Engine does         ref    472 new    472 diff     +0 px   +0.0%
+  PASS band 4 How it runs              ref    677 new    677 diff     +0 px   +0.0%
+  PASS band 5 Next                     ref    296 new    299 diff     +3 px   +1.0%
+  total ref 2911 new 2920 diff +9 px (+0.3%)
+width 1100: reference 5 bands, new 5 bands
+  PASS band 1 Engine                   ref    514 new    517 diff     +3 px   +0.6%
+  PASS band 2 Inside Engine            ref    715 new    718 diff     +3 px   +0.4%
+  PASS band 3 What Engine does         ref    392 new    392 diff     +0 px   +0.0%
+  PASS band 4 How it runs              ref    600 new    600 diff     +0 px   +0.0%
+  PASS band 5 Next                     ref    337 new    339 diff     +2 px   +0.6%
+  total ref 2558 new 2566 diff +8 px (+0.3%)
+width 1440: reference 5 bands, new 5 bands
+  PASS band 1 Engine                   ref    699 new    701 diff     +2 px   +0.3%
+  PASS band 2 Inside Engine            ref    763 new    766 diff     +3 px   +0.4%
+  PASS band 3 What Engine does         ref    460 new    460 diff     +0 px   +0.0%
+  PASS band 4 How it runs              ref    699 new    699 diff     +0 px   +0.0%
+  PASS band 5 Next                     ref    324 new    326 diff     +2 px   +0.6%
+  total ref 2945 new 2952 diff +7 px (+0.2%)
+PASS: 0 failing item(s), tolerance 8% and 24 px

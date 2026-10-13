@@ -24,8 +24,8 @@ export const NAV_LINKS = [
 ] as const;
 
 export const DEST: Record<DestKey, Dest> = {
-  titan: { eyebrow: 'Build it', title: 'Titan', line: 'Construction Lifecycle Management', route: '/products/titan' },
-  signal: { eyebrow: 'Buy it', title: 'Signal', line: 'M&A Lifecycle Management, starting with deal sourcing', route: '/products/signal' },
+  titan: { eyebrow: 'Build it', title: 'Titan', line: 'Construction Lifecycle Management', route: '/construction-estimating-software' },
+  signal: { eyebrow: 'Buy it', title: 'Signal', line: 'M&A Lifecycle Management, starting with deal sourcing', route: '/ma-deal-sourcing' },
   orbit: { eyebrow: 'Run it', title: 'Agent Orbit', line: 'Operational Lifecycle Management, with you in the chair', route: '/#agent-orbit' },
   pricing: { eyebrow: 'Published', title: 'Pricing', line: 'Everything we charge, on one page', route: '/pricing' },
   cohort: { eyebrow: 'First in', title: 'Founding Cohort', line: 'How the first companies work with us', route: '/founding-cohort' },

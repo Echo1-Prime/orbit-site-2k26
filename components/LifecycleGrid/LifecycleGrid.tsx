@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { PRODUCTS } from '@/lib/products';
+import { PRODUCT_ROUTE } from '@/lib/subpage-routes';
 
 // The 8-stage lifecycle. ENABLE (AI Readiness) is the advisory entry point;
 // the other 7 stages are products with their own pages.
@@ -7,7 +8,7 @@ export default function LifecycleGrid() {
   return (
     <div className="lifecycle-grid">
       {PRODUCTS.map((p) => {
-        const href = p.isAdvisory ? '/ai-readiness' : `/products/${p.slug}`;
+        const href = PRODUCT_ROUTE[p.slug] ?? '/products';
         return (
           <Link
             key={p.slug}

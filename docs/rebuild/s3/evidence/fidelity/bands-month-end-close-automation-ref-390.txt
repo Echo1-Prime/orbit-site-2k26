@@ -1,0 +1,2 @@
+expr: [{"id":"","label":"Ledger","h":938},{"id":"","label":"What Ledger does","h":592},{"id":"","label":"How it runs","h":856},{"id":"","label":"Next","h":389}]
+dom-text chars: 1463; screenshot: /Users/joshmeunier/code/.worktrees/orbit-site-s3/docs/rebuild/s3/evidence/fidelity/ref-month-end-close-automation-390/screenshot.png

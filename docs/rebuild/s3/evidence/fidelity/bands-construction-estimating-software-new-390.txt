@@ -1,0 +1,2 @@
+expr: [{"id":"","label":"Titan","h":848},{"id":"","label":"Inside Titan","h":695},{"id":"","label":"What Titan does","h":616},{"id":"","label":"How it runs","h":856},{"id":"","label":"Next","h":391}]
+dom-text chars: 3470; screenshot: /Users/joshmeunier/code/.worktrees/orbit-site-s3/docs/rebuild/s3/evidence/fidelity/new-construction-estimating-software-390/screenshot.png
