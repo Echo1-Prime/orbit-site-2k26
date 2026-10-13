@@ -227,6 +227,18 @@ bands = [
 FLEET = ('<p style="margin:20px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:var(--ao-f-mono);font-weight:300;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ao-t1)">'
          'Agent Fleet ·<span style="color:var(--ao-tdata)">16</span>agents out of the box ·<span style="color:var(--ao-tdata)">141</span>on demand ·<span style="color:var(--ao-tdata)">11</span>Agent Kits</p>')
 bands = [(n, re.sub(r'<p [^>]*>Agent Fleet ·.*?Agent Kits</p>', lambda m: FLEET, f, flags=re.S) if n == 'orbit' else f) for n, f in bands]
+# Lifecycle diagram (Josh, 2026-10-12: "the center piece and the outer ring are not aligned"): in the handoff the
+# Agent Orbit mark sits at the top of a stacked readout, about 80 px above the rings' centre. The mark now sits
+# alone at the exact centre of the rings and the stage readout moves directly under the diagram, so no ring
+# line runs through copy.
+def bls_centre(f):
+    m = re.search(r'(<div aria-live="polite" style="position:absolute;left:50%;top:50%;transform:translate\(-50%,-50%\);width:min\(52%,300px\);display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px">)\s*(<x-import[^>]*OrbitMark[^>]*></x-import>)(.*?)</div>\s*</div>', f, re.S)
+    assert m, 'bls centre block not found in the handoff'
+    mark = '<div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:grid;place-items:center;pointer-events:none">' + m.group(2) + '</div>'
+    readout = ('<div aria-live="polite" style="display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;width:100%;max-width:300px">'
+               + m.group(3).replace('margin:4px 0 0;', 'margin:0;', 1) + '</div>')
+    return f[:m.start()] + mark + '</div>' + readout + f[m.end():]
+bands = [(n, bls_centre(f) if n == 'bls' else f) for n, f in bands]
 parts = {}
 for n, frag in bands:
     parts[n] = conv(frag, n)
