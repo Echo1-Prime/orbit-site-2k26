@@ -49,6 +49,10 @@ export interface ShowcaseTile {
 
 const TRUCKING_ASSET = '/videos/showcase/trucking-card-fd6d2d4e';
 const OIL_AND_GAS_ASSET = '/videos/showcase/oil-and-gas-card-cbb93bcf';
+/* Real estate development: a 3D walkthrough of a traced site with every name, road label, callout and number removed
+   (Josh, 2026-10-13: anonymized, the walkthrough only, no use-case page). The card links to the full clip. */
+const REAL_ESTATE_ASSET = '/videos/showcase/real-estate-card-3b678692';
+const REAL_ESTATE_FULL = '/videos/showcase/real-estate-walkthrough-3b678692.mp4';
 
 export const showcaseTiles: ShowcaseTile[] = [
   {
@@ -91,5 +95,17 @@ export const showcaseTiles: ShowcaseTile[] = [
     poster: `${OIL_AND_GAS_ASSET}-960.webp`,
     posterSmall: `${OIL_AND_GAS_ASSET}-640.webp`,
     demoLabel: 'Demo data', // written for review
+  },
+  {
+    id: 'real-estate-development',
+    stage: 'build', // UNVERIFIED(inferred: site development precedes build-out; no design file records it)
+    kick: 'Use case · Real estate development', // written for review, same pattern as the other eyebrows
+    title: 'Walk the site before it is built', // written for review
+    ctaLabel: 'Watch the walkthrough →', // written for review
+    href: REAL_ESTATE_FULL,
+    video: `${REAL_ESTATE_ASSET}.mp4`,
+    poster: `${REAL_ESTATE_ASSET}-960.webp`,
+    posterSmall: `${REAL_ESTATE_ASSET}-640.webp`,
+    demoLabel: 'Names removed', // written for review: a traced site, anonymized, with no data shown
   },
 ];
