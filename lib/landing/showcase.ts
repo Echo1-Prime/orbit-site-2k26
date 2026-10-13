@@ -1,5 +1,6 @@
 import { truckingCopy } from './trucking';
 import { oilAndGasCopy } from './oil-and-gas';
+import { trackYourJobsIn3dCopy } from './track-your-jobs-in-3d';
 
 /*
   Use-case showcase cards. Data only: no JSX, no hooks, no logic beyond reading fields.
@@ -49,6 +50,13 @@ export interface ShowcaseTile {
 
 const TRUCKING_ASSET = '/videos/showcase/trucking-card-fd6d2d4e';
 const OIL_AND_GAS_ASSET = '/videos/showcase/oil-and-gas-card-cbb93bcf';
+/* Real estate development: a 3D walkthrough of a traced site with every name, road label, callout and number removed
+   (Josh, 2026-10-13: anonymized, the walkthrough only, no use-case page). The card links to the full clip. */
+const REAL_ESTATE_ASSET = '/videos/showcase/real-estate-card-3b678692';
+const REAL_ESTATE_FULL = '/videos/showcase/real-estate-walkthrough-3b678692.mp4';
+/* Track your jobs in 3D: a caption-free clip of the live build-it show (?t=62, every page element hidden but the
+   scene canvas), captured 2026-10-13; the hex is the sha-256 prefix of the show's served HTML. */
+const JOBS_3D_ASSET = '/videos/showcase/track-your-jobs-in-3d-card-dcd40d13';
 
 export const showcaseTiles: ShowcaseTile[] = [
   {
@@ -91,5 +99,48 @@ export const showcaseTiles: ShowcaseTile[] = [
     poster: `${OIL_AND_GAS_ASSET}-960.webp`,
     posterSmall: `${OIL_AND_GAS_ASSET}-640.webp`,
     demoLabel: 'Demo data', // written for review
+  },
+  {
+    id: 'real-estate-development',
+    stage: 'build', // UNVERIFIED(inferred: site development precedes build-out; no design file records it)
+    kick: 'Use case · Real estate development', // same pattern as the other eyebrows
+    // Header and rows from the live entitlement screen, read 2026-10-13, anonymized:
+    // no client, firm, town, road, site count or figure (Josh, 2026-10-13: outcome wording only).
+    // Title: the page h1, lines one and two, verbatim: "Every plan. Every takeoff. / Every code. Every follow-up."
+    title: 'Every plan. Every takeoff. Every code. Every follow-up.',
+    // Step 1 "Plan lands: A new revision drops in. The sheet is parsed ... exactly as drawn." and
+    // "the architect's checklist is the question set."
+    in: 'Plan sets, site sheets and the architect’s checklist, revision by revision.',
+    // Level 1 "Every site tied to its adopting jurisdiction", "The architect's checklist, cited item by item",
+    // h1 "Every takeoff", h2 "Follow-ups, drafted and ready to send".
+    agent: 'Ties each site to its jurisdiction, cites each code item, reads the takeoff and drafts the follow-ups.',
+    // The h1's lead line without its counts: "... have a cited finding. The rest are left open and named, each with
+    // who can answer it."
+    you: 'Every item gets a cited finding, or stays open and named with who can answer it.',
+    ctaLabel: 'Walk the site in 3D →', // the h1's last line, "Walk each site in 3D.", for the one site in the clip
+    href: REAL_ESTATE_FULL,
+    video: `${REAL_ESTATE_ASSET}.mp4`,
+    poster: `${REAL_ESTATE_ASSET}-960.webp`,
+    posterSmall: `${REAL_ESTATE_ASSET}-640.webp`,
+    demoLabel: 'Names removed', // a traced site, anonymized, with no data shown
+  },
+  {
+    id: trackYourJobsIn3dCopy.slug,
+    // 'build': Josh's pillar definitions (vault orbit-brand.md, 2026-10-08): Build it = Construction Lifecycle Management.
+    stage: 'build',
+    kick: trackYourJobsIn3dCopy.eyebrow,
+    title: trackYourJobsIn3dCopy.headline, // Josh, 2026-10-13: "Track your jobs in 3D"
+    // DRAFT-FOR-JOSH. Drawn from the show's trades and its sample change order and punch list.
+    in: 'Drawings, deliveries, tickets and field changes, from the pad to the punch list.',
+    // DRAFT-FOR-JOSH. Drawn from the show's lines "Every trade and material tracked." and "Every product tracked with
+    // every follow-up written."
+    agent: 'Tracks every trade and material against the schedule and drafts each change order and follow-up.',
+    you: trackYourJobsIn3dCopy.closing, // verbatim: "Supervised by you."
+    ctaLabel: 'See Construction →', // written for review, same pattern as "See Trucking →"
+    href: `/use-cases/${trackYourJobsIn3dCopy.slug}`,
+    video: `${JOBS_3D_ASSET}.mp4`,
+    poster: `${JOBS_3D_ASSET}-960.webp`,
+    posterSmall: `${JOBS_3D_ASSET}-640.webp`,
+    demoLabel: 'Demo data', // the show's events, change orders, punch items and budget figures are simulated
   },
 ];
