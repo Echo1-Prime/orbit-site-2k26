@@ -43,7 +43,8 @@ RESP = {  # name: (mobile <760, tablet 760-1099, wide >=1100)
 COND = {'shotRail': 'rW', 'showReadout': 'rW', 'lcH': 'rW', 'lcV': 'rN', 'cmpHead': 'rD'}
 ALWAYS = {'swOn': 'true', 'linesReady': 'linesReady'}
 
-TAG = re.compile(r'<(/?)([a-zA-Z][\w:-]*)((?:\s+[^\s=>/]+(?:\s*=\s*(?:"[^"]*"|\'[^\']*\'|[^\s>]+))?)*)\s*(/?)>|<!--.*?-->', re.S)
+# The attribute group is possessive (*+, Python 3.11+) so a malformed tag fails fast instead of backtracking exponentially (CodeQL py/redos).
+TAG = re.compile(r'<(/?)([a-zA-Z][\w:-]*)((?:\s+[^\s=>/]+(?:\s*=\s*(?:"[^"]*"|\'[^\']*\'|[^\s>]+))?)*+)\s*(/?)>|<!--.*?-->', re.S)
 ATTR = re.compile(r'([^\s=>/]+)(?:\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s>]+)))?')
 VOID = {'input', 'img', 'br', 'hr'}
 BIND = re.compile(r'\{\{\s*(.*?)\s*\}\}')
