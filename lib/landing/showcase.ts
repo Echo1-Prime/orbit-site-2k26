@@ -1,4 +1,5 @@
 import { truckingCopy } from './trucking';
+import { oilAndGasCopy } from './oil-and-gas';
 
 /*
   Use-case showcase cards. Data only: no JSX, no hooks, no logic beyond reading fields.
@@ -12,6 +13,9 @@ import { truckingCopy } from './trucking';
     for its numbers; it sits in HTML on every card so the preview never reads as client proof.
   - UNVERIFIED(stage): 'run' was inferred, no design file or Airtable row records Trucking's stage.
     Josh or the layout session confirms it, or changes this one field.
+  - Oil and Gas follows the same pattern: id, kick, title and href come from oilAndGasCopy
+    (lib/landing/oil-and-gas.ts), you is oilAndGasCopy.closing verbatim. Lines WRITTEN for review: ctaLabel
+    ("See Oil and Gas →") and demoLabel ("Demo data"). Its stage 'run' is likewise UNVERIFIED(inferred).
   - in and agent are DRAFT-FOR-JOSH (Josh's rule 2026-10-12: draft only where no existing field fits, grounded in
     the demo's own strings, no figures, names, results or urgency). Each names its source string below.
     you is truckingCopy.closing, verbatim. The type keeps all three optional, and the card shows a row only
@@ -44,6 +48,7 @@ export interface ShowcaseTile {
 }
 
 const TRUCKING_ASSET = '/videos/showcase/trucking-card-fd6d2d4e';
+const OIL_AND_GAS_ASSET = '/videos/showcase/oil-and-gas-card-cbb93bcf';
 
 export const showcaseTiles: ShowcaseTile[] = [
   {
@@ -64,6 +69,27 @@ export const showcaseTiles: ShowcaseTile[] = [
     video: `${TRUCKING_ASSET}.mp4`,
     poster: `${TRUCKING_ASSET}-960.webp`,
     posterSmall: `${TRUCKING_ASSET}-640.webp`,
+    demoLabel: 'Demo data', // written for review
+  },
+  {
+    id: oilAndGasCopy.slug,
+    stage: 'run', // UNVERIFIED(inferred, as for Trucking; no design file records it)
+    kick: oilAndGasCopy.eyebrow,
+    title: oilAndGasCopy.headline,
+    // DRAFT-FOR-JOSH. Drawn from locations bay, lease pad and office `today`: "The driver hands over a run ticket that
+    // is keyed in later." / "The walk is written on paper and carried to the office." / "Paper from the pad, the bay
+    // and the skid lands on one desk."
+    in: 'Run tickets, gauge readings and walk sheets, from the lease pad to the field office.',
+    // DRAFT-FOR-JOSH. Drawn from bay `orbit`: "The run ticket is read once and matched to its load.", lease pad `orbit`:
+    // "Each reading is logged against its tank as it is entered." and office `orbit`: "The daily record fills as the
+    // day's papers arrive."
+    agent: 'Reads each run ticket once, logs each reading against its tank, and fills the daily record.',
+    you: oilAndGasCopy.closing, // verbatim: "Supervised by you."
+    ctaLabel: 'See Oil and Gas →', // written for review
+    href: `/use-cases/${oilAndGasCopy.slug}`,
+    video: `${OIL_AND_GAS_ASSET}.mp4`,
+    poster: `${OIL_AND_GAS_ASSET}-960.webp`,
+    posterSmall: `${OIL_AND_GAS_ASSET}-640.webp`,
     demoLabel: 'Demo data', // written for review
   },
 ];
