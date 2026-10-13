@@ -1,0 +1,2 @@
+expr: [{"id":"","label":"Signal","h":1078},{"id":"","label":"What Signal does","h":1005},{"id":"","label":"How it runs","h":856},{"id":"","label":"Next","h":391}]
+dom-text chars: 3814; screenshot: /Users/joshmeunier/code/.worktrees/orbit-site-s3/docs/rebuild/s3/evidence/fidelity/new-ma-deal-sourcing-390/screenshot.png

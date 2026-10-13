@@ -12,7 +12,7 @@ const PRODUCTS = [
     headline: 'Go-to-market that runs itself.',
     sub: 'Engine builds the list, runs the outreach, and books the meetings. You show up to the conversations that matter.',
     video: '/videos/engine.mp4',
-    href: '/products/engine',
+    href: '/automated-lead-generation',
   },
   {
     key: 'revops',
@@ -21,7 +21,7 @@ const PRODUCTS = [
     headline: 'Revenue operations without the ops.',
     sub: 'One agentic engine runs qualification, forecasting, and reconciliation while your team stays on the conversations that close.',
     video: '/videos/lead-gen-network.mp4',
-    href: '/products/revops',
+    href: '/crm-automation',
   },
   {
     key: 'broadcast',
@@ -30,7 +30,7 @@ const PRODUCTS = [
     headline: 'Content that ships on schedule.',
     sub: 'SEO, content, social, and paid across every channel, on brand, without a marketing team.',
     video: '/videos/broadcast.mp4',
-    href: '/products/broadcast',
+    href: '/content-marketing-automation',
   },
   {
     key: 'ledger',
@@ -39,7 +39,7 @@ const PRODUCTS = [
     headline: 'The agentic CFO, without the hire.',
     sub: 'Live cash flow, ROI, and unit economics on one dashboard you can trust, past the bookkeeper and before the full-time CFO.',
     video: '/videos/ledger.mp4',
-    href: '/products/ledger',
+    href: '/month-end-close-automation',
   },
   {
     key: 'titan',
@@ -48,7 +48,7 @@ const PRODUCTS = [
     headline: 'Documents that process themselves.',
     sub: 'Classify, extract, and route every document. You review outcomes, not paperwork.',
     video: '/videos/titan.mp4',
-    href: '/products/titan',
+    href: '/construction-estimating-software',
   },
   {
     key: 'prime',
@@ -57,7 +57,7 @@ const PRODUCTS = [
     headline: 'Your business. One layer. Full view.',
     sub: 'Every agent reports to Prime. Every decision that needs you surfaces here, and only here.',
     video: '/videos/prime.mp4',
-    href: '/products/prime',
+    href: '/ai-agent-governance',
   },
 ];
 

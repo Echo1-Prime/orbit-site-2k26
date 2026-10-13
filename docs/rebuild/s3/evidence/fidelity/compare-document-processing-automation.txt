@@ -1,0 +1,13 @@
+width 390: reference 1 bands, new 1 bands
+  PASS band 1 Information · Info manag ref    787 new    781 diff     -6 px   -0.8%
+  total ref 787 new 781 diff -6 px (-0.8%)
+width 760: reference 1 bands, new 1 bands
+  PASS band 1 Information · Info manag ref   1098 new   1101 diff     +3 px   +0.3%
+  total ref 1098 new 1101 diff +3 px (+0.3%)
+width 1100: reference 1 bands, new 1 bands
+  PASS band 1 Information · Info manag ref    644 new    640 diff     -4 px   -0.6%
+  total ref 644 new 640 diff -4 px (-0.6%)
+width 1440: reference 1 bands, new 1 bands
+  PASS band 1 Information · Info manag ref    800 new    800 diff     +0 px   +0.0%
+  total ref 800 new 800 diff +0 px (+0.0%)
+PASS: 0 failing item(s), tolerance 8% and 24 px

@@ -1,0 +1,2 @@
+expr: {"axe":"4.14.0","violations":["color-contrast:serious:6","label-content-name-mismatch:serious:2"],"incomplete":["color-contrast","label-content-name-mismatch"]}
+dom-text chars: 3308; screenshot: docs/rebuild/s3/evidence/axe-crm-automation/screenshot.png

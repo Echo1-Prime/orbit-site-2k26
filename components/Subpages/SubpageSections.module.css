@@ -1,0 +1,227 @@
+/* Sections added around the generated handoff bands: the answer block, the buyer questions and the link block.
+   Tokens only (design system v1.1.2); sizes follow the handoff's own band styles. */
+
+.dark {
+  background: var(--ao-void);
+  border-top: 1px solid var(--ao-bd-0);
+}
+
+.light {
+  background: var(--ao-bg-page);
+  color: var(--ao-t0);
+}
+
+.inner {
+  max-width: 1336px;
+  margin: 0 auto;
+  padding: clamp(48px, 7vw, 96px) clamp(16px, 4vw, 48px);
+}
+
+.eyebrow {
+  margin: 0 0 22px;
+  font-family: var(--ao-f-mono);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ao-t1);
+}
+
+.h2 {
+  margin: 0;
+  max-width: 26ch;
+  font-family: var(--ao-f-display);
+  font-weight: 300;
+  font-size: clamp(28px, 3.4vw, 48px);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: var(--ao-t0);
+  text-wrap: balance;
+}
+
+.answer {
+  margin: 22px 0 0;
+  max-width: 64ch;
+  font-size: clamp(16px, 1.4vw, 19px);
+  line-height: 1.6;
+  color: var(--ao-t1);
+}
+
+.meta {
+  margin: 24px 0 0;
+  font-family: var(--ao-f-mono);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ao-t1);
+}
+
+.soon {
+  display: inline-block;
+  margin-left: 12px;
+  padding: 3px 10px;
+  border: 1px solid var(--ao-bd-1);
+  border-radius: var(--ao-r-pill);
+  color: var(--ao-orbit);
+}
+
+.qaGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  gap: clamp(24px, 3vw, 48px);
+  margin-top: clamp(28px, 4vw, 48px);
+}
+
+.qa {
+  border-top: 1px solid var(--ao-bd-1);
+  padding-top: 18px;
+}
+
+.q {
+  margin: 0;
+  font-family: var(--ao-f-display);
+  font-weight: 300;
+  font-size: clamp(20px, 1.8vw, 26px);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--ao-t0);
+}
+
+.a {
+  margin: 10px 0 0;
+  max-width: 52ch;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ao-t1);
+}
+
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 10px;
+  margin: 0 0 40px;
+  padding: 0;
+  list-style: none;
+  font-family: var(--ao-f-mono);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ao-t1);
+}
+
+.crumbs li + li::before {
+  content: '/';
+  margin-right: 10px;
+  color: var(--ao-bd-2);
+}
+
+.link {
+  color: var(--ao-t1);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ao-bd-1);
+}
+
+.link:hover {
+  color: var(--ao-t0);
+  border-bottom-color: var(--ao-orbit);
+}
+
+.link:focus-visible,
+.relLink:focus-visible {
+  outline: 2px solid var(--ao-orbit);
+  outline-offset: 3px;
+}
+
+.relList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 0 40px;
+  margin: 28px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.relLink {
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+  border-bottom: 1px solid var(--ao-bd-0);
+  color: var(--ao-t0);
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.relLink:hover {
+  color: var(--ao-orbit);
+}
+
+.site {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 28px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+}
+
+.footer {
+  max-width: 1336px;
+  margin: 0 auto;
+  padding: 32px clamp(16px, 4vw, 48px) calc(40px + env(safe-area-inset-bottom));
+  border-top: 1px solid var(--ao-bd-0);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px 32px;
+  color: var(--ao-t1);
+}
+
+.footer p {
+  margin: 0;
+  font-family: var(--ao-f-mono);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.footer ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--ao-t1);
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--ao-t0);
+}
+
+.footer a:focus-visible {
+  outline: 2px solid var(--ao-orbit);
+  outline-offset: 3px;
+}
+
+.sub {
+  margin: 40px 0 0;
+  font-family: var(--ao-f-mono);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ao-t1);
+}

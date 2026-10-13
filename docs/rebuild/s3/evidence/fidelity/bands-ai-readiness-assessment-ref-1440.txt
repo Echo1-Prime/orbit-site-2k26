@@ -1,0 +1,2 @@
+expr: [{"id":"","label":"AI Readiness","h":729},{"id":"","label":"What AI Readiness does","h":460},{"id":"","label":"How it runs","h":699},{"id":"","label":"Next","h":324}]
+dom-text chars: 1549; screenshot: /Users/joshmeunier/code/.worktrees/orbit-site-s3/docs/rebuild/s3/evidence/fidelity/ref-ai-readiness-assessment-1440/screenshot.png

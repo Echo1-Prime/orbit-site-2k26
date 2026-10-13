@@ -107,7 +107,16 @@ def style_obj(st, fors):
 def attrs_of(raw):
     return [(m.group(1), m.group(2) if m.group(2) is not None else (m.group(3) if m.group(3) is not None else (m.group(4) if m.group(4) is not None else None))) for m in ATTR.finditer(raw)]
 
-ROUTE = {'/titan': '/products/titan', '/signal': '/products/signal', '/agent-orbit': '/#agent-orbit'}
+# Handoff links are .dc.html files or short paths; each product goes to its keyword-named subpage
+# (lib/subpage-routes.ts). The seven footer product links were left as .dc.html names before S3.
+ROUTE = {'/titan': '/construction-estimating-software', '/signal': '/ma-deal-sourcing', '/agent-orbit': '/#agent-orbit',
+         'Echo%201%20Labs%20Engine.dc.html': '/automated-lead-generation',
+         'Echo%201%20Labs%20RevOps.dc.html': '/crm-automation',
+         'Echo%201%20Labs%20Broadcast.dc.html': '/content-marketing-automation',
+         'Echo%201%20Labs%20Signal.dc.html': '/ma-deal-sourcing',
+         'Echo%201%20Labs%20Ledger.dc.html': '/month-end-close-automation',
+         'Echo%201%20Labs%20Titan.dc.html': '/construction-estimating-software',
+         'Echo%201%20Labs%20Prime.dc.html': '/ai-agent-governance'}
 
 def conv_attrs(raw, fors, pfx):
     out = []; hover = None; focus = None
@@ -212,9 +221,10 @@ bands = [
 ]
 # [STAT:*] fleet-count tokens are unverified placeholders in the handoff (README open item 6):
 # the whole line is omitted until Josh supplies verified counts.
-# Josh, 2026-10-12: 16 agents out of the box per client, 141 to upgrade to (matches the live /orbit-info page).
+# Josh, 2026-10-12: 16 agents out of the box per client, 141 to upgrade to (matches the live /orbit-info page),
+# and 11 Agent Kits (Josh, 2026-10-12; /orbit-info updated from seven to eleven in the same change).
 FLEET = ('<p style="margin:20px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:var(--ao-f-mono);font-weight:300;font-size:10.5px;letter-spacing:0.14em;text-transform:uppercase;color:var(--ao-t1)">'
-         'Agent Fleet ·<span style="color:var(--ao-tdata)">16</span>agents out of the box ·<span style="color:var(--ao-tdata)">141</span>on demand</p>')
+         'Agent Fleet ·<span style="color:var(--ao-tdata)">16</span>agents out of the box ·<span style="color:var(--ao-tdata)">141</span>on demand ·<span style="color:var(--ao-tdata)">11</span>Agent Kits</p>')
 bands = [(n, re.sub(r'<p [^>]*>Agent Fleet ·.*?Agent Kits</p>', lambda m: FLEET, f, flags=re.S) if n == 'orbit' else f) for n, f in bands]
 parts = {}
 for n, frag in bands:
