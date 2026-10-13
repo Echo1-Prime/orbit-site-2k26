@@ -62,7 +62,7 @@ The best-practices 96 is `errors-in-console`: the Google Analytics and Google Ad
 
 ## Concierge
 
-On `/` and on `/automated-lead-generation` the launcher opens the panel (`aria-expanded=true`), a typed question gets an answer ("What does this cost?" returns the pricing answer, an off-topic question returns "I do not know that one... A person at Echo 1 Labs can answer it properly"), the input keeps focus, and Escape closes it. **These answers are scripted**: `components/Site/useConcierge.ts` calls the local `answer()` in `components/Site/chrome-data.ts` (its own comment says "swap it for a service later") and made no request to `/api/concierge/chat`. The old concierge that does call the model is skipped on `/` and the ten pages. Decision 4.
+On `/` and on `/automated-lead-generation` the launcher opens the panel (`aria-expanded=true`), a typed question gets an answer ("What does this cost?" returns the pricing answer, an off-topic question returns "I do not know that one... A person at Echo 1 Labs can answer it properly"), the input keeps focus, and Escape closes it. **These answers are scripted**: `components/Site/useConcierge.ts` calls the local `answer()` in `components/Site/chrome-data.ts` (its own comment says "swap it for a service later") and made no request to `/api/concierge/chat`. The model-backed concierge is skipped on `/` and the ten pages. Decision 4.
 
 ## Decisions needed (Josh)
 
@@ -73,7 +73,7 @@ On `/` and on `/automated-lead-generation` the launcher opens the panel (`aria-e
    - `/pricing` (an older page): white text on the orange "most popular" chip 2.68:1 and grey `#86868E` on `#271F1E` 4.46:1.
 2. **Launcher name.** The repetitive spoken name exists because the ring prints the phrase twice. Cleaner: print it once (a wider letter spacing on the ring) and name the button "Ask Agent Orbit". That changes the design system component's look; your call.
 3. **Focus ring.** Most chrome controls (skip link, brand, nav links, buttons, launcher) show a 1 px `rgba(255,255,255,0.22)` outline. On the dark bands that is faint; on the white bands it is close to invisible. The showcase links already use a 2 px orange outline. A ring that holds 3:1 on both band colours needs two tones (an orange outline plus a light or dark halo). Not changed.
-4. **Concierge on promotion.** Promoting `dev-from-main` puts the scripted concierge on `/` and the ten pages. If the live home currently answers with the model, that is a capability step back. Confirm which you want before S5, or ask for the chrome to call `/api/concierge/chat` (an `api/**`-adjacent change, halt item, its own row).
+4. **Scripted concierge on the new pages.** The chrome's concierge answers from a local script, not the model. It is already live on `/` (read 2026-10-12: `origin/main` has `components/Site` and the live home page carries `SiteChrome`), so promotion adds it to the ten product pages. The model-backed concierge stays on the other routes. Confirm that is what you want on the ten pages; if not, wiring the chrome to `/api/concierge/chat` is its own row (an `api/**`-adjacent change, a halt item).
 5. **Carried from S3** (unchanged): keyword h1 (`recjHMu8joyDQGcSp`), "software" in the Titan slug and title, Info Management and Voice Agents on `/products`, AI Readiness facts, AI crawler rules, removal of the old `/products/[slug]` and `/ai-readiness` files.
 
 ## Out of this PR's reach
