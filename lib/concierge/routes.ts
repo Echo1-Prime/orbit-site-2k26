@@ -1,6 +1,7 @@
 // Allowlisted destinations for the navigateTo tool. The agent can never route
 // to an arbitrary URL, only these known site paths (prompt-injection guard).
 import { PRODUCT_SLUGS } from '@/lib/products';
+import { SUBPAGE_SLUG } from '@/lib/subpage-routes';
 
 export const NAV_ROUTES = [
   '/',
@@ -9,6 +10,8 @@ export const NAV_ROUTES = [
   '/about',
   '/contact',
   ...PRODUCT_SLUGS.map((s) => `/products/${s}`),
+  // Keyword-named product subpages (the old /products/[slug] URLs above redirect to these).
+  ...Object.values(SUBPAGE_SLUG).map((s) => `/${s}`),
 ] as const;
 
 export type NavRoute = (typeof NAV_ROUTES)[number];

@@ -1,6 +1,8 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
 import { PRODUCTS } from '@/lib/products';
+import { SUBPAGES } from '@/lib/subpages';
+import { PRODUCT_ROUTE } from '@/lib/subpage-routes';
 import { pageMetadata, breadcrumbSchema } from '@/lib/seo';
 import JsonLd from '@/components/JsonLd';
 
@@ -36,7 +38,7 @@ export default function ProductsPage() {
 
           <div className="stack-rows">
             {PRODUCTS.map((p) => {
-              const href = p.isAdvisory ? '/ai-readiness' : `/products/${p.slug}`;
+              const href = PRODUCT_ROUTE[p.slug] ?? '/products';
               const cta = p.isAdvisory ? 'Learn more' : p.comingSoon ? 'Coming soon' : 'Explore';
               return (
                 <div key={p.slug} className="stack-row">
@@ -53,6 +55,29 @@ export default function ProductsPage() {
                 </div>
               );
             })}
+          </div>
+
+          <div className="section-header" style={{ marginTop: '4rem' }}>
+            <h2 className="display-md">Also from Echo 1 Labs</h2>
+            <p className="body-lg" style={{ maxWidth: '560px' }}>
+              Two capabilities that run alongside the products: answering calls and handling paperwork.
+            </p>
+          </div>
+          <div className="stack-rows">
+            {SUBPAGES.filter((s) => s.key === 'voiceAgents' || s.key === 'infoManagement').map((s) => (
+              <div key={s.slug} className="stack-row">
+                <div>
+                  <div className="lifecycle-cell__stage">{s.category}</div>
+                  <div className="lifecycle-cell__name">{s.name}</div>
+                </div>
+                <p className="stack-row__desc">{s.description}</p>
+                <div>
+                  <Link href={`/${s.slug}`} className="btn btn--sm btn--ghost">
+                    {s.linkLabel}
+                  </Link>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

@@ -1,5 +1,5 @@
 // Canonical site + organization constants. Single source for SEO, JSON-LD, footer.
-export const SITE_URL = 'https://echo1labs.com';
+export const SITE_URL = 'https://www.echo1labs.com';
 export const SITE_NAME = 'Echo 1 Labs';
 export const LEGAL_ENTITY = 'Echo 1 Labs LLC';
 export const SITE_TAGLINE = 'Break free from business gravity.';

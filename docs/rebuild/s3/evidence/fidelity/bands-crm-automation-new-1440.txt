@@ -1,0 +1,2 @@
+expr: [{"id":"","label":"RevOps","h":733},{"id":"","label":"What RevOps does","h":460},{"id":"","label":"How it runs","h":699},{"id":"","label":"Next","h":326}]
+dom-text chars: 3395; screenshot: /Users/joshmeunier/code/.worktrees/orbit-site-s3/docs/rebuild/s3/evidence/fidelity/new-crm-automation-1440/screenshot.png

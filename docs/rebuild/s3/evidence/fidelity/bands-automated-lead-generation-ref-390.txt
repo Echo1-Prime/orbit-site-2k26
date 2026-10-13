@@ -1,0 +1,2 @@
+expr: [{"id":"","label":"Engine","h":622},{"id":"","label":"Inside Engine","h":734},{"id":"","label":"What Engine does","h":616},{"id":"","label":"How it runs","h":856},{"id":"","label":"Next","h":389}]
+dom-text chars: 1601; screenshot: /Users/joshmeunier/code/.worktrees/orbit-site-s3/docs/rebuild/s3/evidence/fidelity/ref-automated-lead-generation-390/screenshot.png

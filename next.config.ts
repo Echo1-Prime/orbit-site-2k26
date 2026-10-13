@@ -1,4 +1,10 @@
 import type { NextConfig } from 'next';
+import { OLD_PATHS, SUBPAGE_SLUG } from './lib/subpage-routes';
+
+/* Every live URL that a subpage replaces answers with one permanent redirect to its new route. */
+const subpageRedirects = (Object.keys(SUBPAGE_SLUG) as (keyof typeof SUBPAGE_SLUG)[]).flatMap((key) =>
+  OLD_PATHS[key].map((source) => ({ source, destination: `/${SUBPAGE_SLUG[key]}`, permanent: true })),
+);
 
 const securityHeaders = [
   { key: 'Strict-Transport-Security', value: 'max-age=63072000; includeSubDomains; preload' },
@@ -32,9 +38,7 @@ const nextConfig: NextConfig = {
       { source: '/smb/:slug*', destination: '/products', permanent: false },
       { source: '/mid-market/:slug*', destination: '/products', permanent: false },
       { source: '/journal/:slug*', destination: '/', permanent: false },
-      { source: '/quiz', destination: '/ai-readiness', permanent: false },
-      { source: '/ai-readiness-quiz', destination: '/ai-readiness', permanent: false },
-      { source: '/ai-readiness-assessment', destination: '/ai-readiness', permanent: false },
+      ...subpageRedirects,
     ];
   },
 };

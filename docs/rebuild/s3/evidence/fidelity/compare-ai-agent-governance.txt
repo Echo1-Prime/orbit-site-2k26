@@ -1,0 +1,25 @@
+width 390: reference 4 bands, new 4 bands
+  PASS band 1 Prime                    ref   1015 new   1020 diff     +5 px   +0.5%
+  PASS band 2 What Prime does          ref    592 new    592 diff     +0 px   +0.0%
+  PASS band 3 How it runs              ref    856 new    856 diff     +0 px   +0.0%
+  PASS band 4 Next                     ref    389 new    391 diff     +2 px   +0.5%
+  total ref 2852 new 2859 diff +7 px (+0.2%)
+width 760: reference 4 bands, new 4 bands
+  PASS band 1 Prime                    ref    892 new    897 diff     +5 px   +0.6%
+  PASS band 2 What Prime does          ref    448 new    448 diff     +0 px   +0.0%
+  PASS band 3 How it runs              ref    677 new    677 diff     +0 px   +0.0%
+  PASS band 4 Next                     ref    296 new    299 diff     +3 px   +1.0%
+  total ref 2313 new 2321 diff +8 px (+0.3%)
+width 1100: reference 4 bands, new 4 bands
+  PASS band 1 Prime                    ref    678 new    682 diff     +4 px   +0.6%
+  PASS band 2 What Prime does          ref    392 new    392 diff     +0 px   +0.0%
+  PASS band 3 How it runs              ref    600 new    600 diff     +0 px   +0.0%
+  PASS band 4 Next                     ref    337 new    339 diff     +2 px   +0.6%
+  total ref 2007 new 2013 diff +6 px (+0.3%)
+width 1440: reference 4 bands, new 4 bands
+  PASS band 1 Prime                    ref    729 new    733 diff     +4 px   +0.5%
+  PASS band 2 What Prime does          ref    460 new    460 diff     +0 px   +0.0%
+  PASS band 3 How it runs              ref    699 new    699 diff     +0 px   +0.0%
+  PASS band 4 Next                     ref    324 new    326 diff     +2 px   +0.6%
+  total ref 2212 new 2218 diff +6 px (+0.3%)
+PASS: 0 failing item(s), tolerance 8% and 24 px

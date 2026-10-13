@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: revopsCopy.seoTitle,
   description: revopsCopy.seoDesc,
   robots: { index: false, follow: true },
-  alternates: { canonical: '/products/revops' },
+  alternates: { canonical: '/crm-automation' },
   openGraph: {
     title: revopsCopy.seoTitle,
     description: revopsCopy.seoDesc,

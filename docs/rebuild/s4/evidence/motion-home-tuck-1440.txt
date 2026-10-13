@@ -1,0 +1,2 @@
+expr: {"max":9639,"mismatch":[],"tucked":["9250:final"],"ctas":["hero","final"]}
+dom-text chars: 9299; screenshot: /private/tmp/claude-501/-Users-joshmeunier/d0562ac7-2570-4f39-98dc-3c29a358bb86/scratchpad/run/m-tuck-d/screenshot.png

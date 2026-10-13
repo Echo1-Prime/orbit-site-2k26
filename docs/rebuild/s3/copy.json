@@ -1,0 +1,735 @@
+{
+ "/Users/joshmeunier/Downloads/design_handoff_echo1labs_site/reference/Echo 1 Labs Engine.dc.html": [
+  {
+   "id": "",
+   "label": "Engine",
+   "lines": [
+    "01 · Go-to-market · Engine",
+    "Find the accounts worth chasing.",
+    "Engine finds the accounts worth chasing and opens the conversation. Every message waits for your approval.",
+    "Start the conversation",
+    "{{ vid }}"
+   ]
+  },
+  {
+   "id": "",
+   "label": "Inside Engine",
+   "lines": [
+    "Inside Engine · Illustrative, not live data",
+    "ENGINE · TARGET ACCOUNTS · PERMIT FEED",
+    "ACCOUNT · SOURCE",
+    "STATUS",
+    "Ridgeline Storage · 3 new sites",
+    "PERMITS · HAYS CO.",
+    "REVIEW",
+    "Brazos Ag Supply · equipment barn",
+    "CRM · REPEAT BUYER",
+    "✓ FIT",
+    "Lakeway Fellowship · 12,000 sf hall",
+    "WEB · 6 PRICING VISITS",
+    "⟳ AGENT",
+    "Permit · 40-bay carport",
+    "PERMITS · BEXAR CO.",
+    "✓ FIT",
+    "Coastal Fleet · service shop",
+    "CRM · CLOSED LOST 2025",
+    "WATCH"
+   ]
+  },
+  {
+   "id": "",
+   "label": "What Engine does",
+   "lines": [
+    "What Engine does",
+    "01",
+    "Target account discovery",
+    "Permits, CRM history and web intent read against your ideal customer.",
+    "02",
+    "Outreach drafts",
+    "A message written for each account and held for your approval.",
+    "03",
+    "Handoff to RevOps",
+    "Accepted accounts move to Sales with their history attached."
+   ]
+  },
+  {
+   "id": "",
+   "label": "How it runs",
+   "lines": [
+    "The trust ladder",
+    "Every agent starts at Shadow. It earns the next rung.",
+    "Rung 01",
+    "Start here",
+    "Shadow",
+    "Agent watches. You do.",
+    "It learns how your people actually do the work. It touches nothing.",
+    "Rung 02",
+    "Draft and approve",
+    "Agent drafts. You sign.",
+    "Every output waits for a signature. Your edits teach it your standard.",
+    "Rung 03",
+    "Threshold",
+    "Agent acts inside limits you set.",
+    "Outside those limits it stops and escalates. You can move it back a rung any time."
+   ]
+  },
+  {
+   "id": "",
+   "label": "Next",
+   "lines": [
+    "RevOps →",
+    "Start the conversation",
+    "© 2026 Echo 1 Labs · Process Engineered Business Systems",
+    "Engine",
+    "RevOps",
+    "Broadcast",
+    "Signal",
+    "Ledger",
+    "Titan",
+    "Prime",
+    "AI Readiness"
+   ]
+  }
+ ],
+ "/Users/joshmeunier/Downloads/design_handoff_echo1labs_site/reference/Echo 1 Labs RevOps.dc.html": [
+  {
+   "id": "",
+   "label": "RevOps",
+   "lines": [
+    "02 · Sales · RevOps",
+    "Every deal moving. Every follow-up sent.",
+    "RevOps keeps every deal moving and every follow-up sent. Stalled deals reach you first.",
+    "Start the conversation",
+    "REVOPS · PIPELINE · QUALIFICATION AGENT",
+    "DEAL · SOURCE",
+    "STATUS",
+    "Hill Country Builders · proposal sent",
+    "CRM · 6 DAYS NO REPLY",
+    "REVIEW",
+    "Gulf Steel Erectors · qualified",
+    "CRM · SCORE MET",
+    "✓ FIT",
+    "Alamo Storage · follow-up due",
+    "CRM · 3 DAYS",
+    "⟳ AGENT",
+    "Brazos Ag Supply · contract",
+    "CRM · REPEAT BUYER",
+    "✓ FIT",
+    "Lakeway Fellowship · stalled",
+    "CRM · NO ACTIVITY",
+    "WATCH"
+   ]
+  },
+  {
+   "id": "",
+   "label": "What RevOps does",
+   "lines": [
+    "What RevOps does",
+    "01",
+    "Pipeline watch",
+    "Stalled deals flagged the day they stall.",
+    "02",
+    "Follow-up drafting",
+    "Every follow-up written and queued for approval.",
+    "03",
+    "Qualification",
+    "A qualification agent scores each deal against your criteria."
+   ]
+  },
+  {
+   "id": "",
+   "label": "How it runs",
+   "lines": [
+    "The trust ladder",
+    "Every agent starts at Shadow. It earns the next rung.",
+    "Rung 01",
+    "Start here",
+    "Shadow",
+    "Agent watches. You do.",
+    "It learns how your people actually do the work. It touches nothing.",
+    "Rung 02",
+    "Draft and approve",
+    "Agent drafts. You sign.",
+    "Every output waits for a signature. Your edits teach it your standard.",
+    "Rung 03",
+    "Threshold",
+    "Agent acts inside limits you set.",
+    "Outside those limits it stops and escalates. You can move it back a rung any time."
+   ]
+  },
+  {
+   "id": "",
+   "label": "Next",
+   "lines": [
+    "← Engine",
+    "Broadcast →",
+    "Start the conversation",
+    "© 2026 Echo 1 Labs · Process Engineered Business Systems",
+    "Engine",
+    "RevOps",
+    "Broadcast",
+    "Signal",
+    "Ledger",
+    "Titan",
+    "Prime",
+    "AI Readiness"
+   ]
+  }
+ ],
+ "/Users/joshmeunier/Downloads/design_handoff_echo1labs_site/reference/Echo 1 Labs Broadcast.dc.html": [
+  {
+   "id": "",
+   "label": "Broadcast",
+   "lines": [
+    "03 · Marketing · Broadcast",
+    "Content that sounds like you.",
+    "Broadcast turns what you know into content that sounds like you. Nothing publishes without your approval.",
+    "Start the conversation",
+    "{{ vid }}"
+   ]
+  },
+  {
+   "id": "",
+   "label": "Inside Broadcast",
+   "lines": [
+    "Inside Broadcast · Illustrative, not live data",
+    "BROADCAST · CONTENT QUEUE · CONTENT AGENT",
+    "ITEM · STATE",
+    "STATUS",
+    "LinkedIn · founder post",
+    "DRAFT · VOICE MATCHED",
+    "REVIEW",
+    "Newsletter · October issue",
+    "DRAFT · SHADOW REVIEW",
+    "⟳ AGENT",
+    "Facebook · job site photos",
+    "SCHEDULED · THURSDAY",
+    "✓ QUEUED",
+    "Instagram · reel caption",
+    "DRAFT",
+    "WATCH",
+    "YouTube · project walkthrough",
+    "PUBLISHED",
+    "✓ LIVE"
+   ]
+  },
+  {
+   "id": "",
+   "label": "What Broadcast does",
+   "lines": [
+    "What Broadcast does",
+    "01",
+    "Content generation",
+    "Posts, newsletters and captions drafted in your voice.",
+    "02",
+    "Ads management",
+    "Spend and creative watched against the limits you set.",
+    "03",
+    "Human approval",
+    "Nothing publishes without your signature."
+   ]
+  },
+  {
+   "id": "",
+   "label": "How it runs",
+   "lines": [
+    "The trust ladder",
+    "Every agent starts at Shadow. It earns the next rung.",
+    "Rung 01",
+    "Start here",
+    "Shadow",
+    "Agent watches. You do.",
+    "It learns how your people actually do the work. It touches nothing.",
+    "Rung 02",
+    "Draft and approve",
+    "Agent drafts. You sign.",
+    "Every output waits for a signature. Your edits teach it your standard.",
+    "Rung 03",
+    "Threshold",
+    "Agent acts inside limits you set.",
+    "Outside those limits it stops and escalates. You can move it back a rung any time."
+   ]
+  },
+  {
+   "id": "",
+   "label": "Next",
+   "lines": [
+    "← RevOps",
+    "Signal →",
+    "Start the conversation",
+    "© 2026 Echo 1 Labs · Process Engineered Business Systems",
+    "Engine",
+    "RevOps",
+    "Broadcast",
+    "Signal",
+    "Ledger",
+    "Titan",
+    "Prime",
+    "AI Readiness"
+   ]
+  }
+ ],
+ "/Users/joshmeunier/Downloads/design_handoff_echo1labs_site/reference/Echo 1 Labs Signal.dc.html": [
+  {
+   "id": "",
+   "label": "Signal",
+   "lines": [
+    "04 · M&A Lifecycle Management · Signal",
+    "Find the business worth buying.",
+    "Signal is M&A Lifecycle Management, starting with deal sourcing. It finds acquisition targets, screens every one against criteria you set once, and brings you the few worth a call. The decision stays yours.",
+    "Start the conversation",
+    "SIGNAL · M&A DEAL SOURCING · THESIS A",
+    "TARGET · CRITERIA",
+    "STATUS",
+    "HVAC services · Central TX",
+    "CRITERIA · 4 OF 4",
+    "MATCH",
+    "Commercial roofing · DFW",
+    "CRITERIA · 3 OF 4",
+    "PASS",
+    "Fleet maintenance · Houston",
+    "CRITERIA · 2 OF 4",
+    "PASS",
+    "Precast concrete · Gulf Coast",
+    "CRITERIA · 3 OF 4",
+    "PASS",
+    "Industrial electrical · San Antonio",
+    "CRITERIA · 3 OF 4",
+    "PASS"
+   ]
+  },
+  {
+   "id": "",
+   "label": "What Signal does",
+   "lines": [
+    "How Signal sources a deal",
+    "M&A deal sourcing, from thesis to first call.",
+    "Built for owners growing by acquisition. Signal does the searching and screening. You spend your time on the targets that fit.",
+    "01 · Step",
+    "Set the thesis",
+    "Size, margin profile, geography, owner transition and customer concentration. Set once.",
+    "02 · Step",
+    "Source targets",
+    "Businesses for sale and owners preparing to step back, found across broker listings and marketplaces.",
+    "03 · Step",
+    "Screen every one",
+    "Each target scored against your thesis, with the evidence attached.",
+    "04 · Step",
+    "Brief the few",
+    "Targets that clear the bar reach you with a one-page brief, ready for a first call."
+   ]
+  },
+  {
+   "id": "",
+   "label": "How it runs",
+   "lines": [
+    "The trust ladder",
+    "Every agent starts at Shadow. It earns the next rung.",
+    "Rung 01",
+    "Start here",
+    "Shadow",
+    "Agent watches. You do.",
+    "It learns how your people actually do the work. It touches nothing.",
+    "Rung 02",
+    "Draft and approve",
+    "Agent drafts. You sign.",
+    "Every output waits for a signature. Your edits teach it your standard.",
+    "Rung 03",
+    "Threshold",
+    "Agent acts inside limits you set.",
+    "Outside those limits it stops and escalates. You can move it back a rung any time."
+   ]
+  },
+  {
+   "id": "",
+   "label": "Next",
+   "lines": [
+    "← Broadcast",
+    "Ledger →",
+    "Start the conversation",
+    "© 2026 Echo 1 Labs · Process Engineered Business Systems",
+    "Engine",
+    "RevOps",
+    "Broadcast",
+    "Signal",
+    "Ledger",
+    "Titan",
+    "Prime",
+    "AI Readiness"
+   ]
+  }
+ ],
+ "/Users/joshmeunier/Downloads/design_handoff_echo1labs_site/reference/Echo 1 Labs Ledger.dc.html": [
+  {
+   "id": "",
+   "label": "Ledger",
+   "lines": [
+    "05 · Finance and ops · Ledger",
+    "Books closed before month end.",
+    "Ledger closes the books and flags drift before month end. Every draft waits for your controller.",
+    "Start the conversation",
+    "LEDGER · CLOSE · GL FEED",
+    "ITEM · SOURCE",
+    "STATUS",
+    "Bank reconciliation · operating",
+    "LEDGER · DRAFT",
+    "REVIEW",
+    "Month-end close · checklist",
+    "LEDGER · 72% COMPLETE",
+    "⟳ AGENT",
+    "Freight cost · 2 open jobs",
+    "VARIANCE · ABOVE LIMIT",
+    "FLAG",
+    "Accounts payable · batch",
+    "LEDGER · POSTED",
+    "✓ POSTED",
+    "Payroll journal",
+    "LEDGER · POSTED",
+    "✓ POSTED"
+   ]
+  },
+  {
+   "id": "",
+   "label": "What Ledger does",
+   "lines": [
+    "What Ledger does",
+    "01",
+    "Close drafting",
+    "Bank reconciliation and close checklist drafted for the controller.",
+    "02",
+    "Variance flags",
+    "Cost drift flagged before month end, against limits you set.",
+    "03",
+    "Live GL feed",
+    "Books update as entries post."
+   ]
+  },
+  {
+   "id": "",
+   "label": "How it runs",
+   "lines": [
+    "The trust ladder",
+    "Every agent starts at Shadow. It earns the next rung.",
+    "Rung 01",
+    "Start here",
+    "Shadow",
+    "Agent watches. You do.",
+    "It learns how your people actually do the work. It touches nothing.",
+    "Rung 02",
+    "Draft and approve",
+    "Agent drafts. You sign.",
+    "Every output waits for a signature. Your edits teach it your standard.",
+    "Rung 03",
+    "Threshold",
+    "Agent acts inside limits you set.",
+    "Outside those limits it stops and escalates. You can move it back a rung any time."
+   ]
+  },
+  {
+   "id": "",
+   "label": "Next",
+   "lines": [
+    "← Signal",
+    "Titan →",
+    "Start the conversation",
+    "© 2026 Echo 1 Labs · Process Engineered Business Systems",
+    "Engine",
+    "RevOps",
+    "Broadcast",
+    "Signal",
+    "Ledger",
+    "Titan",
+    "Prime",
+    "AI Readiness"
+   ]
+  }
+ ],
+ "/Users/joshmeunier/Downloads/design_handoff_echo1labs_site/reference/Echo 1 Labs Titan.dc.html": [
+  {
+   "id": "",
+   "label": "Titan",
+   "lines": [
+    "06 · Construction Lifecycle Management · Titan",
+    "Plan set in. Priced bid out.",
+    "Titan is Construction Lifecycle Management. It takes a plan set to a priced bid, then runs the job. Every quantity checked before it reaches your desk.",
+    "Start the conversation",
+    "{{ vid }}"
+   ]
+  },
+  {
+   "id": "",
+   "label": "Inside Titan",
+   "lines": [
+    "Inside Titan · Illustrative, not live data",
+    "TITAN · BID 26-114 · POLE BARN 60 × 120 × 16",
+    "ITEM · QTY",
+    "STATUS",
+    "Columns · 6×6 treated",
+    "28 EA",
+    "✓ CHECKED",
+    "Trusses · 60 ft clear span",
+    "21 EA",
+    "✓ CHECKED",
+    "Purlins · 2×4 #2",
+    "1,480 LF",
+    "✓ CHECKED",
+    "Steel panel · 29 ga",
+    "9,600 SF",
+    "⟳ AGENT",
+    "Overhead doors · 12×14",
+    "2 EA",
+    "REVIEW"
+   ]
+  },
+  {
+   "id": "",
+   "label": "What Titan does",
+   "lines": [
+    "What Titan does",
+    "01",
+    "Plan set takeoff",
+    "Quantities extracted and checked against the plan revision.",
+    "02",
+    "Bid assembly",
+    "A priced bid assembled line by line for your review.",
+    "03",
+    "Subcontractor scope",
+    "Scopes allocated by trade, with open items listed."
+   ]
+  },
+  {
+   "id": "",
+   "label": "How it runs",
+   "lines": [
+    "The trust ladder",
+    "Every agent starts at Shadow. It earns the next rung.",
+    "Rung 01",
+    "Start here",
+    "Shadow",
+    "Agent watches. You do.",
+    "It learns how your people actually do the work. It touches nothing.",
+    "Rung 02",
+    "Draft and approve",
+    "Agent drafts. You sign.",
+    "Every output waits for a signature. Your edits teach it your standard.",
+    "Rung 03",
+    "Threshold",
+    "Agent acts inside limits you set.",
+    "Outside those limits it stops and escalates. You can move it back a rung any time."
+   ]
+  },
+  {
+   "id": "",
+   "label": "Next",
+   "lines": [
+    "← Ledger",
+    "Prime →",
+    "Start the conversation",
+    "© 2026 Echo 1 Labs · Process Engineered Business Systems",
+    "Engine",
+    "RevOps",
+    "Broadcast",
+    "Signal",
+    "Ledger",
+    "Titan",
+    "Prime",
+    "AI Readiness"
+   ]
+  }
+ ],
+ "/Users/joshmeunier/Downloads/design_handoff_echo1labs_site/reference/Echo 1 Labs Prime.dc.html": [
+  {
+   "id": "",
+   "label": "Prime",
+   "lines": [
+    "07 · Governance · Prime",
+    "Every agent starts supervised.",
+    "Prime sets who can do what and keeps the record of who did. It lives inside Agent Orbit.",
+    "Start the conversation",
+    "PRIME · ACTION LOG · TODAY",
+    "ACTION · AGENT · TRUST",
+    "STATUS",
+    "Bank reconciliation drafted",
+    "LEDGER · CLOSE AGENT · DRAFT AND APPROVE",
+    "✓ APPROVED",
+    "Quantities checked, rev C",
+    "TITAN · TAKEOFF AGENT · THRESHOLD",
+    "✓ LOGGED",
+    "Listing cleared every criterion",
+    "SIGNAL · SCREEN AGENT · SHADOW",
+    "OBSERVED",
+    "Payment terms outside limit",
+    "REVOPS · QUALIFICATION AGENT · THRESHOLD",
+    "ESCALATED",
+    "Permission change recorded",
+    "PRIME · AUDIT AGENT · THRESHOLD",
+    "✓ LOGGED"
+   ]
+  },
+  {
+   "id": "",
+   "label": "What Prime does",
+   "lines": [
+    "What Prime does",
+    "01",
+    "Trust level per agent",
+    "Every agent sits on a rung you assigned. Move it any time.",
+    "02",
+    "Full action log",
+    "Proposals, approvals and actions written to a log you own.",
+    "03",
+    "Escalation",
+    "Outside your limits an agent stops and asks."
+   ]
+  },
+  {
+   "id": "",
+   "label": "How it runs",
+   "lines": [
+    "The trust ladder",
+    "Every agent starts at Shadow. It earns the next rung.",
+    "Rung 01",
+    "Start here",
+    "Shadow",
+    "Agent watches. You do.",
+    "It learns how your people actually do the work. It touches nothing.",
+    "Rung 02",
+    "Draft and approve",
+    "Agent drafts. You sign.",
+    "Every output waits for a signature. Your edits teach it your standard.",
+    "Rung 03",
+    "Threshold",
+    "Agent acts inside limits you set.",
+    "Outside those limits it stops and escalates. You can move it back a rung any time."
+   ]
+  },
+  {
+   "id": "",
+   "label": "Next",
+   "lines": [
+    "← Titan",
+    "AI Readiness →",
+    "Start the conversation",
+    "© 2026 Echo 1 Labs · Process Engineered Business Systems",
+    "Engine",
+    "RevOps",
+    "Broadcast",
+    "Signal",
+    "Ledger",
+    "Titan",
+    "Prime",
+    "AI Readiness"
+   ]
+  }
+ ],
+ "/Users/joshmeunier/Downloads/design_handoff_echo1labs_site/reference/Echo 1 Labs AI Readiness.dc.html": [
+  {
+   "id": "",
+   "label": "AI Readiness",
+   "lines": [
+    "Enablement · AI Readiness",
+    "Process first. Agents second.",
+    "AI Readiness maps how the work moves and puts the routine parts on rules before any agent is placed. Then it puts you at the gate.",
+    "Start the conversation",
+    "AI READINESS · PROCESS MAP · OWNER REVIEW",
+    "ITEM · STATE",
+    "STATUS",
+    "Process map · bid request to proposal",
+    "PROCESS · MAPPED",
+    "✓ MAPPED",
+    "Process map · month-end close",
+    "PROCESS · IN PROGRESS",
+    "⟳ MAP",
+    "Decision rights · approvals",
+    "OWNER · DEFINE LIMITS",
+    "REVIEW",
+    "Agent placement · estimating",
+    "TRUST · RUNG 01 SHADOW",
+    "SHADOW",
+    "Adoption plan · field team",
+    "TEAM · NOT STARTED",
+    "QUEUED"
+   ]
+  },
+  {
+   "id": "",
+   "label": "What AI Readiness does",
+   "lines": [
+    "What AI Readiness does",
+    "01",
+    "Process mapping",
+    "How the work actually moves, written down before an agent touches it.",
+    "02",
+    "Decision rights",
+    "Who approves what, and the limits that apply.",
+    "03",
+    "Agent placement",
+    "Each agent starts in Shadow on the busiest decision."
+   ]
+  },
+  {
+   "id": "",
+   "label": "How it runs",
+   "lines": [
+    "The trust ladder",
+    "Every agent starts at Shadow. It earns the next rung.",
+    "Rung 01",
+    "Start here",
+    "Shadow",
+    "Agent watches. You do.",
+    "It learns how your people actually do the work. It touches nothing.",
+    "Rung 02",
+    "Draft and approve",
+    "Agent drafts. You sign.",
+    "Every output waits for a signature. Your edits teach it your standard.",
+    "Rung 03",
+    "Threshold",
+    "Agent acts inside limits you set.",
+    "Outside those limits it stops and escalates. You can move it back a rung any time."
+   ]
+  },
+  {
+   "id": "",
+   "label": "Next",
+   "lines": [
+    "← Prime",
+    "Start the conversation",
+    "© 2026 Echo 1 Labs · Process Engineered Business Systems",
+    "Engine",
+    "RevOps",
+    "Broadcast",
+    "Signal",
+    "Ledger",
+    "Titan",
+    "Prime",
+    "AI Readiness"
+   ]
+  }
+ ],
+ "/Users/joshmeunier/Downloads/design_handoff_echo1labs_site/reference/Echo 1 Labs Info Management.dc.html": [
+  {
+   "id": "",
+   "label": "Information · Info management",
+   "lines": [
+    "Information · Info management",
+    "Paperwork in. Records out.",
+    "Agents read every document, file it where it belongs, and keep it searchable. Every action logged.",
+    "Start the conversation",
+    "{{ vid }}"
+   ]
+  }
+ ],
+ "/Users/joshmeunier/Downloads/design_handoff_echo1labs_site/reference/Echo 1 Labs Voice Agents.dc.html": [
+  {
+   "id": "",
+   "label": "Voice · AI voice agents",
+   "lines": [
+    "Voice · AI voice agents",
+    "Every call answered.",
+    "Voice agents answer, qualify, and route calls, on the record. Anything outside your limits goes to a person.",
+    "Start the conversation",
+    "{{ vid }}"
+   ]
+  }
+ ]
+}

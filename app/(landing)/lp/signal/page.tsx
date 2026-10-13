@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: signalCopy.seoTitle,
   description: signalCopy.seoDesc,
   robots: { index: false, follow: true },
-  alternates: { canonical: '/products/signal' },
+  alternates: { canonical: '/ma-deal-sourcing' },
   openGraph: {
     title: signalCopy.seoTitle,
     description: signalCopy.seoDesc,

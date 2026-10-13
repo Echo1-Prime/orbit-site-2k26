@@ -1,0 +1,7 @@
+http://127.0.0.1:3410/automated-lead-generation form_factor=mobile lighthouse=13.5.0 accessibility=96 best-practices=96 performance=92 seo=100
+http://127.0.0.1:3410/automated-lead-generation form_factor=mobile lighthouse=13.5.0 accessibility=96 best-practices=96 performance=93 seo=100
+http://127.0.0.1:3410/construction-estimating-software form_factor=mobile lighthouse=13.5.0 accessibility=96 best-practices=96 performance=93 seo=100
+http://127.0.0.1:3410/construction-estimating-software form_factor=mobile lighthouse=13.5.0 accessibility=96 best-practices=96 performance=78 seo=100
+http://127.0.0.1:3410/ form_factor=mobile lighthouse=13.5.0 accessibility=97 best-practices=96 performance=89 seo=100
+http://127.0.0.1:3410/ form_factor=mobile lighthouse=13.5.0 accessibility=97 best-practices=100 performance=89 seo=100
+SUMMARY lh-summary reports=6 findings=0

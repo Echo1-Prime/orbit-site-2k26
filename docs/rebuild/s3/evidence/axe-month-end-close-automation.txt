@@ -1,0 +1,2 @@
+expr: {"axe":"4.14.0","violations":["color-contrast:serious:6","label-content-name-mismatch:serious:2"],"incomplete":["color-contrast","label-content-name-mismatch"]}
+dom-text chars: 3374; screenshot: docs/rebuild/s3/evidence/axe-month-end-close-automation/screenshot.png

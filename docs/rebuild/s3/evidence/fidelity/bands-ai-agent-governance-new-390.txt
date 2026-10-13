@@ -1,0 +1,2 @@
+expr: [{"id":"","label":"Prime","h":1020},{"id":"","label":"What Prime does","h":592},{"id":"","label":"How it runs","h":856},{"id":"","label":"Next","h":391}]
+dom-text chars: 3211; screenshot: /Users/joshmeunier/code/.worktrees/orbit-site-s3/docs/rebuild/s3/evidence/fidelity/new-ai-agent-governance-390/screenshot.png

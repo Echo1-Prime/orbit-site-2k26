@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   title: titanCopy.seoTitle,
   description: titanCopy.seoDesc,
   robots: { index: false, follow: true },
-  alternates: { canonical: '/products/titan' },
+  alternates: { canonical: '/construction-estimating-software' },
   openGraph: {
     title: titanCopy.seoTitle,
     description: titanCopy.seoDesc,
