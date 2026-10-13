@@ -99,13 +99,25 @@ export const showcaseTiles: ShowcaseTile[] = [
   {
     id: 'real-estate-development',
     stage: 'build', // UNVERIFIED(inferred: site development precedes build-out; no design file records it)
-    kick: 'Use case · Real estate development', // written for review, same pattern as the other eyebrows
-    title: 'Walk the site before it is built', // written for review
-    ctaLabel: 'Watch the walkthrough →', // written for review
+    kick: 'Use case · Real estate development', // same pattern as the other eyebrows
+    // Header and rows from the live entitlement screen (rma-tx-10.26.echo1labs.com, read 2026-10-13), anonymized:
+    // no client, firm, town, road, site count or figure (Josh, 2026-10-13: outcome wording only).
+    // Title: the page h1, lines one and two, verbatim: "Every plan. Every takeoff. / Every code. Every follow-up."
+    title: 'Every plan. Every takeoff. Every code. Every follow-up.',
+    // Step 1 "Plan lands: A new revision drops in. The sheet is parsed ... exactly as drawn." and
+    // "the architect's checklist is the question set."
+    in: 'Plan sets, site sheets and the architect’s checklist, revision by revision.',
+    // Level 1 "Every site tied to its adopting jurisdiction", "The architect's checklist, cited item by item",
+    // h1 "Every takeoff", h2 "Follow-ups, drafted and ready to send".
+    agent: 'Ties each site to its jurisdiction, cites each code item, reads the takeoff and drafts the follow-ups.',
+    // The h1's lead line without its counts: "... have a cited finding. The rest are left open and named, each with
+    // who can answer it."
+    you: 'Every item gets a cited finding, or stays open and named with who can answer it.',
+    ctaLabel: 'Walk the site in 3D →', // the h1's last line, "Walk each site in 3D.", for the one site in the clip
     href: REAL_ESTATE_FULL,
     video: `${REAL_ESTATE_ASSET}.mp4`,
     poster: `${REAL_ESTATE_ASSET}-960.webp`,
     posterSmall: `${REAL_ESTATE_ASSET}-640.webp`,
-    demoLabel: 'Names removed', // written for review: a traced site, anonymized, with no data shown
+    demoLabel: 'Names removed', // a traced site, anonymized, with no data shown
   },
 ];

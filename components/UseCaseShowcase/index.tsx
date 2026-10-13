@@ -22,7 +22,7 @@
   - Each card has a visible 44 px pause and play button (WCAG 2.2.2).
 */
 
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useRef, useState, type RefObject } from 'react';
 import { showcaseTiles } from '@/lib/landing/showcase';
 import type { ShowcaseTile } from '@/lib/landing/showcase';
 import styles from './UseCaseShowcase.module.css';
@@ -119,6 +119,55 @@ function CardVideo({ src, playing, onFail }: { src: string; playing: boolean; on
   );
 }
 
+/* Every card in a row lines up section by section (Josh, 2026-10-13: "make sure everything aligns on the page with
+   the different use cases"). Each [data-align] block (eyebrow, title, each row) takes the height of the tallest block
+   with the same key in the row, so rows and calls to action sit on the same lines whatever each card's copy length.
+   Re-measured when the row's width changes and once fonts load. */
+function useAlignedSections(row: RefObject<HTMLUListElement | null>, count: number) {
+  useEffect(() => {
+    const el = row.current;
+    if (!el || count < 2 || typeof ResizeObserver === 'undefined') return;
+    let raf = 0;
+    let lastWidth = -1;
+    const align = () => {
+      raf = 0;
+      const groups = new Map<string, HTMLElement[]>();
+      el.querySelectorAll<HTMLElement>('[data-align]').forEach((block) => {
+        block.style.minHeight = '';
+        const key = block.dataset.align as string;
+        const list = groups.get(key) ?? [];
+        list.push(block);
+        groups.set(key, list);
+      });
+      groups.forEach((blocks) => {
+        if (blocks.length < 2) return;
+        const tallest = Math.max(...blocks.map((b) => b.getBoundingClientRect().height));
+        blocks.forEach((b) => {
+          b.style.minHeight = `${Math.ceil(tallest)}px`;
+        });
+      });
+    };
+    const schedule = () => {
+      if (el.clientWidth === lastWidth) return;
+      lastWidth = el.clientWidth;
+      if (!raf) raf = requestAnimationFrame(align);
+    };
+    schedule();
+    const ro = new ResizeObserver(schedule);
+    ro.observe(el);
+    document.fonts?.ready
+      .then(() => {
+        lastWidth = -1;
+        schedule();
+      })
+      .catch(() => {});
+    return () => {
+      ro.disconnect();
+      if (raf) cancelAnimationFrame(raf);
+    };
+  }, [row, count]);
+}
+
 export function UseCaseShowcase({ heading = DEFAULT_HEADING, intro = DEFAULT_INTRO, tiles = showcaseTiles }: UseCaseShowcaseProps) {
   const gate = useVideoGate();
   const allowed = gate.state === 'allowed';
@@ -128,6 +177,8 @@ export function UseCaseShowcase({ heading = DEFAULT_HEADING, intro = DEFAULT_INT
   const [mounted, setMounted] = useState<Set<string>>(() => new Set());
   const [recent, setRecent] = useState<string[]>([]);
   const cards = useRef(new Map<string, HTMLElement>());
+  const rowRef = useRef<HTMLUListElement>(null);
+  useAlignedSections(rowRef, tiles.length);
 
   /* How much of each card is on screen. A card inside the snap row is clipped by the row, so the
      snapped card reads highest. Observed only once video is allowed. */
@@ -208,7 +259,7 @@ export function UseCaseShowcase({ heading = DEFAULT_HEADING, intro = DEFAULT_INT
         <p className={styles.intro}>{intro}</p>
       </div>
 
-      <ul className={styles.row} role="list" data-count={tiles.length}>
+      <ul ref={rowRef} className={styles.row} role="list" data-count={tiles.length}>
         {tiles.map((tile) => {
           const rows = (['in', 'agent', 'you'] as const).filter((k) => tile[k]);
           const isPaused = paused.has(tile.id);
@@ -245,14 +296,14 @@ export function UseCaseShowcase({ heading = DEFAULT_HEADING, intro = DEFAULT_INT
                   <span className={styles.demo}>{tile.demoLabel}</span>
                 </span>
                 <span className={styles.body}>
-                  <span className={styles.kick}>{tile.kick}</span>
-                  <span id={titleId} className={styles.title}>
+                  <span className={styles.kick} data-align="kick">{tile.kick}</span>
+                  <span id={titleId} className={styles.title} data-align="title">
                     {tile.title}
                   </span>
                   {rows.length > 0 && (
                     <dl className={styles.rows}>
                       {rows.map((k) => (
-                        <div key={k} className={styles.rowItem}>
+                        <div key={k} className={styles.rowItem} data-align={k}>
                           <dt>{ROW_LABELS[k]}</dt>
                           <dd>{tile[k]}</dd>
                         </div>
