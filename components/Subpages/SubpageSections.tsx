@@ -18,7 +18,6 @@ export function AnswerBand({ p }: { p: Subpage }) {
       <div className={styles.inner}>
         <p className={styles.eyebrow}>
           {p.category} · {p.name}
-          {p.comingSoon ? <span className={styles.soon}>Coming soon</span> : null}
         </p>
         <h2 id={`${p.slug}-answer`} className={styles.h2}>
           {p.question}

@@ -40,8 +40,6 @@ export interface Subpage {
   reading: string[];
   /** Hero clip served from /public, or none. */
   clip?: string;
-  /** Ledger is not generally available. */
-  comingSoon?: boolean;
   /** Live URLs that now permanently redirect here. */
   oldPaths: string[];
 }
@@ -171,21 +169,20 @@ export const SUBPAGES: Subpage[] = [
     secondaryKeywords: ['month end close software', 'bank reconciliation software'],
     title: 'Month End Close Automation',
     description:
-      'Ledger drafts bank reconciliations and the month-end close for your controller and flags cost drift before month end. Coming soon.',
+      'Ledger drafts bank reconciliations and the month-end close for your controller and flags cost drift before month end.',
     question: 'What is month-end close automation with Ledger?',
     answer:
-      'Ledger is the Echo 1 Labs finance and operations agent for month-end close automation, and it is coming soon. It drafts the bank reconciliation and the close checklist for your controller, flags cost drift against limits you set before month end, and keeps a live general ledger feed as entries post. Every draft waits for your controller.',
+      'Ledger is the Echo 1 Labs finance and operations agent for month-end close automation. It drafts the bank reconciliation and the close checklist for your controller, flags cost drift against limits you set before month end, and keeps a live general ledger feed as entries post. Every draft waits for your controller.',
     qa: [
       {
         q: 'What does Ledger do?',
         a: 'Ledger closes the books and flags drift before month end. It prepares the bank reconciliation and the close checklist for the controller, flags cost drift against limits you set, and keeps a live general ledger feed as entries post.',
       },
-      { q: 'Is Ledger available now?', a: 'Ledger is coming soon. Contact Echo 1 Labs to hear when it is ready.' },
+      { q: 'Does Ledger work with QuickBooks Online?', a: 'Yes. Ledger is integrated with QuickBooks Online, and it keeps a live general ledger feed as entries post.' },
       { q: 'Who approves Ledger’s work?', a: 'Your controller. Every draft waits for your controller before it posts. ' + TRUST_LADDER },
     ],
     linkLabel: 'Month-end close automation with Ledger',
     ogAlt: 'Echo 1 Labs Ledger: month-end close automation. A close checklist with reconciliation drafts and variance flags.',
-    comingSoon: true,
     oldPaths: OLD_PATHS.ledger,
     reading: ['ledger-financial-automation-owner-led-businesses', 'ai-powered-financial-intelligence'],
   },
