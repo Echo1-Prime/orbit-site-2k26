@@ -10,6 +10,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { StatusBadge } from '@/components/ao/data/StatusBadge';
 import { ghostProps } from '@/components/Site/ghost';
 import { PRODUCT_NAME_ROUTE } from '@/lib/subpage-routes';
+import { useLineKnockout } from './useLineKnockout';
 import { BLS, CMP, FEED, LOG, NODES, SYM, TRUST } from './home-data';
 
 const HERO_CLIP = '/videos/home/hero-titan.mp4';
@@ -61,6 +62,7 @@ export function useHomeVals() {
   const [mounted, setMounted] = useState(false);
   const [seen, setSeen] = useState<Record<string, boolean>>({});
   const [linesReady, setLinesReady] = useState(false);
+  useLineKnockout(linesReady);
   const [hv, setHv] = useState(0);
   const [hvCycle, setHvCycle] = useState(0);
   const [hvPaused, setHvPaused] = useState(false);
@@ -281,7 +283,7 @@ export function useHomeVals() {
     blsRotTf: 'rotate(' + ((blsPos * 360) / 7).toFixed(3) + 'deg)',
     blsRotTr: reduced ? 'none' : 'transform 900ms var(--ao-ease-out)',
     blsSat: reduced ? 'none' : 'ao-spin 60s linear infinite',
-    blsMark: m ? 40 : 60,
+    blsMark: m ? 56 : 88, // the mark is the diagram's centre piece, alone inside the inner ring
     blsKick: blsFO ? 'Every stage · Front Office' : String(cur + 1).padStart(2, '0') + ' / 07 · ' + A.st,
     blsKc: A.c, blsName: A.n, blsCat: A.cat || '', blsHref: BLS_ROUTE[A.n] || '/products',
     blsFO, blsPickFO: pick(7),
