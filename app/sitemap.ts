@@ -11,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE_URL}/contact`, lastModified: now, changeFrequency: 'yearly', priority: 0.6 },
     { url: `${SITE_URL}/use-cases/trucking`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE_URL}/use-cases/oil-and-gas`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
+    { url: `${SITE_URL}/use-cases/track-your-jobs-in-3d`, lastModified: now, changeFrequency: 'monthly', priority: 0.7 },
   ];
   // The ten product subpages. lastModified is the date of the last substantial content change, not the build time.
   // The retired /products/[slug] and /ai-readiness URLs redirect, so they are not listed.

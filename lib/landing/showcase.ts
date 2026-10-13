@@ -1,5 +1,6 @@
 import { truckingCopy } from './trucking';
 import { oilAndGasCopy } from './oil-and-gas';
+import { trackYourJobsIn3dCopy } from './track-your-jobs-in-3d';
 
 /*
   Use-case showcase cards. Data only: no JSX, no hooks, no logic beyond reading fields.
@@ -53,6 +54,9 @@ const OIL_AND_GAS_ASSET = '/videos/showcase/oil-and-gas-card-cbb93bcf';
    (Josh, 2026-10-13: anonymized, the walkthrough only, no use-case page). The card links to the full clip. */
 const REAL_ESTATE_ASSET = '/videos/showcase/real-estate-card-3b678692';
 const REAL_ESTATE_FULL = '/videos/showcase/real-estate-walkthrough-3b678692.mp4';
+/* Track your jobs in 3D: a caption-free clip of the live build-it show (?t=62, every page element hidden but the
+   scene canvas), captured 2026-10-13; the hex is the sha-256 prefix of the show's served HTML. */
+const JOBS_3D_ASSET = '/videos/showcase/track-your-jobs-in-3d-card-dcd40d13';
 
 export const showcaseTiles: ShowcaseTile[] = [
   {
@@ -119,5 +123,24 @@ export const showcaseTiles: ShowcaseTile[] = [
     poster: `${REAL_ESTATE_ASSET}-960.webp`,
     posterSmall: `${REAL_ESTATE_ASSET}-640.webp`,
     demoLabel: 'Names removed', // a traced site, anonymized, with no data shown
+  },
+  {
+    id: trackYourJobsIn3dCopy.slug,
+    // 'build': Josh's pillar definitions (vault orbit-brand.md, 2026-10-08): Build it = Construction Lifecycle Management.
+    stage: 'build',
+    kick: trackYourJobsIn3dCopy.eyebrow,
+    title: trackYourJobsIn3dCopy.headline, // Josh, 2026-10-13: "Track your jobs in 3D"
+    // DRAFT-FOR-JOSH. Drawn from the show's trades and its sample change order and punch list.
+    in: 'Drawings, deliveries, tickets and field changes, from the pad to the punch list.',
+    // DRAFT-FOR-JOSH. Drawn from the show's lines "Every trade and material tracked." and "Every product tracked with
+    // every follow-up written."
+    agent: 'Tracks every trade and material against the schedule and drafts each change order and follow-up.',
+    you: trackYourJobsIn3dCopy.closing, // verbatim: "Supervised by you."
+    ctaLabel: 'See Construction →', // written for review, same pattern as "See Trucking →"
+    href: `/use-cases/${trackYourJobsIn3dCopy.slug}`,
+    video: `${JOBS_3D_ASSET}.mp4`,
+    poster: `${JOBS_3D_ASSET}-960.webp`,
+    posterSmall: `${JOBS_3D_ASSET}-640.webp`,
+    demoLabel: 'Demo data', // the show's events, change orders, punch items and budget figures are simulated
   },
 ];
