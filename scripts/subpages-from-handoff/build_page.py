@@ -46,7 +46,8 @@ ROUTE['Echo%201%20Labs%20Home.dc.html'] = '/'
 # One accent, one token set: handoff literals map to the live design system variables.
 HEX = {'#0E0B1A': 'var(--ao-void)', '#FF7515': 'var(--ao-orbit)', '#FFFFFF': 'var(--e1-mark-white)'}
 
-TAG = re.compile(r'<(/?)([a-zA-Z][\w:-]*)((?:\s+[^\s=>/]+(?:\s*=\s*(?:"[^"]*"|\'[^\']*\'|[^\s>]+))?)*)\s*(/?)>|<!--.*?-->', re.S)
+# The attribute group is possessive (*+, Python 3.11+) so a malformed tag fails fast instead of backtracking exponentially (CodeQL py/redos).
+TAG = re.compile(r'<(/?)([a-zA-Z][\w:-]*)((?:\s+[^\s=>/]+(?:\s*=\s*(?:"[^"]*"|\'[^\']*\'|[^\s>]+))?)*+)\s*(/?)>|<!--.*?-->', re.S)
 ATTR = re.compile(r'([^\s=>/]+)(?:\s*=\s*(?:"([^"]*)"|\'([^\']*)\'|([^\s>]+)))?')
 VOID = {'input', 'img', 'br', 'hr'}
 BIND = re.compile(r'\{\{\s*(.*?)\s*\}\}')
