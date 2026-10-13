@@ -100,7 +100,7 @@ export const showcaseTiles: ShowcaseTile[] = [
     id: 'real-estate-development',
     stage: 'build', // UNVERIFIED(inferred: site development precedes build-out; no design file records it)
     kick: 'Use case · Real estate development', // same pattern as the other eyebrows
-    // Header and rows from the live entitlement screen (rma-tx-10.26.echo1labs.com, read 2026-10-13), anonymized:
+    // Header and rows from the live entitlement screen, read 2026-10-13, anonymized:
     // no client, firm, town, road, site count or figure (Josh, 2026-10-13: outcome wording only).
     // Title: the page h1, lines one and two, verbatim: "Every plan. Every takeoff. / Every code. Every follow-up."
     title: 'Every plan. Every takeoff. Every code. Every follow-up.',
