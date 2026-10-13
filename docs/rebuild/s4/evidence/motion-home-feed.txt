@@ -1,0 +1,2 @@
+expr: {"n":4,"changes":["0s:LEDGER · CLOSE AGENT Bank reconciliation drafted, waiting on controlle","1.6s:PRIME · AUDIT AGENT Permission change recorded to the log now","4.8s:LEDGER · VARIANCE AGENT Freight cost drift flagged on 2 open jobs now","8.4s:BROADCAST · CONTENT AGENT Newsletter draft running in Shadow review no","11.6s:ENGINE · PROSPECT AGENT Target account list refreshed from new permits"]}
+dom-text chars: 9299; screenshot: /private/tmp/claude-501/-Users-joshmeunier/d0562ac7-2570-4f39-98dc-3c29a358bb86/scratchpad/run/m-feed/screenshot.png

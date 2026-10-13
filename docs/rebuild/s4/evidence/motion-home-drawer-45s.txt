@@ -1,0 +1,2 @@
+expr: {"at30s":false,"at42s":false,"at48s":true,"key":"1"}
+dom-text chars: 9299; screenshot: /private/tmp/claude-501/-Users-joshmeunier/d0562ac7-2570-4f39-98dc-3c29a358bb86/scratchpad/run/d45/screenshot.png

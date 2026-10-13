@@ -1,0 +1,2 @@
+expr: {"reduce":false,"saveData":false,"w":1440,"videos":[{"paused":false,"muted":true,"loop":true,"preload":"auto","t":3.3,"src":"/videos/subpages/engine-hero.mp4","aria":"true","rs":4}]}
+dom-text chars: 3763; screenshot: /private/tmp/claude-501/-Users-joshmeunier/d0562ac7-2570-4f39-98dc-3c29a358bb86/scratchpad/run/c1/screenshot.png

@@ -15,6 +15,9 @@ import styles from './SiteChrome.module.css';
 
 const LAUNCHER_KEY = 'e1-launcher-min';
 const DRAWER_KEY = 'e1-nbd-home';
+/** WCAG 2.5.3: the launcher's name has to contain the text printed on its ring. The ring text is the design
+ *  system default (OrbitLauncher ringText), the phrase twice; the name says the same words. */
+const LAUNCHER_LABEL = 'Agent Orbit, tap to ask, Agent Orbit, tap to ask';
 
 function store(kind: 'local' | 'session') {
   try {
@@ -182,6 +185,7 @@ export default function SiteChrome() {
             onActivate={openConc}
             open={conc}
             controls="e1-concierge"
+            label={LAUNCHER_LABEL}
             size={mobile ? 72 : 88}
             draggable={false}
             storageKey={null}

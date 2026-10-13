@@ -1,0 +1,2 @@
+expr: {"reduce":true,"hero":["0/none"],"orbitDistinct":1,"feedDistinct":1,"cssAnimating":2,"brushFinal":"inset(-80% -8%)"}
+dom-text chars: 9293; screenshot: /private/tmp/claude-501/-Users-joshmeunier/d0562ac7-2570-4f39-98dc-3c29a358bb86/scratchpad/run/m-reduced/screenshot.png

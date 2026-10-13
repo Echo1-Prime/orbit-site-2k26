@@ -1,0 +1,14 @@
+home expr: {"scrollWidth":367,"over":false}
+products expr: {"scrollWidth":375,"over":false}
+contact expr: {"scrollWidth":375,"over":false}
+pricing expr: {"scrollWidth":375,"over":false}
+automated-lead-generation expr: {"scrollWidth":367,"over":false}
+crm-automation expr: {"scrollWidth":367,"over":false}
+content-marketing-automation expr: {"scrollWidth":367,"over":false}
+ma-deal-sourcing expr: {"scrollWidth":367,"over":false}
+month-end-close-automation expr: {"scrollWidth":367,"over":false}
+construction-estimating-software expr: {"scrollWidth":367,"over":false}
+ai-agent-governance expr: {"scrollWidth":367,"over":false}
+ai-readiness-assessment expr: {"scrollWidth":367,"over":false}
+document-processing-automation expr: {"scrollWidth":367,"over":false}
+ai-voice-agents expr: {"scrollWidth":367,"over":false}
