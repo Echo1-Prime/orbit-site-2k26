@@ -9,7 +9,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = pageMetadata({
   title: 'Agent Marketplace',
   description:
-    '200+ specialist agents across every business domain. 16 out-of-the-box agents ship with all active plans. No marketplace credit required. Filter by app domain.',
+    '140+ specialist agents across every business domain. 16 out-of-the-box agents ship with all active plans. No marketplace credit required. Filter by app domain.',
   path: '/agents',
 });
 
@@ -27,14 +27,14 @@ export default function AgentsPage() {
           <div className="section-header">
             <p className="label">Agent Marketplace</p>
             <h1 className="display-lg" style={{ marginBottom: '1rem' }}>
-              200+ agents. Each one a specialist.
+              140+ agents. Each one a specialist.
             </h1>
             <p className="body-lg" style={{ maxWidth: '560px' }}>
               Every function of the BLM OS has a team of agents built for it. Browse by domain,
               deploy from Prime, supervise from one layer.
             </p>
             <p className="agents-hero-count">
-              <strong>16</strong> ship out-of-the-box &nbsp;&middot;&nbsp; <strong>200+</strong> in
+              <strong>16</strong> ship out-of-the-box &nbsp;&middot;&nbsp; <strong>140+</strong> in
               the full marketplace &nbsp;&middot;&nbsp; sample shown below
             </p>
           </div>
