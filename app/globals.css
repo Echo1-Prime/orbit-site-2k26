@@ -336,7 +336,7 @@ main { padding-top: var(--nav-h); }
 .form__label { font-size: 0.8rem; font-weight: 500; color: var(--text-2); }
 .form__input,
 .form__textarea {
-  background: var(--white);
+  background: var(--bg-muted); /* was var(--white) under light text: typed text was invisible */
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   color: var(--text);
@@ -350,6 +350,8 @@ main { padding-top: var(--nav-h); }
 .form__input:focus,
 .form__textarea:focus { border-color: var(--link); }
 .form__textarea { min-height: 150px; resize: vertical; }
+.form__input::placeholder,
+.form__textarea::placeholder { color: var(--text-2); opacity: 1; }
 .form__success {
   padding: 1rem 1.25rem;
   border-radius: var(--radius-sm);

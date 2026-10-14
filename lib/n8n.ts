@@ -9,6 +9,9 @@ export interface ContactPayload {
   source?: string;
 }
 
+/** True when the n8n contact webhook is configured for this deployment. */
+export const n8nConfigured = () => Boolean(process.env.N8N_CONTACT_WEBHOOK);
+
 /**
  * Forward a contact submission to the n8n webhook.
  * Mirrors the prior Express behavior: if the env var is unset, we no-op and
