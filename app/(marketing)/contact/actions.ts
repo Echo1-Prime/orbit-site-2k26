@@ -1,6 +1,7 @@
 'use server';
 
-import { forwardContact } from '@/lib/n8n';
+import { forwardContact, n8nConfigured } from '@/lib/n8n';
+import { notifySlackLead, slackConfigured } from '@/lib/slack';
 
 export interface ContactState {
   status: 'idle' | 'success' | 'error';
@@ -22,8 +23,18 @@ export async function submitContact(_prev: ContactState, formData: FormData): Pr
     return { status: 'error', message: 'Please enter your name and a valid email.' };
   }
 
-  const { ok } = await forwardContact({ name, email, company, message });
-  return ok
+  const payload = { name, email, company, message, source: 'www.echo1labs.com/contact' };
+  // Every lead goes to Slack, and to n8n when its webhook is set. Success means at least one of them took it.
+  // With neither configured the lead would be lost, so production reports an error instead of a false success.
+  const deliveries: Promise<{ ok: boolean }>[] = [];
+  if (slackConfigured()) deliveries.push(notifySlackLead(payload));
+  if (n8nConfigured()) deliveries.push(forwardContact(payload));
+  if (deliveries.length === 0) {
+    console.error('[contact] no delivery configured (SLACK_NEW_LEADS_WEBHOOK and N8N_CONTACT_WEBHOOK unset)');
+    if (process.env.NODE_ENV !== 'production') return { status: 'success' };
+  }
+  const results = await Promise.all(deliveries);
+  return results.some((r) => r.ok)
     ? { status: 'success' }
     : { status: 'error', message: 'Something went wrong. Email josh@mingma.io and we will pick it up.' };
 }
