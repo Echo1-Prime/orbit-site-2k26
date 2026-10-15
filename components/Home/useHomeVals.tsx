@@ -14,7 +14,9 @@ import { useLineKnockout } from './useLineKnockout';
 import { BLS, CMP, FEED, LOG, NODES, SYM, TRUST } from './home-data';
 
 const HERO_CLIP = '/videos/home/hero-titan.mp4';
-const CLIPS = [HERO_CLIP, '', ''];
+/* Signal and Agent Orbit clips from Josh's uploads (2026-10-15), cropped square on the subject, audio removed.
+   A slide with a clip replaces its drawn fallback (hvPoster1, hvScene). */
+const CLIPS = [HERO_CLIP, '/videos/home/hero-signal.mp4', '/videos/home/hero-agent-orbit.mp4'];
 const SLIDE_MS = 5000;
 
 /* The handoff's links are .dc.html files; each card goes to its keyword-named subpage (lib/subpages.ts).
