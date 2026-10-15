@@ -17,7 +17,7 @@ export const oilAndGasCopy: UseCaseCopy = {
     'Walk a tank battery, its lease pad and a field office in x-ray, then see each location as it runs today and with Agent Orbit. Demo data, not a real company or place.',
 
   eyebrow: 'Use case · Oil and gas',
-  headline: 'Oil and Gas, a good day',
+  headline: 'Oil and Gas', // Josh, 2026-10-15: the industry only (was "Oil and Gas, a good day")
   intro: 'A tank battery, its lease pad and a field office at night, drawn in x-ray. Pick a location to see its scene.',
   beats: [
     'Orange is where Agent Orbit works.',

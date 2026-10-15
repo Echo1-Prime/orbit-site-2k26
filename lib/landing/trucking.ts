@@ -16,7 +16,7 @@ export const truckingCopy: UseCaseCopy = {
     'Walk a broker office and its carrier yard in x-ray, then see each location as it runs today and with Agent Orbit. Demo data, not a real company or site.',
 
   eyebrow: 'Use case · Trucking and logistics',
-  headline: 'Trucking, a good day',
+  headline: 'Trucking', // Josh, 2026-10-15: the industry only (was "Trucking, a good day")
   intro: 'A broker office and its carrier yard at night, drawn in x-ray. Pick a location to see its scene.',
   beats: [
     'Orange is where Agent Orbit works.',
