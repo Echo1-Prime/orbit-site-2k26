@@ -7,14 +7,15 @@ import { trackYourJobsIn3dCopy } from './track-your-jobs-in-3d';
   The component is components/UseCaseShowcase/index.tsx (named export UseCaseShowcase).
 
   Source of every line (nothing here is invented):
-  - id, kick, title and href come from truckingCopy (lib/landing/trucking.ts): slug, eyebrow, headline,
+  - id, kick and href come from truckingCopy (lib/landing/trucking.ts): slug, eyebrow,
     and the use-case route built from the slug. Change the source, never reword here.
   - Lines WRITTEN for this file, for Josh's review: ctaLabel ("See Trucking →") and demoLabel ("Demo data").
     The label follows the design band's pattern "See {app} →". "Demo data" is the label the demo uses
     for its numbers; it sits in HTML on every card so the preview never reads as client proof.
   - UNVERIFIED(stage): 'run' was inferred, no design file or Airtable row records Trucking's stage.
     Josh or the layout session confirms it, or changes this one field.
-  - Oil and Gas follows the same pattern: id, kick, title and href come from oilAndGasCopy
+  - title for Trucking and Oil and Gas is the industry alone (Josh, 2026-10-15), not the page headline.
+  - Oil and Gas follows the same pattern: id, kick and href come from oilAndGasCopy
     (lib/landing/oil-and-gas.ts), you is oilAndGasCopy.closing verbatim. Lines WRITTEN for review: ctaLabel
     ("See Oil and Gas →") and demoLabel ("Demo data"). Its stage 'run' is likewise UNVERIFIED(inferred).
   - in and agent are DRAFT-FOR-JOSH (Josh's rule 2026-10-12: draft only where no existing field fits, grounded in
@@ -63,7 +64,7 @@ export const showcaseTiles: ShowcaseTile[] = [
     id: truckingCopy.slug,
     stage: 'run', // UNVERIFIED(inferred, see header)
     kick: truckingCopy.eyebrow,
-    title: truckingCopy.headline,
+    title: 'Trucking', // Josh, 2026-10-15: the card shows the industry only, not the page h1 "Trucking, a good day"
     // DRAFT-FOR-JOSH. Drawn from locations gate, dock and office `today`: "The guard writes the truck in; the ticket
     // waits in a tray." / "A driver hands in the ticket; its fields get keyed in twice." / "Paper and phone calls pass
     // between desks to close a packet."
@@ -83,7 +84,7 @@ export const showcaseTiles: ShowcaseTile[] = [
     id: oilAndGasCopy.slug,
     stage: 'run', // UNVERIFIED(inferred, as for Trucking; no design file records it)
     kick: oilAndGasCopy.eyebrow,
-    title: oilAndGasCopy.headline,
+    title: 'Oil and Gas', // Josh, 2026-10-15: industry only, not the page h1 "Oil and Gas, a good day"
     // DRAFT-FOR-JOSH. Drawn from locations bay, lease pad and office `today`: "The driver hands over a run ticket that
     // is keyed in later." / "The walk is written on paper and carried to the office." / "Paper from the pad, the bay
     // and the skid lands on one desk."
