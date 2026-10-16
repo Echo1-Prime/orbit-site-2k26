@@ -39,7 +39,7 @@ export const PRIVACY_OPEN_ITEMS: OpenItem[] = [
   {
     key: 'entity-name',
     status: 'CONFIRM',
-    note: 'Filed name on the Texas certificate of formation must match "' + LEGAL_ENTITY + '" character for character.',
+    note: 'Filed name on the Texas certificate of formation must match "' + LEGAL_ENTITY + '" character for character. Evidence 2026-10-16: SOS file 0806419373 is of record as TRILOGY 583 LLC; the renaming amendment signed 2026-07-27 is not yet on file.',
   },
   {
     key: 'effective-date',

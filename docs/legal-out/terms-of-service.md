@@ -5,8 +5,8 @@ Version 1.0 · Effective date to be confirmed · Echo 1 Labs LLC · Governed by 
 Version 1.0 is the first edition issued by Echo 1 Labs LLC. Prior editions of Platform terms were issued by a predecessor entity and are superseded as described in Section 1.5.
 
 > **DRAFT FOR ATTORNEY REVIEW. NOT IN FORCE.**
-> - **CONFIRM** Filed name on the Texas certificate of formation. Working value is "Echo 1 Labs LLC". Must match character for character; the certificate wins. Set ENTITY_NAME_VERIFIED once matched.
-> - **CONFIRM** Effective Date must be the LLC formation date or later. Set EFFECTIVE_DATE.
+> - **CONFIRM** Filed name on the Texas certificate of formation. Working value is "Echo 1 Labs LLC". Must match character for character; the certificate wins. Evidence 2026-10-16: Texas SOS file 0806419373 is of record as TRILOGY 583 LLC (formed 2026-01-30, ACTIVE); a certificate of amendment renaming it to Echo 1 Labs LLC was signed 2026-07-27 but does not yet appear on file. Until the amendment is filed and reflected at SOS, this name is not verified. Set ENTITY_NAME_VERIFIED once matched.
+> - **CONFIRM** Effective Date must be on or after the LLC formation date (2026-01-30 per SOS file 0806419373) and on or after the date the name amendment is filed. Owner sets EFFECTIVE_DATE.
 > - **CONFIRM** Exhibit A guardrail table must match how the Platform is actually configured. Delete any aspirational row before launch.
 > - **COUNSEL** Section 16 no longer states dollar limits. If technology E&O and cyber are bound before launch, counsel may restore limits here and add a dollar floor to the Section 14 super-cap.
 > - **COUNSEL** Texas-licensed attorney review of v1.0-rc, with attention to Sections 1.5, 14, 16, 17, and 20.

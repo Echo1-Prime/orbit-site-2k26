@@ -55,12 +55,12 @@ export const OPEN_ITEMS: OpenItem[] = [
     note:
       'Filed name on the Texas certificate of formation. Working value is "' +
       LEGAL_ENTITY +
-      '". Must match character for character; the certificate wins. Set ENTITY_NAME_VERIFIED once matched.',
+      '". Must match character for character; the certificate wins. Evidence 2026-10-16: Texas SOS file 0806419373 is of record as TRILOGY 583 LLC (formed 2026-01-30, ACTIVE); a certificate of amendment renaming it to Echo 1 Labs LLC was signed 2026-07-27 but does not yet appear on file. Until the amendment is filed and reflected at SOS, this name is not verified. Set ENTITY_NAME_VERIFIED once matched.',
   },
   {
     key: 'effective-date',
     status: 'CONFIRM',
-    note: 'Effective Date must be the LLC formation date or later. Set EFFECTIVE_DATE.',
+    note: 'Effective Date must be on or after the LLC formation date (2026-01-30 per SOS file 0806419373) and on or after the date the name amendment is filed. Owner sets EFFECTIVE_DATE.',
   },
   {
     key: 'exhibit-a-content',
