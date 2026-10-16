@@ -22,6 +22,7 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
           <span className={styles.lpFooterLegal}>© 2026 Echo 1 Labs LLC. All rights reserved.</span>
           <nav className={styles.lpFooterLinks} aria-label="Footer">
             <Link href="/privacy">Privacy</Link>
+            <Link href="/terms-of-service">Terms</Link>
             <Link href="/contact">Contact</Link>
           </nav>
         </div>

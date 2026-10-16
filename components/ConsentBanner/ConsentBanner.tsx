@@ -14,7 +14,16 @@ export default function ConsentBanner() {
   const [show, setShow] = useState(false);
 
   useEffect(() => {
-    if (readConsent() === null) setShow(true);
+    if (readConsent() !== null) return;
+    // Global Privacy Control (navigator.globalPrivacyControl) is an opt-out
+    // preference signal under the TDPSA and CCPA. Treat it as a decline,
+    // store it, and skip the banner.
+    const nav = navigator as Navigator & { globalPrivacyControl?: boolean };
+    if (nav.globalPrivacyControl === true) {
+      writeConsent({ analytics: false, marketing: false });
+      return;
+    }
+    setShow(true);
   }, []);
 
   const choose = (accepted: boolean) => {
@@ -29,7 +38,7 @@ export default function ConsentBanner() {
       <p className={styles.text}>
         We use Google Analytics and Google Ads cookies to understand traffic and measure our
         campaigns. Nothing is stored until you accept. See our{' '}
-        <a href="/privacy" className={styles.link}>privacy summary</a>.
+        <a href="/privacy" className={styles.link}>privacy policy</a>.
       </p>
       <div className={styles.actions}>
         <button type="button" className={styles.accept} onClick={() => choose(true)}>
