@@ -153,7 +153,7 @@ Customer is solely responsible for: (a) designating qualified Authorized Users t
 
 ## 06. Account Registration and Security
 
-Customer must register with accurate and current information, maintain the confidentiality of all credentials, restrict access to Authorized Users only, and promptly notify privacy@echo1labs.com of any suspected unauthorized access. Customer is responsible for all activities conducted under its account.
+Customer must register with accurate and current information, maintain the confidentiality of all credentials, restrict access to Authorized Users only, and promptly notify legal@echo1labs.com of any suspected unauthorized access. Customer is responsible for all activities conducted under its account.
 
 ## 07. Acceptable Use Policy
 
@@ -243,7 +243,7 @@ As between the parties, and subject to Echo 1 Labs's retained rights in the Plat
 
 ### 10.3 Copyright Complaints and Repeat Infringers
 
-Echo 1 Labs responds to notices of claimed copyright infringement that comply with 17 U.S.C. 512(c)(3). Notices and counter-notices go to Echo 1 Labs's designated agent at privacy@echo1labs.com with the subject line "DMCA Notice" and by mail to the Mailing Address for Notices. Echo 1 Labs may remove or disable access to material that is the subject of a compliant notice, will forward counter-notices as the statute provides, and will terminate, in appropriate circumstances, the accounts of Authorized Users or Customers who are repeat infringers. Customer is responsible for Content it or its AI Agents publish to Connected Accounts; Echo 1 Labs does not publish Content on its own initiative.
+Echo 1 Labs responds to notices of claimed copyright infringement that comply with 17 U.S.C. 512(c)(3). Notices and counter-notices go to Echo 1 Labs's designated agent, Legal Counsel, at legal@echo1labs.com with the subject line "DMCA Notice" and by mail to the Mailing Address for Notices. Echo 1 Labs may remove or disable access to material that is the subject of a compliant notice, will forward counter-notices as the statute provides, and will terminate, in appropriate circumstances, the accounts of Authorized Users or Customers who are repeat infringers. Customer is responsible for Content it or its AI Agents publish to Connected Accounts; Echo 1 Labs does not publish Content on its own initiative.
 
 ## 11. Confidentiality
 
@@ -397,10 +397,12 @@ Notwithstanding Section 20.3, either party may seek injunctive or other equitabl
 
 | Channel | Detail |
 | --- | --- |
-| Legal notices, privacy and data-rights requests, and billing | privacy@echo1labs.com |
+| Legal Counsel (legal notices, security reports, copyright complaints) | legal@echo1labs.com |
+| Privacy and data-rights requests | privacy@echo1labs.com |
+| Billing | billing@echo1labs.com |
 | Mailing Address for Notices | Echo 1 Labs LLC, P.O. Box 23, Meyersville TX 77954 |
 
-Legal notices to Echo 1 Labs must be sent by email to privacy@echo1labs.com with the subject line "Legal Notice" and by certified mail, or another mail service that provides proof of delivery, to the Mailing Address for Notices. Legal notices to Customer may be sent to the email address of Customer's account contact. Notice is deemed received one business day after email transmission without bounce, or on confirmed delivery of a physical copy.
+Legal notices to Echo 1 Labs must be sent by email to Legal Counsel at legal@echo1labs.com with the subject line "Legal Notice" and by certified mail, or another mail service that provides proof of delivery, to the Mailing Address for Notices. Legal notices to Customer may be sent to the email address of Customer's account contact. Notice is deemed received one business day after email transmission without bounce, or on confirmed delivery of a physical copy.
 
 ## A. Exhibit A: AI Policy Guardrails
 
@@ -498,7 +500,7 @@ Each party's liability under this DPA is subject to Section 14 of the Agreement.
 - Section 20 arbitration seat changed from Dallas County to Victoria, Texas; court venue DeWitt County, Texas.
 - Vendor names removed from client-facing copy (Sections 3.2, 4.3, 9, 12).
 - Section 3.2 product list aligned to the live product set; Professional Services bullet removed.
-- Sections 6 and 22: all legal, privacy, data-rights, and billing channels route to privacy@echo1labs.com (owner decision 2026-10-16); mailing address for notices set from POSTAL_ADDRESS (P.O. Box; the registered office is on the certificate of formation).
+- Sections 6, 10.3, and 22: legal notices, security reports, and copyright complaints route to Legal Counsel at legal@echo1labs.com; privacy and data-rights requests to privacy@echo1labs.com; billing to billing@echo1labs.com (owner decision 2026-10-16); mailing address for notices set from POSTAL_ADDRESS (P.O. Box; the registered office is on the certificate of formation).
 - Punctuation only: em dashes replaced. No wording changed by that pass.
 - Section 1.4 added: business use only. Section 1.5 added: transition from predecessor terms, consent to assignment.
 - Section 2: added definitions for Effective Date, Human Sign-Off, Subscription Term, Beta Services, Privacy Policy. DPA definition made conditional.

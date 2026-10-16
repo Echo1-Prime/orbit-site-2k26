@@ -249,7 +249,7 @@ We may update this Policy to reflect changes in our practices, Platform features
 | Channel | Detail |
 | --- | --- |
 | Privacy inquiries and data-rights requests | privacy@echo1labs.com |
-| Legal notices | privacy@echo1labs.com |
+| Legal Counsel (legal notices) | legal@echo1labs.com |
 | EEA / UK inquiries | privacy@echo1labs.com |
 | Mailing address | Echo 1 Labs LLC, P.O. Box 23, Meyersville TX 77954 |
 
@@ -258,7 +258,7 @@ We may update this Policy to reflect changes in our practices, Platform features
 ## Change log against Echo1Labs_Privacy_Policy_v2.docx (2026-07-29)
 
 - Controller: "Mingma Inc, doing business as Echo 1 Labs" replaced with "Echo 1 Labs LLC" throughout. Address set to P.O. Box 23, Meyersville TX 77954.
-- Named individual removed. The July draft listed a named EEA/UK contact with a personal mailbox; all contact channels now route to privacy@echo1labs.com (owner decision 2026-10-16).
+- Named individual removed. The July draft listed a named EEA/UK contact with a personal mailbox; privacy requests route to privacy@echo1labs.com and legal notices to Legal Counsel at legal@echo1labs.com (owner decision 2026-10-16).
 - Version reset from 2.0 to 1.0 with a predecessor note. Effective Date gated on formation date.
 - Product names aligned to the live product set (Section 1).
 - Vendor names replaced with service categories in Sections 2, 6.1, and 15. Google Tag Manager, Google Analytics, and Google Ads remain named in Section 13 because a visitor cannot act on a cookie disclosure that hides the vendor.

@@ -10,9 +10,9 @@ This Order Form is entered into under, and incorporates, the Echo 1 Labs Terms o
 |---|---|---|
 | Legal name | [LEGAL_ENTITY as filed on the certificate of formation] | [Customer legal name and entity type] |
 | Mailing address for notices | P.O. Box 23, Meyersville TX 77954 | [address] |
-| Notice email | hello@echo1labs.com (subject line "Legal Notice") | [email] |
-| Account contact | | [name, title, email] |
-| Billing contact | | [name, email] |
+| Notice email | Legal Counsel, legal@echo1labs.com (subject line "Legal Notice") | [email] |
+| Account contact | Legal Counsel, legal@echo1labs.com | [name, title, email] |
+| Billing contact | billing@echo1labs.com | [name, email] |
 
 ## 2. Subscription
 

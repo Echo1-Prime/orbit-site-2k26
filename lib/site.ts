@@ -17,6 +17,10 @@ export const GTM_ID = 'GTM-5BDZ45QD';
 export const CONTACT_EMAIL = 'hello@echo1labs.com';
 // Privacy and data-rights requests route to a dedicated inbox.
 export const PRIVACY_EMAIL = 'privacy@echo1labs.com';
+// Legal notices, DMCA, security reports: the Legal Counsel mailbox (a role, never a person).
+export const LEGAL_EMAIL = 'legal@echo1labs.com';
+// Invoices and payment questions.
+export const BILLING_EMAIL = 'billing@echo1labs.com';
 // Mailing address for legal notices. Single source for legal documents.
 // A P.O. Box cannot serve as the Texas registered office (Bus. Orgs. Code 5.201);
 // the registered agent address lives on the certificate of formation, not here.
