@@ -92,7 +92,7 @@ export const CHANGES: string[] = [
   'Section 20 arbitration seat changed from Dallas County to Victoria, Texas; court venue DeWitt County, Texas.',
   'Vendor names removed from client-facing copy (Sections 3.2, 4.3, 9, 12).',
   'Section 3.2 product list aligned to the live product set; Professional Services bullet removed.',
-  'Sections 6 and 22: legal and billing notices route to ' + CONTACT_EMAIL + '; privacy and data-rights requests route to ' + PRIVACY_EMAIL + '; registered address set from POSTAL_ADDRESS.',
+  'Sections 6 and 22: legal and billing notices route to ' + CONTACT_EMAIL + '; privacy and data-rights requests route to ' + PRIVACY_EMAIL + '; mailing address for notices set from POSTAL_ADDRESS (P.O. Box; the registered office is on the certificate of formation).',
   'Punctuation only: em dashes replaced. No wording changed by that pass.',
   // GC audit revision (v1.0-rc)
   'Section 1.4 added: business use only. Section 1.5 added: transition from predecessor terms, consent to assignment.',
@@ -648,12 +648,12 @@ export const TERMS_SECTIONS: LegalSection[] = [
         rows: [
           ['Legal notices and billing', CONTACT_EMAIL],
           ['Privacy and data-rights requests', PRIVACY_EMAIL],
-          ['Registered Address', `${LEGAL_ENTITY}, ${TERMS_META.address}`],
+          ['Mailing Address for Notices', `${LEGAL_ENTITY}, ${TERMS_META.address}`],
         ],
       },
       {
         type: 'p',
-        text: `Legal notices to ${E} must be sent by email to ${CONTACT_EMAIL} with the subject line "Legal Notice" and by courier or certified mail to the Registered Address. Legal notices to Customer may be sent to the email address of Customer's account contact. Notice is deemed received one business day after email transmission without bounce, or on confirmed delivery of a physical copy.`,
+        text: `Legal notices to ${E} must be sent by email to ${CONTACT_EMAIL} with the subject line "Legal Notice" and by certified mail, or another mail service that provides proof of delivery, to the Mailing Address for Notices. Legal notices to Customer may be sent to the email address of Customer's account contact. Notice is deemed received one business day after email transmission without bounce, or on confirmed delivery of a physical copy.`,
       },
     ],
   },

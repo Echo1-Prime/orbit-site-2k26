@@ -338,9 +338,9 @@ Notwithstanding Section 20.2, either party may seek injunctive or other equitabl
 | --- | --- |
 | Legal notices and billing | hello@echo1labs.com |
 | Privacy and data-rights requests | privacy@echo1labs.com |
-| Registered Address | Echo 1 Labs LLC, 103 Meyersville Rd, Cuero TX 77954 |
+| Mailing Address for Notices | Echo 1 Labs LLC, P.O. Box 23, Meyersville TX 77954 |
 
-Legal notices to Echo 1 Labs must be sent by email to hello@echo1labs.com with the subject line "Legal Notice" and by courier or certified mail to the Registered Address. Legal notices to Customer may be sent to the email address of Customer's account contact. Notice is deemed received one business day after email transmission without bounce, or on confirmed delivery of a physical copy.
+Legal notices to Echo 1 Labs must be sent by email to hello@echo1labs.com with the subject line "Legal Notice" and by certified mail, or another mail service that provides proof of delivery, to the Mailing Address for Notices. Legal notices to Customer may be sent to the email address of Customer's account contact. Notice is deemed received one business day after email transmission without bounce, or on confirmed delivery of a physical copy.
 
 ## A. Exhibit A: AI Policy Guardrails
 
@@ -367,7 +367,7 @@ Escalation: any AI Agent encountering a Consequential Decision, low-confidence o
 - Section 20 arbitration seat changed from Dallas County to Victoria, Texas; court venue DeWitt County, Texas.
 - Vendor names removed from client-facing copy (Sections 3.2, 4.3, 9, 12).
 - Section 3.2 product list aligned to the live product set; Professional Services bullet removed.
-- Sections 6 and 22: legal and billing notices route to hello@echo1labs.com; privacy and data-rights requests route to privacy@echo1labs.com; registered address set from POSTAL_ADDRESS.
+- Sections 6 and 22: legal and billing notices route to hello@echo1labs.com; privacy and data-rights requests route to privacy@echo1labs.com; mailing address for notices set from POSTAL_ADDRESS (P.O. Box; the registered office is on the certificate of formation).
 - Punctuation only: em dashes replaced. No wording changed by that pass.
 - Section 1.4 added: business use only. Section 1.5 added: transition from predecessor terms, consent to assignment.
 - Section 2: added definitions for Effective Date, Human Sign-Off, Subscription Term, Beta Services, Privacy Policy. DPA definition made conditional.

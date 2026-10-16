@@ -502,7 +502,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
           ['Privacy inquiries and data-rights requests', PRIVACY_EMAIL],
           ['Legal notices', CONTACT_EMAIL],
           ['EEA / UK inquiries', PRIVACY_EMAIL],
-          ['Registered address', `${LEGAL_ENTITY}, ${POSTAL_ADDRESS}`],
+          ['Mailing address', `${LEGAL_ENTITY}, ${POSTAL_ADDRESS}`],
         ],
       },
     ],
