@@ -35,7 +35,8 @@ Pushed from the site and wired to GTM triggers:
 
 - Any click on a link to `/contact` → `contact_cta_click` with `cta_source` (the link's `src`, or `untagged`),
   `cta_position` (`cta`, for example `hero` or `closing`) and `from_path` (`components/Analytics/Attribution.tsx`).
-- A sent contact form → `generate_lead` + legacy `conversion` with `lead_source: contact_form:<src>`.
+- A sent contact form → `generate_lead` only, with `lead_source: contact_form:<src>` (GA4's recommended lead event). The legacy
+  `conversion` event is reserved for booked sessions, so contact leads and bookings stay separate conversion actions in Google Ads.
 
 ### Where a lead came from
 
