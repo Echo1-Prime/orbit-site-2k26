@@ -84,3 +84,17 @@ test('route changes move the previous page along and ignore repeats', async () =
   assert.equal(a.readAttribution().from, '/case-studies');
   assert.equal(a.readAttribution().landing, '/');
 });
+
+import { leadFields } from '../lib/airtable.ts';
+
+test('leadFields makes a New, Inbound Leads record with the message and where it came from', () => {
+  const f = leadFields({ name: 'A B', email: 'a@b.co', company: 'Acme', message: 'Hi', attribution: { src: 'nav', cta: '', from: '/', landing: '/', ref: '', utm: '' } });
+  assert.equal(f['Full Name'], 'A B');
+  assert.equal(f.Email, 'a@b.co');
+  assert.equal(f.Company, 'Acme');
+  assert.equal(f.Stage, 'New');
+  assert.equal(f.Source, 'Inbound');
+  assert.match(f.Notes, /Message: Hi/);
+  assert.match(f.Notes, /Came from: nav/);
+  assert.equal(leadFields({ name: 'A', email: 'a@b.co' }).Company, undefined);
+});

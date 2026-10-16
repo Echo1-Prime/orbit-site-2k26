@@ -1,5 +1,6 @@
 'use server';
 
+import { airtableConfigured, createLead } from '@/lib/airtable';
 import { cleanAttr } from '@/lib/attribution';
 import { forwardContact, n8nConfigured } from '@/lib/n8n';
 import { notifySlackLead, slackConfigured } from '@/lib/slack';
@@ -40,8 +41,10 @@ export async function submitContact(_prev: ContactState, formData: FormData): Pr
   const deliveries: Promise<{ ok: boolean }>[] = [];
   if (slackConfigured()) deliveries.push(notifySlackLead(payload));
   if (n8nConfigured()) deliveries.push(forwardContact(payload));
+  // The sales pipeline Agent Orbit reads: every lead also lands in Leads as New, source Inbound.
+  if (airtableConfigured()) deliveries.push(createLead(payload));
   if (deliveries.length === 0) {
-    console.error('[contact] no delivery configured (SLACK_NEW_LEADS_WEBHOOK and N8N_CONTACT_WEBHOOK unset)');
+    console.error('[contact] no delivery configured (SLACK_NEW_LEADS_WEBHOOK, N8N_CONTACT_WEBHOOK and AIRTABLE_LEADS_TOKEN unset)');
     if (process.env.NODE_ENV !== 'production') return { status: 'success' };
   }
   const results = await Promise.all(deliveries);
