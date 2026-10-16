@@ -1,5 +1,5 @@
 /* Bottom-left card so it never collides with the bottom-right Ask Orbit
-   launcher. Tokens only — no hardcoded hex, no navy. */
+   launcher. Tokens only, no hardcoded hex, no navy. */
 .banner {
   position: fixed;
   left: 1.25rem;

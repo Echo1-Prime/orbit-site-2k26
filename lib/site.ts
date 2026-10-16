@@ -15,6 +15,10 @@ export const GTM_ID = 'GTM-5BDZ45QD';
 
 // Contact: values carried from the existing production Organization schema.
 export const CONTACT_EMAIL = 'hello@echo1labs.com';
+// Privacy and data-rights requests route to a dedicated inbox.
+export const PRIVACY_EMAIL = 'privacy@echo1labs.com';
+// Registered and notice address. Single source for legal documents.
+export const POSTAL_ADDRESS = '103 Meyersville Rd, Cuero TX 77954';
 export const CONTACT_PHONE = '+1-610-956-4116';
 export const CONTACT_PHONE_DISPLAY = '(610) 956-4116';
 
@@ -39,6 +43,7 @@ export const FOOTER_LINKS = [
   { href: '/founding-cohort', label: 'Founding Cohort' },
   { href: '/about', label: 'About' },
   { href: '/privacy', label: 'Privacy' },
+  { href: '/terms-of-service', label: 'Terms' },
 ] as const;
 
 // Public-facing social profiles (sameAs for Organization schema).
