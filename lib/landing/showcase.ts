@@ -46,6 +46,8 @@ export interface ShowcaseTile {
   poster: string;
   posterSmall: string;
   demoLabel: string;
+  /** Hidden until further notice (Josh): kept in this file, left out of showcaseTiles. Remove the flag to show it again. */
+  hidden?: boolean;
 }
 
 const TRUCKING_ASSET = '/videos/showcase/trucking-card-fd6d2d4e';
@@ -58,7 +60,7 @@ const REAL_ESTATE_FULL = '/videos/showcase/real-estate-walkthrough-3b678692.mp4'
    scene canvas), captured 2026-10-13; the hex is the sha-256 prefix of the show's served HTML. */
 const JOBS_3D_ASSET = '/videos/showcase/track-your-jobs-in-3d-card-dcd40d13';
 
-export const showcaseTiles: ShowcaseTile[] = [
+const ALL_TILES: ShowcaseTile[] = [
   {
     id: truckingCopy.slug,
     stage: 'run', // UNVERIFIED(inferred, see header)
@@ -102,6 +104,7 @@ export const showcaseTiles: ShowcaseTile[] = [
   },
   {
     id: 'real-estate-development',
+    hidden: true, // Josh, 2026-10-16: hide the real estate developer use case until further notice
     stage: 'build', // UNVERIFIED(inferred: site development precedes build-out; no design file records it)
     kick: 'Use case · Real estate development', // same pattern as the other eyebrows
     // Header and rows from the live entitlement screen, read 2026-10-13, anonymized:
@@ -144,3 +147,6 @@ export const showcaseTiles: ShowcaseTile[] = [
     demoLabel: 'Demo data', // the show's events, change orders, punch items and budget figures are simulated
   },
 ];
+
+/** The cards the page shows, in order. Tiles marked hidden are left out. */
+export const showcaseTiles: ShowcaseTile[] = ALL_TILES.filter((t) => !t.hidden);
