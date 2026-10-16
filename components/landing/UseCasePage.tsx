@@ -50,6 +50,7 @@ export default function UseCasePage({ copy }: Props) {
         </div>
       </section>
 
+      {copy.locations.length > 0 && (
       <section className={`section band--muted ${styles.locSection}`}>
         <div className={styles.inner}>
           <h2 className={`display-md ${styles.h2}`}>{copy.locationsHeadline}</h2>
@@ -87,6 +88,7 @@ export default function UseCasePage({ copy }: Props) {
           </ol>
         </div>
       </section>
+      )}
 
       <section className={`section band--dark ${styles.closeBand}`}>
         <div className={styles.inner}>
