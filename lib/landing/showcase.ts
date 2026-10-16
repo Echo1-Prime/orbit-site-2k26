@@ -55,7 +55,6 @@ const OIL_AND_GAS_ASSET = '/videos/showcase/oil-and-gas-card-cbb93bcf';
 /* Real estate development: a 3D walkthrough of a traced site with every name, road label, callout and number removed
    (Josh, 2026-10-13: anonymized, the walkthrough only, no use-case page). The card links to the full clip. */
 const REAL_ESTATE_ASSET = '/videos/showcase/real-estate-card-3b678692';
-const REAL_ESTATE_FULL = '/videos/showcase/real-estate-walkthrough-3b678692.mp4';
 /* Track your jobs in 3D: a caption-free clip of the live build-it show (?t=62, every page element hidden but the
    scene canvas), captured 2026-10-13; the hex is the sha-256 prefix of the show's served HTML. */
 const JOBS_3D_ASSET = '/videos/showcase/track-your-jobs-in-3d-card-dcd40d13';
@@ -121,8 +120,8 @@ const ALL_TILES: ShowcaseTile[] = [
     // who can answer it."
     you: 'Every item gets a cited finding, or stays open and named with who can answer it.',
     ctaLabel: 'Walk the site in 3D →', // the h1's last line, "Walk each site in 3D.", for the one site in the clip
-    href: REAL_ESTATE_FULL,
-    video: `${REAL_ESTATE_ASSET}.mp4`,
+    href: '/contact', // the walkthrough clip was removed (Josh, 2026-10-16); the tile is hidden
+    video: '', // clip removed (Josh, 2026-10-16); poster-only if the tile is ever shown again
     poster: `${REAL_ESTATE_ASSET}-960.webp`,
     posterSmall: `${REAL_ESTATE_ASSET}-640.webp`,
     demoLabel: 'Names removed', // a traced site, anonymized, with no data shown
