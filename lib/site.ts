@@ -17,8 +17,10 @@ export const GTM_ID = 'GTM-5BDZ45QD';
 export const CONTACT_EMAIL = 'hello@echo1labs.com';
 // Privacy and data-rights requests route to a dedicated inbox.
 export const PRIVACY_EMAIL = 'privacy@echo1labs.com';
-// Registered and notice address. Single source for legal documents.
-export const POSTAL_ADDRESS = '103 Meyersville Rd, Cuero TX 77954';
+// Mailing address for legal notices. Single source for legal documents.
+// A P.O. Box cannot serve as the Texas registered office (Bus. Orgs. Code 5.201);
+// the registered agent address lives on the certificate of formation, not here.
+export const POSTAL_ADDRESS = 'P.O. Box 23, Meyersville TX 77954';
 export const CONTACT_PHONE = '+1-610-956-4116';
 export const CONTACT_PHONE_DISPLAY = '(610) 956-4116';
 

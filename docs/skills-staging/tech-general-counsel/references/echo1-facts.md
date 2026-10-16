@@ -9,7 +9,7 @@ Source hierarchy: the owner's live words in session, then the live codebase (`li
 | Legal name (working) | Echo 1 Labs LLC | Owner, 2026-09-22. CONFIRM spelling against certificate of formation. |
 | Entity form | Texas limited liability company, single-member, member-managed | Owner, 2026-09-22 |
 | Predecessor | Mingma Inc, Delaware corporation, dissolved. Never appears in any new document. | Owner |
-| Registered and notice address | 103 Meyersville Rd, Cuero TX 77954 (`POSTAL_ADDRESS`) | Owner, 2026-10-15 |
+| Mailing address for notices | P.O. Box 23, Meyersville TX 77954 (`POSTAL_ADDRESS`) | Owner, 2026-10-16. A P.O. Box cannot be the Texas registered office (Bus. Orgs. Code 5.201); never label it "registered address". |
 | Legal notices and billing | hello@echo1labs.com (`CONTACT_EMAIL`) | Owner |
 | Privacy and data-rights requests | privacy@echo1labs.com (`PRIVACY_EMAIL`) | Owner, 2026-10-15 |
 | Named individuals in legal documents | None, ever | Owner, 2026-10-15 |
