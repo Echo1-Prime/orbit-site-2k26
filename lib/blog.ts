@@ -189,7 +189,7 @@ export const POSTS: BlogPost[] = [
       { type: 'p', content: 'Signal is built for PE-backed operators managing portfolio companies, capital allocators evaluating acquisition targets, and businesses preparing for a transaction where independent intelligence matters. It is not for general business intelligence use cases.' },
       { type: 'pullquote', content: 'Signal is the layer that closes the gap between what the financials say and what the business is actually doing.' },
       { type: 'h2', content: 'Private access' },
-      { type: 'p', content: 'Signal is not listed in the standard pricing tiers. Access is by application only. If Signal is relevant to your situation, apply through the Signal page. Every application is reviewed individually.' },
+      { type: 'p', content: 'Signal is not sold off the shelf. Access is by application only. If Signal is relevant to your situation, apply through the Signal page. Every application is reviewed individually.' },
     ],
   },
   {

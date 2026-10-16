@@ -100,8 +100,8 @@ export function RelatedBand({ p }: { p: Subpage }) {
         </ul>
         <ul className={styles.site}>
           <li>
-            <Link href="/pricing" className={styles.link}>
-              {SITE_NAME} pricing
+            <Link href="/contact" className={styles.link}>
+              Contact Sales
             </Link>
           </li>
           <li>

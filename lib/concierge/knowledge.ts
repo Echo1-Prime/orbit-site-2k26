@@ -41,12 +41,12 @@ export const KNOWLEDGE_BASE: KbEntry[] = [
   {
     topic: 'products',
     q: 'Is AI Readiness a product?',
-    a: 'No. AI Readiness is the ENABLE-stage advisory engagement, not a software product. It is monthly advisory (roughly $2-10K per month) plus scoped project work: secure setup, 101 and 201 training, org and personal skills per seat, and governance.',
+    a: 'No. AI Readiness is the ENABLE-stage advisory engagement, not a software product. It is monthly advisory plus scoped project work: secure setup, 101 and 201 training, org and personal skills per seat, and governance.',
   },
   {
     topic: 'pricing',
     q: 'How much does it cost?',
-    a: 'AI Readiness advisory runs about $2-10K per month plus scoped project fees. Product engagements are scoped to your stack and stage, so exact numbers come out of a short discovery call rather than a fixed price list.',
+    a: 'Pricing is set with you, not published. AI Readiness advisory and product engagements are scoped to your stack and stage, so the numbers come out of a short conversation with sales. Contact Sales to start it.',
   },
   {
     topic: 'process',

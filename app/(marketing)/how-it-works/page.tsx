@@ -59,7 +59,7 @@ const FAQS = [
   },
   {
     q: 'What is an agent execution?',
-    a: 'An agent execution is a single completed business outcome performed by an autonomous agent: one lead enriched, one financial sync run, one piece of content delivered, one signal surfaced. The Growth tier includes 3,000 agent executions per month.',
+    a: 'An agent execution is a single completed business outcome performed by an autonomous agent: one lead enriched, one financial sync run, one piece of content delivered, one signal surfaced.',
   },
 ];
 

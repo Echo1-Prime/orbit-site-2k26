@@ -20,14 +20,14 @@ export const NAV_LINKS = [
   { href: '/#process', label: 'How it runs' },
   { href: '/#agent-orbit', label: 'Agent Orbit' },
   { href: '/#governance', label: 'Governance' },
-  { href: '/pricing', label: 'Pricing' },
+  { href: '/contact', label: 'Contact Sales' },
 ] as const;
 
 export const DEST: Record<DestKey, Dest> = {
   titan: { eyebrow: 'Build it', title: 'Titan', line: 'Construction Lifecycle Management', route: '/construction-estimating-software' },
   signal: { eyebrow: 'Buy it', title: 'Signal', line: 'M&A Lifecycle Management, starting with deal sourcing', route: '/ma-deal-sourcing' },
   orbit: { eyebrow: 'Run it', title: 'Agent Orbit', line: 'Operational Lifecycle Management, with you in the chair', route: '/#agent-orbit' },
-  pricing: { eyebrow: 'Published', title: 'Pricing', line: 'Everything we charge, on one page', route: '/pricing' },
+  pricing: { eyebrow: 'Sales', title: 'Contact Sales', line: 'Pricing is set with you. Tell us what you need.', route: '/contact' },
   cohort: { eyebrow: 'First in', title: 'Founding Cohort', line: 'How the first companies work with us', route: '/founding-cohort' },
   start: { eyebrow: 'Handoff · A person', title: 'Start the conversation', line: 'A person at Echo 1 Labs reads it. Not an agent.', route: '/contact' },
 };
@@ -36,7 +36,7 @@ export const DEST: Record<DestKey, Dest> = {
 export const DRAWER_CARDS: { dest: DestKey; eyebrow: string; title: string; line: string }[] = [
   { dest: 'orbit', eyebrow: 'Run it', title: 'Agent Orbit', line: 'See the command center up close.' },
   { dest: 'cohort', eyebrow: 'First in', title: 'Founding Cohort', line: 'How the first companies work with us.' },
-  { dest: 'pricing', eyebrow: 'Published', title: 'Pricing', line: 'No call required to see it.' },
+  { dest: 'pricing', eyebrow: 'Sales', title: 'Contact Sales', line: 'Tell us what you need.' },
 ];
 
 export const STARTERS = [
@@ -48,7 +48,7 @@ export const STARTERS = [
 export const FAQ = [
   { q: 'What is Echo 1 Labs?', a: 'The Business Lifecycle Management company. Seven apps, one lifecycle, run by agents you supervise.' },
   { q: 'Is this a chat assistant?', a: 'No. Agents hold defined roles, hand work to each other, and log every action. Every one starts supervised.' },
-  { q: 'Where is pricing?', a: 'On the pricing page. Nothing is quoted anywhere else.' },
+  { q: 'Where is pricing?', a: 'Pricing is set with you. Contact Sales and a person at Echo 1 Labs will reply.' },
   { q: 'How do I reach a person?', a: 'Start the conversation. A person at Echo 1 Labs reads it.' },
 ];
 
@@ -56,7 +56,7 @@ const ANS = {
   run: 'Usually the work that waits on you. The close, the pipeline, the bids, the approvals. Every agent starts in Shadow, watching how your people do it now, before it drafts anything. Tell me your industry and headcount and I can be more specific.',
   signal: 'Signal is M&A Lifecycle Management, starting with deal sourcing. It finds acquisition targets, businesses for sale and owners preparing to step back, and screens each one against criteria you set once: margin profile, owner transition, customer concentration, geography. The few that clear the bar reach you with their evidence. The call is still yours.',
   diff: 'A chat assistant makes one person faster at one task. This makes the company faster. Agents here hold defined roles, hand work to each other, check each other, and log everything they do. And every one starts supervised.',
-  cost: 'Pricing is published, and I only quote what is on that page. If you are weighing the Founding Cohort, its terms are on their own page.',
+  cost: 'Pricing is set with you, not published. Contact Sales and a person at Echo 1 Labs will respond. I do not quote prices.',
   roi: 'I will not put a number on that. It depends on how your work moves today, and anyone who quotes a figure before seeing it is guessing. A person can walk your processes with you.',
   titan: 'Titan is Construction Lifecycle Management. It runs construction from plan set to closeout. Takeoff, bid assembly, subcontractor scope, and fulfillment, with an agent on each handoff and you at the gate.',
   cohort: 'The Founding Cohort is the first group of companies running the full lifecycle with us. Fit, terms, and timing are on its page.',

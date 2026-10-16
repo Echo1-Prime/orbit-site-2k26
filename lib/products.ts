@@ -54,7 +54,7 @@ export const PRODUCTS: Product[] = [
       { value: '5/mo', label: 'Automation workflows built' },
       { value: '6-8 wk', label: 'Full deployment timeline' },
       { value: '5+5', label: 'Org skills + personal skills per seat' },
-      { value: '$2-10K', label: 'Monthly advisory (ongoing)' },
+      { value: 'Scoped', label: 'Monthly advisory (ongoing)' },
     ],
     capabilities: [
       { name: 'Assessment & Strategy', desc: 'Use case discovery, data audit, AI opportunity heatmap, ROI model, and 30-60-90 day execution roadmap.' },
