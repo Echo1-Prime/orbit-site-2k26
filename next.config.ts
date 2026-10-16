@@ -34,6 +34,8 @@ const nextConfig: NextConfig = {
     return [
       // Legacy paths from the prior site → nearest live launch page (301).
       { source: '/legacy-home', destination: '/', permanent: true },
+      // Pricing is being redone. Temporary (307) so the route can return.
+      { source: '/pricing', destination: '/contact', permanent: false },
       { source: '/solutions/:slug*', destination: '/products', permanent: false },
       { source: '/smb/:slug*', destination: '/products', permanent: false },
       { source: '/mid-market/:slug*', destination: '/products', permanent: false },

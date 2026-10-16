@@ -16,7 +16,7 @@ export const metadata: Metadata = pageMetadata({
 const FAQS = [
   {
     q: 'Is AI Readiness a product or a service?',
-    a: 'It is an advisory engagement, the ENABLE stage of the Business Lifecycle. It is scoped monthly advisory ($2-10K/mo) plus discrete project work, not a per-seat software SKU.',
+    a: 'It is an advisory engagement, the ENABLE stage of the Business Lifecycle. It is scoped monthly advisory plus discrete project work, not a per-seat software SKU.',
   },
   {
     q: 'How long does deployment take?',

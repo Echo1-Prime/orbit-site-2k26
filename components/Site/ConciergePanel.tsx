@@ -196,7 +196,7 @@ export default function ConciergePanel({ msgs, mobile, keyboard, reduced, onClos
               →
             </button>
           </form>
-          <p className={styles.fineprint}>Published pages only · No prices beyond the pricing page</p>
+          <p className={styles.fineprint}>Published pages only · Pricing is set with you</p>
         </div>
       </aside>
     </>
