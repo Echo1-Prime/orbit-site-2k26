@@ -174,6 +174,7 @@ export function UseCaseShowcase({ heading = DEFAULT_HEADING, intro = DEFAULT_INT
   const [ratios, setRatios] = useState<Record<string, number>>({});
   const [paused, setPaused] = useState<Set<string>>(() => new Set());
   const [failed, setFailed] = useState<Set<string>>(() => new Set());
+  const [expanded, setExpanded] = useState<Set<string>>(() => new Set());
   const [mounted, setMounted] = useState<Set<string>>(() => new Set());
   const [recent, setRecent] = useState<string[]>([]);
   const cards = useRef(new Map<string, HTMLElement>());
@@ -247,6 +248,13 @@ export function UseCaseShowcase({ heading = DEFAULT_HEADING, intro = DEFAULT_INT
     if (wasPaused) touch(id);
   };
   const fail = (id: string) => setFailed((f) => new Set(f).add(id));
+  const toggleExpanded = (id: string) =>
+    setExpanded((x) => {
+      const next = new Set(x);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
 
   if (!tiles.length) return null;
 
@@ -261,7 +269,9 @@ export function UseCaseShowcase({ heading = DEFAULT_HEADING, intro = DEFAULT_INT
 
       <ul ref={rowRef} className={styles.row} role="list" data-count={tiles.length}>
         {tiles.map((tile) => {
-          const rows = (['in', 'agent', 'you'] as const).filter((k) => tile[k]);
+          const detailRows = (['in', 'agent'] as const).filter((k) => tile[k]);
+          const isOpen = expanded.has(tile.id);
+          const panelId = `ucs-more-${tile.id}`;
           const isPaused = paused.has(tile.id);
           const showVideo = allowed && mounted.has(tile.id) && !failed.has(tile.id) && !!tile.video;
           const titleId = `ucs-title-${tile.id}`;
@@ -269,6 +279,7 @@ export function UseCaseShowcase({ heading = DEFAULT_HEADING, intro = DEFAULT_INT
           return (
             <li
               key={tile.id}
+              id={tile.id}
               className={styles.card}
               ref={(el) => {
                 if (el) cards.current.set(tile.id, el);
@@ -280,6 +291,9 @@ export function UseCaseShowcase({ heading = DEFAULT_HEADING, intro = DEFAULT_INT
               onFocus={() => touch(tile.id)}
             >
               <a className={styles.link} href={tile.href} aria-labelledby={`${titleId} ${ctaId}`}>
+                <span id={ctaId} className={styles.cta}>
+                  {tile.ctaLabel}
+                </span>
                 <span className={styles.media}>
                   <img
                     className={styles.poster}
@@ -293,28 +307,46 @@ export function UseCaseShowcase({ heading = DEFAULT_HEADING, intro = DEFAULT_INT
                     decoding="async"
                   />
                   {showVideo && <CardVideo src={tile.video} playing={playing.has(tile.id)} onFail={() => fail(tile.id)} />}
-                  <span className={styles.demo}>{tile.demoLabel}</span>
                 </span>
                 <span className={styles.body}>
                   <span className={styles.kick} data-align="kick">{tile.kick}</span>
                   <span id={titleId} className={styles.title} data-align="title">
                     {tile.title}
                   </span>
-                  {rows.length > 0 && (
+                  {tile.you && (
                     <dl className={styles.rows}>
-                      {rows.map((k) => (
-                        <div key={k} className={styles.rowItem} data-align={k}>
-                          <dt>{ROW_LABELS[k]}</dt>
-                          <dd>{tile[k]}</dd>
-                        </div>
-                      ))}
+                      <div className={styles.rowItem} data-align="you">
+                        <dt>{ROW_LABELS.you}</dt>
+                        <dd>{tile.you}</dd>
+                      </div>
                     </dl>
                   )}
-                  <span id={ctaId} className={styles.cta}>
-                    {tile.ctaLabel}
-                  </span>
                 </span>
               </a>
+              {detailRows.length > 0 && (
+                <div className={styles.more}>
+                  <button
+                    type="button"
+                    className={styles.expand}
+                    aria-expanded={isOpen}
+                    aria-controls={panelId}
+                    onClick={() => toggleExpanded(tile.id)}
+                  >
+                    <span>{isOpen ? 'Collapse' : 'Expand'}</span>
+                    <svg className={styles.chev} viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false">
+                      <path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </button>
+                  <dl id={panelId} className={styles.rows} hidden={!isOpen}>
+                    {detailRows.map((k) => (
+                      <div key={k} className={styles.rowItem}>
+                        <dt>{ROW_LABELS[k]}</dt>
+                        <dd>{tile[k]}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                </div>
+              )}
               {allowed && tile.video && (
                 <button
                   type="button"

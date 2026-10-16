@@ -34,33 +34,24 @@
   color: var(--e1-slate);
 }
 
-/* Under 900 px: a snap row, the next card peeking. */
+/* Phone first: the cards stack, one per screen, so the page scrolls the natural way. */
 .row {
-  display: flex;
+  display: grid;
   gap: 16px;
   margin: 0;
   padding: 0 16px 8px;
   list-style: none;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-padding-inline: 16px;
-  overscroll-behavior-x: contain;
 }
 
 .card {
   position: relative;
-  flex: 0 0 min(82%, 24rem);
   min-width: 0;
-  scroll-snap-align: start;
+  scroll-margin-top: 80px;
   background: var(--e1-panel);
   border: 1px solid var(--e1-border-subtle);
   border-radius: 12px;
   overflow: hidden;
   transition: border-color 0.18s ease;
-}
-
-.row[data-count='1'] .card {
-  flex-basis: 100%;
 }
 
 .card:hover,
@@ -109,25 +100,10 @@
   opacity: 1;
 }
 
-.demo {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  padding: 4px 10px;
-  border: 1px solid var(--e1-ember);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--e1-void) 80%, transparent);
-  font-family: var(--e1-font-mono);
-  font-size: 0.75rem;
-  font-weight: 500;
-  line-height: 1.2;
-  color: var(--e1-ember);
-}
-
 /* A sibling of the link, never inside it: pressing it cannot follow the link. 44 px target. */
 .pause {
   position: absolute;
-  top: 8px;
+  top: 52px; /* below the call to action bar (44 px) */
   right: 8px;
   z-index: 2;
   display: inline-flex;
@@ -210,17 +186,63 @@
   color: var(--e1-slate);
 }
 
+/* The call to action sits at the top of the picture (Josh, 2026-10-16). */
 .cta {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   min-height: 44px;
+  padding-inline: 18px;
+  border-bottom: 1px solid var(--e1-border-subtle);
   font-family: var(--e1-font-body);
   font-size: 0.9375rem;
   font-weight: 600;
   color: var(--e1-ion);
 }
 
-/* 900 px and wider: one row, cards share the width (up to five), one card is one wide card. */
+/* In and Agent fold away to save room (Josh, 2026-10-16). The button is a sibling of the link. */
+.more {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0 18px 14px;
+}
+
+.expand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  justify-self: start;
+  min-height: 44px;
+  padding: 0 4px;
+  border: 0;
+  background: none;
+  font-family: var(--e1-font-mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--e1-ion);
+  cursor: pointer;
+}
+
+.expand:focus-visible {
+  outline: 2px solid var(--e1-ion);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.chev {
+  transition: transform 0.18s ease;
+}
+
+.expand[aria-expanded='true'] .chev {
+  transform: rotate(180deg);
+}
+
+.rows[hidden] {
+  display: none;
+}
+
+/* 900 px and wider: a grid of cards, three across, wrapping to more rows. */
 @media (min-width: 900px) {
   .head {
     padding-inline: 24px;
@@ -230,49 +252,13 @@
     max-width: 1160px;
     margin-inline: auto;
     padding: 0 24px;
-    display: grid;
-    grid-auto-flow: column;
-    grid-auto-columns: minmax(0, 1fr);
-    overflow: visible;
-    scroll-snap-type: none;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
   }
 
-  .card {
-    flex: initial;
-  }
-
-  /* Three to five cards share the row, so each is narrow: the label sits above its line. */
-  .row[data-count='3'] .rowItem,
-  .row[data-count='4'] .rowItem,
-  .row[data-count='5'] .rowItem {
+  .rowItem {
     grid-template-columns: minmax(0, 1fr);
     gap: 0.1rem;
-  }
-
-  /* One card: one wide card, picture left and words right, so it is not taller than the screen. */
-  .row[data-count='1'] {
-    grid-auto-columns: minmax(0, 1160px);
-    justify-content: center;
-  }
-
-  .row[data-count='1'] .link {
-    display: grid;
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-    align-items: center;
-  }
-
-  /* The picture is on the left, so the pause button goes to its top left corner. */
-  .row[data-count='1'] .pause {
-    left: 8px;
-    right: auto;
-  }
-
-  .row[data-count='1'] .title {
-    font-size: clamp(1.5rem, 2.4vw, 2rem);
-  }
-
-  .row[data-count='1'] .body {
-    padding: 22px 28px 26px;
   }
 }
 
