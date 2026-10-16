@@ -55,6 +55,20 @@ Status key: CLOSED (applied in the single-source module), OPEN (needs an owner f
 | O8 | 3x super-cap sits above the 2x most common in the 2026 Common Paper benchmark; defensible, but expect pushback from enterprise buyers | Note | WATCH |
 | O9 | Insurance requirements appear in only 13% of signed SaaS agreements (Common Paper 2026); moving limits to the Order Form is in line with market | Note | Supports S4 |
 
+## From the October 16, 2026 v1.1-rc rewrite (Terms)
+
+| # | Finding | Severity | Status |
+|---|---|---|---|
+| R1 | Terms listed products generically; no product-specific allocation of responsibility | High | CLOSED (Exhibit B, eight Parts) |
+| R2 | No customer compliance covenant for outbound messaging, platform terms, consent records, AI disclosure | High | CLOSED (7.3, 7.4) |
+| R3 | No as-is bargain or non-reliance acknowledgment (Texas enforces bargained-for as-is; Prudential v. Jefferson Assocs.) | Medium | CLOSED (13.4) |
+| R4 | No contractual claims period; Texas voids periods under two years (CPRC 16.070) | Medium | CLOSED (14.5, two years) |
+| R5 | Customer indemnity did not reach Content, Outbound Communications, Connected Accounts, regulatory fines; not expressly comparative | High | CLOSED (15.1) |
+| R6 | DPA did not exist | Critical | CLOSED (Exhibit C incorporated; negotiated DPA still controls if executed) |
+| R7 | DTPA cannot be waived in a click-through (17.42); exposure under 17.45(4) for business consumers below asset thresholds | Note | OPEN (counsel; posture rests on 1.4, 13.4, 17.49 exemptions for negotiated deals) |
+| R8 | No Order Form existed for customers to sign | High | CLOSED as template (docs/legal-out/Order-Form-Template-v1.0-rc.md); counsel review before first use |
+| R9 | Exhibit B product behavior statements (Ledger moves no funds; Orbit retains no audio by default) are representations | High | OPEN (owner CONFIRM) |
+
 ## Re-check triggers
 
 - Any entity, address, or contact change: re-run Phase 1 on both documents.
