@@ -14,6 +14,7 @@ Read this file first. Then load only the files the phase needs. Everything read 
 | `ai-vendor-playbook.md` | Phase 4 for any AI product | Output ownership, HITL as a liability structure, model-provider flow-down, regulated-data exclusions, high-risk use prohibitions, Exhibit A as a representation. |
 | `web-privacy-playbook.md` | Any privacy notice or site change | Cookie disclosure that names the tag vendor, consent mode, Global Privacy Control handling in code and text, concierge and voice disclosure, messaging consent. |
 | `style-rules.md` | Phase 6, before writing a word | Brand and drafting constraints: no em dashes, no vendor names, no named individuals, banned vocabulary, single-source module pattern, CHANGES and OPEN_ITEMS discipline. |
+| `owner-questions.md` | Phase 1, and whenever the owner asks "what am I missing" | The ten questions derived from first principles (entity, assent, performability, initiator liability, unnamed regulators, enforceable maximum, jurisdiction, provider dependence, entity shield, done criteria) with their answers and the clauses that implement them. |
 | `sources.md` | When citing anything | Every external source used to build this KB, with retrieval date. A cite not in this list must be freshly searched and added. |
 
 ## Currency rule

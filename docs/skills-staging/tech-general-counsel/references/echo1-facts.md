@@ -10,8 +10,7 @@ Source hierarchy: the owner's live words in session, then the live codebase (`li
 | Entity form | Texas limited liability company, single-member, member-managed | Owner, 2026-09-22 |
 | Predecessor | Mingma Inc, Delaware corporation, dissolved. Never appears in any new document. | Owner |
 | Mailing address for notices | P.O. Box 23, Meyersville TX 77954 (`POSTAL_ADDRESS`) | Owner, 2026-10-16. A P.O. Box cannot be the Texas registered office (Bus. Orgs. Code 5.201); never label it "registered address". |
-| Legal notices and billing | hello@echo1labs.com (`CONTACT_EMAIL`) | Owner |
-| Privacy and data-rights requests | privacy@echo1labs.com (`PRIVACY_EMAIL`) | Owner, 2026-10-15 |
+| Legal notices, billing, privacy, data rights, DMCA | privacy@echo1labs.com (`PRIVACY_EMAIL`) | Owner, 2026-10-16. hello@ stays the website's general contact only. |
 | Named individuals in legal documents | None, ever | Owner, 2026-10-15 |
 | Governing law | Texas, without regard to conflict-of-laws principles | Owner |
 | Arbitration seat | Victoria, Texas (AAA Commercial Rules) | Owner, 2026-09-22 |
