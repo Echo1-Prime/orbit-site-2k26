@@ -34,8 +34,11 @@ Prime (agentic operations and governance), Engine (go-to-market), RevOps (revenu
 
 | Key | What is needed | Who | Blocks |
 |---|---|---|---|
-| entity-name | Filed name on the Texas certificate of formation, character for character | Owner | Production for both documents |
-| effective-date | LLC formation date; Effective Date must be that date or later | Owner | Production for both documents |
+| entity-name | Filed name on the Texas certificate of formation, character for character. Evidence 2026-10-16: Texas Comptroller franchise-tax search returns no entity for "Echo 1 Labs", "Echo1Labs", or any "Echo 1" variant (five unrelated ECHO 1 entities exist). Gmail (hello@) and Drive hold no certificate. Either the filing is too new for the Comptroller sync or the LLC is not yet filed. | Owner | Production for both documents |
+| effective-date | LLC formation date; Effective Date must be that date or later. Same evidence as entity-name. | Owner | Production for both documents |
+| ledger-no-funds | Exhibit B Part 6 states Ledger does not initiate payments or move funds. Code scan 2026-10-16 of ~/code found no payment-initiation calls in application code (hits only in skill reference docs). Owner confirms. | Owner | Terms production |
+| orbit-no-audio | Exhibit B Part 8 states voice audio is not retained unless Customer enables retention. Code scan 2026-10-16 found no audio persistence in application code; site concierge stores only a teaser flag locally. Owner confirms. | Owner | Terms production |
+| privacy-mailbox | privacy@echo1labs.com must exist and route. Gmail (hello@) shows no message ever sent to or from it as of 2026-10-16. | Owner | Both documents |
 | exhibit-a-content | Each guardrail row in Terms Exhibit A matches Prime's real configuration | Owner | Terms production |
 | security-controls | Privacy Section 8 controls (AES-256, TLS 1.2+, MFA for admin, audit logging, security assessments) are each implemented | Owner | Privacy production |
 | retention-schedule | Privacy Section 7 periods match system behavior | Owner | Privacy production |
