@@ -33,7 +33,7 @@ export default function ContactForm() {
   if (state.status === 'success') {
     return (
       <div className="form__success" role="status">
-        <LeadConversion source={`contact_form:${attr.src || 'direct'}`} />
+        <LeadConversion source={`contact_form:${attr.src || 'direct'}`} legacy={false} />
         Message received. We&apos;ll be in touch within one business day.
       </div>
     );
