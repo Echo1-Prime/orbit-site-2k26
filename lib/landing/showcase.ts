@@ -144,7 +144,9 @@ const ALL_TILES: ShowcaseTile[] = [
     video: `${JOBS_3D_ASSET}.mp4`,
     poster: `${JOBS_3D_ASSET}-960.webp`,
     posterSmall: `${JOBS_3D_ASSET}-640.webp`,
-    demoLabel: 'Demo data', // the show's events, change orders, punch items and budget figures are simulated
+    // Josh, 2026-10-16: the structure in this use case is real and built; the name is removed.
+    // The show's events, change orders, punch items and budget figures are still simulated, so the label says so.
+    demoLabel: 'Names removed · Demo figures',
   },
 ];
 
