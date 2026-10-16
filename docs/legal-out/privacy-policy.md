@@ -5,7 +5,7 @@ Version 1.0 · Effective date to be confirmed · Echo 1 Labs LLC
 Version 1.0 is the first edition issued by Echo 1 Labs LLC. Prior privacy notices for the Platform were issued by a predecessor entity and are superseded.
 
 > **DRAFT FOR ATTORNEY REVIEW. NOT IN FORCE.**
-> - **CONFIRM** Filed name on the Texas certificate of formation must match "Echo 1 Labs LLC" character for character.
+> - **CONFIRM** Filed name on the Texas certificate of formation must match "Echo 1 Labs LLC" character for character. Evidence 2026-10-16: SOS file 0806419373 is of record as TRILOGY 583 LLC; the renaming amendment signed 2026-07-27 is not yet on file.
 > - **CONFIRM** Effective Date must be the LLC formation date or later.
 > - **CONFIRM** Section 8 states specific controls (AES-256 at rest, TLS 1.2+, MFA for administrative access, audit logging, security assessments). Each is a representation. Confirm each is implemented or delete it.
 > - **CONFIRM** Section 7 retention periods are carried from the July draft. Confirm they match actual system behavior.
