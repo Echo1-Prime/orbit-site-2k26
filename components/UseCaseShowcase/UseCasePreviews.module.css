@@ -1,0 +1,301 @@
+/* UseCasePreviews. Colours come only from the existing --e1-* variables: no hex, no new variable names. */
+
+.section {
+  display: block;
+  padding-block: clamp(3rem, 7vw, 5rem);
+  color: var(--e1-white);
+}
+
+.head {
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-inline: 16px;
+  margin-bottom: clamp(1.25rem, 3vw, 2rem);
+}
+
+.heading {
+  margin: 0 0 0.6rem;
+  font-family: var(--e1-font-display);
+  font-size: clamp(1.75rem, 4.2vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--e1-white);
+}
+
+.intro {
+  margin: 0;
+  max-width: 60ch;
+  font-family: var(--e1-font-body);
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--e1-slate);
+}
+
+.stage {
+  display: grid;
+  gap: 20px;
+  max-width: 1160px;
+  margin-inline: auto;
+  padding-inline: 16px;
+}
+
+/* Phone first: the bubbles scroll sideways in one row; the preview sits under them. */
+.bubbles {
+  display: flex;
+  gap: 14px;
+  margin: 0;
+  padding: 4px 2px 10px;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x proximity;
+}
+
+.bubbleItem {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+}
+
+.bubble {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  width: 92px;
+  padding: 4px;
+  border: 0;
+  background: none;
+  color: var(--e1-slate);
+  cursor: pointer;
+}
+
+.thumb {
+  display: block;
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border: 2px solid var(--e1-border-subtle);
+  border-radius: 999px;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.bubble[data-active='true'] .thumb {
+  border-color: var(--e1-ember);
+  transform: scale(1.08);
+}
+
+.bubble:hover .thumb {
+  border-color: var(--e1-ion);
+}
+
+.bubble:focus-visible {
+  outline: 2px solid var(--e1-ion);
+  outline-offset: 2px;
+  border-radius: 12px;
+}
+
+.name {
+  font-family: var(--e1-font-body);
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.bubble[data-active='true'] .name {
+  color: var(--e1-white);
+}
+
+.spot {
+  display: grid;
+  overflow: hidden;
+  color: inherit;
+  text-decoration: none;
+  background: var(--e1-panel);
+  border: 1px solid var(--e1-border-subtle);
+  border-radius: 12px;
+  transition: border-color 0.18s ease;
+}
+
+.spot:hover,
+.spot:focus-visible {
+  border-color: var(--e1-ion);
+}
+
+.spot:focus-visible {
+  outline: 2px solid var(--e1-ion);
+  outline-offset: 2px;
+}
+
+.spotMedia {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  background: var(--e1-void);
+}
+
+.spotImg {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: fadeIn 0.45s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.spotBody {
+  display: grid;
+  gap: 0.4rem;
+  padding: 16px 18px 18px;
+}
+
+.kick {
+  font-family: var(--e1-font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--e1-ember);
+}
+
+.spotTitle {
+  font-family: var(--e1-font-display);
+  font-size: clamp(1.25rem, 2.8vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  color: var(--e1-white);
+}
+
+.spotCta {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-family: var(--e1-font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--e1-ion);
+}
+
+.foot {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 1160px;
+  margin: 12px auto 0;
+  padding-inline: 16px;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--e1-border-subtle);
+  border-radius: 999px;
+  background: none;
+  color: var(--e1-white);
+  cursor: pointer;
+}
+
+.toggle:hover {
+  border-color: var(--e1-ion);
+}
+
+.toggle:focus-visible,
+.all:focus-visible {
+  outline: 2px solid var(--e1-ion);
+  outline-offset: 2px;
+}
+
+.all {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding-inline: 4px;
+  font-family: var(--e1-font-body);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--e1-ion);
+  text-decoration: none;
+}
+
+.all:hover {
+  text-decoration: underline;
+}
+
+/* 900 px and wider: the bubbles stack on the left, the preview takes the rest. */
+@media (min-width: 900px) {
+  .head,
+  .stage,
+  .foot {
+    padding-inline: 24px;
+  }
+
+  .stage {
+    grid-template-columns: minmax(0, 15rem) minmax(0, 1fr);
+    align-items: start;
+  }
+
+  .bubbles {
+    flex-direction: column;
+    gap: 6px;
+    overflow: visible;
+    padding: 0;
+  }
+
+  .bubble {
+    grid-template-columns: 56px minmax(0, 1fr);
+    justify-items: start;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    padding: 6px 8px;
+    border-radius: 12px;
+  }
+
+  .bubble[data-active='true'] {
+    background: var(--e1-panel);
+  }
+
+  .thumb {
+    width: 56px;
+    height: 56px;
+  }
+
+  .name {
+    text-align: left;
+    font-size: 0.9375rem;
+  }
+
+  .spot {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    align-items: center;
+  }
+
+  .foot {
+    margin-top: 16px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spotImg {
+    animation: none;
+  }
+
+  .thumb,
+  .spot {
+    transition: none;
+  }
+}

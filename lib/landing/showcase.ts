@@ -2,6 +2,7 @@ import { truckingCopy } from './trucking';
 import { oilAndGasCopy } from './oil-and-gas';
 import { wasteWaterCopy } from './waste-water';
 import { crudeTreatingCopy } from './crude-treating';
+import { realEstateCopy } from './real-estate';
 import { trackYourJobsIn3dCopy } from './track-your-jobs-in-3d';
 
 /*
@@ -52,15 +53,15 @@ export interface ShowcaseTile {
   hidden?: boolean;
 }
 
-const TRUCKING_ASSET = '/videos/showcase/trucking-card-fd6d2d4e';
+const TRUCKING_ASSET = '/videos/showcase/trucking-card-fd8dec6c';
 /* Oil and gas, Waste water and Crude treating: a silent loop of each demo's 3D stage with names removed (Josh, 2026-10-16),
    captured from the deployed pages; the hex is the sha-256 prefix of the served files. The old oil-and-gas-card-cbb93bcf files are orphaned. */
-const OIL_AND_GAS_ASSET = '/videos/showcase/south-texas-card-e61aa919';
-const WASTE_WATER_ASSET = '/videos/showcase/waste-water-card-aaf6673f';
-const CRUDE_ASSET = '/videos/showcase/crude-treating-card-bb972024';
+const OIL_AND_GAS_ASSET = '/videos/showcase/south-texas-card-fa27c323';
+const WASTE_WATER_ASSET = '/videos/showcase/waste-water-card-73294b23';
+const CRUDE_ASSET = '/videos/showcase/crude-treating-card-3779e000';
 /* Real estate development: a 3D walkthrough of a traced site with every name, road label, callout and number removed
    (Josh, 2026-10-13: anonymized, the walkthrough only, no use-case page). The card links to the full clip. */
-const REAL_ESTATE_ASSET = '/videos/showcase/real-estate-card-3b678692';
+const REAL_ESTATE_ASSET = '/videos/showcase/real-estate-card-82f19ba9';
 /* Track your jobs in 3D: a caption-free clip of the live build-it show (?t=62, every page element hidden but the
    scene canvas), captured 2026-10-13; the hex is the sha-256 prefix of the show's served HTML. */
 const JOBS_3D_ASSET = '/videos/showcase/track-your-jobs-in-3d-card-dcd40d13';
@@ -138,29 +139,21 @@ const ALL_TILES: ShowcaseTile[] = [
     demoLabel: 'Names removed · Demo figures', // Josh, 2026-10-16; the figures are illustrative samples
   },
   {
-    id: 'real-estate-development',
-    hidden: true, // Josh, 2026-10-16: hide the real estate developer use case until further notice
+    id: realEstateCopy.slug,
     stage: 'build', // UNVERIFIED(inferred: site development precedes build-out; no design file records it)
-    kick: 'Use case · Real estate development', // same pattern as the other eyebrows
-    // Header and rows from the live entitlement screen, read 2026-10-13, anonymized:
-    // no client, firm, town, road, site count or figure (Josh, 2026-10-13: outcome wording only).
-    // Title: the page h1, lines one and two, verbatim: "Every plan. Every takeoff. / Every code. Every follow-up."
-    title: 'Every plan. Every takeoff. Every code. Every follow-up.',
-    // Step 1 "Plan lands: A new revision drops in. The sheet is parsed ... exactly as drawn." and
-    // "the architect's checklist is the question set."
+    kick: realEstateCopy.eyebrow,
+    title: realEstateCopy.headline,
+    // DRAFT-FOR-JOSH. Drawn from the demo's own text: "the architect's checklist" and "Every plan. Every takeoff. Every code."
     in: 'Plan sets, site sheets and the architect’s checklist, revision by revision.',
-    // Level 1 "Every site tied to its adopting jurisdiction", "The architect's checklist, cited item by item",
-    // h1 "Every takeoff", h2 "Follow-ups, drafted and ready to send".
+    // DRAFT-FOR-JOSH. Drawn from the demo's own text: "each with its citation" and "the approvals ahead".
     agent: 'Ties each site to its jurisdiction, cites each code item, reads the takeoff and drafts the follow-ups.',
-    // The h1's lead line without its counts: "... have a cited finding. The rest are left open and named, each with
-    // who can answer it."
-    you: 'Every item gets a cited finding, or stays open and named with who can answer it.',
-    ctaLabel: 'Walk the site in 3D →', // the h1's last line, "Walk each site in 3D.", for the one site in the clip
-    href: '/contact', // the walkthrough clip was removed (Josh, 2026-10-16); the tile is hidden
-    video: '', // clip removed (Josh, 2026-10-16); poster-only if the tile is ever shown again
+    you: realEstateCopy.closing, // verbatim: "Supervised by you."
+    ctaLabel: 'See Real Estate Development →', // written for review
+    href: `/use-cases/${realEstateCopy.slug}`,
+    video: `${REAL_ESTATE_ASSET}.mp4`,
     poster: `${REAL_ESTATE_ASSET}-960.webp`,
     posterSmall: `${REAL_ESTATE_ASSET}-640.webp`,
-    demoLabel: 'Names removed', // a traced site, anonymized, with no data shown
+    demoLabel: 'Names removed · Demo figures', // not shown on the card since 2026-10-16 (Josh); kept for the data shape
   },
   {
     id: trackYourJobsIn3dCopy.slug,

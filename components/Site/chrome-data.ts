@@ -20,6 +20,7 @@ export const NAV_LINKS = [
   { href: '/#process', label: 'How it runs' },
   { href: '/#agent-orbit', label: 'Agent Orbit' },
   { href: '/#governance', label: 'Governance' },
+  { href: '/case-studies', label: 'Case Studies' },
   { href: '/contact', label: 'Contact Sales' },
 ] as const;
 
