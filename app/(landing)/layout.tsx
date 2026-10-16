@@ -11,7 +11,7 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
             <OrbitMark size={28} aria-label="Echo 1 Labs" />
             <span className={styles.lpLogoText}>Echo 1 Labs</span>
           </Link>
-          <Link href="/contact" className={`btn btn--primary btn--sm ${styles.lpHeaderCta}`}>
+          <Link href="/contact?src=landing-header" className={`btn btn--primary btn--sm ${styles.lpHeaderCta}`}>
             Schedule a call
           </Link>
         </div>
@@ -22,7 +22,7 @@ export default function LandingLayout({ children }: { children: React.ReactNode 
           <span className={styles.lpFooterLegal}>© 2026 Echo 1 Labs LLC. All rights reserved.</span>
           <nav className={styles.lpFooterLinks} aria-label="Footer">
             <Link href="/privacy">Privacy</Link>
-            <Link href="/contact">Contact</Link>
+            <Link href="/contact?src=landing-footer">Contact</Link>
           </nav>
         </div>
       </footer>

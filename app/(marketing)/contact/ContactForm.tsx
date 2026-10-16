@@ -1,7 +1,10 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { useFormStatus } from 'react-dom';
+import LeadConversion from '@/components/Analytics/LeadConversion';
+import { readAttribution, trackPath, type Attribution } from '@/lib/attribution';
 import { submitContact, type ContactState } from './actions';
 
 const initialState: ContactState = { status: 'idle' };
@@ -17,10 +20,20 @@ function SubmitButton() {
 
 export default function ContactForm() {
   const [state, formAction] = useActionState(submitContact, initialState);
+  const pathname = usePathname();
+  const [attr, setAttr] = useState<Attribution>({ src: '', cta: '', from: '', landing: '', ref: '', utm: '' });
+
+  /* Read where the visitor came from once the page is on screen. trackPath is safe to repeat, so the order of
+     this effect and the layout's own tracker does not matter. */
+  useEffect(() => {
+    trackPath(pathname);
+    setAttr(readAttribution());
+  }, [pathname]);
 
   if (state.status === 'success') {
     return (
       <div className="form__success" role="status">
+        <LeadConversion source={`contact_form:${attr.src || 'direct'}`} />
         Message received. We&apos;ll be in touch within one business day.
       </div>
     );
@@ -30,6 +43,13 @@ export default function ContactForm() {
     <form className="form" action={formAction}>
       {/* Honeypot (visually hidden, not display:none, so bots still fill it) */}
       <input className="form__hp" type="text" name="company_website" tabIndex={-1} autoComplete="off" aria-hidden="true" />
+      {/* Where the visitor came from: sent with the message so the team knows which page and button led here. */}
+      <input type="hidden" name="a_src" value={attr.src} />
+      <input type="hidden" name="a_cta" value={attr.cta} />
+      <input type="hidden" name="a_from" value={attr.from} />
+      <input type="hidden" name="a_landing" value={attr.landing} />
+      <input type="hidden" name="a_ref" value={attr.ref} />
+      <input type="hidden" name="a_utm" value={attr.utm} />
 
       <div className="grid-2" style={{ gap: '1rem' }}>
         <div className="form__field">

@@ -2,12 +2,13 @@
   "name": "orbit-site-2k26",
   "version": "1.0.0",
   "private": true,
-  "description": "Echo 1 Labs — Business Lifecycle Management. Next.js App Router marketing site with the Orbit voice concierge.",
+  "description": "Echo 1 Labs \u2014 Business Lifecycle Management. Next.js App Router marketing site with the Orbit voice concierge.",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "voice-lint": "ts-node --esm scripts/voice-lint.ts"
+    "voice-lint": "ts-node --esm scripts/voice-lint.ts",
+    "test": "node --experimental-strip-types --test tests/*.test.ts"
   },
   "dependencies": {
     "@ai-sdk/react": "^4.0.31",

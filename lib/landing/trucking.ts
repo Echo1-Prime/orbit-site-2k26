@@ -144,5 +144,5 @@ export const truckingCopy: UseCaseCopy = {
   signupLabel: 'Sign up with Agent Orbit',
   signupUrl: 'https://build-it.echo1labs.com/trucking-contact?src=trucking',
   bookLabel: 'Book the onsite',
-  bookUrl: 'https://www.echo1labs.com/contact',
+  bookUrl: 'https://www.echo1labs.com/contact?src=use-case-trucking',
 };

@@ -3,6 +3,7 @@ import { Space_Grotesk, DM_Sans, JetBrains_Mono, Plus_Jakarta_Sans } from 'next/
 import './globals.css';
 import ConciergeMount from '@/components/Concierge/ConciergeMount';
 import JsonLd from '@/components/JsonLd';
+import Attribution from '@/components/Analytics/Attribution';
 import GoogleTagManager, { GoogleTagManagerNoScript } from '@/components/Analytics/GoogleTagManager';
 import ConsentBanner from '@/components/ConsentBanner/ConsentBanner';
 import { organizationSchema, websiteSchema } from '@/lib/seo';
@@ -74,6 +75,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${jetbrainsMono.variable} ${plusJakarta.variable}`}>
       <head>
         <GoogleTagManager />
+        <Attribution />
       </head>
       <body>
         <GoogleTagManagerNoScript />

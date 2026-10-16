@@ -30,7 +30,7 @@ export const realEstateCopy: UseCaseCopy = {
   locations: [],
   closing: 'Supervised by you.',
   signupLabel: 'Contact Sales',
-  signupUrl: '/contact',
+  signupUrl: '/contact?src=use-case-real-estate-development',
   bookLabel: 'Open the full demo',
   bookUrl: 'https://e1-booth-real-estate.vercel.app/',
 };

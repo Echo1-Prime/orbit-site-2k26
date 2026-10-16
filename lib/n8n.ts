@@ -7,6 +7,8 @@ export interface ContactPayload {
   company?: string;
   message?: string;
   source?: string;
+  /** Where the visitor came from (see lib/attribution.ts). Every field is capped text. */
+  attribution?: { src: string; cta: string; from: string; landing: string; ref: string; utm: string };
 }
 
 /** True when the n8n contact webhook is configured for this deployment. */

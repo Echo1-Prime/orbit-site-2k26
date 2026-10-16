@@ -10,6 +10,30 @@ const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 /** True when a Slack webhook is configured for this deployment. */
 export const slackConfigured = () => Boolean(process.env.SLACK_NEW_LEADS_WEBHOOK);
 
+/** The Slack message for one lead. Exported so it can be checked without a webhook. */
+export function leadText(payload: ContactPayload, unix: number): string {
+  const a = payload.attribution;
+  const lines = [
+    `*New lead: website contact form*`,
+    `Name: ${esc(payload.name)}`,
+    `Email: ${esc(payload.email)}`,
+    `Company: ${esc(payload.company || 'not given')}`,
+    `Message: ${esc(payload.message || 'not given')}`,
+    `Source: ${esc(payload.source || 'www.echo1labs.com/contact')}`,
+  ];
+  if (a) {
+    lines.push(
+      `Came from: ${esc(a.src ? `${a.src}${a.cta ? ` (${a.cta})` : ''}` : 'no campaign tag')}`,
+      `Previous page: ${esc(a.from || 'none (opened the contact page directly)')}`,
+      `First page this visit: ${esc(a.landing || 'unknown')}`,
+      `Sent here by: ${esc(a.ref || 'no outside referrer')}`,
+      `Campaign tags: ${esc(a.utm || 'none')}`,
+    );
+  }
+  lines.push(`Time: <!date^${unix}^{date_short_pretty} {time}|${new Date(unix * 1000).toISOString()}>`);
+  return lines.join('\n');
+}
+
 /** Post one lead to Slack. Returns ok:false when unset, malformed, refused or timed out; never throws. */
 export async function notifySlackLead(payload: ContactPayload): Promise<{ ok: boolean }> {
   const url = process.env.SLACK_NEW_LEADS_WEBHOOK;
@@ -19,15 +43,7 @@ export async function notifySlackLead(payload: ContactPayload): Promise<{ ok: bo
     return { ok: false };
   }
   const unix = Math.floor(Date.now() / 1000);
-  const text = [
-    `*New lead: website contact form*`,
-    `Name: ${esc(payload.name)}`,
-    `Email: ${esc(payload.email)}`,
-    `Company: ${esc(payload.company || 'not given')}`,
-    `Message: ${esc(payload.message || 'not given')}`,
-    `Source: ${esc(payload.source || 'www.echo1labs.com/contact')}`,
-    `Time: <!date^${unix}^{date_short_pretty} {time}|${new Date(unix * 1000).toISOString()}>`,
-  ].join('\n');
+  const text = leadText(payload, unix);
   try {
     const r = await fetch(url, {
       method: 'POST',
