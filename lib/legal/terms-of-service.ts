@@ -15,7 +15,7 @@
 // The guard at the bottom of this file throws at build time if
 // TERMS_IS_DRAFT is false while either fact is unset.
 
-import { CONTACT_EMAIL, LEGAL_ENTITY, POSTAL_ADDRESS, PRIVACY_EMAIL, SITE_URL } from '@/lib/site';
+import { BILLING_EMAIL, LEGAL_EMAIL, LEGAL_ENTITY, POSTAL_ADDRESS, PRIVACY_EMAIL, SITE_URL } from '@/lib/site';
 
 import type { LegalSection, OpenItem } from './types';
 
@@ -40,7 +40,7 @@ export const TERMS_META = {
   governingLaw: 'Texas',
   arbitrationSeat: 'Victoria, Texas',
   venueCounty: 'DeWitt County, Texas',
-  contactEmail: PRIVACY_EMAIL,
+  contactEmail: LEGAL_EMAIL,
   privacyUrl: `${SITE_URL}/privacy`,
   versionNote:
     'Version 1.0 is the first edition issued by ' +
@@ -122,7 +122,7 @@ export const CHANGES: string[] = [
   'Section 20 arbitration seat changed from Dallas County to Victoria, Texas; court venue DeWitt County, Texas.',
   'Vendor names removed from client-facing copy (Sections 3.2, 4.3, 9, 12).',
   'Section 3.2 product list aligned to the live product set; Professional Services bullet removed.',
-  'Sections 6 and 22: all legal, privacy, data-rights, and billing channels route to ' + PRIVACY_EMAIL + ' (owner decision 2026-10-16); mailing address for notices set from POSTAL_ADDRESS (P.O. Box; the registered office is on the certificate of formation).',
+  'Sections 6, 10.3, and 22: legal notices, security reports, and copyright complaints route to Legal Counsel at ' + LEGAL_EMAIL + '; privacy and data-rights requests to ' + PRIVACY_EMAIL + '; billing to ' + BILLING_EMAIL + ' (owner decision 2026-10-16); mailing address for notices set from POSTAL_ADDRESS (P.O. Box; the registered office is on the certificate of formation).',
   'Punctuation only: em dashes replaced. No wording changed by that pass.',
   // GC audit revision (v1.0-rc)
   'Section 1.4 added: business use only. Section 1.5 added: transition from predecessor terms, consent to assignment.',
@@ -356,7 +356,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     blocks: [
       {
         type: 'p',
-        text: `Customer must register with accurate and current information, maintain the confidentiality of all credentials, restrict access to Authorized Users only, and promptly notify ${PRIVACY_EMAIL} of any suspected unauthorized access. Customer is responsible for all activities conducted under its account.`,
+        text: `Customer must register with accurate and current information, maintain the confidentiality of all credentials, restrict access to Authorized Users only, and promptly notify ${LEGAL_EMAIL} of any suspected unauthorized access. Customer is responsible for all activities conducted under its account.`,
       },
     ],
   },
@@ -489,7 +489,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
       { type: 'h3', text: '10.3 Copyright Complaints and Repeat Infringers' },
       {
         type: 'p',
-        text: `${E} responds to notices of claimed copyright infringement that comply with 17 U.S.C. 512(c)(3). Notices and counter-notices go to ${E}'s designated agent at ${PRIVACY_EMAIL} with the subject line "DMCA Notice" and by mail to the Mailing Address for Notices. ${E} may remove or disable access to material that is the subject of a compliant notice, will forward counter-notices as the statute provides, and will terminate, in appropriate circumstances, the accounts of Authorized Users or Customers who are repeat infringers. Customer is responsible for Content it or its AI Agents publish to Connected Accounts; ${E} does not publish Content on its own initiative.`,
+        text: `${E} responds to notices of claimed copyright infringement that comply with 17 U.S.C. 512(c)(3). Notices and counter-notices go to ${E}'s designated agent, Legal Counsel, at ${LEGAL_EMAIL} with the subject line "DMCA Notice" and by mail to the Mailing Address for Notices. ${E} may remove or disable access to material that is the subject of a compliant notice, will forward counter-notices as the statute provides, and will terminate, in appropriate circumstances, the accounts of Authorized Users or Customers who are repeat infringers. Customer is responsible for Content it or its AI Agents publish to Connected Accounts; ${E} does not publish Content on its own initiative.`,
       },
     ],
   },
@@ -757,13 +757,15 @@ export const TERMS_SECTIONS: LegalSection[] = [
         type: 'table',
         head: ['Channel', 'Detail'],
         rows: [
-          ['Legal notices, privacy and data-rights requests, and billing', PRIVACY_EMAIL],
+          ['Legal Counsel (legal notices, security reports, copyright complaints)', LEGAL_EMAIL],
+          ['Privacy and data-rights requests', PRIVACY_EMAIL],
+          ['Billing', BILLING_EMAIL],
           ['Mailing Address for Notices', `${LEGAL_ENTITY}, ${TERMS_META.address}`],
         ],
       },
       {
         type: 'p',
-        text: `Legal notices to ${E} must be sent by email to ${PRIVACY_EMAIL} with the subject line "Legal Notice" and by certified mail, or another mail service that provides proof of delivery, to the Mailing Address for Notices. Legal notices to Customer may be sent to the email address of Customer's account contact. Notice is deemed received one business day after email transmission without bounce, or on confirmed delivery of a physical copy.`,
+        text: `Legal notices to ${E} must be sent by email to Legal Counsel at ${LEGAL_EMAIL} with the subject line "Legal Notice" and by certified mail, or another mail service that provides proof of delivery, to the Mailing Address for Notices. Legal notices to Customer may be sent to the email address of Customer's account contact. Notice is deemed received one business day after email transmission without bounce, or on confirmed delivery of a physical copy.`,
       },
     ],
   },

@@ -11,7 +11,7 @@
 // PRODUCTION GATE: same two facts as the Terms (filed entity name, formation
 // date). See lib/legal/terms-of-service.ts.
 
-import { CONTACT_EMAIL, LEGAL_ENTITY, POSTAL_ADDRESS, PRIVACY_EMAIL, SITE_URL } from '@/lib/site';
+import { LEGAL_EMAIL, LEGAL_ENTITY, POSTAL_ADDRESS, PRIVACY_EMAIL, SITE_URL } from '@/lib/site';
 import type { LegalSection, OpenItem } from './types';
 
 /** Set false only after OPEN_ITEMS are closed, counsel has signed off, and the owner approves. */
@@ -27,7 +27,7 @@ export const PRIVACY_META = {
   entity: LEGAL_ENTITY,
   address: POSTAL_ADDRESS,
   privacyEmail: PRIVACY_EMAIL,
-  contactEmail: CONTACT_EMAIL,
+  contactEmail: LEGAL_EMAIL,
   termsUrl: `${SITE_URL}/terms-of-service`,
   versionNote:
     'Version 1.0 is the first edition issued by ' +
@@ -71,7 +71,7 @@ export const PRIVACY_OPEN_ITEMS: OpenItem[] = [
 /** Every deviation from Echo1Labs_Privacy_Policy_v2.docx (2026-07-29), for counsel. */
 export const PRIVACY_CHANGES: string[] = [
   'Controller: "Mingma Inc, doing business as Echo 1 Labs" replaced with "' + LEGAL_ENTITY + '" throughout. Address set to ' + POSTAL_ADDRESS + '.',
-  'Named individual removed. The July draft listed a named EEA/UK contact with a personal mailbox; all contact channels now route to ' + PRIVACY_EMAIL + ' (owner decision 2026-10-16).',
+  'Named individual removed. The July draft listed a named EEA/UK contact with a personal mailbox; privacy requests route to ' + PRIVACY_EMAIL + ' and legal notices to Legal Counsel at ' + LEGAL_EMAIL + ' (owner decision 2026-10-16).',
   'Version reset from 2.0 to 1.0 with a predecessor note. Effective Date gated on formation date.',
   'Product names aligned to the live product set (Section 1).',
   'Vendor names replaced with service categories in Sections 2, 6.1, and 15. Google Tag Manager, Google Analytics, and Google Ads remain named in Section 13 because a visitor cannot act on a cookie disclosure that hides the vendor.',
@@ -500,7 +500,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
         head: ['Channel', 'Detail'],
         rows: [
           ['Privacy inquiries and data-rights requests', PRIVACY_EMAIL],
-          ['Legal notices', PRIVACY_EMAIL],
+          ['Legal Counsel (legal notices)', LEGAL_EMAIL],
           ['EEA / UK inquiries', PRIVACY_EMAIL],
           ['Mailing address', `${LEGAL_ENTITY}, ${POSTAL_ADDRESS}`],
         ],
