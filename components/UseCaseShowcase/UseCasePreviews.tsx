@@ -132,6 +132,9 @@ export function UseCasePreviews({ heading = DEFAULT_HEADING, intro = DEFAULT_INT
         <Link className={styles.all} href="/case-studies">
           View all case studies
         </Link>
+        <Link className={styles.sales} href="/contact?src=home-case-previews&cta=previews">
+          Contact Sales
+        </Link>
       </div>
     </section>
   );

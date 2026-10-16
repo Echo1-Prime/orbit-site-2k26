@@ -1,5 +1,6 @@
 'use server';
 
+import { cleanAttr } from '@/lib/attribution';
 import { forwardContact, n8nConfigured } from '@/lib/n8n';
 import { notifySlackLead, slackConfigured } from '@/lib/slack';
 
@@ -23,7 +24,17 @@ export async function submitContact(_prev: ContactState, formData: FormData): Pr
     return { status: 'error', message: 'Please enter your name and a valid email.' };
   }
 
-  const payload = { name, email, company, message, source: 'www.echo1labs.com/contact' };
+  /* Where the visitor came from. These arrive from hidden fields, so they are treated as untrusted text. */
+  const field = (k: string, max: number) => cleanAttr(formData.get(k), max);
+  const attribution = {
+    src: field('a_src', 60),
+    cta: field('a_cta', 40),
+    from: field('a_from', 120),
+    landing: field('a_landing', 120),
+    ref: field('a_ref', 160),
+    utm: field('a_utm', 300),
+  };
+  const payload = { name, email, company, message, source: 'www.echo1labs.com/contact', attribution };
   // Every lead goes to Slack, and to n8n when its webhook is set. Success means at least one of them took it.
   // With neither configured the lead would be lost, so production reports an error instead of a false success.
   const deliveries: Promise<{ ok: boolean }>[] = [];

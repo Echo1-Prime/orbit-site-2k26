@@ -246,9 +246,9 @@ export function useHomeVals() {
     aoPaint: hv === 2 || reduced ? 'inset(-150% -150% -150% -150%)' : 'inset(-150% 300% -150% -150%)',
     aoTr: hv === 2 && !reduced ? 'clip-path 2200ms var(--ao-ease-out)' : 'none',
     linesReady,
-    heroStart: { ...ghostProps('primary', 'md', { flex: 1, width: '100%' }), onClick: () => router.push('/contact') },
+    heroStart: { ...ghostProps('primary', 'md', { flex: 1, width: '100%' }), onClick: () => router.push('/contact?src=home-hero') },
     heroAsk: { ...ghostProps('secondary', 'md', { flex: 1, width: '100%' }), onClick: () => openConcierge() },
-    finalStart: { ...ghostProps('primary', 'lg', { flex: 1, width: '100%' }), onClick: () => router.push('/contact') },
+    finalStart: { ...ghostProps('primary', 'lg', { flex: 1, width: '100%' }), onClick: () => router.push('/contact?src=home-final') },
   });
 
   /* brush strokes: clip-path sweeps flip once per seen key */

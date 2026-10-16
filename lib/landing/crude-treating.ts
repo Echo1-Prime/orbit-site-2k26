@@ -35,7 +35,7 @@ export const crudeTreatingCopy: UseCaseCopy = {
   locations: [],
   closing: 'Supervised by you.',
   signupLabel: 'Contact Sales',
-  signupUrl: '/contact',
+  signupUrl: '/contact?src=use-case-how-crude-treating-works',
   bookLabel: 'Open the full demo',
   bookUrl: 'https://e1-booth-how-it-works.vercel.app/',
 };

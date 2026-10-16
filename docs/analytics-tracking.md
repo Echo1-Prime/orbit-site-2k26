@@ -33,6 +33,20 @@ Pushed from the site and wired to GTM triggers:
 - `/thank-you` (booking confirmation) → `generate_lead` + legacy `conversion`
   (`components/Analytics/LeadConversion.tsx`, `lead_source: 'strategy_session_booking'`).
 
+- Any click on a link to `/contact` → `contact_cta_click` with `cta_source` (the link's `src`, or `untagged`),
+  `cta_position` (`cta`, for example `hero` or `closing`) and `from_path` (`components/Analytics/Attribution.tsx`).
+- A sent contact form → `generate_lead` + legacy `conversion` with `lead_source: contact_form:<src>`.
+
+### Where a lead came from
+
+Key buttons link to `/contact?src=<where>&cta=<position>`: `nav`, `home-hero`, `home-final`, `home-case-previews`,
+`case-studies`, `landing-header`, `landing-footer` and `use-case-<slug>` (hero and closing buttons on each use case
+page). The contact form sends these with the message as hidden fields (`a_src`, `a_cta`, `a_from`, `a_landing`,
+`a_ref`, `a_utm`) and the Slack message and the n8n payload (`attribution`) carry them: campaign tag and button,
+the previous page, the first page of the visit, the outside referrer (host and path only) and any `utm_*` tags.
+Nothing is stored: `lib/attribution.ts` keeps the values in memory for the life of the tab, so no consent is
+needed. A visitor who opens `/contact` directly shows `none (opened the contact page directly)`.
+
 Outbound links on `/thank-you` also carry first-party UTM params
 (`utm_source=thank-you`), independent of the tags above.
 

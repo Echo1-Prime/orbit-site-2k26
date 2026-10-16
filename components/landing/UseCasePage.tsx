@@ -1,8 +1,32 @@
+import Link from 'next/link';
 import type { UseCaseCopy } from '@/lib/landing/types';
 import styles from './UseCasePage.module.css';
 
 interface Props {
   copy: UseCaseCopy;
+}
+
+/** A link to this site is a client-side link (the visit's attribution stays in memory); a demo on its own host opens in a new tab. */
+function Cta({ url, position, className, children }: { url: string; position: string; className: string; children: React.ReactNode }) {
+  const href = withCta(url, position);
+  if (/^(\/|https:\/\/www\.echo1labs\.com\/)/.test(href)) {
+    return (
+      <Link href={href.replace(/^https:\/\/www\.echo1labs\.com/, '')} className={className}>
+        {children}
+      </Link>
+    );
+  }
+  return (
+    <a href={href} className={className} target="_blank" rel="noopener">
+      {children}
+    </a>
+  );
+}
+
+/** A link to the contact page also says which button it was (hero or closing); other links are left alone. */
+function withCta(url: string, position: string): string {
+  if (!/^(\/|https:\/\/www\.echo1labs\.com\/)contact(\?|$)/.test(url)) return url;
+  return url + (url.includes('?') ? '&' : '?') + 'cta=' + position;
 }
 
 export default function UseCasePage({ copy }: Props) {
@@ -19,12 +43,12 @@ export default function UseCasePage({ copy }: Props) {
             ))}
           </ul>
           <div className={styles.ctas}>
-            <a href={copy.signupUrl} className="btn btn--primary" target="_blank" rel="noopener">
+            <Cta url={copy.signupUrl} position="hero" className="btn btn--primary">
               {copy.signupLabel}
-            </a>
-            <a href={copy.bookUrl} className="btn btn--ghost" target="_blank" rel="noopener">
+            </Cta>
+            <Cta url={copy.bookUrl} position="hero" className="btn btn--ghost">
               {copy.bookLabel}
-            </a>
+            </Cta>
           </div>
         </div>
       </section>
@@ -94,12 +118,12 @@ export default function UseCasePage({ copy }: Props) {
         <div className={styles.inner}>
           <h2 className={`display-md ${styles.h2}`}>{copy.closing}</h2>
           <div className={styles.ctas}>
-            <a href={copy.signupUrl} className="btn btn--primary" target="_blank" rel="noopener">
+            <Cta url={copy.signupUrl} position="closing" className="btn btn--primary">
               {copy.signupLabel}
-            </a>
-            <a href={copy.bookUrl} className="btn btn--ghost" target="_blank" rel="noopener">
+            </Cta>
+            <Cta url={copy.bookUrl} position="closing" className="btn btn--ghost">
               {copy.bookLabel}
-            </a>
+            </Cta>
           </div>
         </div>
       </section>

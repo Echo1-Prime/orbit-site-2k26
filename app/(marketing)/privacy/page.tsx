@@ -38,7 +38,7 @@ export default function PrivacyPage() {
             <h2 className="display-sm" style={{ marginBottom: '0.6rem' }}>Contact and lead details</h2>
             <p className="body-md">
               If you submit the contact form or ask Orbit to have someone follow up, we collect the
-              details you provide (such as name, email, company, and message) to respond to you. We do
+              details you provide (such as name, email, company, and message) to respond to you. We also record the page you came from, the button you used and any campaign tags in the link, so we know which page led you to us. That information stays in your browser's memory until you send the form and is not stored on your device. We do
               not sell your personal information.
             </p>
           </div>

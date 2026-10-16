@@ -21,7 +21,7 @@ export const NAV_LINKS = [
   { href: '/#agent-orbit', label: 'Agent Orbit' },
   { href: '/#governance', label: 'Governance' },
   { href: '/case-studies', label: 'Case Studies' },
-  { href: '/contact', label: 'Contact Sales' },
+  { href: '/contact?src=nav', label: 'Contact Sales' },
 ] as const;
 
 export const DEST: Record<DestKey, Dest> = {

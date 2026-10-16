@@ -35,7 +35,7 @@ export const wasteWaterCopy: UseCaseCopy = {
   locations: [],
   closing: 'Supervised by you.',
   signupLabel: 'Contact Sales',
-  signupUrl: '/contact',
+  signupUrl: '/contact?src=use-case-waste-water',
   bookLabel: 'Open the full demo',
   bookUrl: 'https://e1-booth-disposal.vercel.app/',
 };
