@@ -69,6 +69,23 @@ Status key: CLOSED (applied in the single-source module), OPEN (needs an owner f
 | R8 | No Order Form existed for customers to sign | High | CLOSED as template (docs/legal-out/Order-Form-Template-v1.0-rc.md); counsel review before first use |
 | R9 | Exhibit B product behavior statements (Ledger moves no funds; Orbit retains no audio by default) are representations | High | OPEN (owner CONFIRM) |
 
+## From the October 16, 2026 world-class pass (Terms v1.2-rc, Perplexity research)
+
+| # | Finding | Severity | Status |
+|---|---|---|---|
+| W1 | No record-of-acceptance clause and no acceptance ledger; terms unprovable (Berman, Meyer, StubHub v. Ball, Ambit) | Critical | CLOSED in text (1.6); OPEN in product (Acceptance-Ledger-Spec-v1) |
+| W2 | Amendment clause could be read as retroactive and illusory (Harris v. Blockbuster; SCI v. Echovita) | High | CLOSED (21: prospective only, 30-day email notice, termination right) |
+| W3 | No informal dispute resolution step, no small-claims carve-out, no mass-filing protocol; Heckman v. Live Nation risk if bellwether-binding | High | CLOSED (20.2, 20.3 batching without binding absent claimants) |
+| W4 | No changes-to-Platform or model-deprecation clause | High | CLOSED (3.5) |
+| W5 | Provider usage policies not flowed down (Anthropic on Bedrock terms require it) | High | CLOSED (7.5) |
+| W6 | Geographic scope undefined; GDPR Art. 27 and Colorado/California ADMT exposure by accident | High | CLOSED (1.7 US only) |
+| W7 | Operations credits undefined; "never expire" marketing vs escheat | High | CLOSED in text (9.1); OPEN counsel (credits-escheat) |
+| W8 | Sales tax not addressed; Texas data-processing tax on 80 percent | High | CLOSED in text (9.2); OPEN permit |
+| W9 | No DMCA designated agent or repeat-infringer policy; section 512 safe harbor unavailable | High | CLOSED in text (10.3); OPEN registration |
+| W10 | TCPA initiator exposure for voice agents (FCC 24-17; DISH; Dialing Services) | High | CLOSED in text (Exhibit B Parts 3 and 8); product must keep customer in control of list, script, timing, caller ID |
+| W11 | LLC shield (BOC 21.223 via 101.002) not reinforced in the contract | Low | CLOSED (1.1 sole contracting party) |
+| W12 | All legal channels now privacy@ (owner decision 2026-10-16) | Note | CLOSED |
+
 ## Re-check triggers
 
 - Any entity, address, or contact change: re-run Phase 1 on both documents.

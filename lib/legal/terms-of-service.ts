@@ -40,7 +40,7 @@ export const TERMS_META = {
   governingLaw: 'Texas',
   arbitrationSeat: 'Victoria, Texas',
   venueCounty: 'DeWitt County, Texas',
-  contactEmail: CONTACT_EMAIL,
+  contactEmail: PRIVACY_EMAIL,
   privacyUrl: `${SITE_URL}/privacy`,
   versionNote:
     'Version 1.0 is the first edition issued by ' +
@@ -88,6 +88,26 @@ export const OPEN_ITEMS: OpenItem[] = [
     note: 'Exhibit C is a self-contained DPA covering GDPR Art. 28(3), TDPSA sec. 541.104, and CCPA service-provider terms. Counsel to confirm the SCC module reference and the 30-day subprocessor notice.',
   },
   {
+    key: 'acceptance-ledger',
+    status: 'CONFIRM',
+    note: 'Section 1.6 states that an acceptance record exists. Engineering must implement it (version, content hash, timestamp, account, user, IP, user agent, screen snapshot) before the first customer accepts.',
+  },
+  {
+    key: 'dmca-agent',
+    status: 'CONFIRM',
+    note: 'Section 10.3 names a designated agent. Register with the U.S. Copyright Office ($6; a P.O. Box needs a waiver request or use a street address) before Broadcast publishes for any customer.',
+  },
+  {
+    key: 'sales-tax-permit',
+    status: 'CONFIRM',
+    note: 'Section 9.2 says tax is added where required. A Texas vendor has physical nexus; obtain a sales and use tax permit before the first invoice. Data processing is taxed on 80 percent of the charge (Rule 3.330).',
+  },
+  {
+    key: 'credits-escheat',
+    status: 'COUNSEL',
+    note: 'Section 9.1 defines Operations credits. Marketing says Founding 300 credits never expire; the clause ties non-expiring credits to an active account. Counsel to confirm unclaimed-property posture.',
+  },
+  {
     key: 'dtpa-posture',
     status: 'COUNSEL',
     note: 'The DTPA cannot be waived in a click-through (Tex. Bus. & Com. Code 17.42). Protection rests on Section 1.4 business use, Section 13.4 as-is bargain, and the 17.49 large-transaction exemptions for negotiated Order Forms over the statutory thresholds. Counsel to confirm.',
@@ -102,7 +122,7 @@ export const CHANGES: string[] = [
   'Section 20 arbitration seat changed from Dallas County to Victoria, Texas; court venue DeWitt County, Texas.',
   'Vendor names removed from client-facing copy (Sections 3.2, 4.3, 9, 12).',
   'Section 3.2 product list aligned to the live product set; Professional Services bullet removed.',
-  'Sections 6 and 22: legal and billing notices route to ' + CONTACT_EMAIL + '; privacy and data-rights requests route to ' + PRIVACY_EMAIL + '; mailing address for notices set from POSTAL_ADDRESS (P.O. Box; the registered office is on the certificate of formation).',
+  'Sections 6 and 22: all legal, privacy, data-rights, and billing channels route to ' + PRIVACY_EMAIL + ' (owner decision 2026-10-16); mailing address for notices set from POSTAL_ADDRESS (P.O. Box; the registered office is on the certificate of formation).',
   'Punctuation only: em dashes replaced. No wording changed by that pass.',
   // GC audit revision (v1.0-rc)
   'Section 1.4 added: business use only. Section 1.5 added: transition from predecessor terms, consent to assignment.',
@@ -129,6 +149,13 @@ export const CHANGES: string[] = [
   'v1.1-rc: Section 15.1 customer indemnity expanded to Customer Compliance Laws, Content, Outbound Communications, Connected Accounts, regulated data, and regulatory fines; made expressly comparative.',
   'v1.1-rc: Exhibit B Product-Specific Terms added for AI Readiness, Engine, RevOps, Broadcast, Signal, Ledger, Titan, and Prime (with the AI Agent Fleet and Orbit assistant and voice agents).',
   'v1.1-rc: Exhibit C Data Processing Addendum added and incorporated; Section 17.4 and the DPA definition now point to it. A negotiated DPA still controls if executed.',
+  'v1.2-rc (2026-10-16): all legal channels route to privacy@ (owner decision). 1.1 names the LLC as sole contracting party. 1.6 Record of Acceptance and 1.7 Availability (United States only) added.',
+  'v1.2-rc: 3.5 Changes to the Platform (30-day notice for material retirements, termination and refund right). 7.5 third-party model provider policies flow down.',
+  'v1.2-rc: 9.1 Operations Credits, 9.2 Taxes (Texas data-processing tax collected where required), 9.3 usury savings renumbered.',
+  'v1.2-rc: 10.3 Copyright complaints, designated agent, repeat-infringer policy (17 U.S.C. 512).',
+  'v1.2-rc: 20.2 informal dispute resolution (60 days, tolling, small-claims carve-out); 20.3 arbitration with batching that binds no absent claimant (Heckman v. Live Nation, 9th Cir. 2024); 20.4 carve-out renumbered.',
+  'v1.2-rc: 21 amendment made prospective-only with 30-day email notice and a termination-and-refund right for detrimental changes to 14 or 20 (Harris v. Blockbuster illusoriness cured); force majeure names provider outages.',
+  'v1.2-rc: Exhibit B Part 3 and Part 8 state that Customer initiates every Outbound Communication and is the TCPA caller; voice agents disclose AI by default.',
   'Not changed in substance: Sections 4, 5, 8.1 through 8.3, 11, 12, 13.1, 13.2, 15.2, 18.',
 ];
 
@@ -143,7 +170,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
       { type: 'h3', text: '1.1 Agreement Formation' },
       {
         type: 'p',
-        text: `These Terms of Service ("Terms" or "Agreement") constitute a legally binding contract between ${LEGAL_ENTITY}, ${TERMS_META.entityForm} ("${E}," "Company," "we," "us," or "our"), and you ("Customer," "Client," "Subscriber," or "you"), whether acting individually or on behalf of an entity, governing your access to and use of the ${E} AI-driven business lifecycle management Platform and all related products and services.`,
+        text: `These Terms of Service ("Terms" or "Agreement") constitute a legally binding contract between ${LEGAL_ENTITY}, ${TERMS_META.entityForm} ("${E}," "Company," "we," "us," or "our"), and you ("Customer," "Client," "Subscriber," or "you"), whether acting individually or on behalf of an entity, governing your access to and use of the ${E} AI-driven business lifecycle management Platform and all related products and services. ${LEGAL_ENTITY} is the sole contracting party; no member, manager, employee, or contractor of ${E} assumes any personal obligation or liability under this Agreement.`,
       },
       { type: 'h3', text: '1.2 Acceptance' },
       {
@@ -164,6 +191,16 @@ export const TERMS_SECTIONS: LegalSection[] = [
       {
         type: 'p',
         text: `These Terms replace and supersede any prior terms of service, terms of use, or similar agreement governing the Platform that were issued by a predecessor entity. If Customer accepted such prior terms, Customer's continued access to or use of the Platform on or after the Effective Date constitutes acceptance of these Terms, and Customer consents to the assignment to ${LEGAL_ENTITY} of any such prior agreement and of any Order Form or SOW entered into under it.`,
+      },
+      { type: 'h3', text: '1.6 Record of Acceptance' },
+      {
+        type: 'p',
+        text: `${E} keeps a record of each acceptance of these Terms, including the version and content hash of the Terms presented, the date and time, the account and user that accepted, and technical details of the session. Customer agrees that this record is the authoritative evidence of the version of these Terms it accepted and when, and that the Authorized User who accepted had authority to bind Customer.`,
+      },
+      { type: 'h3', text: '1.7 Availability' },
+      {
+        type: 'p',
+        text: `The Platform is offered to businesses located in the United States. ${E} does not offer the Platform to individuals or organizations in the European Economic Area, the United Kingdom, or any other jurisdiction unless an Order Form expressly says so. Customer may not use the Platform from, or make it available to users in, any such jurisdiction without ${E}'s prior written agreement, and any such use is at Customer's own risk and subject to Section 7.2.`,
       },
     ],
   },
@@ -187,8 +224,8 @@ export const TERMS_SECTIONS: LegalSection[] = [
           ['"Consequential Decision"', 'Any action that, if erroneous, could cause material financial loss, legal liability, reputational harm, or operational disruption. Requires Human Sign-Off.'],
           ['"Customer Compliance Laws"', 'All laws, regulations, industry rules, and third-party platform terms that apply to Customer\'s business, its end customers, its Content, its Outbound Communications, and its use of the Platform and AI Outputs, including advertising, telemarketing and messaging, anti-spam, consumer protection, privacy, employment, fair lending, securities, export, and sanctions laws.'],
           ['"DPA"', 'The Data Processing Addendum in Exhibit C, which is incorporated into this Agreement. A separately executed DPA, if any, controls over Exhibit C to the extent of any conflict.'],
-          ['"Documentation"', `The user guides, specifications, and materials ${E} makes available describing the Platform's features and permitted use.`],
           ['"Effective Date"', 'The date stated at the top of these Terms, or, for a Customer accepting later, the date of acceptance under Section 1.2.'],
+          ['"Documentation"', `The user guides, specifications, and materials ${E} makes available describing the Platform's features and permitted use, including the provider usage restrictions published under Section 7.5.`],
           ['"Feedback"', 'Suggestions, feature requests, or other input Customer provides about the Platform.'],
           ['"HITL"', 'Human-in-the-Loop: the mandatory process by which an Authorized User reviews, approves, modifies, or rejects an AI Output before it takes effect.'],
           ['"Human Sign-Off"', 'Has the meaning given in Section 5.2.'],
@@ -239,6 +276,11 @@ export const TERMS_SECTIONS: LegalSection[] = [
       {
         type: 'p',
         text: `${E} may make Beta Services available. Beta Services are provided for evaluation, may be changed or withdrawn at any time, are excluded from Section 13.1 warranties and Section 18 service levels, and may not be used for Consequential Decisions. Customer's use of Beta Services is at Customer's own risk.`,
+      },
+      { type: 'h3', text: '3.5 Changes to the Platform' },
+      {
+        type: 'p',
+        text: `${E} may add, change, replace, or retire features, AI Agents, workflows, and the third-party models the Platform uses. ${E} will give at least 30 days' notice before retiring a feature or model that materially reduces the Platform's core functionality for Customer, will provide commercially reasonable migration guidance, and will not be obligated to maintain a retired model or feature. If a change materially reduces core functionality and ${E} does not offer a substantially equivalent replacement, Customer may terminate the affected subscription on written notice within 30 days after the change takes effect and receive a refund of pre-paid, unused fees for the remainder of the Subscription Term.`,
       },
     ],
   },
@@ -314,7 +356,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
     blocks: [
       {
         type: 'p',
-        text: `Customer must register with accurate and current information, maintain the confidentiality of all credentials, restrict access to Authorized Users only, and promptly notify ${CONTACT_EMAIL} of any suspected unauthorized access. Customer is responsible for all activities conducted under its account.`,
+        text: `Customer must register with accurate and current information, maintain the confidentiality of all credentials, restrict access to Authorized Users only, and promptly notify ${PRIVACY_EMAIL} of any suspected unauthorized access. Customer is responsible for all activities conducted under its account.`,
       },
     ],
   },
@@ -354,6 +396,11 @@ export const TERMS_SECTIONS: LegalSection[] = [
       {
         type: 'p',
         text: `Customer shall not use the Platform or AI Outputs to deceive any person about whether they are interacting with an AI system where disclosure is required by law or by the platform through which the interaction occurs; to impersonate any person or organization; to generate or distribute content that infringes, defames, harasses, or discriminates unlawfully; or to make or implement a Consequential Decision without Human Sign-Off. ${E} may require Customer to add an AI-interaction disclosure to a configured workflow where ${E} reasonably determines that law or a platform requires it. The Policy Guardrails in Exhibit A are minimums; Customer may tighten them and may not loosen them.`,
+      },
+      { type: 'h3', text: '7.5 Third-Party Model Provider Policies' },
+      {
+        type: 'p',
+        text: `The Platform uses large language models and other services from third-party providers whose usage policies bind ${E} and, through this Section, Customer. Customer shall comply with the provider usage restrictions ${E} publishes in the Documentation, which may be updated when a provider updates its policy. Where a provider's policy is stricter than this Agreement, the stricter rule applies to use of that provider's model. ${E} may suspend a workflow or account that a provider has flagged, or that ${E} reasonably believes violates a provider policy, until the issue is resolved.`,
       },
     ],
   },
@@ -398,9 +445,20 @@ export const TERMS_SECTIONS: LegalSection[] = [
         type: 'p',
         text: `Fees are as specified in the applicable Order Form and are processed through our third-party payment processor. Past-due amounts accrue interest at the lesser of 1.5% per month or the maximum rate permitted by applicable law. If payment remains outstanding 30 days after written notice, ${E} may suspend Platform access. Customer is responsible for all applicable taxes other than taxes on ${E}'s net income. ${E} may adjust fees with 60 days' notice before a renewal term. Except as expressly stated, fees are non-refundable.`,
       },
+      { type: 'h3', text: '9.1 Operations Credits' },
       {
         type: 'p',
-        text: `Usury savings. The parties intend to comply with applicable usury law. If any charge under this Agreement would be usurious, it is reduced to the maximum lawful rate, and any excess already paid is credited against amounts owed or refunded.`,
+        text: `Where an Order Form includes prepaid usage credits ("Operations" or similar), the credits are a contractual allowance to use the Platform. They are not currency, have no cash value, are not transferable or redeemable for cash, may be used only by Customer within its own account, and are not refundable except as this Agreement or applicable law requires. Credits expire as stated in the Order Form; credits the Order Form designates as non-expiring remain available for as long as Customer maintains an active account in good standing and lapse 12 months after the account closes. ${E} may deduct credits for usage as described in the Documentation and may adjust the credit cost of a feature on 30 days' notice before the change applies to a renewal term.`,
+      },
+      { type: 'h3', text: '9.2 Taxes' },
+      {
+        type: 'p',
+        text: `Fees exclude taxes. Where ${E} is required to collect sales, use, or similar transaction taxes, including Texas tax on data processing services, ${E} will add them to the invoice and Customer will pay them unless Customer provides a valid exemption certificate. Customer is responsible for all taxes arising from this Agreement other than taxes on ${E}'s net income.`,
+      },
+      { type: 'h3', text: '9.3 Usury Savings' },
+      {
+        type: 'p',
+        text: `The parties intend to comply with applicable usury law. If any charge under this Agreement would be usurious, it is reduced to the maximum lawful rate, and any excess already paid is credited against amounts owed or refunded.`,
       },
     ],
   },
@@ -427,6 +485,11 @@ export const TERMS_SECTIONS: LegalSection[] = [
           'Represent AI Outputs as the work of a licensed human professional without independent professional review.',
           'Use the Platform to develop a competing product or service.',
         ],
+      },
+      { type: 'h3', text: '10.3 Copyright Complaints and Repeat Infringers' },
+      {
+        type: 'p',
+        text: `${E} responds to notices of claimed copyright infringement that comply with 17 U.S.C. 512(c)(3). Notices and counter-notices go to ${E}'s designated agent at ${PRIVACY_EMAIL} with the subject line "DMCA Notice" and by mail to the Mailing Address for Notices. ${E} may remove or disable access to material that is the subject of a compliant notice, will forward counter-notices as the statute provides, and will terminate, in appropriate circumstances, the accounts of Authorized Users or Customers who are repeat infringers. Customer is responsible for Content it or its AI Agents publish to Connected Accounts; ${E} does not publish Content on its own initiative.`,
       },
     ],
   },
@@ -634,17 +697,22 @@ export const TERMS_SECTIONS: LegalSection[] = [
       { type: 'h3', text: '20.1 Governing Law' },
       {
         type: 'p',
-        text: `This Agreement is governed by the laws of the State of ${TERMS_META.governingLaw}, without regard to its conflict-of-laws principles. The Federal Arbitration Act governs the interpretation and enforcement of Section 20.2.`,
+        text: `This Agreement is governed by the laws of the State of ${TERMS_META.governingLaw}, without regard to its conflict-of-laws principles. The Federal Arbitration Act governs the interpretation and enforcement of Section 20.3.`,
       },
-      { type: 'h3', text: '20.2 Arbitration' },
+      { type: 'h3', text: '20.2 Informal Dispute Resolution' },
       {
         type: 'p',
-        text: `Disputes are first addressed through 30 days of good-faith negotiation following written notice. Thereafter, any dispute arising out of or relating to this Agreement, including its formation, scope, or arbitrability, is resolved by binding arbitration administered by the American Arbitration Association under its Commercial Arbitration Rules, before a single arbitrator, seated in ${TERMS_META.arbitrationSeat}. The arbitrator may award any relief a court could award to an individual party. Judgment on the award may be entered in any court of competent jurisdiction.`,
+        text: `Before starting arbitration or a permitted court action, the party raising a dispute must send the other a written notice of dispute to its notice address under Section 22 that states the party's name and contact information, describes the dispute and the relief sought, and is signed by the party or its counsel. The parties will then confer in good faith, including at least one conference by telephone or video between individuals with authority to resolve the dispute, for 60 days after the notice is received. The two-year claims period in Section 14.5 is tolled while this Section is being followed. Either party may bring an individual action in small claims court for a claim within that court's jurisdiction instead of following this Section or Section 20.3.`,
       },
-      { type: 'h3', text: '20.3 Carve-Out and Venue' },
+      { type: 'h3', text: '20.3 Arbitration' },
       {
         type: 'p',
-        text: `Notwithstanding Section 20.2, either party may seek injunctive or other equitable relief, or protect its intellectual-property or confidential information, in a court of competent jurisdiction. Venue for any such court proceeding, and for any action to compel arbitration or enforce an award, is the state or federal courts having jurisdiction over ${TERMS_META.venueCounty}, and each party consents to personal jurisdiction there.`,
+        text: `After the informal dispute resolution period, any dispute arising out of or relating to this Agreement, including its formation, scope, or arbitrability, is resolved by binding arbitration administered by the American Arbitration Association under its Commercial Arbitration Rules, before a single arbitrator, seated in ${TERMS_META.arbitrationSeat}. The arbitrator may award any relief a court could award to an individual party. Judgment on the award may be entered in any court of competent jurisdiction. If 25 or more demands for arbitration raising substantially similar claims are filed against ${E} by or with the assistance of the same or coordinated counsel within 90 days, the administrator will group the demands into batches of no more than 50, each batch with its own arbitrator, a single set of administrative fees, and its own hearing; no award in one batch binds any claimant in another, and nothing in this Section limits any party's right to an individual determination of its own claim.`,
+      },
+      { type: 'h3', text: '20.4 Carve-Out and Venue' },
+      {
+        type: 'p',
+        text: `Notwithstanding Section 20.3, either party may seek injunctive or other equitable relief, or protect its intellectual-property or confidential information, in a court of competent jurisdiction. Venue for any such court proceeding, and for any action to compel arbitration or enforce an award, is the state or federal courts having jurisdiction over ${TERMS_META.venueCounty}, and each party consents to personal jurisdiction there.`,
       },
       {
         type: 'p',
@@ -667,14 +735,14 @@ export const TERMS_SECTIONS: LegalSection[] = [
         type: 'ul',
         items: [
           'Entire Agreement and Precedence: These Terms, together with each Order Form, SOW, and Exhibits A, B, and C (and any separately executed DPA), constitute the entire agreement between the parties and supersede all prior proposals and agreements on the subject. In a conflict: a separately executed DPA controls for data processing, then the Order Form for its subject matter, then Exhibit B for the product concerned, then these Terms, then Exhibits A and C; an Order Form may not expand a party\'s liability beyond Section 14 unless it expressly states that it does.',
-          `Amendment: ${E} may modify these Terms with 30 days' notice by posting the revised Terms at the URL where they are published and notifying Customer's account contact. Material changes take effect at the next renewal term unless Customer accepts them earlier.`,
+          `Amendment: ${E} may modify these Terms by posting the revised Terms at the URL where they are published and sending notice to Customer's account contact at least 30 days before the change takes effect. Changes apply prospectively only; a dispute that arose before a change takes effect is governed by the version of these Terms then in force. Material changes take effect at the next renewal term unless Customer accepts them earlier. If a change materially alters Section 14 or Section 20 to Customer's detriment, Customer may terminate the affected subscription on written notice within 30 days after the notice and receive a refund of pre-paid, unused fees.`,
           'Assignment: Neither party may assign this Agreement without the other\'s prior written consent, except that either party may assign it in its entirety, on written notice, to a successor in a merger, acquisition, or sale of all or substantially all of the assets to which this Agreement relates. Any other purported assignment is void.',
-          'Force Majeure: Neither party is liable for failure or delay caused by events beyond its reasonable control (excluding payment obligations).',
+          'Force Majeure: Neither party is liable for failure or delay caused by events beyond its reasonable control, including outages or policy changes of third-party model, cloud, or telecommunications providers (excluding payment obligations).',
           'Severability: Invalid provisions are modified to the minimum extent necessary; the remainder continues in full force.',
           'Waiver: No waiver is effective unless in writing, and no failure or delay in exercising a right is a waiver of it.',
           'No Third-Party Beneficiaries: This Agreement confers no rights on any person other than the parties and their permitted successors and assigns.',
           'Independent Contractors: No partnership, joint venture, agency, or employment relationship is created.',
-          'Survival: Sections 1.5, 5.3, 7.3(f), 8.3, 8.5, 9, 10, 11, 13, 14, 15, 17, 19.3, 20, 21, and 22, and Exhibit C, survive expiration or termination of this Agreement.',
+          'Survival: Sections 1.5, 1.6, 5.3, 7.3(f), 8.3, 8.5, 9, 10, 11, 13, 14, 15, 17, 19.3, 20, 21, and 22, and Exhibit C, survive expiration or termination of this Agreement.',
           'Counterparts and E-Signatures: Valid under the Texas UETA (Tex. Bus. & Com. Code Ch. 322) and the federal E-SIGN Act.',
         ],
       },
@@ -689,14 +757,13 @@ export const TERMS_SECTIONS: LegalSection[] = [
         type: 'table',
         head: ['Channel', 'Detail'],
         rows: [
-          ['Legal notices and billing', CONTACT_EMAIL],
-          ['Privacy and data-rights requests', PRIVACY_EMAIL],
+          ['Legal notices, privacy and data-rights requests, and billing', PRIVACY_EMAIL],
           ['Mailing Address for Notices', `${LEGAL_ENTITY}, ${TERMS_META.address}`],
         ],
       },
       {
         type: 'p',
-        text: `Legal notices to ${E} must be sent by email to ${CONTACT_EMAIL} with the subject line "Legal Notice" and by certified mail, or another mail service that provides proof of delivery, to the Mailing Address for Notices. Legal notices to Customer may be sent to the email address of Customer's account contact. Notice is deemed received one business day after email transmission without bounce, or on confirmed delivery of a physical copy.`,
+        text: `Legal notices to ${E} must be sent by email to ${PRIVACY_EMAIL} with the subject line "Legal Notice" and by certified mail, or another mail service that provides proof of delivery, to the Mailing Address for Notices. Legal notices to Customer may be sent to the email address of Customer's account contact. Notice is deemed received one business day after email transmission without bounce, or on confirmed delivery of a physical copy.`,
       },
     ],
   },
@@ -750,7 +817,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
       { type: 'h3', text: 'Part 3. RevOps (revenue operations and outbound)' },
       {
         type: 'p',
-        text: `RevOps assists with lead sourcing, enrichment, sequencing, and Outbound Communications. Customer is the sender of record for every Outbound Communication and is solely responsible for: lawful acquisition and use of contact data; consent, opt-out handling, suppression and do-not-call compliance; sender identification and physical-address requirements for commercial email; telemarketing and texting rules including prior express written consent and time-of-day limits; and compliance with the terms of any Connected Account used to send. ${E} provides sending infrastructure and workflow only and does not review Customer's lists or messages for legal compliance.`,
+        text: `RevOps assists with lead sourcing, enrichment, sequencing, and Outbound Communications. Customer is the sender of record for every Outbound Communication and is solely responsible for: lawful acquisition and use of contact data; consent, opt-out handling, suppression and do-not-call compliance; sender identification and physical-address requirements for commercial email; telemarketing and texting rules including prior express written consent and time-of-day limits; and compliance with the terms of any Connected Account used to send. ${E} provides sending infrastructure and workflow only, does not select recipients, timing, or caller identification, and does not review Customer's lists or messages for legal compliance. Customer, not ${E}, initiates every Outbound Communication. Customer shall not use the Platform to disguise the origin of a communication, and ${E} will act on abuse reports, which may include suspending a campaign.`,
       },
       { type: 'h3', text: 'Part 4. Broadcast (content and brand amplification)' },
       {
@@ -776,7 +843,7 @@ export const TERMS_SECTIONS: LegalSection[] = [
       { type: 'h3', text: 'Part 8. Prime, the AI Agent Fleet, and the Orbit assistant and voice agents' },
       {
         type: 'p',
-        text: `Prime is the governance and operations layer through which Customer configures AI Agents, Policy Guardrails, approvals, and integrations. Customer is responsible for its configuration choices, for the roles and permissions it grants Authorized Users, and for keeping Human Sign-Off in place where Sections 4 and 5 require it. The Orbit assistant and voice agents interact with Customer's users and, where Customer configures them to, with third parties: Customer is responsible for any required disclosure that a caller or visitor is interacting with an AI system, for consent to recording or transcription where required, and for reviewing any commitment an agent communicates before it is acted upon. Voice interactions may be transcribed to text to generate responses; ${E} does not retain audio unless Customer enables retention.`,
+        text: `Prime is the governance and operations layer through which Customer configures AI Agents, Policy Guardrails, approvals, and integrations. Customer is responsible for its configuration choices, for the roles and permissions it grants Authorized Users, and for keeping Human Sign-Off in place where Sections 4 and 5 require it. The Orbit assistant and voice agents interact with Customer's users and, where Customer configures them to, with third parties: Customer is responsible for any required disclosure that a caller or visitor is interacting with an AI system, for consent to recording or transcription where required, and for reviewing any commitment an agent communicates before it is acted upon. Voice agents disclose that they are an AI system at the start of a call by default; Customer may not disable that disclosure where law or a platform requires it. Calls placed by a voice agent are artificial-voice calls under the TCPA, and Customer is the caller responsible for consent. Voice interactions may be transcribed to text to generate responses; ${E} does not retain audio unless Customer enables retention.`,
       },
     ],
   },
