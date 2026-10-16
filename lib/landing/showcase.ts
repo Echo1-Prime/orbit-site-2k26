@@ -1,5 +1,7 @@
 import { truckingCopy } from './trucking';
 import { oilAndGasCopy } from './oil-and-gas';
+import { wasteWaterCopy } from './waste-water';
+import { crudeTreatingCopy } from './crude-treating';
 import { trackYourJobsIn3dCopy } from './track-your-jobs-in-3d';
 
 /*
@@ -51,7 +53,11 @@ export interface ShowcaseTile {
 }
 
 const TRUCKING_ASSET = '/videos/showcase/trucking-card-fd6d2d4e';
-const OIL_AND_GAS_ASSET = '/videos/showcase/oil-and-gas-card-cbb93bcf';
+/* Oil and gas, Waste water and Crude treating: a silent loop of each demo's 3D stage with names removed (Josh, 2026-10-16),
+   captured from the deployed pages; the hex is the sha-256 prefix of the served files. The old oil-and-gas-card-cbb93bcf files are orphaned. */
+const OIL_AND_GAS_ASSET = '/videos/showcase/south-texas-card-e61aa919';
+const WASTE_WATER_ASSET = '/videos/showcase/waste-water-card-aaf6673f';
+const CRUDE_ASSET = '/videos/showcase/crude-treating-card-bb972024';
 /* Real estate development: a 3D walkthrough of a traced site with every name, road label, callout and number removed
    (Josh, 2026-10-13: anonymized, the walkthrough only, no use-case page). The card links to the full clip. */
 const REAL_ESTATE_ASSET = '/videos/showcase/real-estate-card-3b678692';
@@ -85,21 +91,51 @@ const ALL_TILES: ShowcaseTile[] = [
     stage: 'run', // UNVERIFIED(inferred, as for Trucking; no design file records it)
     kick: oilAndGasCopy.eyebrow,
     title: oilAndGasCopy.headline,
-    // DRAFT-FOR-JOSH. Drawn from locations bay, lease pad and office `today`: "The driver hands over a run ticket that
-    // is keyed in later." / "The walk is written on paper and carried to the office." / "Paper from the pad, the bay
-    // and the skid lands on one desk."
-    in: 'Run tickets, gauge readings and walk sheets, from the lease pad to the field office.',
-    // DRAFT-FOR-JOSH. Drawn from bay `orbit`: "The run ticket is read once and matched to its load.", lease pad `orbit`:
-    // "Each reading is logged against its tank as it is entered." and office `orbit`: "The daily record fills as the
-    // day's papers arrive."
-    agent: 'Reads each run ticket once, logs each reading against its tank, and fills the daily record.',
+    // DRAFT-FOR-JOSH. Drawn from the demo's own labels: "Tickets: water in", "Water loads received"
+    in: 'Water trucks and tickets, load by load.',
+    // DRAFT-FOR-JOSH. Drawn from the demo's own labels: "Skim oil collected", "Live site totals"
+    agent: 'Counts each load, skims the oil and totals the site live.',
     you: oilAndGasCopy.closing, // verbatim: "Supervised by you."
     ctaLabel: 'See Oil and Gas →', // written for review
     href: `/use-cases/${oilAndGasCopy.slug}`,
     video: `${OIL_AND_GAS_ASSET}.mp4`,
     poster: `${OIL_AND_GAS_ASSET}-960.webp`,
     posterSmall: `${OIL_AND_GAS_ASSET}-640.webp`,
-    demoLabel: 'Demo data', // written for review
+    demoLabel: 'Names removed · Demo figures', // Josh, 2026-10-16; the figures are illustrative samples
+  },
+  {
+    id: wasteWaterCopy.slug,
+    stage: 'run', // UNVERIFIED(inferred, as for Trucking; no design file records it)
+    kick: wasteWaterCopy.eyebrow,
+    title: wasteWaterCopy.headline,
+    // DRAFT-FOR-JOSH. Drawn from the demo's own labels: "Tickets: water in", "Water received"
+    in: 'Wastewater loads, ticket by ticket.',
+    // DRAFT-FOR-JOSH. Drawn from the demo's own labels: "Skim oil collected", "Water to the disposal well, by pipe"
+    agent: 'Skims the oil and sends the water to the disposal well by pipe.',
+    you: wasteWaterCopy.closing, // verbatim: "Supervised by you."
+    ctaLabel: 'See Waste water →', // written for review
+    href: `/use-cases/${wasteWaterCopy.slug}`,
+    video: `${WASTE_WATER_ASSET}.mp4`,
+    poster: `${WASTE_WATER_ASSET}-960.webp`,
+    posterSmall: `${WASTE_WATER_ASSET}-640.webp`,
+    demoLabel: 'Names removed · Demo figures', // Josh, 2026-10-16; the figures are illustrative samples
+  },
+  {
+    id: crudeTreatingCopy.slug,
+    stage: 'run', // UNVERIFIED(inferred, as for Trucking; no design file records it)
+    kick: crudeTreatingCopy.eyebrow,
+    title: crudeTreatingCopy.headline,
+    // DRAFT-FOR-JOSH. Drawn from the demo's own labels: "how off-spec crude becomes pipeline-spec crude"
+    in: 'Off-spec crude, load by load.',
+    // DRAFT-FOR-JOSH. Drawn from the demo's own labels: the guided "Follow the process" tour
+    agent: 'Shows each step from the unloading bay to pipeline-spec crude.',
+    you: crudeTreatingCopy.closing, // verbatim: "Supervised by you."
+    ctaLabel: 'See how it works →', // written for review
+    href: `/use-cases/${crudeTreatingCopy.slug}`,
+    video: `${CRUDE_ASSET}.mp4`,
+    poster: `${CRUDE_ASSET}-960.webp`,
+    posterSmall: `${CRUDE_ASSET}-640.webp`,
+    demoLabel: 'Names removed · Demo figures', // Josh, 2026-10-16; the figures are illustrative samples
   },
   {
     id: 'real-estate-development',
