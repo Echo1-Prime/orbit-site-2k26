@@ -151,7 +151,12 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
       { type: 'h3', text: '2.5 Website and the Orbit Concierge' },
       {
         type: 'p',
-        text: `Orbit is an AI concierge on echo1labs.com. If you type, your messages are sent to our AI model provider to generate a response. If you choose voice, your browser's speech service converts your speech to text so Orbit can respond; ${E} does not store your microphone audio. You can browse the site without using Orbit at all, and switch to text at any time. If you submit the contact form or ask Orbit to have someone follow up, we collect the details you provide (such as name, email, company, and message) to respond to you.`,
+        text: `Orbit is an AI concierge on echo1labs.com. If you type, your messages are sent to our AI model provider to generate a response. If you choose voice, your browser's speech service converts your speech to text so Orbit can respond; ${E} does not store your microphone audio. You can browse the site without using Orbit at all, and switch to text at any time. If you submit the contact form or ask Orbit to have someone follow up, we collect the details you provide (such as name, email, company, and message) to respond to you. We also record the page you came from, the button you used and any campaign tags in the link, so we know which page led you to us. That information stays in your browser's memory until you send the form and is not stored on your device.`,
+      },
+      { type: 'h3', text: '2.6 Event Sign-Ups and Business Research' },
+      {
+        type: 'p',
+        text: `If you sign up with us at an event, for example through the QR code at our booth, we collect the details you give us (such as name, phone, work email, company, and LinkedIn profile link). Before we follow up, we may use your work email to look up public business information about you and your company, such as your LinkedIn profile, job title, and company details, through third-party business data providers. We use this only to make our follow-up relevant to your business, and we do not sell it. To see what we hold or have it deleted, email us at ${PRIVACY_EMAIL}.`,
       },
     ],
   },
@@ -256,6 +261,7 @@ export const PRIVACY_SECTIONS: LegalSection[] = [
           ['Payment processor', 'Processing fees and payments'],
           ['Communications providers', 'Email, messaging, and customer notifications'],
           ['Website analytics and advertising (consent-gated)', 'Traffic measurement and advertising performance on echo1labs.com'],
+          ['Business data providers', 'Looking up public business information about event sign-ups and prospects (Section 2.6)'],
         ],
       },
       {

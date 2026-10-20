@@ -41,6 +41,8 @@ const nextConfig: NextConfig = {
       { source: '/terms.html', destination: '/terms-of-service', permanent: true },
       { source: '/privacy.html', destination: '/privacy', permanent: true },
       { source: '/privacy-policy', destination: '/privacy', permanent: true },
+      { source: '/refund', destination: '/refund-policy', permanent: true },
+      { source: '/refunds', destination: '/refund-policy', permanent: true },
       { source: '/solutions/:slug*', destination: '/products', permanent: false },
       { source: '/smb/:slug*', destination: '/products', permanent: false },
       { source: '/mid-market/:slug*', destination: '/products', permanent: false },
