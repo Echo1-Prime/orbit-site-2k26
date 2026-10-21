@@ -22,9 +22,9 @@ export const LEGAL_EMAIL = 'legal@echo1labs.com';
 // Invoices and payment questions.
 export const BILLING_EMAIL = 'billing@echo1labs.com';
 // Mailing address for legal notices. Single source for legal documents.
-// A P.O. Box cannot serve as the Texas registered office (Bus. Orgs. Code 5.201);
-// the registered agent address lives on the certificate of formation, not here.
-export const POSTAL_ADDRESS = 'P.O. Box 23, Meyersville TX 77954';
+// Street address (owner supplied 2026-10-21). The registered agent address lives on
+// the certificate of formation, not here.
+export const POSTAL_ADDRESS = '5900 Balcones Drive STE 100, Austin, TX 78731';
 export const CONTACT_PHONE = '+1-610-956-4116';
 export const CONTACT_PHONE_DISPLAY = '(610) 956-4116';
 

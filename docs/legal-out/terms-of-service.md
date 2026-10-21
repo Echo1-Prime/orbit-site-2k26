@@ -400,7 +400,7 @@ Notwithstanding Section 20.3, either party may seek injunctive or other equitabl
 | Legal Counsel (legal notices, security reports, copyright complaints) | legal@echo1labs.com |
 | Privacy and data-rights requests | privacy@echo1labs.com |
 | Billing | billing@echo1labs.com |
-| Mailing Address for Notices | Echo 1 Labs LLC, P.O. Box 23, Meyersville TX 77954 |
+| Mailing Address for Notices | Echo 1 Labs LLC, 5900 Balcones Drive STE 100, Austin, TX 78731 |
 
 Legal notices to Echo 1 Labs must be sent by email to Legal Counsel at legal@echo1labs.com with the subject line "Legal Notice" and by certified mail, or another mail service that provides proof of delivery, to the Mailing Address for Notices. Legal notices to Customer may be sent to the email address of Customer's account contact. Notice is deemed received one business day after email transmission without bounce, or on confirmed delivery of a physical copy.
 
