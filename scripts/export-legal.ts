@@ -40,7 +40,7 @@ interface Doc {
 }
 
 function cell(s: string): string {
-  return s.replace(/\|/g, '\\|');
+  return s.replace(/\\/g, '\\\\').replace(/\|/g, '\\|');
 }
 
 function block(b: LegalBlock): string {
