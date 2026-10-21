@@ -251,13 +251,13 @@ We may update this Policy to reflect changes in our practices, Platform features
 | Privacy inquiries and data-rights requests | privacy@echo1labs.com |
 | Legal Counsel (legal notices) | legal@echo1labs.com |
 | EEA / UK inquiries | privacy@echo1labs.com |
-| Mailing address | Echo 1 Labs LLC, P.O. Box 23, Meyersville TX 77954 |
+| Mailing address | Echo 1 Labs LLC, 5900 Balcones Drive STE 100, Austin, TX 78731 |
 
 ---
 
 ## Change log against Echo1Labs_Privacy_Policy_v2.docx (2026-07-29)
 
-- Controller: "Mingma Inc, doing business as Echo 1 Labs" replaced with "Echo 1 Labs LLC" throughout. Address set to P.O. Box 23, Meyersville TX 77954.
+- Controller: "Mingma Inc, doing business as Echo 1 Labs" replaced with "Echo 1 Labs LLC" throughout. Address set to 5900 Balcones Drive STE 100, Austin, TX 78731.
 - Named individual removed. The July draft listed a named EEA/UK contact with a personal mailbox; privacy requests route to privacy@echo1labs.com and legal notices to Legal Counsel at legal@echo1labs.com (owner decision 2026-10-16).
 - Version reset from 2.0 to 1.0 with a predecessor note. Effective Date gated on formation date.
 - Product names aligned to the live product set (Section 1).

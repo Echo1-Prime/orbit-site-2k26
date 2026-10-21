@@ -13,7 +13,7 @@ Version 1.0 is the first edition issued by Echo 1 Labs LLC. Prior editions of Pl
 > - **CONFIRM** Exhibit B describes what each of the eight products does and does not do. Confirm each Part against the live product. In particular: Ledger does not initiate payments; Orbit voice agents do not retain audio unless retention is enabled.
 > - **COUNSEL** Exhibit C is a self-contained DPA covering GDPR Art. 28(3), TDPSA sec. 541.104, and CCPA service-provider terms. Counsel to confirm the SCC module reference and the 30-day subprocessor notice.
 > - **CONFIRM** Section 1.6 states that an acceptance record exists. Engineering must implement it (version, content hash, timestamp, account, user, IP, user agent, screen snapshot) before the first customer accepts.
-> - **CONFIRM** Section 10.3 names a designated agent. Register with the U.S. Copyright Office ($6; a P.O. Box needs a waiver request or use a street address) before Broadcast publishes for any customer.
+> - **CONFIRM** Section 10.3 names a designated agent. Register with the U.S. Copyright Office ($6; the street address in Section 22 can be used) before Broadcast publishes for any customer.
 > - **CONFIRM** Section 9.2 says tax is added where required. A Texas vendor has physical nexus; obtain a sales and use tax permit before the first invoice. Data processing is taxed on 80 percent of the charge (Rule 3.330).
 > - **COUNSEL** Section 9.1 defines Operations credits. Marketing says Founding 300 credits never expire; the clause ties non-expiring credits to an active account. Counsel to confirm unclaimed-property posture.
 > - **COUNSEL** The DTPA cannot be waived in a click-through (Tex. Bus. & Com. Code 17.42). Protection rests on Section 1.4 business use, Section 13.4 as-is bargain, and the 17.49 large-transaction exemptions for negotiated Order Forms over the statutory thresholds. Counsel to confirm.
@@ -400,7 +400,7 @@ Notwithstanding Section 20.3, either party may seek injunctive or other equitabl
 | Legal Counsel (legal notices, security reports, copyright complaints) | legal@echo1labs.com |
 | Privacy and data-rights requests | privacy@echo1labs.com |
 | Billing | billing@echo1labs.com |
-| Mailing Address for Notices | Echo 1 Labs LLC, P.O. Box 23, Meyersville TX 77954 |
+| Mailing Address for Notices | Echo 1 Labs LLC, 5900 Balcones Drive STE 100, Austin, TX 78731 |
 
 Legal notices to Echo 1 Labs must be sent by email to Legal Counsel at legal@echo1labs.com with the subject line "Legal Notice" and by certified mail, or another mail service that provides proof of delivery, to the Mailing Address for Notices. Legal notices to Customer may be sent to the email address of Customer's account contact. Notice is deemed received one business day after email transmission without bounce, or on confirmed delivery of a physical copy.
 
@@ -500,7 +500,7 @@ Each party's liability under this DPA is subject to Section 14 of the Agreement.
 - Section 20 arbitration seat changed from Dallas County to Victoria, Texas; court venue DeWitt County, Texas.
 - Vendor names removed from client-facing copy (Sections 3.2, 4.3, 9, 12).
 - Section 3.2 product list aligned to the live product set; Professional Services bullet removed.
-- Sections 6, 10.3, and 22: legal notices, security reports, and copyright complaints route to Legal Counsel at legal@echo1labs.com; privacy and data-rights requests to privacy@echo1labs.com; billing to billing@echo1labs.com (owner decision 2026-10-16); mailing address for notices set from POSTAL_ADDRESS (P.O. Box; the registered office is on the certificate of formation).
+- Sections 6, 10.3, and 22: legal notices, security reports, and copyright complaints route to Legal Counsel at legal@echo1labs.com; privacy and data-rights requests to privacy@echo1labs.com; billing to billing@echo1labs.com (owner decision 2026-10-16); mailing address for notices set from POSTAL_ADDRESS (street address; the registered office is on the certificate of formation).
 - Punctuation only: em dashes replaced. No wording changed by that pass.
 - Section 1.4 added: business use only. Section 1.5 added: transition from predecessor terms, consent to assignment.
 - Section 2: added definitions for Effective Date, Human Sign-Off, Subscription Term, Beta Services, Privacy Policy. DPA definition made conditional.

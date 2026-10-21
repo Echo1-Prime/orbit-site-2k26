@@ -96,7 +96,7 @@ export const OPEN_ITEMS: OpenItem[] = [
   {
     key: 'dmca-agent',
     status: 'CONFIRM',
-    note: 'Section 10.3 names a designated agent. Register with the U.S. Copyright Office ($6; a P.O. Box needs a waiver request or use a street address) before Broadcast publishes for any customer.',
+    note: 'Section 10.3 names a designated agent. Register with the U.S. Copyright Office ($6; the street address in Section 22 can be used) before Broadcast publishes for any customer.',
   },
   {
     key: 'sales-tax-permit',
@@ -123,7 +123,7 @@ export const CHANGES: string[] = [
   'Section 20 arbitration seat changed from Dallas County to Victoria, Texas; court venue DeWitt County, Texas.',
   'Vendor names removed from client-facing copy (Sections 3.2, 4.3, 9, 12).',
   'Section 3.2 product list aligned to the live product set; Professional Services bullet removed.',
-  'Sections 6, 10.3, and 22: legal notices, security reports, and copyright complaints route to Legal Counsel at ' + LEGAL_EMAIL + '; privacy and data-rights requests to ' + PRIVACY_EMAIL + '; billing to ' + BILLING_EMAIL + ' (owner decision 2026-10-16); mailing address for notices set from POSTAL_ADDRESS (P.O. Box; the registered office is on the certificate of formation).',
+  'Sections 6, 10.3, and 22: legal notices, security reports, and copyright complaints route to Legal Counsel at ' + LEGAL_EMAIL + '; privacy and data-rights requests to ' + PRIVACY_EMAIL + '; billing to ' + BILLING_EMAIL + ' (owner decision 2026-10-16); mailing address for notices set from POSTAL_ADDRESS (street address; the registered office is on the certificate of formation).',
   'Punctuation only: em dashes replaced. No wording changed by that pass.',
   // GC audit revision (v1.0-rc)
   'Section 1.4 added: business use only. Section 1.5 added: transition from predecessor terms, consent to assignment.',
