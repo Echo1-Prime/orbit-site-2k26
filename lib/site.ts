@@ -15,6 +15,16 @@ export const GTM_ID = 'GTM-5BDZ45QD';
 
 // Contact: values carried from the existing production Organization schema.
 export const CONTACT_EMAIL = 'hello@echo1labs.com';
+// Privacy and data-rights requests route to a dedicated inbox.
+export const PRIVACY_EMAIL = 'privacy@echo1labs.com';
+// Legal notices, DMCA, security reports: the Legal Counsel mailbox (a role, never a person).
+export const LEGAL_EMAIL = 'legal@echo1labs.com';
+// Invoices and payment questions.
+export const BILLING_EMAIL = 'billing@echo1labs.com';
+// Mailing address for legal notices. Single source for legal documents.
+// A P.O. Box cannot serve as the Texas registered office (Bus. Orgs. Code 5.201);
+// the registered agent address lives on the certificate of formation, not here.
+export const POSTAL_ADDRESS = 'P.O. Box 23, Meyersville TX 77954';
 export const CONTACT_PHONE = '+1-610-956-4116';
 export const CONTACT_PHONE_DISPLAY = '(610) 956-4116';
 
@@ -41,6 +51,7 @@ export const FOOTER_LINKS = [
   { href: '/founding-cohort', label: 'Founding Cohort' },
   { href: '/about', label: 'About' },
   { href: '/privacy', label: 'Privacy' },
+  { href: '/terms-of-service', label: 'Terms' },
 ] as const;
 
 // Public-facing social profiles (sameAs for Organization schema).

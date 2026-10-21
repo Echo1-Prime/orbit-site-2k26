@@ -36,6 +36,13 @@ const nextConfig: NextConfig = {
       { source: '/legacy-home', destination: '/', permanent: true },
       // Pricing is being redone. Temporary (307) so the route can return.
       { source: '/pricing', destination: '/contact', permanent: false },
+      // Legal routes: canonical paths are /terms-of-service and /privacy (301).
+      { source: '/terms', destination: '/terms-of-service', permanent: true },
+      { source: '/terms.html', destination: '/terms-of-service', permanent: true },
+      { source: '/privacy.html', destination: '/privacy', permanent: true },
+      { source: '/privacy-policy', destination: '/privacy', permanent: true },
+      { source: '/refund', destination: '/refund-policy', permanent: true },
+      { source: '/refunds', destination: '/refund-policy', permanent: true },
       { source: '/solutions/:slug*', destination: '/products', permanent: false },
       { source: '/smb/:slug*', destination: '/products', permanent: false },
       { source: '/mid-market/:slug*', destination: '/products', permanent: false },
