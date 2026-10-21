@@ -15,10 +15,11 @@ import { LEGAL_EMAIL, LEGAL_ENTITY, POSTAL_ADDRESS, PRIVACY_EMAIL, SITE_URL } fr
 import type { LegalSection, OpenItem } from './types';
 
 /** Set false only after OPEN_ITEMS are closed, counsel has signed off, and the owner approves. */
-export const PRIVACY_IS_DRAFT = true;
+// Owner approved publication 2026-10-19 (Josh, live session) ahead of counsel sign-off.
+export const PRIVACY_IS_DRAFT = false;
 
 /** CONFIRM: formation date or later, ISO format YYYY-MM-DD. */
-const EFFECTIVE_DATE: string = 'CONFIRM';
+const EFFECTIVE_DATE: string = '2026-10-19';
 
 export const PRIVACY_META = {
   title: 'Privacy Policy',

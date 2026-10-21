@@ -22,13 +22,14 @@ import type { LegalSection, OpenItem } from './types';
 export type { LegalBlock, LegalSection, OpenItem } from './types';
 
 /** Set false only after OPEN_ITEMS are closed, counsel has signed off, and the owner approves. */
-export const TERMS_IS_DRAFT = true;
+// Owner approved publication 2026-10-19 (Josh, live session) ahead of counsel sign-off.
+export const TERMS_IS_DRAFT = false;
 
-/** CONFIRM: formation date or later, ISO format YYYY-MM-DD. */
-const EFFECTIVE_DATE: string = 'CONFIRM';
+/** Formation date or later, ISO format YYYY-MM-DD. Owner set 2026-10-19. */
+const EFFECTIVE_DATE: string = '2026-10-19';
 
-/** CONFIRM: set true once LEGAL_ENTITY has been matched to the certificate of formation. */
-const ENTITY_NAME_VERIFIED = false;
+/** Owner confirmed 2026-10-19: "Echo 1 Labs LLC" per certificate of amendment filed 2026-10-13, SOS file 0806419373. */
+const ENTITY_NAME_VERIFIED = true;
 
 export const TERMS_META = {
   title: 'Terms of Service',
@@ -55,7 +56,7 @@ export const OPEN_ITEMS: OpenItem[] = [
     note:
       'Filed name on the Texas certificate of formation. Working value is "' +
       LEGAL_ENTITY +
-      '". Must match character for character; the certificate wins. Evidence 2026-10-16: Texas SOS file 0806419373 is of record as TRILOGY 583 LLC (formed 2026-01-30, ACTIVE); a certificate of amendment renaming it to Echo 1 Labs LLC was signed 2026-07-27 but does not yet appear on file. Until the amendment is filed and reflected at SOS, this name is not verified. Set ENTITY_NAME_VERIFIED once matched.',
+      '". Must match character for character; the certificate wins. Evidence 2026-10-16: Texas SOS file 0806419373 is of record as TRILOGY 583 LLC (formed 2026-01-30, ACTIVE); a certificate of amendment renaming it to Echo 1 Labs LLC was filed 2026-10-13 (owner supplied the certificate 2026-10-19). Verified.',
   },
   {
     key: 'effective-date',
