@@ -68,6 +68,11 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
   },
   robots: { index: true, follow: true },
+  verification: {
+    other: {
+      'facebook-domain-verification': '1ioho8iu414cwqjwo1rwyllgj15mic',
+    },
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
