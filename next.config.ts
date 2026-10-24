@@ -34,6 +34,8 @@ const nextConfig: NextConfig = {
     return [
       // Legacy paths from the prior site → nearest live launch page (301).
       { source: '/legacy-home', destination: '/', permanent: true },
+      // Demo landing renamed; old shared links keep working (301).
+      { source: '/trucking-demo', destination: '/logistics-demo', permanent: true },
       // Pricing is being redone. Temporary (307) so the route can return.
       { source: '/pricing', destination: '/contact', permanent: false },
       // Legal routes: canonical paths are /terms-of-service and /privacy (301).
