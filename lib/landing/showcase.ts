@@ -1,6 +1,4 @@
 import { truckingCopy } from './trucking';
-import { oilAndGasCopy } from './oil-and-gas';
-import { wasteWaterCopy } from './waste-water';
 import { crudeTreatingCopy } from './crude-treating';
 import { realEstateCopy } from './real-estate';
 import { trackYourJobsIn3dCopy } from './track-your-jobs-in-3d';
@@ -17,9 +15,6 @@ import { trackYourJobsIn3dCopy } from './track-your-jobs-in-3d';
     for its numbers; it sits in HTML on every card so the preview never reads as client proof.
   - UNVERIFIED(stage): 'run' was inferred, no design file or Airtable row records Trucking's stage.
     Josh or the layout session confirms it, or changes this one field.
-  - Oil and Gas follows the same pattern: id, kick, title and href come from oilAndGasCopy
-    (lib/landing/oil-and-gas.ts), you is oilAndGasCopy.closing verbatim. Lines WRITTEN for review: ctaLabel
-    ("See Oil and Gas →") and demoLabel ("Demo data"). Its stage 'run' is likewise UNVERIFIED(inferred).
   - in and agent are DRAFT-FOR-JOSH (Josh's rule 2026-10-12: draft only where no existing field fits, grounded in
     the demo's own strings, no figures, names, results or urgency). Each names its source string below.
     you is truckingCopy.closing, verbatim. The type keeps all three optional, and the card shows a row only
@@ -56,8 +51,6 @@ export interface ShowcaseTile {
 const TRUCKING_ASSET = '/videos/showcase/trucking-card-fd8dec6c';
 /* Oil and gas, Waste water and Crude treating: a silent loop of each demo's 3D stage with names removed (Josh, 2026-10-16),
    captured from the deployed pages; the hex is the sha-256 prefix of the served files. The old oil-and-gas-card-cbb93bcf files are orphaned. */
-const OIL_AND_GAS_ASSET = '/videos/showcase/south-texas-card-fa27c323';
-const WASTE_WATER_ASSET = '/videos/showcase/waste-water-card-73294b23';
 const CRUDE_ASSET = '/videos/showcase/crude-treating-card-3779e000';
 /* Real estate development: a 3D walkthrough of a traced site with every name, road label, callout and number removed
    (Josh, 2026-10-13: anonymized, the walkthrough only, no use-case page). The card links to the full clip. */
@@ -86,40 +79,6 @@ const ALL_TILES: ShowcaseTile[] = [
     poster: `${TRUCKING_ASSET}-960.webp`,
     posterSmall: `${TRUCKING_ASSET}-640.webp`,
     demoLabel: 'Demo data', // written for review
-  },
-  {
-    id: oilAndGasCopy.slug,
-    stage: 'run', // UNVERIFIED(inferred, as for Trucking; no design file records it)
-    kick: oilAndGasCopy.eyebrow,
-    title: oilAndGasCopy.headline,
-    // DRAFT-FOR-JOSH. Drawn from the demo's own labels: "Tickets: water in", "Water loads received"
-    in: 'Water trucks and tickets, load by load.',
-    // DRAFT-FOR-JOSH. Drawn from the demo's own labels: "Skim oil collected", "Live site totals"
-    agent: 'Counts each load, skims the oil and totals the site live.',
-    you: oilAndGasCopy.closing, // verbatim: "Supervised by you."
-    ctaLabel: 'See Oil and Gas →', // written for review
-    href: `/use-cases/${oilAndGasCopy.slug}`,
-    video: `${OIL_AND_GAS_ASSET}.mp4`,
-    poster: `${OIL_AND_GAS_ASSET}-960.webp`,
-    posterSmall: `${OIL_AND_GAS_ASSET}-640.webp`,
-    demoLabel: 'Names removed · Demo figures', // Josh, 2026-10-16; the figures are illustrative samples
-  },
-  {
-    id: wasteWaterCopy.slug,
-    stage: 'run', // UNVERIFIED(inferred, as for Trucking; no design file records it)
-    kick: wasteWaterCopy.eyebrow,
-    title: wasteWaterCopy.headline,
-    // DRAFT-FOR-JOSH. Drawn from the demo's own labels: "Tickets: water in", "Water received"
-    in: 'Wastewater loads, ticket by ticket.',
-    // DRAFT-FOR-JOSH. Drawn from the demo's own labels: "Skim oil collected", "Water to the disposal well, by pipe"
-    agent: 'Skims the oil and sends the water to the disposal well by pipe.',
-    you: wasteWaterCopy.closing, // verbatim: "Supervised by you."
-    ctaLabel: 'See Waste water →', // written for review
-    href: `/use-cases/${wasteWaterCopy.slug}`,
-    video: `${WASTE_WATER_ASSET}.mp4`,
-    poster: `${WASTE_WATER_ASSET}-960.webp`,
-    posterSmall: `${WASTE_WATER_ASSET}-640.webp`,
-    demoLabel: 'Names removed · Demo figures', // Josh, 2026-10-16; the figures are illustrative samples
   },
   {
     id: crudeTreatingCopy.slug,

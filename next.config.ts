@@ -36,6 +36,9 @@ const nextConfig: NextConfig = {
       { source: '/legacy-home', destination: '/', permanent: true },
       // Demo landing renamed; old shared links keep working (301).
       { source: '/trucking-demo', destination: '/logistics-demo', permanent: true },
+      /* Skim oil use cases taken off echo1labs.com (Josh, 2026-10-24): Echo 1 Labs does not offer oil recovery. */
+      { source: '/use-cases/oil-and-gas', destination: '/', permanent: true },
+      { source: '/use-cases/waste-water', destination: '/', permanent: true },
       // Pricing is being redone. Temporary (307) so the route can return.
       { source: '/pricing', destination: '/contact', permanent: false },
       // Legal routes: canonical paths are /terms-of-service and /privacy (301).
