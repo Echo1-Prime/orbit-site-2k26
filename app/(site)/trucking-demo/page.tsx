@@ -6,7 +6,7 @@ import SiteChrome from '@/components/Site/SiteChrome';
 export const dynamic = 'force-static';
 
 export const metadata: Metadata = {
-  title: 'Trucking Demo | Echo 1 Labs',
+  title: 'Trucking Demo',
   description: 'Echo 1 Labs trucking demo. Log in to the demo or call the dispatch agent.',
   alternates: { canonical: '/trucking-demo' },
   robots: { index: false, follow: false },
