@@ -19,7 +19,7 @@ import { useHomeVals } from './useHomeVals';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* variant 'trucking' (/logistics-demo): hero with Login and Call Dispatch Agent, the lifecycle band, then the footer. */
-const TRUCK_LOGIN = 'https://e1-logistics-trucking.echo1labs.com/trucking/';
+const TRUCK_LOGIN = 'https://137waterworks.demo.echo1labs.com/scorecard/yard/';
 const TRUCK_TEL = '+13613331176';
 const TRUCK_TEL_DISPLAY = '(361) 333-1176';
 export default function HomeBands({ variant = 'home' }: { variant?: 'home' | 'trucking' } = {}) {
