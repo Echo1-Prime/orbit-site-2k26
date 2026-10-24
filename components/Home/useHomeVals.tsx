@@ -16,8 +16,12 @@ import { BLS, CMP, FEED, LOG, NODES, SYM, TRUST } from './home-data';
 const HERO_CLIP = '/videos/home/hero-titan.mp4';
 /* Signal and Agent Orbit clips from Josh's uploads (2026-10-15), cropped square on the subject, audio removed.
    A slide with a clip replaces its drawn fallback (hvPoster1, hvScene). */
-const CLIPS = [HERO_CLIP, '/videos/home/hero-signal.mp4', '/videos/home/hero-agent-orbit.mp4'];
+const HOME_CLIPS = [HERO_CLIP, '/videos/home/hero-signal.mp4', '/videos/home/hero-agent-orbit.mp4'];
 const SLIDE_MS = 5000;
+/* /logistics-demo (variant 'trucking'): slide 1 is the drilling and fracking clip at 1.5x speed (Josh, 2026-10-24).
+   Its slide runs the full clip length so the frack stages finish before the hero rotates. */
+const LOGISTICS_CLIPS = ['/videos/home/hero-drill-frack.mp4', '/videos/home/hero-signal.mp4', '/videos/home/hero-agent-orbit.mp4'];
+const LOGISTICS_FIRST_SLIDE_MS = 13500;
 
 /* The handoff's links are .dc.html files; each card goes to its keyword-named subpage (lib/subpages.ts).
    Front Office is the voice agents page (Josh, 2026-10-12). */
@@ -55,7 +59,9 @@ function openConcierge(diag?: string) {
   window.dispatchEvent(new CustomEvent('e1:concierge', { detail: { diag } }));
 }
 
-export function useHomeVals() {
+export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
+  const CLIPS = variant === 'trucking' ? LOGISTICS_CLIPS : HOME_CLIPS;
+  const slideMs = (i: number) => (variant === 'trucking' && i === 0 ? LOGISTICS_FIRST_SLIDE_MS : SLIDE_MS);
   const router = useRouter();
   const m = useIsMobile();
   const conc = useFlag('conciergeOpen');
@@ -184,7 +190,8 @@ export function useHomeVals() {
     });
   }, [hv, hvCycle, still]);
 
-  const hvAuto = !reduced;
+  /* /logistics-demo holds on the drilling clip and loops it; the other slides stay one click away (Josh, 2026-10-24). */
+  const hvAuto = !reduced && variant !== 'trucking';
   const hvStopped = hvPaused || hvHover || conc;
   const hvVid = (i: number) =>
     CLIPS[i] && mounted ? (
@@ -227,7 +234,7 @@ export function useHomeVals() {
         <span
           key={'h' + i + '-' + hvCycle}
           onAnimationEnd={hvNext}
-          style={{ ...base, animation: `e1-progress ${SLIDE_MS}ms linear forwards`, animationPlayState: hvStopped ? 'paused' : 'running' }}
+          style={{ ...base, animation: `e1-progress ${slideMs(i)}ms linear forwards`, animationPlayState: hvStopped ? 'paused' : 'running' }}
         />
       ) : (
         <span key={'hs' + i} style={{ ...base, transform: on ? 'scaleX(1)' : 'scaleX(0)' }} />
