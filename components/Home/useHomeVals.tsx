@@ -22,6 +22,7 @@ const SLIDE_MS = 5000;
    Its slide runs the full clip length so the frack stages finish before the hero rotates. */
 const LOGISTICS_CLIPS = ['/videos/home/hero-drill-frack.mp4', '/videos/home/hero-signal.mp4', '/videos/home/hero-agent-orbit.mp4'];
 const LOGISTICS_FIRST_SLIDE_MS = 13500;
+const LOGISTICS_BG = '/videos/home/hero-drill-frack.mp4';
 
 /* The handoff's links are .dc.html files; each card goes to its keyword-named subpage (lib/subpages.ts).
    Front Office is the voice agents page (Josh, 2026-10-12). */
@@ -240,7 +241,38 @@ export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
         <span key={'hs' + i} style={{ ...base, transform: on ? 'scaleX(1)' : 'scaleX(0)' }} />
       );
   });
+  /* /logistics-demo: the drilling and fracking clip fills the hero behind the copy and loops (Josh, 2026-10-24).
+     Reduced motion and Save-Data get its frac-stage still frame instead. A scrim on the copy side keeps text legible. */
+  const bgStill = reduced || saveData;
+  const heroBg =
+    variant === 'trucking' && mounted ? (
+      <div aria-hidden="true" style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', overflow: 'hidden' }}>
+        <video
+          key={bgStill ? 'bg-still' : 'bg-play'}
+          src={bgStill ? LOGISTICS_BG + '#t=8' : LOGISTICS_BG}
+          muted
+          autoPlay={!bgStill}
+          loop
+          playsInline
+          preload={bgStill ? 'metadata' : 'auto'}
+          ref={(el) => {
+            if (el) el.muted = true;
+          }}
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center 45%' }}
+        />
+        <div
+          style={{
+            position: 'absolute',
+            inset: 0,
+            background:
+              'linear-gradient(90deg, var(--ao-void) 0%, color-mix(in srgb, var(--ao-void) 86%, transparent) 34%, color-mix(in srgb, var(--ao-void) 40%, transparent) 66%, color-mix(in srgb, var(--ao-void) 18%, transparent) 100%)',
+          }}
+        />
+        <div style={{ position: 'absolute', left: 0, right: 0, bottom: 0, height: '28%', background: 'linear-gradient(0deg, var(--ao-void), transparent)' }} />
+      </div>
+    ) : null;
   Object.assign(v, {
+    heroBg,
     hvPoster1: !CLIPS[1],
     hvScene: !CLIPS[2],
     hvEnter: () => setHvHover(true),
