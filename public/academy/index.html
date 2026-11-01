@@ -546,26 +546,12 @@ const CERT_PASS = 10;
 const KEY = "e1-academy-v1";
 let S = {watched:{},quiz:{},game:null,match:null,cert:null,capture:""};
 try{ const raw = localStorage.getItem(KEY); if(raw) S = Object.assign(S, JSON.parse(raw)); }catch(e){}
-let db=null, user=null, uid=null, isAdmin=false, saveTimer=null;
+
 
 function persist(){
   try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){}
-  clearTimeout(saveTimer);
-  saveTimer = setTimeout(pushRemote, 900);
   renderNav();
 }
-async function pushRemote(){
-  if(!db || !uid) return;
-  const lessons = Object.keys(S.watched).filter(k=>S.watched[k]).length;
-  const modsPassed = MODULES.filter(modDone).map(m=>m.id);
-  try{
-    await db.doc("progress/"+uid).set({
-      watched:S.watched, quiz:S.quiz, game:S.game, match:S.match, cert:S.cert,
-      lessons, modsPassed, updatedAt:new Date().toISOString()
-    });
-  }catch(e){ /* refused or offline: local copy stays */ }
-}
-
 function quizPct(id){ const q=S.quiz[id]; return q? q.best/q.total : 0; }
 function modDone(m){
   const watchedAll = m.lessons.every(l=>S.watched[l.c]) && (m.id!=="m4" || ["D02","D03","D04","D05","D06","D07","D08","D09"].every(c=>S.watched[c]));
@@ -607,7 +593,6 @@ function renderNav(){
   items.push(`<div class="sep">Review</div>`);
   items.push(`<a href="#film" ${route==="film"?'aria-current="page"':''}><span class="num">08</span><span class="t">Game film<small>The Grant Kennedy call</small></span><span class="st"></span></a>`);
   items.push(`<a href="#cert" ${route==="cert"?'aria-current="page"':''}><span class="num">09</span><span class="t">Certification<small>${CERT.length} questions, pass at ${CERT_PASS}</small></span><span class="st ${S.cert&&S.cert.passed?'done':''}">${S.cert&&S.cert.passed?'Passed':''}</span></a>`);
-  if(isAdmin) items.push(`<a href="#team" ${route==="team"?'aria-current="page"':''}><span class="num">··</span><span class="t">Team progress<small>Owner and editors only</small></span><span class="st"></span></a>`);
   $("#nav").innerHTML = items.join("");
   const p=overall(); $("#ovBar").style.width=p+"%"; $("#ovLabel").textContent="Progress "+p+"%";
 }
@@ -774,30 +759,6 @@ function viewCert(){
   </form>`;
 }
 
-let teamUnsub=null;
-function viewTeam(){
-  if(!isAdmin) return `<header class="head"><h1>Team progress</h1><p>Only the owner and editors can see team progress.</p></header>`;
-  setTimeout(loadTeam,0);
-  return `<header class="head"><span class="stage">Owner and editors</span><h1>Team progress</h1><p>Every rep who signs in and works through the academy shows up here. Progress updates as they go.</p></header>
-  <section class="block"><div class="table"><table><thead><tr><th>Rep</th><th>Clips</th><th>Modules</th><th>Claims game</th><th>Certification</th><th>Last active</th></tr></thead><tbody id="teamRows"><tr><td colspan="6" class="empty">Loading team progress…</td></tr></tbody></table></div></section>`;
-}
-async function loadTeam(){
-  const rows = $("#teamRows"); if(!rows) return;
-  if(!db){ rows.innerHTML=`<tr><td colspan="6" class="empty">Team progress needs a signed-in view of the published page.</td></tr>`; return; }
-  const t = setTimeout(()=>{ if(rows.dataset.loaded!=="1") rows.innerHTML=`<tr><td colspan="6" class="empty">No response yet. Reps appear here after they finish their first clip.</td></tr>`; },10000);
-  if(teamUnsub) teamUnsub();
-  teamUnsub = db.collection("progress").onSnapshot(async snap=>{
-    clearTimeout(t); rows.dataset.loaded="1";
-    if(snap.empty){ rows.innerHTML=`<tr><td colspan="6" class="empty">No reps yet. Share the page inside Echo 1 Labs; each rep appears after their first clip.</td></tr>`; return; }
-    const ids = snap.docs.map(d=>d.id);
-    let ps = {}; try{ ps = await user.profiles(ids); }catch(e){}
-    rows.innerHTML = snap.docs.map(d=>{const x=d.data()||{}; const nm=(ps[d.id]&&ps[d.id].name)||"Someone";
-      const g = x.game&&x.game.total?`${x.game.score}/${x.game.total}`:"–";
-      const c = x.cert?`<span class="pill ${x.cert.passed?'ok':''}">${x.cert.score}/${x.cert.total}</span>`:"–";
-      return `<tr><td>${esc(nm)}</td><td class="n">${x.lessons||0}/${ALL_CLIPS.length}</td><td class="n">${(x.modsPassed||[]).length}/${MODULES.length}</td><td class="n">${g}</td><td>${c}</td><td class="n">${x.updatedAt?new Date(x.updatedAt).toLocaleDateString():"–"}</td></tr>`;}).join("");
-  }, e=>{ clearTimeout(t); rows.innerHTML=`<tr><td colspan="6" class="empty">Couldn’t load team progress (${esc(e.code||"error")}).</td></tr>`; });
-}
-
 /* ---------- Router ---------- */
 function render(){
   const r = location.hash.slice(1) || "home";
@@ -806,7 +767,6 @@ function render(){
   if(m) html=viewModule(m);
   else if(r==="film") html=viewFilm();
   else if(r==="cert") html=viewCert();
-  else if(r==="team") html=viewTeam();
   else html=viewHome();
   $("#view").innerHTML = html;
   renderNav();
@@ -854,33 +814,6 @@ document.addEventListener("submit",e=>{
 
 render();
 
-/* ---------- Capabilities: record progress per rep ---------- */
-(async()=>{
-  if(!window.claude || !window.claude.use) return;
-  try{
-    const [d,u] = await Promise.all([claude.use("db"), claude.use("user")]);
-    db=d; user=u;
-    if(user){
-      try{ isAdmin = await user.canEdit(); }catch(e){}
-      try{ uid = await user.id(); }catch(e){}
-      try{ const me = await user.me(); if(me && me.name) $("#who").textContent = "Signed in as "+me.name+". Progress is recorded for your manager."; }catch(e){}
-    }
-    if(db && uid){
-      try{
-        const snap = await db.doc("progress/"+uid).get();
-        if(snap.exists){ const x=snap.data()||{};
-          S.watched=Object.assign({},x.watched||{},S.watched);
-          for(const k in (x.quiz||{})){ if(!S.quiz[k]||x.quiz[k].best>S.quiz[k].best) S.quiz[k]=x.quiz[k]; }
-          if(!S.game && x.game) S.game=x.game;
-          if(!S.match && x.match) S.match=x.match;
-          if(x.cert && (!S.cert || x.cert.score>S.cert.score)) S.cert=x.cert;
-          try{ localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){}
-        }
-      }catch(e){}
-    }
-    rerenderKeepScroll();
-  }catch(e){}
-})();
 </script>
 </body>
 </html>
