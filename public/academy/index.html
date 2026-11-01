@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Echo 1 Labs Sales Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: fixed module rail on the left (chip row on phones), one working panel on the right. Dark-first, Agent Orbit DS v1.1.2 tokens. */
+:root{
+  --void:#0A0A0E; --deep:#160D20; --charcoal:#1C1127; --light:#F5F0FA; --orange:#FF7515;
+  --bg:var(--void); --panel:var(--deep); --raise:var(--charcoal); --fg:var(--light);
+  --muted:#B4A9C2; --line:#2C2238; --accent:var(--orange); --on-accent:#0A0A0E;
+  --glass:rgba(28,17,39,.52); --glass-2:rgba(245,240,250,.05); --glass-line:rgba(245,240,250,.13); --glass-hi:rgba(245,240,250,.16); --glass-shadow:rgba(0,0,0,.38);
+  --blob1:rgba(255,117,21,.20); --blob2:rgba(120,58,176,.34); --blob3:rgba(255,117,21,.08);
+  --good:#3FBF7F; --warn:#F2B33D; --bad:#F0566A; --good-bg:rgba(63,191,127,.12); --bad-bg:rgba(240,86,106,.12); --warn-bg:rgba(242,179,61,.12);
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif; --body:"IBM Plex Sans","Segoe UI",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]){
+  --bg:#F8F8FA; --panel:#FFFFFF; --raise:#F5F0FA; --fg:#160D20; --muted:#5E5269; --line:#E4DCEC; --accent:#E2600A; --on-accent:#FFFFFF;
+  --glass:rgba(255,255,255,.58); --glass-2:rgba(255,255,255,.42); --glass-line:rgba(255,255,255,.85); --glass-hi:rgba(255,255,255,.9); --glass-shadow:rgba(22,13,32,.10);
+  --blob1:rgba(255,117,21,.16); --blob2:rgba(150,100,205,.22); --blob3:rgba(255,117,21,.07);
+  --good:#1E8A57; --warn:#A86A00; --bad:#C62D43; color-scheme:light }}
+:root[data-theme="light"]{
+  --bg:#F8F8FA; --panel:#FFFFFF; --raise:#F5F0FA; --fg:#160D20; --muted:#5E5269; --line:#E4DCEC; --accent:#E2600A; --on-accent:#FFFFFF;
+  --glass:rgba(255,255,255,.58); --glass-2:rgba(255,255,255,.42); --glass-line:rgba(255,255,255,.85); --glass-hi:rgba(255,255,255,.9); --glass-shadow:rgba(22,13,32,.10);
+  --blob1:rgba(255,117,21,.16); --blob2:rgba(150,100,205,.22); --blob3:rgba(255,117,21,.07);
+  --good:#1E8A57; --warn:#A86A00; --bad:#C62D43; color-scheme:light }
+*{box-sizing:border-box}
+html,body{background:var(--bg);color:var(--fg)}
+body{font-family:var(--body);font-size:15px;line-height:1.55}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+a{color:var(--accent)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;line-height:1.15}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.wrap{display:grid;grid-template-columns:270px minmax(0,1fr);min-height:100%}
+/* Rail */
+.rail{position:sticky;top:env(safe-area-inset-top,0px);align-self:start;height:100vh;overflow:auto;border-right:1px solid var(--line);padding:22px 14px 22px max(16px,env(safe-area-inset-left,0px));display:flex;flex-direction:column;gap:18px;background:var(--bg)}
+.brand{display:flex;flex-direction:column;gap:2px;padding:0 8px}
+.brand b{font-family:var(--display);font-weight:800;font-size:19px;letter-spacing:-.01em}
+.brand span{font-size:12.5px;color:var(--muted)}
+.overall{padding:0 8px;display:flex;flex-direction:column;gap:6px}
+.bar{height:6px;border-radius:3px;background:var(--line);overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .4s}
+.nav{display:flex;flex-direction:column;gap:2px}
+.nav a{display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:8px;padding:9px 8px;border-radius:8px;text-decoration:none;color:var(--fg)}
+.nav a:hover{background:var(--raise)}
+.nav a[aria-current="page"]{background:var(--raise);box-shadow:inset 3px 0 0 var(--accent)}
+.nav .num{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.nav .t{font-size:14px;font-weight:500;min-width:0}
+.nav .t small{display:block;font-size:11.5px;color:var(--muted);font-weight:400}
+.nav .st{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.nav .st.done{color:var(--good)}
+.nav .sep{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:12px 8px 4px}
+.who{margin-top:auto;padding:10px 8px 0;border-top:1px solid var(--line);font-size:12.5px;color:var(--muted)}
+/* Main */
+main{min-width:0;padding-block:28px 64px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.inner{max-width:1060px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.head{display:flex;flex-direction:column;gap:10px}
+.head h1{font-size:clamp(28px,3.6vw,40px);font-weight:800;letter-spacing:-.02em}
+.head p{margin:0;max-width:66ch;color:var(--muted);font-size:16px}
+.stage{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--accent)}
+.stage::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.notice{border:1px solid var(--line);background:var(--warn-bg);border-radius:10px;padding:12px 14px;font-size:13.5px}
+.notice b{color:var(--warn)}
+/* Lesson */
+.lesson{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:20px;align-items:start;padding-top:22px;border-top:1px solid var(--line)}
+.vid{position:relative;border-radius:10px;overflow:hidden;background:#000;aspect-ratio:16/9;max-width:100%}
+.vid video{width:100%;height:100%;display:block;background:#000}
+.coach{display:flex;flex-direction:column;gap:10px;min-width:0}
+.coach h3{font-size:19px;font-weight:700}
+.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pill{font-family:var(--mono);font-size:11px;padding:3px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.pill.int{border-color:var(--bad);color:var(--bad)}
+.pill.demo{border-color:var(--accent);color:var(--accent)}
+.pill.ok{border-color:var(--good);color:var(--good)}
+.note{font-size:14.5px;margin:0}
+.do,.dont{font-size:14px;padding:8px 10px;border-radius:8px;margin:0}
+.do{background:var(--good-bg)} .do b{color:var(--good)}
+.dont{background:var(--bad-bg)} .dont b{color:var(--bad)}
+.flag{font-size:13px;padding:8px 10px;border-radius:8px;background:var(--warn-bg)} .flag b{color:var(--warn)}
+.watch{align-self:start;border:1px solid var(--line);background:transparent;border-radius:8px;padding:7px 12px;font-size:13px;cursor:pointer}
+.watch.on{border-color:var(--good);color:var(--good)}
+/* Blocks */
+.block{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.block h2{font-size:21px;font-weight:700}
+.block > p{margin:0;color:var(--muted);max-width:68ch}
+.lines{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.line{background:var(--raise);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:4px}
+.line .eyebrow{font-size:10.5px}
+.line q{font-family:var(--display);font-weight:700;font-size:16.5px;quotes:none}
+.ring{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.ring div{border:1px solid var(--line);border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:2px}
+.ring span{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.ring b{font-family:var(--display);font-size:16px}
+ul.tight{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.cols > div{background:var(--raise);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.cols h3{font-size:16px}
+.cols p{margin:0;font-size:14px;color:var(--muted)}
+.table{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.n{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+/* Quiz */
+.q{display:flex;flex-direction:column;gap:8px;padding:14px 0;border-top:1px solid var(--line)}
+.q:first-of-type{border-top:0;padding-top:0}
+.q .p{font-weight:600}
+.opts{display:grid;gap:6px}
+.opt{text-align:left;background:var(--raise);border:1px solid transparent;border-radius:8px;padding:10px 12px;cursor:pointer;font-size:14.5px}
+.opt:hover:not([disabled]){border-color:var(--line)}
+.opt[disabled]{cursor:default}
+.opt.right{border-color:var(--good);background:var(--good-bg)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.why{font-size:13.5px;color:var(--muted);margin:0}
+.score{display:flex;flex-wrap:wrap;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;background:var(--raise)}
+.score b{font-family:var(--display);font-size:22px}
+.btn{background:var(--accent);color:var(--on-accent);border:0;border-radius:8px;padding:9px 16px;font-weight:600;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+/* Game, match */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.card{background:var(--raise);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px;border:1px solid transparent}
+.card.right{border-color:var(--good)} .card.wrong{border-color:var(--bad)}
+.card .s{font-family:var(--display);font-weight:700;font-size:16px}
+.card .acts{display:flex;gap:8px;flex-wrap:wrap}
+.card select{background:var(--panel);color:var(--fg);border:1px solid var(--line);border-radius:6px;padding:7px;font:inherit;font-size:14px;max-width:100%}
+.lib{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.libitem{background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.libitem .vid{border-radius:0}
+.libitem .body{padding:14px;display:flex;flex-direction:column;gap:8px}
+.libitem h3{font-size:16.5px}
+textarea{width:100%;min-height:90px;background:var(--raise);color:var(--fg);border:1px solid var(--line);border-radius:8px;padding:10px;font:inherit}
+/* Film timeline */
+.tl{position:relative;height:74px;margin:8px 4px 0}
+.tl .track{position:absolute;left:0;right:0;top:30px;height:8px;border-radius:4px;background:var(--line)}
+.tl .seg{position:absolute;top:30px;height:8px;border-radius:4px}
+.tl .seg.bad{background:var(--bad)}
+.tl .mk{position:absolute;top:22px;width:24px;height:24px;margin-left:-12px;border-radius:50%;border:2px solid var(--bg);cursor:pointer;font-family:var(--mono);font-size:9.5px;display:grid;place-items:center;color:var(--on-accent)}
+.tl .mk.good{background:var(--good)} .tl .mk.miss{background:var(--bad)} .tl .mk.demo{background:var(--accent)}
+.tl .mk[aria-pressed="true"]{outline:2px solid var(--fg)}
+.tl .ticks{position:absolute;left:0;right:0;top:54px;display:flex;justify-content:space-between;font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:-1px}
+.motion{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
+.motion a{display:flex;flex-direction:column;gap:4px;padding:10px;border-radius:8px;background:var(--raise);text-decoration:none;color:var(--fg);min-width:0}
+.motion a span{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+.motion a b{font-size:13.5px;font-weight:600}
+.motion a em{font-style:normal;font-size:11.5px;color:var(--accent)}
+.modgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.mod{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:8px;text-decoration:none;color:var(--fg)}
+.mod:hover{border-color:var(--accent)}
+.mod .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.mod h3{font-size:17px}
+.mod p{margin:0;font-size:13.5px;color:var(--muted)}
+.empty{color:var(--muted);font-size:14px}
+/* Morphed glass: ambient glow behind, frosted panels on top */
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:radial-gradient(42vw 42vw at 88% 8%,var(--blob1),transparent 70%),radial-gradient(48vw 48vw at 6% 85%,var(--blob2),transparent 70%),radial-gradient(34vw 34vw at 55% 50%,var(--blob3),transparent 70%)}
+.wrap{position:relative;z-index:1}
+.block,.mod,.libitem,.rail,.notice,.score{background:var(--glass);border:1px solid var(--glass-line);-webkit-backdrop-filter:blur(20px) saturate(160%);backdrop-filter:blur(20px) saturate(160%);box-shadow:inset 0 1px 0 var(--glass-hi),0 10px 34px var(--glass-shadow)}
+.notice{background:linear-gradient(var(--warn-bg),var(--warn-bg)),var(--glass)}
+.line,.cols > div,.card,.ring div,.motion a,.opt{background:var(--glass-2);border:1px solid var(--glass-line);-webkit-backdrop-filter:blur(12px) saturate(150%);backdrop-filter:blur(12px) saturate(150%);box-shadow:inset 0 1px 0 var(--glass-hi)}
+.card.right,.opt.right{border-color:var(--good);background:var(--good-bg)}
+.card.wrong,.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
+.rail{border-width:0 1px 0 0;box-shadow:inset -1px 0 0 var(--glass-hi)}
+.libitem{overflow:hidden}
+.mod:hover,.motion a:hover{border-color:var(--accent)}
+@media (max-width:860px){
+  .rail{border-width:0 0 1px 0}
+  .wrap{grid-template-columns:minmax(0,1fr)}
+  .rail{position:sticky;height:auto;flex-direction:column;gap:10px;border-right:0;border-bottom:1px solid var(--line);padding:12px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px));z-index:5}
+  .nav{flex-direction:row;overflow-x:auto;gap:6px;padding-bottom:4px}
+  .nav a{display:flex;flex:0 0 auto;gap:6px;padding:7px 10px;border:1px solid var(--line)}
+  .nav .t small,.nav .sep,.who,.brand span{display:none}
+  .lesson{grid-template-columns:minmax(0,1fr)}
+  .cols{grid-template-columns:minmax(0,1fr)}
+  .ring{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .motion{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <aside class="rail">
+    <div class="brand"><b>Sales Academy</b><span>Echo 1 Labs · reps and partners</span></div>
+    <div class="overall"><div class="eyebrow" id="ovLabel">Progress 0%</div><div class="bar"><i id="ovBar"></i></div></div>
+    <nav class="nav" id="nav" aria-label="Modules"></nav>
+    <div class="who" id="who">Progress saves in this browser.</div>
+  </aside>
+  <main><div class="inner" id="view"></div></main>
+</div>
+
+<script>
+/* ---------- Content ---------- */
+const CLIPS = {
+ D01:{t:"Business Lifecycle Management in two minutes",len:"2:32",kind:"demo",product:"Stack tour"},
+ D02:{t:"Titan: residential cost analysis from a set of plans",len:"2:33",kind:"demo",product:"Titan",flag:"Shows a real build budget. Josh confirms before any prospect sees it."},
+ D03:{t:"Titan: commercial site selection across nine sites",len:"2:17",kind:"demo",product:"Titan",flag:"Architecture firm use case. Client approval pending; internal use only."},
+ D04:{t:"Titan: preconstruction workflow",len:"1:08",kind:"demo",product:"Titan"},
+ D05:{t:"Titan: plan reading and a self-updating price book",len:"2:55",kind:"demo",product:"Titan"},
+ D06:{t:"Titan: progress in 3D and a risk profile for every project",len:"1:10",kind:"demo",product:"Titan"},
+ D07:{t:"Agent Orbit: go-to-market studio",len:"0:52",kind:"demo",product:"Agent Orbit"},
+ D08:{t:"Ignition: incident response in real time",len:"2:21",kind:"demo",product:"Ignition",flag:"Oilfield screens. Always say “sample data”."},
+ D09:{t:"Ignition: dispatch, fleet tracking, and site KPIs",len:"1:41",kind:"demo",product:"Ignition"},
+ T01:{t:"The institutional AI pitch",len:"1:38",kind:"film",skill:"Positioning"},
+ T02:{t:"Is it only for big builders?",len:"1:12",kind:"film",skill:"Objection handling"},
+ T03:{t:"Finally asking about their use case",len:"0:58",kind:"film",skill:"Discovery"},
+ T04:{t:"Fitting a modular builder",len:"1:51",kind:"film",skill:"Discovery"},
+ T05:{t:"Pitching the regional partner model",len:"1:01",kind:"film",skill:"Partner model"},
+ T06:{t:"Support model and a person in the loop",len:"3:23",kind:"film",skill:"Partner model"},
+ T07:{t:"Offering to be the sales engineer",len:"1:19",kind:"film",skill:"Demo strategy"},
+ T08:{t:"The bid velocity claim",len:"0:36",kind:"film",skill:"Claims"},
+ T09:{t:"Who uses it, where, and what outcome",len:"2:04",kind:"film",skill:"Discovery"},
+ T11:{t:"Partner proposes the upsell path",len:"0:47",kind:"film",skill:"Land and expand"},
+ T12:{t:"The after-hours phone question",len:"1:59",kind:"film",skill:"Discovery"},
+ T13:{t:"Site compliance and feature requests",len:"2:56",kind:"film",skill:"Listening"},
+ T14:{t:"Next steps: collateral, access, scheduling",len:"2:17",kind:"film",skill:"Close"},
+ T15:{t:"Offering pre-call coaching and homework",len:"1:19",kind:"film",skill:"Close"}
+};
+const ALL_CLIPS = Object.keys(CLIPS);
+
+const MODULES = [
+ {id:"m1",n:"01",name:"Positioning",stage:"Before every call",
+  intro:"Say what we are in one breath, then prove it. Every rep uses the same words, so the market hears one company.",
+  lessons:[
+   {c:"T01",note:"The strongest framing on the Grant call. Personal AI is the phone in your pocket. Institutional AI sits on the company’s own systems, keeps every output, and learns from the whole team’s work, so the business gets faster every week.",
+    do:"Use it in the first five minutes, then tie it to their business: “your estimators, your dispatch, your books.”",
+    dont:"Repeat the clip word for word. It has strong language and goes deep on how we build it. Buyers want the outcome, not the plumbing."},
+   {c:"D01",note:"The full stack in two and a half minutes: Engine, RevOps, Broadcast, Signal, Ledger, Ignition, Titan and Prime around Agent Orbit.",
+    do:"On a prospect call, tour only the two or three products that touch their problem. Save the full ring for the close.",
+    dont:"Read the whole list to an owner who told you about one problem."}
+  ],
+  extra:"positioning",
+  quiz:[
+   {p:"A prospect asks, “So what are you?” Which answer is on message?",o:["We’re an AI shop that builds custom agents.","Business Lifecycle Management. Agents run the work, your people approve it, and you see all of it in Agent Orbit.","A software platform with a lot of agents.","Whatever you need, we can build it."],a:1,w:"Lead with the category, then the trust model. Never describe us as a shop, a vendor of software, or a builder of anything."},
+   {p:"In T01, what makes AI “institutional”?",o:["It uses a bigger model.","It runs on the company’s own systems, keeps the outputs, and learns from the whole team.","Only large enterprises can buy it.","It replaces the people who used to do the work."],a:1,w:"Institutional AI is owned by the company and gets better from everyone’s work. Personal AI resets with each person."},
+   {p:"Which product sits at “Govern” on the Agent Orbit ring?",o:["Ledger","Signal","Prime","Engine"],a:2,w:"Prime: who can do what, and a record of who did it. It lives inside Agent Orbit."},
+   {p:"Which line is our current tagline?",o:["Smarter software for every business.","Built by operators. Run by agents. Supervised by you.","Your AI team, on demand.","Automate everything."],a:1,w:"Say it exactly. The wings line is “Break free from business gravity.”"}
+  ]},
+ {id:"m2",n:"02",name:"Discovery",stage:"Discovery, 45 min",
+  intro:"The Grant call reached discovery at minute 23. Everything before it was backstory. Target: the use-case question by minute 3.",
+  lessons:[
+   {c:"T03",note:"The question that should have opened the call. His answer, estimating and preconstruction, should have set the whole demo.",
+    do:"Ask by minute 3: “Walk me through the work that eats your week.” Then build the demo around the answer.",
+    dont:"Spend the first 12 minutes on our story. Nobody buys the backstory."},
+   {c:"T09",note:"The best framework on the call. Who uses it, where they touch it (phone, desktop, truck cab), and what outcome they want. “The whole rest of the middle is easy.”",
+    do:"Lead with these three questions on every first call and write the answers into the process map.",
+    dont:"Save it for the end of the call, as happened here."},
+   {c:"T12",note:"A strong entry-point question: what happens when nobody can answer the phone? Two misses in this clip. The voice-cloning line, and Grant said “I need to solve estimating” twice while the pitch kept going on voice.",
+    do:"Ask the after-hours question, then listen. If they repeat a problem, that is the problem.",
+    dont:"Say a voice agent will sound like the owner so no one knows. Our voice agent never claims to be human."},
+   {c:"T04",note:"Good mapping. A modular builder doing 40 to 50 homes a year that wants to double, matched to a modular use case we already built.",
+    do:"Follow up with “What breaks first when you double?” That answer is the pilot.",
+    dont:"Jump to financing and facility plans before you know what breaks."}
+  ],
+  extra:"discovery",
+  quiz:[
+   {p:"When should the use-case question come?",o:["After the demo","By minute 3","Around minute 20, once rapport is built","On the follow-up email"],a:1,w:"On this call it came at minute 23. Ask early so the demo is about their work."},
+   {p:"Grant kept saying “I need to solve estimating.” Which clip should have anchored the demo?",o:["D01 stack tour","D05 plan reading and a self-updating price book","D07 go-to-market studio","D09 dispatch and fleet tracking"],a:1,w:"D05 is the estimating story: plans in, line items matched to the price book, unknowns researched with sources."},
+   {p:"What are the three parts of the T09 framework?",o:["Budget, authority, need, timing","Users, touchpoints, desired outcome","Price, scope, timeline","Pain, cost, urgency"],a:1,w:"Who uses it, where they touch it, and what they want at the end. The middle is our job."},
+   {p:"Which line from T12 must never be repeated?",o:["What do you do when you can’t answer the phone?","Consumers expect a response within minutes.","I can clone your voice and no one would even know.","Voice agents are one of the easiest entry points."],a:2,w:"Trust and compliance risk. Our voice agent never claims to be human."},
+   {p:"Which prospect do we walk away from?",o:["One who wants agents to replace people’s judgment outright","One who wants to start with a single workflow","One who asks how the agents are supervised","One with a team of 60"],a:0,w:"Disqualify: wants judgment replaced, wants a guaranteed return, or won’t map the process first."}
+  ]},
+ {id:"m3",n:"03",name:"Listen and shape the demo",stage:"Process map, then demo",
+  intro:"Prospects hand you the requirements if you let them talk. Write them down, read them back, and show them in their own words.",
+  lessons:[
+   {c:"T02",note:"“Is it only for big builders?” answered with a demo instead of a claim: residential first, then commercial.",
+    do:"Answer scale questions by showing two sizes of the same workflow.",
+    dont:"Answer with “it works for everyone.” Show it."},
+   {c:"T13",note:"Grant handed over two requirements for Australian builders: daily site reporting for safety and compliance, and a feature-request loop so clients can report issues and ask for changes.",
+    do:"Capture both in writing during the call and read them back before you hang up.",
+    dont:"Answer “you probably already have it” with a demo of something else."},
+   {c:"T11",note:"The partner proposed the sequence himself: estimating and project management first, Agent Orbit as the upsell once it saves them time.",
+    do:"Agree and let the partner lead. Land with one Kit, expand Kit by Kit.",
+    dont:"Keep showing the rest of the stack after the buyer has picked a starting point."}
+  ],
+  extra:"capture",
+  quiz:[
+   {p:"“Is this only for big builders?” The best response is:",o:["It works at any scale, trust me.","Show a residential job, then a commercial one.","It’s mainly for large firms.","Send a case study after the call."],a:1,w:"Show, don’t claim."},
+   {p:"Besides daily site reporting, what did Grant ask for in T13?",o:["A mobile payroll app","A feature-request loop for clients","A lower price","Integration with a CRM"],a:1,w:"Clients want to report issues and request features, and see the list get built."},
+   {p:"Which two segments stay in every demo?",o:["Pricing and timeline","Governance and the trust ladder","Stack tour and case studies","Agent count and roadmap"],a:1,w:"Governance and the trust ladder show who approves what. They never get cut for time."},
+   {p:"A partner wants estimating first and Agent Orbit later. You:",o:["Push for the full stack now","Agree and let them lead the sequence","Offer a discount for the bundle","Ask them to wait for the next release"],a:1,w:"Land and expand. Never discount."}
+  ]},
+ {id:"m4",n:"04",name:"Demo library",stage:"Demo, 20 min",
+  intro:"Eight product clips from the call. Learn which clip answers which problem. These are internal until Josh approves each one for prospects.",
+  lessons:[], extra:"library",
+  quiz:[
+   {p:"A water hauler runs dispatch on texts and a whiteboard. Which clip?",o:["D03","D06","D09","D07"],a:2,w:"D09: driver to dispatch to invoicing, live GPS, KPIs by site."},
+   {p:"What must you say every time you show the Ignition oilfield screens?",o:["This is live client data","Sample data","Beta","Coming soon"],a:1,w:"Always say “sample data”. Never show one client’s data to another."},
+   {p:"Which clip can’t go to a prospect until the client approves?",o:["D03 commercial site selection","D04 preconstruction workflow","D05 price book","D07 go-to-market studio"],a:0,w:"D03 is an architecture firm’s use case. D02 also needs Josh’s sign-off because it shows a real budget."},
+   {p:"What is the order of a 20-minute demo?",o:["Stack tour, pricing, questions","Their words, without and with, the board, governance and agents, trust ladder, book the process map","Case studies, demo, proposal","Agent count, product list, close"],a:1,w:"0-2 their words, 2-6 without/with, 6-10 the board, 10-14 governance and agents, 14-17 trust ladder, 17-20 book the map."}
+  ]},
+ {id:"m5",n:"05",name:"Claims and guardrails",stage:"Every conversation",
+  intro:"One bad claim can cost the account and our name. If a statement isn’t on the approved list, it doesn’t leave your mouth.",
+  lessons:[
+   {c:"T08",note:"“Three months of bid work in a day and a half” is a friend’s report. It is not documented and has no approved reference.",
+    do:"Say what the demo shows. Numbers come from Josh, with a named, approved reference.",
+    dont:"Repeat this number to anyone outside Echo 1 Labs. It is internal only."}
+  ],
+  restricted:{t:"Partner pricing conversation",len:"2:22",note:"This clip is restricted and not shown here. The lesson: price came up before scope was known. Discovery first. Pricing goes on a follow-up, Josh approves every price and term, and prices never go in writing."},
+  extra:"game",
+  quiz:[]},
+ {id:"m6",n:"06",name:"Partner model",stage:"Partners and resellers",
+  intro:"Regional partners own the customer relationship. We back them up. The frame is build, sell, support.",
+  lessons:[
+   {c:"T05",note:"A clear partner offer: own the market in your region and offer the stack as your own service.",
+    do:"Describe what the partner gets and what we handle.",
+    dont:"Say “we can do anything.” It reads as overpromising."},
+   {c:"T06",note:"Strong answer on maintenance. The partner owns the customer side, we support the back end, and a real person stays reachable.",
+    do:"Use the build, sell, support frame and name who the customer calls.",
+    dont:"Let support sound like “the agents handle it.” People approve, and a named person answers."},
+   {c:"T07",note:"The right move for a new partner: offer to be their sales engineer and run the first demo for them.",
+    do:"Run the first demo, then coach them to run the second.",
+    dont:"Hand over a login and hope."},
+   {c:"T15",note:"Partner enablement done well: a rehearsal offer plus homework. Go through the GTM intake and explore Titan before the next call.",
+    do:"End every partner call with a rehearsal date and one hands-on task.",
+    dont:"Leave the partner to figure out the pitch alone."}
+  ],
+  quiz:[
+   {p:"A new partner wants to run their first demo alone. Best move?",o:["Send the deck and a login","Offer to run it as their sales engineer","Tell them to wait for training","Send a recording instead"],a:1,w:"Run the first one, coach the second."},
+   {p:"What is the support frame from T06?",o:["Set and forget","Build, sell, support","Sell first, support later","Agents handle support"],a:1,w:"The partner sells and owns the customer; we build and support behind them."},
+   {p:"What can never drop out of the support model?",o:["A real person the customer can reach","Weekly calls","A discount","Custom code"],a:0,w:"People approve and a named person answers."},
+   {p:"Which phrase reads as overpromising?",o:["Agents draft; people approve.","We start in Shadow.","We can do anything.","Every action lands on a log you own."],a:2,w:"Say what the stack does and how it is supervised."}
+  ]},
+ {id:"m7",n:"07",name:"Close and follow-up",stage:"Close, then proposal",
+  intro:"Every call ends with one dated next step. Every follow-up goes out within 24 hours in the owner’s own words.",
+  lessons:[
+   {c:"T14",note:"Good question: “What would you need from me, from a collateral perspective, that puts you in the best position to win?” The miss: no date was locked before hanging up.",
+    do:"Ask the collateral question, then put a date and time on the calendar while they are still on the call.",
+    dont:"End with “when do you think you’d want to set something up?” and no date."}
+  ],
+  extra:"followup",
+  quiz:[
+   {p:"What was missing at the end of T14?",o:["A price","A locked date for the next meeting","A case study","The agent count"],a:1,w:"Lock the date before you hang up."},
+   {p:"The follow-up packet goes out within:",o:["24 hours","3 days","A week","After the proposal"],a:0,w:"Within 24 hours, in the owner’s own words, with one dated next step."},
+   {p:"What is the follow-up email shape?",o:["Long recap with every feature","Two-sentence opener, one value line, one ask, no P.S.","Deck attached, no text","Pricing table and terms"],a:1,w:"Short and specific. One ask."},
+   {p:"A buyer over 55 cares about risk and succession. You:",o:["Send a text and a short video","Call first, lead with governance, close on a second meeting with the successor or CFO","Send three follow-up emails","Push for a same-day decision"],a:1,w:"Age is a guess. Their stated preference always wins."}
+  ]}
+];
+
+const GAME = [
+ {s:"Agents draft; people approve.",ok:true,w:"Approved. This is the core trust line."},
+ {s:"Your data never leaves AWS.",ok:false,w:"False. The model runs outside the AWS account."},
+ {s:"Every action lands on a log you own.",ok:true,w:"Approved."},
+ {s:"We’re SOC 2 certified.",ok:false,w:"We hold no SOC 2, ISO 27001 or HIPAA certification."},
+ {s:"Our agents start in Shadow.",ok:true,w:"Approved. Shadow first, then up the trust ladder."},
+ {s:"It runs around the clock with nobody watching.",ok:false,w:"Never promise round-the-clock coverage. Alerts escalate to a named person."},
+ {s:"A customer got through three months of bids in a day and a half.",ok:false,w:"Unverified. Internal only until there is a named, approved reference."},
+ {s:"Alerts reach a named person by voice and text.",ok:true,w:"Approved."},
+ {s:"For a company your size it’s about this much a month.",ok:false,w:"Pricing waits for scope, Josh approves it, and it never goes in writing."},
+ {s:"Our voice agent will sound just like you. Nobody will know.",ok:false,w:"Our voice agent never claims to be human."},
+ {s:"Gated runs stop when a check fails.",ok:true,w:"Approved."},
+ {s:"You’ll make your money back in six months.",ok:false,w:"Never promise a return or a payback period."}
+];
+
+const MATCH = [
+ {s:"Modular builder, 45 homes a year, estimators buried in plan sets",a:"D05"},
+ {s:"Water hauler running dispatch on texts and a whiteboard",a:"D09"},
+ {s:"Developer weighing four parcels for a medical office",a:"D03"},
+ {s:"Oilfield operator worried about a spill at 2 a.m.",a:"D08"},
+ {s:"Owner who wants to watch the job without driving to site",a:"D06"},
+ {s:"Owner-led firm that wants outreach, social and email run from one place",a:"D07"}
+];
+
+const LIB_USE = {
+ D02:"A builder, lender or owner asks what a build will really cost.",
+ D03:"Architects and developers choosing between sites.",
+ D04:"A GC whose preconstruction lives in email and spreadsheets.",
+ D05:"Estimating is the problem. The anchor clip for builders.",
+ D06:"Owners and developers who want to see progress and risk at a glance.",
+ D07:"Marketing and outreach run from one place, by voice or text.",
+ D08:"Oilfield operators: tank levels, risk scores, a live spill alert.",
+ D09:"Trucking and dispatch: driver to dispatch to invoice."
+};
+
+const FILM = [
+ {m:0,end:12,type:"seg",label:"Backstory, no discovery"},
+ {m:5.77,c:"T01",type:"good",label:"Institutional AI pitch"},
+ {m:13.68,c:"D01",type:"demo",label:"Stack tour"},
+ {m:16.22,c:"T02",type:"good",label:"Answered scale with a demo"},
+ {m:23.37,c:"T03",type:"miss",label:"Use-case question, 20 minutes late"},
+ {m:24.33,c:"D05",type:"demo",label:"Estimating demo"},
+ {m:41.18,c:"T08",type:"miss",label:"Unverified claim"},
+ {m:44.02,c:"T09",type:"good",label:"Users, touchpoints, outcome"},
+ {m:46.12,c:null,type:"miss",label:"Price before scope (restricted)"},
+ {m:52.02,c:"T12",type:"miss",label:"Voice-cloning line"},
+ {m:54.02,c:"T13",type:"good",label:"Two requirements handed over"},
+ {m:68.15,c:"T14",type:"good",label:"Collateral ask, no date locked"},
+ {m:73.43,c:"T15",type:"good",label:"Rehearsal plus homework"}
+];
+
+const CERT = [
+ {p:"By what minute should the use-case question come?",o:["3","12","23","After the demo"],a:0},
+ {p:"Which statement is approved?",o:["Your data never leaves AWS.","Agents draft; people approve.","We’re SOC 2 certified.","It runs around the clock."],a:1},
+ {p:"The prospect keeps saying “estimating.” Which clip leads?",o:["D01","D05","D07","D08"],a:1},
+ {p:"The three discovery anchors from T09:",o:["Users, touchpoints, desired outcome","Budget, authority, need","Price, scope, date","Pain, gain, fit"],a:0},
+ {p:"When does pricing come up?",o:["First call, to qualify","On a follow-up after scope, approved by Josh","In the follow-up email","Never"],a:1},
+ {p:"What do we call our agents?",o:["Agent teams","An Agent Fleet, organized in Agent Kits","Bots","Assistants"],a:1},
+ {p:"Where does every new agent start?",o:["Full autonomy","Shadow","Pilot","Production"],a:1},
+ {p:"What must every call end with?",o:["A price","One dated next step","A deck","A login"],a:1},
+ {p:"A partner’s first demo. You:",o:["Send a login","Run it as their sales engineer","Skip it","Send the long deck"],a:1},
+ {p:"The Ignition oilfield screens are always described as:",o:["Live data","Sample data","A client’s board","Beta"],a:1},
+ {p:"Who is our buyer?",o:["Any business with a website","Owner-led companies, $5M+ revenue, 50 to 500 employees","Enterprises over 5,000 employees","Startups pre-revenue"],a:1},
+ {p:"A prospect asks what you are. Category name:",o:["Business Lifecycle Management","Business automation software","AI services","Digital transformation"],a:0}
+];
+const CERT_PASS = 10;
+
+/* ---------- State ---------- */
+const KEY = "e1-academy-v1";
+let S = {watched:{},quiz:{},game:null,match:null,cert:null,capture:""};
+try{ const raw = localStorage.getItem(KEY); if(raw) S = Object.assign(S, JSON.parse(raw)); }catch(e){}
+let db=null, user=null, uid=null, isAdmin=false, saveTimer=null;
+
+function persist(){
+  try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){}
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(pushRemote, 900);
+  renderNav();
+}
+async function pushRemote(){
+  if(!db || !uid) return;
+  const lessons = Object.keys(S.watched).filter(k=>S.watched[k]).length;
+  const modsPassed = MODULES.filter(modDone).map(m=>m.id);
+  try{
+    await db.doc("progress/"+uid).set({
+      watched:S.watched, quiz:S.quiz, game:S.game, match:S.match, cert:S.cert,
+      lessons, modsPassed, updatedAt:new Date().toISOString()
+    });
+  }catch(e){ /* refused or offline: local copy stays */ }
+}
+
+function quizPct(id){ const q=S.quiz[id]; return q? q.best/q.total : 0; }
+function modDone(m){
+  const watchedAll = m.lessons.every(l=>S.watched[l.c]) && (m.id!=="m4" || ["D02","D03","D04","D05","D06","D07","D08","D09"].every(c=>S.watched[c]));
+  let passed;
+  if(m.id==="m5") passed = S.game && S.game.score/S.game.total>=0.8;
+  else passed = quizPct(m.id)>=0.8;
+  return watchedAll && passed;
+}
+function overall(){
+  const parts = MODULES.length + 1;
+  let done = MODULES.filter(modDone).length + (S.cert && S.cert.passed ? 1 : 0);
+  return Math.round(done/parts*100);
+}
+
+/* ---------- Helpers ---------- */
+const $ = s=>document.querySelector(s);
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+function video(id){
+  return `<div class="vid"><video controls preload="metadata" playsinline data-clip="${id}" src="/academy/videos/${id}.mp4#t=0.5"></video></div>`;
+}
+function pills(id){
+  const c=CLIPS[id];
+  const k = c.kind==="demo" ? `<span class="pill demo">Demo · ${esc(c.product)}</span>` : `<span class="pill int">Internal film · ${esc(c.skill)}</span>`;
+  return `<div class="meta"><span class="pill">${id}</span>${k}<span class="pill">${c.len}</span>${S.watched[id]?'<span class="pill ok">Watched</span>':''}</div>`;
+}
+function watchBtn(id){
+  return `<button class="watch ${S.watched[id]?'on':''}" data-watch="${id}">${S.watched[id]?'Watched':'Mark as watched'}</button>`;
+}
+
+/* ---------- Nav ---------- */
+function renderNav(){
+  const route = location.hash.slice(1) || "home";
+  const items = [`<a href="#home" ${route==="home"?'aria-current="page"':''}><span class="num">00</span><span class="t">Start here<small>How the academy works</small></span><span class="st"></span></a>`,
+    `<div class="sep">Modules</div>`];
+  MODULES.forEach(m=>{
+    const d=modDone(m);
+    items.push(`<a href="#${m.id}" ${route===m.id?'aria-current="page"':''}><span class="num">${m.n}</span><span class="t">${esc(m.name)}<small>${esc(m.stage)}</small></span><span class="st ${d?'done':''}">${d?'Done':''}</span></a>`);
+  });
+  items.push(`<div class="sep">Review</div>`);
+  items.push(`<a href="#film" ${route==="film"?'aria-current="page"':''}><span class="num">08</span><span class="t">Game film<small>The Grant Kennedy call</small></span><span class="st"></span></a>`);
+  items.push(`<a href="#cert" ${route==="cert"?'aria-current="page"':''}><span class="num">09</span><span class="t">Certification<small>${CERT.length} questions, pass at ${CERT_PASS}</small></span><span class="st ${S.cert&&S.cert.passed?'done':''}">${S.cert&&S.cert.passed?'Passed':''}</span></a>`);
+  if(isAdmin) items.push(`<a href="#team" ${route==="team"?'aria-current="page"':''}><span class="num">··</span><span class="t">Team progress<small>Owner and editors only</small></span><span class="st"></span></a>`);
+  $("#nav").innerHTML = items.join("");
+  const p=overall(); $("#ovBar").style.width=p+"%"; $("#ovLabel").textContent="Progress "+p+"%";
+}
+
+/* ---------- Views ---------- */
+function viewHome(){
+  const motion = [
+   ["1","Intake","ICP fit","m2"],["2","Discovery","45 min","m2"],["3","Process map","1 workflow","m3"],["4","Demo","20 min","m4"],
+   ["5","Proposal","Josh approves terms","m7"],["6","Pilot","At Shadow","m5"],["7","Expand","Kit by Kit","m3"]];
+  return `
+  <header class="head">
+    <span class="eyebrow">Echo 1 Labs · Sales Academy</span>
+    <h1>Learn the motion from a real call.</h1>
+    <p>Every lesson is cut from the Oct 30 call with Grant Kennedy, a prospective partner in Melbourne. You will see what worked, what didn’t, and what to say instead. Watch each clip, pass each module check at 80%, then take the certification.</p>
+  </header>
+  <div class="notice"><b>Internal only.</b> The training films show both speakers in full and contain strong language. Grant has not agreed to publication. Never share this page, a clip, or a screenshot outside Echo 1 Labs. Demo clips go to prospects only after Josh approves each one.</div>
+  <section class="block">
+    <h2>The seven-stage sales motion</h2>
+    <p>No stage gets skipped. Each one links to the module that trains it.</p>
+    <div class="motion">${motion.map(s=>`<a href="#${s[3]}"><span>Stage ${s[0]}</span><b>${s[1]}</b><em>${s[2]}</em></a>`).join("")}</div>
+  </section>
+  <section class="modgrid">
+    ${MODULES.map(m=>{const n=m.lessons.length+(m.id==="m4"?8:0); const w=(m.id==="m4"?["D02","D03","D04","D05","D06","D07","D08","D09"]:m.lessons.map(l=>l.c)).filter(c=>S.watched[c]).length;
+      return `<a class="mod" href="#${m.id}"><div class="row"><span class="eyebrow">Module ${m.n}</span>${modDone(m)?'<span class="pill ok">Done</span>':`<span class="pill">${w}/${n} clips</span>`}</div><h3>${esc(m.name)}</h3><p>${esc(m.intro)}</p></a>`;}).join("")}
+    <a class="mod" href="#film"><div class="row"><span class="eyebrow">Review</span><span class="pill">74 min call</span></div><h3>Game film</h3><p>The whole call on one timeline. Click any moment to replay it with the coaching note.</p></a>
+    <a class="mod" href="#cert"><div class="row"><span class="eyebrow">Final</span>${S.cert?`<span class="pill ${S.cert.passed?'ok':''}">${S.cert.score}/${S.cert.total}</span>`:'<span class="pill">Not taken</span>'}</div><h3>Certification</h3><p>${CERT.length} questions across every module. Pass at ${CERT_PASS}. Your result saves in this browser.</p></a>
+  </section>`;
+}
+
+function lessonHTML(l){
+  return `<article class="lesson">
+    <div>${video(l.c)}</div>
+    <div class="coach">
+      ${pills(l.c)}
+      <h3>${esc(CLIPS[l.c].t)}</h3>
+      <p class="note">${esc(l.note)}</p>
+      <p class="do"><b>Do.</b> ${esc(l.do)}</p>
+      <p class="dont"><b>Don’t.</b> ${esc(l.dont)}</p>
+      ${CLIPS[l.c].flag?`<div class="flag"><b>Review flag.</b> ${esc(CLIPS[l.c].flag)}</div>`:''}
+      ${watchBtn(l.c)}
+    </div></article>`;
+}
+
+function extraHTML(m){
+  switch(m.extra){
+  case "positioning": return `<section class="block"><h2>Say it exactly</h2>
+    <div class="lines">
+      <div class="line"><span class="eyebrow">Category</span><q>Business Lifecycle Management</q></div>
+      <div class="line"><span class="eyebrow">Wings line</span><q>Break free from business gravity.</q></div>
+      <div class="line"><span class="eyebrow">Tagline</span><q>Built by operators. Run by agents. Supervised by you.</q></div>
+      <div class="line"><span class="eyebrow">Campaign theme</span><q>Win the business. Buy the business. Build the assets. Run the operation.</q></div>
+    </div>
+    <p>Eight products around Agent Orbit. Our agents are an Agent Fleet, organized in Agent Kits.</p>
+    <div class="ring">${[["Strategize","Engine"],["Find","RevOps"],["Attract","Broadcast"],["Analyze","Signal"],["Manage","Ledger"],["Move","Ignition"],["Build","Titan"],["Govern","Prime"]].map(r=>`<div><span>${r[0]}</span><b>${r[1]}</b></div>`).join("")}</div></section>`;
+  case "discovery": return `<section class="block"><h2>The discovery card</h2>
+    <div class="cols">
+      <div><span class="eyebrow">Ask first</span><h3>Users</h3><p>Who inside the company would touch this every day?</p></div>
+      <div><span class="eyebrow">Then</span><h3>Touchpoints</h3><p>Where: phone, desktop, truck cab, job site?</p></div>
+      <div><span class="eyebrow">Then</span><h3>Outcome</h3><p>What does done look like, and which number moves first?</p></div>
+    </div>
+    <p>Also ask: what decisions got routed to you last week? How old are your numbers? Which process lives in one person’s head? What runs on paper or phone calls? What do you pay for and never use? Who else says yes? How do you like to get information? What happens when nobody can answer the phone?</p>
+    <p>Leave the call with at least three diagnosis items, one problem with a number on it, and how they like to get information.</p></section>`;
+  case "capture": return `<section class="block"><h2>Capture drill</h2>
+    <p>Watch T13 again. Write down the two requirements Grant handed over, the way you would read them back to him.</p>
+    <textarea id="capture" placeholder="1.\n2.">${esc(S.capture||"")}</textarea>
+    <div><button class="btn ghost" id="revealCap">Show the model answer</button></div>
+    <div id="capAns" hidden class="do"><b>Model answer.</b> “So you need two things. One, your site managers report safety, compliance and trade progress every day from their phone. Two, your clients can log an issue or a feature request and see it get built. Did I get that right?”</div>
+    <h2>20-minute demo order</h2>
+    <div class="table"><table><thead><tr><th>Minutes</th><th>Segment</th></tr></thead><tbody>
+    ${[["0 to 2","Their words: read back what they told you in discovery"],["2 to 6","Without and with: their workflow today, then with us"],["6 to 10","The board"],["10 to 14","Governance and the agents tab"],["14 to 17","Trust ladder: Shadow first"],["17 to 20","Book the process map session"]].map(r=>`<tr><td class="n">${r[0]}</td><td>${r[1]}</td></tr>`).join("")}
+    </tbody></table></div></section>`;
+  case "library": return `<section class="lib">${["D02","D03","D04","D05","D06","D07","D08","D09"].map(c=>`
+    <div class="libitem">${video(c)}<div class="body">${pills(c)}<h3>${esc(CLIPS[c].t)}</h3><p class="note"><b>Show it when:</b> ${esc(LIB_USE[c])}</p>${CLIPS[c].flag?`<div class="flag"><b>Review flag.</b> ${esc(CLIPS[c].flag)}</div>`:''}${watchBtn(c)}</div></div>`).join("")}</section>
+    <section class="block"><h2>Match the prospect to the clip</h2><p>Pick the clip you would lead with for each prospect, then check your answers.</p>
+    <div class="cards" id="match">${MATCH.map((x,i)=>`<div class="card ${S.match&&S.match.checked?(S.match.picks[i]===x.a?'right':'wrong'):''}"><span class="s">${esc(x.s)}</span><select id="mt${i}" aria-label="Clip for prospect ${i+1}"><option value="">Choose a clip</option>${["D02","D03","D04","D05","D06","D07","D08","D09"].map(c=>`<option value="${c}" ${S.match&&S.match.picks[i]===c?'selected':''}>${c} · ${esc(CLIPS[c].t.replace(/^.*?: /,''))}</option>`).join("")}</select>${S.match&&S.match.checked&&S.match.picks[i]!==x.a?`<span class="why">Best fit: ${x.a}, ${esc(CLIPS[x.a].t)}</span>`:''}</div>`).join("")}</div>
+    <div class="score"><button class="btn" id="checkMatch">Check answers</button>${S.match&&S.match.checked?`<span><b>${S.match.score}/${MATCH.length}</b> matched</span>`:''}</div></section>`;
+  case "game": {
+    const g = S.game && S.game.answers ? S.game.answers : {};
+    const answered = Object.keys(g).length;
+    return `<section class="block"><h2>Say it or don’t</h2><p>Twelve lines you will be tempted to say. Call each one. Pass at 80% to finish this module.</p>
+    <div class="cards">${GAME.map((x,i)=>{const a=g[i]; const has=a!==undefined; const right=has&&a===x.ok;
+      return `<div class="card ${has?(right?'right':'wrong'):''}"><span class="s">“${esc(x.s)}”</span>
+      <div class="acts"><button class="btn ${has&&a===true?'':'ghost'}" data-game="${i}" data-v="1" ${has?'disabled':''}>Say it</button><button class="btn ${has&&a===false?'':'ghost'}" data-game="${i}" data-v="0" ${has?'disabled':''}>Don’t</button></div>
+      ${has?`<p class="why"><b>${right?'Correct.':'Not quite.'}</b> ${esc(x.w)}</p>`:''}</div>`;}).join("")}</div>
+    <div class="score">${answered===GAME.length?`<span><b>${S.game.score}/${GAME.length}</b> ${S.game.score/GAME.length>=0.8?'Passed':'Below 80%. Reset and try again.'}</span>`:`<span>${answered}/${GAME.length} answered</span>`}<button class="btn ghost" id="resetGame">Reset</button></div></section>`;}
+  case "followup": return `<section class="block"><h2>Follow-up by buyer</h2><p>Age is a guess. What the buyer tells you about how they like information always wins.</p>
+    <div class="table"><table><thead><tr><th>Buyer</th><th>Cares about</th><th>Send</th><th>Close</th><th>Follow-up</th></tr></thead><tbody>
+    <tr><td>Younger, under about 40</td><td>Speed, lean growth</td><td>Clickable link, short video, text</td><td>Book the map on the call</td><td>Three-line recap, recorded walkthrough</td></tr>
+    <tr><td>Mid-career, about 40 to 55</td><td>Margin, control, time back</td><td>Short deck plus live demo, one-pager with numbers</td><td>Map session with the ops lead</td><td>One-page recap, draft process map</td></tr>
+    <tr><td>Senior, 55 and up</td><td>Risk, legacy, exit or successor</td><td>Call first, PDF summary, a named person to call</td><td>Second meeting with successor, CFO or partner</td><td>Phone, then governance one-pager. No third email.</td></tr>
+    </tbody></table></div>
+    <p>Every packet: within 24 hours, the owner’s own words, one dated next step. Email: two-sentence opener, one value line, one ask, no P.S. Drafts only; a person reads and sends.</p></section>`;
+  }
+  return "";
+}
+
+function quizHTML(id, qs, title){
+  const st = S["q_"+id] || {};
+  const done = Object.keys(st).length===qs.length;
+  const score = qs.filter((q,i)=>st[i]===q.a).length;
+  return `<section class="block" id="quiz-${id}"><h2>${title||"Module check"}</h2><p>Pass at 80%. Your best score counts.</p>
+  ${qs.map((q,i)=>{const pick=st[i]; const has=pick!==undefined;
+    return `<div class="q"><span class="p">${i+1}. ${esc(q.p)}</span><div class="opts">${q.o.map((o,j)=>`<button class="opt ${has&&j===q.a?'right':''} ${has&&j===pick&&pick!==q.a?'wrong':''}" data-q="${id}" data-i="${i}" data-j="${j}" ${has?'disabled':''}>${esc(o)}</button>`).join("")}</div>${has&&q.w?`<p class="why">${esc(q.w)}</p>`:''}</div>`;}).join("")}
+  <div class="score">${done?`<span><b>${score}/${qs.length}</b> ${score/qs.length>=0.8?'Passed':'Below 80%'}</span>`:`<span>${Object.keys(st).length}/${qs.length} answered</span>`}${S.quiz[id]?`<span class="pill">Best ${S.quiz[id].best}/${S.quiz[id].total}</span>`:''}<button class="btn ghost" data-retake="${id}">Retake</button></div></section>`;
+}
+
+function viewModule(m){
+  return `<header class="head"><span class="stage">${esc(m.stage)}</span><h1>${m.n} · ${esc(m.name)}</h1><p>${esc(m.intro)}</p></header>
+   ${m.lessons.map(lessonHTML).join("")}
+   ${m.restricted?`<article class="lesson"><div class="vid" style="display:grid;place-items:center;background:var(--raise)"><span class="eyebrow">Restricted clip · not shown</span></div><div class="coach"><div class="meta"><span class="pill">T10</span><span class="pill int">Restricted</span><span class="pill">${m.restricted.len}</span></div><h3>${esc(m.restricted.t)}</h3><p class="note">${esc(m.restricted.note)}</p></div></article>`:''}
+   ${extraHTML(m)}
+   ${m.quiz.length?quizHTML(m.id,m.quiz):''}
+   ${nextLink(m)}`;
+}
+function nextLink(m){
+  const i = MODULES.indexOf(m); const n = MODULES[i+1];
+  return `<div>${n?`<a class="btn" href="#${n.id}" style="text-decoration:none;display:inline-block">Next: ${esc(n.name)}</a>`:`<a class="btn" href="#film" style="text-decoration:none;display:inline-block">Next: Game film</a>`}</div>`;
+}
+
+let filmPick = 5;
+function viewFilm(){
+  const f = FILM[filmPick];
+  const total = 75;
+  const lesson = MODULES.flatMap(m=>m.lessons).find(l=>l.c===f.c);
+  const detail = f.c ? `<article class="lesson" style="border-top:0;padding-top:0"><div>${video(f.c)}</div><div class="coach">${pills(f.c)}<h3>${esc(CLIPS[f.c].t)}</h3><p class="note">${esc(lesson?lesson.note:(f.c.startsWith("D")?LIB_USE[f.c]||"Stack tour.":""))}</p>${lesson?`<p class="do"><b>Do.</b> ${esc(lesson.do)}</p><p class="dont"><b>Don’t.</b> ${esc(lesson.dont)}</p>`:''}${watchBtn(f.c)}</div></article>`
+    : `<div class="notice"><b>${esc(f.label)}.</b> This clip is restricted. Price came before scope was known. Discovery first, pricing on a follow-up, Josh approves every term.</div>`;
+  return `<header class="head"><span class="stage">Review</span><h1>Game film: the Grant Kennedy call</h1><p>74 minutes on one line. Green worked, red is a miss, orange is a demo. Click a marker to replay it.</p></header>
+  <section class="block">
+    <div class="tl">
+      <div class="track"></div>
+      ${FILM.filter(x=>x.type==="seg").map(x=>`<div class="seg bad" style="left:${x.m/total*100}%;width:${(x.end-x.m)/total*100}%" title="${esc(x.label)}"></div>`).join("")}
+      ${FILM.map((x,i)=>x.type==="seg"?"":`<button class="mk ${x.type}" style="left:${x.m/total*100}%" data-film="${i}" aria-pressed="${i===filmPick}" title="${Math.floor(x.m)} min · ${esc(x.label)}" aria-label="Minute ${Math.floor(x.m)}: ${esc(x.label)}">${x.c?x.c.slice(1):"$"}</button>`).join("")}
+      <div class="ticks"><span>0</span><span>15</span><span>30</span><span>45</span><span>60</span><span>75 min</span></div>
+    </div>
+    <div class="legend"><span><i style="background:var(--good)"></i>Worked</span><span><i style="background:var(--bad)"></i>Miss</span><span><i style="background:var(--accent)"></i>Demo</span><span><i style="background:var(--bad);border-radius:2px;width:16px;height:6px"></i>Minutes 0 to 12: backstory</span></div>
+    <span class="eyebrow">Minute ${Math.floor(f.m)} · ${esc(f.label)}</span>
+    ${detail}
+  </section>
+  <section class="block"><h2>Call scorecard</h2>
+    <div class="table"><table><thead><tr><th>Finding</th><th>Fix</th></tr></thead><tbody>
+    <tr><td>Discovery started at minute 23. The first 12 minutes were backstory.</td><td>Use-case question by minute 3.</td></tr>
+    <tr><td>Grant said “estimating” three times.</td><td>Center the demo on D05.</td></tr>
+    <tr><td>Price came before scope.</td><td>Pricing on a follow-up, approved by Josh.</td></tr>
+    <tr><td>Strong language throughout.</td><td>Fine for rapport, but it keeps the footage internal.</td></tr>
+    <tr><td>Unverified bid-speed claim.</td><td>Only documented numbers from Josh.</td></tr>
+    <tr><td>Voice-cloning line.</td><td>Our voice agent never claims to be human.</td></tr>
+    <tr><td>Worked: institutional AI framing, users/touchpoints/outcome, partner close.</td><td>Keep all three. Move T09 to the top of the call.</td></tr>
+    </tbody></table></div></section>`;
+}
+
+function viewCert(){
+  const c = S.cert;
+  return `<header class="head"><span class="stage">Final</span><h1>Certification</h1><p>${CERT.length} questions from every module. Pass at ${CERT_PASS}. You see your score when you submit. It saves in this browser.</p></header>
+  ${c?`<div class="score"><b>${c.score}/${c.total}</b><span>${c.passed?'Certified':'Not yet. Review the modules and retake.'}</span><span class="pill">${new Date(c.at).toLocaleDateString()}</span></div>`:''}
+  <form class="block" id="certForm">
+    ${CERT.map((q,i)=>`<fieldset class="q" style="border:0;margin:0;padding-inline:0"><legend class="p" style="padding:0">${i+1}. ${esc(q.p)}</legend><div class="opts">${q.o.map((o,j)=>`<label class="opt" style="display:flex;gap:10px;align-items:flex-start"><input type="radio" name="c${i}" id="c${i}_${j}" value="${j}" required> <span>${esc(o)}</span></label>`).join("")}</div></fieldset>`).join("")}
+    <div class="score"><button class="btn" type="submit">Submit</button><span id="certMsg" class="why"></span></div>
+  </form>`;
+}
+
+let teamUnsub=null;
+function viewTeam(){
+  if(!isAdmin) return `<header class="head"><h1>Team progress</h1><p>Only the owner and editors can see team progress.</p></header>`;
+  setTimeout(loadTeam,0);
+  return `<header class="head"><span class="stage">Owner and editors</span><h1>Team progress</h1><p>Every rep who signs in and works through the academy shows up here. Progress updates as they go.</p></header>
+  <section class="block"><div class="table"><table><thead><tr><th>Rep</th><th>Clips</th><th>Modules</th><th>Claims game</th><th>Certification</th><th>Last active</th></tr></thead><tbody id="teamRows"><tr><td colspan="6" class="empty">Loading team progress…</td></tr></tbody></table></div></section>`;
+}
+async function loadTeam(){
+  const rows = $("#teamRows"); if(!rows) return;
+  if(!db){ rows.innerHTML=`<tr><td colspan="6" class="empty">Team progress needs a signed-in view of the published page.</td></tr>`; return; }
+  const t = setTimeout(()=>{ if(rows.dataset.loaded!=="1") rows.innerHTML=`<tr><td colspan="6" class="empty">No response yet. Reps appear here after they finish their first clip.</td></tr>`; },10000);
+  if(teamUnsub) teamUnsub();
+  teamUnsub = db.collection("progress").onSnapshot(async snap=>{
+    clearTimeout(t); rows.dataset.loaded="1";
+    if(snap.empty){ rows.innerHTML=`<tr><td colspan="6" class="empty">No reps yet. Share the page inside Echo 1 Labs; each rep appears after their first clip.</td></tr>`; return; }
+    const ids = snap.docs.map(d=>d.id);
+    let ps = {}; try{ ps = await user.profiles(ids); }catch(e){}
+    rows.innerHTML = snap.docs.map(d=>{const x=d.data()||{}; const nm=(ps[d.id]&&ps[d.id].name)||"Someone";
+      const g = x.game&&x.game.total?`${x.game.score}/${x.game.total}`:"–";
+      const c = x.cert?`<span class="pill ${x.cert.passed?'ok':''}">${x.cert.score}/${x.cert.total}</span>`:"–";
+      return `<tr><td>${esc(nm)}</td><td class="n">${x.lessons||0}/${ALL_CLIPS.length}</td><td class="n">${(x.modsPassed||[]).length}/${MODULES.length}</td><td class="n">${g}</td><td>${c}</td><td class="n">${x.updatedAt?new Date(x.updatedAt).toLocaleDateString():"–"}</td></tr>`;}).join("");
+  }, e=>{ clearTimeout(t); rows.innerHTML=`<tr><td colspan="6" class="empty">Couldn’t load team progress (${esc(e.code||"error")}).</td></tr>`; });
+}
+
+/* ---------- Router ---------- */
+function render(){
+  const r = location.hash.slice(1) || "home";
+  let html;
+  const m = MODULES.find(x=>x.id===r);
+  if(m) html=viewModule(m);
+  else if(r==="film") html=viewFilm();
+  else if(r==="cert") html=viewCert();
+  else if(r==="team") html=viewTeam();
+  else html=viewHome();
+  $("#view").innerHTML = html;
+  renderNav();
+  bindVideos();
+}
+function rerenderKeepScroll(){ const y=window.scrollY; render(); window.scrollTo(0,y); }
+window.addEventListener("hashchange",()=>{ render(); window.scrollTo(0,0); });
+
+function bindVideos(){
+  document.querySelectorAll("video[data-clip]").forEach(v=>{
+    v.addEventListener("timeupdate",()=>{ const id=v.dataset.clip;
+      if(!S.watched[id] && v.duration && v.currentTime/v.duration>0.9){ S.watched[id]=true; persist(); const b=document.querySelector(`[data-watch="${id}"]`); if(b){b.classList.add("on"); b.textContent="Watched";} }
+    });
+    v.addEventListener("play",()=>{ document.querySelectorAll("video").forEach(o=>{ if(o!==v) o.pause(); }); });
+  });
+}
+
+document.addEventListener("click",e=>{
+  const w=e.target.closest("[data-watch]");
+  if(w){ const id=w.dataset.watch; S.watched[id]=!S.watched[id]; persist(); w.classList.toggle("on",!!S.watched[id]); w.textContent=S.watched[id]?"Watched":"Mark as watched"; return; }
+  const o=e.target.closest(".opt[data-q]");
+  if(o && !o.disabled){ const id=o.dataset.q, i=+o.dataset.i, j=+o.dataset.j; const key="q_"+id; S[key]=S[key]||{}; S[key][i]=j;
+    const m=MODULES.find(x=>x.id===id); const qs=m.quiz;
+    if(Object.keys(S[key]).length===qs.length){ const sc=qs.filter((q,k)=>S[key][k]===q.a).length; const prev=S.quiz[id]; if(!prev||sc>prev.best) S.quiz[id]={best:sc,total:qs.length}; }
+    persist(); rerenderKeepScroll(); return; }
+  const rt=e.target.closest("[data-retake]");
+  if(rt){ delete S["q_"+rt.dataset.retake]; persist(); rerenderKeepScroll(); return; }
+  const g=e.target.closest("[data-game]");
+  if(g){ const i=+g.dataset.game, v=g.dataset.v==="1"; S.game=S.game||{answers:{},score:0,total:GAME.length}; S.game.answers=S.game.answers||{}; S.game.answers[i]=v;
+    S.game.score=GAME.filter((x,k)=>S.game.answers[k]===x.ok).length; S.game.total=GAME.length; persist(); rerenderKeepScroll(); return; }
+  if(e.target.id==="resetGame"){ S.game=null; persist(); rerenderKeepScroll(); return; }
+  if(e.target.id==="checkMatch"){ const picks=MATCH.map((x,i)=>$("#mt"+i).value); S.match={picks,checked:true,score:MATCH.filter((x,i)=>picks[i]===x.a).length}; persist(); rerenderKeepScroll(); return; }
+  if(e.target.id==="revealCap"){ $("#capAns").hidden=false; return; }
+  const f=e.target.closest("[data-film]");
+  if(f){ filmPick=+f.dataset.film; rerenderKeepScroll(); return; }
+});
+document.addEventListener("input",e=>{ if(e.target.id==="capture"){ S.capture=e.target.value; try{localStorage.setItem(KEY,JSON.stringify(S));}catch(x){} } });
+document.addEventListener("submit",e=>{
+  if(e.target.id!=="certForm") return; e.preventDefault();
+  const fd=new FormData(e.target); let sc=0;
+  CERT.forEach((q,i)=>{ if(+fd.get("c"+i)===q.a) sc++; });
+  S.cert={score:sc,total:CERT.length,passed:sc>=CERT_PASS,at:new Date().toISOString()};
+  persist(); render(); window.scrollTo(0,0);
+});
+
+render();
+
+/* ---------- Capabilities: record progress per rep ---------- */
+(async()=>{
+  if(!window.claude || !window.claude.use) return;
+  try{
+    const [d,u] = await Promise.all([claude.use("db"), claude.use("user")]);
+    db=d; user=u;
+    if(user){
+      try{ isAdmin = await user.canEdit(); }catch(e){}
+      try{ uid = await user.id(); }catch(e){}
+      try{ const me = await user.me(); if(me && me.name) $("#who").textContent = "Signed in as "+me.name+". Progress is recorded for your manager."; }catch(e){}
+    }
+    if(db && uid){
+      try{
+        const snap = await db.doc("progress/"+uid).get();
+        if(snap.exists){ const x=snap.data()||{};
+          S.watched=Object.assign({},x.watched||{},S.watched);
+          for(const k in (x.quiz||{})){ if(!S.quiz[k]||x.quiz[k].best>S.quiz[k].best) S.quiz[k]=x.quiz[k]; }
+          if(!S.game && x.game) S.game=x.game;
+          if(!S.match && x.match) S.match=x.match;
+          if(x.cert && (!S.cert || x.cert.score>S.cert.score)) S.cert=x.cert;
+          try{ localStorage.setItem(KEY,JSON.stringify(S)); }catch(e){}
+        }
+      }catch(e){}
+    }
+    rerenderKeepScroll();
+  }catch(e){}
+})();
+</script>
+</body>
+</html>
