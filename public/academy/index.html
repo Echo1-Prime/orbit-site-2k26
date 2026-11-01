@@ -171,6 +171,12 @@ body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .card.wrong,.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
 .rail{border-width:0 1px 0 0;box-shadow:inset -1px 0 0 var(--glass-hi)}
 .libitem{overflow:hidden}
+.sum{margin-top:10px;padding:10px 12px;border-radius:8px;background:var(--glass-2);border:1px solid var(--glass-line);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);display:flex;flex-direction:column;gap:10px}
+.sum > summary{cursor:pointer;font-weight:600;color:var(--accent)}
+.sum[open]{gap:10px}
+.sum p{margin:2px 0 0;font-size:14px}
+.sum ul{font-size:14px}
+.libitem .sum{margin-top:0}
 .ctx{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border-radius:8px;background:var(--glass-2);border:1px solid var(--glass-line);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
 .ctx .eyebrow{color:var(--accent);font-size:10.5px}
 .ctx p{margin:0;font-size:14px;font-style:italic}
@@ -251,6 +257,103 @@ const CTX = {
 function ctxHTML(id){
   const x = CTX[id]; if(!x) return "";
   return `<div class="ctx"><span class="eyebrow">The moment · ${esc(x.at)} · ${esc(x.who)}</span><p>${esc(x.t)}</p></div>`;
+}
+
+/* Read instead of watch: on-screen content, what was said, questions asked */
+const SUM = {
+ D01:{screen:"The Business Lifecycle Management ring: Engine, RevOps, Broadcast, Signal, Ledger, Ignition, Titan and Prime around Agent Orbit.",
+  said:["Engine builds the go-to-market plan: sales, outreach, financial projections and budgets.","RevOps researches each person you plan to meet and runs outreach by text, email and voice.","Broadcast runs marketing: social, ads, photos and video.","Signal handles M&A: valuations, deal sourcing and ongoing enterprise value.","Ledger is continuous accounting: reconciliations, bookkeeping and weekly reports, like having a CFO.","Ignition covers logistics: ticketing, dispatch, risk, emergency response and sales.","Titan covers construction from the RFP through code review, plan reading, bill of materials and progress tracked in 3D.","Prime is governance: compliance, oversight and real-time alerts. You can talk or type to the agent, at your desk or in the car."],
+  asked:[]},
+ D02:{screen:"A residential barndominium job: original plans, a 3D model, a cost breakdown (hard costs, GC fee, contingencies), low/base/high scenarios and a draw schedule by phase.",
+  said:["Plans go in; Titan prices materials and labor by the ZIP code of the build.","Contingencies tell the owner what loan to ask for, so they don’t come up short at the bank.","Costs are broken into phases that match the bank’s draw schedule.","A scenario was run for an owner who wanted to buy their own materials.","The GC walks in with full transparency, so the usual owner questions are already answered."],
+  asked:["Grant (just before): is this more for mid to large builders than residential?"]},
+ D03:{screen:"An architecture firm’s project: nine candidate sites ranked against the architect’s eleven questions, with code citations, four scenario lenses and each site in 3D.",
+  said:["The firm owns land in nine places and needs to pick the next site for a gas station.","Every answer cites the code section and where in the plan it came from.","Four lenses re-rank the sites: balanced, risk first, evidence and speed (capital velocity).","Each site is built in 3D so you can walk it and adjust things like building height.","The source was a set of 2D drawings that Titan recalibrated."],
+  asked:[]},
+ D04:{screen:"The Titan preconstruction workflow, step by step.",
+  said:["Intake, land survey, soils, site work, environmental, septic and permitting.","Design for interior and outdoor living, with clash detection before takeoffs and the bill of materials.","Sub pricing and vendor management.","Titan writes the follow-ups the analysis calls for and finds the right people to send them to."],
+  asked:[]},
+ D05:{screen:"Titan estimates for a building in Philadelphia: the hosted plan set, line items matched to a price book with confidence scores, and researched prices with sources and low/mid/high ranges.",
+  said:["Titan reads the plan set and lines items up with the price book, each with a confidence score and trade category.","When it doesn’t recognize a line, it researches prices for that ZIP code and links the source so you can verify it.","You can re-research or reject a price and give feedback; the system learns from it.","Approved prices go into the price book.","Every purchase order tied to a line item updates the price book automatically."],
+  asked:[]},
+ D06:{screen:"Progress management with the build shown in 3D, then a risk profile for each project.",
+  said:["Owners and their clients can walk the build in 3D as it goes up.","Each project gets a risk profile from weather, supplier on-time data, financials and regulatory signals.","A soil-saturation sensor is in the works to update crew logistics and tell subs and owners what to expect."],
+  asked:[]},
+ D07:{screen:"Agent Orbit with Titan inside it, the studio, media approvals, and outreach agents.",
+  said:["You can talk to the agent or type to it.","The studio handles outbound marketing: social, podcasts, email outreach and media approvals.","Agents are ready from day one."],
+  asked:[]},
+ D08:{screen:"Oilfield sample data: SCADA tank levels at a tank battery, risk scores for sites and drivers, then a live spill alert.",
+  said:["Tank levels show as percentages and feed a risk profile per site.","Drivers get a risk profile from hours on shift, distance to the next stop and geofencing.","When a spill alert fires, you can delegate right away: update the organization, call or message dispatch.","Any incident brings in an environmental consultant and a paralegal at once, and the full fact file is documented.","Claims, insurance, compliance and risk sit in one roster, set to the local rules."],
+  asked:[]},
+ D09:{screen:"Driver-to-dispatch text and voice, Samsara GPS on every rig with site locations, and KPIs by site, operator and disposal.",
+  said:["Text and voice carry a request from the driver through dispatch to the executive.","Calls for sales or dispatch flow through to invoicing, with AR and AP agents doing the follow-up.","With the customer’s GPS key, rigs show live, color-coded by how much of the day’s hours are left.","Operational numbers come in from each site so owners can drill down by location, operator or disposal."],
+  asked:[]},
+ T01:{screen:null,
+  said:["Most companies use AI like Google. Each employee asks on their own, and the business keeps nothing.","Institutional AI uses the models but keeps the information and outputs on the company’s side, so it learns from everyone.","The phone is your personal AI; the company’s systems should hold the institutional one.","Josh builds it with step functions and workflows on AWS. That detail is for us, not the buyer."],
+  asked:[]},
+ T02:{screen:"Transition from the residential cost analysis to the commercial site-selection demo.",
+  said:["Josh answers “it’s both” and shows a residential job, then a commercial one.","Grant says he works mostly with residential builders but sees value for larger firms.","Josh adds that residential builders working in different areas benefit from automated code research."],
+  asked:["Grant: “Would this be more suited to mid to large construction projects? Probably not for residential builders?”"]},
+ T03:{screen:null,
+  said:["Grant: the builders he works with are most worried about estimating and the preconstruction sales process.","He isn’t sure AI is ready to solve it yet."],
+  asked:["Josh (minute 23): “Why don’t you talk me through your use case specifically?”"]},
+ T04:{screen:"A modular micro-cabin facility of 6,000 square feet, with structural plans.",
+  said:["Grant’s client builds 40 to 50 modular homes a year in a factory and wants to double.","Josh: it’s built for them to run, with some training and agents supporting on the back end.","A modular use case already exists: a planned 6,000 sq ft facility producing 12 to 24 units, with financing and expansion planning."],
+  asked:["Grant: “How do you see this fitting in? Is it for them to take and run with, or are you working with them throughout?”"]},
+ T05:{screen:null,
+  said:["Grant says he could skip what he planned to build and implement this instead.","Josh: we’re looking for product owners around the world, like a regional license in a franchise model.","Oilfield partners already want to white-label it to their clients."],
+  asked:[]},
+ T06:{screen:null,
+  said:["Josh has modeled the maintenance hours each license needs and has a support group behind it.","Suggested model: the partner helps build the agents, then helps the client set up their own Claude instance for troubleshooting.","Keep a person in the loop so clients can always reach a real person.","Grant would own the customer-facing side and needs back-end support for structural changes and feature tweaks."],
+  asked:["Grant: “Each business will need some customization. Is that part of the plan, and who does it?”"]},
+ T07:{screen:null,
+  said:["Josh offers to be Grant’s sales engineer behind the scenes.","Walk the client through their own use cases so they see the end result. More needs usually come up once they’re in."],
+  asked:["Grant: “Can you give me demo access, or would you like to run the demo, white-labeled?”"]},
+ T08:{screen:null,
+  said:["Grant says builders would win a lot more tenders.","Josh cites friends who got through three months of bid work in a day and a half. This is unverified. Internal only."],
+  asked:[]},
+ T09:{screen:"A risk profile and heat map, used to show what Josh needs to know.",
+  said:["Josh needs three things to help: who uses it, where they touch it (phone, desktop, a driver in a truck), and the outcome they want.","“The whole rest of the middle is easy.”","He offers to join the client call and sign whatever paperwork Grant needs.","He wants to understand the use case before committing."],
+  asked:["Grant: “What’s the next step for me presenting this to my client?”"]},
+ T11:{screen:null,
+  said:["Grant would lead with estimating and project management, then sell Agent Orbit once it’s saving time.","Josh agrees and says he was only showing what else is available."],
+  asked:[]},
+ T12:{screen:null,
+  said:["Josh suggests asking the builder what they do when they can’t answer the phone, or when clients call at midnight.","Voice agents are an easy entry point; customers expect a reply within minutes.","Grant: this client may not have that problem, but site teams might. The owner keeps saying “I need to solve estimating.”","Coaching flag: Josh says a voice clone means no one would know. Never repeat that."],
+  asked:["Josh: “What do they do when they can’t answer the phone?”"]},
+ T13:{screen:null,
+  said:["In Australia, site teams must report safety, compliance and incidents every day.","Grant knows a residential builder with a homegrown system: an office app plus a site app where managers log progress by trade.","That system also lets clients log feature requests, which the builder keeps building.","Grant wants a way for clients to report issues and request features automatically."],
+  asked:["Grant: “Do you have anything for day-to-day site reporting?”"]},
+ T14:{screen:null,
+  said:["Josh asks what collateral would put Grant in the best position to win.","Grant asks for demo access for a Zoom call, or for Josh to run it.","Josh commits to a five-slide teaser deck and a username and password.","Grant wants to set it up this week. Josh mentions Brandon runs partnerships.","No date was set before moving on."],
+  asked:["Grant: “What do you suggest as next steps for me going to talk with that modular builder?”","Josh: “What would you need from me, from a collateral perspective, that puts you in the best position to win?”"]},
+ T15:{screen:null,
+  said:["Josh offers a practice call before Grant presents, and to join the client call.","Homework: go through the go-to-market intake to feel the agent, then log in and explore Titan.","Josh will record a video demo and email it that night."],
+  asked:[]}
+};
+const CALL_SUMMARY = {
+ meta:"Oct 30, 2026 · 74 min · Josh Meunier with Grant Kennedy, a prospective partner in Melbourne working with residential and modular builders.",
+ flow:[
+  ["0 to 13","Introductions and backstory: time zones, Josh’s career, the oilfield work in Texas. No discovery."],
+  ["5 to 7","Institutional AI framing (T01)."],
+  ["13 to 23","Stack tour (D01), residential cost analysis (D02), commercial site selection (D03), preconstruction workflow (D04)."],
+  ["23","First discovery question. Answer: estimating and preconstruction (T03)."],
+  ["24 to 29","Estimating demo (D05). Grant’s modular client, 40 to 50 homes a year, wants to double (T04)."],
+  ["30 to 37","Partner model, support and a person in the loop, offer to be the sales engineer (T05 to T07)."],
+  ["37 to 50","3D progress and risk (D06), the bid-speed claim (T08), the users/touchpoints/outcome framework (T09), pricing (restricted), Agent Orbit (D07), Grant’s upsell path (T11)."],
+  ["52 to 57","After-hours phone question (T12); Australian site compliance and feature requests (T13)."],
+  ["57 to 67","Oilfield incident response (D08); dispatch and fleet tracking (D09)."],
+  ["68 to 75","Next steps: teaser deck, demo login, practice call, homework (T14, T15). No date locked."]],
+ heard:["Estimating is the client’s top problem. Grant said it three times.","Daily site reporting for safety and compliance is required in Australia.","Clients want a feature-request loop.","Grant wants to own the customer relationship, with back-end support."],
+ owed:["Five-slide teaser deck","Demo username and password","Recorded video demo by email","A practice call before Grant presents","A dated meeting, still open"]
+};
+function summaryHTML(id){
+  const s = SUM[id]; if(!s) return "";
+  return `<details class="sum"><summary>Read the summary instead</summary>
+    ${s.screen?`<div><span class="eyebrow">On screen</span><p>${esc(s.screen)}</p></div>`:''}
+    <div><span class="eyebrow">What was said</span><ul class="tight">${s.said.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>
+    ${s.asked.length?`<div><span class="eyebrow">Questions asked</span><ul class="tight">${s.asked.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`:''}
+  </details>`;
 }
 
 const MODULES = [
@@ -486,10 +589,10 @@ function video(id){
 function pills(id){
   const c=CLIPS[id];
   const k = c.kind==="demo" ? `<span class="pill demo">Demo · ${esc(c.product)}</span>` : `<span class="pill int">Internal film · ${esc(c.skill)}</span>`;
-  return `<div class="meta"><span class="pill">${id}</span>${k}<span class="pill">${c.len}</span>${S.watched[id]?'<span class="pill ok">Watched</span>':''}</div>`;
+  return `<div class="meta"><span class="pill">${id}</span>${k}<span class="pill">${c.len}</span>${S.watched[id]?'<span class="pill ok">Reviewed</span>':''}</div>`;
 }
 function watchBtn(id){
-  return `<button class="watch ${S.watched[id]?'on':''}" data-watch="${id}">${S.watched[id]?'Watched':'Mark as watched'}</button>`;
+  return `<button class="watch ${S.watched[id]?'on':''}" data-watch="${id}">${S.watched[id]?'Reviewed':'Mark as reviewed'}</button>`;
 }
 
 /* ---------- Nav ---------- */
@@ -518,7 +621,7 @@ function viewHome(){
   <header class="head">
     <span class="eyebrow">Echo 1 Labs · Sales Academy</span>
     <h1>Learn the motion from a real call.</h1>
-    <p>Every lesson is cut from the Oct 30 call with Grant Kennedy, a prospective partner in Melbourne. You will see what worked, what didn’t, and what to say instead. Watch each clip, pass each module check at 80%, then take the certification.</p>
+    <p>Every lesson is cut from the Oct 30 call with Grant Kennedy, a prospective partner in Melbourne. You will see what worked, what didn’t, and what to say instead. Watch each clip or read its summary, pass each module check at 80%, then take the certification.</p>
   </header>
   <div class="notice"><b>Internal only.</b> The training films show both speakers in full and contain strong language. Grant has not agreed to publication. Never share this page, a clip, or a screenshot outside Echo 1 Labs. Demo clips go to prospects only after Josh approves each one.</div>
   <section class="block">
@@ -536,7 +639,7 @@ function viewHome(){
 
 function lessonHTML(l){
   return `<article class="lesson">
-    <div>${video(l.c)}</div>
+    <div>${video(l.c)}${summaryHTML(l.c)}</div>
     <div class="coach">
       ${pills(l.c)}
       <h3>${esc(CLIPS[l.c].t)}</h3>
@@ -569,7 +672,7 @@ function extraHTML(m){
     <p>Also ask: what decisions got routed to you last week? How old are your numbers? Which process lives in one person’s head? What runs on paper or phone calls? What do you pay for and never use? Who else says yes? How do you like to get information? What happens when nobody can answer the phone?</p>
     <p>Leave the call with at least three diagnosis items, one problem with a number on it, and how they like to get information.</p></section>`;
   case "capture": return `<section class="block"><h2>Capture drill</h2>
-    <p>Watch T13 again. Write down the two requirements Grant handed over, the way you would read them back to him.</p>
+    <p>Watch T13 again or open its summary. Write down the two requirements Grant handed over, the way you would read them back to him.</p>
     <textarea id="capture" placeholder="1.\n2.">${esc(S.capture||"")}</textarea>
     <div><button class="btn ghost" id="revealCap">Show the model answer</button></div>
     <div id="capAns" hidden class="do"><b>Model answer.</b> “So you need two things. One, your site managers report safety, compliance and trade progress every day from their phone. Two, your clients can log an issue or a feature request and see it get built. Did I get that right?”</div>
@@ -578,7 +681,7 @@ function extraHTML(m){
     ${[["0 to 2","Their words: read back what they told you in discovery"],["2 to 6","Without and with: their workflow today, then with us"],["6 to 10","The board"],["10 to 14","Governance and the agents tab"],["14 to 17","Trust ladder: Shadow first"],["17 to 20","Book the process map session"]].map(r=>`<tr><td class="n">${r[0]}</td><td>${r[1]}</td></tr>`).join("")}
     </tbody></table></div></section>`;
   case "library": return `<section class="lib">${["D02","D03","D04","D05","D06","D07","D08","D09"].map(c=>`
-    <div class="libitem">${video(c)}<div class="body">${pills(c)}<h3>${esc(CLIPS[c].t)}</h3><p class="note"><b>Show it when:</b> ${esc(LIB_USE[c])}</p>${CLIPS[c].flag?`<div class="flag"><b>Review flag.</b> ${esc(CLIPS[c].flag)}</div>`:''}${watchBtn(c)}</div></div>`).join("")}</section>
+    <div class="libitem">${video(c)}<div class="body">${pills(c)}<h3>${esc(CLIPS[c].t)}</h3><p class="note"><b>Show it when:</b> ${esc(LIB_USE[c])}</p>${CLIPS[c].flag?`<div class="flag"><b>Review flag.</b> ${esc(CLIPS[c].flag)}</div>`:''}${summaryHTML(c)}${watchBtn(c)}</div></div>`).join("")}</section>
     <section class="block"><h2>Match the prospect to the clip</h2><p>Pick the clip you would lead with for each prospect, then check your answers.</p>
     <div class="cards" id="match">${MATCH.map((x,i)=>`<div class="card ${S.match&&S.match.checked?(S.match.picks[i]===x.a?'right':'wrong'):''}"><span class="s">${esc(x.s)}</span><select id="mt${i}" aria-label="Clip for prospect ${i+1}"><option value="">Choose a clip</option>${["D02","D03","D04","D05","D06","D07","D08","D09"].map(c=>`<option value="${c}" ${S.match&&S.match.picks[i]===c?'selected':''}>${c} · ${esc(CLIPS[c].t.replace(/^.*?: /,''))}</option>`).join("")}</select>${S.match&&S.match.checked&&S.match.picks[i]!==x.a?`<span class="why">Best fit: ${x.a}, ${esc(CLIPS[x.a].t)}</span>`:''}</div>`).join("")}</div>
     <div class="score"><button class="btn" id="checkMatch">Check answers</button>${S.match&&S.match.checked?`<span><b>${S.match.score}/${MATCH.length}</b> matched</span>`:''}</div></section>`;
@@ -630,7 +733,7 @@ function viewFilm(){
   const f = FILM[filmPick];
   const total = 75;
   const lesson = MODULES.flatMap(m=>m.lessons).find(l=>l.c===f.c);
-  const detail = f.c ? `<article class="lesson" style="border-top:0;padding-top:0"><div>${video(f.c)}</div><div class="coach">${pills(f.c)}<h3>${esc(CLIPS[f.c].t)}</h3>${ctxHTML(f.c)}<p class="note">${esc(lesson?lesson.note:(f.c.startsWith("D")?LIB_USE[f.c]||"Stack tour.":""))}</p>${lesson?`<p class="do"><b>Do.</b> ${esc(lesson.do)}</p><p class="dont"><b>Don’t.</b> ${esc(lesson.dont)}</p>`:''}${watchBtn(f.c)}</div></article>`
+  const detail = f.c ? `<article class="lesson" style="border-top:0;padding-top:0"><div>${video(f.c)}${summaryHTML(f.c)}</div><div class="coach">${pills(f.c)}<h3>${esc(CLIPS[f.c].t)}</h3>${ctxHTML(f.c)}<p class="note">${esc(lesson?lesson.note:(f.c.startsWith("D")?LIB_USE[f.c]||"Stack tour.":""))}</p>${lesson?`<p class="do"><b>Do.</b> ${esc(lesson.do)}</p><p class="dont"><b>Don’t.</b> ${esc(lesson.dont)}</p>`:''}${watchBtn(f.c)}</div></article>`
     : `<div class="notice"><b>${esc(f.label)}.</b> This clip is restricted. Price came before scope was known. Discovery first, pricing on a follow-up, Josh approves every term.</div>`;
   return `<header class="head"><span class="stage">Review</span><h1>Game film: the Grant Kennedy call</h1><p>74 minutes on one line. Green worked, red is a miss, orange is a demo. Click a marker to replay it.</p></header>
   <section class="block">
@@ -654,7 +757,11 @@ function viewFilm(){
     <tr><td>Unverified bid-speed claim.</td><td>Only documented numbers from Josh.</td></tr>
     <tr><td>Voice-cloning line.</td><td>Our voice agent never claims to be human.</td></tr>
     <tr><td>Worked: institutional AI framing, users/touchpoints/outcome, partner close.</td><td>Keep all three. Move T09 to the top of the call.</td></tr>
-    </tbody></table></div></section>`;
+    </tbody></table></div></section>
+  <section class="block"><h2>Call summary</h2><p>${esc(CALL_SUMMARY.meta)}</p>
+    <div class="table"><table><thead><tr><th>Minutes</th><th>What happened</th></tr></thead><tbody>${CALL_SUMMARY.flow.map(r=>`<tr><td class="n">${r[0]}</td><td>${esc(r[1])}</td></tr>`).join("")}</tbody></table></div>
+    <div class="cols" style="grid-template-columns:repeat(2,minmax(0,1fr))"><div><span class="eyebrow">What we heard</span><ul class="tight">${CALL_SUMMARY.heard.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div><div><span class="eyebrow">What we owe Grant</span><ul class="tight">${CALL_SUMMARY.owed.map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div></div>
+  </section>`;
 }
 
 function viewCert(){
@@ -711,7 +818,7 @@ window.addEventListener("hashchange",()=>{ render(); window.scrollTo(0,0); });
 function bindVideos(){
   document.querySelectorAll("video[data-clip]").forEach(v=>{
     v.addEventListener("timeupdate",()=>{ const id=v.dataset.clip;
-      if(!S.watched[id] && v.duration && v.currentTime/v.duration>0.9){ S.watched[id]=true; persist(); const b=document.querySelector(`[data-watch="${id}"]`); if(b){b.classList.add("on"); b.textContent="Watched";} }
+      if(!S.watched[id] && v.duration && v.currentTime/v.duration>0.9){ S.watched[id]=true; persist(); const b=document.querySelector(`[data-watch="${id}"]`); if(b){b.classList.add("on"); b.textContent="Reviewed";} }
     });
     v.addEventListener("play",()=>{ document.querySelectorAll("video").forEach(o=>{ if(o!==v) o.pause(); }); });
   });
@@ -719,7 +826,7 @@ function bindVideos(){
 
 document.addEventListener("click",e=>{
   const w=e.target.closest("[data-watch]");
-  if(w){ const id=w.dataset.watch; S.watched[id]=!S.watched[id]; persist(); w.classList.toggle("on",!!S.watched[id]); w.textContent=S.watched[id]?"Watched":"Mark as watched"; return; }
+  if(w){ const id=w.dataset.watch; S.watched[id]=!S.watched[id]; persist(); w.classList.toggle("on",!!S.watched[id]); w.textContent=S.watched[id]?"Reviewed":"Mark as reviewed"; return; }
   const o=e.target.closest(".opt[data-q]");
   if(o && !o.disabled){ const id=o.dataset.q, i=+o.dataset.i, j=+o.dataset.j; const key="q_"+id; S[key]=S[key]||{}; S[key][i]=j;
     const m=MODULES.find(x=>x.id===id); const qs=m.quiz;
