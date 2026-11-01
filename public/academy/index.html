@@ -171,6 +171,9 @@ body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 .card.wrong,.opt.wrong{border-color:var(--bad);background:var(--bad-bg)}
 .rail{border-width:0 1px 0 0;box-shadow:inset -1px 0 0 var(--glass-hi)}
 .libitem{overflow:hidden}
+.ctx{display:flex;flex-direction:column;gap:4px;padding:10px 12px;border-radius:8px;background:var(--glass-2);border:1px solid var(--glass-line);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)}
+.ctx .eyebrow{color:var(--accent);font-size:10.5px}
+.ctx p{margin:0;font-size:14px;font-style:italic}
 .mod:hover,.motion a:hover{border-color:var(--accent)}
 @media (max-width:860px){
   .rail{border-width:0 0 1px 0}
@@ -226,6 +229,29 @@ const CLIPS = {
  T15:{t:"Offering pre-call coaching and homework",len:"1:19",kind:"film",skill:"Close"}
 };
 const ALL_CLIPS = Object.keys(CLIPS);
+
+/* The moment: the prospect's question or the situation behind each Do and Don't */
+const CTX = {
+ T01:{at:"Minute 5",who:"Situation",t:"Grant hasn’t asked a question yet. Josh is explaining why most companies get little from AI and what changes when the company owns it."},
+ D01:{at:"Minute 13",who:"Situation",t:"First screen share of the call. Josh opens with the full stack before knowing Grant’s use case."},
+ T02:{at:"Minute 16",who:"Grant asks",t:"“Would this be more suited to mid to large construction projects? Probably not for residential builders?”"},
+ T03:{at:"Minute 23",who:"Josh asks",t:"“Why don’t you talk me through your use case specifically?” Grant: the builders’ biggest worry is estimating and the preconstruction sales process."},
+ T04:{at:"Minute 27",who:"Grant asks",t:"“My client does modular builds, 40 to 50 houses a year, and wants to double that. How do you see this fitting in? Do they run with it, or do you work with them throughout?”"},
+ T05:{at:"Minute 30",who:"Grant says",t:"“We could skip everything I was going to do and just implement this into their business.” Josh answers with the regional partner offer."},
+ T06:{at:"Minute 31",who:"Grant asks",t:"“Each business will need some customization, and the next one will need something else. Who handles that and the upkeep?”"},
+ T07:{at:"Minute 36",who:"Grant asks",t:"“Can you give me demo access to run through it with them, or would you like to run the demo yourself?”"},
+ T08:{at:"Minute 41",who:"Grant says",t:"Builders would be “winning a lot more tenders.” Josh answers with a friend’s result that has not been documented."},
+ T09:{at:"Minute 44",who:"Grant asks",t:"“What’s the next step, in terms of me presenting this to this particular client?”"},
+ T11:{at:"Minute 49",who:"Grant says",t:"“I would sell them the estimating and project management first. Once that’s saving them time, this would be the upsell.”"},
+ T12:{at:"Minute 52",who:"Grant says",t:"“I’m happy to spitball where to go with this.” Josh suggests asking what the builder does when nobody can answer the phone."},
+ T13:{at:"Minute 54",who:"Grant says",t:"“Safety and compliance reporting on site is really big in Australia. Do you have day-to-day reporting? And a way for clients to request features?”"},
+ T14:{at:"Minute 68",who:"Grant asks",t:"“What do you suggest the next steps are for me going to talk with that modular builder?”"},
+ T15:{at:"Minute 73",who:"Grant says",t:"“I’ll have a bit of a brainstorm on how I’m going to approach it all, and get back to you.”"}
+};
+function ctxHTML(id){
+  const x = CTX[id]; if(!x) return "";
+  return `<div class="ctx"><span class="eyebrow">The moment · ${esc(x.at)} · ${esc(x.who)}</span><p>${esc(x.t)}</p></div>`;
+}
 
 const MODULES = [
  {id:"m1",n:"01",name:"Positioning",stage:"Before every call",
@@ -514,6 +540,7 @@ function lessonHTML(l){
     <div class="coach">
       ${pills(l.c)}
       <h3>${esc(CLIPS[l.c].t)}</h3>
+      ${ctxHTML(l.c)}
       <p class="note">${esc(l.note)}</p>
       <p class="do"><b>Do.</b> ${esc(l.do)}</p>
       <p class="dont"><b>Don’t.</b> ${esc(l.dont)}</p>
@@ -603,7 +630,7 @@ function viewFilm(){
   const f = FILM[filmPick];
   const total = 75;
   const lesson = MODULES.flatMap(m=>m.lessons).find(l=>l.c===f.c);
-  const detail = f.c ? `<article class="lesson" style="border-top:0;padding-top:0"><div>${video(f.c)}</div><div class="coach">${pills(f.c)}<h3>${esc(CLIPS[f.c].t)}</h3><p class="note">${esc(lesson?lesson.note:(f.c.startsWith("D")?LIB_USE[f.c]||"Stack tour.":""))}</p>${lesson?`<p class="do"><b>Do.</b> ${esc(lesson.do)}</p><p class="dont"><b>Don’t.</b> ${esc(lesson.dont)}</p>`:''}${watchBtn(f.c)}</div></article>`
+  const detail = f.c ? `<article class="lesson" style="border-top:0;padding-top:0"><div>${video(f.c)}</div><div class="coach">${pills(f.c)}<h3>${esc(CLIPS[f.c].t)}</h3>${ctxHTML(f.c)}<p class="note">${esc(lesson?lesson.note:(f.c.startsWith("D")?LIB_USE[f.c]||"Stack tour.":""))}</p>${lesson?`<p class="do"><b>Do.</b> ${esc(lesson.do)}</p><p class="dont"><b>Don’t.</b> ${esc(lesson.dont)}</p>`:''}${watchBtn(f.c)}</div></article>`
     : `<div class="notice"><b>${esc(f.label)}.</b> This clip is restricted. Price came before scope was known. Discovery first, pricing on a follow-up, Josh approves every term.</div>`;
   return `<header class="head"><span class="stage">Review</span><h1>Game film: the Grant Kennedy call</h1><p>74 minutes on one line. Green worked, red is a miss, orange is a demo. Click a marker to replay it.</p></header>
   <section class="block">
@@ -619,6 +646,7 @@ function viewFilm(){
   </section>
   <section class="block"><h2>Call scorecard</h2>
     <div class="table"><table><thead><tr><th>Finding</th><th>Fix</th></tr></thead><tbody>
+    <tr><td>The call ran 74 minutes and went on longer than it should have.</td><td>Hold to the playbook: 45-minute discovery and a 20-minute demo, in separate meetings.</td></tr>
     <tr><td>Discovery started at minute 23. The first 12 minutes were backstory.</td><td>Use-case question by minute 3.</td></tr>
     <tr><td>Grant said “estimating” three times.</td><td>Center the demo on D05.</td></tr>
     <tr><td>Price came before scope.</td><td>Pricing on a follow-up, approved by Josh.</td></tr>
