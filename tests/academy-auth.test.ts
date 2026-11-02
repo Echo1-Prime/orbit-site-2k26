@@ -32,4 +32,5 @@ test('expired, wrong-kind, wrong-secret and tampered tokens fail', async () => {
   assert.equal(await verifyToken(SECRET, 'invite', `${body}.${sig}x`, members, now), null);
   assert.equal(await verifyToken(SECRET, 'invite', '', members, now), null);
   assert.equal(await verifyToken(SECRET, 'invite', 'garbage', members, now), null);
+  assert.equal(await verifyToken(SECRET, 'invite', `${'a'.repeat(5000)}.${sig}`, members, now), null);
 });

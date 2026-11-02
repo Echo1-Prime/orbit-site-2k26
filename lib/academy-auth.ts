@@ -11,6 +11,7 @@ export const SESSION_COOKIE = 'academy_session';
 export const INVITE_PARAM = 'invite';
 export const INVITE_TTL_SECONDS = 14 * 24 * 60 * 60;
 export const SESSION_TTL_SECONDS = 30 * 24 * 60 * 60;
+export const MAX_TOKEN_LENGTH = 512;
 
 type Kind = 'invite' | 'session';
 
@@ -82,7 +83,8 @@ export async function verifyToken(
   members: Set<string>,
   now = Math.floor(Date.now() / 1000),
 ): Promise<string | null> {
-  if (!token) return null;
+  // Real tokens are about 150 characters. Refuse anything far larger before any crypto work.
+  if (!token || token.length > MAX_TOKEN_LENGTH) return null;
   const dot = token.indexOf('.');
   if (dot < 1 || dot !== token.lastIndexOf('.')) return null;
   const body = token.slice(0, dot);
