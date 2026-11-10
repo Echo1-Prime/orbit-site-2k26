@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { GhostButton } from '@/components/ao/feedback/GhostButton';
+import SignInMenu from '@/components/SignIn/SignInMenu';
 import { NAV_LINKS } from './chrome-data';
 import { ghostProps } from './ghost';
 import type { BandTheme } from './useChromeScroll';
@@ -64,6 +65,7 @@ export default function SiteHeader({ theme, menuOpen, onToggleMenu, onAsk, onSta
           ))}
         </nav>
         <div className={`${styles.actions} ${styles.wide}`}>
+          <SignInMenu variant="site" />
           <span className={styles.askOn}>
             <GhostButton {...ghostProps('secondary', 'sm')} onClick={onAsk}>
               Ask Agent Orbit
