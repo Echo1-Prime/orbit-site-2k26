@@ -38,6 +38,13 @@ export const NAV_LINKS = [
   { href: '/about', label: 'About' },
 ] as const;
 
+// Product app sign-in destinations, shown in the header "Sign in" menu.
+export const SIGN_IN_APPS = [
+  { name: 'Orbit', line: 'Operations', href: 'https://agent-orbit.echo1labs.com' },
+  { name: 'Titan', line: 'Construction', href: 'https://titan.echo1labs.com' },
+  { name: 'Signal', line: 'M&A', href: 'https://signal.echo1labs.com' },
+] as const;
+
 export const FOOTER_LINKS = [
   { href: '/how-it-works', label: 'How It Works' },
   { href: '/products', label: 'Products' },

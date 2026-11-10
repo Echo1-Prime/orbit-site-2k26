@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import OrbitMark from '@/components/OrbitMark/OrbitMark';
+import SignInMenu from '@/components/SignIn/SignInMenu';
 import { NAV_LINKS } from '@/lib/site';
 import styles from './Header.module.css';
 
@@ -23,9 +24,12 @@ export default function Header() {
           ))}
         </nav>
 
-        <Link href="/contact" className={`btn btn--primary btn--sm ${styles.cta}`}>
-          Schedule a Call
-        </Link>
+        <div className={styles.actions}>
+          <SignInMenu variant="marketing" />
+          <Link href="/contact" className={`btn btn--primary btn--sm ${styles.cta}`}>
+            Schedule a Call
+          </Link>
+        </div>
       </div>
     </header>
   );
