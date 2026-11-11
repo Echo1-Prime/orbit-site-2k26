@@ -38,12 +38,14 @@ export const NAV_LINKS = [
   { href: '/about', label: 'About' },
 ] as const;
 
-// Product app sign-in destinations, shown in the header "Sign in" menu.
-export const SIGN_IN_APPS = [
+// The /sign-in page. Each app runs its own sign-in; these links only route people to the right app.
+export const SIGN_IN_PATH = '/sign-in';
+export const SIGN_IN_APPS: { name: string; line?: string; href: string }[] = [
   { name: 'Orbit', line: 'Operations', href: 'https://agent-orbit.echo1labs.com' },
   { name: 'Titan', line: 'Construction', href: 'https://titan.echo1labs.com' },
   { name: 'Signal', line: 'M&A', href: 'https://signal.echo1labs.com' },
-] as const;
+  { name: 'Go-to-market Engine', href: 'https://gtm-engine.echo1labs.com' },
+];
 
 export const FOOTER_LINKS = [
   { href: '/how-it-works', label: 'How It Works' },

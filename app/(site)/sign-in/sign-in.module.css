@@ -1,0 +1,105 @@
+/* /sign-in. Agent Orbit tokens only (styles/ao); no hex values here. */
+
+/* .ao-site main zeroes padding-top (styles/ao/site.css), so the spacing lives on .inner. */
+.main {
+  min-height: calc(100vh - 52px);
+  background: var(--ao-void);
+}
+.inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(3rem, 9vw, 6rem) 16px clamp(3rem, 7vw, 5rem);
+}
+.eyebrow {
+  margin: 0 0 12px;
+  font-family: var(--ao-f-mono);
+  font-weight: 300;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ao-orbit);
+}
+.title {
+  margin: 0;
+  font-family: var(--ao-f-display);
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 3rem);
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  color: var(--ao-t0);
+}
+.intro {
+  margin: 12px 0 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ao-t1);
+}
+.grid {
+  margin: clamp(28px, 5vw, 40px) 0 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+@media (min-width: 640px) {
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  min-height: 88px;
+  padding: 18px 20px;
+  border-radius: var(--ao-r-card);
+  border: 1px solid var(--ao-bd-1);
+  background: var(--ao-sf-0);
+  text-decoration: none;
+  color: var(--ao-t0);
+  transition: border-color 160ms var(--ao-ease-out), background-color 160ms var(--ao-ease-out);
+}
+.card:hover {
+  border-color: var(--ao-orbit-30);
+  background: var(--ao-sf-1);
+  color: var(--ao-t0);
+}
+.card:focus-visible {
+  outline: 1px solid var(--ao-orbit);
+  outline-offset: 2px;
+}
+.body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.name {
+  font-family: var(--ao-f-display);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.2;
+}
+.line {
+  font-family: var(--ao-f-mono);
+  font-weight: 300;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ao-t1);
+}
+.host {
+  font-size: 13px;
+  color: var(--ao-t1);
+  overflow-wrap: anywhere;
+}
+.arrow {
+  font-family: var(--ao-f-mono);
+  font-size: 16px;
+  color: var(--ao-orbit);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card { transition: none; }
+}

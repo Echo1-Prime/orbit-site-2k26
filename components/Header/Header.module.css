@@ -60,7 +60,6 @@
 @media (max-width: 720px) {
   .nav { display: none; }
   .inner { gap: 1rem; }
-  /* Fixed header is the panel anchor for the Sign in menu at this width. */
   .actions { margin-left: auto; }
 }
 /* Phones: the mark carries the lockup (the link keeps its "Echo 1 Labs home" name) so

@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { GhostButton } from '@/components/ao/feedback/GhostButton';
-import SignInMenu from '@/components/SignIn/SignInMenu';
+import { SIGN_IN_PATH } from '@/lib/site';
 import { NAV_LINKS } from './chrome-data';
 import { ghostProps } from './ghost';
 import type { BandTheme } from './useChromeScroll';
@@ -65,7 +65,9 @@ export default function SiteHeader({ theme, menuOpen, onToggleMenu, onAsk, onSta
           ))}
         </nav>
         <div className={`${styles.actions} ${styles.wide}`}>
-          <SignInMenu variant="site" />
+          <Link href={SIGN_IN_PATH} className="ao-btn" style={ghostProps('secondary', 'sm').style}>
+            Sign in
+          </Link>
           <span className={styles.askOn}>
             <GhostButton {...ghostProps('secondary', 'sm')} onClick={onAsk}>
               Ask Agent Orbit
