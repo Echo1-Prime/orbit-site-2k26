@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import OrbitMark from '@/components/OrbitMark/OrbitMark';
-import SignInMenu from '@/components/SignIn/SignInMenu';
-import { NAV_LINKS } from '@/lib/site';
+import { NAV_LINKS, SIGN_IN_PATH } from '@/lib/site';
 import styles from './Header.module.css';
 
 // Official Echo 1 Labs lockup: the animated Agent Orbit mark (Solar Orange orbital,
@@ -25,7 +24,9 @@ export default function Header() {
         </nav>
 
         <div className={styles.actions}>
-          <SignInMenu variant="marketing" />
+          <Link href={SIGN_IN_PATH} className="btn btn--ghost btn--sm">
+            Sign in
+          </Link>
           <Link href="/contact" className={`btn btn--primary btn--sm ${styles.cta}`}>
             Schedule a Call
           </Link>
