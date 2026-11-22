@@ -1,7 +1,8 @@
 // Print a personal Sales Academy sign-in link for each email given.
-// The email must also be in ACADEMY_MEMBERS in Vercel, or the link is refused.
+// The email must also be on the academy member list (Vercel Global Config, key academy_members),
+// or the link is refused when opened. Links made here last 14 days; emailed ones last 15 minutes.
 //
-//   vercel env pull .env.academy --environment=production
+//   vercel env pull .env.academy --environment=production   (needs ACADEMY_LINK_SECRET only)
 //   node --env-file=.env.academy --experimental-strip-types scripts/academy-link.mts brandon@echo1labs.com
 //   rm .env.academy
 import { INVITE_PARAM, INVITE_TTL_SECONDS, normalizeEmail, signToken } from '../lib/academy-auth.ts';
@@ -19,11 +20,7 @@ if (emails.length === 0) {
   process.exit(1);
 }
 
-const members = new Set(
-  (process.env.ACADEMY_MEMBERS ?? '').split(',').map(normalizeEmail).filter((e) => e.includes('@')),
-);
 for (const email of emails) {
   const token = await signToken(secret, 'invite', email, INVITE_TTL_SECONDS);
-  const warn = members.size > 0 && !members.has(email) ? '   (not in ACADEMY_MEMBERS yet)' : '';
-  console.log(`${email}\n${BASE}?${INVITE_PARAM}=${token}${warn}\n`);
+  console.log(`${email}\n${BASE}?${INVITE_PARAM}=${token}\n`);
 }

@@ -584,7 +584,7 @@ function overall(){
 const $ = s=>document.querySelector(s);
 function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
 function video(id){
-  return `<div class="vid"><video controls preload="metadata" playsinline data-clip="${id}" src="/academy/videos/${id}.mp4#t=0.5"></video></div>`;
+  return `<div class="vid"><video controls preload="none" playsinline data-clip="${id}"></video></div>`;
 }
 function pills(id){
   const c=CLIPS[id];
@@ -815,8 +815,25 @@ function render(){
 function rerenderKeepScroll(){ const y=window.scrollY; render(); window.scrollTo(0,y); }
 window.addEventListener("hashchange",()=>{ render(); window.scrollTo(0,0); });
 
+/* Clips are private: each gets a short-lived signed URL from the server just before it is needed,
+   and asks again if the URL has expired (the server answers 404 and the player raises an error). */
+async function armClip(v,at){
+  try{
+    const r=await fetch("/academy/clip-url?id="+encodeURIComponent(v.dataset.clip),{credentials:"same-origin",cache:"no-store"});
+    if(!r.ok) return;
+    const j=await r.json();
+    v.preload="metadata";
+    v.src=j.url+"#t="+(at||0.5);
+  }catch(e){}
+}
+const clipWatcher = "IntersectionObserver" in window ? new IntersectionObserver(es=>{
+  es.forEach(en=>{ if(en.isIntersecting){ clipWatcher.unobserve(en.target); armClip(en.target); } });
+},{rootMargin:"300px"}) : null;
+
 function bindVideos(){
   document.querySelectorAll("video[data-clip]").forEach(v=>{
+    if(clipWatcher) clipWatcher.observe(v); else armClip(v);
+    v.addEventListener("error",()=>{ if(v.src && (+v.dataset.retries||0)<3){ v.dataset.retries=(+v.dataset.retries||0)+1; armClip(v,v.currentTime); } });
     v.addEventListener("timeupdate",()=>{ const id=v.dataset.clip;
       if(!S.watched[id] && v.duration && v.currentTime/v.duration>0.9){ S.watched[id]=true; persist(); const b=document.querySelector(`[data-watch="${id}"]`); if(b){b.classList.add("on"); b.textContent="Reviewed";} }
     });

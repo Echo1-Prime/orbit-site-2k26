@@ -20,6 +20,8 @@ const nextConfig: NextConfig = {
   // This project is a nested repo; pin tracing to it so the parent lockfile
   // is not mistaken for the workspace root.
   outputFileTracingRoot: __dirname,
+  // The Sales Academy page is not in public/; /academy reads it from disk, so ship it with that function.
+  outputFileTracingIncludes: { '/academy': ['./academy-private/**/*'] },
   // Product posters live on the primary domain until copied local; allow that origin.
   images: {
     remotePatterns: [
