@@ -1,39 +1,35 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import {
-  INVITE_PARAM,
-  SESSION_COOKIE,
-  SESSION_TTL_SECONDS,
-  parseMembers,
-  signToken,
-  verifyToken,
-} from './lib/academy-auth';
+import { INVITE_PARAM, SESSION_COOKIE, SESSION_TTL_SECONDS, signToken, verifyToken } from './lib/academy-auth';
+import { loadMembers } from './lib/academy-store';
+import { shell } from './lib/academy-pages';
 
-// Gate for the internal Sales Academy at /academy (page and clips).
-// Personal sign-in links: members by email in ACADEMY_MEMBERS, links signed with
-// ACADEMY_LINK_SECRET (both set in Vercel). Make a link with scripts/academy-link.mts.
-// Fails closed: with either variable unset, nothing under /academy is served.
+// Gate for the internal Sales Academy at /academy: the page, the clip URLs and the
+// admin view. Members come from the allowlist in Vercel Global Config (lib/academy-store),
+// links and cookies are signed with ACADEMY_LINK_SECRET. Fails closed: with the secret
+// unset or the list unreadable or empty, nothing under /academy is served except
+// the sign-in form, which reveals nothing. Route handlers re-check the session
+// themselves (lib/academy-session), so they never depend on this file having run.
 const NOINDEX = 'noindex, nofollow';
 
-function page(status: number, title: string, line: string): NextResponse {
-  const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>${title}</title><style>:root{color-scheme:dark}body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0A0A0E;color:#F5F0FA;font:16px/1.5 system-ui,-apple-system,sans-serif;padding:16px}main{max-width:420px;text-align:center}h1{font-size:20px;margin:0 0 8px}p{margin:0;color:#F5F0FA;opacity:.75}span{color:#FF7515}</style></head><body><main><h1><span>Echo 1 Labs</span> Sales Academy</h1><p>${line}</p></main></body></html>`;
-  return new NextResponse(html, {
-    status,
-    headers: { 'Content-Type': 'text/html; charset=utf-8', 'X-Robots-Tag': NOINDEX, 'Cache-Control': 'no-store' },
-  });
-}
-
 export async function middleware(req: NextRequest) {
+  const path = req.nextUrl.pathname;
+  if (path === '/academy/sign-in' || path === '/academy/sign-in/') return NextResponse.next();
+
   const secret = process.env.ACADEMY_LINK_SECRET;
-  const members = parseMembers(process.env.ACADEMY_MEMBERS);
-  if (!secret || secret.length < 32 || members.size === 0) {
-    return page(503, 'Sales Academy', 'The Sales Academy is not configured.');
+  const members = await loadMembers();
+  if (!secret || secret.length < 32 || !members || members.size === 0) {
+    return shell(503, 'Sales Academy', '<p style="text-align:center">The Sales Academy is not configured.</p>');
   }
 
   const invite = req.nextUrl.searchParams.get(INVITE_PARAM);
   if (invite) {
     const email = await verifyToken(secret, 'invite', invite, members);
     if (!email) {
-      return page(401, 'Link not active', 'This sign-in link has expired or is no longer active. Ask Josh for a new one.');
+      return shell(
+        401,
+        'Link not active',
+        '<p style="text-align:center">This sign-in link has expired or is no longer active.</p><p style="text-align:center"><a href="/academy/sign-in">Get a new one</a></p>',
+      );
     }
     const clean = req.nextUrl.clone();
     clean.searchParams.delete(INVITE_PARAM);
@@ -52,14 +48,14 @@ export async function middleware(req: NextRequest) {
 
   const email = await verifyToken(secret, 'session', req.cookies.get(SESSION_COOKIE)?.value, members);
   if (!email) {
-    return page(401, 'Members only', 'This page is for Sales Academy members. Open the personal link you were sent.');
+    return shell(
+      401,
+      'Members only',
+      '<p style="text-align:center">This page is for Sales Academy members.</p><p style="text-align:center"><a href="/academy/sign-in">Sign in with your email</a></p>',
+    );
   }
 
-  const path = req.nextUrl.pathname;
-  const res =
-    path === '/academy' || path === '/academy/'
-      ? NextResponse.rewrite(new URL('/academy/index.html', req.url))
-      : NextResponse.next();
+  const res = NextResponse.next();
   res.headers.set('X-Robots-Tag', NOINDEX);
   res.headers.set('Cache-Control', 'private, no-store');
   return res;
