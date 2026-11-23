@@ -20,8 +20,24 @@ for a fresh URL as each clip nears the screen, and again if one expires.
 ## Roles
 
 `owner` can add or remove anyone and set any role, but cannot remove or demote the last
-owner. `point-of-contact` can add and remove plain members, nothing else. `member` has no
-admin access. The admin view is `/academy/admin`. Rules: `lib/academy-members.ts`.
+owner. `point-of-contact` can add and remove members and partners, nothing else.
+`member` sees the internal Academy and has no admin access. `partner` is for outside
+partners: it sees the partner training only (below) and has no admin access. The admin view
+is `/academy/admin`. Rules: `lib/academy-members.ts`.
+
+## Partner training
+
+Partner clips use ids `P01`, `P02`, ... and live in their own private Blob folder,
+`academy/partner/<id>.mp4`, apart from the internal clips in `academy/videos/`. The id
+decides the audience (`lib/academy-clips.ts`). A partner is served `academy-private/partner.html`
+instead of the internal page, so internal training text never reaches them, and the clip
+routes refuse any internal clip for a partner. To add a partner clip: upload it, then add
+its entry to the `CLIPS` list in `partner.html`.
+```bash
+vercel blob put ./P01.mp4 --pathname academy/partner/P01.mp4 --access private --content-type video/mp4 --force
+```
+All partners share the same partner folder. Keeping one partner's call recordings from
+another partner would need a folder per partner and is not built.
 
 ## Setup steps
 
@@ -29,10 +45,10 @@ admin access. The admin view is `/academy/admin`. Rules: `lib/academy-members.ts
    project. Vercel sets `GLOBAL_CONFIG` (read side). For the admin view's write side also
    set `GLOBAL_CONFIG_ID`, `VERCEL_ACCESS_TOKEN` (a token that can edit that store) and,
    for a team, `VERCEL_TEAM_ID`. Without the write variables the admin view is read-only.
-2. **Seed the list.** Print the JSON from the old variable, naming the roles yourself,
-   and paste it as the `academy_members` item:
+2. **Seed the list.** Print the JSON, naming the roles yourself, and paste it as the
+   `academy_members` item (`--partner` is for outside partners):
    ```bash
-   node --experimental-strip-types scripts/academy-seed-members.mts --owner you@example.com --poc contact@example.com --members "a@example.com,b@example.com"
+   node --experimental-strip-types scripts/academy-seed-members.mts --owner you@example.com --poc contact@example.com --members "a@example.com,b@example.com" --partner p@example.com
    ```
 3. **Private Blob store.**
    ```bash

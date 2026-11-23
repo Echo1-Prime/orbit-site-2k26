@@ -1,7 +1,7 @@
 import { get } from '@vercel/blob';
 import { verifyToken } from '../../../../lib/academy-auth';
 import { authenticate } from '../../../../lib/academy-session';
-import { CLIP_ID, clipPath } from '../../../../lib/academy-clips';
+import { CLIP_ID, canViewClip, clipPath } from '../../../../lib/academy-clips';
 import { loadMembers } from '../../../../lib/academy-store';
 
 // Streams one clip out of the private Blob store. Needs BOTH a live member session and
@@ -20,7 +20,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
   const { id } = await params;
   if (!CLIP_ID.test(id)) return DENIED.clone();
   const auth = await authenticate(req);
-  if (auth.state !== 'member') return DENIED.clone();
+  if (auth.state !== 'member' || !canViewClip(auth.who.role, id)) return DENIED.clone();
 
   const members = await loadMembers();
   const t = new URL(req.url).searchParams.get('t');

@@ -15,7 +15,9 @@ export async function GET(req: Request) {
   if (auth.state !== 'member') {
     return shell(401, 'Members only', '<p style="text-align:center"><a href="/academy/sign-in">Sign in with your email</a></p>');
   }
-  let html = await readFile(path.join(process.cwd(), 'academy-private', 'index.html'), 'utf8');
+  // Partners get their own page: the internal page carries internal training text.
+  const file = auth.who.role === 'partner' ? 'partner.html' : 'index.html';
+  let html = await readFile(path.join(process.cwd(), 'academy-private', file), 'utf8');
   if (canAdmin(auth.who.role)) {
     html = html.replace(
       '</body>',

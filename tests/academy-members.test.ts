@@ -42,6 +42,12 @@ test('validEmail normalizes and rejects junk', () => {
   }
 });
 
+test('partners have no admin rights and cannot change the list', () => {
+  assert.equal(canAdmin('partner'), false);
+  assert.equal(addMember(base(), 'partner', 'x@example.com', 'partner').ok, false);
+  assert.equal(removeMember(new Map([...base(), ['p@example.com', 'partner' as Role]]), 'partner', 'rep@example.com').ok, false);
+});
+
 test('members have no admin rights; owners and points of contact do', () => {
   assert.equal(canAdmin('member'), false);
   assert.equal(canAdmin(undefined), false);
@@ -50,6 +56,14 @@ test('members have no admin rights; owners and points of contact do', () => {
   const r = addMember(base(), 'member', 'new@example.com', 'member');
   assert.equal(r.ok, false);
   assert.equal(removeMember(base(), 'member', 'rep@example.com').ok, false);
+});
+
+test('a point of contact can add and remove members and partners', () => {
+  const partner = addMember(base(), 'point-of-contact', 'p@example.com', 'partner');
+  assert.ok(partner.ok);
+  assert.equal(partner.ok && partner.members.get('p@example.com'), 'partner');
+  assert.ok(removeMember(partner.ok ? partner.members : base(), 'point-of-contact', 'p@example.com').ok);
+  assert.ok(addMember(base(), 'point-of-contact', 'rep@example.com', 'partner').ok, 'can move a member to partner');
 });
 
 test('a point of contact can add and remove plain members', () => {
@@ -64,6 +78,7 @@ test('a point of contact can add and remove plain members', () => {
 test('a point of contact cannot grant roles or touch owners and other points of contact', () => {
   assert.equal(addMember(base(), 'point-of-contact', 'x@example.com', 'owner').ok, false);
   assert.equal(addMember(base(), 'point-of-contact', 'x@example.com', 'point-of-contact').ok, false);
+  assert.equal(addMember(base(), 'point-of-contact', 'poc@example.com', 'partner').ok, false); // demote another point of contact
   assert.equal(addMember(base(), 'point-of-contact', 'boss@example.com', 'member').ok, false); // demote the owner
   assert.equal(removeMember(base(), 'point-of-contact', 'boss@example.com').ok, false);
   assert.equal(removeMember(base(), 'point-of-contact', 'poc@example.com').ok, false);

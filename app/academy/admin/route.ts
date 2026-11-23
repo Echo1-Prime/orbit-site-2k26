@@ -1,6 +1,6 @@
 import { shell, esc } from '../../../lib/academy-pages';
 import { authenticate, sameOrigin } from '../../../lib/academy-session';
-import { addMember, canAdmin, removeMember, ROLES, type Members, type Role } from '../../../lib/academy-members';
+import { addMember, canAdmin, POC_MANAGES, removeMember, ROLES, type Members, type Role } from '../../../lib/academy-members';
 import { canWriteMembers, loadMembers, saveMembers } from '../../../lib/academy-store';
 
 // Member admin for owners and points of contact. Rules live in lib/academy-members.ts.
@@ -10,11 +10,11 @@ import { canWriteMembers, loadMembers, saveMembers } from '../../../lib/academy-
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const LABEL: Record<Role, string> = { owner: 'Owner', 'point-of-contact': 'Point of contact', member: 'Member' };
+const LABEL: Record<Role, string> = { owner: 'Owner', 'point-of-contact': 'Point of contact', member: 'Member', partner: 'Partner' };
 
 function view(members: Members, actor: Role, message = '', status = 200): Response {
   const writable = canWriteMembers();
-  const roles = actor === 'owner' ? ROLES : (['member'] as const);
+  const roles = actor === 'owner' ? ROLES : POC_MANAGES;
   const rows = [...members.entries()]
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([email, role]) => {
