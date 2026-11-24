@@ -25,8 +25,8 @@ video{width:100%;border-radius:8px;background:#000}
   <div id="list"></div>
 </main>
 <script>
-/* Partner clips are ids P01, P02, ... stored in the private blob folder academy/partner/.
-   Add an entry here when a clip is uploaded: { id: "P01", title: "...", note: "...", len: "4:10" }. */
+/* Filled in by the server for the signed-in partner, from clips.json in their own private
+   blob folder (lib/academy-clips.ts). Keep this line as is: the server replaces it. */
 const CLIPS = [];
 
 function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}

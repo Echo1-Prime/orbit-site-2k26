@@ -29,7 +29,7 @@ export async function GET(req: Request, { params }: { params: Promise<{ id: stri
 
   try {
     const range = req.headers.get('range');
-    const result = await get(clipPath(id), { access: 'private', ...(range ? { headers: { range } } : {}) });
+    const result = await get(clipPath(id, auth.who.email), { access: 'private', ...(range ? { headers: { range } } : {}) });
     if (!result || !result.stream) return DENIED.clone();
     const headers = new Headers({
       'Content-Type': 'video/mp4',
