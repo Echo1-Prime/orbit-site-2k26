@@ -27,17 +27,27 @@ is `/academy/admin`. Rules: `lib/academy-members.ts`.
 
 ## Partner training
 
-Partner clips use ids `P01`, `P02`, ... and live in their own private Blob folder,
-`academy/partner/<id>.mp4`, apart from the internal clips in `academy/videos/`. The id
-decides the audience (`lib/academy-clips.ts`). A partner is served `academy-private/partner.html`
-instead of the internal page, so internal training text never reaches them, and the clip
-routes refuse any internal clip for a partner. To add a partner clip: upload it, then add
-its entry to the `CLIPS` list in `partner.html`.
+Partner clips use ids `P01`, `P02`, ... and are personal: each partner has their own private
+Blob folder, `academy/partner/<key>/`, where `<key>` is the first 24 hex characters of the
+SHA-256 of their lowercased email (`partnerKey` in `lib/academy-clips.ts`). The folder is
+chosen from the signed-in email, never from the request, so one partner cannot reach another
+partner's recordings, and the email never appears in a blob path or in this public repo.
+
+A partner is served `academy-private/partner.html`, so the internal page never reaches them,
+and the clip routes refuse any internal clip for a partner. Owners, points of contact and
+members see the internal clips only; partner clips are served to their partner alone.
+
+To share a recording with one partner, put two things in that partner's folder:
+
 ```bash
-vercel blob put ./P01.mp4 --pathname academy/partner/P01.mp4 --access private --content-type video/mp4 --force
+KEY=$(node -e "console.log(require('crypto').createHash('sha256').update(process.argv[1].trim().toLowerCase()).digest('hex').slice(0,24))" partner@example.com)
+vercel blob put ./P01.mp4 --pathname academy/partner/$KEY/P01.mp4 --access private --content-type video/mp4
+vercel blob put ./clips.json --pathname academy/partner/$KEY/clips.json --access private --content-type application/json --force
 ```
-All partners share the same partner folder. Keeping one partner's call recordings from
-another partner would need a folder per partner and is not built.
+
+`clips.json` lists that partner's clips, for example
+`[{"id":"P01","title":"Founder meeting","note":"Our call on 19 November","len":"67:00"}]`.
+The page reads it on every load; entries that are not a `P##` id with a title are dropped.
 
 ## Setup steps
 
