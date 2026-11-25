@@ -62,7 +62,7 @@ function viewSwitcher(options: { value: string; label: string }[], current: stri
     .join('');
   const note = current ? `<span style="color:#FF7515">Viewing as ${esc(current.replace('partner:', 'partner '))}</span> ` : '';
   return (
-    '<form method="post" action="/academy/view" style="position:fixed;left:12px;bottom:12px;font:13px system-ui;background:#fff;color:#111;border:1px solid #ccc;border-radius:6px;padding:6px 8px">' +
+    '<form method="post" action="/academy/view" style="position:fixed;right:12px;bottom:44px;z-index:2147483000;font:13px system-ui;background:#fff;color:#111;border:1px solid #ccc;border-radius:6px;padding:6px 8px">' +
     note +
     `<label>View as <select name="view">${opts}</select></label> <button type="submit">Switch</button></form>`
   );
