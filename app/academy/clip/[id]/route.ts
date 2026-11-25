@@ -1,6 +1,6 @@
 import { get } from '@vercel/blob';
 import { verifyToken } from '../../../../lib/academy-auth';
-import { authenticate } from '../../../../lib/academy-session';
+import { authenticateView } from '../../../../lib/academy-session';
 import { CLIP_ID, canViewClip, clipPath } from '../../../../lib/academy-clips';
 import { loadMembers } from '../../../../lib/academy-store';
 
@@ -19,7 +19,7 @@ const DENIED = new Response('Not found', { status: 404, headers: { 'Cache-Contro
 export async function GET(req: Request, { params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   if (!CLIP_ID.test(id)) return DENIED.clone();
-  const auth = await authenticate(req);
+  const auth = await authenticateView(req);
   if (auth.state !== 'member' || !canViewClip(auth.who.role, id)) return DENIED.clone();
 
   const members = await loadMembers();

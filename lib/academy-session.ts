@@ -4,6 +4,7 @@
 import { SESSION_COOKIE, verifyToken } from './academy-auth.ts';
 import { loadMembers } from './academy-store.ts';
 import type { Role } from './academy-members.ts';
+import { VIEW_COOKIE, resolveView } from './academy-viewas.ts';
 
 export type Who = { email: string; role: Role };
 export type Auth = { state: 'unconfigured' } | { state: 'anonymous' } | { state: 'member'; who: Who };
@@ -33,5 +34,31 @@ export function sameOrigin(req: Request): boolean {
     return new URL(origin).host === new URL(req.url).host;
   } catch {
     return false;
+  }
+}
+
+// Like authenticate, but an owner may be viewing as another role or one partner (see
+// academy-viewas.ts). `who` is the identity to SERVE (page, clips); `actor` is the real
+// signed-in person, which admin and the view switch must keep using.
+export type ViewAuth =
+  | { state: 'unconfigured' }
+  | { state: 'anonymous' }
+  | { state: 'member'; who: Who; actor: Who; viewing: string | null };
+
+export async function authenticateView(req: Request): Promise<ViewAuth> {
+  const auth = await authenticate(req);
+  if (auth.state !== 'member') return auth;
+  const members = await loadMembers();
+  if (auth.who.role !== 'owner' || !members) return { state: 'member', who: auth.who, actor: auth.who, viewing: null };
+  const raw = readCookie(req.headers.get('cookie'), VIEW_COOKIE);
+  const view = resolveView(auth.who, raw === undefined ? undefined : safeDecode(raw), members);
+  return { state: 'member', who: view.who, actor: auth.who, viewing: view.viewing };
+}
+
+function safeDecode(v: string): string | undefined {
+  try {
+    return decodeURIComponent(v);
+  } catch {
+    return undefined;
   }
 }
