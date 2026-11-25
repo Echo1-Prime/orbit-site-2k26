@@ -3,12 +3,14 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   CLIP_ID,
-  CLIPS_PLACEHOLDER,
+  MY_CLIPS_PLACEHOLDER,
+  ROLE_PLACEHOLDER,
   canViewClip,
   clipAudience,
   clipPath,
-  injectPartnerClips,
+  injectPersonal,
   parsePartnerManifest,
+  partnerFolder,
   partnerKey,
   partnerManifestPath,
 } from '../lib/academy-clips.ts';
@@ -60,27 +62,29 @@ test('the partner list keeps clean P## entries and drops everything else', () =>
   for (const bad of [null, undefined, {}, 'x', 7]) assert.deepEqual(parsePartnerManifest(bad), []);
 });
 
-test('the clip list is injected into the partner page and cannot break out of the script', () => {
-  const page = readFileSync(new URL('../academy-private/partner.html', import.meta.url), 'utf8');
-  assert.ok(page.includes(CLIPS_PLACEHOLDER), 'partner.html must keep the placeholder line');
-  const html = injectPartnerClips(page, [{ id: 'P01', title: '</script><script>alert(1)</script>', note: '', len: '' }]);
-  assert.ok(!html.includes(CLIPS_PLACEHOLDER));
+test('personal clips and role are injected into the internal page and cannot break out of the script', () => {
+  const page = readFileSync(new URL('../academy-private/index.html', import.meta.url), 'utf8');
+  assert.ok(page.includes(MY_CLIPS_PLACEHOLDER), 'index.html must keep the MY_CLIPS line');
+  assert.ok(page.includes(ROLE_PLACEHOLDER), 'index.html must keep the ROLE line');
+  const html = injectPersonal(page, [{ id: 'P01', title: '</script><script>alert(1)</script>', note: '', len: '' }], 'partner');
+  assert.ok(!html.includes(MY_CLIPS_PLACEHOLDER));
+  assert.ok(!html.includes(ROLE_PLACEHOLDER));
   assert.ok(!html.includes('</script><script>alert(1)'));
-  assert.ok(html.includes('const CLIPS = [{"id":"P01"'));
-  assert.ok(injectPartnerClips(page, []).includes('const CLIPS = [];'));
+  assert.ok(html.includes('const MY_CLIPS = [{"id":"P01"'));
+  assert.ok(html.includes('const ROLE = "partner";'));
+  assert.ok(injectPersonal(page, [], 'member').includes('const MY_CLIPS = [];'));
 });
 
-test('a partner sees partner clips only, never an internal clip', () => {
-  assert.equal(canViewClip('partner', 'P01'), true);
-  assert.equal(canViewClip('partner', 'P99'), true);
-  for (const id of ['D01', 'D09', 'T01', 'T15']) assert.equal(canViewClip('partner', id), false);
-});
-
-test('owners, points of contact and members see internal clips, not personal partner clips', () => {
-  for (const role of ['owner', 'point-of-contact', 'member'] as Role[]) {
-    for (const id of ['D01', 'T01']) assert.equal(canViewClip(role, id), true);
-    assert.equal(canViewClip(role, 'P01'), false);
+test('every known role can view internal clips and personal clips', () => {
+  for (const role of ['owner', 'point-of-contact', 'member', 'partner'] as Role[]) {
+    for (const id of ['D01', 'D09', 'T01', 'T15', 'P01', 'P99']) assert.equal(canViewClip(role, id), true, `${role} ${id}`);
   }
+});
+
+test('a personal clip path always comes from the viewer email, never from the request', () => {
+  assert.equal(clipPath('P01', 'a@example.com'), `${partnerFolder('a@example.com')}/P01.mp4`);
+  assert.notEqual(clipPath('P01', 'a@example.com'), clipPath('P01', 'b@example.com'));
+  assert.equal(clipPath('D01', 'a@example.com'), clipPath('D01', 'b@example.com'));
 });
 
 test('no role, an unknown role or a bad id sees nothing', () => {

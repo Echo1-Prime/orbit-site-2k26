@@ -29,14 +29,13 @@ export const partnerManifestPath = (email: string) => `${partnerFolder(email)}/c
 export const clipPath = (id: string, email: string) =>
   clipAudience(id) === 'partner' ? `${partnerFolder(email)}/${id}.mp4` : `academy/videos/${id}.mp4`;
 
-// Partners see their own partner clips only. Owners, points of contact and members see the
-// internal clips; partner clips are personal to one partner, so nobody else is served them.
+// Every known role sees the internal clips (D##, T##): partners now get the same training as
+// everyone else. Personal clips (P##) are served to any role too, but only from the folder of
+// the signed-in email (clipPath), so a person can only ever reach their OWN recordings.
 // Anything that is not a known role sees nothing.
 export function canViewClip(role: Role | undefined, id: string): boolean {
   if (!CLIP_ID.test(id)) return false;
-  if (role === 'partner') return clipAudience(id) === 'partner';
-  if (role === 'owner' || role === 'point-of-contact' || role === 'member') return clipAudience(id) === 'internal';
-  return false;
+  return role === 'owner' || role === 'point-of-contact' || role === 'member' || role === 'partner';
 }
 
 export type PartnerClip = { id: string; title: string; note: string; len: string };
@@ -71,8 +70,13 @@ export function scriptJson(value: unknown): string {
     .replace(/\u2029/g, '\\u2029');
 }
 
-export const CLIPS_PLACEHOLDER = 'const CLIPS = [];';
+// The internal page carries two placeholder lines the server replaces for the signed-in
+// person: their own recordings (from clips.json in their private folder) and their role.
+export const MY_CLIPS_PLACEHOLDER = 'const MY_CLIPS = [];';
+export const ROLE_PLACEHOLDER = 'const ROLE = "";';
 
-export function injectPartnerClips(html: string, clips: PartnerClip[]): string {
-  return html.replace(CLIPS_PLACEHOLDER, () => `const CLIPS = ${scriptJson(clips)};`);
+export function injectPersonal(html: string, clips: PartnerClip[], role: Role): string {
+  return html
+    .replace(MY_CLIPS_PLACEHOLDER, () => `const MY_CLIPS = ${scriptJson(clips)};`)
+    .replace(ROLE_PLACEHOLDER, () => `const ROLE = ${scriptJson(role)};`);
 }
