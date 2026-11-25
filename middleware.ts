@@ -14,6 +14,8 @@ const NOINDEX = 'noindex, nofollow';
 export async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
   if (path === '/academy/sign-in' || path === '/academy/sign-in/') return NextResponse.next();
+  // The owner password form is public like the email form; its route returns 404 unless enabled.
+  if (path === '/academy/owner-sign-in' || path === '/academy/owner-sign-in/') return NextResponse.next();
 
   const secret = process.env.ACADEMY_LINK_SECRET;
   const members = await loadMembers();
