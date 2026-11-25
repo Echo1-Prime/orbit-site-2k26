@@ -1,13 +1,13 @@
 import { after } from 'next/server';
-import { get, list, put } from '@vercel/blob';
-import { partnerFolder } from '../../../lib/academy-clips';
-import { loadAliases, loadMembers } from '../../../lib/academy-store';
+import { get, put } from '@vercel/blob';
+import { loadMembers } from '../../../lib/academy-store';
+import { loadAliases } from '../../../lib/academy-zoom-store';
 import {
   ingestKey,
   matchPerson,
-  nextClipId,
   parseRecordingCompleted,
   pickMp4,
+  stagedVideoPath,
   urlValidationResponse,
   verifySignature,
   type IngestRecord,
@@ -16,8 +16,10 @@ import {
 
 // Zoom `recording.completed` receiver. Off (404) until ZOOM_WEBHOOK_SECRET is set. Verifies the
 // signature on the raw body, answers fast, then streams the MP4 into private Blob in the
-// background as PENDING. Nobody sees a recording until an owner approves it. A call that does not
-// name exactly one listed person waits as UNASSIGNED in `academy/ingest/raw/`.
+// background. EVERY recording is staged at `academy/ingest/raw/<key>.mp4`, outside every person's
+// folder, so nobody can play it. A call that names exactly one listed person is PENDING with that
+// person as the suggested owner; anything else is UNASSIGNED. Only owner approval (slice 2) copies
+// it into the person's folder as the next P## and lists it in their clips.json.
 //
 // UNVERIFIED: that a 300-800 MB stream finishes inside maxDuration. A failure is recorded as
 // `failed` in the record, never lost silently.
@@ -92,7 +94,11 @@ export async function POST(req: Request) {
   try {
     await writeRecord(record, false);
   } catch {
-    return Response.json({ duplicate: true }); // a parallel delivery created it first
+    // Either a parallel delivery created the record first (a real duplicate), or the write failed.
+    // Only a record we can read back counts as a duplicate; otherwise answer 500 so Zoom redelivers
+    // instead of the recording being dropped. UNVERIFIED: Zoom's retry policy for non-2xx answers.
+    if (await readRecord(key)) return Response.json({ duplicate: true });
+    return new Response('Could not record the delivery', { status: 500 });
   }
   after(() => ingest(rec, record));
   return Response.json({ accepted: true });
@@ -106,22 +112,14 @@ async function ingest(rec: ZoomRecording, record: IngestRecord) {
 
     const members = await loadMembers();
     const who = members ? matchPerson(rec.topic, await loadAliases(), members) : null;
-
-    let path: string;
-    let clipId: string | null = null;
-    if (who) {
-      const folder = partnerFolder(who);
-      const taken = (await list({ prefix: `${folder}/` })).blobs.map((x) => x.pathname);
-      clipId = nextClipId(taken);
-      path = `${folder}/${clipId}.mp4`;
-    } else {
-      path = `academy/ingest/raw/${record.key}.mp4`;
-    }
+    // Staged outside every person's folder whether matched or not: a P## file in a person's folder
+    // is playable by them even before it is in clips.json, so it must not land there unapproved.
+    const path = stagedVideoPath(record.key);
 
     const res = await fetch(file.url, { headers: { Authorization: `Bearer ${rec.downloadToken}` } });
     if (!res.ok || !res.body) return fail(`Zoom download answered ${res.status}`);
     await put(path, res.body, { access: 'private', contentType: 'video/mp4', multipart: true, allowOverwrite: false });
-    await writeRecord({ ...record, status: who ? 'pending' : 'unassigned', assignedTo: who, clipId, path }, true);
+    await writeRecord({ ...record, status: who ? 'pending' : 'unassigned', assignedTo: who, clipId: null, path }, true);
   } catch (e) {
     await fail(e instanceof Error ? e.message : 'ingest failed');
   }

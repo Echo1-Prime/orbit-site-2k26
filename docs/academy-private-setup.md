@@ -113,10 +113,11 @@ A small "Owner sign in" link under the email form opens a password form for owne
 `POST /hooks/zoom` receives Zoom's `recording.completed` event. It is off (404) until `ZOOM_WEBHOOK_SECRET` is set in Vercel production.
 
 What it does: checks Zoom's signature on the raw body (and refuses anything older than 5 minutes), answers at once, then streams the call's MP4 into private Blob in the background.
-- If the meeting topic names exactly one listed person (see aliases below), the file goes to that person's folder as the next free `P##.mp4` and the record is `pending`.
-- Otherwise it waits at `academy/ingest/raw/<key>.mp4` as `unassigned`.
+- Every recording is staged at `academy/ingest/raw/<key>.mp4`, outside every person's folder, so nobody can play it. (Any `P##.mp4` inside a person's folder is playable by that person even before it is in `clips.json`, so nothing lands there unapproved.)
+- If the meeting topic names exactly one listed person (see aliases below), the record is `pending` with that person as the suggested owner. Otherwise it is `unassigned`.
+- If the first write of the record fails, the route answers 500 so Zoom redelivers, instead of treating it as a duplicate.
 - Each call has a record at `academy/ingest/<key>.json` (status, topic, date, length; the Zoom topic is for owners only and is never shown to the person).
-- A recording is NOT listed for anyone until an owner adds it to that person's `clips.json`. The approval screen in the admin page is the next slice; until then, approve by hand with the steps above.
+- A recording reaches nobody until an owner approves it: approval copies the staged file into the person's folder as the next free `P##.mp4` and adds it to their `clips.json`. The approval screen in the admin page is the next slice; until then, approve by hand with the steps above.
 
 Setup (Josh):
 1. In the Zoom App Marketplace, create a Webhook Only app (UNVERIFIED: exact app type and menu names; check Zoom's current UI), add the event `recording.completed`, and set the endpoint URL to `https://www.echo1labs.com/hooks/zoom`. Zoom will send an `endpoint.url_validation` challenge, which the route answers once the secret is set.

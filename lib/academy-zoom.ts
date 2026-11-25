@@ -125,6 +125,10 @@ export function parseAliases(raw: unknown): Record<string, string> {
 
 export const ingestKey = (uuid: string) => createHash('sha256').update(uuid).digest('hex').slice(0, 24);
 
+// Where an ingested recording waits until an owner approves it. Never inside a person's folder
+// (academy/partner/...), because any P## file there is playable by that person.
+export const stagedVideoPath = (key: string) => `academy/ingest/raw/${key}.mp4`;
+
 // Next free personal clip id (P01, P02...) given the file names already in the person's folder
 // and any ids already promised in the manifest.
 export function nextClipId(taken: Iterable<string>): string {
@@ -161,9 +165,9 @@ export type IngestRecord = {
   startTime: string;
   durationMinutes: number;
   status: IngestStatus;
-  assignedTo: string | null;
-  clipId: string | null;
-  path: string | null;
+  assignedTo: string | null; // suggested by the topic match; an owner confirms or changes it on approval
+  clipId: string | null; // set only on approval, when the file is copied into the person's folder
+  path: string | null; // the staged file while not approved
   error: string | null;
   receivedAt: string;
 };

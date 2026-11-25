@@ -128,3 +128,29 @@ test('labels use only the date and length, never the Zoom topic', () => {
   assert.equal(clipLabels('2026-11-23T17:09:43Z', 55).len, '55:00');
   assert.equal(clipLabels('nonsense', 5).note, 'Our call');
 });
+
+test('a staged recording never sits inside a person folder, where any P## file is playable', async () => {
+  const { stagedVideoPath } = await import('../lib/academy-zoom.ts');
+  const { partnerFolder } = await import('../lib/academy-clips.ts');
+  const key = ingestKey('UUID/with+chars==');
+  const p = stagedVideoPath(key);
+  assert.equal(p, `academy/ingest/raw/${key}.mp4`);
+  assert.ok(!p.startsWith('academy/partner/'));
+  assert.ok(!p.startsWith(`${partnerFolder('hesham.talaat@thedepthgroup.com')}/`));
+  assert.ok(!/\/P\d{2}\.mp4$/.test(p));
+});
+
+test('modules the Edge middleware loads never import the Node-only Zoom module', async () => {
+  const { readFile } = await import('node:fs/promises');
+  for (const f of ['lib/academy-store.ts', 'lib/academy-session.ts', 'lib/academy-auth.ts', 'lib/academy-members.ts', 'middleware.ts']) {
+    const src = await readFile(new URL(`../${f}`, import.meta.url), 'utf8');
+    assert.ok(!/academy-zoom/.test(src), `${f} must not import academy-zoom`);
+  }
+});
+
+test('the receiver stages every recording and does not write into a person folder', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const src = await readFile(new URL('../app/hooks/zoom/route.ts', import.meta.url), 'utf8');
+  assert.ok(src.includes('stagedVideoPath(record.key)'));
+  assert.ok(!/partnerFolder|nextClipId/.test(src));
+});
