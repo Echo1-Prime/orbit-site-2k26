@@ -44,7 +44,7 @@ export async function POST(req: Request) {
     }
   }
   const ip = req.headers.get('x-real-ip') ?? req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ?? 'unknown';
-  const who = ownerSignIn(email, password, ip, { storedHash, members: await loadMembers(), ipLimiter, emailLimiter });
+  const who = await ownerSignIn(email, password, ip, { storedHash, members: await loadMembers(), ipLimiter, emailLimiter });
   if (!who || !secret || secret.length < 32) return shell(401, TITLE, form('That did not work.'));
 
   const token = await signToken(secret, 'session', who, SESSION_TTL_SECONDS);

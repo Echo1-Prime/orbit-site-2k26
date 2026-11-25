@@ -5,7 +5,7 @@
 // is an owner on the live member list can sign in with it. Every attempt runs the scrypt
 // check, even for an email that is not an owner, so timing does not reveal who is an owner.
 
-import { randomBytes, scryptSync, timingSafeEqual } from 'node:crypto';
+import { randomBytes, scrypt, scryptSync, timingSafeEqual, type ScryptOptions } from 'node:crypto';
 import { normalizeEmail } from './academy-auth.ts';
 import type { Members } from './academy-members.ts';
 import type { Limiter } from './academy-ratelimit.ts';
@@ -20,8 +20,12 @@ export function hashPassword(password: string, salt: Buffer = randomBytes(16)): 
   return `scrypt$${N}$${R}$${P}$${salt.toString('base64')}$${hash.toString('base64')}`;
 }
 
-// A malformed stored hash verifies nothing.
-export function verifyPassword(password: string, stored: string | undefined): boolean {
+const scryptAsync = (password: string, salt: Buffer, keylen: number, opts: ScryptOptions) =>
+  new Promise<Buffer>((resolve, reject) => scrypt(password, salt, keylen, opts, (err, key) => (err ? reject(err) : resolve(key))));
+
+// A malformed stored hash verifies nothing. Runs scrypt off the main thread (async), so
+// a burst of attempts cannot freeze the server instance.
+export async function verifyPassword(password: string, stored: string | undefined): Promise<boolean> {
   if (!stored) return false;
   const parts = stored.split('$');
   if (parts.length !== 6 || parts[0] !== 'scrypt') return false;
@@ -31,7 +35,7 @@ export function verifyPassword(password: string, stored: string | undefined): bo
     const salt = Buffer.from(parts[4], 'base64');
     const want = Buffer.from(parts[5], 'base64');
     if (want.length === 0 || salt.length === 0) return false;
-    const got = scryptSync(password, salt, want.length, { N: n, r, p });
+    const got = await scryptAsync(password, salt, want.length, { N: n, r, p });
     return timingSafeEqual(got, want);
   } catch {
     return false;
@@ -49,13 +53,17 @@ export type OwnerSignInDeps = {
 const MAX_PASSWORD = 256;
 
 // Returns the owner's email on success, null for every failure (the caller shows one message).
-export function ownerSignIn(emailRaw: unknown, passwordRaw: unknown, ip: string, deps: OwnerSignInDeps): string | null {
+// Over either rate limit, no hashing happens at all: a blocked caller costs almost nothing.
+// Within the limits, scrypt runs for every attempt, even for an email that is not an owner,
+// so timing does not reveal who is an owner.
+export async function ownerSignIn(emailRaw: unknown, passwordRaw: unknown, ip: string, deps: OwnerSignInDeps): Promise<string | null> {
   const email = typeof emailRaw === 'string' ? normalizeEmail(emailRaw) : '';
   const password = typeof passwordRaw === 'string' && passwordRaw.length <= MAX_PASSWORD ? passwordRaw : '';
-  // Evaluate everything, no short circuit, so one condition failing does not change the work done.
+  // Both limiters tick on every attempt (no short circuit), so one tripping does not change the counting.
   const ipOk = deps.ipLimiter.allow(`ip:${ip}`, deps.now);
   const emailOk = deps.emailLimiter.allow(`email:${email}`, deps.now);
-  const passwordOk = verifyPassword(password, deps.storedHash);
+  if (!ipOk || !emailOk) return null;
+  const passwordOk = await verifyPassword(password, deps.storedHash);
   const isOwner = Boolean(deps.members && deps.members.get(email) === 'owner');
-  return ipOk && emailOk && passwordOk && isOwner && password.length > 0 ? email : null;
+  return passwordOk && isOwner && password.length > 0 ? email : null;
 }

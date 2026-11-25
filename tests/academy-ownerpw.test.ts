@@ -21,51 +21,60 @@ const deps = (over: Partial<Parameters<typeof ownerSignIn>[3]> = {}) => ({
   ...over,
 });
 
-test('the hash is salted, never holds the password, and verifies only the right one', () => {
+test('the hash is salted, never holds the password, and verifies only the right one', async () => {
   const a = hashPassword(PW);
   const b = hashPassword(PW);
   assert.notEqual(a, b);
   assert.ok(!a.includes(PW));
-  assert.ok(verifyPassword(PW, a));
-  assert.ok(!verifyPassword(PW + 'x', a));
-  assert.ok(!verifyPassword('', a));
+  assert.ok(await verifyPassword(PW, a));
+  assert.ok(!(await verifyPassword(PW + 'x', a)));
+  assert.ok(!(await verifyPassword('', a)));
 });
 
-test('a missing or malformed stored hash verifies nothing', () => {
+test('a missing or malformed stored hash verifies nothing', async () => {
   for (const bad of [undefined, '', 'scrypt$1$2', 'bcrypt$16384$8$1$AAAA$AAAA', 'scrypt$x$8$1$AAAA$AAAA', 'scrypt$16384$8$1$$']) {
-    assert.equal(verifyPassword(PW, bad), false, String(bad));
+    assert.equal(await verifyPassword(PW, bad), false, String(bad));
   }
 });
 
-test('an owner with the right password signs in, email case ignored', () => {
-  assert.equal(ownerSignIn('Boss@Example.com', PW, '1.1.1.1', deps()), 'boss@example.com');
+test('an owner with the right password signs in, email case ignored', async () => {
+  assert.equal(await ownerSignIn('Boss@Example.com', PW, '1.1.1.1', deps()), 'boss@example.com');
 });
 
-test('wrong password, non-owner roles, unknown email and bad input all fail', () => {
-  assert.equal(ownerSignIn('boss@example.com', 'nope', '1.1.1.1', deps()), null);
-  assert.equal(ownerSignIn('poc@example.com', PW, '1.1.1.1', deps()), null);
-  assert.equal(ownerSignIn('pat@example.com', PW, '1.1.1.1', deps()), null);
-  assert.equal(ownerSignIn('ghost@example.com', PW, '1.1.1.1', deps()), null);
-  assert.equal(ownerSignIn(42, PW, '1.1.1.1', deps()), null);
-  assert.equal(ownerSignIn('boss@example.com', 42, '1.1.1.1', deps()), null);
-  assert.equal(ownerSignIn('boss@example.com', '', '1.1.1.1', deps()), null);
-  assert.equal(ownerSignIn('boss@example.com', 'x'.repeat(300), '1.1.1.1', deps()), null);
+test('wrong password, non-owner roles, unknown email and bad input all fail', async () => {
+  assert.equal(await ownerSignIn('boss@example.com', 'nope', '1.1.1.1', deps()), null);
+  assert.equal(await ownerSignIn('poc@example.com', PW, '1.1.1.1', deps()), null);
+  assert.equal(await ownerSignIn('pat@example.com', PW, '1.1.1.1', deps()), null);
+  assert.equal(await ownerSignIn('ghost@example.com', PW, '1.1.1.1', deps()), null);
+  assert.equal(await ownerSignIn(42, PW, '1.1.1.1', deps()), null);
+  assert.equal(await ownerSignIn('boss@example.com', 42, '1.1.1.1', deps()), null);
+  assert.equal(await ownerSignIn('boss@example.com', '', '1.1.1.1', deps()), null);
+  assert.equal(await ownerSignIn('boss@example.com', 'x'.repeat(300), '1.1.1.1', deps()), null);
 });
 
-test('feature off or member list unreadable fails closed', () => {
-  assert.equal(ownerSignIn('boss@example.com', PW, '1.1.1.1', deps({ storedHash: undefined })), null);
-  assert.equal(ownerSignIn('boss@example.com', PW, '1.1.1.1', deps({ members: null })), null);
+test('feature off or member list unreadable fails closed', async () => {
+  assert.equal(await ownerSignIn('boss@example.com', PW, '1.1.1.1', deps({ storedHash: undefined })), null);
+  assert.equal(await ownerSignIn('boss@example.com', PW, '1.1.1.1', deps({ members: null })), null);
 });
 
-test('attempts are rate limited per email, and a lockout also blocks the right password', () => {
+test('attempts are rate limited per email, and a lockout also blocks the right password', async () => {
   const d = deps({ emailLimiter: createLimiter(3, 60_000) });
-  for (let i = 0; i < 3; i++) assert.equal(ownerSignIn('boss@example.com', 'wrong', `9.9.9.${i}`, d), null);
-  assert.equal(ownerSignIn('boss@example.com', PW, '8.8.8.8', d), null);
+  for (let i = 0; i < 3; i++) assert.equal(await ownerSignIn('boss@example.com', 'wrong', `9.9.9.${i}`, d), null);
+  assert.equal(await ownerSignIn('boss@example.com', PW, '8.8.8.8', d), null);
 });
 
-test('attempts are rate limited per IP', () => {
+test('attempts are rate limited per IP', async () => {
   const d = deps({ ipLimiter: createLimiter(2, 60_000) });
-  assert.equal(ownerSignIn('boss@example.com', PW, '7.7.7.7', d), 'boss@example.com');
-  assert.equal(ownerSignIn('boss@example.com', PW, '7.7.7.7', d), 'boss@example.com');
-  assert.equal(ownerSignIn('boss@example.com', PW, '7.7.7.7', d), null);
+  assert.equal(await ownerSignIn('boss@example.com', PW, '7.7.7.7', d), 'boss@example.com');
+  assert.equal(await ownerSignIn('boss@example.com', PW, '7.7.7.7', d), 'boss@example.com');
+  assert.equal(await ownerSignIn('boss@example.com', PW, '7.7.7.7', d), null);
+});
+
+test('a rate limited attempt never reaches the hash check', async () => {
+  const d = deps({ ipLimiter: createLimiter(1, 60_000), storedHash: 'scrypt$16384$8$1$AAAA$AAAA' });
+  await ownerSignIn('boss@example.com', 'x', '6.6.6.6', d);
+  const t0 = process.hrtime.bigint();
+  for (let i = 0; i < 200; i++) assert.equal(await ownerSignIn('boss@example.com', PW, '6.6.6.6', d), null);
+  const ms = Number(process.hrtime.bigint() - t0) / 1e6;
+  assert.ok(ms < 250, `200 blocked attempts took ${ms}ms, hashing is happening`);
 });
