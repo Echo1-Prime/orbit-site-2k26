@@ -19,8 +19,11 @@ const MAX_BODY = 2048;
 
 const form = `<p style="text-align:center">Enter your email to get a sign-in link.</p><form method="post" action="/academy/sign-in"><input type="email" name="email" autocomplete="email" maxlength="254" required placeholder="you@company.com" aria-label="Email"><button type="submit">Send link</button></form>`;
 
+// A small link, shown only when owner password sign-in is switched on.
+const ownerLink = '<p style="text-align:center;font-size:13px"><a href="/academy/owner-sign-in">Owner sign in</a></p>';
+
 export async function GET() {
-  return shell(200, 'Sales Academy sign-in', form);
+  return shell(200, 'Sales Academy sign-in', form + (process.env.ACADEMY_OWNER_PASSWORD_HASH ? ownerLink : ''));
 }
 
 export async function POST(req: Request) {

@@ -94,3 +94,12 @@ The page reads it on every load; entries that are not a `P##` id with a title ar
   on a preview deployment.
 - **The old URLs were public.** The clips and page sat in `public/` and in git history.
   Moving them does not un-share anything already copied, and the history still holds the files.
+
+## Owner password sign-in (optional)
+
+A small "Owner sign in" link under the email form opens a password form for owners only. It is off until `ACADEMY_OWNER_PASSWORD_HASH` is set in Vercel production; with it unset the link is hidden and `/academy/owner-sign-in` returns 404.
+
+- Store only the hash. Generate it from stdin so the password never touches a command line: `printf '%s' "$PW" | node --experimental-strip-types scripts/academy-owner-password.mts`. Keep the password in 1Password.
+- Only an email that is an owner on the member list can use it. Every attempt runs the hash check, so timing does not reveal owners.
+- Rate limited 5 per 15 minutes per IP and per email, in memory per instance. Add a Vercel Firewall rate-limit rule on `POST /academy/owner-sign-in` as the hard limit.
+- To turn it off, remove the env var. To rotate, set a new hash.
