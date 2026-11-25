@@ -208,6 +208,10 @@ body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
 </div>
 
 <script>
+/* Filled in by the server for the signed-in person (lib/academy-clips.ts): their own recordings
+   from their private folder, and their role. Keep these two lines as they are. */
+const MY_CLIPS = [];
+const ROLE = "";
 /* ---------- Content ---------- */
 const CLIPS = {
  D01:{t:"Business Lifecycle Management in two minutes",len:"2:32",kind:"demo",product:"Stack tour"},
@@ -600,6 +604,7 @@ function renderNav(){
   const route = location.hash.slice(1) || "home";
   const items = [`<a href="#home" ${route==="home"?'aria-current="page"':''}><span class="num">00</span><span class="t">Start here<small>How the academy works</small></span><span class="st"></span></a>`,
     `<div class="sep">Modules</div>`];
+  if(MY_CLIPS.length||ROLE==="partner") items.splice(1,0,`<div class="sep">Your recordings</div>`,`<a href="#mine" ${route==="mine"?'aria-current="page"':''}><span class="num">★</span><span class="t">My recordings<small>${MY_CLIPS.length?MY_CLIPS.length+" from your calls":"Added after your calls"}</small></span><span class="st"></span></a>`);
   MODULES.forEach(m=>{
     const d=modDone(m);
     items.push(`<a href="#${m.id}" ${route===m.id?'aria-current="page"':''}><span class="num">${m.n}</span><span class="t">${esc(m.name)}<small>${esc(m.stage)}</small></span><span class="st ${d?'done':''}">${d?'Done':''}</span></a>`);
@@ -798,12 +803,19 @@ async function loadTeam(){
   }, e=>{ clearTimeout(t); rows.innerHTML=`<tr><td colspan="6" class="empty">Couldn’t load team progress (${esc(e.code||"error")}).</td></tr>`; });
 }
 
+function viewMine(){
+  const head=`<header class="head"><span class="stage">Your recordings</span><h1>Your calls with Echo 1 Labs</h1><p>Only you can see these. They are cut from your own calls.</p></header>`;
+  if(!MY_CLIPS.length) return head+`<section class="block"><p class="empty">Nothing has been shared with you yet. We will add your recordings here after your call.</p></section>`;
+  return head+MY_CLIPS.map(c=>`<section class="block"><h2>${esc(c.title)}</h2><p>${esc(c.note||"")}${c.len?" ("+esc(c.len)+")":""}</p><video controls preload="none" playsinline data-clip="${esc(c.id)}" style="width:100%;border-radius:8px;background:#000"></video></section>`).join("");
+}
+
 /* ---------- Router ---------- */
 function render(){
   const r = location.hash.slice(1) || "home";
   let html;
   const m = MODULES.find(x=>x.id===r);
   if(m) html=viewModule(m);
+  else if(r==="mine") html=viewMine();
   else if(r==="film") html=viewFilm();
   else if(r==="cert") html=viewCert();
   else if(r==="team") html=viewTeam();

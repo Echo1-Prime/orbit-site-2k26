@@ -6,7 +6,7 @@ import { authenticateView } from '../../lib/academy-session';
 import { loadMembers } from '../../lib/academy-store';
 import { viewOptions } from '../../lib/academy-viewas';
 import { canAdmin } from '../../lib/academy-members';
-import { injectPartnerClips, parsePartnerManifest, partnerManifestPath, type PartnerClip } from '../../lib/academy-clips';
+import { injectPersonal, parsePartnerManifest, partnerManifestPath, type PartnerClip } from '../../lib/academy-clips';
 
 // The Sales Academy page. The file is not in public/, so it is only ever served here,
 // after the session is checked (again, after the middleware).
@@ -19,10 +19,10 @@ export async function GET(req: Request) {
   if (auth.state !== 'member') {
     return shell(401, 'Members only', '<p style="text-align:center"><a href="/academy/sign-in">Sign in with your email</a></p>');
   }
-  // Partners get their own page: the internal page carries internal training text.
-  const file = auth.who.role === 'partner' ? 'partner.html' : 'index.html';
-  let html = await readFile(path.join(process.cwd(), 'academy-private', file), 'utf8');
-  if (auth.who.role === 'partner') html = injectPartnerClips(html, await loadPartnerClips(auth.who.email));
+  // Everyone gets the same internal training. Each person's own recordings (their private
+  // folder, chosen by their signed-in email) are added to the page for them alone.
+  let html = await readFile(path.join(process.cwd(), 'academy-private', 'index.html'), 'utf8');
+  html = injectPersonal(html, await loadPartnerClips(auth.who.email), auth.who.role);
   if (canAdmin(auth.who.role)) {
     html = html.replace(
       '</body>',
