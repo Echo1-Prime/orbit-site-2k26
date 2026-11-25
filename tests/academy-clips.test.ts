@@ -8,7 +8,11 @@ import {
   canViewClip,
   clipAudience,
   clipPath,
+  injectPartnerPage,
   injectPersonal,
+  PARTNER_CLIPS_PLACEHOLDER,
+  PARTNER_DEMOS,
+  PARTNER_DEMOS_PLACEHOLDER,
   parsePartnerManifest,
   partnerFolder,
   partnerKey,
@@ -75,9 +79,41 @@ test('personal clips and role are injected into the internal page and cannot bre
   assert.ok(injectPersonal(page, [], 'member').includes('const MY_CLIPS = [];'));
 });
 
-test('every known role can view internal clips and personal clips', () => {
-  for (const role of ['owner', 'point-of-contact', 'member', 'partner'] as Role[]) {
-    for (const id of ['D01', 'D09', 'T01', 'T15', 'P01', 'P99']) assert.equal(canViewClip(role, id), true, `${role} ${id}`);
+test('staff see every internal clip and personal clips', () => {
+  for (const role of ['owner', 'point-of-contact', 'member'] as Role[]) {
+    for (const id of ['D01', 'D02', 'D09', 'T01', 'T15', 'P01', 'P99']) assert.equal(canViewClip(role, id), true, `${role} ${id}`);
+  }
+});
+
+test('partners see only the cleared demos and personal clips, never T clips or flagged demos', () => {
+  for (const id of ['D01', 'D04', 'D05', 'D06', 'D07', 'D09', 'P01', 'P99']) assert.equal(canViewClip('partner', id), true, id);
+  for (const id of ['D02', 'D03', 'D08', 'T01', 'T09', 'T15']) assert.equal(canViewClip('partner', id), false, id);
+});
+
+test('the partner page is filled in and cannot break out of the script', () => {
+  const page = readFileSync(new URL('../academy-private/partner.html', import.meta.url), 'utf8');
+  assert.ok(page.includes(PARTNER_CLIPS_PLACEHOLDER) && page.includes(PARTNER_DEMOS_PLACEHOLDER));
+  const html = injectPartnerPage(page, [{ id: 'P01', title: '</script><script>alert(1)</script>', note: '', len: '' }]);
+  assert.ok(!html.includes(PARTNER_CLIPS_PLACEHOLDER) && !html.includes(PARTNER_DEMOS_PLACEHOLDER));
+  assert.ok(!html.includes('</script><script>alert(1)'));
+  assert.ok(html.includes('const CLIPS = [{"id":"P01"'));
+});
+
+test('the partner page never names Grant, his call or any T clip', () => {
+  const page = readFileSync(new URL('../academy-private/partner.html', import.meta.url), 'utf8');
+  const html = injectPartnerPage(page, []);
+  assert.ok(!/grant|kennedy|melbourne|game film/i.test(html), 'partner page names Grant or the game film');
+  assert.ok(!/\bT\d{2}\b/.test(html), 'partner page lists a T clip');
+});
+
+test('every partner demo is a plain demo in the internal list: same title, no internal-use flag', () => {
+  const index = readFileSync(new URL('../academy-private/index.html', import.meta.url), 'utf8');
+  for (const d of PARTNER_DEMOS) {
+    const line = index.split('\n').find((l) => l.trimStart().startsWith(`${d.id}:{t:`));
+    assert.ok(line, `${d.id} missing from the internal clip list`);
+    assert.ok(line.includes(`t:"${d.title}"`), `${d.id} title differs`);
+    assert.ok(!line.includes('flag:'), `${d.id} is flagged for internal use`);
+    assert.ok(!/grant|kennedy/i.test(`${d.title} ${d.note}`));
   }
 });
 

@@ -33,11 +33,13 @@ SHA-256 of their lowercased email (`partnerKey` in `lib/academy-clips.ts`). The 
 chosen from the signed-in email, never from the request, so one partner cannot reach another
 partner's recordings, and the email never appears in a blob path or in this public repo.
 
-Every signed-in person is served the same internal page, `academy-private/index.html`, with their
-own recordings added for them alone as "My recordings" (their private folder, chosen from their
-signed-in email). All four roles can watch the internal clips (D##, T##). A personal clip (P##) is
-always read from the viewer's own folder, so no one can reach another person's recordings, whatever
-their role. Partners, points of contact and members all use the same steps below.
+Staff (owner, point of contact, member) are served the internal page, `academy-private/index.html`, with their own
+recordings added as "My recordings". Partners are served `academy-private/partner.html` instead: the product demos
+cleared for them (`PARTNER_DEMOS` in `lib/academy-clips.ts`, all Josh's own demos, none flagged for internal use) plus
+their own recordings. Partners get no T## clips, no game-film review and nothing that names another partner; the clip
+routes refuse those for a partner, and a test checks the partner page never names Grant Kennedy or lists a T clip.
+A personal clip (P##) is always read from the viewer's own folder, so nobody can reach another person's recordings.
+If partners are ever allowed to see each other's calls, redact partner identity first.
 
 To share a recording with one partner, put two things in that partner's folder:
 
