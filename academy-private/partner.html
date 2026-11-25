@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Partner training</title>
+<style>
+:root{color-scheme:dark}
+body{margin:0;background:#0A0A0E;color:#F5F0FA;font:16px/1.5 system-ui,-apple-system,sans-serif;padding:24px 16px}
+main{max-width:760px;margin:0 auto}
+h1{font-size:22px;margin:0 0 4px}h1 span{color:#FF7515}
+.sub{margin:0 0 24px;opacity:.75}
+.card{border:1px solid #2a2a34;border-radius:12px;padding:16px;margin:0 0 16px;background:#15151c}
+.card h2{font-size:17px;margin:0 0 4px}
+.card p{margin:0 0 12px;opacity:.8;font-size:14px}
+video{width:100%;border-radius:8px;background:#000}
+.empty{opacity:.8}
+.sec{font-size:13px;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin:24px 0 10px}
+</style>
+</head>
+<body>
+<main>
+  <h1><span>Echo 1 Labs</span> Partner training</h1>
+  <p class="sub">Product demos from Josh, and the recordings of your own calls.</p>
+  <h2 class="sec">Product demos</h2>
+  <div id="demos"></div>
+  <h2 class="sec">Your recordings</h2>
+  <div id="list"></div>
+</main>
+<script>
+/* Filled in by the server for the signed-in partner, from clips.json in their own private
+   blob folder (lib/academy-clips.ts). Keep this line as is: the server replaces it. */
+const CLIPS = [];
+/* The product demos cleared for partners (lib/academy-clips.ts, PARTNER_DEMOS). Also filled in by the server. */
+const DEMOS = [];
+
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+
+/* Same pattern as the internal page: no clip URL in the HTML. Each clip asks the server for a
+   short-lived signed URL as it nears the screen, and asks again if that URL has expired. */
+async function armClip(v,at){
+  try{
+    const r=await fetch("/academy/clip-url?id="+encodeURIComponent(v.dataset.clip),{credentials:"same-origin",cache:"no-store"});
+    if(!r.ok) return;
+    const j=await r.json();
+    v.preload="metadata";
+    v.src=j.url+"#t="+(at||0.5);
+  }catch(e){}
+}
+const watcher="IntersectionObserver" in window ? new IntersectionObserver(es=>{
+  es.forEach(en=>{ if(en.isIntersecting){ watcher.unobserve(en.target); armClip(en.target); } });
+},{rootMargin:"300px"}) : null;
+
+function cards(items){
+  return items.map(c=>`<section class="card"><h2>${esc(c.title)}</h2><p>${esc(c.note||"")}${c.len?" ("+esc(c.len)+")":""}</p><video controls preload="none" playsinline data-clip="${esc(c.id)}"></video></section>`).join("");
+}
+function arm(root){
+  root.querySelectorAll("video[data-clip]").forEach(v=>{
+    if(watcher) watcher.observe(v); else armClip(v);
+    v.addEventListener("error",()=>{ if(v.src && (+v.dataset.retries||0)<3){ v.dataset.retries=(+v.dataset.retries||0)+1; armClip(v,v.currentTime); } });
+    v.addEventListener("play",()=>{ document.querySelectorAll("video").forEach(o=>{ if(o!==v) o.pause(); }); });
+  });
+}
+const demos=document.getElementById("demos");
+demos.innerHTML=DEMOS.length?cards(DEMOS):'<p class="empty">No demos yet.</p>';
+arm(demos);
+const list=document.getElementById("list");
+if(!CLIPS.length){
+  list.innerHTML='<p class="empty">Nothing has been shared with you yet. We will add your recordings here after your call.</p>';
+}else{
+  list.innerHTML=cards(CLIPS);
+  arm(list);
+}
+</script>
+</body>
+</html>
