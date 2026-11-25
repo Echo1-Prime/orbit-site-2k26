@@ -15,6 +15,7 @@
 
 import { createClient } from '@vercel/global-config';
 import { parseMemberRecord, toMemberRecord, type Members } from './academy-members.ts';
+import { parseAliases } from './academy-zoom.ts';
 
 export const MEMBERS_KEY = 'academy_members';
 
@@ -49,4 +50,19 @@ export async function saveMembers(members: Members): Promise<void> {
     }),
   });
   if (!res.ok) throw new Error(`Member list write failed (${res.status}).`);
+}
+
+// Name aliases for matching a Zoom call to a person: one item, `academy_zoom_aliases`,
+// { "full name": "email" }, edited by an owner. Missing or unreadable means no matches, so every
+// recording waits as unassigned for an owner to place.
+export const ALIASES_KEY = 'academy_zoom_aliases';
+
+export async function loadAliases(): Promise<Record<string, string>> {
+  const conn = process.env.GLOBAL_CONFIG;
+  if (!conn) return {};
+  try {
+    return parseAliases(await createClient(conn).get(ALIASES_KEY));
+  } catch {
+    return {};
+  }
 }

@@ -107,3 +107,20 @@ A small "Owner sign in" link under the email form opens a password form for owne
 - Only an email that is an owner on the member list can use it. Every attempt runs the hash check, so timing does not reveal owners.
 - Rate limited 5 per 15 minutes per IP and per email, in memory per instance. Add a Vercel Firewall rate-limit rule on `POST /academy/owner-sign-in` as the hard limit.
 - To turn it off, remove the env var. To rotate, set a new hash.
+
+## Zoom recording ingest (webhook), slice 1
+
+`POST /hooks/zoom` receives Zoom's `recording.completed` event. It is off (404) until `ZOOM_WEBHOOK_SECRET` is set in Vercel production.
+
+What it does: checks Zoom's signature on the raw body (and refuses anything older than 5 minutes), answers at once, then streams the call's MP4 into private Blob in the background.
+- If the meeting topic names exactly one listed person (see aliases below), the file goes to that person's folder as the next free `P##.mp4` and the record is `pending`.
+- Otherwise it waits at `academy/ingest/raw/<key>.mp4` as `unassigned`.
+- Each call has a record at `academy/ingest/<key>.json` (status, topic, date, length; the Zoom topic is for owners only and is never shown to the person).
+- A recording is NOT listed for anyone until an owner adds it to that person's `clips.json`. The approval screen in the admin page is the next slice; until then, approve by hand with the steps above.
+
+Setup (Josh):
+1. In the Zoom App Marketplace, create a Webhook Only app (UNVERIFIED: exact app type and menu names; check Zoom's current UI), add the event `recording.completed`, and set the endpoint URL to `https://www.echo1labs.com/hooks/zoom`. Zoom will send an `endpoint.url_validation` challenge, which the route answers once the secret is set.
+2. Put the app's Secret Token in 1Password, then set it as the sensitive Vercel env var `ZOOM_WEBHOOK_SECRET` and redeploy.
+3. Add the Global Config item `academy_zoom_aliases` as `{ "full name": "email" }` for each person whose calls should match (example: `{"hesham talaat": "hesham.talaat@thedepthgroup.com"}`). Without it every call waits as unassigned.
+
+Limits and checks: the Zoom download token lasts 24 hours, so a failed download must be retried within a day. UNVERIFIED: that a 300 to 800 MB recording streams inside the 300 s function limit; a failure is saved as `failed` in the record. Test with one real recording before relying on it.
