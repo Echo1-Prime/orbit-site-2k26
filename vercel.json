@@ -5,6 +5,10 @@
     {
       "source": "/orbit-info",
       "destination": "/orbit-info/index.html"
+    },
+    {
+      "source": "/unsubscribe",
+      "destination": "https://mingma-dev.app.n8n.cloud/webhook/unsubscribe"
     }
   ]
 }
