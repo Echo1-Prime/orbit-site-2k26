@@ -105,6 +105,15 @@ export async function readPersonFolder(email: string): Promise<{ names: string[]
   return { names, manifest: j ? j.value : null, etag: j ? j.etag : null };
 }
 
+// One log line per approval step that fails, so a refused or broken approval shows in the
+// runtime logs. Never logs an email address or a token: the record key, the step and the
+// error class and message only.
+export function logApproval(level: 'warn' | 'error', step: string, key: string, err?: unknown): void {
+  const raw = err instanceof Error ? `${err.name}: ${err.message}` : err === undefined ? '' : String(err);
+  const detail = raw ? ` err=${JSON.stringify(raw.slice(0, 300))}` : '';
+  console[level](`[academy-approve] step=${step} key=${key}${detail}`);
+}
+
 export type ApplyResult = { ok: true; warning?: string } | { ok: false; reason: string };
 
 // Applies an approval plan. Order: copy the file (never overwriting), then write clips.json only
@@ -113,7 +122,8 @@ export type ApplyResult = { ok: true; warning?: string } | { ok: false; reason: 
 export async function applyApproval(plan: ApprovalPlan, manifestEtag: string | null): Promise<ApplyResult> {
   try {
     await copy(plan.from, plan.to, { access: 'private', contentType: 'video/mp4', allowOverwrite: false });
-  } catch {
+  } catch (e) {
+    logApproval('error', 'copy', plan.record.key, e);
     return { ok: false, reason: 'The recording could not be copied into that person’s folder. Nothing was changed.' };
   }
   try {
@@ -122,15 +132,17 @@ export async function applyApproval(plan: ApprovalPlan, manifestEtag: string | n
       contentType: 'application/json',
       ...(manifestEtag ? { ifMatch: manifestEtag, allowOverwrite: true } : { allowOverwrite: false }),
     });
-  } catch {
-    await del(plan.to).catch(() => {});
+  } catch (e) {
+    logApproval('error', 'manifest', plan.record.key, e);
+    await del(plan.to).catch((d) => logApproval('error', 'rollback', plan.record.key, d));
     return { ok: false, reason: 'That person’s clip list changed or could not be saved. Nothing was changed; try again.' };
   }
   try {
     await writeRecord(plan.record, true);
-  } catch {
+  } catch (e) {
+    logApproval('error', 'record', plan.record.key, e);
     return { ok: true, warning: `Approved as ${plan.clipId}, but the queue entry could not be updated. Do not approve it again.` };
   }
-  await del(plan.from).catch(() => {});
+  await del(plan.from).catch((e) => logApproval('warn', 'tidy', plan.record.key, e));
   return { ok: true };
 }
