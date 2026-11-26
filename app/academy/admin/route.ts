@@ -72,19 +72,19 @@ function recordingsSection(records: IngestRecord[] | null, members: Members): st
       let actions = '';
       if (r.status === 'pending' || r.status === 'unassigned') {
         actions =
-          `<form method="post" action="/academy/admin">${hidden('approve', r.key)}<select name="email" aria-label="Approve for" required>${options(r.assignedTo, 'Choose a person')}</select><button type="submit">Approve</button></form>` +
-          `<form method="post" action="/academy/admin">${hidden('reassign', r.key)}<select name="email" aria-label="Suggest for">${options(r.assignedTo, 'Leave unassigned')}</select><button type="submit">Save</button></form>`;
+          `<form method="post" action="/academy/admin">${hidden('approve', r.key)}<label for="ap-${esc(r.key)}">Approve for (they see it right away)</label><select id="ap-${esc(r.key)}" name="email" required>${options(r.assignedTo, 'Choose a person')}</select><button type="submit">Approve</button></form>` +
+          `<form method="post" action="/academy/admin">${hidden('reassign', r.key)}<label for="sg-${esc(r.key)}">Suggest for (nobody sees it yet)</label><select id="sg-${esc(r.key)}" name="email">${options(r.assignedTo, 'Leave unassigned')}</select><button type="submit">Save</button></form>`;
         if (r.assignedTo) detail += ` for ${esc(r.assignedTo)}`;
       } else if (r.status === 'approved') {
         detail += ` as ${esc(r.clipId ?? '')} for ${esc(r.assignedTo ?? '')}`;
       } else if (r.error) {
         detail += `: ${esc(r.error)}`;
       }
-      if (canRetry(r, now)) actions += `<form method="post" action="/academy/admin">${hidden('retry', r.key)}<button type="submit">Retry download</button></form>`;
-      return `<tr>${head}<td>${detail}${actions}</td></tr>`;
+      if (canRetry(r, now)) actions += `<form class="one" method="post" action="/academy/admin">${hidden('retry', r.key)}<button type="submit">Retry download</button></form>`;
+      return `<tr>${head}<td><p class="st">${detail}</p>${actions}</td></tr>`;
     })
     .join('');
-  return `<h2>Recordings</h2><p class="note">A recording reaches a person only after you approve it. It becomes their next P## clip.</p><table><tr><th>Call</th><th>Status</th></tr>${rows}</table>`;
+  return `<h2>Recordings</h2><p class="note">A recording reaches a person only after you approve it. It becomes their next P## clip.</p><table class="rec"><tr><th>Call</th><th>Status</th></tr>${rows}</table>`;
 }
 
 async function loadRecordings(): Promise<IngestRecord[] | null> {
