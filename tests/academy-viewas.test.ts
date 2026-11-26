@@ -42,9 +42,9 @@ test('unknown, empty and owner values leave the real view', () => {
   }
 });
 
-test('the switcher lists the owner view, both roles and every partner', () => {
-  const values = viewOptions(members()).map((o) => o.value);
-  assert.deepEqual(values, ['owner', 'point-of-contact', 'member', 'partner:pat@example.com']);
+test('the switcher lists the owner view, both roles, every other staff member and every partner', () => {
+  const values = viewOptions(members(), 'boss@example.com').map((o) => o.value);
+  assert.deepEqual(values, ['owner', 'point-of-contact', 'member', 'staff:poc@example.com', 'staff:rep@example.com', 'partner:pat@example.com']);
 });
 
 test('chooseView returns a cookie value for valid input and null to clear', () => {
@@ -54,4 +54,41 @@ test('chooseView returns a cookie value for valid input and null to clear', () =
   assert.equal(chooseView(owner, 'partner:rep@example.com', members()), null);
   assert.equal(chooseView(owner, 42, members()), null);
   assert.equal(chooseView({ email: 'rep@example.com', role: 'member' }, 'member', members()), null);
+});
+
+const staffList = (): Members =>
+  new Map<string, Role>([...members(), ['co@example.com', 'owner']]);
+
+test('an owner can view as another staff member and gets that identity and role', () => {
+  assert.deepEqual(resolveView(owner, 'staff:Co@Example.com', staffList()), { who: { email: 'co@example.com', role: 'owner' }, viewing: 'staff:co@example.com' });
+  assert.deepEqual(resolveView(owner, 'staff:rep@example.com', staffList()), { who: { email: 'rep@example.com', role: 'member' }, viewing: 'staff:rep@example.com' });
+  assert.deepEqual(resolveView(owner, 'staff:poc@example.com', staffList()).who, { email: 'poc@example.com', role: 'point-of-contact' });
+});
+
+test('a staff value for a partner, an unlisted email, the viewer or empty is ignored', () => {
+  for (const raw of ['staff:pat@example.com', 'staff:ghost@example.com', 'staff:boss@example.com', 'staff:BOSS@example.com', 'staff:']) {
+    assert.deepEqual(resolveView(owner, raw, staffList()), { who: owner, viewing: null }, raw);
+  }
+});
+
+test('non-owners cannot use a staff value', () => {
+  for (const role of ['point-of-contact', 'member', 'partner'] as Role[]) {
+    const actor = { email: 'x@example.com', role };
+    assert.deepEqual(resolveView(actor, 'staff:co@example.com', staffList()), { who: actor, viewing: null });
+  }
+});
+
+test('the staff list leaves out the viewer and partners, and labels each role', () => {
+  const opts = viewOptions(staffList(), 'Boss@Example.com').filter((o) => o.value.startsWith('staff:'));
+  assert.deepEqual(opts, [
+    { value: 'staff:co@example.com', label: 'Staff: co@example.com (owner)' },
+    { value: 'staff:poc@example.com', label: 'Staff: poc@example.com (point-of-contact)' },
+    { value: 'staff:rep@example.com', label: 'Staff: rep@example.com (member)' },
+  ]);
+});
+
+test('chooseView stores a valid staff value and clears an invalid one', () => {
+  assert.equal(chooseView(owner, 'staff:co@example.com', staffList()), 'staff:co@example.com');
+  assert.equal(chooseView(owner, 'staff:pat@example.com', staffList()), null);
+  assert.equal(chooseView(owner, 'staff:boss@example.com', staffList()), null);
 });
