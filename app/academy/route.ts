@@ -34,7 +34,7 @@ export async function GET(req: Request) {
   }
   if (auth.actor.role === 'owner') {
     const members = await loadMembers();
-    if (members) html = html.replace('</body>', viewSwitcher(viewOptions(members), auth.viewing) + '</body>');
+    if (members) html = html.replace('</body>', viewSwitcher(viewOptions(members, auth.actor.email), auth.viewing) + '</body>');
   }
   return new Response(html, {
     headers: {
@@ -63,7 +63,7 @@ function viewSwitcher(options: { value: string; label: string }[], current: stri
   const opts = options
     .map((o) => `<option value="${esc(o.value)}"${(current ?? 'owner') === o.value ? ' selected' : ''}>${esc(o.label)}</option>`)
     .join('');
-  const note = current ? `<span style="color:#FF7515">Viewing as ${esc(current.replace('partner:', 'partner '))}</span> ` : '';
+  const note = current ? `<span style="color:#FF7515">Viewing as ${esc(current.replace(/^(partner|staff):/, '$1 '))}</span> ` : '';
   return (
     '<form method="post" action="/academy/view" style="position:fixed;right:12px;bottom:44px;z-index:2147483000;font:13px system-ui;background:#fff;color:#111;border:1px solid #ccc;border-radius:6px;padding:6px 8px">' +
     note +
