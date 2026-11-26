@@ -1,13 +1,12 @@
 import { after } from 'next/server';
-import { get, put } from '@vercel/blob';
 import { loadMembers } from '../../../lib/academy-store';
 import { loadAliases } from '../../../lib/academy-zoom-store';
+import { readRecord, runIngest, saveRetryInfo, writeRecord } from '../../../lib/academy-ingest-store';
 import {
   ingestKey,
   matchPerson,
   parseRecordingCompleted,
   pickMp4,
-  stagedVideoPath,
   urlValidationResponse,
   verifySignature,
   type IngestRecord,
@@ -28,26 +27,6 @@ export const dynamic = 'force-dynamic';
 export const maxDuration = 300;
 
 const MAX_BODY = 200_000;
-const recordPath = (key: string) => `academy/ingest/${key}.json`;
-
-async function readRecord(key: string): Promise<IngestRecord | null> {
-  try {
-    const r = await get(recordPath(key), { access: 'private' });
-    if (!r || !r.stream) return null;
-    return JSON.parse(await new Response(r.stream).text()) as IngestRecord;
-  } catch {
-    return null;
-  }
-}
-
-async function writeRecord(rec: IngestRecord, overwrite: boolean) {
-  await put(recordPath(rec.key), JSON.stringify(rec), {
-    access: 'private',
-    contentType: 'application/json',
-    allowOverwrite: overwrite,
-  });
-}
-
 export async function POST(req: Request) {
   const secret = process.env.ZOOM_WEBHOOK_SECRET;
   if (!secret) return new Response('Not found', { status: 404 });
@@ -105,22 +84,17 @@ export async function POST(req: Request) {
 }
 
 async function ingest(rec: ZoomRecording, record: IngestRecord) {
-  const fail = async (error: string) => writeRecord({ ...record, status: 'failed', error: error.slice(0, 300) }, true).catch(() => {});
-  try {
-    const file = pickMp4(rec.files);
-    if (!file) return fail('no MP4 in this recording');
-
-    const members = await loadMembers();
-    const who = members ? matchPerson(rec.topic, await loadAliases(), members) : null;
-    // Staged outside every person's folder whether matched or not: a P## file in a person's folder
-    // is playable by them even before it is in clips.json, so it must not land there unapproved.
-    const path = stagedVideoPath(record.key);
-
-    const res = await fetch(file.url, { headers: { Authorization: `Bearer ${rec.downloadToken}` } });
-    if (!res.ok || !res.body) return fail(`Zoom download answered ${res.status}`);
-    await put(path, res.body, { access: 'private', contentType: 'video/mp4', multipart: true, allowOverwrite: false });
-    await writeRecord({ ...record, status: who ? 'pending' : 'unassigned', assignedTo: who, clipId: null, path }, true);
-  } catch (e) {
-    await fail(e instanceof Error ? e.message : 'ingest failed');
+  const file = pickMp4(rec.files);
+  if (!file) {
+    await writeRecord({ ...record, status: 'failed', error: 'no MP4 in this recording' }, true).catch(() => {});
+    return;
   }
+  const info = { url: file.url, token: rec.downloadToken };
+  // Kept (private, never shown) so an owner can retry a failed download within Zoom's 24 hours.
+  await saveRetryInfo(record.key, info).catch(() => {});
+  const members = await loadMembers();
+  const who = members ? matchPerson(rec.topic, await loadAliases(), members) : null;
+  // Staged outside every person's folder whether matched or not: a P## file in a person's folder
+  // is playable by them even before it is in clips.json, so it must not land there unapproved.
+  await runIngest(record, info, who);
 }

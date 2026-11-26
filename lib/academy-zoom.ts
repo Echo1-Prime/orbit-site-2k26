@@ -170,4 +170,5 @@ export type IngestRecord = {
   path: string | null; // the staged file while not approved
   error: string | null;
   receivedAt: string;
+  attemptAt?: string | null; // when the latest owner retry started; the 24-hour window still runs from receivedAt
 };
