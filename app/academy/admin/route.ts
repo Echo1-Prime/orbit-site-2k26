@@ -120,7 +120,7 @@ async function recordingAction(action: string, f: FormData, members: Members): P
     if (!canRetry(rec, Date.now())) return { status: 400, message: 'This recording can no longer be retried.' };
     const info = await readRetryInfo(rec.key);
     if (!info) return { status: 400, message: 'The download details are gone, so this recording cannot be retried.' };
-    const record: IngestRecord = { ...rec, status: 'downloading', error: null };
+    const record: IngestRecord = { ...rec, status: 'downloading', error: null, attemptAt: new Date().toISOString() };
     try {
       await writeRecord(record, true);
     } catch {

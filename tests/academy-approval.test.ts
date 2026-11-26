@@ -30,6 +30,7 @@ const rec = (over: Partial<IngestRecord> = {}): IngestRecord => ({
   path: `academy/ingest/raw/${REC_ID}.mp4`,
   error: null,
   receivedAt: '2026-11-26T12:00:00Z',
+  attemptAt: null,
   ...over,
 });
 const members: Members = new Map<string, Role>([
@@ -132,4 +133,25 @@ test('retry details only accept a Zoom https url and a token', () => {
   assert.equal(parseRetryInfo({ url: 'http://us02web.zoom.us/x', token: 't' }), null);
   assert.equal(parseRetryInfo({ url: 'https://us02web.zoom.us/x', token: '' }), null);
   assert.equal(parseRetryInfo({ url: 'not a url', token: 't' }), null);
+});
+
+test('a retried download is only stuck 15 min after the retry started, still inside 24 h of delivery', () => {
+  const at = (ms: number) => new Date(NOW - ms).toISOString();
+  const old = at(60 * 60 * 1000); // delivered an hour ago
+  assert.equal(canRetry(rec({ status: 'downloading', receivedAt: old, attemptAt: at(60_000) }), NOW), false);
+  assert.equal(canRetry(rec({ status: 'downloading', receivedAt: old, attemptAt: at(STALE_DOWNLOAD_MS + 1) }), NOW), true);
+  assert.equal(canRetry(rec({ status: 'downloading', receivedAt: at(RETRY_WINDOW_MS + 1), attemptAt: at(STALE_DOWNLOAD_MS + 1) }), NOW), false);
+  assert.equal(parseIngestRecord(rec({ attemptAt: '2026-11-26T13:00:00Z' }))?.attemptAt, '2026-11-26T13:00:00Z');
+});
+
+test('the store reads from origin, writes clips.json safely, keeps retry details until staged, and lists every page', async () => {
+  const { readFile } = await import('node:fs/promises');
+  const src = await readFile(new URL('../lib/academy-ingest-store.ts', import.meta.url), 'utf8');
+  assert.ok(src.includes("useCache: false"), 'record and clips.json reads must bypass the CDN cache');
+  assert.ok(src.includes('ifMatch: manifestEtag, allowOverwrite: true'), 'the conditional clips.json write must allow the overwrite it guards');
+  const run = src.slice(src.indexOf('export async function runIngest'), src.indexOf('// What approval needs'));
+  assert.ok(run.indexOf('writeRecord(') < run.indexOf('del(retryPath'), 'retry details are deleted only after the record says staged');
+  const stage = src.slice(src.indexOf('export async function stageFromZoom'), src.indexOf('export async function runIngest'));
+  assert.ok(!stage.includes('del('), 'staging never deletes the retry details itself');
+  assert.ok(!/out\.length\s*<\s*\d+/.test(src), 'the queue list must not stop at a fixed count');
 });

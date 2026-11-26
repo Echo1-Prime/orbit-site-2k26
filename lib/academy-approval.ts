@@ -41,6 +41,7 @@ export function parseIngestRecord(raw: unknown): IngestRecord | null {
     path: sOrNull(r.path, 300),
     error: sOrNull(r.error, 300),
     receivedAt: s(r.receivedAt, 40),
+    attemptAt: sOrNull(r.attemptAt, 40),
   };
 }
 
@@ -56,7 +57,10 @@ export const STALE_DOWNLOAD_MS = 15 * 60 * 1000;
 export function canRetry(rec: IngestRecord, nowMs: number): boolean {
   const at = Date.parse(rec.receivedAt);
   if (Number.isNaN(at) || nowMs - at > RETRY_WINDOW_MS) return false;
-  return rec.status === 'failed' || (rec.status === 'downloading' && nowMs - at > STALE_DOWNLOAD_MS);
+  if (rec.status === 'failed') return true;
+  // A download counts as stuck 15 minutes after its latest start (the delivery, or an owner retry).
+  const started = rec.attemptAt ? Date.parse(rec.attemptAt) : at;
+  return rec.status === 'downloading' && !Number.isNaN(started) && nowMs - started > STALE_DOWNLOAD_MS;
 }
 
 export type Result<T> = { ok: true; value: T } | { ok: false; reason: string };

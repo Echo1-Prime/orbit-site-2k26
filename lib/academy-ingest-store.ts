@@ -12,7 +12,8 @@ export const recordPath = (key: string) => `${INGEST_PREFIX}${key}.json`;
 const retryPath = (key: string) => `${INGEST_PREFIX}retry/${key}.json`;
 
 async function readJson(path: string): Promise<{ value: unknown; etag: string } | null> {
-  const r = await get(path, { access: 'private' });
+  // Straight from origin: a cached copy could show an approved record as still waiting.
+  const r = await get(path, { access: 'private', useCache: false });
   if (!r || r.statusCode !== 200 || !r.stream) return null;
   return { value: JSON.parse(await new Response(r.stream).text()), etag: r.blob.etag };
 }
@@ -34,8 +35,8 @@ export async function writeRecord(rec: IngestRecord, overwrite: boolean) {
   });
 }
 
-// Every record directly under academy/ingest/ (not raw/ or retry/). At most 200, newest first is
-// the caller's job.
+// Every record directly under academy/ingest/ (not raw/ or retry/). All pages are read, because
+// listing order is by key, not by date. Sorting newest first is the caller's job.
 export async function listRecords(): Promise<IngestRecord[]> {
   const out: IngestRecord[] = [];
   let cursor: string | undefined;
@@ -48,7 +49,7 @@ export async function listRecords(): Promise<IngestRecord[]> {
       if (rec) out.push(rec);
     }
     cursor = page.hasMore ? page.cursor : undefined;
-  } while (cursor && out.length < 200);
+  } while (cursor);
   return out;
 }
 
@@ -73,7 +74,6 @@ export async function stageFromZoom(key: string, info: RetryInfo): Promise<strin
   if (!res.ok || !res.body) throw new Error(`Zoom download answered ${res.status}`);
   const path = stagedVideoPath(key);
   await put(path, res.body, { access: 'private', contentType: 'video/mp4', multipart: true, allowOverwrite: true });
-  await del(retryPath(key)).catch(() => {});
   return path;
 }
 
@@ -82,6 +82,8 @@ export async function runIngest(record: IngestRecord, info: RetryInfo, who: stri
   try {
     const path = await stageFromZoom(record.key, info);
     await writeRecord({ ...record, status: who ? 'pending' : 'unassigned', assignedTo: who, clipId: null, path, error: null }, true);
+    // Only once the record says it is staged: until then a retry may still need these details.
+    await del(retryPath(record.key)).catch(() => {});
   } catch (e) {
     const error = (e instanceof Error ? e.message : 'ingest failed').slice(0, 300);
     await writeRecord({ ...record, status: 'failed', error }, true).catch(() => {});
@@ -118,7 +120,7 @@ export async function applyApproval(plan: ApprovalPlan, manifestEtag: string | n
     await put(partnerManifestPath(plan.email), JSON.stringify(plan.manifest, null, 2), {
       access: 'private',
       contentType: 'application/json',
-      ...(manifestEtag ? { ifMatch: manifestEtag } : { allowOverwrite: false }),
+      ...(manifestEtag ? { ifMatch: manifestEtag, allowOverwrite: true } : { allowOverwrite: false }),
     });
   } catch {
     await del(plan.to).catch(() => {});
