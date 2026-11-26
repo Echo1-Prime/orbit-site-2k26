@@ -151,6 +151,12 @@ test('modules the Edge middleware loads never import the Node-only Zoom module',
 test('the receiver stages every recording and does not write into a person folder', async () => {
   const { readFile } = await import('node:fs/promises');
   const src = await readFile(new URL('../app/hooks/zoom/route.ts', import.meta.url), 'utf8');
-  assert.ok(src.includes('stagedVideoPath(record.key)'));
-  assert.ok(!/partnerFolder|nextClipId/.test(src));
+  // The download moved to lib/academy-ingest-store.ts (shared with the owner retry); the route must
+  // still hand every recording to it and never touch a person's folder itself.
+  assert.ok(src.includes('runIngest(record, info, who)'));
+  assert.ok(!/partnerFolder|nextClipId|copy\(/.test(src));
+  const store = await readFile(new URL('../lib/academy-ingest-store.ts', import.meta.url), 'utf8');
+  const stage = store.slice(store.indexOf('export async function stageFromZoom'), store.indexOf('export async function runIngest'));
+  assert.ok(stage.includes('stagedVideoPath(key)'), 'the download writes only to the staging path');
+  assert.ok(!/partnerFolder|partnerManifestPath/.test(stage), 'the download never writes into a person folder');
 });
