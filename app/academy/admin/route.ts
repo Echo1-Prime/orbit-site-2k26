@@ -4,7 +4,7 @@ import { addMember, canAdmin, POC_MANAGES, removeMember, ROLES, validEmail, type
 import { canWriteMembers, loadMembers, saveMembers } from '../../../lib/academy-store';
 import { after } from 'next/server';
 import { canManageRecordings, canRetry, planApproval, reassign, sortRecords } from '../../../lib/academy-approval';
-import { applyApproval, listRecords, readPersonFolder, readRecord, readRetryInfo, runIngest, writeRecord } from '../../../lib/academy-ingest-store';
+import { applyApproval, listRecords, logApproval, readPersonFolder, readRecord, readRetryInfo, runIngest, writeRecord } from '../../../lib/academy-ingest-store';
 import type { IngestRecord } from '../../../lib/academy-zoom';
 
 // Member admin for owners and points of contact. Rules live in lib/academy-members.ts.
@@ -103,7 +103,10 @@ async function page(members: Members, actor: Role, message = '', status = 200): 
 async function recordingAction(action: string, f: FormData, members: Members): Promise<{ status: number; message: string }> {
   const key = f.get('key');
   const rec = typeof key === 'string' && /^[0-9a-f]{24}$/.test(key) ? await readRecord(key) : null;
-  if (!rec) return { status: 404, message: 'That recording was not found.' };
+  if (!rec) {
+    logApproval('error', `${action}:not-found`, typeof key === 'string' ? key.replace(/[^0-9a-f]/gi, '').slice(0, 24) || 'invalid' : 'none');
+    return { status: 404, message: 'That recording was not found.' };
+  }
 
   if (action === 'reassign') {
     const r = reassign(rec, f.get('email'), members);
@@ -137,13 +140,18 @@ async function recordingAction(action: string, f: FormData, members: Members): P
   try {
     // Only a person on the member list has their folder read; anyone else is refused by planApproval.
     folder = member && members.has(member) ? await readPersonFolder(member) : null;
-  } catch {
+  } catch (e) {
+    logApproval('error', 'folder-read', rec.key, e);
     return { status: 502, message: "That person's folder could not be read. Nothing was changed." };
   }
   const plan = planApproval(rec, email, members, folder?.names ?? [], folder ? folder.manifest : null);
-  if (!plan.ok) return { status: 400, message: plan.reason };
+  if (!plan.ok) {
+    logApproval('error', 'plan', rec.key, plan.reason);
+    return { status: 400, message: plan.reason };
+  }
   const done = await applyApproval(plan.value, folder?.etag ?? null);
   if (!done.ok) return { status: 502, message: done.reason };
+  logApproval('warn', `approved:${plan.value.clipId}`, rec.key);
   return { status: 200, message: done.warning ?? `Approved as ${plan.value.clipId} for ${plan.value.email}.` };
 }
 
@@ -163,7 +171,10 @@ export async function GET(req: Request) {
 }
 
 export async function POST(req: Request) {
-  if (!sameOrigin(req)) return shell(403, 'Not allowed', '<p style="text-align:center">That request could not be accepted.</p>');
+  if (!sameOrigin(req)) {
+    console.error(`[academy-admin] origin refused origin=${JSON.stringify((req.headers.get('origin') ?? 'none').slice(0, 100))} host=${new URL(req.url).host}`);
+    return shell(403, 'Not allowed', '<p style="text-align:center">That request could not be accepted.</p>');
+  }
   const g = await guard(req);
   if (!g.who) return g.res;
   const members = await loadMembers();
