@@ -27,7 +27,7 @@ export const oilfieldSpillCopy: UseCaseCopy = {
   embedFallback: 'Open the 13|7 Waterworks demo board (sign-in required)',
   demoImage: {
     src: IGNITION_IMG.board.src,
-    srcSet: `${IGNITION_IMG.board.src640} 640w, ${IGNITION_IMG.board.src960} 960w, ${IGNITION_IMG.board.src} 1600w`,
+    srcSet: `${IGNITION_IMG.board.src640} 640w, ${IGNITION_IMG.board.src960} 960w, ${IGNITION_IMG.board.src} 1391w`,
     alt: IGNITION_IMG.board.alt,
     width: IGNITION_IMG.board.width,
     height: IGNITION_IMG.board.height,
