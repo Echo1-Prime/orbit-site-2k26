@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Sell vs build cover</title>
+<style>
+/* 1400 x 500 (2.8 : 1) to match the community crop frame. Render at 2x. */
+:root{
+  --ao-void:#0A0A0E;
+  --ao-charcoal:#1C1127;
+  --ao-orbit:#FF7515;
+  --ao-orbit-15:rgba(255,117,21,0.15);
+  --ao-orbit-30:rgba(255,117,21,0.30);
+  --ao-t0:#F0F0F5;
+  --ao-t1:#8892A4;
+  --ao-f-display:'Inter Display','Inter',system-ui,sans-serif;
+  --ao-f-mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1400px;height:500px;background:var(--ao-void);color:var(--ao-t0);overflow:hidden}
+.stage{position:relative;width:1400px;height:500px;background:radial-gradient(1000px 420px at 50% 130%,var(--ao-charcoal),var(--ao-void) 72%)}
+svg.orbits{position:absolute;inset:0}
+.tag,.top-right,.bottom{font:500 15px var(--ao-f-mono);letter-spacing:.18em;color:var(--ao-t1)}
+.tag{position:absolute;top:34px;left:64px}
+.tag b{color:var(--ao-orbit);font-weight:500}
+.top-right{position:absolute;top:34px;right:64px}
+.lane{position:absolute;top:84px;width:440px}
+.lane.l{left:64px}
+.lane.r{right:64px;text-align:right}
+.lane small{display:block;font:500 15px var(--ao-f-mono);letter-spacing:.2em;color:var(--ao-t1);margin-bottom:14px}
+.lane h2{font:800 132px/0.9 var(--ao-f-display);letter-spacing:-.045em}
+.center{position:absolute;left:520px;width:360px;top:150px;text-align:center}
+.center h1{font:800 56px/1.04 var(--ao-f-display);letter-spacing:-.035em}
+.center h1 span{color:var(--ao-orbit)}
+.bottom{position:absolute;left:64px;right:64px;bottom:34px;display:flex;justify-content:space-between;align-items:center}
+.pill{border:1px solid var(--ao-orbit-30);background:var(--ao-orbit-15);color:var(--ao-orbit);padding:9px 18px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="orbits" viewBox="0 0 1400 500" fill="none">
+    <ellipse cx="700" cy="250" rx="470" ry="150" stroke="rgba(255,255,255,0.10)" stroke-width="1.5"/>
+    <ellipse cx="700" cy="250" rx="640" ry="215" stroke="rgba(255,255,255,0.055)" stroke-width="1.5"/>
+  </svg>
+  <div class="tag"><b>ECHO 1 LABS</b> &nbsp;/&nbsp; BUSINESS LIFECYCLE MANAGEMENT</div>
+  <div class="top-right">STEP 1 &nbsp;/&nbsp; STEP 10</div>
+
+  <div class="lane l"><h2><small>THE RELATIONSHIP LANE</small>SELL<br>AI?</h2></div>
+  <div class="center"><h1>There's room<br>for <span>both.</span></h1></div>
+  <div class="lane r"><h2><small>THE PRODUCT LANE</small>BUILD<br>AI?</h2></div>
+
+  <div class="bottom"><div>FINDING BUILDERS + WHITE LABEL PARTNERS</div><div class="pill">FOUNDERS' MEETING OPEN</div></div>
+</div>
+</body>
+</html>

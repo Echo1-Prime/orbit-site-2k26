@@ -8,6 +8,15 @@ export interface BlogPost {
   readingTime: string;
   category: 'Fundamentals' | 'Engine' | 'RevOps' | 'Broadcast' | 'Ledger' | 'Titan' | 'Signal' | 'Prime';
   body: BlogSection[];
+  /** Optional end-of-post call to action. Posts without one show the Founding Cohort card. */
+  cta?: BlogCta;
+}
+
+export interface BlogCta {
+  title: string;
+  text: string;
+  label: string;
+  href: string;
 }
 
 export interface BlogSection {
@@ -659,6 +668,42 @@ export const POSTS: BlogPost[] = [
       { type: 'h2', content: 'Where to start' },
       { type: 'p', content: 'If your business is between $8M and $15M and you can feel the ceiling, do not default to the org chart. Start with the audit. Find the routine work, move it into the system, and change what your own days are made of. The companies scaling past $10M without the payroll explosion are not smarter than everyone else. They are systematic about execution and deliberate about where human judgment gets spent. To talk through what that looks like for your business, reach us at hello@echo1labs.com.' },
     ],
+  },
+  {
+    slug: 'sell-ai-or-build-ai-room-for-both',
+    title: 'Sell AI or Build AI? There\'s Room for Both.',
+    description: 'Selling AI and building AI are two different jobs. Here is why they stay in separate lanes, why relationships drive revenue, and who we want to meet.',
+    datePublished: '2026-11-27',
+    readingTime: '5 min',
+    category: 'Fundamentals',
+    body: [
+      { type: 'p', content: 'Hi, my name is Josh, and I am a recovering operator.' },
+      { type: 'p', content: 'It has been 0 days since I tried to close a sales call and fix an automation in the same afternoon.' },
+      { type: 'h2', content: 'Same product, two explanations' },
+      { type: 'p', content: 'Here is how the two lanes explain the exact same product. The builder: "So the agent pulls the document, classifies it, extracts the fields, routes the exceptions to a queue, and then, wait, I skipped step 3." The seller: "It reads your paperwork so your people don\'t have to."' },
+      { type: 'p', content: 'Same product. One of them just booked a meeting.' },
+      { type: 'p', content: 'I know the builder\'s voice well, because it is mine. Business partners have told me that when I am ready to go, I am on step 10 while they are still figuring out step 1. They were right.' },
+      { type: 'h2', content: 'Two jobs, not one' },
+      { type: 'p', content: 'Selling AI and building AI are two different jobs. Different focus, different kind of thinking, and doing both at once is how you get mediocre at both and tired at everything. I spent years on the front lines of sales while also building the back end of the automations in the same business. It works about as well as juggling chainsaws. Technically possible.' },
+      { type: 'p', content: 'Builders make the thing. We are the worst at explaining what it does for a human being. Relationship people translate it into plain language, earn trust, and bring in the conversations that drive revenue. Both lanes are valuable, and neither one is the hero.' },
+      { type: 'pullquote', content: 'A product with no relationships is a science project. Relationships with no product are a very nice lunch.' },
+      { type: 'p', content: 'So I partnered with someone who has a sales background and a track record. My lane is building. His lane is relationships. We both stay in our lane, and neither of us pretends to be the other.' },
+      { type: 'h2', content: 'The part we care about most: the people' },
+      { type: 'p', content: 'Echo 1 Labs is Business Lifecycle Management. Agents run the work, your people approve it, and you see all of it in Agent Orbit. But a stack is only as good as the relationships standing in front of it, so here is who we would like to meet.' },
+      { type: 'p', content: 'Relationship builders who want to white label or resell. You own the customer relationship. You are the name they trust. We build and support behind you, and a real person is always reachable when your customer calls. I will run the first demo with you as your sales engineer, then we rehearse, and you run the second one.' },
+      { type: 'p', content: 'Builders who want to build with us on a contract basis. Bring your craft. Skip the part where you explain it to a stranger on a Tuesday.' },
+      { type: 'p', content: 'What we ask of both: be trustworthy, hold the line, stay mission-driven. I would rather have three people who show up than thirty who ghost.' },
+      { type: 'h2', content: 'A partner portal, so you are not pitching alone' },
+      { type: 'p', content: 'Every partner gets access to our partner portal. It has training, quizzes, and your own recordings from the training calls we do together, so you can watch your calls back. I have also recorded my own pitches from real meetings, so the portal doubles as sales training if you are new to selling. It is built to help you grow your knowledge base and your presentation skills before you sit across from a customer.' },
+      { type: 'h2', content: 'Pick a time' },
+      { type: 'p', content: 'If either of those sounds like you, book the founders\' meeting with me. No pitch deck marathon. The full product stack is on the products page, so you can see all of it before we talk.' },
+    ],
+    cta: {
+      title: 'Bring your lane. We will cover the rest.',
+      text: 'Builders and relationship people welcome. Grab a time with me directly.',
+      label: 'Book the founders\' meeting',
+      href: 'https://scheduler.zoom.us/21ozwyy45r2p9uoc24eb7rxr80/echo1-founder-meeting',
+    },
   },
 ];
 

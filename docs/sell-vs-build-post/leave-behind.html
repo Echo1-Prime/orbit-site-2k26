@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Echo 1 Labs partner leave-behind</title>
+<style>
+:root{
+  --ao-void:#0A0A0E;
+  --ao-deep:#160D20;
+  --ao-charcoal:#1C1127;
+  --ao-orbit:#FF7515;
+  --ao-orbit-15:rgba(255,117,21,0.15);
+  --ao-orbit-30:rgba(255,117,21,0.30);
+  --ao-sf-1:rgba(255,255,255,0.048);
+  --ao-sf-2:rgba(255,255,255,0.085);
+  --ao-bd-1:rgba(255,255,255,0.10);
+  --ao-bd-2:rgba(255,255,255,0.22);
+  --ao-t0:#F0F0F5;
+  --ao-t1:#8892A4;
+  --ao-f-display:'Inter Display','Inter',system-ui,sans-serif;
+  --ao-f-body:'Inter',system-ui,sans-serif;
+  --ao-f-mono:'JetBrains Mono',monospace;
+}
+@page{size:1600px 900px;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:var(--ao-void);color:var(--ao-t0);font-family:var(--ao-f-body);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{position:relative;width:1600px;height:900px;overflow:hidden;page-break-after:always;break-after:page;padding:72px;background:radial-gradient(1200px 700px at 50% 130%,var(--ao-charcoal),var(--ao-void) 70%)}
+.page:last-child{page-break-after:auto;break-after:auto}
+.kicker{font:500 20px var(--ao-f-mono);letter-spacing:.18em;color:var(--ao-t1)}
+.kicker b{color:var(--ao-orbit);font-weight:500}
+h1{font:800 150px/0.98 var(--ao-f-display);letter-spacing:-.045em}
+h2{font:800 84px/1.02 var(--ao-f-display);letter-spacing:-.035em}
+.or{color:var(--ao-orbit)}
+.foot{position:absolute;left:72px;right:72px;bottom:56px;display:flex;justify-content:space-between;font:500 18px var(--ao-f-mono);letter-spacing:.14em;color:var(--ao-t1)}
+.num{color:var(--ao-orbit)}
+
+/* p1 */
+.p1 h1{margin-top:150px}
+.p1 .lede{margin-top:40px;font:400 38px/1.35 var(--ao-f-body);color:var(--ao-t0);max-width:1100px}
+.p1 .lede span{color:var(--ao-t1)}
+.p1 .orb{position:absolute;right:-120px;top:120px;width:620px;height:620px}
+
+/* p2 */
+.p2 h2{margin-top:44px;max-width:1300px}
+.cols{margin-top:56px;display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.col{border:1px solid var(--ao-bd-1);border-radius:22px;background:var(--ao-sf-1);padding:30px 36px 34px;min-height:300px}
+.col.hot{border-color:var(--ao-orbit-30);background:var(--ao-orbit-15)}
+.col .who{font:500 18px var(--ao-f-mono);letter-spacing:.18em;color:var(--ao-orbit)}
+.col h3{margin:14px 0 14px;font:800 54px/1 var(--ao-f-display);letter-spacing:-.03em}
+.col p{font:400 25px/1.45 var(--ao-f-body);color:var(--ao-t0)}
+.col p + p{margin-top:12px;color:var(--ao-t1);font-size:22px}
+.demo{margin-top:34px;font:500 26px/1.4 var(--ao-f-body);color:var(--ao-t0)}
+.demo span{color:var(--ao-orbit)}
+
+/* portal */
+.pt h2{margin-top:44px;max-width:1300px}
+.pt .grid{margin-top:52px}
+.pt .card{min-height:300px;padding:30px 28px 32px}
+.pt .card h4{font-size:38px;margin:14px 0 14px}
+.pt .card p{font-size:25px;line-height:1.45;color:var(--ao-t0)}
+.pt .ribbon{margin-top:44px;font-size:30px}
+
+/* p3 */
+.p3 h2{margin-top:30px}
+.grid{margin-top:34px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.card{border:1px solid var(--ao-bd-1);border-radius:20px;background:var(--ao-sf-1);padding:24px 26px 26px;min-height:206px;display:flex;flex-direction:column}
+.card .st{font:500 15px var(--ao-f-mono);letter-spacing:.2em;color:var(--ao-orbit)}
+.card h4{margin:10px 0 10px;font:800 40px/1 var(--ao-f-display);letter-spacing:-.03em}
+.card p{font:400 22px/1.38 var(--ao-f-body);color:var(--ao-t1)}
+.card .adv{margin-top:auto;padding-top:12px;font:500 14px var(--ao-f-mono);letter-spacing:.14em;color:var(--ao-t1)}
+.card.prime{border-color:var(--ao-orbit-30);background:var(--ao-orbit-15)}
+.card.prime p{color:var(--ao-t0)}
+.ribbon{margin-top:26px;display:flex;flex-direction:column;gap:4px;font:500 25px/1.4 var(--ao-f-body)}
+.ribbon .l span{color:var(--ao-orbit)}
+.ribbon .r{color:var(--ao-t1)}
+
+/* p4 */
+.p4 h2{margin-top:34px;font-size:100px}
+.doors{margin-top:38px;display:grid;grid-template-columns:1fr 1fr 460px;gap:26px;height:320px}
+.door{border:1px solid var(--ao-bd-2);border-radius:22px;background:var(--ao-sf-1);padding:30px 34px}
+.door .who{font:500 17px var(--ao-f-mono);letter-spacing:.18em;color:var(--ao-orbit)}
+.door h3{margin:12px 0 12px;font:800 46px/1.02 var(--ao-f-display);letter-spacing:-.03em}
+.door p{font:400 24px/1.45 var(--ao-f-body);color:var(--ao-t0)}
+.cta{border-radius:22px;background:var(--ao-orbit);color:var(--ao-void);padding:30px 32px;display:flex;flex-direction:column;justify-content:space-between}
+.cta .big{font:800 42px/1.02 var(--ao-f-display);letter-spacing:-.03em}
+.cta{text-decoration:none}
+.cta .hint{display:block;margin-bottom:8px;font-weight:700;letter-spacing:.14em}
+.cta .row{display:flex;gap:18px;align-items:flex-end}
+.cta img{width:150px;height:150px;border-radius:14px;flex:none}
+.cta .url{font:500 14px/1.35 var(--ao-f-mono);word-break:normal;overflow-wrap:break-word;letter-spacing:.02em}
+.ask{margin-top:26px;font:400 26px/1.4 var(--ao-f-body);color:var(--ao-t0)}
+.ask span{color:var(--ao-orbit)}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1: COVER -->
+<section class="page p1">
+  <div class="kicker"><b>ECHO 1 LABS</b> &nbsp;/&nbsp; PARTNER LEAVE-BEHIND</div>
+  <svg class="orb" viewBox="0 0 620 620" fill="none">
+    <circle cx="310" cy="310" r="300" stroke="rgba(255,255,255,0.10)" stroke-width="2"/>
+    <circle cx="310" cy="310" r="210" stroke="rgba(255,255,255,0.055)" stroke-width="2"/>
+    <circle cx="310" cy="310" r="120" stroke="rgba(255,117,21,0.45)" stroke-width="2"/>
+    <circle cx="190" cy="310" r="16" fill="#FF7515"/>
+  </svg>
+  <h1>Two lanes.<br><span class="or">One stack.</span></h1>
+  <p class="lede">Builders see step 10. Relationship people see step 1.<br><span>Customers need both.</span></p>
+  <div class="foot"><div>BUSINESS LIFECYCLE MANAGEMENT</div><div><span class="num">01</span> / 05</div></div>
+</section>
+
+<!-- PAGE 2: BUILD / SELL / SUPPORT -->
+<section class="page p2">
+  <div class="kicker"><b>THE MODEL</b></div>
+  <h2>Selling AI and building AI are different jobs. <span class="or">Do each one well.</span></h2>
+  <div class="cols">
+    <div class="col">
+      <div class="who">ECHO 1 LABS</div>
+      <h3>Build</h3>
+      <p>We build the back end and keep it running behind your name.</p>
+      <p>Nobody makes you explain step 10 to a stranger.</p>
+    </div>
+    <div class="col hot">
+      <div class="who">YOU</div>
+      <h3>Sell</h3>
+      <p>You own the customer relationship. Your conversation, your trust, your name on it.</p>
+      <p>You are the reason the meeting happens.</p>
+    </div>
+    <div class="col">
+      <div class="who">BOTH OF US</div>
+      <h3>Support</h3>
+      <p>Agents draft and people approve. A real, named person answers when your customer calls.</p>
+      <p>Never "the agents handle it."</p>
+    </div>
+  </div>
+  <p class="demo">We run the first demo with you as your sales engineer. We rehearse. <span>You run the second.</span></p>
+  <div class="foot"><div>BUILD / SELL / SUPPORT</div><div><span class="num">02</span> / 05</div></div>
+</section>
+
+<!-- PAGE 3: THE PARTNER PORTAL -->
+<section class="page pt">
+  <div class="kicker"><b>THE PARTNER PORTAL</b></div>
+  <h2>A partner portal, so you are <span class="or">not pitching alone.</span></h2>
+  <div class="grid">
+    <div class="card"><div class="st">LEARN</div><h4>Training</h4><p>Training on the product and on how we sell it.</p></div>
+    <div class="card"><div class="st">WATCH</div><h4>Your videos</h4><p>Your own recordings from the training calls we do together.</p></div>
+    <div class="card"><div class="st">CHECK</div><h4>Quizzes</h4><p>Check what stuck, and build your knowledge base as you go.</p></div>
+    <div class="card"><div class="st">STUDY</div><h4>Real pitches</h4><p>Recordings of pitches from real meetings. A head start if you are new to selling.</p></div>
+  </div>
+  <div class="ribbon">
+    <div class="l">Built to grow your knowledge base <span>and your presentation skills.</span></div>
+    <div class="r">Partners only.</div>
+  </div>
+  <div class="foot"><div>TRAINING, VIDEOS, QUIZZES</div><div><span class="num">03</span> / 05</div></div>
+</section>
+
+<!-- PAGE 4: THE STACK -->
+<section class="page p3">
+  <div class="kicker"><b>THE STACK</b> &nbsp;/&nbsp; EIGHT STAGES, SEVEN PRODUCTS</div>
+  <h2>Eight stages. One place to see all of it.</h2>
+  <div class="grid">
+    <div class="card"><div class="st">ENABLE</div><h4>AI Readiness</h4><p>From Individual AI to Institutional AI.</p><div class="adv">ADVISORY ENGAGEMENT</div></div>
+    <div class="card"><div class="st">STRATEGIZE</div><h4>Engine</h4><p>Go-to-market that runs itself.</p></div>
+    <div class="card"><div class="st">FIND</div><h4>RevOps</h4><p>Revenue operations without the ops.</p></div>
+    <div class="card"><div class="st">ATTRACT</div><h4>Broadcast</h4><p>Content that ships on schedule.</p></div>
+    <div class="card"><div class="st">ANALYZE</div><h4>Signal</h4><p>Agentic deal intelligence for PE and VC.</p></div>
+    <div class="card"><div class="st">MANAGE</div><h4>Ledger</h4><p>The agentic CFO for owner&#8209;led companies.</p></div>
+    <div class="card"><div class="st">DELIVER</div><h4>Titan</h4><p>Documents that process themselves.</p></div>
+    <div class="card prime"><div class="st">GOVERN</div><h4>Prime</h4><p>Your business. One layer. Full view.</p></div>
+  </div>
+  <div class="ribbon">
+    <div class="l">Prime sees every layer. <span>Agents draft. People approve.</span></div>
+    <div class="r">Built for owner-led companies, $5M+ revenue, 50 to 500 employees.</div>
+  </div>
+  <div class="foot"><div>SEE ALL OF IT IN AGENT ORBIT</div><div><span class="num">04</span> / 05</div></div>
+</section>
+
+<!-- PAGE 4: CLOSE -->
+<section class="page p4">
+  <div class="kicker"><b>THE CLOSE</b></div>
+  <h2>Pick your door.<br><span class="or">Then pick a time.</span></h2>
+  <div class="doors">
+    <div class="door">
+      <div class="who">BUILDERS</div>
+      <h3>Build with us</h3>
+      <p>Come help us build on a contract basis. Bring the craft. Skip the explaining.</p>
+    </div>
+    <div class="door">
+      <div class="who">RELATIONSHIP PEOPLE</div>
+      <h3>White label or resell</h3>
+      <p>Your customers, your name on it. We build and support behind you.</p>
+    </div>
+    <a class="cta" href="https://scheduler.zoom.us/21ozwyy45r2p9uoc24eb7rxr80/echo1-founder-meeting">
+      <div class="big">Book the founders' meeting</div>
+      <div class="row">
+        <img src="qr.png" alt="QR code for the founders' meeting link">
+        <div class="url"><span class="hint">CLICK THIS BOX OR SCAN</span>scheduler.zoom.us/<wbr>21ozwyy45r2p9uoc24eb7rxr80/<wbr>echo1-founder-meeting</div>
+      </div>
+    </a>
+  </div>
+  <p class="ask">What we ask of both: be trustworthy, hold the line, stay mission-driven. <span>Bring your lane. We will cover the rest.</span></p>
+  <div class="foot"><div>ECHO 1 LABS / BUSINESS LIFECYCLE MANAGEMENT</div><div><span class="num">05</span> / 05</div></div>
+</section>
+
+</body>
+</html>

@@ -100,6 +100,13 @@ export default async function BlogPostPage({
   const post = getPost(slug);
   if (!post) notFound();
 
+  const cta = post.cta ?? {
+    title: 'See the BLM OS in action.',
+    text: 'Join the Founding Cohort for early access and founding-cohort pricing.',
+    label: 'Join Founding Cohort',
+    href: '/founding-cohort',
+  };
+
   const jsonLd = {
     '@context': 'https://schema.org',
     '@type': 'BlogPosting',
@@ -206,14 +213,14 @@ export default async function BlogPostPage({
                     marginBottom: '0.35rem',
                   }}
                 >
-                  See the BLM OS in action.
+                  {cta.title}
                 </p>
                 <p style={{ fontSize: '0.85rem', color: 'var(--e1-text-secondary)', margin: 0 }}>
-                  Join the Founding Cohort for early access and founding-cohort pricing.
+                  {cta.text}
                 </p>
               </div>
-              <ButtonLink href="/founding-cohort" variant="ember">
-                Join Founding Cohort
+              <ButtonLink href={cta.href} variant="ember">
+                {cta.label}
               </ButtonLink>
             </div>
           </div>
@@ -252,8 +259,8 @@ export default async function BlogPostPage({
             >
               ← Back to Blog
             </Link>
-            <ButtonLink href="/founding-cohort" variant="ember" size="sm">
-              Join Founding Cohort
+            <ButtonLink href={cta.href} variant="ember" size="sm">
+              {cta.label}
             </ButtonLink>
           </div>
         </div>
