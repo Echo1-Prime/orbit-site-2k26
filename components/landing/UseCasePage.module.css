@@ -199,3 +199,25 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* Demo still (a demo behind sign-in): the image links to the demo; caption says it is sample data. */
+.still {
+  margin: 0;
+  border-radius: 12px;
+  border: 1px solid var(--ao-bd-1);
+  overflow: hidden;
+  background: var(--ao-void);
+}
+.still img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.still figcaption {
+  padding: 12px 16px;
+  font-family: var(--ao-f-mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ao-t1);
+}

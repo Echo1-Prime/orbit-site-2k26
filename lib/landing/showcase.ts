@@ -2,6 +2,8 @@ import { truckingCopy } from './trucking';
 import { crudeTreatingCopy } from './crude-treating';
 import { realEstateCopy } from './real-estate';
 import { trackYourJobsIn3dCopy } from './track-your-jobs-in-3d';
+import { oilfieldSpillCopy } from './oilfield-spill-response';
+import { IGNITION_IMG, IGNITION_SPILL } from '@/lib/ignition';
 
 /*
   Use-case showcase cards. Data only: no JSX, no hooks, no logic beyond reading fields.
@@ -60,6 +62,23 @@ const REAL_ESTATE_ASSET = '/videos/showcase/real-estate-card-82f19ba9';
 const JOBS_3D_ASSET = '/videos/showcase/track-your-jobs-in-3d-card-dcd40d13';
 
 const ALL_TILES: ShowcaseTile[] = [
+  {
+    /* Ignition, the GRC highlight (Josh, 2026-11-27): first card on the home rotation and on /case-studies.
+       Posters are the teaser's Ignition board still (sample data); no clip yet, so the card shows the poster only. */
+    id: oilfieldSpillCopy.slug,
+    stage: 'run',
+    kick: 'Governance, risk and compliance · Ignition',
+    title: oilfieldSpillCopy.headline,
+    in: IGNITION_SPILL[0].text,
+    agent: IGNITION_SPILL[1].text + ' ' + IGNITION_SPILL[2].text,
+    you: oilfieldSpillCopy.closing,
+    ctaLabel: 'See Ignition →',
+    href: `/use-cases/${oilfieldSpillCopy.slug}`,
+    video: '',
+    poster: IGNITION_IMG.board.src960,
+    posterSmall: IGNITION_IMG.board.src640,
+    demoLabel: 'Sample data',
+  },
   {
     id: truckingCopy.slug,
     stage: 'run', // UNVERIFIED(inferred, see header)

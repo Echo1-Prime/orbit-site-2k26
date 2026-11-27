@@ -304,34 +304,36 @@ export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
   });
 
   /* ───────── lifecycle orbit (bls) ───────── */
-  const cur = ((blsPos % 7) + 7) % 7;
-  const a = blsFO ? 7 : cur;
+  /* Ring size follows the data: every BLS row but the last (Front Office, every stage) is a node. */
+  const N = BLS.length - 1;
+  const cur = ((blsPos % N) + N) % N;
+  const a = blsFO ? N : cur;
   const A = BLS[a];
   const CIRC = 2 * Math.PI * 192;
   const pick = (i: number) => () => {
-    if (i === 7) {
+    if (i === N) {
       setBlsFO(true);
       setBlsUser(true);
       return;
     }
-    setBlsPos((p) => p + ((i - cur + 7) % 7));
+    setBlsPos((p) => p + ((i - cur + N) % N));
     setBlsFO(false);
     setBlsUser(true);
   };
   const pct = (r: number, ang: number) => [(50 + r * Math.cos(ang)).toFixed(2) + '%', (50 + r * Math.sin(ang)).toFixed(2) + '%'];
   Object.assign(v, {
-    blsDash: (blsFO ? CIRC : (CIRC * cur) / 7).toFixed(1) + ' ' + CIRC.toFixed(1),
-    blsRotTf: 'rotate(' + ((blsPos * 360) / 7).toFixed(3) + 'deg)',
+    blsDash: (blsFO ? CIRC : (CIRC * cur) / N).toFixed(1) + ' ' + CIRC.toFixed(1),
+    blsRotTf: 'rotate(' + ((blsPos * 360) / N).toFixed(3) + 'deg)',
     blsRotTr: reduced ? 'none' : 'transform 900ms var(--ao-ease-out)',
     blsSat: reduced ? 'none' : 'ao-spin 60s linear infinite',
     blsMark: m ? 56 : 88, // the mark is the diagram's centre piece, alone inside the inner ring
-    blsKick: blsFO ? 'Every stage · Front Office' : String(cur + 1).padStart(2, '0') + ' / 07 · ' + A.st,
+    blsKick: blsFO ? 'Every stage · Front Office' : String(cur + 1).padStart(2, '0') + ' / ' + String(N).padStart(2, '0') + ' · ' + A.st,
     blsKc: A.c, blsName: A.n, blsCat: A.cat || '', blsHref: BLS_ROUTE[A.n] || '/products',
-    blsFO, blsPickFO: pick(7),
+    blsFO, blsPickFO: pick(N),
     blsFOBd: blsFO ? 'var(--ao-stellar)' : 'var(--ao-bd-2)', blsFOC: blsFO ? 'var(--ao-t0)' : 'var(--ao-t1)',
     blsEnter: () => setBlsHover(true), blsLeave: () => setBlsHover(false),
-    blsNodes: BLS.slice(0, 7).map((b, i) => {
-      const ang = -Math.PI / 2 + (i * 2 * Math.PI) / 7;
+    blsNodes: BLS.slice(0, N).map((b, i) => {
+      const ang = -Math.PI / 2 + (i * 2 * Math.PI) / N;
       const isOn = !blsFO && i === cur;
       const past = !blsFO && i < cur;
       const [x, y] = pct(32, ang);
@@ -347,7 +349,7 @@ export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
       const isOn = i === a;
       return {
         on: isOn, pick: pick(i), c: b.c, ruleOp: isOn ? 1 : 0.45,
-        kick: i === 7 ? 'Every stage' : String(i + 1).padStart(2, '0') + ' · ' + b.st, name: b.card || b.n, cat: b.cat || '', out: b.o,
+        kick: i === N ? 'Every stage' : String(i + 1).padStart(2, '0') + ' · ' + b.st, name: b.card || b.n, cat: b.cat || '', out: b.o,
         kc: isOn ? b.c : 'var(--ao-t1)', bg: isOn ? 'var(--ao-sf-1)' : 'var(--ao-sf-0)',
         bd: isOn ? 'color-mix(in srgb, ' + b.c + ' 45%, transparent)' : 'var(--ao-bd-0)',
       };

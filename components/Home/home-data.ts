@@ -47,13 +47,17 @@ export const LOG: any[] = [
     { t: '09:30:08', act: 'Permission change recorded', who: 'Prime · Audit agent', trust: 'Threshold', out: 'Logged', c: 'var(--ao-system)' },
   ];
 
+/* The eight Harnesses around Agent Orbit, in the ring order of the Ignition and Titan teaser (2026-11) with
+   lifecycle groups and one-liners verbatim from the Echo 1 Labs Product Stack deck (Nov 2026, BETA).
+   The last row (Front Office) is not a ring node; useHomeVals sizes the ring from this list. */
 export const BLS: any[] = [
-    { st: 'Strategize', n: 'Engine', cat: 'Go-to-market', c: 'var(--ao-orbit)', f: 'Echo 1 Labs Engine.dc.html', o: 'An execution-ready GTM workbook, fast. A defined audience to work.' },
-    { st: 'Find', n: 'RevOps', cat: 'Sales', c: 'var(--ao-agent)', f: 'Echo 1 Labs RevOps.dc.html', o: 'The calendar fills without chasing.' },
-    { st: 'Attract', n: 'Broadcast', cat: 'Marketing', c: 'var(--ao-stellar)', f: 'Echo 1 Labs Broadcast.dc.html', o: 'Cross-channel content without a content team. The brand shows up consistently.' },
-    { st: 'Analyze', n: 'Signal', cat: 'M&A Lifecycle Management', c: 'var(--ao-system)', f: 'Echo 1 Labs Signal.dc.html', o: 'M&A deal sourcing. Acquisition targets found, screened and compared before you commit.' },
-    { st: 'Manage', n: 'Ledger', cat: 'Finance and ops', c: 'var(--ao-orbit)', f: 'Echo 1 Labs Ledger.dc.html', o: 'Books read without manual cleanup. The operator reads a memo, not a raw ledger.' },
-    { st: 'Deliver', n: 'Titan', cat: 'Construction Lifecycle Management', c: 'var(--ao-stellar)', f: 'Echo 1 Labs Titan.dc.html', o: 'Committed work delivered and tracked. Delivery without separate project tooling.' },
-    { st: 'Govern', n: 'Prime', card: 'Prime · Agent Orbit', cat: 'Operational Lifecycle Management', c: 'var(--ao-agent)', f: 'Echo 1 Labs Prime.dc.html', o: 'Operational Lifecycle Management. The owner runs the whole business from the Agent Orbit command center.' },
+    { st: 'Strategize', n: 'Engine', cat: 'Win the business', c: 'var(--ao-orbit)', f: 'Echo 1 Labs Engine.dc.html', o: 'Voice intake to a GTM plan.' },
+    { st: 'Find', n: 'RevOps', cat: 'Win the business', c: 'var(--ao-agent)', f: 'Echo 1 Labs RevOps.dc.html', o: 'Every deal moving. Every follow-up sent.' },
+    { st: 'Attract', n: 'Broadcast', cat: 'Win the business', c: 'var(--ao-stellar)', f: 'Echo 1 Labs Broadcast.dc.html', o: 'Content that sounds like you.' },
+    { st: 'Analyze', n: 'Signal', cat: 'Buy the business', c: 'var(--ao-system)', f: 'Echo 1 Labs Signal.dc.html', o: 'Targets screened against your thesis. Valuation and a drafted memo; you decide.' },
+    { st: 'Manage', n: 'Ledger', cat: 'Run the operation', c: 'var(--ao-orbit)', f: 'Echo 1 Labs Ledger.dc.html', o: 'Continuous accounting, delivered as a memo.' },
+    { st: 'Move', n: 'Ignition', cat: 'Run the operation', c: 'var(--ao-agent)', f: '', o: 'Field logistics, call to invoice.' },
+    { st: 'Build', n: 'Titan', cat: 'Build the assets', c: 'var(--ao-stellar)', f: 'Echo 1 Labs Titan.dc.html', o: 'Plan set in, priced bid out, job tracked in 3D.' },
+    { st: 'Govern', n: 'Prime', card: 'Prime · Agent Orbit', cat: 'Govern every action', c: 'var(--ao-system)', f: 'Echo 1 Labs Prime.dc.html', o: 'Who can do what, and a record of who did. Lives inside Agent Orbit.' },
     { st: 'Every stage', n: 'Front Office', cat: 'Voice agents', c: 'var(--ao-stellar)', f: 'Echo 1 Labs Voice Agents.dc.html', o: 'Calls answered and made without a front desk. No lead goes cold from missed follow-up.' },
   ];

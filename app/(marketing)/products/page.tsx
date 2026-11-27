@@ -11,7 +11,7 @@ export const dynamic = 'force-static';
 export const metadata: Metadata = pageMetadata({
   title: 'Products',
   description:
-    'The 8-stage Business Lifecycle Management system: AI Readiness (ENABLE) plus seven products: Engine, RevOps, Broadcast, Signal, Ledger, Titan, and Prime.',
+    'Eight Harnesses across the business lifecycle: Engine, RevOps, Broadcast, Signal, Titan, Ignition, Ledger and Prime, on one surface in Agent Orbit. AI Readiness is the advisory engagement that gets you there.',
   path: '/products',
 });
 
