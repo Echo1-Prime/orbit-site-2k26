@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Ben AI cover</title>
+<style>
+:root{
+  --ao-void:#0A0A0E;
+  --ao-charcoal:#1C1127;
+  --ao-orbit:#FF7515;
+  --ao-orbit-15:rgba(255,117,21,0.15);
+  --ao-orbit-30:rgba(255,117,21,0.30);
+  --ao-bd-1:rgba(255,255,255,0.10);
+  --ao-bd-2:rgba(255,255,255,0.22);
+  --ao-t0:#F0F0F5;
+  --ao-t1:#8892A4;
+  --ao-f-display:'Inter Display','Inter',system-ui,sans-serif;
+  --ao-f-body:'Inter',system-ui,sans-serif;
+  --ao-f-mono:'JetBrains Mono',monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:1600px;height:900px;background:var(--ao-void);color:var(--ao-t0);font-family:var(--ao-f-body);overflow:hidden}
+.stage{position:relative;width:1600px;height:900px;background:radial-gradient(1200px 700px at 50% 120%,var(--ao-charcoal),var(--ao-void) 70%)}
+svg.orbits{position:absolute;inset:0}
+.tag{position:absolute;top:56px;left:72px;font:500 20px var(--ao-f-mono);letter-spacing:.18em;color:var(--ao-t1)}
+.tag b{color:var(--ao-orbit);font-weight:500}
+.top-right{position:absolute;top:56px;right:72px;font:500 20px var(--ao-f-mono);letter-spacing:.18em;color:var(--ao-t1)}
+.lane{position:absolute;top:150px;width:660px}
+.lane.l{left:72px}
+.lane.r{right:72px;text-align:right}
+.lane h2{font:800 150px/0.95 var(--ao-f-display);letter-spacing:-.04em}
+.lane h2 small{display:block;font:500 22px var(--ao-f-mono);letter-spacing:.2em;color:var(--ao-t1);margin-bottom:18px}
+.lane.r h2{color:var(--ao-t0)}
+.lane.l h2{color:var(--ao-t0)}
+.bubble{margin-top:34px;display:inline-block;max-width:560px;padding:22px 26px;border:1px solid var(--ao-bd-2);border-radius:20px;background:rgba(255,255,255,0.048);font:400 25px/1.4 var(--ao-f-body);color:var(--ao-t0);text-align:left}
+.bubble em{font-style:normal;color:var(--ao-orbit)}
+.bridge{position:absolute;left:50%;top:210px;transform:translateX(-50%);width:140px;height:140px;border-radius:50%;background:var(--ao-orbit);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 14px var(--ao-orbit-15),0 0 0 34px rgba(255,117,21,0.06)}
+.bridge span{font:800 84px var(--ao-f-display);color:var(--ao-void);margin-top:-6px}
+.headline{position:absolute;left:72px;right:72px;bottom:150px;text-align:center}
+.headline h1{font:800 96px/1.02 var(--ao-f-display);letter-spacing:-.035em}
+.headline h1 span{color:var(--ao-orbit)}
+.sub{position:absolute;left:72px;right:72px;bottom:68px;display:flex;justify-content:space-between;align-items:center;font:500 22px var(--ao-f-mono);letter-spacing:.14em;color:var(--ao-t1)}
+.sub .pill{border:1px solid var(--ao-orbit-30);background:var(--ao-orbit-15);color:var(--ao-orbit);padding:12px 22px;border-radius:999px}
+</style>
+</head>
+<body>
+<div class="stage">
+  <svg class="orbits" viewBox="0 0 1600 900" fill="none">
+    <ellipse cx="800" cy="280" rx="520" ry="170" stroke="rgba(255,255,255,0.10)" stroke-width="1.5"/>
+    <ellipse cx="800" cy="280" rx="700" ry="250" stroke="rgba(255,255,255,0.055)" stroke-width="1.5"/>
+  </svg>
+  <div class="tag"><b>ECHO 1 LABS</b> &nbsp;/&nbsp; BEN AI</div>
+  <div class="top-right">STEP 1 &nbsp;/&nbsp; STEP 10</div>
+
+  <div class="lane l">
+    <h2><small>THE RELATIONSHIP LANE</small>SELL<br>AI?</h2>
+    <div class="bubble">"It reads your paperwork so your people don't have to."</div>
+  </div>
+  <div class="bridge"><span>&amp;</span></div>
+  <div class="lane r">
+    <h2><small>THE PRODUCT LANE</small>BUILD<br>AI?</h2>
+    <div class="bubble">"...routes the exceptions, and then, wait, <em>I skipped step 3.</em>"</div>
+  </div>
+
+  <div class="headline"><h1>There's room for <span>both.</span></h1></div>
+  <div class="sub"><div>FINDING BUILDERS + WHITE LABEL PARTNERS</div><div class="pill">FOUNDERS' MEETING OPEN</div></div>
+</div>
+</body>
+</html>
