@@ -674,7 +674,7 @@ export const POSTS: BlogPost[] = [
     title: 'Sell AI or Build AI? There\'s Room for Both.',
     description: 'Selling AI and building AI are two different jobs. Here is why they stay in separate lanes, why relationships drive revenue, and who we want to meet.',
     datePublished: '2026-11-27',
-    readingTime: '4 min',
+    readingTime: '5 min',
     category: 'Fundamentals',
     body: [
       { type: 'p', content: 'Hi, my name is Josh, and I am a recovering operator.' },
@@ -693,6 +693,8 @@ export const POSTS: BlogPost[] = [
       { type: 'p', content: 'Relationship builders who want to white label or resell. You own the customer relationship. You are the name they trust. We build and support behind you, and a real person is always reachable when your customer calls. I will run the first demo with you as your sales engineer, then we rehearse, and you run the second one.' },
       { type: 'p', content: 'Builders who want to build with us on a contract basis. Bring your craft. Skip the part where you explain it to a stranger on a Tuesday.' },
       { type: 'p', content: 'What we ask of both: be trustworthy, hold the line, stay mission-driven. I would rather have three people who show up than thirty who ghost.' },
+      { type: 'h2', content: 'A partner portal, so you are not pitching alone' },
+      { type: 'p', content: 'Every partner gets access to our partner portal. It has training, quizzes, and your own recordings from the training calls we do together, so you can watch your calls back. I have also recorded my own pitches from real meetings, so the portal doubles as sales training if you are new to selling. It is built to help you grow your knowledge base and your presentation skills before you sit across from a customer.' },
       { type: 'h2', content: 'Pick a time' },
       { type: 'p', content: 'If either of those sounds like you, book the founders\' meeting with me. No pitch deck marathon. The full product stack is on the products page, so you can see all of it before we talk.' },
     ],

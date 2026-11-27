@@ -49,6 +49,10 @@ Bring your craft. Skip the part where you explain it to a stranger on a Tuesday.
 
 What I ask of both: be trustworthy, hold the line, stay mission-driven. I would rather have three people who show up than thirty who ghost.
 
+**A partner portal, so you are not pitching alone**
+
+Every partner gets access to our partner portal. It has training, quizzes, and your own recordings from the training calls we do together, so you can watch your calls back. I have also recorded my own pitches from real meetings, so the portal doubles as sales training if you are new to selling. It is built to help you grow your knowledge base and your presentation skills before you sit across from a customer.
+
 **Pick your door**
 
 Comment below:
