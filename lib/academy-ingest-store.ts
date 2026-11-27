@@ -11,7 +11,7 @@ export const recordPath = (key: string) => `${INGEST_PREFIX}${key}.json`;
 // Kept apart from the records so the admin list (one folder level) never reads it.
 const retryPath = (key: string) => `${INGEST_PREFIX}retry/${key}.json`;
 
-async function readJson(path: string): Promise<{ value: unknown; etag: string } | null> {
+export async function readJson(path: string): Promise<{ value: unknown; etag: string } | null> {
   // Straight from origin: a cached copy could show an approved record as still waiting.
   const r = await get(path, { access: 'private', useCache: false });
   if (!r || r.statusCode !== 200 || !r.stream) return null;
