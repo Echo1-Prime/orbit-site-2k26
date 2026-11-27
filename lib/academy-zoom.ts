@@ -93,6 +93,37 @@ export function parseRecordingCompleted(body: unknown): ZoomRecording | null {
   };
 }
 
+// recording.transcript_completed: same top-level download_token and payload.object.uuid as
+// recording.completed, with the transcript as a recording_files entry of file_type TRANSCRIPT
+// (Zoom devforum, read 2026-11-27). UNVERIFIED on a live delivery; S2's gate checks it.
+// Returns null for any other event or anything unusable. Only a zoom.us https URL is kept.
+export type ZoomTranscript = { uuid: string; downloadToken: string; url: string };
+
+export function parseTranscriptCompleted(body: unknown): ZoomTranscript | null {
+  if (!body || typeof body !== 'object') return null;
+  const b = body as Record<string, unknown>;
+  if (b.event !== 'recording.transcript_completed') return null;
+  const o = (b.payload as Record<string, unknown> | undefined)?.object as Record<string, unknown> | undefined;
+  if (!o || typeof o !== 'object') return null;
+  const uuid = str(o.uuid, 200);
+  const downloadToken = str(b.download_token, 4000);
+  const files = (Array.isArray(o.recording_files) ? o.recording_files : [])
+    .filter((f): f is Record<string, unknown> => !!f && typeof f === 'object')
+    .filter((f) => str(f.file_type, 20).toUpperCase() === 'TRANSCRIPT')
+    .map((f) => ({ url: str(f.download_url, 2000), done: str(f.status, 40) === 'completed' }))
+    .filter((f) => {
+      try {
+        const host = new URL(f.url).hostname;
+        return f.url.startsWith('https://') && (host === 'zoom.us' || host.endsWith('.zoom.us'));
+      } catch {
+        return false;
+      }
+    });
+  const file = files.find((f) => f.done) ?? files[0];
+  if (!uuid || !downloadToken || !file) return null;
+  return { uuid, downloadToken, url: file.url };
+}
+
 // The recording to keep: the speaker-view MP4 if there is one, else the largest MP4.
 export function pickMp4(files: ZoomFile[]): ZoomFile | null {
   const mp4 = files.filter((f) => f.type === 'MP4');

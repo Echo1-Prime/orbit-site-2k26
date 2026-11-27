@@ -2,15 +2,18 @@ import { after } from 'next/server';
 import { loadMembers } from '../../../lib/academy-store';
 import { loadAliases } from '../../../lib/academy-zoom-store';
 import { readRecord, runIngest, saveRetryInfo, writeRecord } from '../../../lib/academy-ingest-store';
+import { runTranscriptIngest, saveTranscriptRetry, transcriptExists } from '../../../lib/academy-lesson-store';
 import {
   ingestKey,
   matchPerson,
   parseRecordingCompleted,
+  parseTranscriptCompleted,
   pickMp4,
   urlValidationResponse,
   verifySignature,
   type IngestRecord,
   type ZoomRecording,
+  type ZoomTranscript,
 } from '../../../lib/academy-zoom';
 
 // Zoom `recording.completed` receiver. Off (404) until ZOOM_WEBHOOK_SECRET is set. Verifies the
@@ -22,6 +25,9 @@ import {
 //
 // UNVERIFIED: that a 300-800 MB stream finishes inside maxDuration. A failure is recorded as
 // `failed` in the record, never lost silently.
+//
+// Also takes `recording.transcript_completed` (call-to-lesson S2): the VTT goes to
+// academy/ingest/transcripts/<key>.vtt, server only. See acceptTranscript below.
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 export const maxDuration = 300;
@@ -50,6 +56,9 @@ export async function POST(req: Request) {
   if (!verifySignature(secret, req.headers.get('x-zm-request-timestamp'), raw, req.headers.get('x-zm-signature'))) {
     return new Response('Unauthorized', { status: 401 });
   }
+
+  const tx = parseTranscriptCompleted(body);
+  if (tx) return acceptTranscript(tx);
 
   const rec = parseRecordingCompleted(body);
   if (!rec) return Response.json({ ignored: true }); // some other event, or nothing usable
@@ -80,6 +89,23 @@ export async function POST(req: Request) {
     return new Response('Could not record the delivery', { status: 500 });
   }
   after(() => ingest(rec, record));
+  return Response.json({ accepted: true });
+}
+
+// recording.transcript_completed. Stored at academy/ingest/transcripts/<key>.vtt under the same key
+// as the recording, even if recording.completed has not arrived yet; the ingest record gains no
+// status, the file's existence is the state. The retry details are saved BEFORE answering, so a
+// failed save makes Zoom redeliver instead of losing the transcript. S3 adds maybeStartDraft(key)
+// after the store; until then nothing reads the file but the server.
+async function acceptTranscript(tx: ZoomTranscript): Promise<Response> {
+  const key = ingestKey(tx.uuid);
+  try {
+    if (await transcriptExists(key)) return Response.json({ duplicate: true });
+    await saveTranscriptRetry(key, { url: tx.url, token: tx.downloadToken });
+  } catch {
+    return new Response('Could not record the delivery', { status: 500 });
+  }
+  after(() => runTranscriptIngest(key, { url: tx.url, token: tx.downloadToken }).then(() => {}));
   return Response.json({ accepted: true });
 }
 
