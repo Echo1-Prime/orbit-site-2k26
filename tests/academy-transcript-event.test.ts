@@ -1,7 +1,7 @@
 // Sample data only: synthetic Zoom payloads. Tokens are non-hex placeholders.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { ingestKey, parseRecordingCompleted, parseTranscriptCompleted } from '../lib/academy-zoom.ts';
+import { ingestKey, isZoomDownloadUrl, parseRecordingCompleted, parseTranscriptCompleted } from '../lib/academy-zoom.ts';
 
 const event = (files: unknown[], extra: Record<string, unknown> = {}) => ({
   event: 'recording.transcript_completed',
@@ -38,6 +38,25 @@ test('parseTranscriptCompleted refuses other events, missing parts and non-Zoom 
   }
   assert.equal(parseTranscriptCompleted(null), null);
   assert.equal(parseTranscriptCompleted('x'), null);
+});
+
+test('isZoomDownloadUrl allows only https zoom.us and its subdomains on the default port', () => {
+  for (const ok of ['https://zoom.us/rec/x', 'https://us02web.zoom.us/rec/webhook_download/x', 'https://ZOOM.US/x']) {
+    assert.equal(isZoomDownloadUrl(ok), true, ok);
+  }
+  for (const bad of [
+    'http://zoom.us/x',
+    'https://evilzoom.us/x',
+    'https://zoom.us.evil.com/x',
+    'https://zoom.us:8443/x',
+    'https://user:pw@zoom.us/x',
+    'https://169.254.169.254/latest',
+    'file:///etc/passwd',
+    'not a url',
+    '',
+  ]) {
+    assert.equal(isZoomDownloadUrl(bad), false, bad);
+  }
 });
 
 test('the MP4 parser still ignores a transcript event', () => {

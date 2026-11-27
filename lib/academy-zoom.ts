@@ -99,6 +99,19 @@ export function parseRecordingCompleted(body: unknown): ZoomRecording | null {
 // Returns null for any other event or anything unusable. Only a zoom.us https URL is kept.
 export type ZoomTranscript = { uuid: string; downloadToken: string; url: string };
 
+// The only URLs we ever send a Zoom download token to: https on zoom.us or a subdomain of it,
+// default port, no credentials in the URL. Checked when parsing AND again right before the fetch.
+export function isZoomDownloadUrl(raw: string): boolean {
+  let u: URL;
+  try {
+    u = new URL(raw);
+  } catch {
+    return false;
+  }
+  if (u.protocol !== 'https:' || u.port !== '' || u.username !== '' || u.password !== '') return false;
+  return u.hostname === 'zoom.us' || u.hostname.endsWith('.zoom.us');
+}
+
 export function parseTranscriptCompleted(body: unknown): ZoomTranscript | null {
   if (!body || typeof body !== 'object') return null;
   const b = body as Record<string, unknown>;
@@ -111,14 +124,7 @@ export function parseTranscriptCompleted(body: unknown): ZoomTranscript | null {
     .filter((f): f is Record<string, unknown> => !!f && typeof f === 'object')
     .filter((f) => str(f.file_type, 20).toUpperCase() === 'TRANSCRIPT')
     .map((f) => ({ url: str(f.download_url, 2000), done: str(f.status, 40) === 'completed' }))
-    .filter((f) => {
-      try {
-        const host = new URL(f.url).hostname;
-        return f.url.startsWith('https://') && (host === 'zoom.us' || host.endsWith('.zoom.us'));
-      } catch {
-        return false;
-      }
-    });
+    .filter((f) => isZoomDownloadUrl(f.url));
   const file = files.find((f) => f.done) ?? files[0];
   if (!uuid || !downloadToken || !file) return null;
   return { uuid, downloadToken, url: file.url };

@@ -6,6 +6,7 @@
 import { BlobNotFoundError, del, get, head, put } from '@vercel/blob';
 import { parseRetryInfo, type RetryInfo } from './academy-approval.ts';
 import { readJson } from './academy-ingest-store.ts';
+import { isZoomDownloadUrl } from './academy-zoom.ts';
 import { downloadWithOneRetry, judgeTranscriptResponse, MAX_VTT_CHARS, type TranscriptAttempt } from './academy-vtt.ts';
 
 // <key> is ingestKey(uuid), so the recording, its transcript and its lesson share one key.
@@ -53,7 +54,14 @@ export async function readTranscriptRetry(key: string): Promise<RetryInfo | null
 
 // One GET of the transcript. The token goes only to the zoom.us URL that parseRetryInfo accepted.
 export async function fetchTranscriptOnce(info: RetryInfo): Promise<TranscriptAttempt> {
-  const res = await fetch(info.url, { headers: { Authorization: `Bearer ${info.token}` } });
+  // Checked here too, not only in the parser: this is the line that sends the token out. The
+  // inline host test repeats isZoomDownloadUrl on the parsed URL so the guard sits on the value fetched.
+  if (!isZoomDownloadUrl(info.url)) return { ok: false, reason: 'not a Zoom download URL' };
+  const url = new URL(info.url);
+  if (url.protocol !== 'https:' || !(url.hostname === 'zoom.us' || url.hostname.endsWith('.zoom.us'))) {
+    return { ok: false, reason: 'not a Zoom download URL' };
+  }
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${info.token}` } });
   const len = Number(res.headers.get('content-length'));
   if (len > MAX_VTT_CHARS) return { ok: false, reason: 'transcript too large' };
   return judgeTranscriptResponse(res.status, await res.text());
