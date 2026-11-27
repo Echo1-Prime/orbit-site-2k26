@@ -16,11 +16,15 @@ import { BLS, CMP, FEED, LOG, NODES, SYM, TRUST } from './home-data';
 const HERO_CLIP = '/videos/home/hero-titan.mp4';
 /* Signal and Agent Orbit clips from Josh's uploads (2026-10-15), cropped square on the subject, audio removed.
    A slide with a clip replaces its drawn fallback (hvPoster1, hvScene). */
-const HOME_CLIPS = [HERO_CLIP, '/videos/home/hero-signal.mp4', '/videos/home/hero-agent-orbit.mp4'];
+/* Home hero order (Josh, 2026-11-27): Ignition, Titan, Agent Orbit, Signal. The Ignition clip is the logistics
+   drilling and fracking clip sped up to fit six seconds (hero-ignition-6s.mp4). */
+const IGNITION_CLIP = '/videos/home/hero-ignition-6s.mp4';
+const IGNITION_SLIDE_MS = 6000;
+const HOME_CLIPS = [IGNITION_CLIP, HERO_CLIP, '/videos/home/hero-agent-orbit.mp4', '/videos/home/hero-signal.mp4'];
 const SLIDE_MS = 5000;
 /* /logistics-demo (variant 'trucking'): slide 1 is the drilling and fracking clip at 1.5x speed (Josh, 2026-10-24).
    Its slide runs the full clip length so the frack stages finish before the hero rotates. */
-const LOGISTICS_CLIPS = ['/videos/home/hero-drill-frack.mp4', '/videos/home/hero-signal.mp4', '/videos/home/hero-agent-orbit.mp4'];
+const LOGISTICS_CLIPS = ['/videos/home/hero-drill-frack.mp4', HERO_CLIP, '/videos/home/hero-agent-orbit.mp4', '/videos/home/hero-signal.mp4'];
 const LOGISTICS_FIRST_SLIDE_MS = 13500;
 const LOGISTICS_BG = '/videos/home/hero-drill-frack.mp4';
 
@@ -62,7 +66,7 @@ function openConcierge(diag?: string) {
 
 export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
   const CLIPS = variant === 'trucking' ? LOGISTICS_CLIPS : HOME_CLIPS;
-  const slideMs = (i: number) => (variant === 'trucking' && i === 0 ? LOGISTICS_FIRST_SLIDE_MS : SLIDE_MS);
+  const slideMs = (i: number) => (i !== 0 ? SLIDE_MS : variant === 'trucking' ? LOGISTICS_FIRST_SLIDE_MS : IGNITION_SLIDE_MS);
   const router = useRouter();
   const m = useIsMobile();
   const conc = useFlag('conciergeOpen');
@@ -174,7 +178,7 @@ export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
   }, []);
 
   const hvNext = useCallback(() => {
-    setHv((h) => (h + 1) % 3);
+    setHv((h) => (h + 1) % 4);
     setHvCycle((c) => c + 1);
   }, []);
 
@@ -217,7 +221,7 @@ export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
     ) : null;
 
   const v: Record<string, any> = {};
-  [0, 1, 2].forEach((i) => {
+  [0, 1, 2, 3].forEach((i) => {
     const on = hv === i;
     v['hvOp' + i] = on ? 1 : 0;
     v['hvHid' + i] = !on;
@@ -273,7 +277,7 @@ export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
     ) : null;
   Object.assign(v, {
     heroBg,
-    hvPoster1: !CLIPS[1],
+    hvPoster3: !CLIPS[3],
     hvScene: !CLIPS[2],
     hvEnter: () => setHvHover(true),
     hvLeave: () => setHvHover(false),
@@ -304,34 +308,36 @@ export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
   });
 
   /* ───────── lifecycle orbit (bls) ───────── */
-  const cur = ((blsPos % 7) + 7) % 7;
-  const a = blsFO ? 7 : cur;
+  /* Ring size follows the data: every BLS row but the last (Front Office, every stage) is a node. */
+  const N = BLS.length - 1;
+  const cur = ((blsPos % N) + N) % N;
+  const a = blsFO ? N : cur;
   const A = BLS[a];
   const CIRC = 2 * Math.PI * 192;
   const pick = (i: number) => () => {
-    if (i === 7) {
+    if (i === N) {
       setBlsFO(true);
       setBlsUser(true);
       return;
     }
-    setBlsPos((p) => p + ((i - cur + 7) % 7));
+    setBlsPos((p) => p + ((i - cur + N) % N));
     setBlsFO(false);
     setBlsUser(true);
   };
   const pct = (r: number, ang: number) => [(50 + r * Math.cos(ang)).toFixed(2) + '%', (50 + r * Math.sin(ang)).toFixed(2) + '%'];
   Object.assign(v, {
-    blsDash: (blsFO ? CIRC : (CIRC * cur) / 7).toFixed(1) + ' ' + CIRC.toFixed(1),
-    blsRotTf: 'rotate(' + ((blsPos * 360) / 7).toFixed(3) + 'deg)',
+    blsDash: (blsFO ? CIRC : (CIRC * cur) / N).toFixed(1) + ' ' + CIRC.toFixed(1),
+    blsRotTf: 'rotate(' + ((blsPos * 360) / N).toFixed(3) + 'deg)',
     blsRotTr: reduced ? 'none' : 'transform 900ms var(--ao-ease-out)',
     blsSat: reduced ? 'none' : 'ao-spin 60s linear infinite',
     blsMark: m ? 56 : 88, // the mark is the diagram's centre piece, alone inside the inner ring
-    blsKick: blsFO ? 'Every stage · Front Office' : String(cur + 1).padStart(2, '0') + ' / 07 · ' + A.st,
+    blsKick: blsFO ? 'Every stage · Front Office' : String(cur + 1).padStart(2, '0') + ' / ' + String(N).padStart(2, '0') + ' · ' + A.st,
     blsKc: A.c, blsName: A.n, blsCat: A.cat || '', blsHref: BLS_ROUTE[A.n] || '/products',
-    blsFO, blsPickFO: pick(7),
+    blsFO, blsPickFO: pick(N),
     blsFOBd: blsFO ? 'var(--ao-stellar)' : 'var(--ao-bd-2)', blsFOC: blsFO ? 'var(--ao-t0)' : 'var(--ao-t1)',
     blsEnter: () => setBlsHover(true), blsLeave: () => setBlsHover(false),
-    blsNodes: BLS.slice(0, 7).map((b, i) => {
-      const ang = -Math.PI / 2 + (i * 2 * Math.PI) / 7;
+    blsNodes: BLS.slice(0, N).map((b, i) => {
+      const ang = -Math.PI / 2 + (i * 2 * Math.PI) / N;
       const isOn = !blsFO && i === cur;
       const past = !blsFO && i < cur;
       const [x, y] = pct(32, ang);
@@ -347,7 +353,7 @@ export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
       const isOn = i === a;
       return {
         on: isOn, pick: pick(i), c: b.c, ruleOp: isOn ? 1 : 0.45,
-        kick: i === 7 ? 'Every stage' : String(i + 1).padStart(2, '0') + ' · ' + b.st, name: b.card || b.n, cat: b.cat || '', out: b.o,
+        kick: i === N ? 'Every stage' : String(i + 1).padStart(2, '0') + ' · ' + b.st, name: b.card || b.n, cat: b.cat || '', out: b.o,
         kc: isOn ? b.c : 'var(--ao-t1)', bg: isOn ? 'var(--ao-sf-1)' : 'var(--ao-sf-0)',
         bd: isOn ? 'color-mix(in srgb, ' + b.c + ' 45%, transparent)' : 'var(--ao-bd-0)',
       };

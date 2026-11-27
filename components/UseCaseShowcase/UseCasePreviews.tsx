@@ -23,7 +23,7 @@ export interface UseCasePreviewsProps {
 
 /* Written for review (Josh approves every public line). */
 const DEFAULT_HEADING = 'Case studies';
-const DEFAULT_INTRO = 'Real use cases, with the names removed. Pick one to preview it.';
+const DEFAULT_INTRO = 'Real use cases. Pick one to preview it.'; // Josh, 2026-11-27: the Ignition case names 13|7 Waterworks
 const ROTATE_MS = 4000;
 
 export function UseCasePreviews({ heading = DEFAULT_HEADING, intro = DEFAULT_INTRO, tiles = showcaseTiles }: UseCasePreviewsProps) {

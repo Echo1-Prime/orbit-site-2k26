@@ -4,12 +4,8 @@ import { SITE_NAME } from '@/lib/site';
 import { SUBPAGES, SUBPAGES_UPDATED, type Subpage } from '@/lib/subpages';
 import styles from './SubpageSections.module.css';
 
-const UPDATED_LABEL = new Date(`${SUBPAGES_UPDATED}T00:00:00Z`).toLocaleDateString('en-US', {
-  timeZone: 'UTC',
-  year: 'numeric',
-  month: 'long',
-  day: 'numeric',
-});
+const updatedLabel = (iso: string) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric', timeZone: 'UTC' });
 
 /** Definition block directly under the hero: a question-style heading and a short direct answer. */
 export function AnswerBand({ p }: { p: Subpage }) {
@@ -24,7 +20,7 @@ export function AnswerBand({ p }: { p: Subpage }) {
         </h2>
         <p className={styles.answer}>{p.answer}</p>
         <p className={styles.meta}>
-          Last updated <time dateTime={SUBPAGES_UPDATED}>{UPDATED_LABEL}</time>
+          Last updated <time dateTime={p.updated ?? SUBPAGES_UPDATED}>{updatedLabel(p.updated ?? SUBPAGES_UPDATED)}</time>
         </p>
       </div>
     </section>

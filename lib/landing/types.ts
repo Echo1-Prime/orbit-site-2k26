@@ -82,8 +82,9 @@ export interface UseCaseLocation {
   what: string;
   today: string;
   orbit: string;
-  risk: UseCaseNote;
-  covered: UseCaseNote;
+  /** Optional: a location shows its risk and covered notes only when the source has them. */
+  risk?: UseCaseNote;
+  covered?: UseCaseNote;
 }
 
 export interface UseCaseCopy {
@@ -95,6 +96,10 @@ export interface UseCaseCopy {
   intro: string;
   beats: string[];
   embedUrl: string;
+  /** Optional: show a still of the demo (linked to embedUrl) instead of an iframe, for a demo behind sign-in. */
+  demoImage?: { src: string; srcSet?: string; alt: string; width: number; height: number; caption: string };
+  /** Optional: show the voice agent phone screens under the demo. */
+  voiceProof?: boolean;
   embedTitle: string;
   embedFallback: string;
   note: string;

@@ -1,5 +1,5 @@
 /**
- * Route slugs for the ten product subpages. Kept apart from the page registry (lib/subpages.ts) so a client
+ * Route slugs for the eleven product subpages. Kept apart from the page registry (lib/subpages.ts) so a client
  * component can link to a page without pulling the page copy into its bundle.
  * Slugs come from keyword research (Semrush US database, read 2026-10-12): one primary keyword per page.
  * scripts/subpages-from-handoff/build_page.py repeats these slugs for the generated link table; keep them equal.
@@ -11,6 +11,8 @@ export const SUBPAGE_SLUG = {
   signal: 'ma-deal-sourcing',
   ledger: 'month-end-close-automation',
   titan: 'construction-estimating-software',
+  /* UNVERIFIED(keyword volume not checked in Semrush): Ignition, Harness 6, added 2026-11-27 from the Product Stack deck. */
+  ignition: 'oilfield-logistics-software',
   prime: 'ai-agent-governance',
   aiReadiness: 'ai-readiness-assessment',
   infoManagement: 'document-processing-automation',
@@ -25,6 +27,7 @@ export const PRODUCT_ROUTE: Record<string, string> = {
   signal: `/${SUBPAGE_SLUG.signal}`,
   ledger: `/${SUBPAGE_SLUG.ledger}`,
   titan: `/${SUBPAGE_SLUG.titan}`,
+  ignition: `/${SUBPAGE_SLUG.ignition}`,
   prime: `/${SUBPAGE_SLUG.prime}`,
   'ai-readiness': `/${SUBPAGE_SLUG.aiReadiness}`,
 };
@@ -37,6 +40,7 @@ export const PRODUCT_NAME_ROUTE: Record<string, string> = {
   Signal: `/${SUBPAGE_SLUG.signal}`,
   Ledger: `/${SUBPAGE_SLUG.ledger}`,
   Titan: `/${SUBPAGE_SLUG.titan}`,
+  Ignition: `/${SUBPAGE_SLUG.ignition}`,
   Prime: `/${SUBPAGE_SLUG.prime}`,
   'AI Readiness': `/${SUBPAGE_SLUG.aiReadiness}`,
   'Info Management': `/${SUBPAGE_SLUG.infoManagement}`,
@@ -51,6 +55,7 @@ export const OLD_PATHS: Record<keyof typeof SUBPAGE_SLUG, string[]> = {
   signal: ['/products/signal'],
   ledger: ['/products/ledger'],
   titan: ['/products/titan'],
+  ignition: ['/products/ignition', '/ignition'],
   prime: ['/products/prime'],
   aiReadiness: ['/ai-readiness', '/products/ai-readiness', '/ai-readiness-quiz', '/quiz'],
   infoManagement: [],

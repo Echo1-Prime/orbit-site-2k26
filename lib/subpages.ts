@@ -42,6 +42,8 @@ export interface Subpage {
   clip?: string;
   /** Live URLs that now permanently redirect here. */
   oldPaths: string[];
+  /** Last substantial change for this page, when newer than SUBPAGES_UPDATED. */
+  updated?: string;
 }
 
 /** Date of the last substantial content change; shown on the page and used in the sitemap and JSON-LD. */
@@ -217,6 +219,42 @@ export const SUBPAGES: Subpage[] = [
     reading: ['document-intelligence-titan-contracts-invoices-pos'],
   },
   {
+    /* Added 2026-11-27 from Josh's Ignition and Titan teaser and the Product Stack deck (BETA). Hand-built bands
+       (components/Ignition/IgnitionBands.tsx); copy in lib/ignition.ts. */
+    key: 'ignition',
+    slug: SUBPAGE_SLUG.ignition,
+    name: 'Ignition',
+    category: 'Run the operation',
+    primaryKeyword: 'oilfield logistics software',
+    secondaryKeywords: ['oilfield dispatch software', 'water hauling dispatch software'],
+    title: 'Oilfield Logistics Software: Ignition',
+    description:
+      'Ignition is the oilfield logistics operating system: job line and dispatch by voice, tank alerts that climb the call chain, tickets and invoices on one board.',
+    question: 'What is Ignition oilfield logistics software?',
+    answer:
+      'Ignition is the oilfield logistics operating system, from the first call to the invoice. Twenty-eight agents run one board: job line and dispatch by voice in English or Spanish, sensor and tank alerts that climb the call chain, tickets and invoices on one board in 3D, and compliance, settlement, pricing and incident response. Agents draft; people approve.',
+    qa: [
+      {
+        q: 'What does Ignition do?',
+        a: 'Job line and dispatch by voice, in English or Spanish. Sensor and tank alerts that climb the call chain. Tickets and invoices on one board, in 3D. Compliance, settlement, pricing and incident response. It pulls from the systems you already run, with authorization.',
+      },
+      {
+        q: 'Who decides?',
+        a: 'Agents draft; people approve. Loads, tickets, prices, payments and outbound texts wait for a person, and the call chain escalates to a named person.',
+      },
+      {
+        q: 'Does the voice agent say it is an agent?',
+        a: 'Yes. The emergency line answers by voice or text and says it is an agent. The voice agent never claims to be a person.',
+      },
+      { q: 'How are the agents supervised?', a: TRUST_LADDER },
+    ],
+    linkLabel: 'Oilfield logistics software: Ignition',
+    ogAlt: 'Echo 1 Labs Ignition, sample data: a 3D tank battery on one board with a settling tank past its high mark.',
+    oldPaths: OLD_PATHS.ignition,
+    updated: '2026-11-27',
+    reading: [],
+  },
+  {
     key: 'prime',
     slug: SUBPAGE_SLUG.prime,
     name: 'Prime',
@@ -372,7 +410,7 @@ export function subpageJsonLd(p: Subpage) {
         name: `${p.title} | ${SITE_NAME}`,
         description: p.description,
         inLanguage: 'en-US',
-        dateModified: SUBPAGES_UPDATED,
+        dateModified: p.updated ?? SUBPAGES_UPDATED,
         isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: SITE_URL },
         primaryImageOfPage: {
           '@type': 'ImageObject',

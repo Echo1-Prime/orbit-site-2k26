@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { UseCaseCopy } from '@/lib/landing/types';
+import VoiceProof from '@/components/Ignition/VoiceProof';
 import styles from './UseCasePage.module.css';
 
 interface Props {
@@ -55,6 +56,23 @@ export default function UseCasePage({ copy }: Props) {
 
       <section className={`section ${styles.demoSection}`} aria-label={copy.embedTitle}>
         <div className={styles.wide}>
+          {copy.demoImage ? (
+            <figure className={styles.still}>
+              <a href={copy.embedUrl} target="_blank" rel="noopener">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={copy.demoImage.src}
+                  srcSet={copy.demoImage.srcSet}
+                  sizes="(min-width: 1200px) 1200px, 100vw"
+                  alt={copy.demoImage.alt}
+                  width={copy.demoImage.width}
+                  height={copy.demoImage.height}
+                  decoding="async"
+                />
+              </a>
+              <figcaption>{copy.demoImage.caption}</figcaption>
+            </figure>
+          ) : (
           <div className={styles.frame}>
             <iframe
               src={copy.embedUrl}
@@ -65,6 +83,7 @@ export default function UseCasePage({ copy }: Props) {
               className={styles.iframe}
             />
           </div>
+          )}
           <p className={styles.fallback}>
             <a href={copy.embedUrl} target="_blank" rel="noopener">
               {copy.embedFallback}
@@ -73,6 +92,14 @@ export default function UseCasePage({ copy }: Props) {
           <p className={styles.note}>{copy.note}</p>
         </div>
       </section>
+
+      {copy.voiceProof && (
+        <section className="section band--dark" aria-labelledby="voice-proof">
+          <div className={styles.wide}>
+            <VoiceProof />
+          </div>
+        </section>
+      )}
 
       {copy.locations.length > 0 && (
       <section className={`section band--muted ${styles.locSection}`}>
@@ -93,20 +120,26 @@ export default function UseCasePage({ copy }: Props) {
                     <dd>{loc.orbit}</dd>
                   </div>
                 </dl>
+                {(loc.risk || loc.covered) && (
                 <div className={styles.notes}>
+                  {loc.risk && (
                   <div className={styles.noteCard}>
                     <h4 className={styles.noteTitle}>
                       <span className={styles.tagRisk}>Risk</span> {loc.risk.title}
                     </h4>
                     <p>{loc.risk.text}</p>
                   </div>
+                  )}
+                  {loc.covered && (
                   <div className={styles.noteCard}>
                     <h4 className={styles.noteTitle}>
                       <span className={styles.tagCovered}>Covered</span> {loc.covered.title}
                     </h4>
                     <p>{loc.covered.text}</p>
                   </div>
+                  )}
                 </div>
+                )}
               </li>
             ))}
           </ol>

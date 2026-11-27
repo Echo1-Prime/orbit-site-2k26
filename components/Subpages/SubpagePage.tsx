@@ -12,6 +12,9 @@ import RevOpsBands from './generated/RevOpsBands';
 import SignalBands from './generated/SignalBands';
 import TitanBands from './generated/TitanBands';
 import VoiceAgentsBands from './generated/VoiceAgentsBands';
+import IgnitionBands from '@/components/Ignition/IgnitionBands';
+import VoiceProof from '@/components/Ignition/VoiceProof';
+import ignitionStyles from '@/components/Ignition/Ignition.module.css';
 import HeroClip from './HeroClip';
 import { AnswerBand, QABand, RelatedBand, SubpageFooter } from './SubpageSections';
 
@@ -24,6 +27,7 @@ const BANDS: Record<string, Bands> = {
   signal: SignalBands,
   ledger: LedgerBands,
   titan: TitanBands,
+  ignition: IgnitionBands,
   prime: PrimeBands,
   aiReadiness: AiReadinessBands,
   infoManagement: InfoManagementBands,
@@ -60,6 +64,14 @@ export default function SubpagePage({ p }: { p: Subpage }) {
           afterHero={
             heroOnly ? (
               <>
+                {p.key === 'voiceAgents' && (
+                  /* The Ignition phone screens: intake, compliance, dispatch and 24/7 coverage (Josh, 2026-11-27). */
+                  <section data-band="dark" aria-labelledby="voice-proof" className={ignitionStyles.band}>
+                    <div className={ignitionStyles.inner}>
+                      <VoiceProof eyebrow="Voice agents · On the record" />
+                    </div>
+                  </section>
+                )}
                 <AnswerBand p={p} />
                 {withFooter}
               </>
