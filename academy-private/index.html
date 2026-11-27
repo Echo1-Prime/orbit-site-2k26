@@ -223,6 +223,12 @@ const CLIPS = {
  D07:{t:"Agent Orbit: go-to-market studio",len:"0:52",kind:"demo",product:"Agent Orbit"},
  D08:{t:"Ignition: incident response in real time",len:"2:21",kind:"demo",product:"Ignition",flag:"Oilfield screens. Always say “sample data”."},
  D09:{t:"Ignition: dispatch, fleet tracking, and site KPIs",len:"1:41",kind:"demo",product:"Ignition"},
+ D10:{t:"Entertain, then earn the right to educate",len:"0:31",kind:"demo",product:"Whiteboard talk"},
+ D11:{t:"Execute on their use case and show value fast",len:"0:51",kind:"demo",product:"Whiteboard talk"},
+ D12:{t:"Process engineering: automate the hallway, keep humans for reasoning",len:"1:26",kind:"demo",product:"Whiteboard talk"},
+ D13:{t:"What an agent has",len:"0:40",kind:"demo",product:"Whiteboard talk"},
+ D14:{t:"Rollout: executive team, champions, one question, implement right away",len:"2:07",kind:"demo",product:"Whiteboard talk"},
+ D15:{t:"Work back from the go-live date",len:"2:24",kind:"demo",product:"Whiteboard talk"},
  T01:{t:"The institutional AI pitch",len:"1:38",kind:"film",skill:"Positioning"},
  T02:{t:"Is it only for big builders?",len:"1:12",kind:"film",skill:"Objection handling"},
  T03:{t:"Finally asking about their use case",len:"0:58",kind:"film",skill:"Discovery"},
@@ -238,7 +244,8 @@ const CLIPS = {
  T14:{t:"Next steps: collateral, access, scheduling",len:"2:17",kind:"film",skill:"Close"},
  T15:{t:"Offering pre-call coaching and homework",len:"1:19",kind:"film",skill:"Close"}
 };
-const ALL_CLIPS = Object.keys(CLIPS);
+/* Required clips are the D clips: Josh’s demos and presentations. The T clips are the Grant call, reference only. */
+const ALL_CLIPS = Object.keys(CLIPS).filter(c=>c[0]==="D");
 
 /* The moment: the prospect's question or the situation behind each Do and Don't */
 const CTX = {
@@ -291,6 +298,24 @@ const SUM = {
   asked:[]},
  D09:{screen:"Driver-to-dispatch text and voice, Samsara GPS on every rig with site locations, and KPIs by site, operator and disposal.",
   said:["Text and voice carry a request from the driver through dispatch to the executive.","Calls for sales or dispatch flow through to invoicing, with AR and AP agents doing the follow-up.","With the customer’s GPS key, rigs show live, color-coded by how much of the day’s hours are left.","Operational numbers come in from each site so owners can drill down by location, operator or disposal."],
+  asked:[]},
+ D10:{screen:"Josh at the whiteboard. The writing is not legible, so the overlay cards carry the steps.",
+  said:["Start the conversation with something they want to see.","Earn the right to educate before you teach.","Treat it as a framework: it is the reason the user experience matters so much."],
+  asked:[]},
+ D11:{screen:"Josh at the whiteboard.",
+  said:["Entertain first to earn the right to educate.","Then execute on their specific use cases and show value immediately.","Speed and intelligence are the advantage right now."],
+  asked:[]},
+ D12:{screen:"Josh at the whiteboard with a drawing of people in a process.",
+  said:["Process engineering automates the repeatable steps between people, like a rigid hallway.","Reasoning with agents changes what the people at each step have to do.","Human interaction becomes more important as time goes on."],
+  asked:[]},
+ D13:{screen:"Josh at the whiteboard listing the three parts. The overlay card carries the list.",
+  said:["A model.","Memory.","At least one way to act, which is how it does something and knows what to do next."],
+  asked:[]},
+ D14:{screen:"Josh at the whiteboard, with the rollout list written up.",
+  said:["The executive team uses it first.","Then bring in internal champions: team leads and managers who talk about it.","Open a shared channel, ask what the biggest time suck is, and implement what you hear."],
+  asked:[]},
+ D15:{screen:"Josh at the whiteboard drawing a timeline.",
+  said:["Start with the date they need it by and work backward.","Leave room for their own internal due diligence.","Offer an AI readiness review to set expectations on timing."],
   asked:[]},
  T01:{screen:null,
   said:["Most companies use AI like Google. Each employee asks on their own, and the business keeps nothing.","Institutional AI uses the models but keeps the information and outputs on the company’s side, so it learns from everyone.","The phone is your personal AI; the company’s systems should hold the institutional one.","Josh builds it with step functions and workflows on AWS. That detail is for us, not the buyer."],
@@ -364,9 +389,12 @@ const MODULES = [
  {id:"m1",n:"01",name:"Positioning",stage:"Before every call",
   intro:"Say what we are in one breath, then prove it. Every rep uses the same words, so the market hears one company.",
   lessons:[
-   {c:"T01",note:"The strongest framing on the Grant call. Personal AI is the phone in your pocket. Institutional AI sits on the company’s own systems, keeps every output, and learns from the whole team’s work, so the business gets faster every week.",
-    do:"Use it in the first five minutes, then tie it to their business: “your estimators, your dispatch, your books.”",
-    dont:"Repeat the clip word for word. It has strong language and goes deep on how we build it. Buyers want the outcome, not the plumbing."},
+   {c:"D10",note:"Start the conversation with something they want to see. Earn the right to educate before you teach. It is a framework, and it is the reason the user experience matters so much.",
+    do:"Open with the screen or the answer they came for, then explain how it works.",
+    dont:"Open with a long company story before they have seen anything."},
+   {c:"D11",note:"Entertain first to earn the right to educate. Then execute on their specific use case and show value right away. Speed and intelligence are the advantage right now.",
+    do:"Pick the one use case they named and show it working before you widen the tour.",
+    dont:"Tour every product before you know which problem they have."},
    {c:"D01",note:"The full stack in two and a half minutes: Engine, RevOps, Broadcast, Signal, Ledger, Ignition, Titan and Prime around Agent Orbit.",
     do:"On a prospect call, tour only the two or three products that touch their problem. Save the full ring for the close.",
     dont:"Read the whole list to an owner who told you about one problem."}
@@ -374,13 +402,109 @@ const MODULES = [
   extra:"positioning",
   quiz:[
    {p:"A prospect asks, “So what are you?” Which answer is on message?",o:["We’re an AI shop that builds custom agents.","Business Lifecycle Management. Agents run the work, your people approve it, and you see all of it in Agent Orbit.","A software platform with a lot of agents.","Whatever you need, we can build it."],a:1,w:"Lead with the category, then the trust model. Never describe us as a shop, a vendor of software, or a builder of anything."},
-   {p:"In T01, what makes AI “institutional”?",o:["It uses a bigger model.","It runs on the company’s own systems, keeps the outputs, and learns from the whole team.","Only large enterprises can buy it.","It replaces the people who used to do the work."],a:1,w:"Institutional AI is owned by the company and gets better from everyone’s work. Personal AI resets with each person."},
+   {p:"In D10, what comes before you educate?",o:["Pricing","Starting with something they want to see, so you earn the right to educate","A long company history","A security review"],a:1,w:"Start with something they want to see. Earn the right to educate before you teach."},
+   {p:"In D11, what follows entertaining first?",o:["Execute on their specific use case and show value right away","Send a price","Cover the roadmap","Book a second call"],a:0,w:"Entertain, then execute on their use case and show value immediately."},
    {p:"Which product sits at “Govern” on the Agent Orbit ring?",o:["Ledger","Signal","Prime","Engine"],a:2,w:"Prime: who can do what, and a record of who did it. It lives inside Agent Orbit."},
    {p:"Which line is our current tagline?",o:["Smarter software for every business.","Built by operators. Run by agents. Supervised by you.","Your AI team, on demand.","Automate everything."],a:1,w:"Say it exactly. The wings line is “Break free from business gravity.”"}
   ]},
  {id:"m2",n:"02",name:"Discovery",stage:"Discovery, 45 min",
-  intro:"The Grant call reached discovery at minute 23. Everything before it was backstory. Target: the use-case question by minute 3.",
+  intro:"Ask about their work before you explain ours. Find the one process worth fixing first, then let the clips show how an agent changes it. Target: the use-case question by minute 3.",
   lessons:[
+   {c:"D12",note:"Process engineering automates the repeatable steps between people, like a rigid hallway. Reasoning with agents changes what the people at each step have to do, and human interaction matters more as time goes on.",
+    do:"Ask which steps between people repeat every time. Say which an agent can take and which stay with a person.",
+    dont:"Say agents replace the people. Humans stay on the reasoning."},
+   {c:"D13",note:"An agent has three parts: a model, memory, and at least one way to act, which is how it does something and knows what to do next.",
+    do:"When someone asks what makes it an agent, name the three parts, then point to the action it takes in their process.",
+    dont:"Call any chat window an agent."},
+   {c:"D05",note:"Estimating: Titan reads the plan set and lines items up with the price book, each with a confidence score. When it doesn’t recognize a line, it researches prices for that ZIP code and links the source so you can verify it.",
+    do:"When the prospect says estimating, lead with this clip and ask who owns the price book today.",
+    dont:"Skip the source links. Prices you can verify are the point."}
+  ],
+  extra:"discovery",
+  quiz:[
+   {p:"When should the use-case question come?",o:["After the demo","By minute 3","Around minute 20, once rapport is built","On the follow-up email"],a:1,w:"Ask early so the demo is about their work."},
+   {p:"A prospect keeps saying “I need to solve estimating.” Which clip should anchor the demo?",o:["D01 stack tour","D05 plan reading and a self-updating price book","D07 go-to-market studio","D09 dispatch and fleet tracking"],a:1,w:"D05 is the estimating story: plans in, line items matched to the price book, unknowns researched with sources."},
+   {p:"What are the three discovery anchors?",o:["Budget, authority, need, timing","Users, touchpoints, desired outcome","Price, scope, timeline","Pain, cost, urgency"],a:1,w:"Who uses it, where they touch it, and what they want at the end. The discovery card above has the follow-up questions."},
+   {p:"Which three parts does an agent have in D13?",o:["A model, memory, and at least one way to act","A brand, a price, and a login","A chat window, a template, and a report","A server, a database, and a dashboard"],a:0,w:"A model, memory, and a way to act, which is how it does something and knows what to do next."},
+   {p:"In D12, what matters more as agents take on the repeatable steps?",o:["Human interaction","Headcount","Hardware","Contract length"],a:0,w:"Human interaction becomes more important as time goes on. People stay on the reasoning."},
+   {p:"Which line must never be said about our voice agent?",o:["What do you do when you can’t answer the phone?","Consumers expect a response within minutes.","I can clone your voice and no one would even know.","Voice agents are one of the easiest entry points."],a:2,w:"Trust and compliance risk. Our voice agent never claims to be human."},
+   {p:"Which prospect do we walk away from?",o:["One who wants agents to replace people’s judgment outright","One who wants to start with a single workflow","One who asks how the agents are supervised","One with a team of 60"],a:0,w:"Disqualify: wants judgment replaced, wants a guaranteed return, or won’t map the process first."}
+  ]},
+ {id:"m3",n:"03",name:"Listen and shape the demo",stage:"Process map, then demo",
+  intro:"Prospects hand you the requirements if you let them talk. Write them down, read them back, and show them in their own words.",
+  lessons:[
+   {c:"D14",note:"Rollout: the executive team uses it first. Then bring in internal champions, the team leads and managers who talk about it. Open a shared channel, ask what the biggest time drain is, and implement what you hear right away.",
+    do:"Write the biggest time drain down in their words, read it back, and implement it first.",
+    dont:"Start with a company-wide launch and no champions."},
+   {c:"D15",note:"Start with the date they need it by and work backward. Leave room for their own internal due diligence. Offer an AI readiness review to set expectations on timing.",
+    do:"Ask for the date first, then lay the steps back from it and leave room for their review.",
+    dont:"Promise a go-live date before you know their approval steps."},
+   {c:"D04",note:"The preconstruction workflow: intake, land survey, soils, site work, environmental, septic and permitting. Titan writes the follow-ups the analysis calls for and finds the right people to send them to.",
+    do:"Show the steps in the order their team already works, so they see their own process on screen.",
+    dont:"Walk every step when they only asked about one."}
+  ],
+  extra:"capture",
+  quiz:[
+   {p:"A prospect says they need it live by a certain date. What do you do first?",o:["Work back from the date and leave room for their internal due diligence","Promise the date on the spot","Quote a price","Wait for the next release"],a:0,w:"Start with the date they need it by and work backward."},
+   {p:"In D14, who uses it first?",o:["The executive team","Every employee at once","Only the vendor","The newest hire"],a:0,w:"The executive team uses it first, then internal champions."},
+   {p:"In D14, what do you ask in the shared channel?",o:["What is the biggest time drain?","What is your budget?","Who signs?","When is your renewal?"],a:0,w:"Ask what the biggest time drain is, then implement what you hear."},
+   {p:"What does D15 offer to set expectations on timing?",o:["An AI readiness review","A price list","A signed contract","A reference call"],a:0,w:"An AI readiness review, with room left for their own due diligence."},
+   {p:"Which two segments stay in every demo?",o:["Pricing and timeline","Governance and the trust ladder","Stack tour and case studies","Agent count and roadmap"],a:1,w:"Governance and the trust ladder show who approves what. They never get cut for time."},
+   {p:"A partner wants estimating first and Agent Orbit later. You:",o:["Push for the full stack now","Agree and let them lead the sequence","Ask them to wait for the next release","Send a longer deck"],a:1,w:"Land and expand. Never discount."}
+  ]},
+ {id:"m4",n:"04",name:"Demo library",stage:"Demo, 20 min",
+  intro:"Fourteen clips: the product demos and the whiteboard talks. Learn which clip answers which problem. These are internal until Josh approves each one for prospects.",
+  lessons:[], extra:"library",
+  quiz:[
+   {p:"A water hauler runs dispatch on texts and a whiteboard. Which clip?",o:["D03","D06","D09","D07"],a:2,w:"D09: driver to dispatch to invoicing, live GPS, KPIs by site."},
+   {p:"What must you say every time you show the Ignition oilfield screens?",o:["This is live client data","Sample data","Beta","Coming soon"],a:1,w:"Always say “sample data”. Never show one client’s data to another."},
+   {p:"Which clip can’t go to a prospect until the client approves?",o:["D03 commercial site selection","D04 preconstruction workflow","D05 price book","D07 go-to-market studio"],a:0,w:"D03 is an architecture firm’s use case. D02 also needs Josh’s sign-off because it shows a real budget."},
+   {p:"A prospect asks how to roll this out inside the company. Which clip?",o:["D14","D13","D06","D09"],a:0,w:"D14: executive team first, then champions, then implement what you hear."},
+   {p:"What is the order of a 20-minute demo?",o:["Stack tour, pricing, questions","Their words, without and with, the board, governance and agents, trust ladder, book the process map","Case studies, demo, proposal","Agent count, product list, close"],a:1,w:"0-2 their words, 2-6 without/with, 6-10 the board, 10-14 governance and agents, 14-17 trust ladder, 17-20 book the map."}
+  ]},
+ {id:"m5",n:"05",name:"Claims and guardrails",stage:"Every conversation",
+  intro:"One bad claim can cost the account and our name. If a statement isn’t on the approved list, it doesn’t leave your mouth.",
+  lessons:[],
+  extra:"game",
+  quiz:[]},
+ {id:"m6",n:"06",name:"Partner model",stage:"Partners and resellers",
+  intro:"Regional partners own the customer relationship. We back them up. The frame is build, sell, support: the partner sells and owns the customer, we build and support behind them, and a real person the customer can reach stays in the loop. For a new partner’s first demo, run it as their sales engineer, then coach them to run the second. Never say we can do anything.",
+  lessons:[
+   {c:"D14",note:"Rollout from the partner’s chair: the executive team goes first, then internal champions, then a shared channel where the client names the biggest time drain and you implement what you hear.",
+    do:"Give a new partner this sequence to run with their own client.",
+    dont:"Let a partner start with a company-wide launch."},
+   {c:"D15",note:"Work back from the go-live date with the partner and leave room for the client’s own due diligence. Offer an AI readiness review to set expectations on timing.",
+    do:"Agree the date with the partner first, then fix the steps and who owns each one.",
+    dont:"Let a partner promise a date you have not checked."}
+  ],
+  quiz:[
+   {p:"A new partner wants to run their first demo alone. Best move?",o:["Send the deck and a login","Offer to run it as their sales engineer","Tell them to wait for training","Send a recording instead"],a:1,w:"Run the first one, coach the second."},
+   {p:"What is the partner support frame?",o:["Set and forget","Build, sell, support","Sell first, support later","Agents handle support"],a:1,w:"The partner sells and owns the customer; we build and support behind them."},
+   {p:"What can never drop out of the support model?",o:["A real person the customer can reach","Weekly calls","A price break","Custom code"],a:0,w:"People approve and a named person answers."},
+   {p:"Which phrase reads as overpromising?",o:["Agents draft; people approve.","We start in Shadow.","We can do anything.","Every action lands on a log you own."],a:2,w:"Say what the stack does and how it is supervised."},
+   {p:"A partner’s client asks when it can go live. First step?",o:["Work back from the date they need and leave room for their due diligence","Name a date on the spot","Say it depends","Send a price"],a:0,w:"Start with the date they need it by and work backward."}
+  ]},
+ {id:"m7",n:"07",name:"Close and follow-up",stage:"Close, then proposal",
+  intro:"Every call ends with one dated next step. Every follow-up goes out within 24 hours in the owner’s own words.",
+  lessons:[
+   {c:"D15",note:"D15 starts from the date the client needs it and works backward. The same move closes a call: finish with a dated next step, not a maybe.",
+    do:"Put a date and time on the calendar while they are still on the call.",
+    dont:"End with “when do you think you’d want to set something up?” and no date."}
+  ],
+  extra:"followup",
+  quiz:[
+   {p:"How should every call end?",o:["With a price","With one dated next step on the calendar","With a deck","With a login"],a:1,w:"Lock the date before you hang up."},
+   {p:"The follow-up packet goes out within:",o:["24 hours","3 days","A week","After the proposal"],a:0,w:"Within 24 hours, in the owner’s own words, with one dated next step."},
+   {p:"What is the follow-up email shape?",o:["Long recap with every feature","Two-sentence opener, one value line, one ask, no P.S.","Deck attached, no text","Pricing table and terms"],a:1,w:"Short and specific. One ask."},
+   {p:"A buyer over 55 cares about risk and succession. You:",o:["Send a text and a short video","Call first, lead with governance, close on a second meeting with the successor or CFO","Send three follow-up emails","Push for a same-day decision"],a:1,w:"Age is a guess. Their stated preference always wins."}
+  ]}
+];
+
+/* The Grant call lessons. Reference only: the Game film page reads these. Nothing here is required. */
+const GRANT_LESSONS = [
+   {c:"T01",note:"The strongest framing on the Grant call. Personal AI is the phone in your pocket. Institutional AI sits on the company’s own systems, keeps every output, and learns from the whole team’s work, so the business gets faster every week.",
+    do:"Use it in the first five minutes, then tie it to their business: “your estimators, your dispatch, your books.”",
+    dont:"Repeat the clip word for word. It has strong language and goes deep on how we build it. Buyers want the outcome, not the plumbing."},
    {c:"T03",note:"The question that should have opened the call. His answer, estimating and preconstruction, should have set the whole demo.",
     do:"Ask by minute 3: “Walk me through the work that eats your week.” Then build the demo around the answer.",
     dont:"Spend the first 12 minutes on our story. Nobody buys the backstory."},
@@ -392,19 +516,7 @@ const MODULES = [
     dont:"Say a voice agent will sound like the owner so no one knows. Our voice agent never claims to be human."},
    {c:"T04",note:"Good mapping. A modular builder doing 40 to 50 homes a year that wants to double, matched to a modular use case we already built.",
     do:"Follow up with “What breaks first when you double?” That answer is the pilot.",
-    dont:"Jump to financing and facility plans before you know what breaks."}
-  ],
-  extra:"discovery",
-  quiz:[
-   {p:"When should the use-case question come?",o:["After the demo","By minute 3","Around minute 20, once rapport is built","On the follow-up email"],a:1,w:"On this call it came at minute 23. Ask early so the demo is about their work."},
-   {p:"Grant kept saying “I need to solve estimating.” Which clip should have anchored the demo?",o:["D01 stack tour","D05 plan reading and a self-updating price book","D07 go-to-market studio","D09 dispatch and fleet tracking"],a:1,w:"D05 is the estimating story: plans in, line items matched to the price book, unknowns researched with sources."},
-   {p:"What are the three parts of the T09 framework?",o:["Budget, authority, need, timing","Users, touchpoints, desired outcome","Price, scope, timeline","Pain, cost, urgency"],a:1,w:"Who uses it, where they touch it, and what they want at the end. The middle is our job."},
-   {p:"Which line from T12 must never be repeated?",o:["What do you do when you can’t answer the phone?","Consumers expect a response within minutes.","I can clone your voice and no one would even know.","Voice agents are one of the easiest entry points."],a:2,w:"Trust and compliance risk. Our voice agent never claims to be human."},
-   {p:"Which prospect do we walk away from?",o:["One who wants agents to replace people’s judgment outright","One who wants to start with a single workflow","One who asks how the agents are supervised","One with a team of 60"],a:0,w:"Disqualify: wants judgment replaced, wants a guaranteed return, or won’t map the process first."}
-  ]},
- {id:"m3",n:"03",name:"Listen and shape the demo",stage:"Process map, then demo",
-  intro:"Prospects hand you the requirements if you let them talk. Write them down, read them back, and show them in their own words.",
-  lessons:[
+    dont:"Jump to financing and facility plans before you know what breaks."},
    {c:"T02",note:"“Is it only for big builders?” answered with a demo instead of a claim: residential first, then commercial.",
     do:"Answer scale questions by showing two sizes of the same workflow.",
     dont:"Answer with “it works for everyone.” Show it."},
@@ -413,37 +525,10 @@ const MODULES = [
     dont:"Answer “you probably already have it” with a demo of something else."},
    {c:"T11",note:"The partner proposed the sequence himself: estimating and project management first, Agent Orbit as the upsell once it saves them time.",
     do:"Agree and let the partner lead. Land with one Kit, expand Kit by Kit.",
-    dont:"Keep showing the rest of the stack after the buyer has picked a starting point."}
-  ],
-  extra:"capture",
-  quiz:[
-   {p:"“Is this only for big builders?” The best response is:",o:["It works at any scale, trust me.","Show a residential job, then a commercial one.","It’s mainly for large firms.","Send a case study after the call."],a:1,w:"Show, don’t claim."},
-   {p:"Besides daily site reporting, what did Grant ask for in T13?",o:["A mobile payroll app","A feature-request loop for clients","A lower price","Integration with a CRM"],a:1,w:"Clients want to report issues and request features, and see the list get built."},
-   {p:"Which two segments stay in every demo?",o:["Pricing and timeline","Governance and the trust ladder","Stack tour and case studies","Agent count and roadmap"],a:1,w:"Governance and the trust ladder show who approves what. They never get cut for time."},
-   {p:"A partner wants estimating first and Agent Orbit later. You:",o:["Push for the full stack now","Agree and let them lead the sequence","Offer a discount for the bundle","Ask them to wait for the next release"],a:1,w:"Land and expand. Never discount."}
-  ]},
- {id:"m4",n:"04",name:"Demo library",stage:"Demo, 20 min",
-  intro:"Eight product clips from the call. Learn which clip answers which problem. These are internal until Josh approves each one for prospects.",
-  lessons:[], extra:"library",
-  quiz:[
-   {p:"A water hauler runs dispatch on texts and a whiteboard. Which clip?",o:["D03","D06","D09","D07"],a:2,w:"D09: driver to dispatch to invoicing, live GPS, KPIs by site."},
-   {p:"What must you say every time you show the Ignition oilfield screens?",o:["This is live client data","Sample data","Beta","Coming soon"],a:1,w:"Always say “sample data”. Never show one client’s data to another."},
-   {p:"Which clip can’t go to a prospect until the client approves?",o:["D03 commercial site selection","D04 preconstruction workflow","D05 price book","D07 go-to-market studio"],a:0,w:"D03 is an architecture firm’s use case. D02 also needs Josh’s sign-off because it shows a real budget."},
-   {p:"What is the order of a 20-minute demo?",o:["Stack tour, pricing, questions","Their words, without and with, the board, governance and agents, trust ladder, book the process map","Case studies, demo, proposal","Agent count, product list, close"],a:1,w:"0-2 their words, 2-6 without/with, 6-10 the board, 10-14 governance and agents, 14-17 trust ladder, 17-20 book the map."}
-  ]},
- {id:"m5",n:"05",name:"Claims and guardrails",stage:"Every conversation",
-  intro:"One bad claim can cost the account and our name. If a statement isn’t on the approved list, it doesn’t leave your mouth.",
-  lessons:[
+    dont:"Keep showing the rest of the stack after the buyer has picked a starting point."},
    {c:"T08",note:"“Three months of bid work in a day and a half” is a friend’s report. It is not documented and has no approved reference.",
     do:"Say what the demo shows. Numbers come from Josh, with a named, approved reference.",
-    dont:"Repeat this number to anyone outside Echo 1 Labs. It is internal only."}
-  ],
-  restricted:{t:"Partner pricing conversation",len:"2:22",note:"This clip is restricted and not shown here. The lesson: price came up before scope was known. Discovery first. Pricing goes on a follow-up, Josh approves every price and term, and prices never go in writing."},
-  extra:"game",
-  quiz:[]},
- {id:"m6",n:"06",name:"Partner model",stage:"Partners and resellers",
-  intro:"Regional partners own the customer relationship. We back them up. The frame is build, sell, support.",
-  lessons:[
+    dont:"Repeat this number to anyone outside Echo 1 Labs. It is internal only."},
    {c:"T05",note:"A clear partner offer: own the market in your region and offer the stack as your own service.",
     do:"Describe what the partner gets and what we handle.",
     dont:"Say “we can do anything.” It reads as overpromising."},
@@ -455,28 +540,10 @@ const MODULES = [
     dont:"Hand over a login and hope."},
    {c:"T15",note:"Partner enablement done well: a rehearsal offer plus homework. Go through the GTM intake and explore Titan before the next call.",
     do:"End every partner call with a rehearsal date and one hands-on task.",
-    dont:"Leave the partner to figure out the pitch alone."}
-  ],
-  quiz:[
-   {p:"A new partner wants to run their first demo alone. Best move?",o:["Send the deck and a login","Offer to run it as their sales engineer","Tell them to wait for training","Send a recording instead"],a:1,w:"Run the first one, coach the second."},
-   {p:"What is the support frame from T06?",o:["Set and forget","Build, sell, support","Sell first, support later","Agents handle support"],a:1,w:"The partner sells and owns the customer; we build and support behind them."},
-   {p:"What can never drop out of the support model?",o:["A real person the customer can reach","Weekly calls","A discount","Custom code"],a:0,w:"People approve and a named person answers."},
-   {p:"Which phrase reads as overpromising?",o:["Agents draft; people approve.","We start in Shadow.","We can do anything.","Every action lands on a log you own."],a:2,w:"Say what the stack does and how it is supervised."}
-  ]},
- {id:"m7",n:"07",name:"Close and follow-up",stage:"Close, then proposal",
-  intro:"Every call ends with one dated next step. Every follow-up goes out within 24 hours in the owner’s own words.",
-  lessons:[
+    dont:"Leave the partner to figure out the pitch alone."},
    {c:"T14",note:"Good question: “What would you need from me, from a collateral perspective, that puts you in the best position to win?” The miss: no date was locked before hanging up.",
     do:"Ask the collateral question, then put a date and time on the calendar while they are still on the call.",
     dont:"End with “when do you think you’d want to set something up?” and no date."}
-  ],
-  extra:"followup",
-  quiz:[
-   {p:"What was missing at the end of T14?",o:["A price","A locked date for the next meeting","A case study","The agent count"],a:1,w:"Lock the date before you hang up."},
-   {p:"The follow-up packet goes out within:",o:["24 hours","3 days","A week","After the proposal"],a:0,w:"Within 24 hours, in the owner’s own words, with one dated next step."},
-   {p:"What is the follow-up email shape?",o:["Long recap with every feature","Two-sentence opener, one value line, one ask, no P.S.","Deck attached, no text","Pricing table and terms"],a:1,w:"Short and specific. One ask."},
-   {p:"A buyer over 55 cares about risk and succession. You:",o:["Send a text and a short video","Call first, lead with governance, close on a second meeting with the successor or CFO","Send three follow-up emails","Push for a same-day decision"],a:1,w:"Age is a guess. Their stated preference always wins."}
-  ]}
 ];
 
 const GAME = [
@@ -500,7 +567,9 @@ const MATCH = [
  {s:"Developer weighing four parcels for a medical office",a:"D03"},
  {s:"Oilfield operator worried about a spill at 2 a.m.",a:"D08"},
  {s:"Owner who wants to watch the job without driving to site",a:"D06"},
- {s:"Owner-led firm that wants outreach, social and email run from one place",a:"D07"}
+ {s:"Owner-led firm that wants outreach, social and email run from one place",a:"D07"},
+ {s:"Owner worried that automation takes work away from their people",a:"D12"},
+ {s:"Prospect who asks how to roll this out inside the company",a:"D14"}
 ];
 
 const LIB_USE = {
@@ -511,7 +580,13 @@ const LIB_USE = {
  D06:"Owners and developers who want to see progress and risk at a glance.",
  D07:"Marketing and outreach run from one place, by voice or text.",
  D08:"Oilfield operators: tank levels, risk scores, a live spill alert.",
- D09:"Trucking and dispatch: driver to dispatch to invoice."
+ D09:"Trucking and dispatch: driver to dispatch to invoice.",
+ D10:"A conversation is starting and you are deciding whether to teach or to show first.",
+ D11:"The prospect has heard the pitch and wants to know what happens next.",
+ D12:"A prospect worries that automation takes work away from their people.",
+ D13:"Someone asks what makes something an agent.",
+ D14:"A prospect asks how to roll this out inside the company.",
+ D15:"A prospect needs it by a date and you have to set expectations on timing."
 };
 
 const FILM = [
@@ -534,7 +609,7 @@ const CERT = [
  {p:"By what minute should the use-case question come?",o:["3","12","23","After the demo"],a:0},
  {p:"Which statement is approved?",o:["Your data never leaves AWS.","Agents draft; people approve.","We’re SOC 2 certified.","It runs around the clock."],a:1},
  {p:"The prospect keeps saying “estimating.” Which clip leads?",o:["D01","D05","D07","D08"],a:1},
- {p:"The three discovery anchors from T09:",o:["Users, touchpoints, desired outcome","Budget, authority, need","Price, scope, date","Pain, gain, fit"],a:0},
+ {p:"The three discovery anchors:",o:["Users, touchpoints, desired outcome","Budget, authority, need","Price, scope, date","Pain, gain, fit"],a:0},
  {p:"When does pricing come up?",o:["First call, to qualify","On a follow-up after scope, approved by Josh","In the follow-up email","Never"],a:1},
  {p:"What do we call our agents?",o:["Agent teams","An Agent Fleet, organized in Agent Kits","Bots","Assistants"],a:1},
  {p:"Where does every new agent start?",o:["Full autonomy","Shadow","Pilot","Production"],a:1},
@@ -560,7 +635,7 @@ function persist(){
 }
 async function pushRemote(){
   if(!db || !uid) return;
-  const lessons = Object.keys(S.watched).filter(k=>S.watched[k]).length;
+  const lessons = Object.keys(S.watched).filter(k=>S.watched[k] && ALL_CLIPS.includes(k)).length;
   const modsPassed = MODULES.filter(modDone).map(m=>m.id);
   try{
     await db.doc("progress/"+uid).set({
@@ -610,7 +685,7 @@ function renderNav(){
     items.push(`<a href="#${m.id}" ${route===m.id?'aria-current="page"':''}><span class="num">${m.n}</span><span class="t">${esc(m.name)}<small>${esc(m.stage)}</small></span><span class="st ${d?'done':''}">${d?'Done':''}</span></a>`);
   });
   items.push(`<div class="sep">Review</div>`);
-  items.push(`<a href="#film" ${route==="film"?'aria-current="page"':''}><span class="num">08</span><span class="t">Game film<small>The Grant Kennedy call</small></span><span class="st"></span></a>`);
+  items.push(`<a href="#film" ${route==="film"?'aria-current="page"':''}><span class="num">08</span><span class="t">Game film<small>Reference: the Grant Kennedy call</small></span><span class="st"></span></a>`);
   items.push(`<a href="#cert" ${route==="cert"?'aria-current="page"':''}><span class="num">09</span><span class="t">Certification<small>${CERT.length} questions, pass at ${CERT_PASS}</small></span><span class="st ${S.cert&&S.cert.passed?'done':''}">${S.cert&&S.cert.passed?'Passed':''}</span></a>`);
   if(isAdmin) items.push(`<a href="#team" ${route==="team"?'aria-current="page"':''}><span class="num">··</span><span class="t">Team progress<small>Owner and editors only</small></span><span class="st"></span></a>`);
   $("#nav").innerHTML = items.join("");
@@ -625,10 +700,10 @@ function viewHome(){
   return `
   <header class="head">
     <span class="eyebrow">Echo 1 Labs · Sales Academy</span>
-    <h1>Learn the motion from a real call.</h1>
-    <p>Every lesson is cut from the Oct 30 call with Grant Kennedy, a prospective partner in Melbourne. You will see what worked, what didn’t, and what to say instead. Watch each clip or read its summary, pass each module check at 80%, then take the certification.</p>
+    <h1>Learn the motion from Josh’s demos and talks.</h1>
+    <p>Every required lesson is cut from Josh’s whiteboard talks and product demos, including the newest set from Nov 5. You will see how to open, what to ask, and what to show. Watch each clip or read its summary, pass each module check at 80%, then take the certification. The Grant Kennedy call stays in Review as game film. It is reference only and not required.</p>
   </header>
-  <div class="notice"><b>Internal only.</b> The training films show both speakers in full and contain strong language. Grant has not agreed to publication. Never share this page, a clip, or a screenshot outside Echo 1 Labs. Demo clips go to prospects only after Josh approves each one.</div>
+  <div class="notice"><b>Internal only.</b> The game film shows both speakers in full and contain strong language. Grant has not agreed to publication. Never share this page, a clip, or a screenshot outside Echo 1 Labs. Demo clips go to prospects only after Josh approves each one.</div>
   <section class="block">
     <h2>The seven-stage sales motion</h2>
     <p>No stage gets skipped. Each one links to the module that trains it.</p>
@@ -677,18 +752,18 @@ function extraHTML(m){
     <p>Also ask: what decisions got routed to you last week? How old are your numbers? Which process lives in one person’s head? What runs on paper or phone calls? What do you pay for and never use? Who else says yes? How do you like to get information? What happens when nobody can answer the phone?</p>
     <p>Leave the call with at least three diagnosis items, one problem with a number on it, and how they like to get information.</p></section>`;
   case "capture": return `<section class="block"><h2>Capture drill</h2>
-    <p>Watch T13 again or open its summary. Write down the two requirements Grant handed over, the way you would read them back to him.</p>
+    <p>Watch D14 again or open its summary. Write down the three rollout steps, the way you would read them back to the buyer.</p>
     <textarea id="capture" placeholder="1.\n2.">${esc(S.capture||"")}</textarea>
     <div><button class="btn ghost" id="revealCap">Show the model answer</button></div>
-    <div id="capAns" hidden class="do"><b>Model answer.</b> “So you need two things. One, your site managers report safety, compliance and trade progress every day from their phone. Two, your clients can log an issue or a feature request and see it get built. Did I get that right?”</div>
+    <div id="capAns" hidden class="do"><b>Model answer.</b> “So the plan is three things. One, your executive team uses it first. Two, your team leads and managers act as champions and talk about it. Three, we open a shared channel, you name the biggest time drain, and we implement what we hear. Did I get that right?”</div>
     <h2>20-minute demo order</h2>
     <div class="table"><table><thead><tr><th>Minutes</th><th>Segment</th></tr></thead><tbody>
     ${[["0 to 2","Their words: read back what they told you in discovery"],["2 to 6","Without and with: their workflow today, then with us"],["6 to 10","The board"],["10 to 14","Governance and the agents tab"],["14 to 17","Trust ladder: Shadow first"],["17 to 20","Book the process map session"]].map(r=>`<tr><td class="n">${r[0]}</td><td>${r[1]}</td></tr>`).join("")}
     </tbody></table></div></section>`;
-  case "library": return `<section class="lib">${["D02","D03","D04","D05","D06","D07","D08","D09"].map(c=>`
+  case "library": return `<section class="lib">${["D02","D03","D04","D05","D06","D07","D08","D09","D10","D11","D12","D13","D14","D15"].map(c=>`
     <div class="libitem">${video(c)}<div class="body">${pills(c)}<h3>${esc(CLIPS[c].t)}</h3><p class="note"><b>Show it when:</b> ${esc(LIB_USE[c])}</p>${CLIPS[c].flag?`<div class="flag"><b>Review flag.</b> ${esc(CLIPS[c].flag)}</div>`:''}${summaryHTML(c)}${watchBtn(c)}</div></div>`).join("")}</section>
     <section class="block"><h2>Match the prospect to the clip</h2><p>Pick the clip you would lead with for each prospect, then check your answers.</p>
-    <div class="cards" id="match">${MATCH.map((x,i)=>`<div class="card ${S.match&&S.match.checked?(S.match.picks[i]===x.a?'right':'wrong'):''}"><span class="s">${esc(x.s)}</span><select id="mt${i}" aria-label="Clip for prospect ${i+1}"><option value="">Choose a clip</option>${["D02","D03","D04","D05","D06","D07","D08","D09"].map(c=>`<option value="${c}" ${S.match&&S.match.picks[i]===c?'selected':''}>${c} · ${esc(CLIPS[c].t.replace(/^.*?: /,''))}</option>`).join("")}</select>${S.match&&S.match.checked&&S.match.picks[i]!==x.a?`<span class="why">Best fit: ${x.a}, ${esc(CLIPS[x.a].t)}</span>`:''}</div>`).join("")}</div>
+    <div class="cards" id="match">${MATCH.map((x,i)=>`<div class="card ${S.match&&S.match.checked?(S.match.picks[i]===x.a?'right':'wrong'):''}"><span class="s">${esc(x.s)}</span><select id="mt${i}" aria-label="Clip for prospect ${i+1}"><option value="">Choose a clip</option>${["D02","D03","D04","D05","D06","D07","D08","D09","D10","D11","D12","D13","D14","D15"].map(c=>`<option value="${c}" ${S.match&&S.match.picks[i]===c?'selected':''}>${c} · ${esc(CLIPS[c].t.replace(/^.*?: /,''))}</option>`).join("")}</select>${S.match&&S.match.checked&&S.match.picks[i]!==x.a?`<span class="why">Best fit: ${x.a}, ${esc(CLIPS[x.a].t)}</span>`:''}</div>`).join("")}</div>
     <div class="score"><button class="btn" id="checkMatch">Check answers</button>${S.match&&S.match.checked?`<span><b>${S.match.score}/${MATCH.length}</b> matched</span>`:''}</div></section>`;
   case "game": {
     const g = S.game && S.game.answers ? S.game.answers : {};
@@ -737,10 +812,10 @@ let filmPick = 5;
 function viewFilm(){
   const f = FILM[filmPick];
   const total = 75;
-  const lesson = MODULES.flatMap(m=>m.lessons).find(l=>l.c===f.c);
+  const lesson = GRANT_LESSONS.concat(MODULES.flatMap(m=>m.lessons)).find(l=>l.c===f.c);
   const detail = f.c ? `<article class="lesson" style="border-top:0;padding-top:0"><div>${video(f.c)}${summaryHTML(f.c)}</div><div class="coach">${pills(f.c)}<h3>${esc(CLIPS[f.c].t)}</h3>${ctxHTML(f.c)}<p class="note">${esc(lesson?lesson.note:(f.c.startsWith("D")?LIB_USE[f.c]||"Stack tour.":""))}</p>${lesson?`<p class="do"><b>Do.</b> ${esc(lesson.do)}</p><p class="dont"><b>Don’t.</b> ${esc(lesson.dont)}</p>`:''}${watchBtn(f.c)}</div></article>`
     : `<div class="notice"><b>${esc(f.label)}.</b> This clip is restricted. Price came before scope was known. Discovery first, pricing on a follow-up, Josh approves every term.</div>`;
-  return `<header class="head"><span class="stage">Review</span><h1>Game film: the Grant Kennedy call</h1><p>74 minutes on one line. Green worked, red is a miss, orange is a demo. Click a marker to replay it.</p></header>
+  return `<header class="head"><span class="stage">Review</span><h1>Game film: the Grant Kennedy call</h1><p>Reference only. Nothing here is required or counts toward module progress. 74 minutes on one line. Green worked, red is a miss, orange is a demo. Click a marker to replay it.</p></header>
   <section class="block">
     <div class="tl">
       <div class="track"></div>
