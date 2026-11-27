@@ -223,6 +223,12 @@ const CLIPS = {
  D07:{t:"Agent Orbit: go-to-market studio",len:"0:52",kind:"demo",product:"Agent Orbit"},
  D08:{t:"Ignition: incident response in real time",len:"2:21",kind:"demo",product:"Ignition",flag:"Oilfield screens. Always say “sample data”."},
  D09:{t:"Ignition: dispatch, fleet tracking, and site KPIs",len:"1:41",kind:"demo",product:"Ignition"},
+ D10:{t:"Entertain, then earn the right to educate",len:"0:31",kind:"demo",product:"Whiteboard talk"},
+ D11:{t:"Execute on their use case and show value fast",len:"0:51",kind:"demo",product:"Whiteboard talk"},
+ D12:{t:"Process engineering: automate the hallway, keep humans for reasoning",len:"1:26",kind:"demo",product:"Whiteboard talk"},
+ D13:{t:"What an agent has",len:"0:40",kind:"demo",product:"Whiteboard talk"},
+ D14:{t:"Rollout: executive team, champions, one question, implement right away",len:"2:07",kind:"demo",product:"Whiteboard talk"},
+ D15:{t:"Work back from the go-live date",len:"2:24",kind:"demo",product:"Whiteboard talk"},
  T01:{t:"The institutional AI pitch",len:"1:38",kind:"film",skill:"Positioning"},
  T02:{t:"Is it only for big builders?",len:"1:12",kind:"film",skill:"Objection handling"},
  T03:{t:"Finally asking about their use case",len:"0:58",kind:"film",skill:"Discovery"},
@@ -291,6 +297,24 @@ const SUM = {
   asked:[]},
  D09:{screen:"Driver-to-dispatch text and voice, Samsara GPS on every rig with site locations, and KPIs by site, operator and disposal.",
   said:["Text and voice carry a request from the driver through dispatch to the executive.","Calls for sales or dispatch flow through to invoicing, with AR and AP agents doing the follow-up.","With the customer’s GPS key, rigs show live, color-coded by how much of the day’s hours are left.","Operational numbers come in from each site so owners can drill down by location, operator or disposal."],
+  asked:[]},
+ D10:{screen:"Josh at the whiteboard. The writing is not legible, so the overlay cards carry the steps.",
+  said:["Start the conversation with something they want to see.","Earn the right to educate before you teach.","Treat it as a framework: it is the reason the user experience matters so much."],
+  asked:[]},
+ D11:{screen:"Josh at the whiteboard.",
+  said:["Entertain first to earn the right to educate.","Then execute on their specific use cases and show value immediately.","Speed and intelligence are the advantage right now."],
+  asked:[]},
+ D12:{screen:"Josh at the whiteboard with a drawing of people in a process.",
+  said:["Process engineering automates the repeatable steps between people, like a rigid hallway.","Reasoning with agents changes what the people at each step have to do.","Human interaction becomes more important as time goes on."],
+  asked:[]},
+ D13:{screen:"Josh at the whiteboard listing the three parts. The overlay card carries the list.",
+  said:["A model.","Memory.","At least one way to act, which is how it does something and knows what to do next."],
+  asked:[]},
+ D14:{screen:"Josh at the whiteboard, with the rollout list written up.",
+  said:["The executive team uses it first.","Then bring in internal champions: team leads and managers who talk about it.","Open a shared channel, ask what the biggest time suck is, and implement what you hear."],
+  asked:[]},
+ D15:{screen:"Josh at the whiteboard drawing a timeline.",
+  said:["Start with the date they need it by and work backward.","Leave room for their own internal due diligence.","Offer an AI readiness review to set expectations on timing."],
   asked:[]},
  T01:{screen:null,
   said:["Most companies use AI like Google. Each employee asks on their own, and the business keeps nothing.","Institutional AI uses the models but keeps the information and outputs on the company’s side, so it learns from everyone.","The phone is your personal AI; the company’s systems should hold the institutional one.","Josh builds it with step functions and workflows on AWS. That detail is for us, not the buyer."],
@@ -511,7 +535,13 @@ const LIB_USE = {
  D06:"Owners and developers who want to see progress and risk at a glance.",
  D07:"Marketing and outreach run from one place, by voice or text.",
  D08:"Oilfield operators: tank levels, risk scores, a live spill alert.",
- D09:"Trucking and dispatch: driver to dispatch to invoice."
+ D09:"Trucking and dispatch: driver to dispatch to invoice.",
+ D10:"A conversation is starting and you are deciding whether to teach or to show first.",
+ D11:"The prospect has heard the pitch and wants to know what happens next.",
+ D12:"A prospect worries that automation takes work away from their people.",
+ D13:"Someone asks what makes something an agent.",
+ D14:"A prospect asks how to roll this out inside the company.",
+ D15:"A prospect needs it by a date and you have to set expectations on timing."
 };
 
 const FILM = [
@@ -685,7 +715,7 @@ function extraHTML(m){
     <div class="table"><table><thead><tr><th>Minutes</th><th>Segment</th></tr></thead><tbody>
     ${[["0 to 2","Their words: read back what they told you in discovery"],["2 to 6","Without and with: their workflow today, then with us"],["6 to 10","The board"],["10 to 14","Governance and the agents tab"],["14 to 17","Trust ladder: Shadow first"],["17 to 20","Book the process map session"]].map(r=>`<tr><td class="n">${r[0]}</td><td>${r[1]}</td></tr>`).join("")}
     </tbody></table></div></section>`;
-  case "library": return `<section class="lib">${["D02","D03","D04","D05","D06","D07","D08","D09"].map(c=>`
+  case "library": return `<section class="lib">${["D02","D03","D04","D05","D06","D07","D08","D09","D10","D11","D12","D13","D14","D15"].map(c=>`
     <div class="libitem">${video(c)}<div class="body">${pills(c)}<h3>${esc(CLIPS[c].t)}</h3><p class="note"><b>Show it when:</b> ${esc(LIB_USE[c])}</p>${CLIPS[c].flag?`<div class="flag"><b>Review flag.</b> ${esc(CLIPS[c].flag)}</div>`:''}${summaryHTML(c)}${watchBtn(c)}</div></div>`).join("")}</section>
     <section class="block"><h2>Match the prospect to the clip</h2><p>Pick the clip you would lead with for each prospect, then check your answers.</p>
     <div class="cards" id="match">${MATCH.map((x,i)=>`<div class="card ${S.match&&S.match.checked?(S.match.picks[i]===x.a?'right':'wrong'):''}"><span class="s">${esc(x.s)}</span><select id="mt${i}" aria-label="Clip for prospect ${i+1}"><option value="">Choose a clip</option>${["D02","D03","D04","D05","D06","D07","D08","D09"].map(c=>`<option value="${c}" ${S.match&&S.match.picks[i]===c?'selected':''}>${c} · ${esc(CLIPS[c].t.replace(/^.*?: /,''))}</option>`).join("")}</select>${S.match&&S.match.checked&&S.match.picks[i]!==x.a?`<span class="why">Best fit: ${x.a}, ${esc(CLIPS[x.a].t)}</span>`:''}</div>`).join("")}</div>

@@ -90,6 +90,28 @@ test('partners see only the cleared demos and personal clips, never T clips or f
   for (const id of ['D02', 'D03', 'D08', 'T01', 'T09', 'T15']) assert.equal(canViewClip('partner', id), false, id);
 });
 
+// Nov 5 whiteboard clips (R3): D10 to D15 are cleared for partners; the held ones (N02, N04, N05, N06, N09) were not given ids.
+const NOV5_IDS = ['D10', 'D11', 'D12', 'D13', 'D14', 'D15'];
+
+test('the Nov 5 clips D10 to D15 are cleared partner demos and nothing beyond D15 is', () => {
+  for (const id of NOV5_IDS) {
+    assert.equal(canViewClip('partner', id), true, id);
+    assert.equal(PARTNER_DEMOS.filter((d) => d.id === id).length, 1, `${id} listed once`);
+    for (const role of ['owner', 'point-of-contact', 'member'] as Role[]) assert.equal(canViewClip(role, id), true, `${role} ${id}`);
+    assert.equal(clipPath(id, A), `academy/videos/${id}.mp4`);
+  }
+  assert.equal(canViewClip('partner', 'D16'), false);
+  assert.deepEqual(PARTNER_DEMOS.map((d) => d.id), ['D01', 'D04', 'D05', 'D06', 'D07', 'D09', ...NOV5_IDS]);
+});
+
+test('the Nov 5 clips carry no names, vendors or retired words in their listing', () => {
+  const banned = /\b(Energy Waste|Wes|Robert|Martin|Brad|Fogan|Grant|Joe|James|Brandon|WaterWorks|ChatGPT|Gemini|OpenAI|Cosequin|Turkeyfest|Cuero|world-class|tool)\b|13\|7|\u2014/i;
+  for (const d of PARTNER_DEMOS.filter((x) => NOV5_IDS.includes(x.id))) {
+    assert.ok(!banned.test(`${d.title} ${d.note}`), `${d.id} listing has a banned word`);
+    assert.match(d.len, /^\d:\d{2}$/);
+  }
+});
+
 test('the partner page is filled in and cannot break out of the script', () => {
   const page = readFileSync(new URL('../academy-private/partner.html', import.meta.url), 'utf8');
   assert.ok(page.includes(PARTNER_CLIPS_PLACEHOLDER) && page.includes(PARTNER_DEMOS_PLACEHOLDER));

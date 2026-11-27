@@ -42,6 +42,13 @@ export const PARTNER_DEMOS: readonly { id: string; title: string; len: string; n
   { id: 'D06', title: 'Titan: progress in 3D and a risk profile for every project', len: '1:10', note: 'Titan' },
   { id: 'D07', title: 'Agent Orbit: go-to-market studio', len: '0:52', note: 'Agent Orbit' },
   { id: 'D09', title: 'Ignition: dispatch, fleet tracking, and site KPIs', len: '1:41', note: 'Ignition' },
+  // Nov 5 whiteboard talk clips, approved by Josh by id (Decision recbKWRsPfwYFk7ez, amends D2 for these).
+  { id: 'D10', title: 'Entertain, then earn the right to educate', len: '0:31', note: 'Whiteboard talk' },
+  { id: 'D11', title: 'Execute on their use case and show value fast', len: '0:51', note: 'Whiteboard talk' },
+  { id: 'D12', title: 'Process engineering: automate the hallway, keep humans for reasoning', len: '1:26', note: 'Whiteboard talk' },
+  { id: 'D13', title: 'What an agent has', len: '0:40', note: 'Whiteboard talk' },
+  { id: 'D14', title: 'Rollout: executive team, champions, one question, implement right away', len: '2:07', note: 'Whiteboard talk' },
+  { id: 'D15', title: 'Work back from the go-live date', len: '2:24', note: 'Whiteboard talk' },
 ];
 const PARTNER_DEMO_IDS = new Set(PARTNER_DEMOS.map((d) => d.id));
 
