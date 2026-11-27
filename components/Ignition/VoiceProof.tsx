@@ -7,6 +7,11 @@ import {
   VOICE_LINES,
   VOICE_PHONE_CAPTIONS,
 } from '@/lib/ignition';
+/* Token-only files (custom properties on :root, no element rules): the (landing) use-case pages do not load the
+   design system, so the phone band brings the tokens it uses (Vercel Agent Review, PR 98). */
+import '@/styles/ao/palette.css';
+import '@/styles/ao/typography.css';
+import '@/styles/ao/radii.css';
 import s from './Ignition.module.css';
 
 /* The two phone screens from the Ignition teaser (sample data) beside the voice agent capabilities:
