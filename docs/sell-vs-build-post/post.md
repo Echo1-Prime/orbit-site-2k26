@@ -1,7 +1,7 @@
-# Ben AI post: Sell AI or build AI?
+# Sell AI or build AI? Post copy
 
-**Status:** DRAFT for Josh. Not posted. Post only through Agent Orbit in-app Settings.
-**Attach:** `cover.png` as the cover photo, `leave-behind.pdf` as the file.
+**Status:** DRAFT for Josh. Not posted. Social posting only through Agent Orbit in-app Settings.
+**Live version:** the blog post in `lib/blog.ts` (slug `sell-ai-or-build-ai-room-for-both`). Cover and leave-behind live in this folder.
 
 ---
 
