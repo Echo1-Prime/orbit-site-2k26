@@ -58,7 +58,7 @@ export default function IgnitionBands({ afterHero, beforeLast }: { vid?: ReactNo
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={IGNITION_IMG.board.src}
-                srcSet={`${IGNITION_IMG.board.src640} 640w, ${IGNITION_IMG.board.src960} 960w, ${IGNITION_IMG.board.src} 1600w`}
+                srcSet={`${IGNITION_IMG.board.src640} 640w, ${IGNITION_IMG.board.src960} 960w, ${IGNITION_IMG.board.src} 1391w`}
                 sizes="(min-width: 1000px) 58vw, 100vw"
                 alt={IGNITION_IMG.board.alt}
                 width={IGNITION_IMG.board.width}
