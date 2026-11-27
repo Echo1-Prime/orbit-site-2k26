@@ -42,7 +42,7 @@ export default function IgnitionBands({ afterHero, beforeLast }: { vid?: ReactNo
                 {IGNITION_HERO.headline}
               </h1>
               <p className={s.lede}>
-                {IGNITION_HERO.sub} {IGNITION_HERO.body}
+                {IGNITION_HERO.body}
               </p>
               <p className={s.tag}>{IGNITION_HERO.tagline}</p>
               <div className={s.ctas}>

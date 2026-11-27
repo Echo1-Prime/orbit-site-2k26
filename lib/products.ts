@@ -204,7 +204,7 @@ export const PRODUCTS: Product[] = [
       'The logistics operating system, from the first call to the invoice.',
     description:
       'Ignition is Harness 6 of 8 and the oilfield logistics operating system. Twenty-eight agents run one board: job line and dispatch by voice in English or Spanish, sensor and tank alerts that climb the call chain, tickets and invoices on one board in 3D, and compliance, settlement, pricing and incident response. It pulls from the systems you already run, with authorization. Agents draft; people approve, and the call chain escalates to a named person.',
-    poster: '/images/ignition/ignition-board-1600.webp',
+    poster: '/images/ignition/ignition-board-1391.webp',
     deployedIn: ['Dispatch, field operations and the owner'],
     metrics: [
       { value: '28', label: 'Agents on the board' },

@@ -42,6 +42,8 @@ export interface Subpage {
   clip?: string;
   /** Live URLs that now permanently redirect here. */
   oldPaths: string[];
+  /** Last substantial change for this page, when newer than SUBPAGES_UPDATED. */
+  updated?: string;
 }
 
 /** Date of the last substantial content change; shown on the page and used in the sitemap and JSON-LD. */
@@ -249,6 +251,7 @@ export const SUBPAGES: Subpage[] = [
     linkLabel: 'Oilfield logistics software: Ignition',
     ogAlt: 'Echo 1 Labs Ignition, sample data: a 3D tank battery on one board with a settling tank past its high mark.',
     oldPaths: OLD_PATHS.ignition,
+    updated: '2026-11-27',
     reading: [],
   },
   {
@@ -407,7 +410,7 @@ export function subpageJsonLd(p: Subpage) {
         name: `${p.title} | ${SITE_NAME}`,
         description: p.description,
         inLanguage: 'en-US',
-        dateModified: SUBPAGES_UPDATED,
+        dateModified: p.updated ?? SUBPAGES_UPDATED,
         isPartOf: { '@type': 'WebSite', name: SITE_NAME, url: SITE_URL },
         primaryImageOfPage: {
           '@type': 'ImageObject',

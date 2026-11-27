@@ -18,13 +18,13 @@ export const IGNITION_USE_CASE_ROUTE = '/use-cases/oilfield-spill-response';
 
 export const IGNITION_IMG = {
   board: {
-    src: '/images/ignition/ignition-board-1600.webp',
+    src: '/images/ignition/ignition-board-1391.webp',
     src960: '/images/ignition/ignition-board-960.webp',
     src640: '/images/ignition/ignition-board-640.webp',
-    width: 1600,
-    height: 900,
+    width: 1391,
+    height: 806,
     // WRITTEN
-    alt: 'Ignition board, sample data: a 3D tank battery with one settling tank past its high mark in orange, a tank card with level and fill rate, and buttons to delegate or call dispatch.',
+    alt: 'Ignition board, sample data: a 3D tank battery with settling tank Z2 past its high mark in orange, a tank card with level and volume, the next step drafted, and buttons to delegate or call dispatch.',
   },
   tank: {
     src: '/images/ignition/ignition-tank-1402.webp',
@@ -54,7 +54,7 @@ export const IGNITION_HERO = {
   eyebrow: 'Run the operation · Ignition', // WRITTEN (PS lifecycle label + name)
   headline: 'Ignition runs the field.', // IT p1
   sub: 'The logistics operating system, from the first call to the invoice.', // PS p10
-  body: 'Ignition is the oilfield logistics operating system. It runs on agents you supervise.', // IT p1 (Titan clause removed)
+  body: 'Ignition is the oilfield logistics operating system, from the first call to the invoice. It runs on agents you supervise.', // IT p1 + PS p10
   tagline: 'Built by operators. Run by agents. Supervised by you.',
 };
 
