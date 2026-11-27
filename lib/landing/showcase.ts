@@ -63,11 +63,12 @@ const JOBS_3D_ASSET = '/videos/showcase/track-your-jobs-in-3d-card-dcd40d13';
 
 const ALL_TILES: ShowcaseTile[] = [
   {
-    /* Ignition, the GRC highlight (Josh, 2026-11-27): first card on the home rotation and on /case-studies.
+    /* Ignition with 13|7 Waterworks, the GRC highlight (Josh, 2026-11-27): first card on the home rotation and on
+       /case-studies; Real estate development second.
        Posters are the teaser's Ignition board still (sample data); no clip yet, so the card shows the poster only. */
     id: oilfieldSpillCopy.slug,
     stage: 'run',
-    kick: 'Governance, risk and compliance · Ignition',
+    kick: 'Governance, risk and compliance · Ignition · 13|7 Waterworks', // Josh, 2026-11-27: named, first and highlighted
     title: oilfieldSpillCopy.headline,
     in: IGNITION_SPILL[0].text,
     agent: IGNITION_SPILL[1].text + ' ' + IGNITION_SPILL[2].text,
@@ -78,6 +79,23 @@ const ALL_TILES: ShowcaseTile[] = [
     poster: IGNITION_IMG.board.src960,
     posterSmall: IGNITION_IMG.board.src640,
     demoLabel: 'Sample data',
+  },
+  {
+    id: realEstateCopy.slug,
+    stage: 'build', // UNVERIFIED(inferred: site development precedes build-out; no design file records it)
+    kick: realEstateCopy.eyebrow,
+    title: realEstateCopy.headline,
+    // DRAFT-FOR-JOSH. Drawn from the demo's own text: "the architect's checklist" and "Every plan. Every takeoff. Every code."
+    in: 'Plan sets, site sheets and the architect’s checklist, revision by revision.',
+    // DRAFT-FOR-JOSH. Drawn from the demo's own text: "each with its citation" and "the approvals ahead".
+    agent: 'Ties each site to its jurisdiction, cites each code item, reads the takeoff and drafts the follow-ups.',
+    you: realEstateCopy.closing, // verbatim: "Supervised by you."
+    ctaLabel: 'See Real Estate Development →', // written for review
+    href: `/use-cases/${realEstateCopy.slug}`,
+    video: `${REAL_ESTATE_ASSET}.mp4`,
+    poster: `${REAL_ESTATE_ASSET}-960.webp`,
+    posterSmall: `${REAL_ESTATE_ASSET}-640.webp`,
+    demoLabel: 'Names removed · Demo figures', // not shown on the card since 2026-10-16 (Josh); kept for the data shape
   },
   {
     id: truckingCopy.slug,
@@ -115,23 +133,6 @@ const ALL_TILES: ShowcaseTile[] = [
     poster: `${CRUDE_ASSET}-960.webp`,
     posterSmall: `${CRUDE_ASSET}-640.webp`,
     demoLabel: 'Names removed · Demo figures', // Josh, 2026-10-16; the figures are illustrative samples
-  },
-  {
-    id: realEstateCopy.slug,
-    stage: 'build', // UNVERIFIED(inferred: site development precedes build-out; no design file records it)
-    kick: realEstateCopy.eyebrow,
-    title: realEstateCopy.headline,
-    // DRAFT-FOR-JOSH. Drawn from the demo's own text: "the architect's checklist" and "Every plan. Every takeoff. Every code."
-    in: 'Plan sets, site sheets and the architect’s checklist, revision by revision.',
-    // DRAFT-FOR-JOSH. Drawn from the demo's own text: "each with its citation" and "the approvals ahead".
-    agent: 'Ties each site to its jurisdiction, cites each code item, reads the takeoff and drafts the follow-ups.',
-    you: realEstateCopy.closing, // verbatim: "Supervised by you."
-    ctaLabel: 'See Real Estate Development →', // written for review
-    href: `/use-cases/${realEstateCopy.slug}`,
-    video: `${REAL_ESTATE_ASSET}.mp4`,
-    poster: `${REAL_ESTATE_ASSET}-960.webp`,
-    posterSmall: `${REAL_ESTATE_ASSET}-640.webp`,
-    demoLabel: 'Names removed · Demo figures', // not shown on the card since 2026-10-16 (Josh); kept for the data shape
   },
   {
     id: trackYourJobsIn3dCopy.slug,

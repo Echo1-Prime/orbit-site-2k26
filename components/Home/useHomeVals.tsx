@@ -16,11 +16,15 @@ import { BLS, CMP, FEED, LOG, NODES, SYM, TRUST } from './home-data';
 const HERO_CLIP = '/videos/home/hero-titan.mp4';
 /* Signal and Agent Orbit clips from Josh's uploads (2026-10-15), cropped square on the subject, audio removed.
    A slide with a clip replaces its drawn fallback (hvPoster1, hvScene). */
-const HOME_CLIPS = [HERO_CLIP, '/videos/home/hero-signal.mp4', '/videos/home/hero-agent-orbit.mp4'];
+/* Home hero order (Josh, 2026-11-27): Ignition, Titan, Agent Orbit, Signal. The Ignition clip is the logistics
+   drilling and fracking clip sped up to fit six seconds (hero-ignition-6s.mp4). */
+const IGNITION_CLIP = '/videos/home/hero-ignition-6s.mp4';
+const IGNITION_SLIDE_MS = 6000;
+const HOME_CLIPS = [IGNITION_CLIP, HERO_CLIP, '/videos/home/hero-agent-orbit.mp4', '/videos/home/hero-signal.mp4'];
 const SLIDE_MS = 5000;
 /* /logistics-demo (variant 'trucking'): slide 1 is the drilling and fracking clip at 1.5x speed (Josh, 2026-10-24).
    Its slide runs the full clip length so the frack stages finish before the hero rotates. */
-const LOGISTICS_CLIPS = ['/videos/home/hero-drill-frack.mp4', '/videos/home/hero-signal.mp4', '/videos/home/hero-agent-orbit.mp4'];
+const LOGISTICS_CLIPS = ['/videos/home/hero-drill-frack.mp4', HERO_CLIP, '/videos/home/hero-agent-orbit.mp4', '/videos/home/hero-signal.mp4'];
 const LOGISTICS_FIRST_SLIDE_MS = 13500;
 const LOGISTICS_BG = '/videos/home/hero-drill-frack.mp4';
 
@@ -62,7 +66,7 @@ function openConcierge(diag?: string) {
 
 export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
   const CLIPS = variant === 'trucking' ? LOGISTICS_CLIPS : HOME_CLIPS;
-  const slideMs = (i: number) => (variant === 'trucking' && i === 0 ? LOGISTICS_FIRST_SLIDE_MS : SLIDE_MS);
+  const slideMs = (i: number) => (i !== 0 ? SLIDE_MS : variant === 'trucking' ? LOGISTICS_FIRST_SLIDE_MS : IGNITION_SLIDE_MS);
   const router = useRouter();
   const m = useIsMobile();
   const conc = useFlag('conciergeOpen');
@@ -174,7 +178,7 @@ export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
   }, []);
 
   const hvNext = useCallback(() => {
-    setHv((h) => (h + 1) % 3);
+    setHv((h) => (h + 1) % 4);
     setHvCycle((c) => c + 1);
   }, []);
 
@@ -217,7 +221,7 @@ export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
     ) : null;
 
   const v: Record<string, any> = {};
-  [0, 1, 2].forEach((i) => {
+  [0, 1, 2, 3].forEach((i) => {
     const on = hv === i;
     v['hvOp' + i] = on ? 1 : 0;
     v['hvHid' + i] = !on;
@@ -273,7 +277,7 @@ export function useHomeVals(variant: 'home' | 'trucking' = 'home') {
     ) : null;
   Object.assign(v, {
     heroBg,
-    hvPoster1: !CLIPS[1],
+    hvPoster3: !CLIPS[3],
     hvScene: !CLIPS[2],
     hvEnter: () => setHvHover(true),
     hvLeave: () => setHvHover(false),

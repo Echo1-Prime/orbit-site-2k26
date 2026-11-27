@@ -17,21 +17,21 @@ export const oilfieldSpillCopy: UseCaseCopy = {
   seoDesc:
     'A spill on the lease, from first call to cleanup: the emergency line, on-call paging, an approved vac truck, a fact file and settlement held until tickets are fixed. Sample data.',
 
-  eyebrow: 'Use case · Ignition · Governance, risk and compliance',
+  eyebrow: 'Case study · Ignition with 13|7 Waterworks · Governance, risk and compliance', // Josh, 2026-11-27
   headline: 'A spill, from first call to cleanup',
   intro: 'Fluid over the berm at 2 a.m. Here is the night on one board, with a person approving every truck and every notice.',
   beats: ['Agents draft.', 'People approve.', 'Every call, text and change on a record the business owns.'],
 
   embedUrl: 'https://137waterworks.demo.echo1labs.com/scorecard/yard/',
   embedTitle: 'Ignition board, sample data',
-  embedFallback: 'Open the demo board (sign-in required)',
+  embedFallback: 'Open the 13|7 Waterworks demo board (sign-in required)',
   demoImage: {
     src: IGNITION_IMG.board.src,
     srcSet: `${IGNITION_IMG.board.src640} 640w, ${IGNITION_IMG.board.src960} 960w, ${IGNITION_IMG.board.src} 1600w`,
     alt: IGNITION_IMG.board.alt,
     width: IGNITION_IMG.board.width,
     height: IGNITION_IMG.board.height,
-    caption: 'Superintendent · Every tank and truck on one board · Sample data',
+    caption: '13|7 Waterworks demo board · Every tank and truck on one board · Sample data',
   },
   voiceProof: true,
   note: `Sample data, not your lease or your data. ${GRC_LADDER_NOTE}`,
