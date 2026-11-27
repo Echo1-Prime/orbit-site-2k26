@@ -83,9 +83,11 @@ h2{font:800 84px/1.02 var(--ao-f-display);letter-spacing:-.035em}
 .door p{font:400 24px/1.45 var(--ao-f-body);color:var(--ao-t0)}
 .cta{border-radius:22px;background:var(--ao-orbit);color:var(--ao-void);padding:30px 32px;display:flex;flex-direction:column;justify-content:space-between}
 .cta .big{font:800 42px/1.02 var(--ao-f-display);letter-spacing:-.03em}
+.cta{text-decoration:none}
+.cta .hint{display:block;margin-bottom:8px;font-weight:700;letter-spacing:.14em}
 .cta .row{display:flex;gap:18px;align-items:flex-end}
 .cta img{width:150px;height:150px;border-radius:14px;flex:none}
-.cta .url{font:500 14px/1.35 var(--ao-f-mono);word-break:break-all;letter-spacing:.02em}
+.cta .url{font:500 14px/1.35 var(--ao-f-mono);word-break:normal;overflow-wrap:break-word;letter-spacing:.02em}
 .ask{margin-top:26px;font:400 26px/1.4 var(--ao-f-body);color:var(--ao-t0)}
 .ask span{color:var(--ao-orbit)}
 </style>
@@ -187,13 +189,13 @@ h2{font:800 84px/1.02 var(--ao-f-display);letter-spacing:-.035em}
       <h3>White label or resell</h3>
       <p>Your customers, your name on it. We build and support behind you.</p>
     </div>
-    <div class="cta">
+    <a class="cta" href="https://scheduler.zoom.us/21ozwyy45r2p9uoc24eb7rxr80/echo1-founder-meeting">
       <div class="big">Book the founders' meeting</div>
       <div class="row">
         <img src="qr.png" alt="QR code for the founders' meeting link">
-        <div class="url">scheduler.zoom.us/21ozwyy45r2p9uoc24eb7rxr80/echo1-founder-meeting</div>
+        <div class="url"><span class="hint">CLICK THIS BOX OR SCAN</span>scheduler.zoom.us/<wbr>21ozwyy45r2p9uoc24eb7rxr80/<wbr>echo1-founder-meeting</div>
       </div>
-    </div>
+    </a>
   </div>
   <p class="ask">What we ask of both: be trustworthy, hold the line, stay mission-driven. <span>Bring your lane. We will cover the rest.</span></p>
   <div class="foot"><div>ECHO 1 LABS / BUSINESS LIFECYCLE MANAGEMENT</div><div><span class="num">05</span> / 05</div></div>
